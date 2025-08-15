@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vigilance Terminal | Faction Relations</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="relations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="tablet-frame">
+        <div class="scanline-overlay"></div>
+        <div id="app">
+             <aside id="sidebar">
+                <header>
+                    <a href="developer.html" class="logo-link">
+                        <div class="logo">
+                            <img src="logo.png" alt="Waluigi Terminal Logo" id="waluigi-logo">
+                            <h1 class="flicker">Vigilance Terminal</h1>
+                        </div>
+                    </a>
+                    <p class="subtitle">Faction Relations</p>
+                </header>
+                <nav id="main-nav-bar">
+                    <a href="index.html" class="nav-button">
+                        <img src="icon_dossier.png" alt="Dossier Icon">
+                        <span>Faction Directory</span>
+                    </a>
+                    <a href="relations.html" class="nav-button" style="display: none;">
+                        <img src="icon_reputation.png" alt="Reputation Icon">
+                        <span>Faction Relations</span>
+                    </a>
+                    <a href="focus.html" class="nav-button">
+                        <img src="icon_focus.png" alt="Focus Icon">
+                        <span>Toad Focus</span>
+                    </a>
+                     <a href="politics.html" class="nav-button">
+                        <img src="icon_reputation.png" alt="Politics Icon">
+                        <span>Political Systems</span>
+                    </a>
+                    <a href="currency.html" class="nav-button">
+                        <img src="icon_currency.png" alt="Currency Icon">
+                        <span>Currency Exchange</span>
+                    </a>
+                     <a href="newspaper.html" class="nav-button">
+                        <img src="icon_newspaper.png" alt="Newspaper Icon">
+                        <span>The Daily Paradox</span>
+                    </a>
+                    <a href="developer.html" class="nav-button">
+                        <img src="icon_dossier.png" alt="Developer Icon">
+                        <span>Developer Tools</span>
+                    </a>
+                </nav>
+                <div id="faction-legend">
+                    <h3>Faction Categories</h3>
+                    <ul>
+                        <li class="legend-major-powers"><a href="#major-powers">Major Powers</a></li>
+                        <li class="legend-regional-powers"><a href="#regional-powers">Regional Powers</a></li>
+                        <li class="legend-mystical-ancient"><a href="#mystical-ancient">Mystical & Ancient</a></li>
+                        <li class="legend-underworld-fringe"><a href="#underworld-fringe">Underworld & Fringe</a></li>
+                        <li class="legend-interdimensional-threat"><a href="#interdimensional-threats">Interdimensional Threats</a></li>
+                    </ul>
+                </div>
+                 <footer style="margin-top: auto;">
+                    <p>SYSTEM STATUS: <span class="status-ok">ONLINE</span></p>
+                    <p>&copy; Waluigi, Evil Genius</p>
+                </footer>
+            </aside>
+            <main id="main-content">
+                 <h2 class="page-title">Faction Relationship Web</h2>
+                 <p style="text-align: center; color: var(--text-secondary); margin-bottom: 20px;">Click & drag to pan, scroll to zoom. Click a node for details.</p>
+                 <div id="graph-controls">
+                    <span>Filter View:</span>
+                    <button class="control-button active" data-filter="all">All Nodes</button>
+                    <button class="control-button" data-filter="party_factions">Party &amp; Factions</button>
+                    <button class="control-button" data-filter="party_leaders">Party &amp; Leaders</button>
+                    <button class="control-button" data-filter="major_powers">Major Powers</button>
+                    <button class="control-button" data-filter="underworld">Underworld &amp; Fringe</button>
+                </div>
+                 <div id="relations-graph-container">
+                    <!-- Faction graph will be injected here by JS -->
+                 </div>
+
+                 <h2 class="page-title" style="margin-top: 40px;">Faction Relations Matrix</h2>
+                 <p style="text-align: center; color: var(--negative-color); font-family: var(--font-display);">WARNING: POWER CORE OFFLINE. DATA MAY BE UNSTABLE.</p>
+                 <div id="relations-container">
+                    <!-- Faction relations will be injected here by JS -->
+                </div>
+            </main>
+            <aside id="detail-panel">
+                <button id="detail-panel-close">&times;</button>
+                <div id="detail-panel-content">
+                    <!-- Details will be injected here -->
+                </div>
+            </aside>
+        </div>
+    </div>
+    <script type="module" src="relations.js"></script>
+</body>
+</html>

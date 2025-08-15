@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Paradox</title>
+    <link rel="stylesheet" href="newspaper.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="tablet-frame newspaper-tablet">
+        <div class="scanline-overlay"></div>
+        <div class="newspaper-container">
+            <header class="masthead">
+                <div class="date" id="newspaper-date">Issue #42 - The Cycle of Turmoil</div>
+                <h1 class="title">The Daily Paradox</h1>
+                <div class="tagline">All The News That Bends The Rules</div>
+            </header>
+
+            <a href="index.html" class="back-button">&laquo; Back to Vigilance Terminal</a>
+
+            <main class="content-grid">
+                <article id="headline-article" class="headline">
+                    <!-- Headline injected by JS -->
+                </article>
+
+                <div id="side-stories-container" class="side-stories">
+                    <!-- Side stories injected by JS -->
+                </div>
+
+                <section id="waluigi-corner" class="waluigi-corner">
+                    <!-- Waluigi's corner injected by JS -->
+                </section>
+                
+                <div id="adverts-container" class="adverts">
+                    <!-- Adverts injected by JS -->
+                </div>
+            </main>
+
+             <footer class="newspaper-footer">
+                <p>The Daily Paradox is a subsidiary of Waluigi Enterprises. We are not responsible for paradoxes, existential dread, or spontaneous dimensional shifts resulting from reading our content.</p>
+            </footer>
+        </div>
+    </div>
+    <script type="module" src="newspaper.js"></script>
+</body>
+</html>

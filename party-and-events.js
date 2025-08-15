@@ -1,0 +1,292 @@
+export const AUXILIARY_PARTY = {
+    dan: {
+        name: "Dan",
+        weapon: "Longsword & Magic",
+        status: "Injured",
+        level: 1,
+        xp: 0,
+        xp_to_next: 100,
+        log: [],
+        abilities: []
+    },
+    toad_lee: {
+        name: "Toad Lee",
+        description: "A hardy toad warrior who fights with a surprisingly large axe.",
+        weapon: "Axe",
+        status: "Alive",
+        level: 1,
+        xp: 0,
+        xp_to_next: 100,
+        log: [],
+        abilities: []
+    },
+    eager: {
+        name: "Eager",
+        weapon: "Whip",
+        status: "Alive",
+        level: 1,
+        xp: 0,
+        xp_to_next: 100,
+        log: [],
+        abilities: []
+    },
+    ryan: {
+        name: "Ryan",
+        weapon: "Spellcaster",
+        status: "Alive",
+        level: 1,
+        xp: 0,
+        xp_to_next: 100,
+        log: [],
+        abilities: []
+    },
+    roger: {
+        name: "Roger",
+        weapon: "Gun",
+        status: "Alive",
+        level: 1,
+        xp: 0,
+        xp_to_next: 100,
+        log: [],
+        abilities: []
+    },
+    bones: {
+        name: "Bones",
+        weapon: "Grotesque",
+        status: "Kidnapped by Orcs",
+        level: 1,
+        xp: 0,
+        xp_to_next: 100,
+        log: [],
+        abilities: []
+    },
+    traitor_toad: {
+        name: "Wally's Toad",
+        weapon: "Dagger & Deceit",
+        status: "Captured",
+        level: 1,
+        xp: 0,
+        xp_to_next: 100,
+        log: [{ reason: "Exposed as a Waluigi loyalist.", xp: 0 }],
+        abilities: [{ name: "Imposter", description: "Adept at disguise and deception."}]
+    }
+};
+
+export const RUMORS = [
+    {
+        id: 'xo_defeat',
+        title: "X.O.'s Defeat",
+        description: "The party, with the help of a liberated toad slave, defeated the rogue mage X.O. and secured the 'Vigilance'.",
+        targets: ['party', 'dan_the_toad'],
+        effects: { regal_empire: 5, mages_guild: 5, the_unchained: 10, mushroom_protectorate: 5, liberated_toads: 25 }
+    },
+    {
+        id: 'archie_acquittal',
+        title: "Archie's Acquittal",
+        description: "Archie Miser was acquitted of killing a mage by an Onyx Hand tribunal, enraging the Mages' Guild.",
+        targets: ['archie'],
+        effects: { onyx_hand: 15, mages_guild: -20, freelancer_underworld: 5 }
+    },
+    {
+        id: 'iron_fists_raid',
+        title: "Iron Fists Raid",
+        description: "The party smashed an Iron Fists smuggling ring, earning the gang's ire.",
+        targets: ['archie', 'markop'],
+        effects: { iron_fists: -25, freelancer_underworld: 5, regal_empire: 5 }
+    },
+    {
+        id: 'dragon_slaying',
+        title: "Dragon Slaying",
+        description: "A month ago, the party slew a dragon, earning praise from the Iron Legion and scorn from the Mages' Guild.",
+        targets: ['party'],
+        effects: { iron_legion: 10, mages_guild: -15, da_krumperz: 5 }
+    },
+    {
+        id: 'shadow_war',
+        title: "Shadow War Escalation",
+        description: "The conflict between the Onyx Hand and Moonfang Pack is escalating, and the party seems to be fanning the flames.",
+        targets: ['party'],
+        effects: { onyx_hand: 5, moonfang_pack: 5, silver_flame: -10 }
+    },
+    {
+        id: 'dan_training',
+        title: "Dan's Training",
+        description: "The heroic toad, Dan, is being trained in magic by the Rakasha, under Markop's supervision.",
+        targets: ['markop', 'dan_the_toad'],
+        effects: { rakasha_clans: 15, mages_guild: 5, mushroom_protectorate: 10, liberated_toads: 15 }
+    },
+    {
+        id: 'wario_escape',
+        title: "Wario's Escape",
+        description: "The ghost of Wario has escaped the Vigilance in a barrel and is rumored to be re-establishing Wario Land with his old cronies.",
+        targets: ['waluigi'], // Affects Waluigi's reputation by association
+        effects: { freelancer_underworld: -5, ratchet_raiders: 5 }
+    },
+    {
+        id: 'bowser_capture',
+        title: "Bowser's Alliance",
+        description: "The warlord Bowser, formerly a captive, is now a key ally of the party. His Koopa Troop is mobilizing.",
+        targets: ['bowser', 'humpik'],
+        effects: { koopa_troop: 20, regal_empire: -10, mushroom_protectorate: -10 }
+    },
+    {
+        id: 'cosmic_static',
+        title: "Cosmic Static",
+        description: "Archie's chaotic energies are reportedly causing 'cosmic static' detectable by strange entities.",
+        targets: ['archie'],
+        effects: { cosmic_jesters: 15, mages_guild: -5 }
+    },
+    {
+        id: 'paladin_dilemma',
+        title: "Paladin's Dilemma",
+        description: "Markop's association with known criminals has not gone unnoticed by holy orders, tarnishing his reputation.",
+        targets: ['markop'],
+        effects: { silver_flame: -15, oathbound_judges: -10 }
+    },
+    {
+        id: 'rebel_sympathies',
+        title: "Rebel Sympathies",
+        description: "The party's anti-authoritarian actions have made them popular with various rebel and revolutionary groups.",
+        targets: ['party'],
+        effects: { rebel_clans: 10, the_unchained: 5 }
+    },
+    {
+        id: 'scrap_trail',
+        title: "A Trail of Scrap",
+        description: "The frequent destruction of magitek leaves a trail of valuable salvage, which has not gone unnoticed by goblin crews.",
+        targets: ['party'],
+        effects: { ratchet_raiders: 10, regal_empire: -5 }
+    },
+    {
+        id: 'orc_uprising',
+        title: "Orc Uprising",
+        description: "An orc faction loyal to X.O. attempted an uprising on the 'Vigilance', injuring Dan and kidnapping Bones.",
+        targets: ['dan_the_toad', 'bones', 'archie', 'markop'],
+        effects: { da_krumperz: -15, regal_empire: -10, iron_legion: -10, liberated_toads: -20, ratchet_raiders: -5 }
+    },
+    {
+        id: 'markop_saves_lario',
+        title: "Markop Saves Lario",
+        description: "Markop warned the goblin Lario of an orc sneak attack, saving his life despite their animosity.",
+        targets: ['markop'],
+        effects: { ratchet_raiders: 15, oathbound_judges: 5, silver_flame: 5, da_krumperz: -10 }
+    },
+    {
+        id: 'big_t_legacy',
+        title: "Big T's Legacy",
+        description: "Big T's body has gone missing from the ship, while his signature sword has been recovered, sparking fears of his revival.",
+        targets: ['party'],
+        effects: { toad_gang: -10, mushroom_protectorate: -5, freelancer_underworld: 5 }
+    },
+    {
+        id: 'peach_death_fallout',
+        title: "The Princess is Dead",
+        description: "Princess Peach was killed during the Mushroom Kingdom Civil War. While the exact circumstances are unclear, many blame Bowser's relentless aggression for creating the instability that led to the conflict.",
+        targets: ['bowser'],
+        effects: { 
+            mushroom_protectorate: -50, 
+            regal_empire: -15, 
+            silver_flame: -15,
+            oathbound_judges: -15
+        }
+    },
+    {
+        id: 'syrup_schism',
+        title: "The Syrup Schism",
+        description: "The pirate Captain Syrup was freed from captivity under the goblin Lario. After a confrontation, she has become a hostile third party, creating chaos within the Ratchet Raiders and putting her at odds with Waluigi and the party.",
+        targets: ['party', 'waluigi'],
+        effects: {
+            ratchet_raiders: -25,
+            freelancer_underworld: 10,
+            crimson_fleet: -20,
+            regal_empire: -5
+        }
+    },
+    {
+        id: 'core_crisis',
+        title: "Core Crisis on the Vigilance",
+        description: "In an act of supreme recklessness, Humpik disabled the Vigilance's power core with a thrown axe, causing the airship to plummet. This has drawn universal condemnation from technologically-minded factions.",
+        targets: ['humpik', 'bowser'],
+        effects: {
+            regal_empire: -40,
+            iron_legion: -25,
+            mages_guild: -15,
+            ratchet_raiders: 15,
+            cosmic_jesters: 20,
+            da_krumperz: 10
+        }
+    },
+    {
+        id: 'imposter_games',
+        title: "Imposter Games",
+        description: "A goblin disguised as Markop attempted to deceive Humpik. The goblin was silenced by a mysterious guard before revealing too much about a connection to the Iron Fists, suggesting a deeper conspiracy.",
+        targets: ['party'],
+        effects: {
+            iron_fists: -10,
+            ratchet_raiders: -5,
+            freelancer_underworld: 5
+        }
+    },
+    {
+        id: 'paladin_flight',
+        title: "A Paladin's Flight",
+        description: "After being teleported off the Vigilance by Captain Syrup, Markop was miraculously intercepted and saved by the Rakasha, further cementing their unusual but strong alliance.",
+        targets: ['markop'],
+        effects: {
+            rakasha_clans: 20,
+            crimson_fleet: -5,
+            mages_guild: 5
+        }
+    },
+];
+
+export const TIMELINE = [
+    {
+        phase: 'Recent History',
+        title: 'Dragon Slain',
+        description: "<p>The party defeats the dragon Ignis in the northern mountains, an act praised by militarists but condemned by magical researchers.</p>",
+        participants: ['archie', 'markop']
+    },
+    {
+        phase: 'Recent History',
+        title: 'Underworld Politics',
+        description: "<p>Archie Miser is acquitted of killing a mage by an Onyx Hand tribunal, greatly angering the Mages' Guild.</p>",
+        participants: ['archie']
+    },
+    {
+        phase: 'Recent History',
+        title: 'Smuggling Bust',
+        description: "<p>The party dismantles a key Iron Fists smuggling ring, placing a bounty on their heads.</p>",
+        participants: ['archie', 'markop']
+    },
+    {
+        phase: 'Current Events',
+        title: 'Airship Hijacked',
+        description: "<p>X.O. betrays the party, seizing control of the airship 'Vigilance'. Warlord Bowser is taken captive.</p>",
+        participants: ['xo', 'archie', 'markop', 'humpik', 'bowser']
+    },
+    {
+        phase: 'Current Events',
+        title: 'The Great Betrayal',
+        description: "<p>In a final, chaotic confrontation, the party, with the critical assistance of Dan the Toad, manages to neutralize X.O. and regain control of the Vigilance. The airship is secured, but the full extent of X.O.'s plans and the whereabouts of her allies remain unknown.</p>",
+        participants: ['archie', 'markop', 'humpik', 'bowser', 'xo', 'dan_the_toad']
+    },
+    {
+        phase: 'Current Events',
+        title: 'Orc Uprising',
+        description: "<p>Remnants of X.O.'s forces, revealed to be a secret Ork splinter faction, stage an uprising. They injure Dan, kidnap Bones, and attempt to assassinate Lario before being partially thwarted by Markop and Archie.</p>",
+        participants: ['dan_the_toad', 'bones', 'archie', 'markop', 'lario']
+    },
+    {
+        phase: 'Current Events',
+        title: 'The Princess Falls',
+        description: "<p>Amidst the growing chaos, Princess Peach is killed during a brief but violent civil war within the Mushroom Kingdom. The exact circumstances are shrouded in rumor, but most blame Bowser's constant aggression for destabilizing the region to the point of collapse.</p>",
+        participants: ['bowser']
+    },
+    {
+        phase: 'Current Events',
+        title: 'The Syrup Schism & Core Crisis',
+        description: "<p>The party frees the pirate Captain Syrup, who immediately turns hostile. A chaotic confrontation ensues, revealing a traitorous toad and culminating in Humpik disabling the airship's power core with an axe, sending the 'Vigilance' into a nose-dive.</p>",
+        participants: ['archie', 'markop', 'humpik', 'bowser', 'waluigi', 'dan_the_toad', 'captain_syrup']
+    }
+];

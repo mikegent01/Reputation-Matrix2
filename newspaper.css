@@ -1,0 +1,448 @@
+/* Google Fonts for newspaper style */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Slab:wght@400;700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --newspaper-paper-color: #f4f2e9; /* Off-white, slightly yellowed paper */
+    --newspaper-ink-color: #1a1a1a;   /* Dark almost black for text */
+    --newspaper-border-color: #9c9c9c;/* Light grey for borders/lines */
+    --newspaper-accent-color: #8A2BE2; /* Waluigi Purple */
+    --font-headline: 'Playfair Display', serif;
+    --font-body: 'Roboto Slab', serif;
+    --font-small-print: 'Old Standard TT', serif;
+
+    /* Re-use from main style for frame and overlay */
+    --bg-color: #0d1117;
+    --border-color: #30363d;
+    --text-color: #c9d1d9;
+}
+
+/* Tablet Frame (from main style.css, slightly adapted) */
+.tablet-frame {
+    width: 95vw;
+    height: 95vh;
+    max-width: 1400px;
+    max-height: 900px;
+    background-color: var(--bg-color);
+    border: 3px solid var(--border-color);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    position: relative;
+    margin: 2.5vh auto; /* Center the frame */
+}
+
+.scanline-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: 1000; /* Ensure it's on top */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Hide scrollbars on body */
+}
+
+.newspaper-tablet {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.newspaper-container {
+    background-color: var(--newspaper-paper-color);
+    color: var(--newspaper-ink-color);
+    padding: 20px 30px;
+    height: 100%;
+    overflow-y: auto; /* Enable scrolling for newspaper content */
+    font-family: var(--font-body);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
+}
+
+/* Custom scrollbar for newspaper container */
+.newspaper-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.newspaper-container::-webkit-scrollbar-track {
+    background: #e0e0e0;
+}
+
+.newspaper-container::-webkit-scrollbar-thumb {
+    background: var(--newspaper-border-color);
+    border-radius: 4px;
+}
+
+.newspaper-container::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+.masthead {
+    text-align: center;
+    border-bottom: 3px double var(--newspaper-ink-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.masthead .date {
+    font-family: var(--font-small-print);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.masthead .title {
+    font-family: var(--font-headline);
+    font-weight: 900;
+    font-size: 4em;
+    margin: 0;
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: var(--newspaper-ink-color);
+}
+
+.masthead .tagline {
+    font-family: var(--font-small-print);
+    font-style: italic;
+    font-size: 1em;
+    margin-top: 5px;
+    border-top: 1px solid var(--newspaper-ink-color);
+    padding-top: 5px;
+    display: inline-block;
+}
+
+.back-button {
+    position: sticky;
+    top: 10px;
+    left: 10px;
+    padding: 8px 15px;
+    background-color: var(--newspaper-ink-color);
+    color: var(--newspaper-paper-color);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 0.9em;
+    border-radius: 5px;
+    z-index: 10;
+    transition: background-color 0.2s ease;
+    display: inline-block; /* Ensure it doesn't take full width */
+    margin-bottom: 20px;
+}
+
+.back-button:hover {
+    background-color: var(--newspaper-accent-color);
+    color: white;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns by default */
+    gap: 20px 30px;
+}
+
+.headline {
+    grid-column: 1 / -1; /* Spans all columns */
+    margin-bottom: 30px;
+}
+
+.headline h2 {
+    font-family: var(--font-headline);
+    font-weight: 700;
+    font-size: 2.8em;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    color: var(--newspaper-ink-color);
+    border-bottom: 2px solid var(--newspaper-ink-color);
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.headline .article-meta {
+    font-family: var(--font-small-print);
+    font-size: 0.85em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.headline .article-meta span {
+    margin: 0 10px;
+    font-style: italic;
+}
+
+.headline figure {
+    margin: 0 auto 20px auto;
+    max-width: 80%;
+    text-align: center;
+    border: 1px solid var(--newspaper-border-color);
+    padding: 5px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.headline figure img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.headline figcaption {
+    font-family: var(--font-small-print);
+    font-size: 0.8em;
+    margin-top: 5px;
+    color: #444;
+}
+
+.headline .article-content p {
+    font-family: var(--font-body);
+    font-size: 1.1em;
+    line-height: 1.7;
+    margin-bottom: 1em;
+    text-indent: 1.5em; /* Traditional newspaper indent */
+    text-align: justify;
+}
+
+.article-content a {
+    color: var(--newspaper-accent-color);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--newspaper-accent-color);
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.article-content a:hover {
+    color: var(--newspaper-accent-color);
+    border-bottom-color: var(--newspaper-ink-color);
+}
+
+.side-stories {
+    grid-column: 1 / -1; /* Spans all columns */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Flexible columns for side stories */
+    gap: 20px 30px;
+    border-top: 1px solid var(--newspaper-border-color);
+    padding-top: 20px;
+    margin-bottom: 30px;
+}
+
+.side-story-article {
+    border: 1px solid var(--newspaper-border-color);
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+}
+
+.side-story-article h3 {
+    font-family: var(--font-headline);
+    font-weight: 700;
+    font-size: 1.5em;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    color: var(--newspaper-ink-color);
+    border-bottom: 1px solid var(--newspaper-border-color);
+    padding-bottom: 5px;
+}
+
+.side-story-article .article-meta {
+    font-family: var(--font-small-print);
+    font-size: 0.8em;
+    margin-bottom: 10px;
+    color: #666;
+    font-style: italic;
+}
+
+.side-story-article figure {
+    margin: 10px auto;
+    max-width: 90%;
+    text-align: center;
+}
+
+.side-story-article figure img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.side-story-article figcaption {
+    font-family: var(--font-small-print);
+    font-size: 0.75em;
+    margin-top: 5px;
+    color: #555;
+}
+
+.side-story-article .article-content p {
+    font-family: var(--font-body);
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 0.8em;
+    text-align: justify;
+}
+
+.waluigi-corner {
+    grid-column: 1 / -1; /* Spans all columns */
+    border: 3px double var(--newspaper-accent-color);
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: rgba(138, 43, 226, 0.05); /* Light purple background */
+    text-align: center;
+}
+
+.waluigi-corner h3 {
+    font-family: var(--font-headline);
+    font-weight: 900;
+    font-size: 2em;
+    color: var(--newspaper-accent-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    margin-bottom: 15px;
+}
+
+.waluigi-corner .article-content p {
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Deliberately cheesy font for Waluigi */
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: var(--newspaper-ink-color);
+    margin-bottom: 1em;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.waluigi-corner .article-content strong {
+    color: var(--newspaper-accent-color);
+}
+
+.adverts {
+    grid-column: 1 / -1; /* Spans all columns */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Flexible columns for adverts */
+    gap: 20px;
+    border-top: 1px solid var(--newspaper-border-color);
+    padding-top: 20px;
+}
+
+.advert-block {
+    border: 1px solid var(--newspaper-border-color);
+    padding: 10px;
+    background-color: #fff;
+    text-align: center;
+    font-family: var(--font-small-print);
+    font-size: 0.9em;
+    color: #444;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.advert-block img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.advert-block h4 {
+    font-family: var(--font-headline);
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: var(--newspaper-ink-color);
+}
+
+.advert-block p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    flex-grow: 1; /* Pushes button to bottom */
+}
+
+.advert-block .advert-cta {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: var(--newspaper-ink-color);
+    color: var(--newspaper-paper-color);
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 0.8em;
+    transition: background-color 0.2s ease;
+}
+
+.advert-block .advert-cta:hover {
+    background-color: var(--newspaper-accent-color);
+}
+
+.newspaper-footer {
+    text-align: center;
+    font-family: var(--font-small-print);
+    font-size: 0.75em;
+    color: #888;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid var(--newspaper-border-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1000px) {
+    .content-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
+    }
+    .headline h2 {
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .newspaper-container {
+        padding: 15px 20px;
+    }
+    .masthead .title {
+        font-size: 3em;
+    }
+    .content-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+    .headline h2 {
+        font-size: 1.8em;
+    }
+    .headline figure {
+        max-width: 100%;
+    }
+    .side-stories, .adverts {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .masthead .title {
+        font-size: 2.5em;
+    }
+    .headline h2 {
+        font-size: 1.5em;
+    }
+    .back-button {
+        position: static;
+        margin-bottom: 15px;
+    }
+    .tablet-frame {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
+    }
+}
