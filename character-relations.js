@@ -108,12 +108,27 @@ export const CHARACTER_RELATIONS = {
     'chancellor_toadsworth': {
         'archie': { type: 'enemy', text: "Toadsworth on Archie: A menace! His lawless actions contribute to the very chaos that shattered our kingdom! Simply dreadful." },
         'markop': { type: 'ally', text: "Toadsworth on Markop: A ray of hope. His guidance of young Dan shows a noble heart, despite his... unfortunate companions. We are watching him with great interest." },
-        'bowser': { type: 'enemy', text: "Toadsworth on Bowser: The brute responsible for this entire mess! His aggression led to the Princess's death. He is the Kingdom's greatest enemy." }
+        'bowser': { type: 'enemy', text: "Toadsworth on Bowser: The brute responsible for this entire mess! His aggression led to the Princess's death. He is the Kingdom's greatest enemy." },
+        'fawful': { type: 'enemy', text: "Toadsworth on Fawful: Good heavens, another maniac! As if our troubles weren't enough. This... Fawful creature must be evicted from the castle immediately! A terrible, terrible development."}
     },
     'captain_toadette': {
         'archie': { type: 'enemy', text: "Toadette on Archie: He is allied with Bowser. That makes him scum. End of story." },
         'markop': { type: 'enemy', text: "Toadette on Markop: He stands with the beast who killed our Princess. He is a traitor to justice and will be treated as such." },
-        'bowser': { type: 'enemy', text: "Toadette on Bowser: He will pay. He will pay for what he did to the Princess and the Kingdom. The Regency is weak, but I am not. I will see him brought to ruin." }
+        'bowser': { type: 'enemy', text: "Toadette on Bowser: He will pay. He will pay for what he did to the Princess and the Kingdom. The Regency is weak, but I am not. I will see him brought to ruin." },
+        'fawful': { type: 'enemy', text: "Toadette on Fawful: A green freak squatting in the Princess's castle! He is another obstacle on the path to justice, and he will be scoured from that holy place."}
+    },
+    'kamek': {
+        'fawful': { type: 'enemy', text: "Kamek on Fawful: A Beanish nuisance who has taken advantage of the chaos. His seizure of the castle is an insult and complicates our efforts to regroup Lord Bowser's forces." }
+    },
+    'skull_cap_murphy': {
+        'fawful': { type: 'enemy', text: "Murphy on Fawful: Some green weirdo thinks he can just take the biggest prize in the Kingdom? He'll find out the Toad Gang runs the rackets around here, castle or no castle." }
+    },
+    'fawful': {
+        'captain_toadette': { type: 'enemy', text: "Fawful on Toadette: The pink mushroom girl bangs on my door! She has the fury of a spoiled child wanting a toy she cannot have! My castle is not her toy!" },
+        'chancellor_toadsworth': { type: 'enemy', text: "Fawful on Toadsworth: The old mushroom is a talking mustache of uselessness! His 'Regency' is a leaky faucet of despair!" },
+        'kamek': { type: 'enemy', text: "Fawful on Kamek: A magician of koopas who is a fool! His 'remnants' are but snacks for my mechanical minions!"},
+        'skull_cap_murphy': { type: 'enemy', text: "Fawful on Murphy: A grubby mushroom playing gangster in the mud while I rule from a glorious tower! He is an insignificant smudge!"},
+        'bowser': { type: 'enemy', text: "Fawful on Bowser: He lost! And I am winning with his leftovers! A king of clowns whose circus is now mine!" }
     },
     // --- LEADER TO LEADER ---
     'emperor_elagabalus': {

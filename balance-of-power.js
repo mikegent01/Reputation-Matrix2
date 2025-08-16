@@ -5,12 +5,13 @@ import { LORE_DATA } from './lore.js';
 const BOP_STATE = {
     mushroom_kingdom: {
         title: "Mushroom Kingdom Civil War",
-        description: "The kingdom has shattered into a four-way conflict. The Regency attempts to restore order, the Loyalists pursue their crusade, leaderless Koopa Troop remnants fight for survival and plunder, and the criminal Underworld led by the Toad Gang exploits the chaos for profit.",
-        influence: { regency: 40, loyalists: 25, warlords: 15, criminals: 20 },
+        description: "The kingdom has shattered into a five-way conflict. The Regency attempts to restore order, the Loyalists pursue their crusade against the new occupier of Peach's Castle, the maniacal Fawful. Elsewhere, Koopa Troop remnants fight for survival and the criminal Underworld exploits the chaos.",
+        influence: { regency: 35, loyalists: 20, warlords: 15, criminals: 15, fawful: 15 },
         active_plans: [
             { leader: 'chancellor_toadsworth', planId: 'regency_1', days: 23 },
             { leader: 'captain_toadette', planId: 'loyalist_2', days: 17 },
             { leader: 'kamek', planId: 'warlord_2', days: 31 },
+            { leader: 'fawful', planId: 'fawful_1', days: 19 },
         ],
         plans: {
             chancellor_toadsworth: [
@@ -20,8 +21,8 @@ const BOP_STATE = {
             ],
             captain_toadette: [
                 { id: 'loyalist_1', name: "Launch Crusade", duration: 50, description: "Launch a major military offensive against a known Koopa Remnant outpost.", effect: "+15 Loyalist Influence, -5 Warlord Influence, high risk of casualties" },
-                { id: 'loyalist_2', name: "Rally Zealots", duration: 20, description: "Hold a public rally to whip up support for the 'true' monarchy.", effect: "+10 Loyalist Influence, -5 Regency Influence" },
-                { id: 'loyalist_3', name: "Seek the Oracle", duration: 70, description: "Send an expedition to a remote oracle to find the location of the 'true' princess.", effect: "???" },
+                { id: 'loyalist_2', name: "Siege the Castle", duration: 60, description: "Intensify the siege on Peach's Castle to dislodge the green menace, Fawful.", effect: "+10 Loyalist Influence, -10 Fawful Influence" },
+                { id: 'loyalist_3', name: "Rally Zealots", duration: 20, description: "Hold a public rally to whip up support for the 'true' monarchy.", effect: "+10 Loyalist Influence, -5 Regency Influence" },
             ],
             kamek: [
                  { id: 'warlord_1', name: "Scavenge War Machines", duration: 35, description: "Scour old battlefields for abandoned Koopa Troop technology to rebuild their arsenal.", effect: "+10 Warlord Influence" },
@@ -30,6 +31,11 @@ const BOP_STATE = {
             skull_cap_murphy: [
                  { id: 'criminal_1', name: "Expand Protection Rackets", duration: 20, description: "Use the chaos to force outlying villages and refugee camps to pay for 'protection'.", effect: "+10 Criminal Influence" },
                  { id: 'criminal_2', name: "Raid Refugee Supplies", duration: 15, description: "Intercept and steal supplies meant for refugees, selling them on the black market.", effect: "+5 Criminal Influence, -5 Regency Influence" },
+            ],
+            fawful: [
+                 { id: 'fawful_1', name: "I HAVE FURY!", duration: 25, description: "Unleash a wave of unpredictable mechanical minions against the besieging Loyalists.", effect: "+10 Fawful Influence, -5 Loyalist Influence" },
+                 { id: 'fawful_2', name: "Bolster with Beans", duration: 40, description: "Strengthen the castle's defenses with sinister, rapidly growing beanstalks and purple sludge.", effect: "+15 Fawful Influence" },
+                 { id: 'fawful_3', name: "Brainwash Brigade", duration: 30, description: "Send out Engulfo-Globes to capture more stray Toads and Goombas to bolster his forces.", effect: "+5 Fawful Influence, small chance to capture a known character" },
             ]
         }
     },
@@ -87,6 +93,7 @@ function renderMushroomKingdom() {
     const influenceBarHTML = `
         <div class="influence-bar-segment" style="width: ${data.influence.regency / totalInfluence * 100}%; background-color: var(--major-powers-color);" title="Regency Influence">Regency</div>
         <div class="influence-bar-segment" style="width: ${data.influence.loyalists / totalInfluence * 100}%; background-color: var(--accent-color);" title="Loyalist Influence">Loyalists</div>
+        <div class="influence-bar-segment" style="width: ${data.influence.fawful / totalInfluence * 100}%; background-color: var(--positive-color);" title="Fawful's Influence">Fawful</div>
         <div class="influence-bar-segment" style="width: ${data.influence.warlords / totalInfluence * 100}%; background-color: var(--neutral-color);" title="Koopa Remnant Influence">Warlords</div>
         <div class="influence-bar-segment" style="width: ${data.influence.criminals / totalInfluence * 100}%; background-color: var(--underworld-fringe-color);" title="Criminal Underworld Influence">Criminals</div>
     `;
@@ -98,7 +105,7 @@ function renderMushroomKingdom() {
                 <div class="plan-card ${active ? 'active-plan' : ''}" data-description="${plan.description}" data-effect="${plan.effect}">
                     <div class="plan-title">${plan.name}</div>
                     <div class="plan-details">
-                        ${active ? `<strong>${active.days} days remaining</strong>` : `(${plan.duration} days)`}
+                        ${active ? `<strong>${active.days} remaining</strong>` : `(${plan.duration} days)`}
                     </div>
                 </div>
             `;
@@ -123,6 +130,10 @@ function renderMushroomKingdom() {
                     <div class="leader-plans-block">
                         <h6>Captain Toadette (Loyalists)</h6>
                         ${getPlansHTML('captain_toadette')}
+                    </div>
+                     <div class="leader-plans-block">
+                        <h6>Fawful (Castle Occupation)</h6>
+                        ${getPlansHTML('fawful')}
                     </div>
                     <div class="leader-plans-block">
                         <h6>Kamek (Koopa Remnants)</h6>
@@ -159,7 +170,7 @@ function renderMidlands() {
                 <div class="plan-card ${active ? 'active-plan' : ''}" data-description="${plan.description}" data-effect="${plan.effect}">
                     <div class="plan-title">${plan.name}</div>
                     <div class="plan-details">
-                         ${active ? `<strong>${active.days} days remaining</strong>` : `(${plan.duration} days)`}
+                         ${active ? `<strong>${active.days} remaining</strong>` : `(${plan.duration} days)`}
                     </div>
                 </div>
             `;

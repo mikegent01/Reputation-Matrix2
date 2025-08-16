@@ -121,6 +121,12 @@ export const FACTION_ASSESSMENTS = {
         humpik: `One of Bowser's beasts. He is a butcher and a villain, and will be shown no mercy when we restore the true Queen.`,
         bowser: `The ultimate evil. He is the reason the Princess is gone. The Regency is too weak to bring him to justice, but we are not. He will pay for his crimes in blood.`,
     },
+    fawfuls_furious_freaks: {
+        archie: `A fool of chaos! His explosions are like a sandwich of noise that lacks the mustard of true evil genius! He is a distracting gnat to be swatted if he buzzes too near my magnificent castle!`,
+        markop: `The horse-man has righteousness that is STALE! Like bread left in the sun! He is a predictable bore who will be vacuumed up with all the other dust bunnies of justice!`,
+        humpik: `BEEF! He is a mountain of beefiness with a brain of a tiny, scared pebble! His loyalty is a weakness I shall exploit with glee!`,
+        bowser: `The turtle king is a failure! A king of failure! His troops are now my troops! His plans are now my footnotes! I will succeed where his turtleyness was a flailing buffoon! I HAVE FURY!`,
+    },
     iron_fists: {
         archie: `Archie is a dead man walking. He directly attacked their operations, costing them a fortune and making them look weak. A substantial bounty is on his head, and his notoriety is infamous. The only positive view comes from Upstarts who see the chaos he caused as an opportunity.`,
         markop: `As Archie's accomplice in the raid, Markop shares the blame. The Iron Fists have marked him for death, and his reputation is that of a meddling do-gooder who stuck his nose where it didn't belong. Their attempt to use a goblin imposter against him suggests they see him as a notable obstacle.`,

@@ -1,0 +1,273 @@
+/* --- Generic System Styles --- */
+.unique-system-container {
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+    margin-top: 16px;
+}
+
+.unique-system-container h5 {
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-family: var(--font-display);
+}
+
+.system-description {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 16px;
+    padding-left: 12px;
+    border-left: 2px solid var(--border-color);
+}
+
+.system-content {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+}
+
+/* --- Regal Empire: Radar Chart --- */
+.regal-empire-system .system-chart-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: var(--main-bg);
+    padding: 16px;
+    border-radius: 8px;
+}
+
+/* --- Iron Legion & Koopa Troop: Org Chart --- */
+.org-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.org-chart .leader {
+    background: var(--sidebar-bg);
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: 1px solid var(--accent-color);
+    font-weight: bold;
+    min-width: 180px;
+    text-align: center;
+}
+.org-chart .sub-groups {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    padding-top: 20px;
+}
+.org-chart .sub-groups::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background: var(--border-color);
+}
+.org-chart .group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+.org-chart .group::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background: var(--border-color);
+}
+.org-chart .sub-groups .group:first-child::after, .org-chart .sub-groups .group:last-child::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    height: 2px;
+    background: var(--border-color);
+    width: 50%;
+}
+.org-chart .sub-groups .group:first-child::after { left: 50%; }
+.org-chart .sub-groups .group:last-child::after { right: 50%; }
+.org-chart .sub-groups .group:not(:first-child):not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--border-color);
+}
+.org-chart .group-title {
+    background: var(--sidebar-bg);
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    min-width: 150px;
+    text-align: center;
+}
+
+/* --- Freelancer Underworld: Network Graph --- */
+.network-graph {
+    height: 300px;
+    position: relative;
+}
+.network-node {
+    position: absolute;
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px;
+    text-align: center;
+    font-size: 0.8rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+.network-node.syndicates { top: 10%; left: 40%; }
+.network-node.independents { top: 60%; left: 10%; }
+.network-node.brokers { top: 60%; left: 70%; }
+.network-node.cleaners { top: 35%; left: 5%; }
+.network-line {
+    position: absolute;
+    background-color: var(--border-color);
+    transform-origin: 0 0;
+}
+
+/* --- Toad Gang: Turf War Bars --- */
+.turf-war-bars .bar-item {
+    margin-bottom: 8px;
+}
+.turf-war-bars .bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+.turf-war-bars .bar-container {
+    height: 15px;
+    background-color: var(--sidebar-bg);
+    border-radius: 3px;
+    overflow: hidden;
+}
+.turf-war-bars .bar-fill {
+    height: 100%;
+    background-color: var(--accent-color);
+    transition: width 0.5s ease;
+}
+
+/* --- Mages Guild: Stability Meter --- */
+.stability-meter-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px 0;
+}
+.stability-label {
+    font-weight: bold;
+}
+.stability-meter {
+    width: 200px;
+    height: 20px;
+    background: linear-gradient(to right, var(--negative-color), var(--neutral-color), var(--positive-color));
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    position: relative;
+}
+.stability-indicator {
+    position: absolute;
+    top: -5px;
+    width: 4px;
+    height: 30px;
+    background-color: white;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 5px white;
+}
+
+/* --- Da Krumperz: WAAAGH! Meter --- */
+.waaagh-meter { text-align: center; }
+.waaagh-bar-container {
+    width: 100%;
+    height: 40px;
+    border: 2px solid var(--positive-color);
+    border-radius: 5px;
+    padding: 4px;
+    background: repeating-linear-gradient(45deg, var(--main-bg), var(--main-bg) 10px, #2a2a2a 10px, #2a2a2a 20px);
+}
+.waaagh-bar-fill {
+    height: 100%;
+    background-color: var(--positive-color);
+    transition: width 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-bg);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    animation: pulse-green 1s infinite;
+}
+@keyframes pulse-green {
+    50% { filter: brightness(1.2); }
+}
+
+/* --- Diamond City Investigators: Case Board --- */
+.case-board {
+    height: 350px;
+    position: relative;
+    background-color: #4a4137;
+    border: 5px solid #2d2620;
+    overflow: hidden;
+}
+.case-item {
+    position: absolute;
+    background: #fdf5e6;
+    color: #333;
+    padding: 5px 8px;
+    border-radius: 2px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 0.8rem;
+    border: 1px solid #ccc;
+}
+.case-item.person { top: 20px; left: 150px; transform: rotate(-3deg); }
+.case-item.evidence1 { top: 120px; left: 40px; transform: rotate(5deg); }
+.case-item.evidence2 { top: 200px; left: 250px; transform: rotate(-2deg); }
+.case-item.lead { top: 280px; left: 80px; transform: rotate(1deg); }
+.case-board-line {
+    position: absolute;
+    width: 2px;
+    background: #ff4136;
+    transform-origin: 0 0;
+    opacity: 0.7;
+}
+
+/* --- Liberated Toads: Opinion List --- */
+.subfaction-opinions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+.subfaction-opinion {
+    font-size: 0.85rem;
+}
+.subfaction-opinion .char-name {
+    color: var(--text-color);
+    font-weight: bold;
+}
+.subfaction-opinion p {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0 0 0 12px;
+    padding-left: 8px;
+    border-left: 2px solid var(--border-color);
+}

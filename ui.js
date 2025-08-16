@@ -1,7 +1,8 @@
 import { state } from './state.js';
 import { LORE_DATA } from './lore.js';
-import { getReputation, getNotoriety, getDetailedFactionAssessment, getGenericFactionAssessment, getSubFactionReputation } from './reputation.js';
+import { getReputation, getNotoriety, getDetailedFactionAssessment, getGenericFactionAssessment } from './reputation.js';
 import { playSound } from './common.js';
+import * as factionSystems from './faction-systems.js';
 
 const viewContainer = document.getElementById('view-container');
 const partyList = document.getElementById('party-list');
@@ -422,83 +423,7 @@ function renderFactionDetail(factionKey) {
         `;
     }
 
-    let subFactionsHTML = '';
-    if (faction.internal_politics?.sub_factions) {
-        const subFactionEntries = Object.entries(faction.internal_politics.sub_factions);
-
-        const subFactionListHTML = subFactionEntries.map(([subKey, subFaction]) => {
-            let playerRepHTML = '';
-            // Special rendering for Liberated Toads to show opinions instead of rep scores
-            if (factionKey === 'liberated_toads') {
-                playerRepHTML = state.party.map(playerKey => {
-                    const opinionText = subFaction.opinion?.[playerKey] || "No strong opinion.";
-                    return `<div class="subfaction-opinion">
-                                <span class="char-name">${LORE_DATA.characters[playerKey].name}:</span>
-                                <p>"${opinionText}"</p>
-                            </div>`;
-                }).join('');
-            } else {
-                playerRepHTML = state.party.map(playerKey => {
-                    const subRep = getSubFactionReputation(playerKey, factionKey, subKey);
-                    const repClass = subRep > 10 ? 'positive' : subRep < -10 ? 'negative' : 'neutral';
-                     return `<div class="subfaction-player-rep">
-                                <span class="char-name">${LORE_DATA.characters[playerKey].name}:</span>
-                                <span class="rep-value ${repClass}">${subRep}</span>
-                            </div>`;
-                }).join('');
-            }
-            
-            const repsContainerClass = factionKey === 'liberated_toads' ? 'subfaction-opinions-container' : 'subfaction-reps-container';
-
-            let extraMechanicHTML = '';
-            if (subFaction.key_figures) {
-                extraMechanicHTML = `
-                    <div class="subfaction-details">
-                        <h6>Key Figures</h6>
-                        <ul>
-                            ${subFaction.key_figures.map(fig => `<li><strong>${fig.name}</strong> (${fig.role})</li>`).join('')}
-                        </ul>
-                    </div>
-                `;
-            }
-            if (subFaction.current_focus) {
-                extraMechanicHTML = `
-                    <div class="subfaction-details">
-                        <h6>Current Focus</h6>
-                        <p>${subFaction.current_focus}</p>
-                    </div>
-                `;
-            }
-
-            return `<li class="subfaction-item">
-                        <div class="subfaction-header">
-                            <span class="subfaction-name">${subFaction.name}</span>
-                            <span class="subfaction-influence">(${subFaction.influence || '??'}% Influence)</span>
-                        </div>
-                        <p class="subfaction-description">${subFaction.description}</p>
-                        ${extraMechanicHTML}
-                        <div class="${repsContainerClass}">
-                            ${playerRepHTML}
-                        </div>
-                    </li>`;
-        }).join('');
-
-        const chartId = `subfaction-chart-${factionKey}`;
-
-        subFactionsHTML = `
-            <div class="subfactions-container">
-                <h5>Internal Faction Dynamics</h5>
-                <div class="subfaction-chart-and-list-container" style="display: flex; flex-wrap: wrap; gap: 16px;">
-                    <div class="subfaction-chart-container">
-                        <canvas id="${chartId}"></canvas>
-                    </div>
-                    <ul class="subfaction-list" style="flex-grow: 1; min-width: 250px;">
-                        ${subFactionListHTML}
-                    </ul>
-                </div>
-            </div>
-        `;
-    }
+    const uniqueSystemHTML = factionSystems.renderSystemForFaction(factionKey, faction, state);
 
     let waluigiTipHTML = '';
     if(faction.waluigi_tip) {
@@ -509,23 +434,6 @@ function renderFactionDetail(factionKey) {
                 <h6>Waluigi's Cunning Plan</h6>
                 <p>${faction.waluigi_tip}</p>
             </div>
-        </div>
-        `;
-    }
-
-    const uniqueMechanicsHTML = '';
-    if(faction.unique_mechanics) {
-        uniqueMechanicsHTML = `
-        <div class="unique-mechanics-container">
-            <h5>Unique Faction Mechanics</h5>
-            <ul>
-                ${faction.unique_mechanics.map(mech => `
-                    <li>
-                        <strong>${mech.name}:</strong>
-                        <p>${mech.description}</p>
-                    </li>
-                `).join('')}
-            </ul>
         </div>
         `;
     }
@@ -552,8 +460,7 @@ function renderFactionDetail(factionKey) {
                 ${rumorsHTML}
             </div>
             ${notablePeopleHTML}
-            ${uniqueMechanicsHTML}
-            ${subFactionsHTML}
+            ${uniqueSystemHTML}
             <div class="character-assessments-container">
                 <h4>Individual Standing & Overall Faction Opinion:</h4>
                 ${characterAssessmentsHTML}
@@ -561,77 +468,10 @@ function renderFactionDetail(factionKey) {
             ${waluigiTipHTML}
         </div>
     `;
-
-    // Render pie chart if data exists
-    if (faction.internal_politics?.sub_factions) {
-        const chartId = `subfaction-chart-${factionKey}`;
-        const chartCanvas = document.getElementById(chartId);
-        if (chartCanvas) {
-           renderSubFactionChart(chartId, faction.internal_politics.sub_factions);
-        }
-    }
-}
-
-function renderSubFactionChart(canvasId, subFactions) {
-    const ctx = document.getElementById(canvasId)?.getContext('2d');
-    if (!ctx) return;
-    // Clear previous chart
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     
-    const labels = Object.values(subFactions).map(sf => sf.name);
-    const data = Object.values(subFactions).map(sf => sf.influence);
-    
-    const chartColors = [
-        '#8A2BE2', // Purple
-        '#A9A9A9', // Silver
-        '#C9B037', // Gold
-        '#A52A2A', // Brown
-        '#238636', // Green
-        '#da3633'  // Red
-    ];
+    // Trigger any JS needed for the unique system, like chart rendering
+    factionSystems.initSystem(factionKey, faction);
 
-    const chartInstance = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: labels,
-            datasets: [{
-                data: data,
-                backgroundColor: chartColors,
-                borderColor: 'var(--main-bg)',
-                borderWidth: 2,
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false // We have a custom legend now
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.label || '';
-                            if (label) {
-                                label += ': ';
-                            }
-                            if (context.parsed !== null) {
-                                label += context.parsed + '%';
-                            }
-                            return label;
-                        }
-                    },
-                    bodyFont: {
-                        family: 'Roboto Mono',
-                    },
-                    titleFont: {
-                        family: 'Roboto Mono',
-                    }
-                }
-            }
-        }
-    });
-    state.chartInstances[canvasId] = chartInstance;
 }
 
 // --- HELPERS ---

@@ -144,7 +144,7 @@ export const FACTIONS_2 = {
         logo: 'faction_koopa_troop.png',
         relations: { 
             allies: ['onyx_hand', 'moonfang_pack'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'fawfuls_furious_freaks']
         },
         power_level: 7,
         leader: "bowser",
@@ -318,7 +318,7 @@ export const FACTIONS_2 = {
         logo: 'faction_mushroom_regency.png',
         relations: { 
             allies: ['liberated_toads', 'goodstyle_artisans'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'wario_land', 'peach_loyalists']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'wario_land', 'peach_loyalists', 'fawfuls_furious_freaks']
         },
         power_level: 5,
         leader: "chancellor_toadsworth",
@@ -336,7 +336,7 @@ export const FACTIONS_2 = {
         logo: 'faction_peach_loyalists.png',
         relations: { 
             allies: [], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'fawfuls_furious_freaks']
         },
         power_level: 4,
         leader: "captain_toadette",
@@ -347,6 +347,23 @@ export const FACTIONS_2 = {
             { name: "Sergeant Piantissimo", role: "Chief Scout", description: "A swift and dedicated scout tasked with finding clues to the Princess's 'true' whereabouts." }
         ],
         waluigi_tip: "Fanatics are the easiest to fool. Plant some fake 'evidence' of the princess being alive somewhere dangerous, and they'll charge right into a trap. WAH-HA-HA!"
+    },
+    fawfuls_furious_freaks: {
+        name: "Fawful's Furious Freaks",
+        description: "The erratic Beanish villain Fawful has seized Peach's Castle amidst the chaos, transforming it into a twisted stronghold. His army is a bizarre mix of brainwashed Toads, reprogrammed Goombas, and his own maniacal mechanical minions. They fight with unpredictable fury and chortles of doom.",
+        logo: 'faction_fawful.png',
+        relations: { 
+            allies: [], 
+            enemies: ['peach_loyalists', 'mushroom_regency', 'koopa_troop', 'toad_gang', 'liberated_toads', 'regal_empire', 'iron_legion']
+        },
+        power_level: 6,
+        leader: "fawful",
+        category: "Regional Powers",
+        region: "Mushroom Kingdom (Peach's Castle)",
+        notable_people: [
+            { name: "Fawful", role: "Master of Fury", description: "A cunning Beanish villain with a penchant for maniacal laughter and green-hued schemes." }
+        ],
+        waluigi_tip: "Fawful has fury! And ego! Tell him his machines are just cheap knock-offs of my own brilliant designs. His rage will make him sloppy! WAH!"
     },
     iron_fists: {
         name: "The Iron Fists",
@@ -442,7 +459,7 @@ export const FACTIONS_2 = {
         logo: 'faction_liberated_toads.png',
         relations: { 
             allies: ['rakasha_clans', 'the_unchained', 'rebel_clans', 'mushroom_regency'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'cosmic_jesters', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'wario_land', 'peach_loyalists']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'cosmic_jesters', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'wario_land', 'peach_loyalists', 'fawfuls_furious_freaks']
         },
         power_level: 2,
         leader: "dan",
