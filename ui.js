@@ -87,7 +87,7 @@ function renderFactionDirectory() {
 
     const directoryContainer = document.createElement('div');
     directoryContainer.id = 'faction-directory';
-    directoryContainer.innerHTML = `<h2 class="page-title" style="margin-bottom: 0;">Faction Directory</h2>`;
+    directoryContainer.innerHTML = `<h2 class="page-title" style="margin-bottom: 24px;">Faction Directory (Sorted by Power)</h2>`;
     const grid = document.createElement('div');
     grid.className = 'faction-directory-grid';
     directoryContainer.appendChild(grid);
@@ -101,102 +101,65 @@ function renderFactionDirectory() {
 
     const factionKeys = Object.keys(LORE_DATA.factions);
     
-    const groupedFactions = factionKeys.reduce((acc, key) => {
-        const region = LORE_DATA.factions[key].region || 'Uncategorized';
-        if (!acc[region]) {
-            acc[region] = [];
-        }
-        acc[region].push(key);
-        return acc;
-    }, {});
+    // Sort factions by power level, descending
+    const sortedFactionKeys = factionKeys.sort((a, b) => {
+        const factionA = LORE_DATA.factions[a];
+        const factionB = LORE_DATA.factions[b];
+        return (factionB.power_level || 0) - (factionA.power_level || 0);
+    });
     
-    const regionOrder = [
-        'The Midlands (Capital)',
-        'The Midlands (Imperial Borders)',
-        'The Midlands (Southern Marchlands)',
-        'The Midlands (Autumn Wood)',
-        'The Midlands (Dark Valley)',
-        'The Midlands (Holy Enclaves)',
-        'The Midlands (Citadel of Law)',
-        'Mushroom Kingdom (Heartlands)',
-        'Mushroom Kingdom (Militarized Zones)',
-        'Mushroom Kingdom (Underbelly)',
-        'Mushroom Kingdom (Fringe)',
-        'Mushroom Kingdom (Nomadic)',
-        'Darklands',
-        'Wilderlands',
-        'Wastelands & Borderlands',
-        'Diamond City (Metropolis)',
-        'Diamond City (Cultural Sector)',
-        'Diamond City (Greed Pits)',
-        'Skies & Seas',
-        'Widespread (Urban Centers)',
-        'Widespread (Shadows)',
-        'Widespread (Rebel Territories)',
-        'Everywhere & Nowhere',
-    ];
+    // No longer render region legend on this page
+    const legendList = document.getElementById('faction-legend-list');
+    if (legendList) legendList.innerHTML = '';
 
-    const presentRegions = regionOrder.filter(region => groupedFactions[region]);
-    renderRegionLegend(presentRegions);
+    sortedFactionKeys.forEach(factionKey => {
+        const faction = LORE_DATA.factions[factionKey];
+        const categoryClass = `legend-${faction.category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`;
 
-    presentRegions.forEach(regionName => {
-        if (groupedFactions[regionName]) {
-            const header = document.createElement('h3');
-            const regionId = regionName.toLowerCase().replace(/\s/g, '-').replace(/[\(\)]/g, '');
-            header.className = `region-header`;
-            header.textContent = regionName;
-            header.id = regionId;
-            grid.appendChild(header);
+        let partyRepTotal = 0;
+        state.party.forEach(playerKey => {
+            partyRepTotal += getReputation(playerKey, factionKey);
+        });
+        const partyRep = Math.round(partyRepTotal / state.party.length);
+        const partyRepClass = partyRep > 0 ? 'positive' : partyRep < 0 ? 'negative' : 'neutral';
+        const partyBarWidth = Math.min(Math.abs(partyRep), 100);
 
-            groupedFactions[regionName].forEach(factionKey => {
-                const faction = LORE_DATA.factions[factionKey];
-                const categoryClass = `legend-${faction.category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`;
-
-                let partyRepTotal = 0;
-                state.party.forEach(playerKey => {
-                    partyRepTotal += getReputation(playerKey, factionKey);
-                });
-                const partyRep = Math.round(partyRepTotal / state.party.length);
-                const partyRepClass = partyRep > 0 ? 'positive' : partyRep < 0 ? 'negative' : 'neutral';
-                const partyBarWidth = Math.min(Math.abs(partyRep), 100);
-
-                let notablePeopleHTML = '';
-                if (faction.notable_people && faction.notable_people.length > 0) {
-                    notablePeopleHTML = `
-                        <div class="notable-people-summary">
-                            <h5 style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 12px; margin-bottom: 4px;">Key Figures:</h5>
-                            <ul class="notable-people-list-summary" style="list-style: none; padding-left: 0; font-size: 0.8rem; line-height: 1.4;">
-                                ${faction.notable_people.slice(0, 2).map(person => `<li><strong>${person.name}</strong> <span class="person-role-summary" style="opacity: 0.8;">(${person.role})</span></li>`).join('')}
-                            </ul>
-                        </div>
-                    `;
-                }
-
-                const card = document.createElement('a');
-                card.className = `faction-directory-card ${categoryClass}-border`;
-                card.href = `#faction/${factionKey}`;
-                card.innerHTML = `
-                    <div class="faction-directory-header">
-                        <img src="${faction.logo}" class="faction-directory-logo" alt="${faction.name} Logo">
-                        <div class="faction-info">
-                            <h4 class="faction-directory-title">${faction.name}</h4>
-                            <p class="assessment-text" style="font-size: 0.8rem">${faction.description}</p>
-                        </div>
-                    </div>
-                    <div class="party-reputation">
-                        <h5 style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px;">Party Standing: <span class="${partyRepClass}">${partyRep}</span></h5>
-                        <div class="reputation-bar-container">
-                            <div class="reputation-bar ${partyRepClass}" style="width: ${partyBarWidth}%; background-color: var(--${partyRepClass}-color);"></div>
-                        </div>
-                         <p class="assessment-text" style="margin-top: 8px; font-weight: bold;">${getGenericFactionAssessment(partyRep)}</p>
-                    </div>
-                    ${notablePeopleHTML}
-                `;
-                grid.appendChild(card);
-            });
+        let notablePeopleHTML = '';
+        if (faction.notable_people && faction.notable_people.length > 0) {
+            notablePeopleHTML = `
+                <div class="notable-people-summary">
+                    <h5 style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 12px; margin-bottom: 4px;">Key Figures:</h5>
+                    <ul class="notable-people-list-summary" style="list-style: none; padding-left: 0; font-size: 0.8rem; line-height: 1.4;">
+                        ${faction.notable_people.slice(0, 2).map(person => `<li><strong>${person.name}</strong> <span class="person-role-summary" style="opacity: 0.8;">(${person.role})</span></li>`).join('')}
+                    </ul>
+                </div>
+            `;
         }
+
+        const card = document.createElement('a');
+        card.className = `faction-directory-card ${categoryClass}-border`;
+        card.href = `#faction/${factionKey}`;
+        card.innerHTML = `
+            <div class="faction-directory-header">
+                <img src="${faction.logo}" class="faction-directory-logo" alt="${faction.name} Logo">
+                <div class="faction-info">
+                    <h4 class="faction-directory-title">${faction.name} (Power: ${faction.power_level})</h4>
+                    <p class="assessment-text" style="font-size: 0.8rem">${faction.description}</p>
+                </div>
+            </div>
+            <div class="party-reputation">
+                <h5 style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px;">Party Standing: <span class="${partyRepClass}">${partyRep}</span></h5>
+                <div class="reputation-bar-container">
+                    <div class="reputation-bar ${partyRepClass}" style="width: ${partyBarWidth}%; background-color: var(--${partyRepClass}-color);"></div>
+                </div>
+                 <p class="assessment-text" style="margin-top: 8px; font-weight: bold;">${getGenericFactionAssessment(partyRep)}</p>
+            </div>
+            ${notablePeopleHTML}
+        `;
+        grid.appendChild(card);
     });
 }
+
 
 function renderCharacterSummaries() {
     const container = document.getElementById('character-summary-container');

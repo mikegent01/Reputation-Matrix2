@@ -20,7 +20,16 @@
 <link rel="stylesheet" href="/index.css">
 </head>
 <body>
-    <div class="tablet-frame">
+    <div id="login-screen">
+        <img src="logo.png" alt="Waluigi Logo" class="login-logo">
+        <h2 class="login-text">ACCESSING VIGILANCE TERMINAL...</h2>
+        <div class="login-progress-container">
+            <div class="login-progress-bar-inner"></div>
+        </div>
+        <p class="login-subtext">WAH-thenticating...</p>
+    </div>
+
+    <div class="tablet-frame" style="display: none;">
         <div class="scanline-overlay"></div>
         <div id="app">
             <aside id="sidebar">

@@ -1,5 +1,6 @@
 
-import { state, saveState, loadState } from './state.js';
+
+import { state, saveState, loadState, initFocusTreeState } from './state.js';
 import { FOCUS_TREES } from './focus-tree.js';
 import { LORE_DATA } from './lore.js';
 
@@ -12,6 +13,7 @@ const dayCounter = document.querySelector('#info-day-counter .day-number');
 const logList = document.getElementById('log-list');
 const inventoryList = document.getElementById('inventory-list');
 const advanceDayBtn = document.getElementById('advance-day-btn');
+const resetFocusBtn = document.getElementById('reset-focus-btn');
 
 // Load state immediately to ensure all data is available for rendering.
 loadState();
@@ -229,6 +231,16 @@ function startFocus(toadKey, nodeId) {
     renderAll();
 }
 
+function resetFocusTree() {
+    if (confirm("Are you sure you want to reset all focus tree progress? This action cannot be undone.")) {
+        initFocusTreeState();
+        addToLog('System', 'Focus tree progress has been reset.');
+        saveState();
+        renderAll();
+    }
+}
+
+
 // --- HELPERS ---
 function findFocusNode(toadKey, nodeId) {
     return FOCUS_TREES[toadKey]?.tree.find(n => n.id === nodeId);
@@ -298,6 +310,7 @@ function setupEventListeners() {
     });
 
     advanceDayBtn.addEventListener('click', advanceDay);
+    resetFocusBtn.addEventListener('click', resetFocusTree);
 }
 
 

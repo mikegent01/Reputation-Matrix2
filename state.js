@@ -140,7 +140,7 @@ function processInitialXP() {
 
 }
 
-function initFocusTreeState() {
+export function initFocusTreeState() {
     state.focusTreeState = {
         buildVersionApplied: "2025-08-12-r7",
         day: 1,
@@ -151,13 +151,7 @@ function initFocusTreeState() {
             ryan: [], roger: [], bones: [],
             group: []
         },
-        activeFocuses: [
-            { toadKey: "dan", nodeId: "dan_t1_influence", remainingDays: 21, totalDays: 21 },
-            { toadKey: "toad_lee", nodeId: "lee_t1_command", remainingDays: 19, totalDays: 19 },
-            { toadKey: "ryan", nodeId: "ryan_t1_cantrips", remainingDays: 16, totalDays: 16 },
-            { toadKey: "roger", nodeId: "rog_t1_trade", remainingDays: 19, totalDays: 19 },
-            { toadKey: "bones", nodeId: "bones_t1_morale", remainingDays: 16, totalDays: 16 }
-        ],
+        activeFocuses: [],
         influences: {
             dan: 40, toad_lee: 25, eager: 10,
             ryan: 10, roger: 10, bones: 5
@@ -175,7 +169,13 @@ function initFocusTreeState() {
         },
         flags: { waluigiPending: false }
     };
+    // Initialize with some default focuses for demonstration
+    state.focusTreeState.activeFocuses = [
+        { toadKey: "dan", nodeId: "dan_t1_influence", remainingDays: 21, totalDays: 21 },
+        { toadKey: "toad_lee", nodeId: "lee_t1_command", remainingDays: 19, totalDays: 19 }
+    ];
 }
+
 
 export function saveState() {
     localStorage.setItem('vigilanceTerminalState', JSON.stringify(state));

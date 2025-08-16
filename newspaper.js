@@ -82,7 +82,7 @@ The bust reportedly resulted in significant losses for the Iron Fists, with valu
             id: 'side_5',
             title: "Centaur Saves Goblin: Unlikely Alliance Forged?",
             image: 'newspaper_airship.png',
-            image_alt: "A majestic, sleek, magitek airship disappearing into dark, swirling storm clouds.",
+            image_alt: "A majestic, sleek, sleek, magitek airship disappearing into dark, swirling storm clouds.",
             date: "OCTOBER 24, YEAR 42",
             author: "By The Watcher",
             content: `
@@ -258,40 +258,31 @@ function playSound(url, volume = 0.7) {
 // --- RENDERING ---
 
 function getTodaysDate() {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date().toLocaleDateString('en-US', options).toUpperCase();
 }
 
-function renderArticle(article, containerId) {
-    const container = document.getElementById(containerId);
+function renderArticle(article, container) {
     if (!container) return;
 
     let contentHTML = marked.parse(article.content || '');
 
-    // Add specific styles for Waluigi's corner content
-    if (article.type === 'waluigi_corner') {
-        contentHTML = `<div class="article-content">${contentHTML}</div>`;
-    } else {
-        // Wrap paragraphs for general articles to apply indentation
-        contentHTML = `<div class="article-content">${contentHTML.split('<p>').map(p => p.trim() ? `<p>${p}</p>` : '').join('')}</div>`;
-    }
-
+    const articleClass = article.type === 'waluigi_corner' ? 'waluigi-corner' : (article.type === 'headline' ? 'headline' : '');
+    
+    container.className = `news-article ${articleClass}`;
     container.innerHTML = `
-        <h2>${article.title}</h2>
-        <div class="article-meta">
-            <span>${article.date}</span> | <span>${article.author}</span>
-        </div>
+        <h3>${article.title}</h3>
+        ${article.author ? `<div class="article-meta"><span>${article.date}</span> | <span>${article.author}</span></div>` : ''}
         ${article.image ? `<figure><img src="${article.image}" alt="${article.image_alt || article.title}"><figcaption>${article.image_alt || article.title}</figcaption></figure>` : ''}
-        ${contentHTML}
+        <div class="article-content">${contentHTML}</div>
     `;
 }
 
-function renderSideStory(article, containerId) {
-    const container = document.getElementById(containerId);
+function renderSideStory(article, container) {
     if (!container) return;
 
-    const articleElement = document.createElement('article');
-    articleElement.className = 'side-story-article';
+    const articleElement = document.createElement('div');
+    articleElement.className = 'news-article';
 
     const contentHTML = marked.parse(article.content || '');
 
@@ -301,22 +292,21 @@ function renderSideStory(article, containerId) {
             <span>${article.date}</span> | <span>${article.author}</span>
         </div>
         ${article.image ? `<figure><img src="${article.image}" alt="${article.image_alt || article.title}"><figcaption>${article.image_alt || article.title}</figcaption></figure>` : ''}
-        <div class="article-content">${contentHTML.split('<p>').map(p => p.trim() ? `<p>${p}</p>` : '').join('')}</div>
+        <div class="article-content">${contentHTML}</div>
     `;
     container.appendChild(articleElement);
 }
 
-function renderAdvert(advert, containerId) {
-    const container = document.getElementById(containerId);
+function renderAdvert(advert, container) {
     if (!container) return;
 
     const advertElement = document.createElement('div');
     advertElement.className = 'advert-block';
 
     advertElement.innerHTML = `
-        <h4>ADVERTISEMENT</h4>
+        <h4>Advertisement</h4>
         ${advert.image ? `<img src="${advert.image}" alt="${advert.image_alt || advert.title}">` : ''}
-        <h4>${advert.title}</h4>
+        <h5>${advert.title}</h5>
         <p>${advert.content}</p>
         <a href="#" class="advert-cta">${advert.cta}</a>
     `;
@@ -332,59 +322,53 @@ function shuffleArray(array) {
 }
 
 function renderNewspaper() {
-    // Set current date
     document.getElementById('newspaper-date').textContent = getTodaysDate();
 
-    // Render Headline (always pick the first one for now, or could randomize)
+    const headlineContainer = document.getElementById('headline-article');
+    const sideStoriesContainer = document.getElementById('side-stories-container');
+    const waluigiContainer = document.getElementById('waluigi-corner');
+    const advertsContainer = document.getElementById('adverts-container');
+    
+    // Render Headline
     const headlineArticle = NEWS_ARTICLES.headline[0];
     if (headlineArticle) {
-        renderArticle(headlineArticle, 'headline-article');
+        renderArticle(headlineArticle, headlineContainer);
     }
 
-    // Render Side Stories (randomly pick a few)
-    const sideStoriesContainer = document.getElementById('side-stories-container');
+    // Render Side Stories
     if (sideStoriesContainer) {
         sideStoriesContainer.innerHTML = ''; // Clear previous
         const shuffledSideStories = shuffleArray([...NEWS_ARTICLES.side_story]);
-        const numberOfSideStories = Math.min(shuffledSideStories.length, 4); // Display up to 4 side stories
+        const numberOfSideStories = Math.min(shuffledSideStories.length, 4); 
         for (let i = 0; i < numberOfSideStories; i++) {
-            renderSideStory(shuffledSideStories[i], 'side-stories-container');
+            renderSideStory(shuffledSideStories[i], sideStoriesContainer);
         }
     }
 
-    // Render Waluigi's Corner (always pick the first one)
+    // Render Waluigi's Corner
     const waluigiCornerArticle = NEWS_ARTICLES.waluigi_corner[0];
     if (waluigiCornerArticle) {
-        renderArticle(waluigiCornerArticle, 'waluigi-corner');
+        renderArticle(waluigiCornerArticle, waluigiContainer);
     }
 
-    // Render Adverts (randomly pick a few)
-    const advertsContainer = document.getElementById('adverts-container');
+    // Render Adverts
     if (advertsContainer) {
         advertsContainer.innerHTML = ''; // Clear previous
         const shuffledAdverts = shuffleArray([...NEWS_ARTICLES.advert]);
-        const numberOfAdverts = Math.min(shuffledAdverts.length, 3); // Display up to 3 adverts
+        const numberOfAdverts = Math.min(shuffledAdverts.length, 4); 
         for (let i = 0; i < numberOfAdverts; i++) {
-            renderAdvert(shuffledAdverts[i], 'adverts-container');
+            renderAdvert(shuffledAdverts[i], advertsContainer);
         }
     }
 }
 
 // --- EVENT LISTENERS ---
 function setupEventListeners() {
-    // Init audio on first user interaction
-    document.body.addEventListener('click', () => {
-        initAudio();
-    }, { once: true });
+    document.body.addEventListener('click', () => initAudio(), { once: true });
 
-    document.querySelector('.back-button').addEventListener('click', (e) => {
-        playSound('click.mp3', 0.6);
-    });
-
-    // Add click sounds for advert CTAs
     document.getElementById('adverts-container').addEventListener('click', (e) => {
         if (e.target.classList.contains('advert-cta')) {
-            e.preventDefault(); // Prevent default link behavior for demo
+            e.preventDefault();
             playSound('click.mp3', 0.6);
             alert("WAH! You clicked an ad! Now go buy Waluigi's goods!");
         }
