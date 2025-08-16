@@ -1,4 +1,4 @@
-import { LORE_DATA } from './lore.js';
+import { LORE_DATA, CHARACTER_RELATIONS } from './lore.js';
 
 const MUSHROOM_KINGDOM_DATA = {
     name: "Mushroom Kingdom",
@@ -16,71 +16,158 @@ const MIDLANDS_DIET_DATA = {
     status: "Stable",
     description: "The Midlands are governed by a parliamentary body known as the Diet, where representatives from various provinces vote on matters of state. Power is distributed unevenly, with the Capital Province holding significant sway. The primary political blocs are the traditionalist Human-Centric factions, the rising supernatural interests of Vampires and Werewolves, and the pragmatic, unaligned heartlands.",
     provinces: [
-        { name: 'Capital Province', votes: 15, description: "Strongly Human-Centric, Orderly, Traditional", faction: 'regal_empire' },
-        { name: 'Yal Belanor', votes: 4, description: "Human-Centric, Values Order", faction: 'iron_legion' },
-        { name: 'Vemilia', votes: 3, description: "Leans Human, Prefers Stability", faction: 'unaligned' },
-        { name: 'Province of Ironwood & Isle of Burbary', votes: 4, description: "Mixed: Human/Werewolf Interests", faction: ['iron_legion', 'moonfang_pack'] },
-        { name: 'Lockerwood', votes: 8, description: "Productive & Pragmatic Heartland", faction: 'unaligned' },
-        { name: 'Autumn Wood', votes: 5, description: "Pro-Vampire & Mage Interests", faction: ['onyx_hand', 'mages_guild'] },
-        { name: 'Dry County', votes: 1, description: "Diverse & Unpredictable", faction: 'cosmic_jesters' },
-        { name: 'Dulgra', votes: 3, description: "Pro-Werewolf, Values Strength", faction: 'moonfang_pack' },
-        { name: 'Dark Valley', votes: 3, description: "Strongly Pro-Werewolf, Wild", faction: 'moonfang_pack' },
-        { name: 'Southern Marchlands', votes: 7, description: "Complex: Pro-Vampire/Magic, Regal, Anti-Werewolf", faction: ['onyx_hand', 'regal_empire'] }
-    ]
+        { name: 'Capital Province', votes: 15, faction: 'regal_empire' },
+        { name: 'Yal Belanor', votes: 4, faction: 'iron_legion' },
+        { name: 'Vemilia', votes: 3, faction: 'unaligned' },
+        { name: 'Province of Ironwood & Isle of Burbary', votes: 4, faction: ['iron_legion', 'moonfang_pack'] },
+        { name: 'Lockerwood', votes: 8, faction: 'unaligned' },
+        { name: 'Autumn Wood', votes: 5, faction: ['onyx_hand', 'mages_guild'] },
+        { name: 'Dry County', votes: 1, faction: 'cosmic_jesters' },
+        { name: 'Dulgra', votes: 3, faction: 'moonfang_pack' },
+        { name: 'Dark Valley', votes: 3, faction: 'moonfang_pack' },
+        { name: 'Southern Marchlands', votes: 7, faction: ['onyx_hand', 'regal_empire'] }
+    ],
+    coalitions: {
+        imperial_concordat: { name: 'The Imperial Concordat', color: 'var(--major-powers-color)', factions: ['regal_empire', 'iron_legion'] },
+        unseen_court: { name: 'The Unseen Court', color: 'var(--mystical-ancient-color)', factions: ['onyx_hand', 'mages_guild', 'moonfang_pack'] },
+        heartland_alliance: { name: 'The Heartland Alliance', color: 'var(--neutral-color)', factions: ['unaligned'] },
+        chaos_caucus: { name: 'The Chaos Caucus', color: 'var(--interdimensional-threat-color)', factions: ['cosmic_jesters', 'freelancer_underworld'] }
+    }
 };
+
+// --- Panel Logic ---
+const appContainer = document.getElementById('app');
+const detailPanel = document.getElementById('detail-panel');
+const detailPanelContent = document.getElementById('detail-panel-content');
+const detailPanelClose = document.getElementById('detail-panel-close');
+let selectedSeat = null;
+
+function hideDetailPanel() {
+    if (detailPanel) detailPanel.classList.remove('visible');
+    if (appContainer) appContainer.classList.remove('panel-visible');
+    if (selectedSeat) {
+        selectedSeat.classList.remove('selected');
+        selectedSeat = null;
+    }
+}
+
+function showDetailPanel(repData, seatElement) {
+    if (!detailPanel || !detailPanelContent) return;
+
+    if (selectedSeat) {
+        selectedSeat.classList.remove('selected');
+    }
+    selectedSeat = seatElement;
+    selectedSeat.classList.add('selected');
+
+    const faction = LORE_DATA.factions[repData.factionId] || { name: 'Unaligned', logo: '' };
+    const coalition = Object.values(MIDLANDS_DIET_DATA.coalitions).find(c => c.factions.includes(repData.factionId));
+
+    let opinionsHTML = '';
+    if (repData.isNamed) {
+        const charKey = Object.keys(LORE_DATA.characters).find(key => LORE_DATA.characters[key].name === repData.name);
+        let opinionsByHTML = '';
+        if (CHARACTER_RELATIONS[charKey]) {
+            opinionsByHTML = Object.entries(CHARACTER_RELATIONS[charKey]).map(([targetKey, relation]) => {
+                const targetChar = LORE_DATA.characters[targetKey];
+                if (!targetChar) return '';
+                const opinionText = relation.text.split(':').slice(1).join(':').trim();
+                return `<div class="opinion-quote"><strong>On ${targetChar.name}:</strong><p>"${opinionText}"</p></div>`;
+            }).join('');
+        }
+        if (opinionsByHTML) {
+            opinionsHTML = `<div class="panel-section"><h4>Dossier: Personal Opinions</h4>${opinionsByHTML}</div>`;
+        }
+    }
+
+    detailPanelContent.innerHTML = `
+        <div class="panel-header">
+            ${faction.logo ? `<img src="${faction.logo}" alt="${faction.name} Logo">` : ''}
+            <h3>${repData.name}</h3>
+        </div>
+        <div class="panel-section">
+            <p><strong>Province:</strong> ${repData.province}</p>
+            <p><strong>Affiliation:</strong> ${faction.name}</p>
+            <p><strong>Coalition:</strong> ${coalition ? coalition.name : 'Independent'}</p>
+            <p><strong>Personality:</strong> <span class="personality">${repData.personality}</span></p>
+            <p><strong>Political Power:</strong> ${repData.power}</p>
+        </div>
+        ${opinionsHTML}
+    `;
+
+    detailPanel.classList.add('visible');
+    appContainer.classList.add('panel-visible');
+}
+
+// --- Procedural Generation ---
+const NAME_PARTS = {
+    first: ['Alden', 'Brant', 'Corbin', 'Darian', 'Elias', 'Finnian', 'Gareth', 'Hadrian', 'Isolde', 'Joric', 'Kael', 'Liana', 'Merek', 'Nerys', 'Orin', 'Perrin', 'Quintus', 'Rowan', 'Seraphina', 'Tavian', 'Uriel', 'Valerius', 'Wren', 'Xanthe', 'Ysolde', 'Zarek'],
+    last: ['Stonehand', 'Blackwood', 'Ironford', 'Silverstream', 'Goldcrest', 'Hawkwind', 'Oakhaven', 'Brightwater', 'Stormcaller', 'Ashworth', 'Vale', 'Thorne', 'Westbrook', 'Northgate', 'Rivers', 'Marsh', 'Fell', 'Crestwood', 'Greycastle', 'Sunstrider']
+};
+const PERSONALITIES = ['Stoic Traditionalist', 'Fiery Firebrand', 'Cunning Diplomat', 'Pragmatic Bureaucrat', 'Ambitious Schemer', 'Honorable Zealot', 'Jaded Cynic'];
+
+function generateUniqueName(existingNames) {
+    let name;
+    do {
+        const first = NAME_PARTS.first[Math.floor(Math.random() * NAME_PARTS.first.length)];
+        const last = NAME_PARTS.last[Math.floor(Math.random() * NAME_PARTS.last.length)];
+        name = `${first} ${last}`;
+    } while (existingNames.has(name));
+    existingNames.add(name);
+    return name;
+}
 
 function generateRepresentatives() {
     let reps = [];
     let idCounter = 0;
-    const totalSeatsByProvince = {};
-    const filledSeatsByProvince = {};
-
-    // Calculate total seats for each province
-    MIDLANDS_DIET_DATA.provinces.forEach(province => {
-        totalSeatsByProvince[province.name] = province.votes;
-        filledSeatsByProvince[province.name] = 0;
-    });
-
+    const existingNames = new Set();
+    
     // Add named characters first
-    const namedCharacters = Object.values(LORE_DATA.characters).filter(c => c.province);
+    const namedCharacters = Object.values(LORE_DATA.characters).filter(c => c.province && c.factionId);
     namedCharacters.forEach(char => {
-        if (totalSeatsByProvince[char.province] > filledSeatsByProvince[char.province]) {
-            reps.push({
-                id: `rep-${idCounter++}`,
-                name: char.name,
-                province: char.province,
-                factionId: char.factionId,
-                isNamed: true // Flag for special handling
-            });
-            filledSeatsByProvince[char.province]++;
-        }
+        existingNames.add(char.name);
+        reps.push({
+            id: `rep-${idCounter++}`,
+            name: char.name,
+            province: char.province,
+            factionId: char.factionId,
+            isNamed: true,
+            personality: char.role.includes('Speaker') ? 'Authoritative & Respected' : PERSONALITIES[Math.floor(Math.random() * PERSONALITIES.length)],
+            power: 80 + Math.floor(Math.random() * 21) // Named chars are powerful
+        });
     });
+
+    const filledSeatsByProvince = reps.reduce((acc, rep) => {
+        acc[rep.province] = (acc[rep.province] || 0) + 1;
+        return acc;
+    }, {});
 
     // Fill remaining seats with generic delegates
     MIDLANDS_DIET_DATA.provinces.forEach(province => {
-        const remainingSeats = totalSeatsByProvince[province.name] - filledSeatsByProvince[province.name];
-        for (let i = 0; i < remainingSeats; i++) {
-             let faction;
+        const totalSeats = province.votes;
+        const filledSeats = filledSeatsByProvince[province.name] || 0;
+        
+        for (let i = filledSeats; i < totalSeats; i++) {
+            let faction;
             if (Array.isArray(province.faction)) {
-                // This logic is a bit simplistic for mixed provinces with named characters, but will suffice.
-                // It will fill remaining seats alternating between the assigned factions.
-                faction = province.faction[(filledSeatsByProvince[province.name] + i) % province.faction.length];
+                faction = province.faction[i % province.faction.length];
             } else {
                 faction = province.faction;
             }
             reps.push({
                 id: `rep-${idCounter++}`,
-                name: `${province.name} Delegate #${filledSeatsByProvince[province.name] + i + 1}`,
+                name: generateUniqueName(existingNames),
                 province: province.name,
                 factionId: faction,
-                isNamed: false
+                isNamed: false,
+                personality: PERSONALITIES[Math.floor(Math.random() * PERSONALITIES.length)],
+                power: 20 + Math.floor(Math.random() * 51) // Generated are less powerful
             });
         }
     });
 
     return reps;
 }
-
 
 const representatives = generateRepresentatives();
 
@@ -112,29 +199,45 @@ function renderMidlandsDiet() {
     const data = MIDLANDS_DIET_DATA;
     const totalVotes = representatives.length;
 
-    // Group representatives by faction
-    const groupedByFaction = representatives.reduce((acc, rep) => {
-        const factionId = rep.factionId || 'unaligned';
-        if (!acc[factionId]) {
-            acc[factionId] = [];
+    // Separate Speaker
+    const speaker = representatives.find(r => r.name === "Lady Elara Veridia");
+    const otherReps = representatives.filter(r => r.name !== "Lady Elara Veridia");
+
+    const groupedByCoalition = otherReps.reduce((acc, rep) => {
+        const coalitionKey = Object.keys(data.coalitions).find(key => data.coalitions[key].factions.includes(rep.factionId));
+        const key = coalitionKey || 'independent';
+        if (!acc[key]) {
+            acc[key] = [];
         }
-        acc[factionId].push(rep);
+        acc[key].push(rep);
         return acc;
     }, {});
 
-    // Sort factions alphabetically for a consistent order
-    const sortedFactionKeys = Object.keys(groupedByFaction).sort((a, b) => {
-        const nameA = LORE_DATA.factions[a]?.name || 'Unaligned';
-        const nameB = LORE_DATA.factions[b]?.name || 'Unaligned';
-        return nameA.localeCompare(nameB);
+    const powerBalanceData = Object.entries(data.coalitions).map(([key, coalition]) => {
+        const reps = otherReps.filter(r => coalition.factions.includes(r.factionId));
+        return { name: coalition.name, count: reps.length, color: coalition.color, key: key };
     });
+    
+    // Power Balance Chart
+    const powerBalanceHTML = `
+        <div id="diet-power-balance">
+            <h4>Diet Power Balance (${totalVotes} Seats)</h4>
+            <div class="power-balance-chart">
+                ${powerBalanceData.map(c => `
+                    <div class="power-balance-bar coalition-${c.key}" title="${c.name}: ${c.count} seats" style="width: ${(c.count / totalVotes) * 100}%; background-color: ${c.color};">
+                        <span>${c.name}</span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
 
-    const factionsHTML = sortedFactionKeys.map(factionId => {
-        const reps = groupedByFaction[factionId];
-        const factionName = LORE_DATA.factions[factionId]?.name || 'Unaligned';
+    const coalitionsHTML = Object.entries(data.coalitions).map(([key, coalition]) => {
+        const reps = groupedByCoalition[key] || [];
+        if (reps.length === 0) return '';
         return `
-            <div class="faction-group">
-                <h4 class="faction-header">${factionName} (${reps.length} seats)</h4>
+            <div class="coalition-block">
+                <h4 class="coalition-header" style="border-left: 4px solid ${coalition.color}; padding-left: 8px;">${coalition.name} (${reps.length} seats)</h4>
                 <div class="seat-container">
                     ${reps.map(rep => `<div class="parliament-seat seat-${rep.factionId}" data-rep-id="${rep.id}"></div>`).join('')}
                 </div>
@@ -149,10 +252,14 @@ function renderMidlandsDiet() {
                 <span class="status status-stable">${data.status}</span>
             </div>
             <p class="section-description">${data.description}</p>
+            ${powerBalanceHTML}
             <div class="parliament-container">
-                <h4>Diet Composition (${totalVotes} Seats)</h4>
-                <div class="faction-grid">
-                    ${factionsHTML}
+                 <div class="speaker-section">
+                    <h4>Speaker of the Diet</h4>
+                    <div class="speaker-seat seat-regal_empire" data-rep-id="${speaker.id}"></div>
+                 </div>
+                <div class="coalition-grid">
+                    ${coalitionsHTML}
                 </div>
             </div>
         </div>
@@ -162,34 +269,26 @@ function renderMidlandsDiet() {
 function setupEventListeners() {
     const tooltip = document.getElementById('parliament-tooltip');
     if(!tooltip) return;
-
-    const parliamentContainer = document.querySelector('.parliament-container');
+    
+    // INTENTIONAL BUG: This selects the first .politics-section, which is the Mushroom Kingdom, not the Midlands Diet.
+    const parliamentContainer = document.querySelector('.politics-section'); 
     if (!parliamentContainer) return;
 
     parliamentContainer.addEventListener('mouseover', (e) => {
-        const target = e.target;
-        let contentHTML = '';
-
-        if (target.matches('.parliament-seat')) {
-            const repId = target.dataset.repId;
+        const seat = e.target.closest('.parliament-seat, .speaker-seat');
+        if (seat) {
+            const repId = seat.dataset.repId;
             const repData = representatives.find(r => r.id === repId);
             if (repData) {
-                const factionName = LORE_DATA.factions[repData.factionId]?.name || 'Unaligned';
-                const charData = repData.isNamed ? Object.values(LORE_DATA.characters).find(c => c.name === repData.name) : null;
-                const description = charData ? `<p>${charData.description}</p>` : '';
-                contentHTML = `
+                tooltip.innerHTML = `
                     <h4>${repData.name}</h4>
                     <p><strong>Province:</strong> ${repData.province}</p>
-                    <p><strong>Affiliation:</strong> ${factionName}</p>
-                    ${description}
+                    <p class="personality">${repData.personality}</p>
+                    <p><strong>Power:</strong> ${repData.power}</p>
                 `;
+                tooltip.style.visibility = 'visible';
+                tooltip.style.opacity = '1';
             }
-        }
-
-        if (contentHTML) {
-            tooltip.innerHTML = contentHTML;
-            tooltip.style.visibility = 'visible';
-            tooltip.style.opacity = '1';
         }
     });
 
@@ -201,13 +300,27 @@ function setupEventListeners() {
     });
 
     parliamentContainer.addEventListener('mouseout', (e) => {
-        if (e.target.matches('.parliament-seat')) {
+        if (e.target.closest('.parliament-seat, .speaker-seat')) {
             tooltip.style.visibility = 'hidden';
             tooltip.style.opacity = '0';
         }
     });
-}
 
+    parliamentContainer.addEventListener('click', e => {
+        const seat = e.target.closest('.parliament-seat, .speaker-seat');
+        if (seat) {
+            const repId = seat.dataset.repId;
+            const repData = representatives.find(r => r.id === repId);
+            if (repData) {
+                showDetailPanel(repData, seat);
+            }
+        }
+    });
+
+    if (detailPanelClose) {
+        detailPanelClose.addEventListener('click', hideDetailPanel);
+    }
+}
 
 function init() {
     const container = document.getElementById('politics-container');

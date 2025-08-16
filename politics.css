@@ -86,38 +86,99 @@
     color: var(--text-secondary);
 }
 
-/* Midlands Diet - Faction Group Style */
+/* Midlands Diet - New Coalition Layout */
 .parliament-container {
     background-color: var(--main-bg);
     border-radius: 8px;
     padding: 20px;
+    margin-top: 24px;
 }
 
-.parliament-container > h4 {
+#diet-power-balance {
+    margin-bottom: 24px;
+}
+
+#diet-power-balance h4 {
     font-family: var(--font-display);
     color: var(--text-secondary);
-    margin-bottom: 20px;
     text-align: center;
+    margin-bottom: 16px;
 }
 
-.faction-grid {
+.power-balance-chart {
     display: flex;
-    flex-wrap: wrap;
+    width: 100%;
+    height: 30px;
+    background-color: var(--sidebar-bg);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.power-balance-bar {
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.power-balance-bar span {
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 5px;
+}
+
+
+.speaker-section {
+    text-align: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.speaker-section h4 {
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.speaker-seat {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--neutral-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    position: relative;
+}
+
+.speaker-seat:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px var(--neutral-color);
+}
+
+.coalition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 16px;
 }
 
-.faction-group {
+.coalition-block {
     background-color: var(--sidebar-bg);
-    padding: 12px;
+    padding: 16px;
     border-radius: 6px;
     border: 1px solid var(--border-color);
-    flex-grow: 1;
-    min-width: 300px;
 }
 
-.faction-header {
+.coalition-header {
     font-family: var(--font-display);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--text-color);
     margin-bottom: 12px;
     border-bottom: 1px solid var(--border-color);
@@ -137,6 +198,7 @@
     border-radius: 3px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    position: relative; /* For tooltips */
 }
 
 .parliament-seat:hover {
@@ -145,15 +207,22 @@
     z-index: 10;
 }
 
-/* Faction Colors for Seats */
-.seat-regal_empire { background-color: var(--major-powers-color); }
+.parliament-seat.selected {
+    transform: scale(1.6);
+    border: 2px solid var(--neutral-color);
+    box-shadow: 0 0 10px var(--neutral-color);
+    z-index: 11;
+}
+
+/* Faction/Coalition Colors for Seats */
+.seat-regal_empire, .coalition-imperial_concordat { background-color: var(--major-powers-color); }
 .seat-iron_legion { background-color: #6c757d; }
-.seat-moonfang_pack { background-color: #adb5bd; }
+.seat-moonfang_pack, .coalition-unseen_court { background-color: #adb5bd; }
 .seat-onyx_hand { background-color: #495057; }
 .seat-mages_guild { background-color: var(--mystical-ancient-color); }
-.seat-cosmic_jesters { background-color: var(--interdimensional-threat-color); }
+.seat-cosmic_jesters, .coalition-chaos_caucus { background-color: var(--interdimensional-threat-color); }
 .seat-freelancer_underworld { background-color: var(--underworld-fringe-color); }
-.seat-unaligned { background-color: var(--neutral-color); }
+.seat-unaligned, .coalition-heartland_alliance { background-color: var(--neutral-color); }
 
 #parliament-tooltip {
     position: fixed;
@@ -182,4 +251,8 @@
 }
 #parliament-tooltip strong {
     color: var(--text-color);
+}
+#parliament-tooltip .personality {
+    font-style: italic;
+    color: var(--accent-color);
 }

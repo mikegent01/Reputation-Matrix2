@@ -1,7 +1,7 @@
 import { state } from './state.js';
 import { LORE_DATA } from './lore.js';
 import { getReputation, getNotoriety, getDetailedFactionAssessment, getGenericFactionAssessment, getSubFactionReputation } from './reputation.js';
-import { initAudio, playSound } from './audio.js';
+import { playSound } from './common.js';
 
 const viewContainer = document.getElementById('view-container');
 const partyList = document.getElementById('party-list');
@@ -664,17 +664,10 @@ export function setupEventListeners() {
 
     // Use a single delegated listener for better performance
     document.body.addEventListener('click', (e) => {
-        // Init audio on first user interaction, only once
-        if (!state.audioInitialized) {
-            initAudio();
-            state.audioInitialized = true;
-        }
+        // Audio init is now handled by common.js
 
         if (e.target.closest('.nav-button') || e.target.closest('.back-button') || e.target.closest('.terminal-back-button')) {
             playSound('click.mp3', 0.6);
-        }
-        if(e.target.closest('#waluigi-logo')) {
-            playSound('wah.mp3', 0.8);
         }
         if(e.target.matches('summary')) {
             // Check if the details element is opening

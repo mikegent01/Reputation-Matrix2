@@ -13,8 +13,7 @@
   "imports": {
     "path": "https://esm.sh/path@^0.12.7",
     "url": "https://esm.sh/url@^0.11.4",
-    "vite": "https://esm.sh/vite@^7.1.2",
-    "@google/genai": "https://esm.sh/@google/genai@^1.14.0"
+    "vite": "https://esm.sh/vite@^7.1.2"
   }
 }
 </script>
@@ -26,12 +25,10 @@
         <div id="app">
             <aside id="sidebar">
                 <header>
-                    <a href="developer.html" class="logo-link">
-                        <div class="logo">
-                            <img src="logo.png" alt="Waluigi Terminal Logo" id="waluigi-logo">
-                            <h1 class="flicker">Vigilance Terminal</h1>
-                        </div>
-                    </a>
+                    <div class="logo">
+                        <img src="logo.png" alt="Waluigi Terminal Logo" id="waluigi-logo">
+                        <h1 class="flicker">Vigilance Terminal</h1>
+                    </div>
                     <p class="subtitle">Faction Directory</p>
                 </header>
                 <nav id="main-nav-bar">
@@ -58,10 +55,6 @@
                     <a href="newspaper.html" class="nav-button">
                         <img src="icon_newspaper.png" alt="Newspaper Icon">
                         <span>The Daily Paradox</span>
-                    </a>
-                     <a href="developer.html" class="nav-button">
-                        <img src="icon_dossier.png" alt="Developer Icon">
-                        <span>Developer Tools</span>
                     </a>
                 </nav>
                 <div id="party-overview">
@@ -104,6 +97,7 @@
             self.structuredClone = (obj) => JSON.parse(JSON.stringify(obj));
         }
     </script>
+    <script type="module" src="common.js"></script>
     <script type="module" src="main.js"></script>
 <script type="module" src="/index.tsx"></script>
 </body>
