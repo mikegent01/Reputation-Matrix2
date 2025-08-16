@@ -5,26 +5,31 @@ import { LORE_DATA } from './lore.js';
 const BOP_STATE = {
     mushroom_kingdom: {
         title: "Mushroom Kingdom Civil War",
-        description: "The kingdom is in a precarious state. The Regency attempts to restore order while the fanatical Loyalists pursue their crusade. Meanwhile, chaotic factions exploit the instability for their own ends.",
-        influence: { regency: 45, loyalists: 35, chaotic: 20 },
+        description: "The kingdom has shattered into a four-way conflict. The Regency attempts to restore order, the Loyalists pursue their crusade, leaderless Koopa Troop remnants fight for survival and plunder, and the criminal Underworld led by the Toad Gang exploits the chaos for profit.",
+        influence: { regency: 40, loyalists: 25, warlords: 15, criminals: 20 },
         active_plans: [
             { leader: 'chancellor_toadsworth', planId: 'regency_1', days: 23 },
             { leader: 'captain_toadette', planId: 'loyalist_2', days: 17 },
+            { leader: 'kamek', planId: 'warlord_2', days: 31 },
         ],
         plans: {
             chancellor_toadsworth: [
                 { id: 'regency_1', name: "Bolster Defenses", duration: 30, description: "Increase recruitment for the Toadstool Guard and fortify key locations.", effect: "+5 Regency Influence, -5 Loyalist Influence" },
                 { id: 'regency_2', name: "Diplomatic Outreach", duration: 45, description: "Send envoys to the Liberated Toads and other neutral parties to gain support.", effect: "+10 Regency Influence, increases relations with Liberated Toads" },
-                { id: 'regency_3', name: "Root Out Agitators", duration: 60, description: "Use the Guard to crack down on chaotic elements sowing dissent.", effect: "-10 Chaotic Influence, small chance of backfire" },
+                { id: 'regency_3', name: "Root Out Agitators", duration: 60, description: "Use the Guard to crack down on criminal elements sowing dissent.", effect: "-10 Criminal Influence, small chance of backfire" },
             ],
             captain_toadette: [
-                { id: 'loyalist_1', name: "Launch Crusade", duration: 50, description: "Launch a major military offensive against a known Bowser-affiliated outpost.", effect: "+15 Loyalist Influence, high risk of casualties" },
+                { id: 'loyalist_1', name: "Launch Crusade", duration: 50, description: "Launch a major military offensive against a known Koopa Remnant outpost.", effect: "+15 Loyalist Influence, -5 Warlord Influence, high risk of casualties" },
                 { id: 'loyalist_2', name: "Rally Zealots", duration: 20, description: "Hold a public rally to whip up support for the 'true' monarchy.", effect: "+10 Loyalist Influence, -5 Regency Influence" },
                 { id: 'loyalist_3', name: "Seek the Oracle", duration: 70, description: "Send an expedition to a remote oracle to find the location of the 'true' princess.", effect: "???" },
             ],
-            high_spore_speaker: [
-                 { id: 'chaotic_1', name: "Spread Sacred Spores", duration: 40, description: "Discreetly introduce mind-altering fungi into village water supplies.", effect: "+10 Chaotic Influence" },
-                 { id: 'chaotic_2', name: "Infiltrate Refugee Camps", duration: 25, description: "Prey on the desperate to gain new converts.", effect: "+5 Chaotic Influence" },
+            kamek: [
+                 { id: 'warlord_1', name: "Scavenge War Machines", duration: 35, description: "Scour old battlefields for abandoned Koopa Troop technology to rebuild their arsenal.", effect: "+10 Warlord Influence" },
+                 { id: 'warlord_2', name: "Rally the Remnants", duration: 28, description: "Send messengers to gather scattered Koopa Troop survivors into a more cohesive fighting force.", effect: "+5 Warlord Influence, consolidates forces" },
+            ],
+            skull_cap_murphy: [
+                 { id: 'criminal_1', name: "Expand Protection Rackets", duration: 20, description: "Use the chaos to force outlying villages and refugee camps to pay for 'protection'.", effect: "+10 Criminal Influence" },
+                 { id: 'criminal_2', name: "Raid Refugee Supplies", duration: 15, description: "Intercept and steal supplies meant for refugees, selling them on the black market.", effect: "+5 Criminal Influence, -5 Regency Influence" },
             ]
         }
     },
@@ -82,7 +87,8 @@ function renderMushroomKingdom() {
     const influenceBarHTML = `
         <div class="influence-bar-segment" style="width: ${data.influence.regency / totalInfluence * 100}%; background-color: var(--major-powers-color);" title="Regency Influence">Regency</div>
         <div class="influence-bar-segment" style="width: ${data.influence.loyalists / totalInfluence * 100}%; background-color: var(--accent-color);" title="Loyalist Influence">Loyalists</div>
-        <div class="influence-bar-segment" style="width: ${data.influence.chaotic / totalInfluence * 100}%; background-color: var(--underworld-fringe-color);" title="Chaotic Influence">Chaotic</div>
+        <div class="influence-bar-segment" style="width: ${data.influence.warlords / totalInfluence * 100}%; background-color: var(--neutral-color);" title="Koopa Remnant Influence">Warlords</div>
+        <div class="influence-bar-segment" style="width: ${data.influence.criminals / totalInfluence * 100}%; background-color: var(--underworld-fringe-color);" title="Criminal Underworld Influence">Criminals</div>
     `;
 
     const getPlansHTML = (leaderKey) => {
@@ -119,8 +125,12 @@ function renderMushroomKingdom() {
                         ${getPlansHTML('captain_toadette')}
                     </div>
                     <div class="leader-plans-block">
-                        <h6>High Spore Speaker (Chaotic)</h6>
-                        ${getPlansHTML('high_spore_speaker')}
+                        <h6>Kamek (Koopa Remnants)</h6>
+                        ${getPlansHTML('kamek')}
+                    </div>
+                    <div class="leader-plans-block">
+                        <h6>Skull-Cap Murphy (Toad Gang)</h6>
+                        ${getPlansHTML('skull_cap_murphy')}
                     </div>
                 </div>
             </div>

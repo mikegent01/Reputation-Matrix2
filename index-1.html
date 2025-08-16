@@ -20,7 +20,16 @@
 <link rel="stylesheet" href="/index.css">
 </head>
 <body>
-    <div class="tablet-frame">
+    <div id="login-screen">
+        <img src="logo.png" alt="Waluigi Logo" class="login-logo">
+        <h2 class="login-text">ACCESSING VIGILANCE TERMINAL...</h2>
+        <div class="login-progress-container">
+            <div class="login-progress-bar-inner"></div>
+        </div>
+        <p class="login-subtext">WAH-thenticating...</p>
+    </div>
+
+    <div class="tablet-frame" style="display: none;">
         <div class="scanline-overlay"></div>
         <div id="app">
             <aside id="sidebar">
@@ -56,6 +65,10 @@
                         <img src="icon_newspaper.png" alt="Newspaper Icon">
                         <span>The Daily Paradox</span>
                     </a>
+                    <a href="battlefield.html" class="nav-button">
+                        <img src="icon_focus.png" alt="Battlefield Icon">
+                        <span>Battlefield</span>
+                    </a>
                 </nav>
                 <div id="party-overview">
                     <h3>Active Party</h3>
@@ -76,11 +89,17 @@
                     </ul>
                 </div>
                 <footer>
-                    <p>SYSTEM STATUS: <span class="status-ok">ONLINE</span></p>
+                    <p>SYSTEM STATUS: <a href="status.html" class="status-link"><span class="status-ok">ONLINE</span></a></p>
                     <p>&copy; Waluigi, Evil Genius</p>
                 </footer>
             </aside>
             <main id="main-content">
+                <div id="directory-controls">
+                    <span>Sort Directory By:</span>
+                    <button data-sort="power" class="dir-control-button active">Power</button>
+                    <button data-sort="name" class="dir-control-button">Name</button>
+                    <button data-sort="region" class="dir-control-button">Region</button>
+                </div>
                 <div id="view-container">
                     <!-- Faction Directory or Details will be injected here by JS -->
                 </div>

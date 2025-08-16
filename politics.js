@@ -4,11 +4,13 @@ import { init as initBoP } from './balance-of-power.js';
 const MUSHROOM_KINGDOM_DATA = {
     name: "Mushroom Kingdom",
     status: "CIVIL WAR",
-    description: "Following the death of Princess Peach, the kingdom has shattered. The formal government, the Mushroom Regency, struggles to maintain control against a zealous military faction, the Peach Loyalists, who believe the Princess is still alive and the Regency is illegitimate. Complicating matters, the recently Liberated Toads have emerged as a new, independent political entity, distrustful of all monarchical systems.",
+    description: "Following the death of Princess Peach, the kingdom has shattered into a four-way conflict. The formal Regency government struggles against the zealous Peach Loyalists. Complicating matters are Bowser's leaderless Koopa Troop remnants, now operating as warlords, and the Toad Gang's criminal underworld, which is exploiting the power vacuum for profit.",
     factions: [
         { name: "Mushroom Regency", description: "The official, but weakened, government body led by Chancellor Toadsworth. Their goal is to restore stability and order.", factionId: "mushroom_regency" },
         { name: "Peach Loyalists", description: "A fanatical military splinter group led by Captain Toadette. They seek to find the 'true' heir and punish Bowser for his perceived crimes.", factionId: "peach_loyalists" },
-        { name: "The Liberated Toads", description: "A new, independent community of former slaves led by the hero Dan. They are forging their own path, wary of outside rulers.", factionId: "liberated_toads" },
+        { name: "Koopa Remnants", description: "Scattered but dangerous elements of Bowser's defeated army, now operating as warlords. Led by Kamek, they seek to regroup and survive.", factionId: "koopa_troop" },
+        { name: "Toad Gang Underworld", description: "The criminal syndicates of the kingdom, led by the Toad Gang's Skull-Cap Murphy. They profit from the chaos through extortion and black markets.", factionId: "toad_gang" },
+        { name: "The Liberated Toads", description: "A new, independent community of former slaves led by the hero Dan. They are forging their own path, wary of outside rulers, and are a key neutral party in the conflict.", factionId: "liberated_toads" },
     ]
 };
 
