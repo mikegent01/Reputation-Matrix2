@@ -1,0 +1,236 @@
+// This file manages the "Balance of Power" mini-game on the politics screen.
+
+import { LORE_DATA } from './lore.js';
+
+const BOP_STATE = {
+    mushroom_kingdom: {
+        title: "Mushroom Kingdom Civil War",
+        description: "The kingdom is in a precarious state. The Regency attempts to restore order while the fanatical Loyalists pursue their crusade. Meanwhile, chaotic factions exploit the instability for their own ends.",
+        influence: { regency: 45, loyalists: 35, chaotic: 20 },
+        active_plans: [
+            { leader: 'chancellor_toadsworth', planId: 'regency_1', days: 23 },
+            { leader: 'captain_toadette', planId: 'loyalist_2', days: 17 },
+        ],
+        plans: {
+            chancellor_toadsworth: [
+                { id: 'regency_1', name: "Bolster Defenses", duration: 30, description: "Increase recruitment for the Toadstool Guard and fortify key locations.", effect: "+5 Regency Influence, -5 Loyalist Influence" },
+                { id: 'regency_2', name: "Diplomatic Outreach", duration: 45, description: "Send envoys to the Liberated Toads and other neutral parties to gain support.", effect: "+10 Regency Influence, increases relations with Liberated Toads" },
+                { id: 'regency_3', name: "Root Out Agitators", duration: 60, description: "Use the Guard to crack down on chaotic elements sowing dissent.", effect: "-10 Chaotic Influence, small chance of backfire" },
+            ],
+            captain_toadette: [
+                { id: 'loyalist_1', name: "Launch Crusade", duration: 50, description: "Launch a major military offensive against a known Bowser-affiliated outpost.", effect: "+15 Loyalist Influence, high risk of casualties" },
+                { id: 'loyalist_2', name: "Rally Zealots", duration: 20, description: "Hold a public rally to whip up support for the 'true' monarchy.", effect: "+10 Loyalist Influence, -5 Regency Influence" },
+                { id: 'loyalist_3', name: "Seek the Oracle", duration: 70, description: "Send an expedition to a remote oracle to find the location of the 'true' princess.", effect: "???" },
+            ],
+            high_spore_speaker: [
+                 { id: 'chaotic_1', name: "Spread Sacred Spores", duration: 40, description: "Discreetly introduce mind-altering fungi into village water supplies.", effect: "+10 Chaotic Influence" },
+                 { id: 'chaotic_2', name: "Infiltrate Refugee Camps", duration: 25, description: "Prey on the desperate to gain new converts.", effect: "+5 Chaotic Influence" },
+            ]
+        }
+    },
+    midlands: {
+        title: "Battle of Ravencreek (Lockerwood Province)",
+        description: "The shadow war between vampire and werewolf has erupted into a full-blown conflict within the forests of Lockerwood. The battle lines are drawn over the key town of Ravencreek, with both sides vying for control of strategic keeps, towers, and outposts along a north-south axis. Regal forces are present, but their influence is limited.",
+        locations: [
+            // North (Werewolf territory)
+            { id: 'frostclaw', name: 'Frostclaw Stronghold', type: 'stronghold', control: 'werewolf', icon: 'faction_moonfang.png' },
+            { id: 'moonclaw', name: 'Moonclaw Bastion', type: 'bastion', control: 'werewolf', icon: 'faction_moonfang.png' },
+            { id: 'fangmoor', name: 'Fangmoor', type: 'town', control: 'werewolf', icon: 'faction_moonfang.png' },
+            { id: 'ironpelt_n', name: 'Ironpelt Keep (North)', type: 'keep', control: 'werewolf', icon: 'faction_moonfang.png' },
+            { id: 'shadowpelt_n', name: 'Shadowpelt Redoubt (North)', type: 'tower', control: 'werewolf', icon: 'faction_moonfang.png' },
+            { id: 'fangridge', name: 'Fangridge Outpost', type: 'outpost', control: 'werewolf', icon: 'faction_moonfang.png' },
+            { id: 'howlstone', name: 'Howlstone Den', type: 'den', control: 'werewolf', icon: 'faction_moonfang.png' },
+            // Contested / Neutral
+            { id: 'swiftsoul', name: 'Swiftsoul Keep', type: 'keep', control: 'regal', icon: 'faction_regal_empire.png' },
+            { id: 'rakasha_temple', name: 'Rakasha Temple', type: 'temple', control: 'neutral', icon: 'faction_rakasha.png' },
+            // Battlefront
+            { id: 'ravencreek', name: 'Ravencreek', type: 'town', control: 'vampire', isBattlefront: true, icon: 'faction_onyx_hand.png' },
+             // South (Vampire territory)
+            { id: 'bloodspire', name: 'Bloodspire Keep', type: 'keep', control: 'vampire', icon: 'faction_onyx_hand.png' },
+            { id: 'crimsonperch', name: 'Crimson Perch', type: 'tower', control: 'vampire', icon: 'faction_onyx_hand.png' },
+            { id: 'shadowpelt_s', name: 'Shadowpelt Redoubt (South)', type: 'tower', control: 'vampire', icon: 'faction_onyx_hand.png' },
+            { id: 'vielthorn', name: 'Vielthorn Outpost', type: 'cave', control: 'vampire', icon: 'faction_onyx_hand.png' },
+            { id: 'rubywatch', name: 'Rubywatch Keep', type: 'keep', control: 'vampire', icon: 'faction_onyx_hand.png' },
+            { id: 'ebonwatch', name: 'Ebonwatch Citadel', type: 'stronghold', control: 'vampire', icon: 'faction_onyx_hand.png' },
+            { id: 'edgeshade', name: 'Edgeshade', type: 'ruins', control: 'neutral', note: 'Destroyed by dragon', icon: 'icon_focus.png' },
+        ],
+        active_plans: [
+            { leader: 'baron_von_hess', planId: 'vampire_2', days: 42, target: 'southern_march' },
+            { leader: 'grak_ironhide', planId: 'werewolf_1', days: 12, target: 'dark_valley' },
+        ],
+        plans: {
+            emperor_elagabalus: [
+                { id: 'imperial_1', name: "Reinforce Swiftsoul Keep", duration: 30, description: "Send an Iron Legion detachment to reinforce the Regal position in Lockerwood.", effect: "Strengthens Regal control of their keep." },
+                { id: 'imperial_2', name: "Broker Ceasefire", duration: 90, description: "Attempt to force a ceasefire through overwhelming military presence and diplomacy.", effect: "May halt the conflict, or cause both sides to unite against the Empire." },
+            ],
+            baron_von_hess: [
+                { id: 'vampire_1', name: "Push on Ravencreek", duration: 40, description: "Launch a major offensive to secure the battlefront and push north.", effect: "High chance to capture a northern location, but costly." },
+                { id: 'vampire_2', name: "Raise Undead", duration: 60, description: "Bolster forces by raising fallen combatants from the battlefield as undead minions.", effect: "Grants a temporary numerical advantage." },
+            ],
+            grak_ironhide: [
+                { id: 'werewolf_1', name: "Guerilla Raids", duration: 25, description: "Use knowledge of the forest to launch hit-and-run attacks on vampire supply lines.", effect: "Weakens vampire positions in the south." },
+                { id: 'werewolf_2', name: "Challenge to Single Combat", duration: 50, description: "Challenge a vampire champion to a duel to seize control of a location.", effect: "High-risk, high-reward for control of a single point." },
+            ]
+        }
+    }
+};
+
+function renderMushroomKingdom() {
+    const data = BOP_STATE.mushroom_kingdom;
+    const totalInfluence = Object.values(data.influence).reduce((a, b) => a + b, 0);
+
+    const influenceBarHTML = `
+        <div class="influence-bar-segment" style="width: ${data.influence.regency / totalInfluence * 100}%; background-color: var(--major-powers-color);" title="Regency Influence">Regency</div>
+        <div class="influence-bar-segment" style="width: ${data.influence.loyalists / totalInfluence * 100}%; background-color: var(--accent-color);" title="Loyalist Influence">Loyalists</div>
+        <div class="influence-bar-segment" style="width: ${data.influence.chaotic / totalInfluence * 100}%; background-color: var(--underworld-fringe-color);" title="Chaotic Influence">Chaotic</div>
+    `;
+
+    const getPlansHTML = (leaderKey) => {
+        return data.plans[leaderKey].map(plan => {
+            const active = data.active_plans.find(p => p.planId === plan.id);
+            return `
+                <div class="plan-card ${active ? 'active-plan' : ''}" data-description="${plan.description}" data-effect="${plan.effect}">
+                    <div class="plan-title">${plan.name}</div>
+                    <div class="plan-details">
+                        ${active ? `<strong>${active.days} days remaining</strong>` : `(${plan.duration} days)`}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    };
+    
+    return `
+        <div class="bop-system">
+            <h4>${data.title}</h4>
+            <p class="bop-description">${data.description}</p>
+            <div class="civil-war-meter">
+                <h5>Current Influence</h5>
+                <div class="influence-bar-container">${influenceBarHTML}</div>
+            </div>
+            <div class="bop-plans-section">
+                <h5>Leader Agendas</h5>
+                <div class="leader-plans-grid">
+                    <div class="leader-plans-block">
+                        <h6>Chancellor Toadsworth (Regency)</h6>
+                        ${getPlansHTML('chancellor_toadsworth')}
+                    </div>
+                    <div class="leader-plans-block">
+                        <h6>Captain Toadette (Loyalists)</h6>
+                        ${getPlansHTML('captain_toadette')}
+                    </div>
+                    <div class="leader-plans-block">
+                        <h6>High Spore Speaker (Chaotic)</h6>
+                        ${getPlansHTML('high_spore_speaker')}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderMidlands() {
+    const data = BOP_STATE.midlands;
+
+    const locationsHTML = data.locations.map(loc => `
+        <div class="location-item control-${loc.control} ${loc.isBattlefront ? 'is-battlefront' : ''}">
+            <img src="${loc.icon}" alt="${loc.control}" class="location-icon">
+            <div class="location-info">
+                <div class="name">${loc.name}</div>
+                <div class="type">${loc.type} ${loc.note ? `- <span class="note">${loc.note}</span>` : ''}</div>
+            </div>
+        </div>
+    `).join('');
+
+     const getPlansHTML = (leaderKey) => {
+        const leaderChar = LORE_DATA.characters[leaderKey] || {};
+        return data.plans[leaderKey].map(plan => {
+            const active = data.active_plans.find(p => p.planId === plan.id);
+            return `
+                <div class="plan-card ${active ? 'active-plan' : ''}" data-description="${plan.description}" data-effect="${plan.effect}">
+                    <div class="plan-title">${plan.name}</div>
+                    <div class="plan-details">
+                         ${active ? `<strong>${active.days} days remaining</strong>` : `(${plan.duration} days)`}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    };
+
+    return `
+         <div class="bop-system">
+            <h4>${data.title}</h4>
+            <p class="bop-description">${data.description}</p>
+            <div class="midlands-overview-container">
+                <div class="battle-map-container">
+                    <h5>Battle Map</h5>
+                    <div class="battle-map-locations">${locationsHTML}</div>
+                </div>
+            </div>
+            <div class="bop-plans-section">
+                <h5>Leader Agendas</h5>
+                <div class="leader-plans-grid">
+                     <div class="leader-plans-block">
+                        <h6>Emperor Elagabalus (Regal)</h6>
+                        ${getPlansHTML('emperor_elagabalus')}
+                    </div>
+                     <div class="leader-plans-block">
+                        <h6>Baron Von Hess (Vampire)</h6>
+                        ${getPlansHTML('baron_von_hess')}
+                    </div>
+                     <div class="leader-plans-block">
+                        <h6>Grak Ironhide (Werewolf)</h6>
+                        ${getPlansHTML('grak_ironhide')}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+
+function setupEventListeners() {
+    const tooltip = document.getElementById('bop-tooltip');
+    const container = document.getElementById('bop-container');
+    if(!tooltip || !container) return;
+
+    container.addEventListener('mouseover', (e) => {
+        const planCard = e.target.closest('.plan-card');
+        if (planCard && planCard.dataset.description) {
+            tooltip.innerHTML = `
+                <h6>${planCard.querySelector('.plan-title').textContent}</h6>
+                <p>${planCard.dataset.description}</p>
+                <p class="tooltip-effect"><strong>Effect:</strong> ${planCard.dataset.effect}</p>
+            `;
+            tooltip.style.visibility = 'visible';
+            tooltip.style.opacity = '1';
+        }
+    });
+
+    container.addEventListener('mousemove', (e) => {
+        if (tooltip.style.visibility === 'visible') {
+            tooltip.style.left = `${e.clientX + 15}px`;
+            tooltip.style.top = `${e.clientY + 15}px`;
+        }
+    });
+
+    container.addEventListener('mouseout', (e) => {
+        if (e.target.closest('.plan-card')) {
+            tooltip.style.visibility = 'hidden';
+            tooltip.style.opacity = '0';
+        }
+    });
+}
+
+
+export function init() {
+    const container = document.getElementById('bop-container');
+    if (!container) return;
+
+    container.innerHTML = `
+        <h3 class="page-title" style="font-size: 1.8rem; color: var(--text-secondary); margin-bottom: 24px;">Balance of Power</h3>
+        ${renderMushroomKingdom()}
+        ${renderMidlands()}
+        <div id="bop-tooltip"></div>
+    `;
+    setupEventListeners();
+}

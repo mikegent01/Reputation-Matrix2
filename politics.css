@@ -1,3 +1,5 @@
+
+
 #politics-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -40,10 +42,10 @@
     border: 1px solid var(--negative-color);
 }
 
-.status-stable {
-    color: var(--positive-color);
-    background-color: rgba(35, 134, 54, 0.1);
-    border: 1px solid var(--positive-color);
+.status-stable, .status-fractured {
+    color: var(--neutral-color);
+    background-color: rgba(240, 185, 11, 0.1);
+    border: 1px solid var(--neutral-color);
 }
 
 .section-description {
@@ -185,6 +187,15 @@
     padding-bottom: 8px;
 }
 
+.coalition-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+    padding-left: 12px;
+    border-left: 2px solid var(--border-color);
+}
+
 .seat-container {
     display: flex;
     flex-wrap: wrap;
@@ -217,12 +228,13 @@
 /* Faction/Coalition Colors for Seats */
 .seat-regal_empire, .coalition-imperial_concordat { background-color: var(--major-powers-color); }
 .seat-iron_legion { background-color: #6c757d; }
-.seat-moonfang_pack, .coalition-unseen_court { background-color: #adb5bd; }
-.seat-onyx_hand { background-color: #495057; }
-.seat-mages_guild { background-color: var(--mystical-ancient-color); }
+.seat-moonfang_pack, .coalition-territorial_pact { background-color: var(--regional-powers-color); }
+.seat-onyx_hand, .coalition-sanguine_covenant { background-color: var(--negative-color); }
+.seat-mages_guild, .coalition-arcane_congress { background-color: var(--mystical-ancient-color); }
 .seat-cosmic_jesters, .coalition-chaos_caucus { background-color: var(--interdimensional-threat-color); }
 .seat-freelancer_underworld { background-color: var(--underworld-fringe-color); }
 .seat-unaligned, .coalition-heartland_alliance { background-color: var(--neutral-color); }
+
 
 #parliament-tooltip {
     position: fixed;

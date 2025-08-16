@@ -1,4 +1,5 @@
 import { LORE_DATA, CHARACTER_RELATIONS } from './lore.js';
+import { init as initBoP } from './balance-of-power.js';
 
 const MUSHROOM_KINGDOM_DATA = {
     name: "Mushroom Kingdom",
@@ -13,25 +14,61 @@ const MUSHROOM_KINGDOM_DATA = {
 
 const MIDLANDS_DIET_DATA = {
     name: "Holy Midlands Diet",
-    status: "Stable",
-    description: "The Midlands are governed by a parliamentary body known as the Diet, where representatives from various provinces vote on matters of state. Power is distributed unevenly, with the Capital Province holding significant sway. The primary political blocs are the traditionalist Human-Centric factions, the rising supernatural interests of Vampires and Werewolves, and the pragmatic, unaligned heartlands.",
+    status: "Fractured",
+    description: "The Midlands are governed by a parliamentary body where provincial representatives vote on state matters. The Diet is currently highly fractured. The traditional Imperial Concordat faces opposition from multiple, hostile supernatural blocs: the manipulative Sanguine Covenant of vampires, the territorial Territorial Pact of werewolves, and the isolationist Arcane Congress of mages. With these factions refusing to cooperate, the pragmatic Heartland Alliance holds the decisive swing vote in an increasingly unstable political landscape.",
     provinces: [
-        { name: 'Capital Province', votes: 15, faction: 'regal_empire' },
-        { name: 'Yal Belanor', votes: 4, faction: 'iron_legion' },
-        { name: 'Vemilia', votes: 3, faction: 'unaligned' },
-        { name: 'Province of Ironwood & Isle of Burbary', votes: 4, faction: ['iron_legion', 'moonfang_pack'] },
-        { name: 'Lockerwood', votes: 8, faction: 'unaligned' },
-        { name: 'Autumn Wood', votes: 5, faction: ['onyx_hand', 'mages_guild'] },
-        { name: 'Dry County', votes: 1, faction: 'cosmic_jesters' },
-        { name: 'Dulgra', votes: 3, faction: 'moonfang_pack' },
-        { name: 'Dark Valley', votes: 3, faction: 'moonfang_pack' },
-        { name: 'Southern Marchlands', votes: 7, faction: ['onyx_hand', 'regal_empire'] }
+        { name: 'Capital Province', votes: 15, bias: 'strong human', loyalty: 70, faction: 'regal_empire' },
+        { name: 'Yal Belanor', votes: 4, bias: 'human', loyalty: 60, faction: 'regal_empire' },
+        { name: 'Vemilia', votes: 3, bias: 'lean human', loyalty: 55, faction: 'regal_empire' },
+        { name: 'Ironwood & Isle of Burbary', votes: 4, bias: 'lean human', loyalty: 50, faction: 'regal_empire' },
+        { name: 'Lockerwood', votes: 3, bias: 'human', loyalty: 60, faction: 'unaligned' },
+        { name: 'Yal Central', votes: 3, bias: 'human', loyalty: 65, faction: 'regal_empire' },
+        { name: 'Dark Shores', votes: 2, bias: 'mixed', loyalty: 45, faction: 'unaligned' },
+        { name: 'Autumnwood', votes: 5, bias: 'vampire', loyalty: 40, faction: 'onyx_hand' },
+        { name: 'Dry County', votes: 1, bias: 'mixed', loyalty: 50, faction: 'cosmic_jesters' },
+        { name: 'Dulgra', votes: 3, bias: 'werewolf', loyalty: 45, faction: 'moonfang_pack' },
+        { name: 'Dark Valley', votes: 3, bias: 'strong werewolf', loyalty: 35, faction: 'moonfang_pack' },
+        { name: 'Gehnsha Glade', votes: 3, bias: 'lean vampire', loyalty: 50, faction: 'onyx_hand' },
+        { name: 'Jungle de Thorn', votes: 2, bias: 'regal', loyalty: 60, faction: 'regal_empire' },
+        { name: 'Yale Shores', votes: 2, bias: 'magic', loyalty: 55, faction: 'mages_guild' }
     ],
     coalitions: {
-        imperial_concordat: { name: 'The Imperial Concordat', color: 'var(--major-powers-color)', factions: ['regal_empire', 'iron_legion'] },
-        unseen_court: { name: 'The Unseen Court', color: 'var(--mystical-ancient-color)', factions: ['onyx_hand', 'mages_guild', 'moonfang_pack'] },
-        heartland_alliance: { name: 'The Heartland Alliance', color: 'var(--neutral-color)', factions: ['unaligned'] },
-        chaos_caucus: { name: 'The Chaos Caucus', color: 'var(--interdimensional-threat-color)', factions: ['cosmic_jesters', 'freelancer_underworld'] }
+        imperial_concordat: {
+            name: 'The Imperial Concordat',
+            color: 'var(--major-powers-color)',
+            factions: ['regal_empire', 'iron_legion'],
+            description: "A coalition representing the old guard of the Regal Empire, championing order, tradition, and human supremacy. They seek to expand Imperial borders, increase military funding, and restrict the rights of supernatural beings."
+        },
+        sanguine_covenant: {
+            name: 'The Sanguine Covenant',
+            color: 'var(--negative-color)',
+            factions: ['onyx_hand'],
+            description: "The political arm of the ancient vampire covens. They operate through shadow, blackmail, and centuries of accumulated influence, voting to legalize their shadow economy and subtly expand their power, viewing mortal politics as a trivial game to be played for their own amusement and gain."
+        },
+        territorial_pact: {
+            name: 'The Territorial Pact',
+            color: 'var(--regional-powers-color)',
+            factions: ['moonfang_pack'],
+            description: "Representing the fierce werewolf clans, this bloc is concerned with one thing: sovereignty. They vote to protect their ancestral hunting grounds, oppose any Imperial or vampiric encroachment, and uphold the right to govern themselves by their own laws of strength and honor."
+        },
+        arcane_congress: {
+            name: 'The Arcane Congress',
+            color: 'var(--mystical-ancient-color)',
+            factions: ['mages_guild'],
+            description: "The Mages' Guild acts as its own independent and influential voting bloc. They are isolationist and focused on magical regulation, voting to protect Guild autonomy, fund arcane research, and contain any magical threats—regardless of who wields them."
+        },
+        heartland_alliance: {
+            name: 'The Heartland Alliance',
+            color: 'var(--neutral-color)',
+            factions: ['unaligned'],
+            description: "This pragmatic bloc represents the interests of the common folk from unaligned agricultural and trade provinces. Their votes are often the deciding factor in the Diet, traded not for coin, but for policies that ensure prosperity and provincial autonomy."
+        },
+        chaos_caucus: {
+            name: 'The Chaos Caucus',
+            color: 'var(--interdimensional-threat-color)',
+            factions: ['cosmic_jesters', 'freelancer_underworld'],
+            description: "Less a political party and more a force of pure disruption. Led by the unpredictable Servants of the Cosmic Jester, their goal is not to gain power, but to undermine the very concept of organized government through absurdity and randomness."
+        }
     }
 };
 
@@ -148,12 +185,7 @@ function generateRepresentatives() {
         const filledSeats = filledSeatsByProvince[province.name] || 0;
         
         for (let i = filledSeats; i < totalSeats; i++) {
-            let faction;
-            if (Array.isArray(province.faction)) {
-                faction = province.faction[i % province.faction.length];
-            } else {
-                faction = province.faction;
-            }
+            let faction = province.faction;
             reps.push({
                 id: `rep-${idCounter++}`,
                 name: generateUniqueName(existingNames),
@@ -238,6 +270,7 @@ function renderMidlandsDiet() {
         return `
             <div class="coalition-block">
                 <h4 class="coalition-header" style="border-left: 4px solid ${coalition.color}; padding-left: 8px;">${coalition.name} (${reps.length} seats)</h4>
+                ${coalition.description ? `<p class="coalition-description">${coalition.description}</p>` : ''}
                 <div class="seat-container">
                     ${reps.map(rep => `<div class="parliament-seat seat-${rep.factionId}" data-rep-id="${rep.id}"></div>`).join('')}
                 </div>
@@ -249,7 +282,7 @@ function renderMidlandsDiet() {
         <div class="politics-section" id="midlands-diet-section">
             <div class="politics-section-header">
                 <h3>${data.name}</h3>
-                <span class="status status-stable">${data.status}</span>
+                <span class="status status-fractured">${data.status}</span>
             </div>
             <p class="section-description">${data.description}</p>
             ${powerBalanceHTML}
@@ -331,6 +364,7 @@ function init() {
     `;
     
     setupEventListeners();
+    initBoP(); // Initialize the Balance of Power module
 }
 
 init();

@@ -6,6 +6,7 @@
     <title>Vigilance Terminal | Political Systems</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="politics.css">
+    <link rel="stylesheet" href="balance-of-power.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -45,6 +46,10 @@
                         <img src="icon_newspaper.png" alt="Newspaper Icon">
                         <span>The Daily Paradox</span>
                     </a>
+                    <a href="battlefield.html" class="nav-button">
+                        <img src="icon_focus.png" alt="Battlefield Icon">
+                        <span>Battlefield</span>
+                    </a>
                 </nav>
                  <div id="faction-legend">
                     <h3>Faction Regions</h3>
@@ -53,7 +58,7 @@
                     </ul>
                 </div>
                  <footer style="margin-top: auto;">
-                    <p>SYSTEM STATUS: <span class="status-ok">ONLINE</span></p>
+                    <p>SYSTEM STATUS: <a href="status.html" class="status-link"><span class="status-ok">ONLINE</span></a></p>
                     <p>&copy; Waluigi, Evil Genius</p>
                 </footer>
             </aside>
@@ -62,6 +67,9 @@
                  <div id="politics-container">
                     <!-- Political systems content injected by JS -->
                  </div>
+                 <div id="bop-container" class="politics-section">
+                    <!-- Balance of Power content injected by JS -->
+                </div>
             </main>
             <aside id="detail-panel">
                 <button id="detail-panel-close">&times;</button>

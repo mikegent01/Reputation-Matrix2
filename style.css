@@ -369,6 +369,18 @@ body {
     color: var(--text-secondary);
 }
 
+.status-link {
+    text-decoration: none;
+}
+.status-link .status-ok {
+    transition: all 0.2s ease-in-out;
+}
+.status-link:hover .status-ok {
+    color: var(--accent-color);
+    text-shadow: 0 0 5px var(--accent-color);
+}
+
+
 .status-ok {
     color: var(--positive-color);
     font-weight: 700;
@@ -1372,6 +1384,49 @@ tr.current-rank {
     text-shadow: 0 0 3px var(--accent-color);
 }
 
+/* --- Directory Controls --- */
+#directory-controls {
+    text-align: left;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#directory-controls span {
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    margin-right: 10px;
+}
+
+.dir-control-button {
+    padding: 8px 16px;
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-family: var(--font-display);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.dir-control-button:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.dir-control-button.active {
+    background-color: var(--accent-color);
+    color: var(--sidebar-bg);
+    border-color: var(--accent-color);
+    font-weight: bold;
+}
+
+
 /* Faction Directory Styles */
 .faction-directory-grid {
     display: grid;
@@ -1401,7 +1456,7 @@ tr.current-rank {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .faction-directory-logo {
@@ -1414,10 +1469,6 @@ tr.current-rank {
     font-family: var(--font-display);
     font-size: 1.2rem;
     color: var(--text-color);
-}
-
-.faction-directory-card .reputation-bar-container {
-    margin-top: auto; /* Push bar to the bottom */
 }
 
 /* --- On-Demand Asset Scanner Modal --- */

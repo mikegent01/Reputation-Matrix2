@@ -7,6 +7,7 @@ const viewContainer = document.getElementById('view-container');
 const partyList = document.getElementById('party-list');
 const eventList = document.getElementById('event-list');
 let currentFactionDetail = null;
+let currentSort = 'power'; // Default sort order
 
 // --- ROUTING ---
 
@@ -70,7 +71,8 @@ function renderRegionLegend(regions) {
 
 // --- VIEW-SPECIFIC RENDERERS ---
 
-function renderFactionDirectory() {
+function renderFactionDirectory(sortBy = currentSort) {
+    currentSort = sortBy;
     viewContainer.innerHTML = ''; // Clear previous view
 
     const homeViewWrapper = document.createElement('div');
@@ -87,7 +89,7 @@ function renderFactionDirectory() {
 
     const directoryContainer = document.createElement('div');
     directoryContainer.id = 'faction-directory';
-    directoryContainer.innerHTML = `<h2 class="page-title" style="margin-bottom: 24px;">Faction Directory (Sorted by Power)</h2>`;
+    directoryContainer.innerHTML = `<h2 class="page-title" style="margin-bottom: 24px;">Faction Directory</h2>`;
     const grid = document.createElement('div');
     grid.className = 'faction-directory-grid';
     directoryContainer.appendChild(grid);
@@ -101,17 +103,26 @@ function renderFactionDirectory() {
 
     const factionKeys = Object.keys(LORE_DATA.factions);
     
-    // Sort factions by power level, descending
+    // Sort factions based on the selected criteria
     const sortedFactionKeys = factionKeys.sort((a, b) => {
         const factionA = LORE_DATA.factions[a];
         const factionB = LORE_DATA.factions[b];
-        return (factionB.power_level || 0) - (factionA.power_level || 0);
+        switch(currentSort) {
+            case 'name':
+                return factionA.name.localeCompare(factionB.name);
+            case 'region':
+                return (factionA.region || 'ZZZ').localeCompare(factionB.region || 'ZZZ');
+            case 'power':
+            default:
+                 return (factionB.power_level || 0) - (factionA.power_level || 0);
+        }
     });
     
     // No longer render region legend on this page
     const legendList = document.getElementById('faction-legend-list');
     if (legendList) legendList.innerHTML = '';
 
+    grid.innerHTML = ''; // Clear existing grid before re-rendering
     sortedFactionKeys.forEach(factionKey => {
         const faction = LORE_DATA.factions[factionKey];
         const categoryClass = `legend-${faction.category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`;
@@ -143,20 +154,24 @@ function renderFactionDirectory() {
             <div class="faction-directory-header">
                 <img src="${faction.logo}" class="faction-directory-logo" alt="${faction.name} Logo">
                 <div class="faction-info">
-                    <h4 class="faction-directory-title">${faction.name} (Power: ${faction.power_level})</h4>
-                    <p class="assessment-text" style="font-size: 0.8rem">${faction.description}</p>
+                    <h4 class="faction-directory-title">${faction.name}</h4>
+                     <p class="assessment-text" style="font-size: 0.8rem; margin-top: 4px; font-style: normal;"><strong>Region:</strong> ${faction.region || 'Unknown'}<br/><strong>Power:</strong> ${faction.power_level || 'N/A'}</p>
                 </div>
             </div>
-            <div class="party-reputation">
+             <p class="assessment-text" style="font-size: 0.8rem">${faction.description}</p>
+            <div class="party-reputation" style="margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border-color);">
                 <h5 style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px;">Party Standing: <span class="${partyRepClass}">${partyRep}</span></h5>
                 <div class="reputation-bar-container">
                     <div class="reputation-bar ${partyRepClass}" style="width: ${partyBarWidth}%; background-color: var(--${partyRepClass}-color);"></div>
                 </div>
-                 <p class="assessment-text" style="margin-top: 8px; font-weight: bold;">${getGenericFactionAssessment(partyRep)}</p>
             </div>
-            ${notablePeopleHTML}
         `;
         grid.appendChild(card);
+    });
+
+    // Update active state on sort buttons
+    document.querySelectorAll('#directory-controls button').forEach(button => {
+        button.classList.toggle('active', button.dataset.sort === currentSort);
     });
 }
 
@@ -679,4 +694,17 @@ export function setupEventListeners() {
             }
         }
     });
+
+    const directoryControls = document.getElementById('directory-controls');
+    if (directoryControls) {
+        directoryControls.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                const sortBy = e.target.dataset.sort;
+                if (sortBy) {
+                    playSound('click.mp3');
+                    renderFactionDirectory(sortBy);
+                }
+            }
+        });
+    }
 }
