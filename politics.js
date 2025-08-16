@@ -246,7 +246,7 @@ function renderMidlandsDiet() {
     }).join('');
 
     return `
-        <div class="politics-section">
+        <div class="politics-section" id="midlands-diet-section">
             <div class="politics-section-header">
                 <h3>${data.name}</h3>
                 <span class="status status-stable">${data.status}</span>
@@ -270,8 +270,7 @@ function setupEventListeners() {
     const tooltip = document.getElementById('parliament-tooltip');
     if(!tooltip) return;
     
-    // INTENTIONAL BUG: This selects the first .politics-section, which is the Mushroom Kingdom, not the Midlands Diet.
-    const parliamentContainer = document.querySelector('.politics-section'); 
+    const parliamentContainer = document.getElementById('midlands-diet-section'); 
     if (!parliamentContainer) return;
 
     parliamentContainer.addEventListener('mouseover', (e) => {
