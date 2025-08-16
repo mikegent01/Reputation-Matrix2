@@ -9,6 +9,7 @@ export const FACTIONS_1 = {
         },
         power_level: 10,
         category: "Major Powers",
+        region: "The Midlands (Capital)",
         leader: "emperor_elagabalus",
         notable_people: [
             { name: "Emperor Elagabalus", role: "Supreme Ruler", description: "The divine ruler of the Empire, believed to be immortal and all-knowing." },
@@ -74,6 +75,7 @@ export const FACTIONS_1 = {
         },
         power_level: 9,
         category: "Major Powers",
+        region: "The Midlands (Imperial Borders)",
         leader: "general_marcus_ironhand",
         notable_people: [
             { name: "General Marcus Ironhand", role: "Supreme Commander", description: "The veteran leader of the Legion's Old Guard, known for his tactical brilliance." },
@@ -136,6 +138,7 @@ export const FACTIONS_1 = {
         },
         power_level: 7,
         category: "Underworld & Fringe",
+        region: "Widespread (Shadows)",
         leader: "the_broker",
         notable_people: [
             { name: "The Broker", role: "Information Kingpin", description: "A mysterious figure who trades in secrets and favors." },
@@ -198,6 +201,7 @@ export const FACTIONS_1 = {
         },
         power_level: 4,
         category: "Underworld & Fringe",
+        region: "Mushroom Kingdom (Underbelly)",
         leader: "skull_cap_murphy",
         notable_people: [
             { name: "Big T", role: "Former Leader", description: "The tyrannical toad supremacist whose body has mysteriously vanished." },
@@ -260,6 +264,7 @@ export const FACTIONS_1 = {
         },
         power_level: 3,
         category: "Underworld & Fringe",
+        region: "Mushroom Kingdom (Fringe)",
         leader: "high_spore_speaker",
         notable_people: [
             { name: "The Ascended One", role: "Deity", description: "The mysterious toad god worshipped by the cult, whose return is prophesied." },
@@ -311,6 +316,7 @@ export const FACTIONS_1 = {
         power_level: 8,
         leader: "lord_crimson",
         category: "Mystical & Ancient",
+        region: "The Midlands (Southern Marchlands)",
         notable_people: [
             { name: "Lord Crimson", role: "Elder Vampire", description: "An ancient vampire who orchestrated Archie's trial to weaken the Mages' Guild." },
             { name: "Lady Nightshade", role: "Sanguine Blades Leader", description: "A younger vampire who leads the aggressive faction within the Hand." }
@@ -374,6 +380,7 @@ export const FACTIONS_1 = {
         power_level: 8,
         leader: "archmage_theron",
         category: "Mystical & Ancient",
+        region: "The Midlands (Autumn Wood)",
         notable_people: [
             { name: "Archmage Theron", role: "Guild Leader", description: "The stern leader of the Conservator faction, dedicated to magical tradition." },
             { name: "X.O.", role: "Former Member", description: "The powerful rogue mage who betrayed the guild and was recently defeated." }
@@ -436,6 +443,7 @@ export const FACTIONS_1 = {
         power_level: 6,
         leader: "chief_thornpaw",
         category: "Regional Powers",
+        region: "Wilderlands",
         notable_people: [
             { name: "Chief Thornpaw", role: "Spirit-Walker Leader", description: "The wise shaman who guides the clans and now teaches Dan magic." },
             { name: "Warchief Ironmane", role: "Beast-Rider Champion", description: "The strongest warrior among the Beast-Riders, known for his massive tiger mount." }
@@ -479,6 +487,7 @@ export const FACTIONS_1 = {
         power_level: 5,
         leader: "the_jester",
         category: "Mystical & Ancient",
+        region: "Everywhere & Nowhere",
         notable_people: [
             { name: "The Cosmic Jester", role: "Chaotic Deity", description: "The unknowable entity of madness and chaos worshipped by the cult." },
             { name: "Giggling Pete", role: "High Fool", description: "The most devoted servant of chaos, known for his reality-bending pranks." }
@@ -521,6 +530,7 @@ export const FACTIONS_1 = {
         },
         power_level: 5,
         category: "Underworld & Fringe",
+        region: "Widespread (Rebel Territories)",
         leader: "free_name_sarah",
         notable_people: [
             { name: "Free-Name Sarah", role: "Revolutionary Leader", description: "A former slave who leads the Ideologues with inspiring speeches." },
@@ -565,6 +575,7 @@ export const FACTIONS_1 = {
         power_level: 7,
         leader: "high_inquisitor_vale",
         category: "Mystical & Ancient",
+        region: "The Midlands (Holy Enclaves)",
         notable_people: [
             { name: "High Inquisitor Vale", role: "Purifier Leader", description: "A zealous paladin who sees all supernatural creatures as abominations." },
             { name: "Templar Captain Dorn", role: "Torch Bearer", description: "A more moderate leader who believes in redemption before destruction." }

@@ -10,6 +10,7 @@ export const FACTIONS_2 = {
         power_level: 7,
         leader: "judge_eternal_korven",
         category: "Regional Powers",
+        region: "The Midlands (Citadel of Law)",
         notable_people: [
             { name: "Judge Eternal Korven", role: "Supreme Arbiter", description: "The immortal leader of the Truthbearers, known for his unwavering dedication to law." },
             { name: "Arbitrix Mira", role: "Intent Reader", description: "A younger judge who considers the spirit of the law as much as the letter." }
@@ -46,6 +47,7 @@ export const FACTIONS_2 = {
         power_level: 6,
         leader: "warboss_skarjaw",
         category: "Regional Powers",
+        region: "Wastelands & Borderlands",
         notable_people: [
             { name: "Warboss Skarjaw", role: "Big Boss", description: "The biggest, meanest Ork who leads Da Krumperz through pure brutality." },
             { name: "Big Mek Ironteef", role: "Mekaniaks Leader", description: "The genius engineer who builds the most explosive war machines." }
@@ -96,6 +98,7 @@ export const FACTIONS_2 = {
         power_level: 4,
         leader: "lario",
         category: "Underworld & Fringe",
+        region: "Wastelands & Borderlands",
         notable_people: [
             { name: "Lario", role: "Workshop Owner", description: "Wario's brother who runs a questionable workshop with 'toad-powered polishing' services." },
             { name: "Captain Zipwire", role: "Speed Freek Leader", description: "The fastest goblin pilot who leads the adrenaline junkies." }
@@ -146,6 +149,7 @@ export const FACTIONS_2 = {
         power_level: 7,
         leader: "bowser",
         category: "Regional Powers",
+        region: "Darklands",
         notable_people: [
             { name: "Bowser", role: "King", description: "The supreme ruler of the Koopa Kingdom and commander of the Troop." },
             { name: "Kamek", role: "Chief Advisor", description: "The wise Magikoopa who serves as Bowser's primary magical advisor." }
@@ -189,6 +193,7 @@ export const FACTIONS_2 = {
         power_level: 6,
         leader: "clan_chief_redmane",
         category: "Regional Powers",
+        region: "Wilderlands",
         notable_people: [
             { name: "Clan Chief Redmane", role: "Old Clans Leader", description: "A traditionalist leader who fights to preserve ancient clan ways." },
             { name: "Young Wolf Kara", role: "New Wave Commander", description: "A fierce young warrior who embraces any method to defeat the Empire." }
@@ -232,6 +237,7 @@ export const FACTIONS_2 = {
         power_level: 5,
         leader: "captain_syrup",
         category: "Underworld & Fringe",
+        region: "Skies & Seas",
         notable_people: [
             { name: "Captain Syrup", role: "Fleet Captain", description: "A cunning pirate captain with a grudge against Waluigi and the party after being freed, then immediately attacked." },
             { name: "First Mate Jones", role: "Quartermaster", description: "The loyal and pragmatic second-in-command of the Crimson Fleet." }
@@ -274,11 +280,37 @@ export const FACTIONS_2 = {
         power_level: 4,
         leader: "wario",
         category: "Underworld & Fringe",
+        region: "Diamond City (Greed Pits)",
         notable_people: [
             { name: "Wario", role: "Secret Leader", description: "The ghostly mastermind pulling the strings, driven by insatiable greed." },
             { name: "Lario", role: "Public Leader", description: "Wario's brother, the public face of the gang and a skilled, if cowardly, mechanic." }
         ],
-        waluigi_tip: "WAH! My old partner... He only cares about money. Wave a big enough bag of coins and he'll do anything. Or better yet, tell him someone else has a bigger bag of coins. His jealousy will do the rest!"
+        waluigi_tip: "WAH! My old partner... He only cares about money. Wave a big enough bag of coins and he'll do anything. Or better yet, tell him someone else has a bigger bag of coins. His jealousy will do the rest!",
+        internal_politics: {
+            ruling_faction: "wario_ghost",
+            sub_factions: {
+                wario_ghost: {
+                    name: "Wario's Ghostly Ambition",
+                    description: "The secret leadership of Wario himself, who pulls the strings from the ethereal plane. His motives are pure, insatiable greed.",
+                    influence: 50,
+                    reputation_modifiers: { archie: 10, markop: -10, humpik: 0, bowser: -10 },
+                    key_figures: [{ name: "Wario", role: "Ghostly Mastermind", description: "The true leader, obsessed with treasure." }]
+                },
+                lario_workshop: {
+                    name: "Lario's Workshop",
+                    description: "The public face of the operation. Lario and his mechanics are more interested in tinkering and 'acquiring' tech than grand schemes.",
+                    influence: 30,
+                    reputation_modifiers: { archie: 5, markop: -5, humpik: 5, bowser: 5 },
+                    key_figures: [{ name: "Lario", role: "Public Face", description: "Wario's brother and a skilled mechanic." }]
+                },
+                goldgrubber_gang: {
+                    name: "The Goldgrubber Gang",
+                    description: "Wario's old crew of loyal-to-the-coin treasure hunters. They are direct, brutish, and effective at smash-and-grab operations.",
+                    influence: 20,
+                    reputation_modifiers: { archie: -5, markop: -5, humpik: 5, bowser: 0 }
+                }
+            }
+        }
     },
     mushroom_regency: {
         name: "Mushroom Regency",
@@ -291,6 +323,7 @@ export const FACTIONS_2 = {
         power_level: 5,
         leader: "chancellor_toadsworth",
         category: "Regional Powers",
+        region: "Mushroom Kingdom (Heartlands)",
         notable_people: [
             { name: "Chancellor Toadsworth", role: "Head of the Regency", description: "The elderly, overwhelmed leader trying to hold the kingdom together." },
             { name: "Captain Toad", role: "Commander of the Toadstool Guard", description: "The brave but beleaguered commander of the official military forces." }
@@ -308,6 +341,7 @@ export const FACTIONS_2 = {
         power_level: 4,
         leader: "captain_toadette",
         category: "Regional Powers",
+        region: "Mushroom Kingdom (Militarized Zones)",
         notable_people: [
             { name: "Captain Toadette", role: "Faction Leader", description: "A fanatical commander who believes the Princess is alive and the Regency is illegitimate." },
             { name: "Sergeant Piantissimo", role: "Chief Scout", description: "A swift and dedicated scout tasked with finding clues to the Princess's 'true' whereabouts." }
@@ -325,6 +359,7 @@ export const FACTIONS_2 = {
         power_level: 5,
         leader: "boss_knuckles",
         category: "Underworld & Fringe",
+        region: "Widespread (Urban Centers)",
         notable_people: [
             { name: "Boss Knuckles", role: "Gang Leader", description: "The ruthless leader of the Old Bosses who wants revenge on the party." },
             { name: "Iron Mike", role: "Enforcer Captain", description: "The strongest fighter in the gang, known for his metal gauntlets." }
@@ -368,6 +403,7 @@ export const FACTIONS_2 = {
         power_level: 7,
         leader: "alpha_bloodmaw",
         category: "Mystical & Ancient",
+        region: "The Midlands (Dark Valley)",
         notable_people: [
             { name: "Alpha Bloodmaw", role: "Pack Leader", description: "The strongest werewolf who leads the pack through dominance and fury." },
             { name: "Shaman Moonwhisper", role: "Spirit Guide", description: "The pack's spiritual leader who communes with lunar spirits." }
@@ -411,6 +447,7 @@ export const FACTIONS_2 = {
         power_level: 2,
         leader: "dan",
         category: "Underworld & Fringe",
+        region: "Mushroom Kingdom (Nomadic)",
         notable_people: [
             { name: "Dan", role: "Hero Leader", description: "The brave toad who defeated X.O. and now leads his fellow liberated toads." },
             { name: "Toad Lee", role: "First Warrior", description: "The first toad to join the party, wielding a surprisingly large axe." },
@@ -539,10 +576,35 @@ export const FACTIONS_2 = {
         power_level: 3,
         leader: "detective_penny",
         category: "Underworld & Fringe",
+        region: "Diamond City (Metropolis)",
         notable_people: [
             { name: "Detective Penny", role: "Lead Investigator", description: "A sharp-witted detective with a passion for puzzles and justice. She has made it her personal mission to dismantle Wario's criminal empire." }
         ],
-        waluigi_tip: "These do-gooders are so predictable. Just leave a fake clue leading to a 'bigger' crime, and they'll drop everything to chase the shiny new mystery. WAH!"
+        waluigi_tip: "These do-gooders are so predictable. Just leave a fake clue leading to a 'bigger' crime, and they'll drop everything to chase the shiny new mystery. WAH!",
+        internal_politics: {
+            ruling_faction: "the_puzzlers",
+            sub_factions: {
+                the_puzzlers: {
+                    name: "The Puzzlers",
+                    description: "The core group of detectives led by Penny. They are dedicated to solving crimes through logic and deduction, and view the party as chaotic lawbreakers.",
+                    influence: 60,
+                    reputation_modifiers: { archie: -20, markop: -10, humpik: -5, bowser: -15 },
+                    key_figures: [{ name: "Detective Penny", role: "Lead Investigator", description: "A brilliant detective with a passion for justice." }]
+                },
+                forensics_and_artifacts: {
+                    name: "Forensics & Artifacts",
+                    description: "Specialists who analyze crime scenes and recovered items. They value preservation and despise the party's destructive methods.",
+                    influence: 25,
+                    reputation_modifiers: { archie: -15, markop: -5, humpik: -5, bowser: -5 }
+                },
+                informant_network: {
+                    name: "The Informant Network",
+                    description: "The shadowy side of the agency that deals with underworld contacts. They see the party's chaos as a useful source of information.",
+                    influence: 15,
+                    reputation_modifiers: { archie: 10, markop: 0, humpik: 0, bowser: 0 }
+                }
+            }
+        }
     },
     goodstyle_artisans: {
         name: "The Goodstyle Artisans",
@@ -555,9 +617,28 @@ export const FACTIONS_2 = {
         power_level: 2,
         leader: "master_goodstyle",
         category: "Regional Powers",
+        region: "Diamond City (Cultural Sector)",
         notable_people: [
             { name: "Master Goodstyle", role: "Patron of the Arts", description: "An ancient and revered artisan who believes that beauty is the world's most valuable currency. He despises Wario for his crude materialism." }
         ],
-        waluigi_tip: "Artists! So emotional! Just commission them to make a statue of ME, Waluigi, and while they're busy, you can rob them blind! It's a masterpiece of a plan!"
+        waluigi_tip: "Artists! So emotional! Just commission them to make a statue of ME, Waluigi, and while they're busy, you can rob them blind! It's a masterpiece of a plan!",
+        internal_politics: {
+            ruling_faction: "master_patrons",
+            sub_factions: {
+                master_patrons: {
+                    name: "The Master Patrons",
+                    description: "Led by Master Goodstyle, this is the core of the collective. They believe beauty is the world's most important currency and despise those who destroy it for profit or power.",
+                    influence: 60,
+                    reputation_modifiers: { archie: -30, markop: 5, humpik: -10, bowser: -20 },
+                    key_figures: [{ name: "Master Goodstyle", role: "Patron of the Arts", description: "An ancient artisan who despises crude materialism." }]
+                },
+                the_preservationists: {
+                    name: "The Preservationists",
+                    description: "A group of archivists and restorers dedicated to protecting cultural heritage. They see the party as a walking catastrophe for historical artifacts.",
+                    influence: 40,
+                    reputation_modifiers: { archie: -20, markop: 0, humpik: -15, bowser: -15 }
+                }
+            }
+        }
     }
 };

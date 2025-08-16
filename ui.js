@@ -55,6 +55,19 @@ export function renderEventList() {
     });
 }
 
+function renderRegionLegend(regions) {
+    const legendList = document.getElementById('faction-legend-list');
+    if (!legendList) return;
+
+    legendList.innerHTML = '';
+    regions.forEach(regionName => {
+        const regionId = regionName.toLowerCase().replace(/\s/g, '-').replace(/[\(\)]/g, '');
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="#${regionId}">${regionName}</a>`;
+        legendList.appendChild(li);
+    });
+}
+
 // --- VIEW-SPECIFIC RENDERERS ---
 
 function renderFactionDirectory() {
@@ -88,31 +101,57 @@ function renderFactionDirectory() {
 
     const factionKeys = Object.keys(LORE_DATA.factions);
     
-    factionKeys.sort((a, b) => (LORE_DATA.factions[b].power_level || 0) - (LORE_DATA.factions[a].power_level || 0));
-
     const groupedFactions = factionKeys.reduce((acc, key) => {
-        const category = LORE_DATA.factions[key].category || 'Uncategorized';
-        if (!acc[category]) {
-            acc[category] = [];
+        const region = LORE_DATA.factions[key].region || 'Uncategorized';
+        if (!acc[region]) {
+            acc[region] = [];
         }
-        acc[category].push(key);
+        acc[region].push(key);
         return acc;
     }, {});
     
-    const categoryOrder = ['Major Powers', 'Regional Powers', 'Mystical & Ancient', 'Underworld & Fringe', 'Interdimensional Threats'];
+    const regionOrder = [
+        'The Midlands (Capital)',
+        'The Midlands (Imperial Borders)',
+        'The Midlands (Southern Marchlands)',
+        'The Midlands (Autumn Wood)',
+        'The Midlands (Dark Valley)',
+        'The Midlands (Holy Enclaves)',
+        'The Midlands (Citadel of Law)',
+        'Mushroom Kingdom (Heartlands)',
+        'Mushroom Kingdom (Militarized Zones)',
+        'Mushroom Kingdom (Underbelly)',
+        'Mushroom Kingdom (Fringe)',
+        'Mushroom Kingdom (Nomadic)',
+        'Darklands',
+        'Wilderlands',
+        'Wastelands & Borderlands',
+        'Diamond City (Metropolis)',
+        'Diamond City (Cultural Sector)',
+        'Diamond City (Greed Pits)',
+        'Skies & Seas',
+        'Widespread (Urban Centers)',
+        'Widespread (Shadows)',
+        'Widespread (Rebel Territories)',
+        'Everywhere & Nowhere',
+    ];
 
-    categoryOrder.forEach(categoryName => {
-        if (groupedFactions[categoryName]) {
+    const presentRegions = regionOrder.filter(region => groupedFactions[region]);
+    renderRegionLegend(presentRegions);
+
+    presentRegions.forEach(regionName => {
+        if (groupedFactions[regionName]) {
             const header = document.createElement('h3');
-            const categoryClass = `legend-${categoryName.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`;
-            header.className = `faction-category-header ${categoryClass}-border`;
-            header.textContent = categoryName;
-            header.id = categoryName.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
+            const regionId = regionName.toLowerCase().replace(/\s/g, '-').replace(/[\(\)]/g, '');
+            header.className = `region-header`;
+            header.textContent = regionName;
+            header.id = regionId;
             grid.appendChild(header);
 
-            groupedFactions[categoryName].forEach(factionKey => {
+            groupedFactions[regionName].forEach(factionKey => {
                 const faction = LORE_DATA.factions[factionKey];
-                
+                const categoryClass = `legend-${faction.category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`;
+
                 let partyRepTotal = 0;
                 state.party.forEach(playerKey => {
                     partyRepTotal += getReputation(playerKey, factionKey);
@@ -237,7 +276,7 @@ function renderAuxiliaryParty() {
     container.innerHTML = `
         <h3 class="page-title" style="font-size: 1.5rem; color: var(--text-secondary);">
             Auxiliary Party Members 
-            <a href="#liberated_toads" class="faction-link" style="font-size: 0.9rem; color: var(--accent-color); text-decoration: none; margin-left: 8px;">
+            <a href="#faction/liberated_toads" class="faction-link" style="font-size: 0.9rem; color: var(--accent-color); text-decoration: none; margin-left: 8px;">
                 (See: The Liberated Toads)
             </a>
         </h3>

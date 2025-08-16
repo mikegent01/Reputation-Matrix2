@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,6 +44,14 @@
                         <img src="icon_focus.png" alt="Focus Icon">
                         <span>Toad Focus</span>
                     </a>
+                     <a href="politics.html" class="nav-button">
+                        <img src="icon_reputation.png" alt="Politics Icon">
+                        <span>Political Systems</span>
+                    </a>
+                    <a href="currency.html" class="nav-button">
+                        <img src="icon_currency.png" alt="Currency Icon">
+                        <span>Currency Exchange</span>
+                    </a>
                     <a href="newspaper.html" class="nav-button">
                         <img src="icon_newspaper.png" alt="Newspaper Icon">
                         <span>The Daily Paradox</span>
@@ -62,13 +70,9 @@
                     </ul>
                 </div>
                 <div id="faction-legend">
-                    <h3>Faction Categories</h3>
-                    <ul>
-                        <li class="legend-major-powers"><a href="#major-powers">Major Powers</a></li>
-                        <li class="legend-regional-powers"><a href="#regional-powers">Regional Powers</a></li>
-                        <li class="legend-mystical-ancient"><a href="#mystical-ancient">Mystical & Ancient</a></li>
-                        <li class="legend-underworld-fringe"><a href="#underworld-fringe">Underworld & Fringe</a></li>
-                        <li class="legend-interdimensional-threat"><a href="#interdimensional-threats">Interdimensional Threats</a></li>
+                    <h3>Faction Regions</h3>
+                    <ul id="faction-legend-list">
+                        <!-- Legend will be injected here by JS -->
                     </ul>
                 </div>
                 <footer>
@@ -89,6 +93,7 @@
             self.structuredClone = (obj) => JSON.parse(JSON.stringify(obj));
         }
     </script>
+    <script type="module" src="common.js"></script>
     <script type="module" src="main.js"></script>
 <script type="module" src="/index.tsx"></script>
 </body>

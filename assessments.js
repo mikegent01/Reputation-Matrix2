@@ -138,5 +138,17 @@ export const FACTION_ASSESSMENTS = {
         markop: `Markop is universally hailed as a hero and leader. Dan sees him as a mentor, Toad Lee sees him as a commander, and the others see him as their primary protector. His reputation among them is nearly spotless, as he represents the hope and order they now cling to.`,
         humpik: `Most toads view Humpik as a straightforward, powerful ally. They appreciate his strength in battle but are somewhat intimidated by his size and volume. They see him as a loyal soldier, which they can understand and respect.`,
         bowser: `The toads are deeply suspicious of Bowser. Having just escaped one form of tyranny, they are wary of another king, especially one with a reputation for conquest. Roger sees the practical value in the alliance, but most, like Dan, view him as a potential future enemy.`,
+    },
+    diamond_city_investigators: {
+        archie: `The DCI views Archie as a high-priority fugitive. His extensive criminal record, association with known underworld figures, and penchant for causing large-scale property damage make him a primary target for investigation and eventual capture.`,
+        markop: `Markop is considered an accomplice and a person of interest. His past as a paladin makes his current associations all the more troubling. He's seen as a tragic figure who has willingly chosen to operate outside the law.`,
+        humpik: `As an enforcer for a hostile monarch, Humpik is classified as a criminal element. While not a mastermind, his brute force makes him a dangerous obstacle in any potential confrontation. He's on file, but not a priority target.`,
+        bowser: `Bowser is viewed as the head of a massive criminal empire. His entire 'kingdom' is seen as an illegitimate state built on conquest and extortion. He is far too powerful for the DCI to tackle directly, but they are undoubtedly building a case against him.`,
+    },
+    goodstyle_artisans: {
+        archie: `The Artisans hold Archie in utter contempt. He is the embodiment of senseless destruction, a barbarian who would use a priceless sculpture for target practice. His chaotic energy is anathema to the creation and preservation of beauty.`,
+        markop: `A potential ally, were it not for his companions. The Artisans see Markop's appreciation for order and history, but his failure to restrain Archie's destructive impulses is a source of deep disappointment. He is a tragic, flawed figure in their eyes.`,
+        humpik: `Humpik is seen as a simple-minded brute, an instrument of Bowser's vulgar ambitions. He is the kind of creature who would smash a thousand-year-old vase without a second thought, and is therefore viewed with disdain.`,
+        bowser: `To the Artisans, Bowser is a tyrant with gaudy, tasteless ambitions. He seeks to conquer and build monuments to himself, destroying centuries of culture in the process. He represents the triumph of brute force over refined beauty.`,
     }
 };
