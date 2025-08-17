@@ -12,7 +12,6 @@ const tooltip = document.getElementById('focus-tooltip');
 const dayCounter = document.querySelector('#info-day-counter .day-number');
 const logList = document.getElementById('log-list');
 const inventoryList = document.getElementById('inventory-list');
-const advanceDayBtn = document.getElementById('advance-day-btn');
 const resetFocusBtn = document.getElementById('reset-focus-btn');
 
 // Load state immediately to ensure all data is available for rendering.
@@ -166,48 +165,6 @@ function renderInfoPanel() {
     }
 }
 
-function advanceDay() {
-    state.focusTreeState.day++;
-    
-    const completedFocuses = [];
-    
-    // Update active focuses
-    state.focusTreeState.activeFocuses.forEach(focus => {
-        focus.remainingDays--;
-        if (focus.remainingDays <= 0) {
-            completedFocuses.push(focus);
-        }
-    });
-
-    // Process completed focuses
-    completedFocuses.forEach(focus => {
-        const toadKey = focus.toadKey;
-        const node = findFocusNode(toadKey, focus.nodeId);
-        
-        // Remove from active
-        state.focusTreeState.activeFocuses = state.focusTreeState.activeFocuses.filter(f => f.nodeId !== focus.nodeId);
-        
-        // Add to unlocked
-        state.focusTreeState.unlocked[toadKey].push(focus.nodeId);
-        
-        // Add log entry
-        addToLog(LORE_DATA.auxiliary_party[toadKey].name, `Completed focus: "${node.title}".`);
-        
-        // Apply effects (simplified for now)
-        if (node.effects) {
-            if (node.effects.influence) {
-                state.focusTreeState.influences[toadKey] += node.effects.influence;
-                addToLog('System', `${LORE_DATA.auxiliary_party[toadKey].name} gained ${node.effects.influence} influence.`);
-            }
-        }
-    });
-
-    addToLog('System', `Advanced to Day ${state.focusTreeState.day}.`);
-    
-    saveState();
-    renderAll();
-}
-
 function startFocus(toadKey, nodeId) {
     const node = findFocusNode(toadKey, nodeId);
     if (!node) return;
@@ -309,7 +266,6 @@ function setupEventListeners() {
         }
     });
 
-    advanceDayBtn.addEventListener('click', advanceDay);
     resetFocusBtn.addEventListener('click', resetFocusTree);
 }
 

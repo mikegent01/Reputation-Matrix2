@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vigilance Terminal | Faction Directory</title>
+    <title>Vigilance Terminal | Login</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="faction-systems.css">
+    <link rel="stylesheet" href="login.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
@@ -21,13 +22,21 @@
 <link rel="stylesheet" href="/index.css">
 </head>
 <body>
-    <div id="login-screen">
-        <img src="logo.png" alt="Waluigi Logo" class="login-logo">
-        <h2 class="login-text">ACCESSING VIGILANCE TERMINAL...</h2>
-        <div class="login-progress-container">
-            <div class="login-progress-bar-inner"></div>
+    <div id="character-login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <img src="logo.png" alt="Waluigi Logo">
+                <h1>Vigilance Terminal</h1>
+                <p>Select Your Operator Profile</p>
+            </div>
+            <div id="character-select-grid">
+                <!-- Character cards will be injected by login.js -->
+            </div>
+            <div class="login-options">
+                <button id="generic-login-btn" class="login-option-btn">Generic Profile</button>
+                <button id="skip-intro-btn" class="login-option-btn">Skip Intro</button>
+            </div>
         </div>
-        <p class="login-subtext">WAH-thenticating...</p>
     </div>
 
     <div class="tablet-frame" style="display: none;">
@@ -54,6 +63,10 @@
                         <img src="icon_focus.png" alt="Focus Icon">
                         <span>Toad Focus</span>
                     </a>
+                    <a href="quests.html" class="nav-button">
+                        <img src="icon_dossier.png" alt="Quests Icon">
+                        <span>Quests</span>
+                    </a>
                      <a href="politics.html" class="nav-button">
                         <img src="icon_reputation.png" alt="Politics Icon">
                         <span>Political Systems</span>
@@ -65,6 +78,10 @@
                     <a href="newspaper.html" class="nav-button">
                         <img src="icon_newspaper.png" alt="Newspaper Icon">
                         <span>The Daily Paradox</span>
+                    </a>
+                    <a href="fawfuls-party.html" class="nav-button">
+                        <img src="faction_fawful.png" alt="Fawful Icon">
+                        <span>Fawful's Grand Gala</span>
                     </a>
                     <a href="battlefield.html" class="nav-button">
                         <img src="icon_focus.png" alt="Battlefield Icon">
@@ -91,6 +108,7 @@
                 </div>
                 <footer>
                     <p>SYSTEM STATUS: <a href="status.html" class="status-link"><span class="status-ok">ONLINE</span></a></p>
+                    <button id="switch-operator-btn" class="status-link" style="background:none; border:none; color:inherit; font:inherit; cursor:pointer; padding:0; text-decoration: underline;">Switch Operator</button>
                     <p>&copy; Waluigi, Evil Genius</p>
                 </footer>
             </aside>
@@ -114,7 +132,7 @@
         }
     </script>
     <script type="module" src="common.js"></script>
-    <script type="module" src="main.js"></script>
+    <script type="module" src="login.js"></script>
 <script type="module" src="/index.tsx"></script>
 </body>
 </html>

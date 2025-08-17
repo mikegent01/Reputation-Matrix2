@@ -9,6 +9,9 @@ const PROJECT_PAGES = [
     'newspaper.html',
     'currency.html',
     'politics.html',
+    'quests.html',
+    'fawfuls-party.html',
+    'battlefield.html',
     'developer.html'
 ];
 

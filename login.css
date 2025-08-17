@@ -1,0 +1,120 @@
+/* --- Character Login Screen --- */
+#character-login-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: var(--bg-color);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.login-container {
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
+    animation: fadeIn 1s ease-out;
+}
+
+.login-header {
+    margin-bottom: 40px;
+}
+
+.login-header img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 16px;
+    animation: flicker 2s infinite linear;
+}
+
+.login-header h1 {
+    color: var(--accent-color);
+    text-shadow: 0 0 5px var(--accent-color);
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+.login-header p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-family: var(--font-primary);
+}
+
+#character-select-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.char-card {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.char-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.2);
+    border-color: var(--accent-color);
+}
+
+.char-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.2), transparent);
+    transition: left 0.5s ease-in-out;
+}
+.char-card:hover::after {
+    left: 100%;
+}
+
+.char-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    margin-bottom: 12px;
+    background-color: var(--main-bg);
+}
+
+.char-card h3 {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.login-options {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.login-option-btn {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.login-option-btn:hover {
+    border-color: var(--neutral-color);
+    color: var(--neutral-color);
+}

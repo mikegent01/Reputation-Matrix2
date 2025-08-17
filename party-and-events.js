@@ -242,49 +242,62 @@ export const RUMORS = [
 
 export const TIMELINE = [
     {
-        phase: 'Recent History',
+        phase: '1020 BF',
+        title: 'War of Blood and Moon Begins',
+        description: "<p>The start of the now-generational shadow war between the vampire covens of the Onyx Hand and the werewolf clans of the Moonfang Pack.</p>",
+        participants: []
+    },
+    {
+        phase: '936 BF',
+        title: 'Mushroom Civil War Ignites',
+        description: "<p>The Mushroom Kingdom fractures into a prolonged civil war after years of mounting instability.</p>",
+        participants: []
+    },
+    {
+        phase: '934 BF',
+        title: 'Death of the Princess',
+        description: "<p>Princess Peach is killed amidst the chaos of the civil war, a pivotal event that deepens the existing schisms and fuels over a century of conflict.</p>",
+        participants: ['bowser'] // Bowser is blamed for the instability
+    },
+    // All subsequent events are considered "Current Events" in 1040 BF
+    {
+        phase: '1040 BF',
         title: 'Dragon Slain',
         description: "<p>The party defeats the dragon Ignis in the northern mountains, an act praised by militarists but condemned by magical researchers.</p>",
         participants: ['archie', 'markop']
     },
     {
-        phase: 'Recent History',
+        phase: '1040 BF',
         title: 'Underworld Politics',
         description: "<p>Archie Miser is acquitted of killing a mage by an Onyx Hand tribunal, greatly angering the Mages' Guild.</p>",
         participants: ['archie']
     },
     {
-        phase: 'Recent History',
+        phase: '1040 BF',
         title: 'Smuggling Bust',
         description: "<p>The party dismantles a key Iron Fists smuggling ring, placing a bounty on their heads.</p>",
         participants: ['archie', 'markop']
     },
     {
-        phase: 'Current Events',
+        phase: '1040 BF',
         title: 'Airship Hijacked',
         description: "<p>X.O. betrays the party, seizing control of the airship 'Vigilance'. Warlord Bowser is taken captive.</p>",
         participants: ['xo', 'archie', 'markop', 'humpik', 'bowser']
     },
     {
-        phase: 'Current Events',
+        phase: '1040 BF',
         title: 'The Great Betrayal',
         description: "<p>In a final, chaotic confrontation, the party, with the critical assistance of Dan the Toad, manages to neutralize X.O. and regain control of the Vigilance. The airship is secured, but the full extent of X.O.'s plans and the whereabouts of her allies remain unknown.</p>",
         participants: ['archie', 'markop', 'humpik', 'bowser', 'xo', 'dan_the_toad']
     },
     {
-        phase: 'Current Events',
+        phase: '1040 BF',
         title: 'Orc Uprising',
         description: "<p>Remnants of X.O.'s forces, revealed to be a secret Ork splinter faction, stage an uprising. They injure Dan, kidnap Bones, and attempt to assassinate Lario before being partially thwarted by Markop and Archie.</p>",
         participants: ['dan_the_toad', 'bones', 'archie', 'markop', 'lario']
     },
     {
-        phase: 'Current Events',
-        title: 'The Princess Falls',
-        description: "<p>Amidst the growing chaos, Princess Peach is killed during a brief but violent civil war within the Mushroom Kingdom. The exact circumstances are shrouded in rumor, but most blame Bowser's constant aggression for destabilizing the region to the point of collapse.</p>",
-        participants: ['bowser']
-    },
-    {
-        phase: 'Current Events',
+        phase: '1040 BF',
         title: 'The Syrup Schism & Core Crisis',
         description: "<p>The party frees the pirate Captain Syrup, who immediately turns hostile. A chaotic confrontation ensues, revealing a traitorous toad and culminating in Humpik disabling the airship's power core with an axe, sending the 'Vigilance' into a nose-dive.</p>",
         participants: ['archie', 'markop', 'humpik', 'bowser', 'waluigi', 'dan_the_toad', 'captain_syrup']

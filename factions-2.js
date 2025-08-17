@@ -314,7 +314,7 @@ export const FACTIONS_2 = {
     },
     mushroom_regency: {
         name: "Mushroom Regency",
-        description: "The official but fractured government of the Mushroom Kingdom, struggling to maintain order after the death of Princess Peach.",
+        description: "The official but fractured government of the Mushroom Kingdom, struggling to maintain order in a kingdom fractured by over a century of civil war that began after the death of Princess Peach.",
         logo: 'faction_mushroom_regency.png',
         relations: { 
             allies: ['liberated_toads', 'goodstyle_artisans'], 
@@ -332,7 +332,7 @@ export const FACTIONS_2 = {
     },
     peach_loyalists: {
         name: "Peach Loyalists",
-        description: "A well-armed military faction that has split from the Mushroom Regency, refusing to accept Princess Peach's death. They are zealous and aggressive.",
+        description: "A fanatical military faction, born from a century of frustration, that has split from the Regency. They believe the official government is too weak to hold Bowser accountable for the chaos that led to Princess Peach's death, and have taken it upon themselves to see 'justice' done through force.",
         logo: 'faction_peach_loyalists.png',
         relations: { 
             allies: [], 
@@ -344,7 +344,9 @@ export const FACTIONS_2 = {
         region: "Mushroom Kingdom (Militarized Zones)",
         notable_people: [
             { name: "Captain Toadette", role: "Faction Leader", description: "A fanatical commander who believes the Princess is alive and the Regency is illegitimate." },
-            { name: "Sergeant Piantissimo", role: "Chief Scout", description: "A swift and dedicated scout tasked with finding clues to the Princess's 'true' whereabouts." }
+            { name: "Embercap", role: "Toad Soldier", description: "A steadfast soldier with a fiery orange cap, serving as the backbone of the Loyalist infantry." },
+            { name: "Mistveil", role: "Toad Scout", description: "A nimble scout with a lavender cap, specializing in stealth and reconnaissance for the Loyalists." },
+            { name: "Dewdrop", role: "Toad Medic", description: "A compassionate medic with an aqua-blue cap, responsible for tending to the wounded in Toadette's army." }
         ],
         waluigi_tip: "Fanatics are the easiest to fool. Plant some fake 'evidence' of the princess being alive somewhere dangerous, and they'll charge right into a trap. WAH-HA-HA!"
     },
@@ -361,7 +363,14 @@ export const FACTIONS_2 = {
         category: "Regional Powers",
         region: "Mushroom Kingdom (Peach's Castle)",
         notable_people: [
-            { name: "Fawful", role: "Master of Fury", description: "A cunning Beanish villain with a penchant for maniacal laughter and green-hued schemes." }
+            { name: "Fawful", role: "Master of Fury", description: "A cunning Beanish villain with a penchant for maniacal laughter and green-hued schemes." },
+            { name: "The Evil Toad God", role: "Guest of Honor", description: "An ancient evil empowered by an artifact, attending Fawful's gala as a show of chaotic solidarity." },
+            { name: "Crimson Spore", role: "Party Guest", description: "A flamboyant toad attending Fawful's party." },
+            { name: "Sapphire Bloom", role: "Party Guest", description: "An elegant toad attending Fawful's party." },
+            { name: "Obsidian Crunch", role: "Party Guest", description: "A gruff, battle-hardened toad attending Fawful's party." },
+            { name: "Amber Whistle", role: "Party Guest", description: "A playful, energetic toad attending Fawful's party." },
+            { name: "Jade Grit", role: "Party Guest", description: "A stoic and resilient toad attending Fawful's party." },
+            { name: "Violet Hush", role: "Party Guest", description: "A mysterious and subtle toad attending Fawful's party." }
         ],
         waluigi_tip: "Fawful has fury! And ego! Tell him his machines are just cheap knock-offs of my own brilliant designs. His rage will make him sloppy! WAH!"
     },

@@ -14,7 +14,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_focus.png',
                 position: { x: 350, y: 20 },
                 prerequisites: [],
-                effects: { influence: 15 }
+                effects: { influence: { dan: 15 }, log: "Dan's leadership unites the toads, increasing his influence." }
             },
             {
                 id: 'dan_t1_magic',
@@ -24,7 +24,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_magic.png',
                 position: { x: 550, y: 20 },
                 prerequisites: [],
-                effects: { unlocksAbility: 'Minor Heal' }
+                effects: { unlocksAbility: 'Minor Heal', log: "Dan learns 'Minor Heal' from the Rakasha." }
             },
             // Tier 2 - Leadership Branch
             {
@@ -35,7 +35,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_diplomacy.png',
                 position: { x: 200, y: 150 },
                 prerequisites: ['dan_t1_influence'],
-                effects: { factionRep: { mushroom_regency: 10 } }
+                effects: { factionRep: { mushroom_regency: 10 }, log: "The Liberated Toads gain favor with the Mushroom Regency." }
             },
             {
                 id: 'dan_t2_rally',
@@ -45,7 +45,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_morale.png',
                 position: { x: 400, y: 150 },
                 prerequisites: ['dan_t1_influence'],
-                effects: { groupMorale: 10 }
+                effects: { groupMorale: 10, log: "Dan's speech raises the spirits of all toads." }
             },
              // Tier 2 - Magic Branch
             {
@@ -56,7 +56,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_spirit.png',
                 position: { x: 600, y: 150 },
                 prerequisites: ['dan_t1_magic'],
-                effects: { storyEvent: 'spirit_vision' }
+                effects: { storyEvent: 'spirit_vision', log: "Dan receives a cryptic vision from the local spirits." }
             },
             // Tier 3 - Advanced Diplomacy
             {
@@ -67,7 +67,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_alliance.png',
                 position: { x: 200, y: 280 },
                 prerequisites: ['dan_t2_diplomacy'],
-                effects: { storyEvent: 'regency_alliance_offer' }
+                effects: { storyEvent: 'regency_alliance_offer', log: "The Regency will consider a formal alliance." }
             },
             // Tier 3 - Advanced Magic
             {
@@ -78,7 +78,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_cleanse.png',
                 position: { x: 600, y: 280 },
                 prerequisites: ['dan_t2_spirit_commune'],
-                effects: { factionRep: { silver_flame: 5, rakasha_clans: 5 } }
+                effects: { factionRep: { silver_flame: 5, rakasha_clans: 5 }, log: "Cleansing the corruption earns favor with holy orders." }
             },
         ]
     },
@@ -94,7 +94,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_training.png',
                 position: { x: 450, y: 20 },
                 prerequisites: [],
-                effects: { groupStat: 'defense' }
+                effects: { groupStat: 'defense', influence: { toad_lee: 10 }, log: "Toad Lee's drills toughen the group." }
             },
             // Tier 2 - Defensive Branch
             {
@@ -105,7 +105,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_fortify.png',
                 position: { x: 300, y: 150 },
                 prerequisites: ['lee_t1_command'],
-                effects: { locationSafety: 20 }
+                effects: { locationSafety: 20, log: "The camp's defenses have been improved." }
             },
             // Tier 2 - Offensive Branch
             {
@@ -116,7 +116,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_offense.png',
                 position: { x: 600, y: 150 },
                 prerequisites: ['lee_t1_command'],
-                effects: { groupStat: 'offense' }
+                effects: { groupStat: 'offense', log: "The toads are now better prepared for an assault." }
             },
              // Tier 3 - Defensive Specialization
             {
@@ -127,7 +127,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_garrison.png',
                 position: { x: 300, y: 280 },
                 prerequisites: ['lee_t2_fortify'],
-                effects: { unlocksBuilding: 'Watchtower' }
+                effects: { unlocksBuilding: 'Watchtower', log: "A permanent Watchtower can now be constructed." }
             },
             // Tier 3 - Offensive Specialization
             {
@@ -138,7 +138,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_vanguard.png',
                 position: { x: 600, y: 280 },
                 prerequisites: ['lee_t2_offensive_tactics'],
-                effects: { unlocksUnit: 'Toad Vanguard' }
+                effects: { unlocksUnit: 'Toad Vanguard', log: "The elite 'Toad Vanguard' unit has been formed." }
             }
         ]
     },
@@ -154,7 +154,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_magic.png',
                 position: { x: 450, y: 20 },
                 prerequisites: [],
-                effects: { selfStat: 'magic_control' }
+                effects: { selfStat: 'magic_control', influence: { ryan: 5 }, log: "Ryan's control over basic magic improves." }
             },
             // Tier 2
              {
@@ -165,7 +165,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_research.png',
                 position: { x: 300, y: 150 },
                 prerequisites: ['ryan_t1_cantrips'],
-                effects: { storyEvent: 'xo_staff_secrets' }
+                effects: { storyEvent: 'xo_staff_secrets', log: "Ryan has uncovered a secret about X.O.'s staff." }
             },
             {
                 id: 'ryan_t2_combat_spells',
@@ -175,7 +175,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_combat_magic.png',
                 position: { x: 600, y: 150 },
                 prerequisites: ['ryan_t1_cantrips'],
-                effects: { unlocksAbility: 'Magic Shield' }
+                effects: { unlocksAbility: 'Magic Shield', log: "Ryan has learned to cast 'Magic Shield'." }
             }
         ]
     },
@@ -191,7 +191,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_trade.png',
                 position: { x: 450, y: 20 },
                 prerequisites: [],
-                effects: { resourceEfficiency: 10 }
+                effects: { resourceEfficiency: 10, influence: { roger: 10 }, log: "Roger's barter system improves resource efficiency." }
             },
             // Tier 2
             {
@@ -202,7 +202,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_scavenge.png',
                 position: { x: 300, y: 150 },
                 prerequisites: ['rog_t1_trade'],
-                effects: { resourceGain: 15 }
+                effects: { resourceGain: 15, log: "Scavenging parties bring in new supplies." }
             },
             {
                 id: 'rog_t2_workshop',
@@ -212,7 +212,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_workshop.png',
                 position: { x: 600, y: 150 },
                 prerequisites: ['rog_t1_trade'],
-                effects: { unlocksBuilding: 'Workshop' }
+                effects: { unlocksBuilding: 'Workshop', log: "A basic Workshop can now be constructed." }
             },
             // Tier 3
             {
@@ -223,7 +223,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_trade_routes.png',
                 position: { x: 150, y: 280 },
                 prerequisites: ['rog_t2_scavenge'],
-                effects: { storyEvent: 'underworld_contact' }
+                effects: { storyEvent: 'underworld_contact', factionRep: { freelancer_underworld: 5 }, log: "A trade route with the underworld has been established." }
             }
         ]
     },
@@ -239,7 +239,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_morale.png',
                 position: { x: 450, y: 20 },
                 prerequisites: [],
-                effects: { groupMorale: 5 }
+                effects: { groupMorale: 5, influence: { bones: 5 }, log: "Card games organized by Bones improve morale." }
             },
             // Tier 2
             {
@@ -250,7 +250,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_orc.png',
                 position: { x: 300, y: 150 },
                 prerequisites: ['bones_t1_morale'],
-                effects: { storyEvent: 'orc_connection' }
+                effects: { storyEvent: 'orc_connection', log: "Bones gains insight into his connection with the Orcs." }
             },
             {
                 id: 'bones_t2_distillery',
@@ -260,7 +260,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_distillery.png',
                 position: { x: 600, y: 150 },
                 prerequisites: ['bones_t1_morale'],
-                effects: { groupMorale: 15 }
+                effects: { groupMorale: 15, log: "Bones's potent brew is a huge morale booster." }
             }
         ]
     },
@@ -276,7 +276,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_scout.png',
                 position: { x: 450, y: 20 },
                 prerequisites: [],
-                effects: { mapKnowledge: 10 }
+                effects: { mapKnowledge: 10, influence: { eager: 5 }, log: "Eager maps the surrounding area, revealing points of interest." }
             },
             // Tier 2
             {
@@ -287,7 +287,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_traps.png',
                 position: { x: 300, y: 150 },
                 prerequisites: ['eager_t1_scout'],
-                effects: { locationSafety: 10 }
+                effects: { locationSafety: 10, log: "The camp is now better protected by Eager's traps." }
             },
             {
                 id: 'eager_t2_courier',
@@ -297,7 +297,7 @@ export const FOCUS_TREES = {
                 icon: 'icon_courier.png',
                 position: { x: 600, y: 150 },
                 prerequisites: ['eager_t1_scout'],
-                effects: { communicationSpeed: 20 }
+                effects: { communicationSpeed: 20, log: "Eager establishes swift and secret courier routes." }
             }
         ]
     },

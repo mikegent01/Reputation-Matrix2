@@ -1,0 +1,184 @@
+#event-banner {
+    background-color: var(--negative-color);
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-family: var(--font-display);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    border: 2px solid #ff6b6b;
+    position: relative;
+    overflow: hidden;
+    animation: pulse-red-bg 2s infinite;
+}
+.banner-flicker {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: scan-flicker 3s infinite linear;
+}
+@keyframes pulse-red-bg {
+    50% { background-color: #a72826; }
+}
+@keyframes scan-flicker {
+    0% { left: -100%; }
+    50% { left: 150%; }
+    100% { left: 150%; }
+}
+
+#party-header {
+    background: url('faction_fawful.png') no-repeat center center;
+    background-size: contain;
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--positive-color);
+    padding: 40px 24px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 32px;
+    position: relative;
+}
+
+#party-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(22, 27, 34, 0.85);
+    border-radius: 8px;
+    backdrop-filter: blur(2px);
+}
+
+#party-header .page-title,
+#party-header .party-intro {
+    position: relative;
+    z-index: 1;
+}
+
+#party-header .page-title {
+    color: var(--positive-color);
+    text-shadow: 0 0 10px var(--positive-color);
+    border-bottom: none;
+    margin-bottom: 16px;
+}
+
+.party-intro {
+    color: var(--text-secondary);
+    max-width: 70ch;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+.invitation-card {
+    background-color: #212111;
+    border: 2px dashed var(--neutral-color);
+    border-radius: 6px;
+    padding: 24px;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.invitation-card h4 {
+    font-family: var(--font-display);
+    color: var(--neutral-color);
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+}
+
+.invitation-card p {
+    font-family: 'Comic Sans MS', cursive; /* For maximum Fawful-ness */
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+#guest-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+}
+
+.guest-card {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease-in-out;
+}
+
+.guest-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.guest-card.guest-of-honor {
+    grid-column: 1 / -1; /* Make it span the full width */
+    border-color: var(--accent-color);
+    background-color: rgba(138, 43, 226, 0.05);
+}
+
+.guest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.guest-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.guest-of-honor .guest-name {
+    color: var(--accent-color);
+}
+
+.guest-role {
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.guest-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.fawful-commentary {
+    margin-top: 16px;
+    padding: 12px;
+    border-top: 1px dashed var(--border-color);
+    background-color: var(--main-bg);
+    border-radius: 0 0 6px 6px;
+}
+
+.fawful-commentary h6 {
+    font-family: var(--font-display);
+    color: var(--positive-color);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.fawful-commentary p {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+    quotes: "“" "”";
+}
+.fawful-commentary p::before {
+    content: open-quote;
+}
+.fawful-commentary p::after {
+    content: close-quote;
+}

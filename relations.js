@@ -201,6 +201,7 @@ function setupGraphCanvas(container) {
 
 function updateGraphVisualization(nodes, links) {
     graphGroup.selectAll("*").remove();
+    const loggedInUser = localStorage.getItem('vigilanceTerminalUser') || 'generic';
 
     simulation.nodes(nodes);
     simulation.force("link").links(links);
@@ -213,7 +214,8 @@ function updateGraphVisualization(nodes, links) {
 
     node.append("circle")
         .attr("r", d => d.type === 'faction' ? 10 + d.power * 2.5 : d.type === 'party' ? 14 : 10)
-        .attr("fill", d => d.type === 'faction' ? (categoryColorMap[d.category] || "var(--text-secondary)") : "var(--sidebar-bg)");
+        .attr("fill", d => d.type === 'faction' ? (categoryColorMap[d.category] || "var(--text-secondary)") : "var(--sidebar-bg)")
+        .classed("logged-in-player", d => d.id === loggedInUser);
 
     node.filter(d => d.type === 'faction').append("image")
         .attr("xlink:href", d => d.logo)

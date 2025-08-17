@@ -1,8 +1,10 @@
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
+import { FOCUS_TREES } from './focus-tree.js';
 
 // --- STATE MANAGEMENT ---
 export const state = {
+    loggedInUser: localStorage.getItem('vigilanceTerminalUser') || 'generic',
     party: ['archie', 'markop', 'humpik', 'bowser'],
     activeRumors: [], 
     players: {
@@ -141,8 +143,30 @@ function processInitialXP() {
 }
 
 export function initFocusTreeState() {
+    const initialActiveFocuses = [];
+    // Automatically start the first focus for each toad
+    Object.keys(LORE_DATA.auxiliary_party).forEach(toadKey => {
+        if (toadKey === 'traitor_toad' || !FOCUS_TREES[toadKey]) return;
+        const tree = FOCUS_TREES[toadKey].tree;
+        if (tree && tree.length > 0) {
+            // Find the first node(s) with no prerequisites
+            const startingNodes = tree.filter(node => node.prerequisites.length === 0);
+            if (startingNodes.length > 0) {
+                // For simplicity, we'll just start the first one found.
+                // A more complex system could handle multiple starting paths.
+                const firstFocus = startingNodes[0];
+                 initialActiveFocuses.push({
+                    toadKey: toadKey,
+                    nodeId: firstFocus.id,
+                    remainingDays: firstFocus.cost,
+                    totalDays: firstFocus.cost
+                });
+            }
+        }
+    });
+
     state.focusTreeState = {
-        buildVersionApplied: "2025-08-12-r7",
+        buildVersionApplied: "2025-08-13-r1",
         day: 1,
         activeToad: "dan",
         groupInfluence: 27,
@@ -151,13 +175,18 @@ export function initFocusTreeState() {
             ryan: [], roger: [], bones: [],
             group: []
         },
-        activeFocuses: [],
+        activeFocuses: initialActiveFocuses,
         influences: {
             dan: 40, toad_lee: 25, eager: 10,
             ryan: 10, roger: 10, bones: 5
         },
         log: [
-            { who: "System", what: "System online. Focus protocols initiated.", when: new Date().toISOString() }
+            { who: "System", what: "System online. Focus protocols initiated.", when: new Date().toISOString() },
+            ...initialActiveFocuses.map(f => ({
+                who: LORE_DATA.auxiliary_party[f.toadKey].name,
+                what: `Began initial focus: "${FOCUS_TREES[f.toadKey].tree.find(n => n.id === f.nodeId).title}".`,
+                when: new Date().toISOString()
+            }))
         ],
         luckyItemCooldowns: {
             dan: 0, toad_lee: 0, eager: 0,
@@ -169,11 +198,6 @@ export function initFocusTreeState() {
         },
         flags: { waluigiPending: false }
     };
-    // Initialize with some default focuses for demonstration
-    state.focusTreeState.activeFocuses = [
-        { toadKey: "dan", nodeId: "dan_t1_influence", remainingDays: 21, totalDays: 21 },
-        { toadKey: "toad_lee", nodeId: "lee_t1_command", remainingDays: 19, totalDays: 19 }
-    ];
 }
 
 
@@ -305,7 +329,14 @@ function calculateFinalReputations() {
 export function loadState() {
     const savedState = localStorage.getItem('vigilanceTerminalState');
     if (savedState) {
-        Object.assign(state, JSON.parse(savedState));
+        const parsedState = JSON.parse(savedState);
+        // selectively assign properties to avoid overwriting the loggedInUser from the new session
+        Object.keys(parsedState).forEach(key => {
+            if (key !== 'loggedInUser') {
+                state[key] = parsedState[key];
+            }
+        });
+        
         // Reset chart instances on load
         state.chartInstances = {};
         initReputation();

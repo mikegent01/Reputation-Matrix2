@@ -4,7 +4,7 @@ import { init as initBoP } from './balance-of-power.js';
 const MUSHROOM_KINGDOM_DATA = {
     name: "Mushroom Kingdom",
     status: "CIVIL WAR",
-    description: "Following the death of Princess Peach, the kingdom has shattered into a five-way conflict. The formal Regency government struggles against the zealous Peach Loyalists who lay siege to Peach's Castle. However, the castle has been seized by the maniacal Fawful, creating a chaotic battlefront. Elsewhere, Bowser's leaderless Koopa Troop remnants fight for survival, and the Toad Gang's criminal underworld exploits the power vacuum for profit.",
+    description: "The Mushroom Kingdom has been embroiled in a complex civil war for over a century, a conflict that began shortly after the death of Princess Peach. The kingdom has now shattered into a five-way conflict. The formal Regency government struggles against the zealous Peach Loyalists who lay siege to Peach's Castle. However, the castle has been seized by the maniacal Fawful, creating a chaotic battlefront. Elsewhere, Bowser's leaderless Koopa Troop remnants fight for survival, and the Toad Gang's criminal underworld exploits the power vacuum for profit.",
     factions: [
         { name: "Mushroom Regency", description: "The official, but weakened, government body led by Chancellor Toadsworth. Their goal is to restore stability and order.", factionId: "mushroom_regency" },
         { name: "Peach Loyalists", description: "A fanatical military splinter group led by Captain Toadette. They seek to find the 'true' heir and punish Bowser for his perceived crimes.", factionId: "peach_loyalists" },

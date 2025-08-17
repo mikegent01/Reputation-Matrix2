@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vigilance Terminal | Battlefield</title>
+    <title>Vigilance Terminal | Quests</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="battlefield.css">
+    <link rel="stylesheet" href="quests.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -18,7 +18,7 @@
                         <img src="logo.png" alt="Waluigi Terminal Logo" id="waluigi-logo">
                         <h1 class="flicker">Vigilance Terminal</h1>
                     </div>
-                    <p class="subtitle">Tactical Display</p>
+                    <p class="subtitle">Mission Log</p>
                 </header>
                 <nav id="main-nav-bar">
                     <a href="index.html" class="nav-button">
@@ -33,7 +33,7 @@
                         <img src="icon_focus.png" alt="Focus Icon">
                         <span>Toad Focus</span>
                     </a>
-                    <a href="quests.html" class="nav-button">
+                    <a href="quests.html" class="nav-button" style="display: none;">
                         <img src="icon_dossier.png" alt="Quests Icon">
                         <span>Quests</span>
                     </a>
@@ -53,7 +53,7 @@
                         <img src="faction_fawful.png" alt="Fawful Icon">
                         <span>Fawful's Grand Gala</span>
                     </a>
-                    <a href="battlefield.html" class="nav-button" style="display: none;">
+                    <a href="battlefield.html" class="nav-button">
                         <img src="icon_focus.png" alt="Battlefield Icon">
                         <span>Battlefield</span>
                     </a>
@@ -64,14 +64,14 @@
                 </footer>
             </aside>
             <main id="main-content">
-                 <h2 class="page-title">Tactical Overview</h2>
-                 <div id="battlefield-display">
-                    <!-- Battle information injected by JS -->
+                 <h2 class="page-title">Active Mission & Quest Log</h2>
+                 <div id="quest-container">
+                    <!-- Quests will be injected here by JS -->
                  </div>
             </main>
         </div>
     </div>
     <script type="module" src="common.js"></script>
-    <script type="module" src="battlefield.js"></script>
+    <script type="module" src="quests.js"></script>
 </body>
 </html>

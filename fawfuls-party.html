@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vigilance Terminal | Battlefield</title>
+    <title>Vigilance Terminal | Fawful's Gala</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="battlefield.css">
+    <link rel="stylesheet" href="fawfuls-party.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -18,7 +18,7 @@
                         <img src="logo.png" alt="Waluigi Terminal Logo" id="waluigi-logo">
                         <h1 class="flicker">Vigilance Terminal</h1>
                     </div>
-                    <p class="subtitle">Tactical Display</p>
+                    <p class="subtitle">Event Dossier</p>
                 </header>
                 <nav id="main-nav-bar">
                     <a href="index.html" class="nav-button">
@@ -49,11 +49,11 @@
                         <img src="icon_newspaper.png" alt="Newspaper Icon">
                         <span>The Daily Paradox</span>
                     </a>
-                    <a href="fawfuls-party.html" class="nav-button">
+                    <a href="fawfuls-party.html" class="nav-button" style="display: none;">
                         <img src="faction_fawful.png" alt="Fawful Icon">
                         <span>Fawful's Grand Gala</span>
                     </a>
-                    <a href="battlefield.html" class="nav-button" style="display: none;">
+                    <a href="battlefield.html" class="nav-button">
                         <img src="icon_focus.png" alt="Battlefield Icon">
                         <span>Battlefield</span>
                     </a>
@@ -64,14 +64,24 @@
                 </footer>
             </aside>
             <main id="main-content">
-                 <h2 class="page-title">Tactical Overview</h2>
-                 <div id="battlefield-display">
-                    <!-- Battle information injected by JS -->
+                 <div id="event-banner" class="limited-time-banner">
+                    <div class="banner-flicker"></div>
+                    <p><strong>LIMITED TIME EVENT:</strong> Intelligence on this gathering is volatile. This data feed will self-destruct soon.</p>
+                 </div>
+                 <div id="party-header">
+                    <h2 class="page-title">Fawful's Grand Gala of Furious Festivities</h2>
+                    <p class="party-intro">Intelligence reports indicate the maniacal villain Fawful is hosting a celebratory gala within the occupied halls of Peach's Castle. The event is a bizarre mix of chaos, gloating, and inexplicable party games. Below is the confirmed guest list and a recovered invitation.</p>
+                 </div>
+                 <div id="invitation-container" class="invitation-card">
+                    <!-- Invitation will be injected here -->
+                 </div>
+                 <div id="guest-list-container">
+                    <!-- Guest cards will be injected here by JS -->
                  </div>
             </main>
         </div>
     </div>
     <script type="module" src="common.js"></script>
-    <script type="module" src="battlefield.js"></script>
+    <script type="module" src="fawfuls-party.js"></script>
 </body>
 </html>

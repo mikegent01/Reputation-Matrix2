@@ -2,15 +2,23 @@
 #battlefield-display {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 32px;
 }
 
-#battle-image {
+.battle-container {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.battle-image {
     width: 100%;
     height: auto;
     border-radius: 8px;
     border: 1px solid var(--border-color);
     background-color: var(--main-bg);
+    margin-bottom: 24px;
 }
 
 .page-title .battle-meta {
@@ -21,7 +29,7 @@
     margin-left: 16px;
 }
 
-#battle-info-container {
+.battle-info-container {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 24px;
@@ -29,15 +37,16 @@
 
 
 /* --- Info Section (Right) --- */
-#faction-command-container {
+.faction-command-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 16px;
 }
 
 .faction-command-card {
-    background-color: var(--sidebar-bg);
+    background-color: var(--main-bg);
     border: 1px solid var(--border-color);
+    border-left: 4px solid var(--border-color);
     border-radius: 6px;
     padding: 16px;
 }
@@ -45,10 +54,19 @@
     font-family: var(--font-display);
     font-size: 1.2rem;
     margin-bottom: 12px;
+    color: var(--text-color);
 }
+/* Ravencreek Factions */
 .faction-werewolves h4 { color: var(--regional-powers-color); }
 .faction-vampires h4 { color: var(--negative-color); }
 .faction-regal h4 { color: var(--major-powers-color); }
+
+/* Mushroom Kingdom Factions */
+.faction-regency h4 { color: var(--major-powers-color); }
+.faction-loyalists h4 { color: var(--accent-color); }
+.faction-koopa h4 { color: var(--regional-powers-color); }
+.faction-fawful h4 { color: var(--positive-color); }
+
 
 .command-details p {
     font-size: 0.9rem;
@@ -66,8 +84,8 @@
     font-size: 0.85rem;
 }
 
-#battle-log {
-    background-color: var(--sidebar-bg);
+.battle-log {
+    background-color: var(--main-bg);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 24px;
@@ -75,36 +93,37 @@
     flex-direction: column;
 }
 
-#battle-log h4 {
+.battle-log h4 {
     font-family: var(--font-display);
     color: var(--accent-color);
     margin-bottom: 12px;
 }
 
-#log-entries {
+#log-entries, .log-entries {
     list-style: none;
     padding: 0;
+    margin: 0;
     overflow-y: auto;
     font-size: 0.85rem;
     flex-grow: 1;
 }
 
-#log-entries li {
+.log-entries li {
     color: var(--text-secondary);
     padding: 6px 0;
     border-bottom: 1px solid var(--border-color);
 }
-#log-entries li:last-child {
+.log-entries li:last-child {
     border-bottom: none;
 }
-#log-entries .log-time {
+.log-entries .log-time {
     color: var(--neutral-color);
     margin-right: 8px;
     font-weight: bold;
 }
 
 @media (max-width: 1200px) {
-    #battle-info-container {
+    .battle-info-container {
         grid-template-columns: 1fr;
     }
 }

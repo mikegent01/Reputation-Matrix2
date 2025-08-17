@@ -254,9 +254,9 @@ function renderAuxiliaryParty() {
     if (!container) return;
     container.innerHTML = `
         <h3 class="page-title" style="font-size: 1.5rem; color: var(--text-secondary);">
-            Auxiliary Party Members 
-            <a href="#faction/liberated_toads" class="faction-link" style="font-size: 0.9rem; color: var(--accent-color); text-decoration: none; margin-left: 8px;">
-                (See: The Liberated Toads)
+            Liberated Toads: Strategic Focus
+            <a href="focus.html" class="faction-link" style="font-size: 0.9rem; color: var(--accent-color); text-decoration: none; margin-left: 8px;">
+                (Manage Focus Trees)
             </a>
         </h3>
     `;
@@ -350,10 +350,13 @@ function renderFactionDetail(factionKey) {
     const partyBarWidth = Math.min(Math.abs(partyRep), 100);
 
     let characterAssessmentsHTML = '';
+    const loggedInUser = state.loggedInUser;
+
     state.party.forEach(playerKey => {
         const player = state.players[playerKey];
         const reputation = getReputation(playerKey, factionKey);
         const repClass = reputation > 10 ? 'positive' : reputation < -10 ? 'negative' : 'neutral';
+        const personalStandingClass = (loggedInUser !== 'generic' && loggedInUser === playerKey) ? 'personal-standing' : '';
         
         const notoriety = getNotoriety(playerKey, factionKey);
 
@@ -364,7 +367,7 @@ function renderFactionDetail(factionKey) {
         );
 
         characterAssessmentsHTML += `
-            <div class="character-assessment">
+            <div class="character-assessment ${personalStandingClass}">
                 <div class="char-rep-header">
                     <span class="char-name ${repClass}">${player.name}: ${reputation}</span>
                     <span class="char-notoriety">Notoriety: ${notoriety}</span>
@@ -426,13 +429,20 @@ function renderFactionDetail(factionKey) {
     const uniqueSystemHTML = factionSystems.renderSystemForFaction(factionKey, faction, state);
 
     let waluigiTipHTML = '';
-    if(faction.waluigi_tip) {
+    let tipText = faction.waluigi_tip; // Default tip
+
+    // Check for personalized tip if a specific user is logged in
+    if (loggedInUser && loggedInUser !== 'generic' && faction.waluigi_tips_personalized && faction.waluigi_tips_personalized[loggedInUser]) {
+        tipText = faction.waluigi_tips_personalized[loggedInUser];
+    }
+
+    if(tipText) {
         waluigiTipHTML = `
         <div class="waluigi-faction-tip">
             <img src="logo.png" alt="Waluigi Logo">
             <div>
                 <h6>Waluigi's Cunning Plan</h6>
-                <p>${faction.waluigi_tip}</p>
+                <p>${tipText}</p>
             </div>
         </div>
         `;
@@ -545,6 +555,15 @@ export function setupEventListeners() {
                     renderFactionDirectory(sortBy);
                 }
             }
+        });
+    }
+
+    const switchOperatorBtn = document.getElementById('switch-operator-btn');
+    if (switchOperatorBtn) {
+        switchOperatorBtn.addEventListener('click', () => {
+            playSound('wah.mp3');
+            localStorage.removeItem('vigilanceTerminalUser');
+            window.location.reload();
         });
     }
 }
