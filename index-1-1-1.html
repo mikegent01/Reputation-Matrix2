@@ -3,15 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vigilance Terminal | Directory</title>
+    <title>Vigilance Terminal | Faction Directory</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="faction-systems.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+{
+  "imports": {
+    "path": "https://esm.sh/path@^0.12.7",
+    "url": "https://esm.sh/url@^0.11.4",
+    "vite": "https://esm.sh/vite@^7.1.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
 </head>
 <body>
-    <div class="tablet-frame">
+    <div id="login-screen">
+        <img src="logo.png" alt="Waluigi Logo" class="login-logo">
+        <h2 class="login-text">ACCESSING VIGILANCE TERMINAL...</h2>
+        <div class="login-progress-container">
+            <div class="login-progress-bar-inner"></div>
+        </div>
+        <p class="login-subtext">WAH-thenticating...</p>
+    </div>
+
+    <div class="tablet-frame" style="display: none;">
         <div class="scanline-overlay"></div>
         <div id="app">
             <aside id="sidebar">
@@ -23,7 +42,7 @@
                     <p class="subtitle">Faction Directory</p>
                 </header>
                 <nav id="main-nav-bar">
-                    <a href="directory.html" class="nav-button" style="display: none;">
+                    <a href="index.html" class="nav-button" style="display: none;">
                         <img src="icon_dossier.png" alt="Dossier Icon">
                         <span>Faction Directory</span>
                     </a>
@@ -39,7 +58,10 @@
                         <img src="icon_dossier.png" alt="Quests Icon">
                         <span>Quests</span>
                     </a>
-                     
+                     <a href="politics.html" class="nav-button">
+                        <img src="icon_reputation.png" alt="Politics Icon">
+                        <span>Political Systems</span>
+                    </a>
                     <a href="currency.html" class="nav-button">
                         <img src="icon_currency.png" alt="Currency Icon">
                         <span>Currency Exchange</span>
@@ -47,10 +69,6 @@
                     <a href="newspaper.html" class="nav-button">
                         <img src="icon_newspaper.png" alt="Newspaper Icon">
                         <span>The Daily Paradox</span>
-                    </a>
-                    <a href="fawfuls-party.html" class="nav-button">
-                        <img src="faction_fawful.png" alt="Fawful Icon">
-                        <span>Fawful's Grand Gala</span>
                     </a>
                     <a href="battlefield.html" class="nav-button">
                         <img src="icon_focus.png" alt="Battlefield Icon">
@@ -77,7 +95,6 @@
                 </div>
                 <footer>
                     <p>SYSTEM STATUS: <a href="status.html" class="status-link"><span class="status-ok">ONLINE</span></a></p>
-                    <button id="switch-operator-btn" class="status-link" style="background:none; border:none; color:inherit; font:inherit; cursor:pointer; padding:0; text-decoration: underline;">Switch Operator</button>
                     <p>&copy; Waluigi, Evil Genius</p>
                 </footer>
             </aside>
@@ -92,15 +109,8 @@
                     <!-- Faction Directory or Details will be injected here by JS -->
                 </div>
             </main>
-            <aside id="detail-panel">
-                <button id="detail-panel-close">&times;</button>
-                <div id="detail-panel-content">
-                    <!-- Details will be injected here -->
-                </div>
-            </aside>
         </div>
     </div>
-    <div id="parliament-tooltip"></div>
     <script>
         // Polyfill for structuredClone if not available
         if (typeof self.structuredClone === 'undefined') {
@@ -109,5 +119,6 @@
     </script>
     <script type="module" src="common.js"></script>
     <script type="module" src="main.js"></script>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>

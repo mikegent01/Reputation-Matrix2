@@ -1,3 +1,4 @@
+
 import { state } from './state.js';
 import { LORE_DATA } from './lore.js';
 import { getReputation, getNotoriety, getDetailedFactionAssessment, getGenericFactionAssessment } from './reputation.js';
@@ -133,20 +134,38 @@ function renderFactionDirectory(sortBy = currentSort) {
             partyRepTotal += getReputation(playerKey, factionKey);
         });
         const partyRep = Math.round(partyRepTotal / state.party.length);
-        const partyRepClass = partyRep > 0 ? 'positive' : partyRep < 0 ? 'negative' : 'neutral';
+        const partyRepClass = partyRep > 10 ? 'positive' : partyRep < -10 ? 'negative' : 'neutral';
         const partyBarWidth = Math.min(Math.abs(partyRep), 100);
 
-        let notablePeopleHTML = '';
-        if (faction.notable_people && faction.notable_people.length > 0) {
-            notablePeopleHTML = `
-                <div class="notable-people-summary">
-                    <h5 style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 12px; margin-bottom: 4px;">Key Figures:</h5>
-                    <ul class="notable-people-list-summary" style="list-style: none; padding-left: 0; font-size: 0.8rem; line-height: 1.4;">
-                        ${faction.notable_people.slice(0, 2).map(person => `<li><strong>${person.name}</strong> <span class="person-role-summary" style="opacity: 0.8;">(${person.role})</span></li>`).join('')}
-                    </ul>
+        // Personal Standing
+        let personalStandingHTML = '';
+        const loggedInUser = state.loggedInUser;
+        if (loggedInUser && loggedInUser !== 'generic') {
+            const personalRep = getReputation(loggedInUser, factionKey);
+            const personalRepClass = personalRep > 10 ? 'positive' : personalRep < -10 ? 'negative' : 'neutral';
+            const personalBarWidth = Math.min(Math.abs(personalRep), 100);
+            const userName = LORE_DATA.characters[loggedInUser]?.name || 'Operator';
+
+            personalStandingHTML = `
+                <div class="personal-standing" style="margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--border-color);">
+                    <h5 style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px;">${userName}'s Standing: <span class="${personalRepClass}">${personalRep}</span></h5>
+                    <div class="reputation-bar-container">
+                        <div class="reputation-bar ${personalRepClass}" style="width: ${personalBarWidth}%; background-color: var(--${personalRepClass}-color);"></div>
+                    </div>
                 </div>
             `;
         }
+
+        // Leader(s)
+        let leaderHTML = '';
+        const leaderKey = faction.leader;
+        if (leaderKey && LORE_DATA.characters[leaderKey]) {
+            const leaderName = LORE_DATA.characters[leaderKey].name;
+            leaderHTML = `
+                <p class="assessment-text" style="font-size: 0.8rem; margin-top: 8px; font-style: normal;"><strong>Leader:</strong> ${leaderName}</p>
+            `;
+        }
+
 
         const card = document.createElement('a');
         card.className = `faction-directory-card ${categoryClass}-border`;
@@ -156,7 +175,11 @@ function renderFactionDirectory(sortBy = currentSort) {
                 <img src="${faction.logo}" class="faction-directory-logo" alt="${faction.name} Logo">
                 <div class="faction-info">
                     <h4 class="faction-directory-title">${faction.name}</h4>
-                     <p class="assessment-text" style="font-size: 0.8rem; margin-top: 4px; font-style: normal;"><strong>Region:</strong> ${faction.region || 'Unknown'}<br/><strong>Power:</strong> ${faction.power_level || 'N/A'}</p>
+                     <p class="assessment-text" style="font-size: 0.8rem; margin-top: 4px; font-style: normal;">
+                        <strong>Region:</strong> ${faction.region || 'Unknown'}<br/>
+                        <strong>Power:</strong> ${faction.power_level || 'N/A'}
+                     </p>
+                     ${leaderHTML}
                 </div>
             </div>
              <p class="assessment-text" style="font-size: 0.8rem">${faction.description}</p>
@@ -165,6 +188,7 @@ function renderFactionDirectory(sortBy = currentSort) {
                 <div class="reputation-bar-container">
                     <div class="reputation-bar ${partyRepClass}" style="width: ${partyBarWidth}%; background-color: var(--${partyRepClass}-color);"></div>
                 </div>
+                ${personalStandingHTML}
             </div>
         `;
         grid.appendChild(card);

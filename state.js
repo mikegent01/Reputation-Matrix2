@@ -1,3 +1,4 @@
+
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
 import { FOCUS_TREES } from './focus-tree.js';
@@ -241,7 +242,7 @@ function calculateFinalReputations() {
         }
     }
 
-    const propagationPasses = 3;
+    const propagationPasses = 1; // FIX: Reduced from 3 to 1 to prevent runaway values.
     for (let i = 0; i < propagationPasses; i++) {
         const repsBeforePropagation = structuredClone(finalReps);
 
