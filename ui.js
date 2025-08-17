@@ -563,7 +563,7 @@ export function setupEventListeners() {
         switchOperatorBtn.addEventListener('click', () => {
             playSound('wah.mp3');
             localStorage.removeItem('vigilanceTerminalUser');
-            window.location.reload();
+            window.location.href = 'index.html';
         });
     }
 }
