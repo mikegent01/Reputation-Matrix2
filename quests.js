@@ -9,7 +9,6 @@ function renderQuests() {
     const questsByStatus = {
         active: [],
         available: [],
-        stalled: [],
         completed: [],
         failed: []
     };
@@ -17,15 +16,13 @@ function renderQuests() {
     for (const questId in QUEST_DATA) {
         const quest = QUEST_DATA[questId];
         if (quest.status !== 'hidden') {
-            if (questsByStatus[quest.status]) {
-                questsByStatus[quest.status].push(quest);
-            }
+            questsByStatus[quest.status].push(quest);
         }
     }
 
     let html = '';
 
-    const categoryOrder = ['active', 'available', 'stalled', 'completed', 'failed'];
+    const categoryOrder = ['active', 'available', 'completed', 'failed'];
     categoryOrder.forEach(status => {
         if (questsByStatus[status].length > 0) {
             html += `

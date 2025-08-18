@@ -11,7 +11,7 @@ const treeContent = document.getElementById('focus-tree-content');
 const tooltip = document.getElementById('focus-tooltip');
 const dayCounter = document.querySelector('#info-day-counter .day-number');
 const logList = document.getElementById('log-list');
-const inventoryList = document.getElementById('inventory-list');
+const inventoryBookshelf = document.getElementById('inventory-bookshelf');
 const resetFocusBtn = document.getElementById('reset-focus-btn');
 
 // Load state immediately to ensure all data is available for rendering.
@@ -153,15 +153,18 @@ function renderInfoPanel() {
         logList.appendChild(li);
     });
 
-    // Inventory
-    inventoryList.innerHTML = '';
+    // Inventory Bookshelf
+    inventoryBookshelf.innerHTML = '';
     state.focusTreeState.inventory.mundane.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        inventoryList.appendChild(li);
+        const itemEl = document.createElement('div');
+        const isDiary = item.toLowerCase().includes('diary');
+        itemEl.className = `inventory-item ${isDiary ? 'diary' : 'mundane'}`;
+        itemEl.textContent = item;
+        itemEl.title = isDiary ? "A leather-bound journal recovered from the castle. Its contents are... revealing." : "A mundane item of some importance.";
+        inventoryBookshelf.appendChild(itemEl);
     });
-    if (inventoryList.innerHTML === '') {
-        inventoryList.innerHTML = '<li>Empty</li>';
+    if (inventoryBookshelf.innerHTML === '') {
+        inventoryBookshelf.innerHTML = '<p style="text-align: center; width: 100%; color: var(--text-secondary); font-size: 0.8rem;">Empty</p>';
     }
 }
 

@@ -23,8 +23,6 @@
 .quest-category-title.available { color: var(--text-secondary); }
 .quest-category-title.completed { color: var(--positive-color); }
 .quest-category-title.failed { color: var(--negative-color); }
-.quest-category-title.stalled { color: var(--text-secondary); }
-
 
 .quest-list {
     display: grid;
@@ -43,8 +41,6 @@
 .quest-card.status-available { border-left: 4px solid var(--text-secondary); }
 .quest-card.status-completed { border-left: 4px solid var(--positive-color); }
 .quest-card.status-failed { border-left: 4px solid var(--negative-color); }
-.quest-card.status-stalled { border-left: 4px solid var(--text-secondary); }
-
 
 .quest-header {
     padding: 16px;
@@ -84,8 +80,6 @@
 .quest-card.status-available .quest-status { background-color: rgba(139, 148, 158, 0.1); color: var(--text-secondary); }
 .quest-card.status-completed .quest-status { background-color: rgba(35, 134, 54, 0.1); color: var(--positive-color); }
 .quest-card.status-failed .quest-status { background-color: rgba(218, 54, 51, 0.1); color: var(--negative-color); }
-.quest-card.status-stalled .quest-status { background-color: rgba(139, 148, 158, 0.1); color: var(--text-secondary); }
-
 
 .quest-body {
     max-height: 0;

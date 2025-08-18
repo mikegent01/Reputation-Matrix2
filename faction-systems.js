@@ -13,11 +13,10 @@ import { renderMoonfangPackSystem, initMoonfangPackSystem } from './systems/moon
 import { renderCosmicJestersSystem, initCosmicJestersSystem } from './systems/cosmic-jesters-system.js';
 import { renderDCISystem, initDCISystem } from './systems/dci-system.js';
 import { renderOathboundJudgesSystem, initOathboundJudgesSystem } from './systems/oathbound-judges-system.js';
-import { renderUnchainedSystem } from './systems/unchained-system.js';
-import { renderCrimsonFleetSystem, initCrimsonFleetSystem } from './systems/crimson-fleet-system.js';
-import { renderIronFistsSystem } from './systems/iron-fists-system.js';
-import { renderMushroomRegencySystem, initMushroomRegencySystem } from './systems/mushroom-regency-system.js';
-import { renderGoodstyleArtisansSystem } from './systems/goodstyle-artisans-system.js';
+import { renderRakashaClansSystem, initRakashaClansSystem } from './systems/rakasha-clans-system.js';
+import { renderRebelClansSystem, initRebelClansSystem } from './systems/rebel-clans-system.js';
+import { renderFawfulSystem, initFawfulSystem } from './systems/fawful-system.js';
+import { renderMushroomKingdomCivilWar } from './systems/mushroom-kingdom-civil-war.js';
 import * as simpleRenderers from './systems/simple-renderers.js';
 import { initTabbedSystem } from './systems/common.js';
 
@@ -29,19 +28,21 @@ import { initTabbedSystem } from './systems/common.js';
  * @returns {string} HTML content for the unique system.
  */
 export function renderSystemForFaction(factionKey, factionData, currentState) {
-    const detailedSystems = ['iron_legion', 'onyx_hand', 'moonfang_pack', 'mages_guild', 'regal_empire', 'silver_flame', 'oathbound_judges', 'koopa_troop', 'the_unchained', 'crimson_fleet', 'iron_fists', 'mushroom_regency', 'toad_gang', 'goodstyle_artisans'];
-    if (!detailedSystems.includes(factionKey) && !factionData.internal_politics?.sub_factions && factionKey !== 'liberated_toads') {
-        return '';
+    const MUSHROOM_KINGDOM_FACTIONS = ['toad_gang', 'toad_cult', 'mushroom_regency', 'peach_loyalists', 'fawfuls_furious_freaks', 'liberated_toads', 'koopa_troop'];
+
+    let uniqueSystemHTML = getSystemHTML(factionKey, factionData, currentState);
+    const civilWarHTML = MUSHROOM_KINGDOM_FACTIONS.includes(factionKey) ? renderMushroomKingdomCivilWar(factionKey) : '';
+
+    if (uniqueSystemHTML) {
+        uniqueSystemHTML = `
+            <div class="unique-system-container">
+                <h5>Internal Faction Dynamics</h5>
+                ${uniqueSystemHTML}
+            </div>
+        `;
     }
-    
-    const systemHTML = getSystemHTML(factionKey, factionData, currentState);
-    
-    return `
-        <div class="unique-system-container">
-            <h5>Internal Faction Dynamics</h5>
-            ${systemHTML}
-        </div>
-    `;
+
+    return uniqueSystemHTML + civilWarHTML;
 }
 
 /**
@@ -60,18 +61,16 @@ function getSystemHTML(factionKey, factionData, currentState) {
         case 'silver_flame': return simpleRenderers.renderSilverFlameEdictsSystem();
         case 'oathbound_judges': return renderOathboundJudgesSystem();
         case 'freelancer_underworld': return renderFreelancerNetwork();
-        case 'toad_gang': return simpleRenderers.renderToadGangBountyBoard();
+        case 'toad_gang': return simpleRenderers.renderTurfWar(subFactions);
         case 'cosmic_jesters': return renderCosmicJestersSystem();
         case 'diamond_city_investigators': return renderDCISystem();
-        case 'liberated_toads': return simpleRenderers.renderLiberatedToadsFocus(factionKey, factionData, currentState);
-        case 'the_unchained': return renderUnchainedSystem();
-        case 'crimson_fleet': return renderCrimsonFleetSystem();
-        case 'mushroom_regency': return renderMushroomRegencySystem();
-        case 'iron_fists': return renderIronFistsSystem();
-        case 'goodstyle_artisans': return renderGoodstyleArtisansSystem();
+        case 'liberated_toads': return simpleRenderers.renderLiberatedToads(factionKey, factionData, currentState);
+        case 'rakasha_clans': return renderRakashaClansSystem();
+        case 'rebel_clans': return renderRebelClansSystem();
+        case 'fawfuls_furious_freaks': return renderFawfulSystem();
         default:
             if (subFactions) return renderDefaultSubfactionList(subFactions, factionKey, state);
-            return `<div class="system-content"><p>No unique system data available for this faction.</p></div>`;
+            return ``;
     }
 }
 
@@ -106,11 +105,14 @@ export function initSystem(factionKey) {
         case 'oathbound_judges':
             initOathboundJudgesSystem();
             break;
-        case 'crimson_fleet':
-            initCrimsonFleetSystem();
+        case 'rakasha_clans':
+            initRakashaClansSystem();
             break;
-        case 'mushroom_regency':
-            initMushroomRegencySystem();
+        case 'rebel_clans':
+            initRebelClansSystem();
+            break;
+        case 'fawfuls_furious_freaks':
+            initFawfulSystem();
             break;
     }
     

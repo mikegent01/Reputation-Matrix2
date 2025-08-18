@@ -2,7 +2,7 @@
 
 import { LORE_DATA } from './lore.js';
 
-const BOP_STATE = {
+export const BOP_STATE = {
     mushroom_kingdom: {
         title: "Mushroom Kingdom Civil War",
         description: "The kingdom has shattered into a five-way conflict. The Regency attempts to restore order, the Loyalists pursue their crusade against the new occupier of Peach's Castle, the maniacal Fawful. Elsewhere, Koopa Troop remnants fight for survival and the criminal Underworld exploits the chaos.",
@@ -229,26 +229,13 @@ function setupEventListeners() {
 
     container.addEventListener('mousemove', (e) => {
         if (tooltip.style.visibility === 'visible') {
-            const containerRect = container.getBoundingClientRect();
-            let left = e.clientX + 15;
-            let top = e.clientY + 15;
-            
-            // Prevent tooltip from going off-screen
-            if (left + tooltip.offsetWidth > containerRect.right) {
-                left = e.clientX - tooltip.offsetWidth - 15;
-            }
-            if (top + tooltip.offsetHeight > containerRect.bottom) {
-                top = e.clientY - tooltip.offsetHeight - 15;
-            }
-
-            tooltip.style.left = `${left}px`;
-            tooltip.style.top = `${top}px`;
+            tooltip.style.left = `${e.clientX + 15}px`;
+            tooltip.style.top = `${e.clientY + 15}px`;
         }
     });
 
     container.addEventListener('mouseout', (e) => {
-        const planCard = e.target.closest('.plan-card');
-        if (planCard) {
+        if (e.target.closest('.plan-card')) {
             tooltip.style.visibility = 'hidden';
             tooltip.style.opacity = '0';
         }

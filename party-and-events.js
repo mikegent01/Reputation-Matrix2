@@ -89,7 +89,7 @@ export const RUMORS = [
         title: "Dragon Slaying",
         description: "A month ago, the party slew a dragon, earning praise from the Iron Legion and scorn from the Mages' Guild.",
         targets: ['party'],
-        effects: { iron_legion: 10, mages_guild: -15, da_krumperz: 5 }
+        effects: { iron_legion: 10, mages_guild: -15 }
     },
     {
         id: 'shadow_war',
@@ -152,7 +152,7 @@ export const RUMORS = [
         title: "Markop Saves Lario",
         description: "Markop warned the goblin Lario of an orc sneak attack, saving his life despite their animosity.",
         targets: ['markop'],
-        effects: { ratchet_raiders: 15, oathbound_judges: 5, silver_flame: 5, da_krumperz: -10 }
+        effects: { ratchet_raiders: 15, oathbound_judges: 5, silver_flame: 5 }
     },
     {
         id: 'big_t_legacy',
@@ -195,8 +195,7 @@ export const RUMORS = [
             iron_legion: -25,
             mages_guild: -15,
             ratchet_raiders: 15,
-            cosmic_jesters: 20,
-            da_krumperz: 10
+            cosmic_jesters: 20
         }
     },
     {

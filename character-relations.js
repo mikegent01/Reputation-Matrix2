@@ -34,7 +34,7 @@ export const CHARACTER_RELATIONS = {
         'captain_toadette': { type: 'enemy', text: "Markop on Toadette: Her loyalty is admirable, but it has become a blinding fanaticism. She cannot see that her actions are creating more chaos, not less." }
     },
     'humpik': {
-        'bowser': { type: 'ally', text: "Humpik on Bowser: My King! I will follow him to the end of the world and back! WAAARGH!" },
+        'bowser': { type: 'ally', text: "Humpik on Bowser: The King is strong. A powerful ally. We fight well together. He respects my strength, and I respect his." },
         'archie': { type: 'ally', text: "Humpik on Archie: The little guy is crazy! But he makes big explosions! Good to have in a scrap." },
         'markop': { type: 'ally', text: "Humpik on Markop: The horse-man is too serious. But he fights good. I respect that." },
         'dan': { type: 'ally', text: "Humpik on Dan: He's a little guy, but he's tough! Like a tiny Bowser! Gwahahaha!" },
@@ -42,7 +42,7 @@ export const CHARACTER_RELATIONS = {
         'general_marcus_ironhand': { type: 'enemy', text: "Humpik on Ironhand: He's got a big army, but they're no match for the Koopa Troop! Or me!" }
     },
     'bowser': {
-        'humpik': { type: 'ally', text: "Bowser on Humpik: My most loyal and powerful soldier. The perfect instrument of my will." },
+        'humpik': { type: 'ally', text: "Bowser on Humpik: Humpik is a warrior of immense power and conviction. An equal on the battlefield. His counsel is direct, and his axe is true." },
         'archie': { type: 'ally', text: "Bowser on Archie: A chaotic, unpredictable weapon. Useful for breaking things I don't want to waste my own forces on." },
         'markop': { type: 'enemy', text: "Bowser on Markop: His talk of 'honor' is a weakness. But he's a strong fighter. I can use that." },
         'dan': { type: 'enemy', text: "Bowser on Dan: Another annoying toad. This one has magic? Kamek will deal with him." },

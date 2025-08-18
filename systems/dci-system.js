@@ -1,74 +1,54 @@
-const DCI_DATA = {
-    cases: [
-        {
-            id: 'case_001',
-            title: "The Wario Enigma",
-            status: "COLD",
-            summary: "Investigation into the bizarre death and funeral of the infamous treasure hunter, Wario. The discovery of two identical robot bodies suggests a complex plot far beyond a simple death. One of the party members was detained and subsequently escaped, leaving the case stalled.",
-            clues: ["Scrap metal from a Ratchet Raider workshop", "Conflicting witness reports", "Traces of ectoplasm on one of the bodies"],
-            persons_of_interest: ["Waluigi", "Lario", "Detective Penny", "Wario (deceased?)"]
-        },
-        {
-            id: 'case_002',
-            title: "The Artifact Heist",
-            status: "ACTIVE",
-            summary: "A string of high-profile thefts targeting priceless cultural artifacts. All evidence points to Wario's old 'Goldgrubber Gang', who have recently resurfaced. Their motives appear to be pure greed, but the scale of their operation is unprecedented.",
-            clues: ["A single gold coin left at each scene", "Eyewitness reports of a large, garlic-scented individual", "Insider information from the Freelancer Underworld"],
-            persons_of_interest: ["Master Goodstyle (victim)", "Wario's Ghost (rumored leader)", "Lario"]
-        }
-    ]
-};
+// This module handles the rendering and initialization of the DCI Case Board.
 
+/**
+ * Renders the HTML structure for the DCI Case Board.
+ * @returns {string} HTML for the system.
+ */
 export function renderDCISystem() {
-    const tabsHTML = DCI_DATA.cases.map((c, index) => `
-        <button class="system-tab-btn ${index === 0 ? 'active' : ''}" data-tab="dci-case-${c.id}">${c.title}</button>
-    `).join('');
-
-    const contentHTML = DCI_DATA.cases.map((c, index) => `
-        <div class="system-tab-content ${index === 0 ? 'active' : ''}" id="dci-case-${c.id}">
-            <div class="case-file">
-                <div class="case-header">
-                    <h4>Case #${c.id.split('_')[1]}: ${c.title}</h4>
-                    <span class="case-status status-${c.status.toLowerCase()}">${c.status}</span>
-                </div>
-                <div class="case-body">
-                    <p><strong>Summary:</strong> ${c.summary}</p>
-                    <h6>Clues & Evidence:</h6>
-                    <ul>${c.clues.map(clue => `<li>${clue}</li>`).join('')}</ul>
-                    <h6>Persons of Interest:</h6>
-                    <ul>${c.persons_of_interest.map(poi => `<li>${poi}</li>`).join('')}</ul>
-                </div>
-            </div>
-        </div>
-    `).join('');
-
     return `
-        <div class="faction-detailed-system dci-system">
-             <p class="system-description">The DCI maintains active case files on major criminal activities. Intel is updated as new leads emerge.</p>
-            <div class="system-tabs">${tabsHTML}</div>
-            <div class="system-content-wrapper">${contentHTML}</div>
+        <p class="system-description">The DCI operates on active cases. Their current focus is the sprawling criminal enterprise of Wario and his associates. Evidence is gathered, leads are followed, and a network of suspects is slowly drawn together on the case board.</p>
+        <div class="system-content">
+            <div class="case-board" id="dci-case-board">
+                <div class="case-item person"><strong>SUSPECT:</strong> Wario</div>
+                <div class="case-item evidence1"><strong>EVIDENCE:</strong> Recovered Stolen Artifact</div>
+                <div class="case-item evidence2"><strong>EVIDENCE:</strong> Ghostly energy readings in Cargo Bay 3</div>
+                <div class="case-item lead"><strong>LEAD:</strong> Connection to Lario's Workshop</div>
+            </div>
         </div>
     `;
 }
 
-
+/**
+ * Initializes the case board by drawing lines between connected items.
+ */
 export function initDCISystem() {
-    const system = document.querySelector('.dci-system');
-    if (!system) return;
+    const board = document.getElementById('dci-case-board');
+    if(!board) return;
 
-    const tabs = system.querySelectorAll('.system-tab-btn');
-    const contents = system.querySelectorAll('.system-tab-content');
+    const items = Array.from(board.children);
+    if(items.length < 2) return;
+    
+    // Defines which items to connect by their index in the `items` array.
+    const connections = [ [0,1], [0,2], [0,3] ];
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const targetId = tab.dataset.tab;
+    connections.forEach(([startIndex, endIndex]) => {
+        const start = items[startIndex];
+        const end = items[endIndex];
+        
+        const x1 = start.offsetLeft + start.offsetWidth / 2;
+        const y1 = start.offsetTop + start.offsetHeight / 2;
+        const x2 = end.offsetLeft + end.offsetWidth / 2;
+        const y2 = end.offsetTop + end.offsetHeight / 2;
 
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
+        const length = Math.sqrt((x2-x1)**2 + (y2-y1)**2);
+        const angle = Math.atan2(y2-y1, x2-x1) * 180 / Math.PI;
 
-            contents.forEach(content => {
-                content.classList.toggle('active', content.id === targetId);
-            });
-        });
+        const line = document.createElement('div');
+        line.className = 'case-board-line';
+        line.style.width = `${length}px`;
+        line.style.transform = `rotate(${angle}deg)`;
+        line.style.left = `${x1}px`;
+        line.style.top = `${y1}px`;
+        board.appendChild(line);
     });
 }

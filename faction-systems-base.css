@@ -175,247 +175,238 @@
     color: var(--text-secondary);
 }
 
-
-/* --- Liberated Toads: Focus Dashboard --- */
-.liberated-toads-focus-system .focus-dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 12px;
-}
-.liberated-toads-focus-system .toad-focus-card {
-    background-color: var(--sidebar-bg);
-    padding: 12px;
-    border-radius: 4px;
-    border-left: 3px solid var(--neutral-color);
-}
-.liberated-toads-focus-system .toad-focus-card .toad-name {
-    font-weight: bold;
-    color: var(--text-color);
-}
-.liberated-toads-focus-system .toad-focus-card .focus-title {
-    font-size: 0.85rem;
-    color: var(--accent-color);
-    font-style: italic;
-    margin-top: 4px;
-}
-.liberated-toads-focus-system .toad-focus-card .focus-days {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-}
-.liberated-toads-focus-system .manage-focus-link {
-    display: block;
-    text-align: center;
-    margin-top: 16px;
-    color: var(--accent-color);
-    font-family: var(--font-display);
-}
-
-/* --- Unchained: Liberation Front --- */
-.unchained-liberation-system {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-.liberation-progress h6, .meddling-operations h6 {
-    font-family: var(--font-display);
-    color: var(--text-secondary);
+/* --- Toad Gang: Turf War Bars --- */
+.turf-war-bars .bar-item {
     margin-bottom: 8px;
 }
-.liberation-progress .progress-bar-container {
-    background-color: var(--sidebar-bg);
-    border-radius: 4px;
-    padding: 4px;
-    border: 1px solid var(--border-color);
+.turf-war-bars .bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
 }
-.liberation-progress .progress-bar-fill {
-    background-color: var(--negative-color);
-    height: 20px;
-    border-radius: 2px;
-    transition: width 1s ease-out;
+.turf-war-bars .bar-container {
+    height: 15px;
+    background-color: var(--sidebar-bg);
+    border-radius: 3px;
+    overflow: hidden;
+}
+.turf-war-bars .bar-fill {
+    height: 100%;
+    background-color: var(--accent-color);
+    transition: width 0.5s ease;
+}
+
+/* --- Da Krumperz: WAAAGH! Meter --- */
+.waaagh-meter { text-align: center; }
+.waaagh-bar-container {
+    width: 100%;
+    height: 40px;
+    border: 2px solid var(--positive-color);
+    border-radius: 5px;
+    padding: 4px;
+    background: repeating-linear-gradient(45deg, var(--main-bg), var(--main-bg) 10px, #2a2a2a 10px, #2a2a2a 20px);
+}
+.waaagh-bar-fill {
+    height: 100%;
+    background-color: var(--positive-color);
+    transition: width 0.5s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 0.8rem;
+    color: var(--main-bg);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    animation: pulse-green 1s infinite;
 }
-.success-story {
+@keyframes pulse-green {
+    50% { filter: brightness(1.2); }
+}
+
+/* --- Diamond City Investigators: Case Board --- */
+.case-board {
+    height: 350px;
+    position: relative;
+    background-color: #4a4137;
+    border: 5px solid #2d2620;
+    overflow: hidden;
+}
+.case-item {
+    position: absolute;
+    background: #fdf5e6;
+    color: #333;
+    padding: 5px 8px;
+    border-radius: 2px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 0.8rem;
+    border: 1px solid #ccc;
+}
+.case-item.person { top: 20px; left: 150px; transform: rotate(-3deg); }
+.case-item.evidence1 { top: 120px; left: 40px; transform: rotate(5deg); }
+.case-item.evidence2 { top: 200px; left: 250px; transform: rotate(-2deg); }
+.case-item.lead { top: 280px; left: 80px; transform: rotate(1deg); }
+.case-board-line {
+    position: absolute;
+    width: 2px;
+    background: #ff4136;
+    transform-origin: 0 0;
+    opacity: 0.7;
+}
+
+/* --- Liberated Toads: Opinion List --- */
+.subfaction-opinions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+.subfaction-opinion {
+    font-size: 0.85rem;
+}
+.subfaction-opinion .char-name {
+    color: var(--text-color);
+    font-weight: bold;
+}
+.subfaction-opinion p {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0 0 0 12px;
+    padding-left: 8px;
+    border-left: 2px solid var(--border-color);
+}
+
+
+/* --- Silver Flame: Edicts System --- */
+.silver-flame-edicts-system {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+}
+.edicts-section h6 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+.tenet-card, .edict-card {
     background-color: var(--sidebar-bg);
-    padding: 12px;
+    border-left: 3px solid var(--silver-flame-color, #C0C0C0); /* Fallback color */
     border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+.tenet-card h6, .edict-card h6 {
+    font-family: var(--font-display);
+    color: var(--text-color);
+    font-size: 1rem;
+    margin: 0 0 4px 0;
+}
+.tenet-card p, .edict-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+.edict-card .edict-status {
+    font-style: italic;
+    color: var(--neutral-color);
+    font-size: 0.8rem;
+    margin-top: 8px;
+    display: block;
+}
+
+/* --- Oathbound Judges: Verdict System --- */
+.oathbound-verdicts-system {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+}
+.verdict-log {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.verdict-card {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+}
+.verdict-header {
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+.verdict-details p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+.verdict-details strong {
+    color: var(--text-color);
+    min-width: 90px;
+    display: inline-block;
+}
+.verdict-result {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 12px;
+}
+.verdict-guilty {
+    color: var(--negative-color);
+    background-color: rgba(218, 54, 51, 0.1);
+}
+.verdict-deferred {
+    color: var(--neutral-color);
+    background-color: rgba(240, 185, 11, 0.1);
+}
+
+/* --- Koopa Troop: Expanded Hierarchy --- */
+.koopa-troop-system {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+}
+.koopa-hierarchy, .koopa-war-status {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+}
+.koopa-hierarchy h6, .koopa-war-status h6 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+.hierarchy-level {
+    margin-bottom: 12px;
+}
+.hierarchy-level strong {
+    color: var(--text-color);
+    font-size: 1rem;
+    display: block;
+}
+.hierarchy-level span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    padding-left: 10px;
+}
+.koopa-war-status p {
     font-size: 0.9rem;
     color: var(--text-secondary);
 }
-.meddling-operations ul {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 8px;
-}
-.meddling-operations li {
-    background-color: var(--sidebar-bg);
-    padding: 10px;
-    border-radius: 4px;
-}
-
-/* --- Iron Fists: Strike Clock --- */
-.iron-fists-strike-system {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-}
-.strike-clock {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 5px solid #333;
-    background: #111;
-    position: relative;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5), inset 0 0 10px #000;
-}
-.clock-face { position: relative; width: 100%; height: 100%; }
-.clock-marker {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    font-size: 0.7rem;
-    font-family: var(--font-display);
-    color: var(--text-secondary);
-}
-.clock-marker.m1 { transform: rotate(45deg); }
-.clock-marker.m2 { transform: rotate(135deg); }
-.clock-marker.m3 { transform: rotate(225deg); }
-.clock-marker.m4 { transform: rotate(315deg); }
-.clock-marker span {
-    display: block;
-    transform: rotate(-45deg);
-    position: absolute;
-    top: 5px; left: 50%;
-    transform-origin: 0 95px; /* Adjust based on radius */
-}
-.clock-hand-container {
-    position: absolute; width: 100%; height: 100%;
-    transition: transform 1s ease-in-out;
-}
-.clock-hand {
-    width: 4px;
-    height: 70px;
-    background: var(--negative-color);
-    position: absolute;
-    left: 50%; top: 30px;
-    transform: translateX(-50%);
-    transform-origin: bottom;
-    box-shadow: 0 0 5px var(--negative-color);
-}
-.clock-center {
-    width: 10px; height: 10px; background: #555; border-radius: 50%;
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-}
-.current-operation {
-    text-align: center;
-    background-color: var(--sidebar-bg);
-    padding: 12px;
-    border-radius: 4px;
-}
-.current-operation h6 { color: var(--text-secondary); }
-.current-operation p { font-size: 1.1rem; color: var(--text-color); font-family: var(--font-display); }
-
-/* --- Goodstyle Artisans: Artifact Registry --- */
-.artisans-registry-system {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-}
-.artifact-card {
-    background-color: var(--sidebar-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 12px;
-}
-.artifact-card h6 {
-    font-family: var(--font-display);
+.koopa-war-status p strong {
     color: var(--text-color);
-}
-.artifact-card .artifact-status {
-    font-size: 0.8rem;
-    padding: 2px 6px;
-    border-radius: 10px;
-    float: right;
-}
-.artifact-status.secure { background-color: var(--positive-color); color: white; }
-.artifact-status.stolen { background-color: var(--negative-color); color: white; }
-.artifact-status.lost { background-color: var(--text-secondary); color: var(--main-bg); }
-.artifact-card .artifact-description {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin: 8px 0;
-    clear: both;
-}
-.artifact-card .artifact-location {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    border-top: 1px dashed var(--border-color);
-    padding-top: 8px;
-    margin-top: 8px;
-}
-.artifact-location strong { color: var(--neutral-color); }
-
-/* --- Toad Gang: Bounty Board --- */
-.toad-gang-bounty-system {
-    background: #5a4a3a url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIQSURBVHhe7dJBDQAgEMCwA/+eW5N1BN2d2U5Kzlg4Y84COVPgTIEzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzBc4UOFPgTIkzd2Zz2kAnT6kAAAAASUVORK5CYII=');
-    border: 5px solid #3d3227;
-    padding: 16px;
-    border-radius: 4px;
-}
-.bounty-board-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-}
-.wanted-poster {
-    background-color: #fdf5e6;
-    border: 1px solid #ccc;
-    color: #333;
-    padding: 10px;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
-    position: relative;
-    transform: rotate(calc(var(--r, 0) * 1deg));
-}
-.wanted-poster.big-t::after {
-    content: 'MISSING';
-    position: absolute;
-    top: 30%; left: -10%;
-    color: red;
-    font-size: 2rem;
-    font-weight: bold;
-    border: 4px solid red;
-    padding: 5px;
-    transform: rotate(-15deg);
-    opacity: 0.8;
-}
-.wanted-poster h6 { font-size: 1.5rem; text-transform: uppercase; border-bottom: 2px solid #333; margin-bottom: 5px;}
-.wanted-poster p { margin: 5px 0; font-weight: bold; }
-.wanted-poster .bounty { color: #8B0000; font-size: 1.2rem; }
-
-/* --- Mushroom Regency: State System --- */
-.mushroom-regency-system {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}
-.regency-chart-container {
-    background-color: var(--sidebar-bg);
-    padding: 16px;
-    border-radius: 6px;
-}
-#regency-influence-chart { max-height: 250px; }
-.regency-status-panel { background-color: var(--sidebar-bg); padding: 16px; border-radius: 6px; }
-.regency-status-panel h6 { font-family: var(--font-display); color: var(--text-secondary); }
-.regency-status-panel ul { list-style: none; padding-left: 0; }
-.regency-status-panel li { padding: 4px 0; font-size: 0.9rem; }
-@media (max-width: 768px) {
-    .mushroom-regency-system { grid-template-columns: 1fr; }
 }

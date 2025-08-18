@@ -39,8 +39,8 @@ export const OATHBOUND_JUDGES_DETAILS = {
     recent_verdicts: [
         { 
             case: "Case #771: The State vs. Archie Miser", 
-            verdict: "Innocent. The Arbiters of Intent found his actions, while chaotic, ultimately served a greater cosmic balance. The Truthbearers have formally lodged an appeal.", 
-            presiding_judge: "Arbitrix Mira" 
+            verdict: "A split decision. The Arbiters of Intent found him Innocent, arguing his chaotic actions ultimately served a greater cosmic balance. The Truthbearers, however, found him Guilty on all counts based on the letter of the law and have formally lodged an appeal.", 
+            presiding_judge: "Split Tribunal" 
         },
         { 
             case: "Case #772: The Matter of the Fallen Paladin", 

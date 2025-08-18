@@ -1,190 +1,134 @@
-// This file contains rendering functions for factions with simpler, non-interactive unique systems.
-import { IRON_LEGION_DETAILS } from '../iron-legion-details.js';
-import { KOOPA_TROOP_DETAILS } from '../koopa-troop-details.js';
-import { SILVER_FLAME_DETAILS } from '../silver-flame-details.js';
+// This module contains a collection of simpler render functions for faction systems
+// that do not require complex, separate initialization logic.
+
+import { state } from '../state.js';
 import { LORE_DATA } from '../lore.js';
-import { FOCUS_TREES } from '../focus-tree.js';
+import { buildDetailedSystemHTML } from './common.js';
+import { IRON_LEGION_DETAILS } from '../iron-legion-details.js';
+import { SILVER_FLAME_DETAILS } from '../silver-flame-details.js';
+import { KOOPA_TROOP_DETAILS } from '../koopa-troop-details.js';
 
-// --- Default Subfaction List ---
-export function renderDefaultSubfactionList(subFactions, factionKey, state) {
-    const listItems = Object.entries(subFactions).map(([key, data]) => {
-        const playerReps = Object.keys(state.players).map(playerKey => {
-            const rep = state.finalSubFactionReputations[playerKey]?.[factionKey]?.[key] || 0;
-            const repClass = rep > 10 ? 'positive' : rep < -10 ? 'negative' : 'neutral';
-            return `<div class="subfaction-player-rep"><span class="char-name">${state.players[playerKey].name}:</span> <span class="rep-value ${repClass}">${rep}</span></div>`;
-        }).join('');
-
-        return `
-            <li class="subfaction-item">
-                <div class="subfaction-header">
-                    <span class="subfaction-name">${data.name}</span>
-                    <span class="subfaction-influence">Influence: ${data.influence}%</span>
-                </div>
-                <p class="subfaction-description">${data.description}</p>
-                <div class="subfaction-details">
-                    <div>
-                        <h6>Player Standing</h6>
-                        ${playerReps}
-                    </div>
-                    <div>
-                         <h6>Faction Opinion</h6>
-                         <p>${data.opinion}</p>
-                    </div>
-                </div>
-            </li>
-        `;
-    }).join('');
-
-    return `<div class="system-content"><ul class="subfaction-list">${listItems}</ul></div>`;
+export function renderIronLegionDetailedSystem() {
+    return buildDetailedSystemHTML(
+        IRON_LEGION_DETAILS,
+        "The Iron Legion is a well-oiled machine of conquest, with a rigid hierarchy and distinct operational doctrines for different territories. Explore their structure and methods below."
+    );
 }
 
-// --- Iron Legion ---
-export function renderIronLegionDetailedSystem() {
-    const hierarchyHTML = IRON_LEGION_DETAILS.hierarchy.map(level => `
-        <div class="org-chart-level">
-            <div class="org-rank">${level.rank}</div>
-            <div class="org-leader">${level.leader}</div>
-            <p class="org-description">${level.description}</p>
-        </div>
-    `).join('');
-
+export function renderSilverFlameEdictsSystem() {
+    const data = SILVER_FLAME_DETAILS;
     return `
-        <div class="faction-detailed-system">
-            <div class="system-tabs">
-                <button class="system-tab-btn active" data-tab="hierarchy">Chain of Command</button>
-                <button class="system-tab-btn" data-tab="recruitment">Recruitment</button>
-                <button class="system-tab-btn" data-tab="tactics">Warfare</button>
+        <p class="system-description">${data.description}</p>
+        <div class="system-content silver-flame-edicts-system">
+            <div class="edicts-section">
+                <h6>Core Tenets of the Flame</h6>
+                ${data.tenets.map(tenet => `
+                    <div class="tenet-card">
+                        <h6>${tenet.title}</h6>
+                        <p>${tenet.text}</p>
+                    </div>
+                `).join('')}
             </div>
-            <div class="system-tab-content active" id="hierarchy">
-                <div class="system-org-chart">${hierarchyHTML}</div>
-            </div>
-            <div class="system-tab-content" id="recruitment">
-                <div class="info-card-grid">
-                    <div class="info-card"><h6>${IRON_LEGION_DETAILS.recruitment.midlands.title}</h6><p>${IRON_LEGION_DETAILS.recruitment.midlands.description}</p></div>
-                    <div class="info-card"><h6>${IRON_LEGION_DETAILS.recruitment.mushroom_kingdom.title}</h6><p>${IRON_LEGION_DETAILS.recruitment.mushroom_kingdom.description}</p></div>
-                </div>
-            </div>
-             <div class="system-tab-content" id="tactics">
-                <div class="info-card-grid">
-                    <div class="info-card"><h6>${IRON_LEGION_DETAILS.tactics.midlands.title}</h6><p>${IRON_LEGION_DETAILS.tactics.midlands.description}</p></div>
-                    <div class="info-card"><h6>${IRON_LEGION_DETAILS.tactics.mushroom_kingdom.title}</h6><p>${IRON_LEGION_DETAILS.tactics.mushroom_kingdom.description}</p></div>
-                </div>
+            <div class="edicts-section">
+                <h6>Active Edicts</h6>
+                ${data.active_edicts.map(edict => `
+                    <div class="edict-card">
+                        <h6>${edict.title}</h6>
+                        <p>${edict.text}</p>
+                        <span class="edict-status">Status: ${edict.status}</span>
+                    </div>
+                `).join('')}
             </div>
         </div>
     `;
 }
 
-// --- Koopa Troop ---
 export function renderKoopaTroopHierarchySystem() {
-    const hierarchyHTML = KOOPA_TROOP_DETAILS.hierarchy.map(level => `
-         <div class="hierarchy-level">
-            <strong>${level.rank}:</strong> <span>${level.leader}</span>
-         </div>
-    `).join('');
-    
+    const data = KOOPA_TROOP_DETAILS;
     return `
-         <div class="system-content koopa-troop-system">
+        <p class="system-description">${data.description}</p>
+        <div class="system-content koopa-troop-system">
             <div class="koopa-hierarchy">
                 <h6>Chain of Command</h6>
-                ${hierarchyHTML}
+                ${data.hierarchy.map(level => `
+                    <div class="hierarchy-level">
+                        <strong>${level.rank}: ${level.leader}</strong>
+                        <span>Key Units: ${level.units}</span>
+                    </div>
+                `).join('')}
             </div>
             <div class="koopa-war-status">
-                <h6>${KOOPA_TROOP_DETAILS.civil_war_status.title}</h6>
-                <p><strong>Objective:</strong> ${KOOPA_TROOP_DETAILS.civil_war_status.current_objective}</p>
-                <p><strong>Field Commander:</strong> ${KOOPA_TROOP_DETAILS.civil_war_status.commander_on_site}</p>
-                <p>${KOOPA_TROOP_DETAILS.civil_war_status.disposition}</p>
+                <h6>${data.civil_war_status.title}</h6>
+                <p><strong>Commander on Site:</strong> ${data.civil_war_status.commander_on_site}</p>
+                <p><strong>Objective:</strong> ${data.civil_war_status.current_objective}</p>
+                <p>${data.civil_war_status.disposition}</p>
             </div>
         </div>
     `;
 }
 
-// --- Silver Flame ---
-export function renderSilverFlameEdictsSystem() {
-    const tenetsHTML = SILVER_FLAME_DETAILS.tenets.map(t => `
-        <div class="tenet-card">
-            <h6>${t.title}</h6>
-            <p>${t.text}</p>
-        </div>
-    `).join('');
-    const edictsHTML = SILVER_FLAME_DETAILS.active_edicts.map(e => `
-        <div class="edict-card">
-            <h6>${e.title}</h6>
-            <p>${e.text}</p>
-            <span class="edict-status">Status: ${e.status}</span>
-        </div>
-    `).join('');
+export function renderTurfWar(subFactions) {
+    const totalInfluence = Object.values(subFactions).reduce((sum, sf) => sum + sf.influence, 0);
     return `
-         <div class="system-content silver-flame-edicts-system">
-            <div class="edicts-section">
-                <h6>Core Tenets</h6>
-                ${tenetsHTML}
-            </div>
-             <div class="edicts-section">
-                <h6>Active Edicts of Judgment</h6>
-                ${edictsHTML}
-            </div>
+        <p class="system-description">Power in the Toad Gang is measured in street corners and controlled rackets. After Big T's fall, the radical Mushroom Skulls have seized the most influence, but other factions still control significant portions of the criminal enterprise.</p>
+        <div class="system-content turf-war-bars">
+             ${Object.values(subFactions).map(sf => `
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>${sf.name}</span>
+                        <span>${sf.influence}%</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: ${sf.influence / totalInfluence * 100}%;"></div>
+                    </div>
+                </div>
+             `).join('')}
         </div>
     `;
 }
 
-// --- Liberated Toads ---
-export function renderLiberatedToadsFocus(factionKey, factionData, currentState) {
-    const toadCardsHTML = Object.keys(LORE_DATA.auxiliary_party).map(toadKey => {
-        const toadData = LORE_DATA.auxiliary_party[toadKey];
-        const influence = currentState.focusTreeState.influences[toadKey] || 0;
-        const activeFocus = currentState.focusTreeState.activeFocuses.find(f => f.toadKey === toadKey);
-
-        let focusHTML = '<em>Idle</em>';
-        if (activeFocus) {
-            const focusNode = FOCUS_TREES[toadKey]?.tree.find(n => n.id === activeFocus.nodeId);
-            if (focusNode) {
-                 focusHTML = `
-                    <p class="focus-title">${focusNode.title}</p>
-                    <p class="focus-days">(${activeFocus.remainingDays} days left)</p>
-                 `;
-            }
+/**
+ * Renders the unique opinion list for the Liberated Toads.
+ */
+export function renderLiberatedToads(factionKey, factionData, currentState) {
+    const subFactions = factionData.internal_politics.sub_factions;
+    const subFactionListHTML = Object.values(subFactions).map(subFaction => {
+        const playerRepHTML = currentState.party.map(playerKey => {
+            const opinionText = subFaction.opinion?.[playerKey] || "No strong opinion.";
+            return `<div class="subfaction-opinion">
+                        <span class="char-name">${LORE_DATA.characters[playerKey].name}:</span>
+                        <p>"${opinionText}"</p>
+                    </div>`;
+        }).join('');
+        
+        let extraMechanicHTML = '';
+         if (subFaction.current_focus) {
+            extraMechanicHTML = `
+                <div class="subfaction-details">
+                    <h6>Current Focus</h6>
+                    <p>${subFaction.current_focus}</p>
+                </div>
+            `;
         }
-
-        return `
-            <div class="toad-focus-card">
-                <p class="toad-name">${toadData.name} (Influence: ${influence})</p>
-                ${focusHTML}
-            </div>
-        `;
+        return `<li class="subfaction-item">
+                    <div class="subfaction-header">
+                        <span class="subfaction-name">${subFaction.name}</span>
+                        <span class="subfaction-influence">(${subFaction.influence || '??'}% Influence)</span>
+                    </div>
+                    <p class="subfaction-description">${subFaction.description}</p>
+                    ${extraMechanicHTML}
+                    <div class="subfaction-opinions-container">
+                        ${playerRepHTML}
+                    </div>
+                </li>`;
     }).join('');
 
     return `
-         <div class="system-content liberated-toads-focus-system">
-             <p class="system-description">The Liberated Toads' progress is tracked through their individual and group Focus Trees, which determine their skills, alliances, and survival strategies.</p>
-            <div class="focus-dashboard-grid">
-                ${toadCardsHTML}
-            </div>
-            <a href="focus.html" class="manage-focus-link">MANAGE FOCUS TREES &raquo;</a>
+        <p class="system-description">The Liberated Toads are not a monolithic bloc, but a diverse group of individuals with strong opinions shaped by their recent trauma and newfound freedom. Their support is personal and must be earned. Their development is tracked on the <a href="focus.html">Toad Focus</a> page.</p>
+        <div class="system-content">
+            <ul class="subfaction-list">
+                ${subFactionListHTML}
+            </ul>
         </div>
-    `;
-}
-
-// --- Toad Gang ---
-export function renderToadGangBountyBoard() {
-    const bountyData = [
-        { name: "Archie Miser", bounty: "5,000c", r: -2 },
-        { name: "Markop Judi", bounty: "3,000c", r: 3 },
-        { name: "Humpik", bounty: "2,500c", r: -1 },
-        { name: "Bowser", bounty: "10,000c", r: 2 },
-        { name: "Big T", bounty: "???", r: 1, isMissing: true },
-    ];
-
-    const postersHTML = bountyData.map(b => `
-        <div class="wanted-poster ${b.isMissing ? 'big-t' : ''}" style="--r:${b.r}">
-            <h6>WANTED</h6>
-            <p>${b.name}</p>
-            <p class="bounty">${b.bounty}</p>
-        </div>
-    `).join('');
-
-     return `
-         <div class="system-content toad-gang-bounty-system">
-            <div class="bounty-board-grid">${postersHTML}</div>
-         </div>
     `;
 }
