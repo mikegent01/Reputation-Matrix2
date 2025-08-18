@@ -1879,3 +1879,33 @@ tr.current-rank {
     width: 100%;
     height: 100%;
 }
+
+.char-intel-section {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+}
+
+.char-intel-section h5 {
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.intel-bar-container {
+    width: 100%;
+    height: 10px;
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.intel-bar {
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 3px;
+    transition: width 0.5s ease-in-out;
+    filter: drop-shadow(0 0 3px var(--accent-color));
+}

@@ -229,13 +229,26 @@ function setupEventListeners() {
 
     container.addEventListener('mousemove', (e) => {
         if (tooltip.style.visibility === 'visible') {
-            tooltip.style.left = `${e.clientX + 15}px`;
-            tooltip.style.top = `${e.clientY + 15}px`;
+            const containerRect = container.getBoundingClientRect();
+            let left = e.clientX + 15;
+            let top = e.clientY + 15;
+            
+            // Prevent tooltip from going off-screen
+            if (left + tooltip.offsetWidth > containerRect.right) {
+                left = e.clientX - tooltip.offsetWidth - 15;
+            }
+            if (top + tooltip.offsetHeight > containerRect.bottom) {
+                top = e.clientY - tooltip.offsetHeight - 15;
+            }
+
+            tooltip.style.left = `${left}px`;
+            tooltip.style.top = `${top}px`;
         }
     });
 
     container.addEventListener('mouseout', (e) => {
-        if (e.target.closest('.plan-card')) {
+        const planCard = e.target.closest('.plan-card');
+        if (planCard) {
             tooltip.style.visibility = 'hidden';
             tooltip.style.opacity = '0';
         }

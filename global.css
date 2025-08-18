@@ -1,0 +1,51 @@
+:root {
+    --bg-color: #0d1117;
+    --sidebar-bg: #161b22;
+    --main-bg: #010409;
+    --border-color: #30363d;
+    --text-color: #c9d1d9;
+    --text-secondary: #8b949e;
+    --accent-color: #8A2BE2; /* Waluigi Purple */
+    --accent-hover: #9932CC;
+    --positive-color: #238636;
+    --negative-color: #da3633;
+    --neutral-color: #f0b90b;
+    --major-powers-color: #C9B037; /* Gold */
+    --regional-powers-color: #A9A9A9; /* Silver */
+    --mystical-ancient-color: #8A2BE2; /* Purple */
+    --underworld-fringe-color: #A52A2A; /* Brown */
+    --interdimensional-threat-color: #d11d67; /* Magenta/Pink for weirdness */
+    --font-primary: 'Roboto Mono', monospace;
+    --font-display: 'Orbitron', sans-serif;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flicker {
+  0%, 100% {
+    text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color);
+    opacity: 1;
+  }
+  50% {
+    text-shadow: 0 0 2px var(--accent-color), 0 0 5px var(--accent-color);
+    opacity: 0.8;
+  }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.6;
+    background-image: linear-gradient(rgba(13, 17, 23, 0.95), rgba(13, 17, 23, 0.95)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23161b22' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}

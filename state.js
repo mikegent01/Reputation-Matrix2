@@ -1,12 +1,56 @@
-
-
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
 import { FOCUS_TREES } from './focus-tree.js';
 
 // --- STATE MANAGEMENT ---
+
+// Helper to generate a default intel object for the generic user
+function generateGenericIntel() {
+    const intel = {};
+    for (const factionKey in LORE_DATA.factions) {
+        intel[factionKey] = 30;
+    }
+    return intel;
+}
+
+
 export const state = {
     loggedInUser: localStorage.getItem('vigilanceTerminalUser') || 'generic',
+    debugMode: false,
+    intelLevels: {
+        archie: {
+            regal_empire: 95, iron_legion: 80, freelancer_underworld: 85,
+            toad_gang: 50, toad_cult: 40, onyx_hand: 90, mages_guild: 95,
+            rakasha_clans: 20, cosmic_jesters: 80, the_unchained: 70,
+            silver_flame: 60, oathbound_judges: 65, ratchet_raiders: 75,
+            koopa_troop: 50, rebel_clans: 60, crimson_fleet: 65,
+            wario_land: 55, mushroom_regency: 45, peach_loyalists: 40,
+            fawfuls_furious_freaks: 50, iron_fists: 85, moonfang_pack: 70,
+            liberated_toads: 90, diamond_city_investigators: 70, goodstyle_artisans: 30
+        },
+        markop: {
+            regal_empire: 70, iron_legion: 65, freelancer_underworld: 20,
+            toad_gang: 30, toad_cult: 25, onyx_hand: 50, mages_guild: 40,
+            rakasha_clans: 85, cosmic_jesters: 10, the_unchained: 75,
+            silver_flame: 80, oathbound_judges: 85, ratchet_raiders: 30,
+            koopa_troop: 35, rebel_clans: 50, crimson_fleet: 20,
+            wario_land: 15, mushroom_regency: 60, peach_loyalists: 55,
+            fawfuls_furious_freaks: 20, iron_fists: 60, moonfang_pack: 70,
+            liberated_toads: 95, diamond_city_investigators: 40, goodstyle_artisans: 50
+        },
+        humpik: {
+            koopa_troop: 95, toad_gang: 60, regal_empire: 25, iron_legion: 30,
+            rakasha_clans: 40, rebel_clans: 30, moonfang_pack: 35,
+            liberated_toads: 45, default: 20
+        },
+        bowser: {
+            koopa_troop: 100, mushroom_regency: 75, peach_loyalists: 70,
+            regal_empire: 65, iron_legion: 60, rebel_clans: 50,
+            onyx_hand: 40, moonfang_pack: 45, crimson_fleet: 40,
+            default: 30
+        },
+        generic: generateGenericIntel(),
+    },
     party: ['archie', 'markop', 'humpik'],
     activeRumors: [], 
     players: {
@@ -329,12 +373,13 @@ function calculateFinalReputations() {
 }
 
 export function loadState() {
+    state.debugMode = localStorage.getItem('vigilanceDebugMode') === 'true';
     const savedState = localStorage.getItem('vigilanceTerminalState');
     if (savedState) {
         const parsedState = JSON.parse(savedState);
         // selectively assign properties to avoid overwriting the loggedInUser from the new session
         Object.keys(parsedState).forEach(key => {
-            if (key !== 'loggedInUser') {
+            if (key !== 'loggedInUser' && key !== 'debugMode') { // also protect debugMode
                 state[key] = parsedState[key];
             }
         });

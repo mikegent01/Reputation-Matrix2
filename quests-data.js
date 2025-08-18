@@ -35,11 +35,12 @@ export const QUEST_DATA = {
         title: "Who Killed Princess Peach?",
         objective: "The death of Princess Peach plunged the kingdom into chaos. With Bowser gone, the Koopa Troop and Peach Loyalists have formed a fragile truce to investigate the true circumstances of her demise by infiltrating Fawful's Gala.",
         assignee: "Koopa Troop & Peach Loyalists",
-        status: "active",
+        status: "stalled",
         steps: [
             { id: 'step1', title: "Infiltrate Peach's Castle", status: 'completed', description: "A recon team of Koopa and Paratroopas teamed up with Toadette's forces and successfully infiltrated the castle during Fawful's Grand Gala." },
-            { id: 'step2', title: "Gather Clues from the Gala", status: 'active', description: "The team witnessed the bizarre collection of guests and overheard conversations, but the true culprit remains unknown. Fawful's intentions with a group of captured toads remain a primary concern." },
-            { id: 'step3', title: "Survive and Escape", status: 'completed', description: "After being discovered, the recon team helped Toadette and several of her soldiers escape the castle, solidifying a temporary truce." }
+            { id: 'step2', title: "Gather Clues from the Gala", status: 'completed', description: "The team witnessed the bizarre collection of guests and overheard conversations, but the true culprit remains unknown. Fawful's intentions with a group of captured toads remain a primary concern." },
+            { id: 'step3', title: "Survive and Escape", status: 'completed', description: "After being discovered, the recon team helped Toadette and several of her soldiers escape the castle, solidifying a temporary truce." },
+            { id: 'step4', title: "Analyze the Diary", status: 'active', description: "The team successfully recovered the Princess's diary, but initial analysis has revealed cryptic entries and coded language. The trail has gone cold, and a breakthrough is needed to continue the investigation." }
         ]
     },
     'war_of_blood_and_moon': {

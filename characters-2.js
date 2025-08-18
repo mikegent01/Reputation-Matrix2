@@ -30,5 +30,10 @@ export const CHARACTERS_2 = {
         name: "Archmage Veyra",
         role: "Archmage Sovereign of the Mages' Guild",
         description: "The current leader of the Mages' Guild, elected by the Grand Conclave. A member of the traditionalist Conservator faction, she now struggles to mediate the escalating tensions between her own party and the radical Innovators, all while upholding the Guild's arcane laws."
+    },
+    'janna_brightspark': {
+        name: "Janna Brightspark",
+        role: "Innovator Leader, Mages' Guild",
+        description: "A brilliant but reckless mage who leads the radical Innovator faction. She believes that magical progress should be pursued at any cost, viewing tradition as a cage that stifles true discovery. Her experiments often push the boundaries of what is considered safe or ethical, making her a controversial but undeniably powerful figure within the Guild's Conclave."
     }
 };

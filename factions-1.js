@@ -296,7 +296,7 @@ export const FACTIONS_1 = {
         notable_people: [
             { name: "Archmage Veyra", role: "Archmage Sovereign", description: "The elected leader of the Guild, struggling to mediate between the two main factions." },
             { name: "Archmage Theron", role: "Conservator Leader", description: "The stern former leader who now heads the traditionalist Conservator faction." },
-            { name: "Janna Brightspark", role: "Innovator Leader", description: "A brilliant but reckless mage who leads the radical Innovator faction (character to be added)." }
+            { name: "Janna Brightspark", role: "Innovator Leader", description: "A brilliant but reckless mage who leads the radical Innovator faction." }
         ],
         waluigi_tip: "The Guild is a snake pit of rivalries. The 'Conservators' hate new magic, the 'Innovators' love it, and the 'Aegis' just wants to blow things up. Play them against each other for maximum chaos! WAH!"
     },

@@ -1,0 +1,92 @@
+/* --- Iron Fists: Strike Clock --- */
+.iron-fists-strike-system {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+}
+.strike-clock-container {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 5px solid #333;
+    background: #111;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5), inset 0 0 10px #000;
+}
+.clock-face { 
+    position: relative; 
+    width: 100%; 
+    height: 100%; 
+}
+.clock-marker {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 0.8rem;
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.clock-marker-text {
+    position: absolute;
+    width: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.clock-marker.m1 { top: 15px; }
+.clock-marker.m2 { top: 50%; left: 100%; transform: translateY(-50%) translateX(-15px) rotate(90deg); }
+.clock-marker.m3 { bottom: 15px; transform: rotate(180deg); }
+.clock-marker.m4 { top: 50%; left: 0; transform: translateY(-50%) translateX(-15px) rotate(-90deg); }
+
+.clock-hand-container {
+    position: absolute; 
+    width: 100%; 
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.clock-hand {
+    width: 4px;
+    height: 90px;
+    background: var(--negative-color);
+    position: absolute;
+    left: 50%; 
+    top: 35px;
+    transform: translateX(-50%);
+    transform-origin: bottom;
+    box-shadow: 0 0 5px var(--negative-color);
+    border-radius: 2px;
+}
+.clock-center {
+    width: 15px; 
+    height: 15px; 
+    background: #555; 
+    border-radius: 50%;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    border: 2px solid #333;
+}
+.current-operation {
+    text-align: center;
+    background-color: var(--sidebar-bg);
+    padding: 12px;
+    border-radius: 4px;
+    width: 100%;
+    border: 1px solid var(--border-color);
+}
+.current-operation h6 { 
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+.current-operation p { 
+    font-size: 1.1rem; 
+    color: var(--text-color); 
+    font-family: var(--font-display);
+}
