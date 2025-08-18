@@ -73,12 +73,6 @@ export const FACTION_ASSESSMENTS = {
         humpik: `Humpik is judged by the actions of his superior. As he knowingly and willingly aids a lawless warlord in his campaigns, he is considered a co-conspirator in all of Bowser's crimes.`,
         bowser: `The Judges view Bowser as the leader of an illegitimate state and a rogue entity operating outside of cosmic law. His entire campaign is a violation of established treaties and natural order, and they are building a case against him.`,
     },
-    da_krumperz: {
-        archie: `Archie is great! He makes big, loud booms! Da Weirdboyz are fascinated by the 'good noises' in his head, and the Big Bosses respect anyone who can cause so much destruction. He's always welcome in a WAAAGH!`,
-        markop: `A bit stuffy for their tastes, but he can fight, and that's all that matters. They see him as a 'proper tough git' when he gets going, and they respect his combat prowess.`,
-        humpik: `Humpik is seen as a proper Ork in spirit: big, strong, and loyal to his boss. They view him as a worthy rival and a great example of a 'good fighter'.`,
-        bowser: `Bowser is a proper Warboss! He leads a big army, he's always looking for a fight, and he's not afraid to get his hands dirty. Da Krumperz view him with immense respect and would gladly join his WAAAGH!`,
-    },
     ratchet_raiders: {
         archie: `Archie is their patron saint. He blows up the newest, fanciest Imperial technology, leaving a trail of high-quality, valuable scrap for them to salvage. The Boomers love his style, and the Scrap Barons love the profits he generates. He is a celebrated hero.`,
         markop: `The Raiders think Markop is a killjoy. He's the type to lecture them about safety regulations and proper maintenance. They avoid him, as his orderly nature clashes with their love of chaotic engineering.`,

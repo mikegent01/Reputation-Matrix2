@@ -12,7 +12,6 @@ export const CHARACTER_RELATIONS = {
         'archmage_theron': { type: 'enemy', text: "Archie on Theron: All his rules and regulations for magic are a cage. Cages are meant to be broken." },
         'chief_thornpaw': { type: 'enemy', text: "Archie on Thornpaw: He talks to trees. Whatever. As long as he stays out of my way." },
         'high_inquisitor_vale': { type: 'enemy', text: "Archie on Vale: Another fanatic in a shiny suit who wants to burn anything fun. Get in line." },
-        'warboss_skarjaw': { type: 'ally', text: "Archie on Skarjaw: Finally, someone who gets it! Less talking, more krumping! A true artist." },
         'captain_syrup': { type: 'enemy', text: "Archie on Captain Syrup: She's got style, I'll give her that. But she's just as greedy as the rest. Got in my way." },
         'boss_knuckles': { type: 'enemy', text: "Archie on Knuckles: Thinks he's tough. He's just another obstacle. One that's fun to blow up." },
         'alpha_bloodmaw': { type: 'ally', text: "Archie on Bloodmaw: Angry, hairy, and hates vampires. What's not to like?" },
@@ -40,8 +39,7 @@ export const CHARACTER_RELATIONS = {
         'markop': { type: 'ally', text: "Humpik on Markop: The horse-man is too serious. But he fights good. I respect that." },
         'dan': { type: 'ally', text: "Humpik on Dan: He's a little guy, but he's tough! Like a tiny Bowser! Gwahahaha!" },
         'emperor_elagabalus': { type: 'enemy', text: "Humpik on Elagabalus: He's the King's enemy! So he's my enemy! I'll smash his castle!" },
-        'general_marcus_ironhand': { type: 'enemy', text: "Humpik on Ironhand: He's got a big army, but they're no match for the Koopa Troop! Or me!" },
-        'warboss_skarjaw': { type: 'ally', text: "Humpik on Skarjaw: He's big and green! And he likes to fight! He's okay!" }
+        'general_marcus_ironhand': { type: 'enemy', text: "Humpik on Ironhand: He's got a big army, but they're no match for the Koopa Troop! Or me!" }
     },
     'bowser': {
         'humpik': { type: 'ally', text: "Bowser on Humpik: My most loyal and powerful soldier. The perfect instrument of my will." },
@@ -52,7 +50,6 @@ export const CHARACTER_RELATIONS = {
         'general_marcus_ironhand': { type: 'enemy', text: "Bowser on Ironhand: His Legion is disciplined, I'll give him that. But they lack the passion of my Troop! I'll break them." },
         'mushroom_protectorate_leader': { type: 'enemy', text: "Bowser on the Council: Weak fools who couldn't protect their own Princess. Their kingdom is mine for the taking." },
         'archmage_theron': { type: 'enemy', text: "Bowser on Theron: His precious Guild thinks their magic is so refined. My Magikoopas get results. That's all that matters." },
-        'warboss_skarjaw': { type: 'enemy', text: "Bowser on Skarjaw: Another warlord who thinks he can challenge me? He'll learn his place." },
         'captain_syrup': { type: 'ally', text: "Bowser on Syrup: A pirate queen? She has ambition. Perhaps we can make a deal." }
     },
     // --- NPC OPINIONS ON PARTY ---
@@ -148,7 +145,6 @@ export const CHARACTER_RELATIONS = {
         'lord_crimson': { type: 'enemy', text: "Bloodmaw on Crimson: The ancient leech-lord. His entire Coven is a disease in our hunting grounds." }
     },
     'general_marcus_ironhand': {
-        'warboss_skarjaw': { type: 'enemy', text: "Ironhand on Skarjaw: A force of nature. No strategy, no discipline, just pure aggression. A worthy challenge to break upon the anvil of the Legion."}
     },
     // --- PARLIAMENT MEMBER OPINIONS ---
     'lady_elara_veridia': {

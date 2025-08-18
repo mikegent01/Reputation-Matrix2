@@ -5,7 +5,7 @@ export const FACTIONS_2 = {
         logo: 'faction_oathbound_judges.png',
         relations: { 
             allies: ['regal_empire', 'diamond_city_investigators'], 
-            enemies: ['iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists']
+            enemies: ['iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists']
         },
         power_level: 7,
         leader: "judge_eternal_korven",
@@ -36,64 +36,13 @@ export const FACTIONS_2 = {
             }
         }
     },
-    da_krumperz: {
-        name: "Da Krumperz",
-        description: "A powerful Greenskin WAAAGH! that loves a good fight.",
-        logo: 'faction_greenskin.png',
-        relations: { 
-            allies: ['cosmic_jesters'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'goodstyle_artisans']
-        },
-        power_level: 6,
-        leader: "warboss_skarjaw",
-        category: "Regional Powers",
-        region: "Wastelands & Borderlands",
-        notable_people: [
-            { name: "Warboss Skarjaw", role: "Big Boss", description: "The biggest, meanest Ork who leads Da Krumperz through pure brutality." },
-            { name: "Big Mek Ironteef", role: "Mekaniaks Leader", description: "The genius engineer who builds the most explosive war machines." }
-        ],
-        waluigi_tip: "Greenskins are simple. If you're strong, they respect you. If you're weak, they krump you. Bowser gets it. Find their biggest boss and punch him in the face. It's called 'diplomacy'!",
-        internal_politics: {
-            ruling_faction: "da_big_bosses",
-            sub_factions: {
-                da_big_bosses: {
-                    name: "Da Big Bosses",
-                    description: "The biggest, strongest Orks who rule through brute force and intimidation. They respect only strength.",
-                    opinion: "Bowser's a good scrapper! That Archie git makes big explosions! Humpik is strong! The centaur is a bit stuffy, but he can fight. They're good for a WAAAGH!",
-                    influence: 40,
-                    reputation_modifiers: { archie: 10, markop: 5, humpik: 10, bowser: 20 }
-                },
-                da_mekaniaks: {
-                    name: "Da Mekaniaks",
-                    description: "Ork engineers who build noisy, unreliable, and incredibly destructive war machines from scrap.",
-                    opinion: "That little goblin Lario's workshop has some nice bitz! And the party blows up fancy Imperial tech all the time! More scrap for us!",
-                    influence: 20,
-                    reputation_modifiers: { archie: 15, markop: 0, humpik: 5, bowser: 10 }
-                },
-                da_weirdboyz: {
-                    name: "Da Weirdboyz",
-                    description: "Ork psykers whose minds are unstable conduits for raw WAAAGH! energy. They are unpredictable and feared.",
-                    opinion: "That three-eyed git... his head is full of loud noises! Good noises! Makes our heads go all tingly!",
-                    influence: 20,
-                    reputation_modifiers: { archie: 20, markop: -5, humpik: 0, bowser: 5 }
-                },
-                da_shadow_waagh: {
-                    name: "Da Shadow-WAAAGH!",
-                    description: "A splinter group that secretly allied with X.O., believing her reality-bending power was 'Da Best Kunnin'. They are now trying to salvage her plan by force.",
-                    opinion: "Da party krumped our secret boss! Now we gotta finish the job and get a good scrap out of it! WAAAGH!",
-                    influence: 20,
-                    reputation_modifiers: { archie: -25, markop: -25, humpik: -25, bowser: -25 }
-                }
-            }
-        }
-    },
     ratchet_raiders: {
         name: "The Ratchet Raiders",
         description: "Goblin mechanics and pilots with a love for dangerous, ramshackle technology.",
         logo: 'faction_ratchet_raiders.png',
         relations: { 
             allies: ['cosmic_jesters'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'goodstyle_artisans']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'the_unchained', 'silver_flame', 'oathbound_judges', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'goodstyle_artisans']
         },
         power_level: 4,
         leader: "lario",
@@ -144,7 +93,7 @@ export const FACTIONS_2 = {
         logo: 'faction_koopa_troop.png',
         relations: { 
             allies: ['onyx_hand', 'moonfang_pack'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'fawfuls_furious_freaks']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'fawfuls_furious_freaks']
         },
         power_level: 7,
         leader: "bowser",
@@ -188,7 +137,7 @@ export const FACTIONS_2 = {
         logo: 'faction_rebel_clans.png',
         relations: { 
             allies: ['the_unchained', 'liberated_toads'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'wario_land', 'mushroom_regency', 'peach_loyalists']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'wario_land', 'mushroom_regency', 'peach_loyalists']
         },
         power_level: 6,
         leader: "clan_chief_redmane",
@@ -232,7 +181,7 @@ export const FACTIONS_2 = {
         logo: 'faction_crimson_fleet.png',
         relations: { 
             allies: ['freelancer_underworld'], 
-            enemies: ['regal_empire', 'iron_legion', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators', 'goodstyle_artisans']
+            enemies: ['regal_empire', 'iron_legion', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators', 'goodstyle_artisans']
         },
         power_level: 5,
         leader: "captain_syrup",
@@ -275,7 +224,7 @@ export const FACTIONS_2 = {
         logo: 'wario.png',
         relations: { 
             allies: ['freelancer_underworld'], 
-            enemies: ['regal_empire', 'iron_legion', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators', 'goodstyle_artisans']
+            enemies: ['regal_empire', 'iron_legion', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators', 'goodstyle_artisans']
         },
         power_level: 4,
         leader: "wario",
@@ -318,7 +267,7 @@ export const FACTIONS_2 = {
         logo: 'faction_mushroom_regency.png',
         relations: { 
             allies: ['liberated_toads', 'goodstyle_artisans'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'wario_land', 'peach_loyalists', 'fawfuls_furious_freaks']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'wario_land', 'peach_loyalists', 'fawfuls_furious_freaks']
         },
         power_level: 5,
         leader: "chancellor_toadsworth",
@@ -336,7 +285,7 @@ export const FACTIONS_2 = {
         logo: 'faction_peach_loyalists.png',
         relations: { 
             allies: [], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'fawfuls_furious_freaks']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'fawfuls_furious_freaks']
         },
         power_level: 4,
         leader: "captain_toadette",
@@ -380,7 +329,7 @@ export const FACTIONS_2 = {
         logo: 'faction_iron_fists.png',
         relations: { 
             allies: ['regal_empire'], 
-            enemies: ['iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators']
+            enemies: ['iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators']
         },
         power_level: 5,
         leader: "boss_knuckles",
@@ -424,7 +373,7 @@ export const FACTIONS_2 = {
         logo: 'faction_moonfang.png',
         relations: { 
             allies: ['rakasha_clans', 'koopa_troop'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists']
         },
         power_level: 7,
         leader: "alpha_bloodmaw",
@@ -468,7 +417,7 @@ export const FACTIONS_2 = {
         logo: 'faction_liberated_toads.png',
         relations: { 
             allies: ['rakasha_clans', 'the_unchained', 'rebel_clans', 'mushroom_regency'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'cosmic_jesters', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'wario_land', 'peach_loyalists', 'fawfuls_furious_freaks']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'cosmic_jesters', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'wario_land', 'peach_loyalists', 'fawfuls_furious_freaks']
         },
         power_level: 2,
         leader: "dan",
@@ -638,7 +587,7 @@ export const FACTIONS_2 = {
         logo: 'icon_focus.png',
         relations: {
             allies: ['mushroom_regency', 'mages_guild'],
-            enemies: ['wario_land', 'da_krumperz', 'ratchet_raiders', 'crimson_fleet']
+            enemies: ['wario_land', 'ratchet_raiders', 'crimson_fleet']
         },
         power_level: 2,
         leader: "master_goodstyle",
