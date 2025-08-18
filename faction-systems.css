@@ -321,109 +321,47 @@
     color: var(--text-secondary);
 }
 
-/* --- Koopa Troop: Org Chart --- */
-.org-chart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-.org-chart .leader {
-    background: var(--sidebar-bg);
-    padding: 10px 15px;
-    border-radius: 4px;
-    border: 1px solid var(--accent-color);
-    font-weight: bold;
-    min-width: 180px;
-    text-align: center;
-}
-.org-chart .sub-groups {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    padding-top: 20px;
-}
-.org-chart .sub-groups::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 20px;
-    background: var(--border-color);
-}
-.org-chart .group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    position: relative;
-}
-.org-chart .group::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 20px;
-    background: var(--border-color);
-}
-.org-chart .sub-groups .group:first-child::after, .org-chart .sub-groups .group:last-child::after {
-    content: '';
-    position: absolute;
-    top: -20px;
-    height: 2px;
-    background: var(--border-color);
-    width: 50%;
-}
-.org-chart .sub-groups .group:first-child::after { left: 50%; }
-.org-chart .sub-groups .group:last-child::after { right: 50%; }
-.org-chart .sub-groups .group:not(:first-child):not(:last-child)::after {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--border-color);
-}
-.org-chart .group-title {
-    background: var(--sidebar-bg);
-    padding: 8px 12px;
-    border-radius: 4px;
-    border: 1px solid var(--border-color);
-    min-width: 150px;
-    text-align: center;
-}
-
 /* --- Freelancer Underworld: Network Graph --- */
-.network-graph {
-    height: 300px;
+.freelancer-network-container {
     position: relative;
-}
-.network-node {
-    position: absolute;
-    background-color: var(--sidebar-bg);
+    height: 400px;
+    background-color: var(--main-bg);
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    padding: 8px;
-    text-align: center;
-    font-size: 0.8rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    padding: 0;
+    overflow: hidden;
 }
-.network-node.syndicates { top: 10%; left: 40%; }
-.network-node.independents { top: 60%; left: 10%; }
-.network-node.brokers { top: 60%; left: 70%; }
-.network-node.cleaners { top: 35%; left: 5%; }
-.network-line {
+
+#freelancer-network-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#freelancer-tooltip {
     position: absolute;
-    background-color: var(--border-color);
-    transform-origin: 0 0;
+    display: none;
+    background: var(--sidebar-bg);
+    border: 1px solid var(--accent-color);
+    padding: 8px 12px;
+    border-radius: 4px;
+    pointer-events: none;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    max-width: 250px;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
+#freelancer-tooltip strong {
+    color: var(--text-color);
+    font-family: var(--font-display);
+}
+#freelancer-tooltip em {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-secondary);
+}
+
 
 /* --- Toad Gang: Turf War Bars --- */
 .turf-war-bars .bar-item {
@@ -445,36 +383,6 @@
     height: 100%;
     background-color: var(--accent-color);
     transition: width 0.5s ease;
-}
-
-/* --- Mages Guild: Stability Meter --- */
-.stability-meter-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    justify-content: center;
-    padding: 20px 0;
-}
-.stability-label {
-    font-weight: bold;
-}
-.stability-meter {
-    width: 200px;
-    height: 20px;
-    background: linear-gradient(to right, var(--negative-color), var(--neutral-color), var(--positive-color));
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    position: relative;
-}
-.stability-indicator {
-    position: absolute;
-    top: -5px;
-    width: 4px;
-    height: 30px;
-    background-color: white;
-    border-radius: 2px;
-    transform: translateX(-50%);
-    box-shadow: 0 0 5px white;
 }
 
 /* --- Da Krumperz: WAAAGH! Meter --- */
@@ -554,4 +462,396 @@
     margin: 0 0 0 12px;
     padding-left: 8px;
     border-left: 2px solid var(--border-color);
+}
+
+
+/* --- NEW: Mages' Guild Mage-Themed System --- */
+.mages-guild-magic-system {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    border-radius: 8px;
+}
+
+.scrying-orb-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+.scrying-orb {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), transparent 70%),
+                radial-gradient(circle at 70% 70%, rgba(138, 43, 226, 0.4), transparent 70%),
+                #100c1c;
+    border-radius: 50%;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-color), inset 0 0 15px rgba(255,255,255,0.2);
+    position: relative;
+    overflow: hidden;
+    animation: pulse-orb 4s infinite ease-in-out;
+}
+.scrying-orb::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgODAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMC4xNSIvPjwvc3ZnPg==');
+    animation: move-mist 10s infinite linear;
+}
+@keyframes pulse-orb {
+    50% { box-shadow: 0 0 30px var(--accent-color), 0 0 10px var(--accent-hover), inset 0 0 15px rgba(255,255,255,0.2); }
+}
+@keyframes move-mist {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(20px, 10px) rotate(10deg); }
+}
+
+.scrying-orb-info h6 {
+    font-family: var(--font-display);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+.scrying-orb-info p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+.scrying-orb-info .active-plot {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.influence-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.influence-chart-container {
+    background-color: var(--sidebar-bg);
+    padding: 16px;
+    border-radius: 6px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.influence-chart-container h5 {
+    width: 100%;
+    text-align: center;
+}
+#mages-guild-chart-wrapper {
+    max-width: 200px;
+    margin: auto;
+}
+
+.influence-network-container {
+    background-color: var(--sidebar-bg);
+    padding: 16px;
+    border-radius: 6px;
+}
+.influence-network {
+    list-style: none;
+    padding: 0;
+}
+.influence-node {
+    background-color: var(--main-bg);
+    border-left: 3px solid var(--border-color);
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+.influence-node strong {
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+.influence-node p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin: 4px 0 0 0;
+}
+@media (max-width: 900px) {
+    .mages-guild-magic-system {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- NEW: Onyx Hand Coven Circle System --- */
+.onyx-hand-coven-system {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: center;
+    min-height: 400px;
+}
+
+.coven-circle-container {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    margin: auto;
+}
+
+.coven-patriarch {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    background-color: var(--main-bg);
+    border: 2px solid var(--negative-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse-patriarch 3s infinite ease-in-out;
+}
+.coven-patriarch img {
+    width: 60%;
+    height: 60%;
+    filter: invert(20%) sepia(89%) saturate(3020%) hue-rotate(345deg) brightness(89%) contrast(94%);
+}
+@keyframes pulse-patriarch {
+    50% { box-shadow: 0 0 20px rgba(218, 54, 51, 0.5); }
+}
+
+.coven-node {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    margin: -35px; /* Half of width/height */
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.coven-node img {
+    width: 50%;
+    height: 50%;
+    filter: invert(58%) sepia(10%) saturate(468%) hue-rotate(169deg) brightness(95%) contrast(85%); /* text-secondary color */
+    transition: all 0.3s ease;
+}
+
+.coven-node:hover, .coven-node.active {
+    border-color: var(--negative-color);
+    box-shadow: 0 0 15px rgba(218, 54, 51, 0.4);
+    transform: scale(1.1);
+}
+.coven-node:hover img, .coven-node.active img {
+    filter: invert(20%) sepia(89%) saturate(3020%) hue-rotate(345deg) brightness(89%) contrast(94%); /* negative-color */
+}
+
+.coven-info-panel {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    transition: opacity 0.3s ease;
+    min-height: 250px;
+}
+.coven-info-panel.hidden {
+    opacity: 0.5;
+}
+.coven-info-panel h6 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--negative-color);
+    margin-bottom: 8px;
+}
+.coven-info-panel .info-specialty {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    font-style: italic;
+    margin-bottom: 16px;
+}
+.coven-info-panel p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+.coven-info-panel p strong {
+    color: var(--text-color);
+}
+
+@media (max-width: 900px) {
+    .onyx-hand-coven-system {
+        grid-template-columns: 1fr;
+    }
+    .coven-circle-container {
+        margin-bottom: 24px;
+    }
+}
+
+/* --- Silver Flame: Edicts System --- */
+.silver-flame-edicts-system {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+}
+.edicts-section h6 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+.tenet-card, .edict-card {
+    background-color: var(--sidebar-bg);
+    border-left: 3px solid var(--silver-flame-color, #C0C0C0); /* Fallback color */
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+.tenet-card h6, .edict-card h6 {
+    font-family: var(--font-display);
+    color: var(--text-color);
+    font-size: 1rem;
+    margin: 0 0 4px 0;
+}
+.tenet-card p, .edict-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+.edict-card .edict-status {
+    font-style: italic;
+    color: var(--neutral-color);
+    font-size: 0.8rem;
+    margin-top: 8px;
+    display: block;
+}
+
+/* --- Oathbound Judges: Verdict System --- */
+.oathbound-verdicts-system {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+}
+.verdict-log {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.verdict-card {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+}
+.verdict-header {
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+.verdict-details p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+.verdict-details strong {
+    color: var(--text-color);
+    min-width: 90px;
+    display: inline-block;
+}
+.verdict-result {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 12px;
+}
+.verdict-guilty {
+    color: var(--negative-color);
+    background-color: rgba(218, 54, 51, 0.1);
+}
+.verdict-deferred {
+    color: var(--neutral-color);
+    background-color: rgba(240, 185, 11, 0.1);
+}
+
+/* --- Koopa Troop: Expanded Hierarchy --- */
+.koopa-troop-system {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+}
+.koopa-hierarchy, .koopa-war-status {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+}
+.koopa-hierarchy h6, .koopa-war-status h6 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+.hierarchy-level {
+    margin-bottom: 12px;
+}
+.hierarchy-level strong {
+    color: var(--text-color);
+    font-size: 1rem;
+    display: block;
+}
+.hierarchy-level span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    padding-left: 10px;
+}
+.koopa-war-status p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.koopa-war-status p strong {
+    color: var(--text-color);
+}
+
+/* --- Moonfang Pack: Moon Phase System --- */
+.moon-phase-container {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 16px; /* Add margin to separate from tabs */
+}
+.moon-display {
+    font-size: 4rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 5px var(--neutral-color));
+}
+.moon-info h6 {
+    font-family: var(--font-display);
+    color: var(--neutral-color);
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+.moon-info p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
 }

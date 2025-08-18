@@ -45,5 +45,18 @@ export const MOONFANG_PACK_DETAILS = {
                 css_class: 'moonfang-pack-mechanic'
             }
         }
+    },
+    moon_phases: {
+        current_phase: "Waning Gibbous",
+        phases: [
+            { name: "New Moon", effect: "Stealth and shadow abilities are at their peak. The Pack favors ambushes and infiltration.", icon: "🌑" },
+            { name: "Waxing Crescent", effect: "Senses begin to sharpen. Hunt Circles become more active.", icon: "🌒" },
+            { name: "First Quarter", effect: "A balance of stealth and strength. Pack skirmishes are common.", icon: "🌓" },
+            { name: "Waxing Gibbous", effect: "Primal strength grows. The Pack becomes more aggressive and territorial.", icon: "🌔" },
+            { name: "Full Moon", effect: "Feral power is absolute. Berserker rages are common. All werewolves are at their most dangerous and uncontrollable.", icon: "🌕" },
+            { name: "Waning Gibbous", effect: "The peak of fury recedes, replaced by a cold, calculating predatory instinct.", icon: "🌖" },
+            { name: "Last Quarter", effect: "Focus returns to the spiritual side. Spirit-Walkers hold more sway over the Pack.", icon: "🌗" },
+            { name: "Waning Crescent", effect: "A time of rest and recovery. The Pack tends to its wounds and prepares for the next cycle.", icon: "🌘" }
+        ]
     }
 };

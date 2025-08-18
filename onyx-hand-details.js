@@ -1,47 +1,57 @@
 // This file contains the detailed operational data for the Onyx Hand's unique system display.
 
 export const ONYX_HAND_DETAILS = {
-    hierarchy: [
-        { rank: "Shadow Patriarch", leader: "Lady Ebonveil", description: "The immortal vampire elder at the pinnacle of the Hand. Issues decrees from the hidden Obsidian Sanctum via encrypted 'Whisper Chains'." },
-        { rank: "Onyx Lords", leader: "Council of 13", description: "A council of master vampires who oversee territorial domains known as 'Veins'. They are the true power brokers of the organization." },
-        { rank: "Blood Warden", leader: "Cell Leaders", description: "Command small, clandestine covens ('Cells') of 20-50 vampires. Their operations are compartmentalized to ensure deniability." },
-        { rank: "Thrall", leader: "Mortal Servants", description: "Mortal servants or newly turned vampires organized into small 'Cabals'. They are the Hand's eyes, ears, and disposable assets in the mortal world." }
+    description: "The Onyx Hand is not a single entity, but a cabal of distinct covens, each with its own specialty and sphere of influence. They are bound by ancient pacts and the will of the Shadow Patriarch, Lady Ebonveil. Hover over a coven's sigil to learn more.",
+    patriarch: {
+        name: "Lady Ebonveil",
+        title: "Shadow Patriarch",
+        description: "The immortal vampire elder who sits at the pinnacle of the Onyx Hand's shadowy hierarchy."
+    },
+    covens: [
+        {
+            id: "thorn",
+            name: "Coven of the Gilded Thorn",
+            leader: "Lord Valerius",
+            specialty: "Political Intrigue & Social Manipulation",
+            description: "Weaves webs of influence within the noble courts and political bodies.",
+            operation: "Currently embedding agents within the Regal Empire's noble houses to influence the Imperial succession."
+        },
+        {
+            id: "blade",
+            name: "Coven of the Silent Blade",
+            leader: "Matron Inessa",
+            specialty: "Assassination & Coercion",
+            description: "The Hand's enforcers, eliminating threats with ruthless, silent efficiency.",
+            operation: "Systematically eliminating key figures within the Mages' Guild's 'Innovator' faction to maintain their rivals' internal chaos."
+        },
+        {
+            id: "veils",
+            name: "Coven of Whispering Veils",
+            leader: "The Veiled One",
+            specialty: "Espionage & Information Brokering",
+            description: "Gathers the secrets that serve as the Hand's true currency and weapon.",
+            operation: "Operating a network of spies to monitor the movements and weaknesses of the Moonfang Pack's warbands."
+        },
+        {
+            id: "crimson",
+            name: "The Crimson Veil",
+            leader: "The Veil Matron",
+            specialty: "Covert Operations (Mushroom Kingdom)",
+            description: "A sister coven tasked with destabilizing the Mushroom Kingdom from within.",
+            operation: "A sister coven tasked with destabilizing the Mushroom Kingdom's fractured political landscape for future exploitation."
+        }
     ],
-    recruitment: {
-        the_scent: {
-            title: "Recruitment: The Midnight Soiree",
-            description: "Recruitment is a patient art, targeting the ambitious and disillusioned. Prospects are observed and then lured to elegant, secret gatherings where their loyalty and potential are assessed. Chosen candidates undergo the 'Veil of Shadows,' a month-long indoctrination where they are eventually turned into thralls via the 'First Bite'."
-        },
-        crimson_veil: {
-            title: "Mushroom Kingdom: The Crimson Veil",
-            description: "The Hand's sister coven in the Mushroom Kingdom recruits from war refugees and disillusioned Toads, using 'Whisper Parties' in ruined mushroom houses. Indoctrination emphasizes 'eternal unity' under the Regal Empire, creating loyal hybrid agents who can infiltrate Loyalist and Koopa ranks."
-        }
-    },
-    tactics: {
-        midlands: {
-            title: "Tactics: The Shadow Web",
-            description: "The Hand avoids open conflict, preferring semantic warfare. They use 'Shadow Webs'—networks of spies and thralls—to sow discord, spread rumors, and orchestrate coups from within. Precise assassinations, or 'Vein Strikes,' are used to eliminate key targets without a trace."
-        },
-        resources: {
-            title: "Logistics: The Blood Tithe",
-            description: "Logistics are the Hand's unseen strength. Supply chains are hidden, using underground crypts and river barges. Funding comes from manipulated markets and 'blood taxes' harvested from their thralls, which are used to produce alchemical elixirs and enchanted obsidian weapons."
-        }
-    },
-    ideology: {
-        title: "Ideology: The Eternal Grasp",
-        description: "The Hand's culture revolves around the 'Eternal Grasp Codex,' a tome emphasizing patience, manipulation, and immortality as tools for dominion. Loyalty is enforced through 'Blood Bonds,' a ritual that creates a psychic link. Betrayal is punished by 'Eclipse Exile,' severing the bond and banishing the offender to sunlight."
-    },
     shared_mechanic: {
         tab_title: "Ancestral Surge",
         cards: {
             surge: {
                 title: "Shared Mechanic: Ancestral Surge",
                 description: "In the eternal war between werewolf and vampire, both sides draw upon their cursed lineage to unleash powerful abilities. This shared mechanic, 'Ancestral Surge,' manifests differently for each faction, reflecting their primal or undead nature.",
-                css_class: 'mechanic-card'
+                css_class: 'mechanic-card' // Generic class
             },
-            vampiric_echo: {
-                title: "Vampiric Echo (Onyx Hand)",
-                description: "Onyx Hand vampires can draw upon their ancient bloodline to manifest echoes of their power, allowing for rapid regeneration from blood essence or the life force of their thralls. This can manifest as shadowy tendrils that heal wounds or drain foes, emphasizing their immortal subtlety.",
+            blood_rite: {
+                title: "Blood Rite (Onyx Hand)",
+                description: "Onyx Hand vampires can perform 'Blood Rites,' enabling preternatural feats. This can manifest as shadow-stepping, mesmerism to dominate weak minds, or hardening their skin to the consistency of stone, reflecting their cold, calculated mastery of their curse.",
                 css_class: 'onyx-hand-mechanic'
             }
         }

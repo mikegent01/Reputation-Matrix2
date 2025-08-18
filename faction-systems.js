@@ -5,6 +5,9 @@ import { IRON_LEGION_DETAILS } from './iron-legion-details.js';
 import { ONYX_HAND_DETAILS } from './onyx-hand-details.js';
 import { MOONFANG_PACK_DETAILS } from './moonfang-pack-details.js';
 import { MAGES_GUILD_DETAILS } from './mages-guild-details.js';
+import { SILVER_FLAME_DETAILS } from './silver-flame-details.js';
+import { OATHBOUND_JUDGES_DETAILS } from './oathbound-judges-details.js';
+import { KOOPA_TROOP_DETAILS } from './koopa-troop-details.js';
 
 // --- HELPER FUNCTIONS ---
 const findCharKeyByName = (name) => {
@@ -36,7 +39,7 @@ function buildDetailedSystemHTML(details, description) {
         tabs.push({ id: 'recruitment', label: 'Recruitment' });
         const recruitmentHTML = `
             <div class="info-card-grid">
-                ${Object.values(details.recruitment).map(item => `
+                ${Object.values(details.recruitment).filter(item => typeof item === 'object').map(item => `
                     <div class="info-card">
                         <h6>${item.title}</h6>
                         <p>${item.description}</p>
@@ -50,7 +53,7 @@ function buildDetailedSystemHTML(details, description) {
         tabs.push({ id: 'tactics', label: 'Tactics' });
         const tacticsHTML = `
             <div class="info-card-grid">
-                 ${Object.values(details.tactics).map(item => `
+                 ${Object.values(details.tactics).filter(item => typeof item === 'object').map(item => `
                     <div class="info-card">
                         <h6>${item.title}</h6>
                         <p>${item.description}</p>
@@ -109,25 +112,222 @@ function renderIronLegionDetailedSystem() {
     );
 }
 
-function renderOnyxHandDetailedSystem() {
-    return buildDetailedSystemHTML(
-        ONYX_HAND_DETAILS,
-        "The Onyx Hand operates through layers of secrecy and centuries of accumulated influence. Their true power lies not in armies, but in the control they exert from the shadows."
-    );
+function renderOnyxHandCovenSystem() {
+    const data = ONYX_HAND_DETAILS;
+    const radius = 140; // Radius of the circle
+    const numNodes = data.covens.length;
+    const angleStep = (2 * Math.PI) / numNodes;
+
+    const covenNodesHTML = data.covens.map((coven, i) => {
+        const angle = i * angleStep - (Math.PI / 2); // Start from the top
+        const x = radius * Math.cos(angle);
+        const y = radius * Math.sin(angle);
+        return `
+            <div class="coven-node" data-coven-id="${coven.id}" style="transform: translate(${x}px, ${y}px);">
+                <img src="faction_onyx_hand.png" alt="${coven.name} Sigil">
+            </div>
+        `;
+    }).join('');
+
+    return `
+        <p class="system-description">${data.description}</p>
+        <div class="system-content onyx-hand-coven-system">
+            <div class="coven-circle-container">
+                <div class="coven-patriarch" title="${data.patriarch.title}: ${data.patriarch.name}">
+                    <img src="faction_onyx_hand.png" alt="Patriarch Sigil">
+                </div>
+                ${covenNodesHTML}
+            </div>
+            <div class="coven-info-panel" id="onyx-hand-info-panel">
+                <!-- Info will be populated by JS -->
+            </div>
+        </div>
+    `;
 }
+
+
+function renderMagesGuildMageThemedSystem() {
+    const data = MAGES_GUILD_DETAILS;
+    const networkHTML = data.influence_network.map(node => `
+        <li class="influence-node">
+            <strong>${node.label}</strong>
+            <p>${node.description}</p>
+        </li>
+    `).join('');
+
+    return `
+        <p class="system-description">${data.description}</p>
+        <div class="mages-guild-magic-system">
+            <div class="scrying-orb-container">
+                <div class="scrying-orb"></div>
+                <div class="scrying-orb-info">
+                    <h6>${data.scrying_orb.title}</h6>
+                    <p><strong>Plot:</strong> <span class="active-plot">${data.scrying_orb.active_plot}</span></p>
+                    <p>${data.scrying_orb.current_focus}</p>
+                </div>
+            </div>
+            <div class="influence-details-container">
+                <div class="influence-chart-container">
+                    <h5>Distribution of Influence</h5>
+                    <div id="mages-guild-chart-wrapper">
+                        <canvas id="mages-guild-chart"></canvas>
+                    </div>
+                </div>
+                <div class="influence-network-container">
+                    <h5>Arcane Network</h5>
+                    <ul class="influence-network">
+                        ${networkHTML}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function initMagesGuildChart() {
+    const canvas = document.getElementById('mages-guild-chart');
+    if (!canvas) return;
+
+    const data = MAGES_GUILD_DETAILS.influence_distribution;
+    if (state.chartInstances['mages-guild']) {
+        state.chartInstances['mages-guild'].destroy();
+    }
+    
+    state.chartInstances['mages-guild'] = new Chart(canvas, {
+        type: 'doughnut',
+        data: {
+            labels: data.labels,
+            datasets: [{
+                label: 'Influence %',
+                data: data.data,
+                backgroundColor: [
+                    'rgba(138, 43, 226, 0.7)', // Purple
+                    'rgba(218, 54, 51, 0.7)',  // Red
+                    'rgba(240, 185, 11, 0.7)', // Yellow
+                    'rgba(139, 148, 158, 0.7)'// Grey
+                ],
+                borderColor: 'var(--sidebar-bg)',
+                borderWidth: 2,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: 'var(--text-secondary)',
+                        font: {
+                            family: "'Roboto Mono', monospace"
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
 
 function renderMoonfangPackDetailedSystem() {
-     return buildDetailedSystemHTML(
-        MOONFANG_PACK_DETAILS,
-        "The Moonfang Pack is a primal society where strength dictates status. Their structure is fluid, adapting to the needs of the hunt and the eternal war against their rivals."
+    const data = MOONFANG_PACK_DETAILS;
+    const currentPhaseData = data.moon_phases.phases.find(p => p.name === data.moon_phases.current_phase) || data.moon_phases.phases[0];
+
+    const tabsAndContentHTML = buildDetailedSystemHTML(
+        data,
+       "The Moonfang Pack is a primal society where strength dictates status. Their structure is fluid, adapting to the needs of the hunt and the eternal war against their rivals."
     );
+
+    const moonPhaseHTML = `
+        <div class="moon-phase-container">
+            <div class="moon-display" title="${currentPhaseData.name}">${currentPhaseData.icon}</div>
+            <div class="moon-info">
+                <h6>Current Phase: ${currentPhaseData.name}</h6>
+                <p>${currentPhaseData.effect}</p>
+            </div>
+        </div>
+    `;
+    
+    return moonPhaseHTML + tabsAndContentHTML;
 }
 
-function renderMagesGuildDetailedSystem() {
-     return buildDetailedSystemHTML(
-        MAGES_GUILD_DETAILS,
-        "The Mages' Guild is a nexus of immense power, but it is deeply divided. Its internal politics pit the forces of stability against the agents of chaotic innovation, with the balance of power constantly in flux."
-    );
+function renderSilverFlameEdictsSystem() {
+    const data = SILVER_FLAME_DETAILS;
+    return `
+        <p class="system-description">${data.description}</p>
+        <div class="system-content silver-flame-edicts-system">
+            <div class="edicts-section">
+                <h6>Core Tenets of the Flame</h6>
+                ${data.tenets.map(tenet => `
+                    <div class="tenet-card">
+                        <h6>${tenet.title}</h6>
+                        <p>${tenet.text}</p>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="edicts-section">
+                <h6>Active Edicts</h6>
+                ${data.active_edicts.map(edict => `
+                    <div class="edict-card">
+                        <h6>${edict.title}</h6>
+                        <p>${edict.text}</p>
+                        <span class="edict-status">Status: ${edict.status}</span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+}
+
+function renderOathboundJudgesVerdictSystem() {
+    const data = OATHBOUND_JUDGES_DETAILS;
+    const verdictClasses = {
+        "Guilty on all counts. Sentence pending capture.": "verdict-guilty",
+        "Judgment deferred. Under observation by the Arbiters of Intent.": "verdict-deferred",
+        "Guilty. His entire kingdom is declared a rogue state operating outside cosmic law.": "verdict-guilty"
+    };
+    return `
+        <p class="system-description">${data.description}</p>
+        <div class="system-content oathbound-verdicts-system">
+            <div class="verdict-log">
+                ${data.recent_verdicts.map(v => `
+                    <div class="verdict-card">
+                        <div class="verdict-header">${v.case}</div>
+                        <div class="verdict-details">
+                            <p><strong>Defendant:</strong> ${v.defendant}</p>
+                            <p><strong>Charge(s):</strong> ${v.charge}</p>
+                            <p><strong>Presiding:</strong> ${v.presiding_judge}</p>
+                        </div>
+                        <div class="verdict-result ${verdictClasses[v.verdict] || ''}">${v.verdict}</div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+}
+
+function renderKoopaTroopHierarchySystem() {
+    const data = KOOPA_TROOP_DETAILS;
+    return `
+        <p class="system-description">${data.description}</p>
+        <div class="system-content koopa-troop-system">
+            <div class="koopa-hierarchy">
+                <h6>Chain of Command</h6>
+                ${data.hierarchy.map(level => `
+                    <div class="hierarchy-level">
+                        <strong>${level.rank}: ${level.leader}</strong>
+                        <span>Key Units: ${level.units}</span>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="koopa-war-status">
+                <h6>${data.civil_war_status.title}</h6>
+                <p><strong>Commander on Site:</strong> ${data.civil_war_status.commander_on_site}</p>
+                <p><strong>Objective:</strong> ${data.civil_war_status.current_objective}</p>
+                <p>${data.civil_war_status.disposition}</p>
+            </div>
+        </div>
+    `;
 }
 
 // --- HOLY MIDLANDS DIET - VISUALIZATION ---
@@ -431,6 +631,164 @@ function initHolyMidlandsDietListeners() {
     }
 }
 
+function initFreelancerNetworkCanvas() {
+    const canvas = document.getElementById('freelancer-network-canvas');
+    const tooltip = document.getElementById('freelancer-tooltip');
+    if (!canvas || !tooltip) return;
+
+    const ctx = canvas.getContext('2d');
+    const container = canvas.parentElement;
+    
+    // Resize canvas to fit container
+    const rect = container.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+
+    const subFactions = LORE_DATA.factions.freelancer_underworld.internal_politics.sub_factions;
+    
+    const nodes = {
+        syndicates: { x: canvas.width * 0.5, y: canvas.height * 0.2, data: subFactions.syndicates },
+        independents: { x: canvas.width * 0.2, y: canvas.height * 0.75, data: subFactions.independents },
+        brokers: { x: canvas.width * 0.8, y: canvas.height * 0.75, data: subFactions.information_brokers },
+        cleaners: { x: canvas.width * 0.25, y: canvas.height * 0.45, data: subFactions.the_cleaners },
+    };
+
+    const connections = [
+        { from: 'syndicates', to: 'independents' },
+        { from: 'syndicates', to: 'brokers' },
+        { from: 'syndicates', to: 'cleaners' },
+        { from: 'independents', to: 'brokers' },
+        { from: 'brokers', to: 'cleaners' }
+    ];
+
+    let particles = [];
+    let mouse = { x: -1, y: -1 };
+    let hoveredNode = null;
+    
+    // Particle creation
+    const particleInterval = setInterval(() => {
+        if (!document.getElementById('freelancer-network-canvas')) {
+            clearInterval(particleInterval);
+            return;
+        }
+        connections.forEach(conn => {
+            const startNode = nodes[conn.from];
+            const endNode = nodes[conn.to];
+            const angle = Math.atan2(endNode.y - startNode.y, endNode.x - startNode.x);
+            const speed = 1;
+            particles.push({
+                x: startNode.x,
+                y: startNode.y,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                life: Math.hypot(endNode.x - startNode.x, endNode.y - startNode.y) / speed,
+            });
+        });
+    }, 250);
+
+    canvas.addEventListener('mousemove', e => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+
+        hoveredNode = null;
+        for (const key in nodes) {
+            const node = nodes[key];
+            const radius = node.data.influence / 2 + 10;
+            const dist = Math.hypot(mouse.x - node.x, mouse.y - node.y);
+            if (dist < radius) {
+                hoveredNode = key;
+                break;
+            }
+        }
+        
+        if (hoveredNode) {
+            const nodeData = nodes[hoveredNode].data;
+            tooltip.style.display = 'block';
+            tooltip.style.left = `${mouse.x + 15}px`;
+            tooltip.style.top = `${mouse.y}px`;
+            tooltip.innerHTML = `<strong>${nodeData.name}</strong><em>Influence: ${nodeData.influence}%</em>`;
+        } else {
+            tooltip.style.display = 'none';
+        }
+    });
+    
+    canvas.addEventListener('mouseout', () => {
+        mouse = { x: -1, y: -1 };
+        hoveredNode = null;
+        tooltip.style.display = 'none';
+    });
+
+    let animationFrameId;
+    function animate() {
+        if (!document.getElementById('freelancer-network-canvas')) {
+             if (animationFrameId) cancelAnimationFrame(animationFrameId);
+             return;
+        }
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Update and draw particles
+        for(let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            p.life--;
+            if (p.life <= 0) {
+                particles.splice(i, 1);
+            }
+        }
+        
+        ctx.fillStyle = 'rgba(240, 185, 11, 0.6)'; // neutral-color
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+            ctx.fill();
+        });
+
+
+        // Draw connections
+        connections.forEach(conn => {
+            const startNode = nodes[conn.from];
+            const endNode = nodes[conn.to];
+            const isHovered = hoveredNode && (conn.from === hoveredNode || conn.to === hoveredNode);
+            
+            ctx.beginPath();
+            ctx.moveTo(startNode.x, startNode.y);
+            ctx.lineTo(endNode.x, endNode.y);
+            ctx.strokeStyle = isHovered ? 'var(--accent-color)' : 'var(--border-color)';
+            ctx.lineWidth = isHovered ? 1.5 : 1;
+            ctx.stroke();
+        });
+
+        // Draw nodes
+        for (const key in nodes) {
+            const node = nodes[key];
+            const radius = node.data.influence / 2 + 10;
+            const isHovered = key === hoveredNode;
+
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, radius, 0, Math.PI * 2);
+            
+            ctx.fillStyle = 'var(--main-bg)';
+            ctx.fill();
+            
+            ctx.strokeStyle = isHovered ? 'var(--accent-color)' : 'var(--underworld-fringe-color)';
+            ctx.lineWidth = isHovered ? 2.5 : 1.5;
+            ctx.stroke();
+
+            ctx.fillStyle = 'var(--text-color)';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.font = 'bold 11px "Roboto Mono"';
+            ctx.fillText(node.data.name, node.x, node.y);
+        }
+
+        animationFrameId = requestAnimationFrame(animate);
+    }
+
+    animate();
+}
 
 // --- DISPATCHER ---
 
@@ -442,7 +800,7 @@ function initHolyMidlandsDietListeners() {
  * @returns {string} HTML content for the unique system.
  */
 export function renderSystemForFaction(factionKey, factionData, currentState) {
-    const detailedSystems = ['iron_legion', 'onyx_hand', 'moonfang_pack', 'mages_guild', 'regal_empire'];
+    const detailedSystems = ['iron_legion', 'onyx_hand', 'moonfang_pack', 'mages_guild', 'regal_empire', 'silver_flame', 'oathbound_judges', 'koopa_troop'];
     if (!detailedSystems.includes(factionKey) && !factionData.internal_politics?.sub_factions && factionKey !== 'liberated_toads') {
         return '';
     }
@@ -468,15 +826,25 @@ function getSystemHTML(factionKey, factionData, currentState) {
         case 'iron_legion':
             return renderIronLegionDetailedSystem();
         case 'onyx_hand':
-            return renderOnyxHandDetailedSystem();
+            return renderOnyxHandCovenSystem();
         case 'moonfang_pack':
              return renderMoonfangPackDetailedSystem();
         case 'mages_guild':
-             return renderMagesGuildDetailedSystem();
+             return renderMagesGuildMageThemedSystem();
         case 'koopa_troop':
-            return renderOrgChart(subFactions, factionData.leader);
+            return renderKoopaTroopHierarchySystem();
+        case 'silver_flame':
+            return renderSilverFlameEdictsSystem();
+        case 'oathbound_judges':
+            return renderOathboundJudgesVerdictSystem();
         case 'freelancer_underworld':
-            return renderNetworkGraph(subFactions);
+            return `
+                <p class="system-description">The Underworld is not a monolith, but a web of competing and cooperating interests. Influence and resources flow constantly between the major players. This is a live representation of that network.</p>
+                <div class="freelancer-network-container">
+                    <canvas id="freelancer-network-canvas"></canvas>
+                    <div id="freelancer-tooltip"></div>
+                </div>
+            `;
         case 'toad_gang':
              return renderTurfWar(subFactions);
         case 'toad_cult':
@@ -487,10 +855,6 @@ function getSystemHTML(factionKey, factionData, currentState) {
             return renderChaosIndex();
         case 'the_unchained':
             return renderLiberationNetwork(subFactions);
-        case 'silver_flame':
-            return renderPurificationCrusade(subFactions);
-        case 'oathbound_judges':
-            return renderScalesOfJustice(subFactions);
         case 'da_krumperz':
             return renderWaaaghMeter(subFactions);
         case 'ratchet_raiders':
@@ -535,8 +899,63 @@ export function initSystem(factionKey) {
      if (factionKey === 'diamond_city_investigators') {
         initCaseBoardLines();
     }
+    if (factionKey === 'mages_guild') {
+        initMagesGuildChart();
+    }
+    if (factionKey === 'freelancer_underworld') {
+        initFreelancerNetworkCanvas();
+    }
+    if (factionKey === 'onyx_hand') {
+        const infoPanel = document.getElementById('onyx-hand-info-panel');
+        const systemContainer = document.querySelector('.onyx-hand-coven-system');
+        if (!infoPanel || !systemContainer) return;
+
+        // Set initial state
+        const patriarch = ONYX_HAND_DETAILS.patriarch;
+        infoPanel.innerHTML = `
+            <h6>${patriarch.name}</h6>
+            <p class="info-specialty">${patriarch.title}</p>
+            <p>${patriarch.description}</p>
+        `;
+        infoPanel.classList.add('hidden');
+
+        systemContainer.addEventListener('mouseover', (e) => {
+            const node = e.target.closest('.coven-node');
+            if (node) {
+                // Deactivate others
+                systemContainer.querySelectorAll('.coven-node').forEach(n => n.classList.remove('active'));
+                node.classList.add('active');
+
+                const covenId = node.dataset.covenId;
+                const covenData = ONYX_HAND_DETAILS.covens.find(c => c.id === covenId);
+                if (covenData) {
+                    infoPanel.innerHTML = `
+                        <h6>${covenData.name}</h6>
+                        <p class="info-specialty">${covenData.specialty}</p>
+                        <p>${covenData.description}</p>
+                        <p><strong>Leader:</strong> ${covenData.leader}</p>
+                        <p><strong>Operation:</strong> ${covenData.operation}</p>
+                    `;
+                    infoPanel.classList.remove('hidden');
+                }
+            }
+        });
+        
+        systemContainer.addEventListener('mouseout', (e) => {
+             const node = e.target.closest('.coven-node');
+             if(node) {
+                node.classList.remove('active');
+                infoPanel.innerHTML = `
+                    <h6>${patriarch.name}</h6>
+                    <p class="info-specialty">${patriarch.title}</p>
+                    <p>${patriarch.description}</p>
+                `;
+                infoPanel.classList.add('hidden');
+             }
+        });
+    }
     
-    const detailedSystems = ['iron_legion', 'onyx_hand', 'moonfang_pack', 'mages_guild'];
+    const detailedSystems = ['iron_legion', 'moonfang_pack', 'mages_guild'];
     if (detailedSystems.includes(factionKey)) {
         const systemContainer = document.querySelector('.faction-detailed-system');
         if (systemContainer) {
@@ -559,36 +978,6 @@ export function initSystem(factionKey) {
 }
 
 // --- OTHER UNIQUE SYSTEM RENDERERS ---
-
-function renderOrgChart(subFactions, leaderKey) {
-     const leader = LORE_DATA.characters[leaderKey];
-     return `
-        <p class="system-description">A rigid hierarchy defines this faction, with absolute authority flowing from the top down. Each sub-group has a specific role and operates within a strict chain of command.</p>
-        <div class="system-content">
-            <div class="org-chart">
-                <div class="leader">${leader.name}</div>
-                <div class="sub-groups">
-                    ${Object.values(subFactions).map(sf => `
-                        <div class="group">
-                            <div class="group-title">${sf.name}</div>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        </div>
-     `;
-}
-
-function renderNetworkGraph(subFactions) {
-     return `
-        <p class="system-description">The Underworld is not a monolith, but a web of competing and cooperating interests. Syndicates provide stability, Independents thrive on chaos, Brokers trade information, and Cleaners handle the messy results. Their influence is a constant flux.</p>
-        <div class="system-content">
-            <div class="network-graph" id="freelancer-network">
-                ${Object.entries(subFactions).map(([key, sf]) => `<div class="network-node ${key}">${sf.name} (${sf.influence}%)</div>`).join('')}
-            </div>
-        </div>
-     `;
-}
 
 function renderTurfWar(subFactions) {
     const totalInfluence = Object.values(subFactions).reduce((sum, sf) => sum + sf.influence, 0);
@@ -718,8 +1107,6 @@ function renderDefaultSubfactionList(subFactions, factionKey, state) {
 function renderProphecyTracker(subFactions) { return renderDefaultSubfactionList(subFactions, 'toad_cult', state); }
 function renderSpiritualBalance(subFactions) { return renderDefaultSubfactionList(subFactions, 'rakasha_clans', state); }
 function renderLiberationNetwork(subFactions) { return renderDefaultSubfactionList(subFactions, 'the_unchained', state); }
-function renderPurificationCrusade(subFactions) { return renderDefaultSubfactionList(subFactions, 'silver_flame', state); }
-function renderScalesOfJustice(subFactions) { return renderDefaultSubfactionList(subFactions, 'oathbound_judges', state); }
 function renderScrapTechTree(subFactions) { return renderDefaultSubfactionList(subFactions, 'ratchet_raiders', state); }
 function renderUnityMeter(subFactions) { return renderDefaultSubfactionList(subFactions, 'rebel_clans', state); }
 function renderFleetStatus(subFactions) { return renderDefaultSubfactionList(subFactions, 'crimson_fleet', state); }
