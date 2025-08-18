@@ -13,6 +13,13 @@ const GUEST_DATA = [
         commentary: "A GOD! Of TOADS! His power has the delicious crunch of a well-baked doom-biscuit! He understands true fury! A most excellent guest!"
     },
     {
+        name: "Chief Thornpaw",
+        role: "Rakasha Emissary",
+        description: "The wise and stoic leader of the Rakasha Clans attends the party with a quiet, watchful intensity. He seems utterly unfazed by the surrounding chaos, observing all with an ancient patience, as if the entire gala is merely a fleeting, bizarre storm.",
+        isHonorary: false,
+        commentary: "A cat-man of smells! He smells of dirt and trees and secrets! He does not have the chortles, but his silence is... loud. And interesting! Like a sandwich that is all bread!"
+    },
+    {
         name: "Crimson Spore",
         role: "Flamboyant Storyteller",
         description: "Arrives with a flair, his stout three-foot frame adorned in a deep crimson vest that shimmers with sequins. His mushroom cap is a matching crimson with bold white spots. He clutches a goblet of Fawful’s strange purple brew, eager to entertain with tales of his daring escapes.",

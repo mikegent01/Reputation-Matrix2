@@ -115,10 +115,12 @@ export const CHARACTER_RELATIONS = {
         'archie': { type: 'enemy', text: "Toadette on Archie: He is allied with Bowser. That makes him scum. End of story." },
         'markop': { type: 'enemy', text: "Toadette on Markop: He stands with the beast who killed our Princess. He is a traitor to justice and will be treated as such." },
         'bowser': { type: 'enemy', text: "Toadette on Bowser: He will pay. He will pay for what he did to the Princess and the Kingdom. The Regency is weak, but I am not. I will see him brought to ruin." },
-        'fawful': { type: 'enemy', text: "Toadette on Fawful: A green freak squatting in the Princess's castle! He is another obstacle on the path to justice, and he will be scoured from that holy place."}
+        'fawful': { type: 'enemy', text: "Toadette on Fawful: A green freak squatting in the Princess's castle! He is another obstacle on the path to justice, and he will be scoured from that holy place."},
+        'kamek': { type: 'ally', text: "Toadette on Kamek: His troops helped save my soldiers. For that, they have earned a temporary reprieve. Once the truth of the Princess's death is known, all debts will be settled, but for now, they are a necessary tool." }
     },
     'kamek': {
-        'fawful': { type: 'enemy', text: "Kamek on Fawful: A Beanish nuisance who has taken advantage of the chaos. His seizure of the castle is an insult and complicates our efforts to regroup Lord Bowser's forces." }
+        'fawful': { type: 'enemy', text: "Kamek on Fawful: A Beanish nuisance who has taken advantage of the chaos. His seizure of the castle is an insult and complicates our efforts to regroup Lord Bowser's forces." },
+        'captain_toadette': { type: 'ally', text: "Kamek on Toadette: The pink-capped fanatic has agreed to a truce. Her zeal is a weapon that can be aimed. Saving her people was a calculated act of diplomacy that has, for now, paid off. We will see how long this... 'friendship' lasts."}
     },
     'skull_cap_murphy': {
         'fawful': { type: 'enemy', text: "Murphy on Fawful: Some green weirdo thinks he can just take the biggest prize in the Kingdom? He'll find out the Toad Gang runs the rackets around here, castle or no castle." }

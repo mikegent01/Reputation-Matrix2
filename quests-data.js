@@ -8,12 +8,14 @@ export const QUEST_DATA = {
         title: "The Staff of Chaos",
         objective: "Thwart Captain Syrup’s attempt to seize X.O.’s staff, a powerful arcane artifact, amid the unfolding chaos of the Mushroom Kingdom Civil War. The staff holds residual magic that could tip the balance of power if it falls into the wrong hands.",
         assignee: "Full Party (Current)",
-        status: "active",
+        status: "completed",
         steps: [
             { id: 'step1', title: "Ally with Lario", status: 'completed', description: "The party supported Lario’s coup, securing the Regal Airship and establishing him as captain, granting them a mobile base to navigate the civil war." },
             { id: 'step2', title: "Recover X.O.’s Staff", status: 'completed', description: "During the stormy descent, the Sword Toad successfully snatched the staff mid-air, preventing its loss and making it a focal point of the quest." },
-            { id: 'step3', title: "Confront Captain Syrup", status: 'active', description: "The party finds themselves in a tense standoff in the control deck, where Captain Syrup, aided by her ally Ragged Flint, is making a bold move to claim the artifact." }
-        ]
+            { id: 'step3', title: "Confront Captain Syrup", status: 'completed', description: "The party found themselves in a tense standoff with Captain Syrup. The confrontation was interrupted by multiple outside forces." },
+            { id: 'step4', title: "Repower the Vigilance", status: 'completed', description: "Overriding the wishes of Dan the Toad, Archie ordered the staff to be integrated with the ship's power core. The Vigilance is now operational again." }
+        ],
+        finalDecision: { description: "The ship is powered, but at the cost of Dan's trust and the potential of the staff." }
     },
     'artifacts_of_balance': {
         id: 'artifacts_of_balance',
@@ -28,6 +30,18 @@ export const QUEST_DATA = {
         ],
         finalDecision: { description: "Once all three artifacts are gathered, a choice must be made. Use them to restore balance, breaking the Toad-God’s power and healing the realm, or use them for yourself, risking corruption but ascending to a higher form of existence." }
     },
+    'who_killed_peach': {
+        id: 'who_killed_peach',
+        title: "Who Killed Princess Peach?",
+        objective: "The death of Princess Peach plunged the kingdom into chaos. With Bowser gone, the Koopa Troop and Peach Loyalists have formed a fragile truce to investigate the true circumstances of her demise by infiltrating Fawful's Gala.",
+        assignee: "Koopa Troop & Peach Loyalists",
+        status: "active",
+        steps: [
+            { id: 'step1', title: "Infiltrate Peach's Castle", status: 'completed', description: "A recon team of Koopa and Paratroopas teamed up with Toadette's forces and successfully infiltrated the castle during Fawful's Grand Gala." },
+            { id: 'step2', title: "Gather Clues from the Gala", status: 'active', description: "The team witnessed the bizarre collection of guests and overheard conversations, but the true culprit remains unknown. Fawful's intentions with a group of captured toads remain a primary concern." },
+            { id: 'step3', title: "Survive and Escape", status: 'completed', description: "After being discovered, the recon team helped Toadette and several of her soldiers escape the castle, solidifying a temporary truce." }
+        ]
+    },
     'war_of_blood_and_moon': {
         id: 'war_of_blood_and_moon',
         title: "The War of Blood and Moon",
@@ -39,8 +53,7 @@ export const QUEST_DATA = {
             { id: 'step2', title: "The Vampire Perspective – The City of Lost Blood", status: 'locked', description: "The displaced vampires live in exile, divided between diplomats who seek peace and warlords who want revenge.", options: ["Help them gather forces to retake the city.", "Convince them to negotiate, but that requires something to bargain with."] },
             { id: 'step3', title: "The Werewolf Perspective – The Shadow Throne", status: 'locked', description: "The werewolves ruling the city have begun their own medical experiments to create super-soldiers. However, some werewolves regret the war.", options: ["Expose the werewolves’ experiments to weaken their hold.", "Assist them in solidifying their power."] },
             { id: 'step4', title: "The Wedding That Started It All", status: 'locked', description: "A forgotten survivor of the Vampire-Werewolf wedding still lives, holding the key to the truth. Finding them could shift the entire war—was the wedding a betrayal or a hope for peace?" }
-        ],
-        finalDecision: { description: "Unite both sides, forcing an uneasy truce. Choose a side and lead them to ultimate victory. Or let the war continue, taking advantage of the chaos for your own goals." }
+        ]
     },
     'call_of_the_pack': {
         id: 'call_of_the_pack',

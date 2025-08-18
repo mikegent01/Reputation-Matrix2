@@ -19,22 +19,6 @@ The recapturing of the _Vigilance_ is a significant blow to X.O.'s mysterious ag
     ],
     side_story: [
         {
-            id: 'side_1',
-            title: "Orc Uprising Foiled, But Not Without Cost",
-            image: 'newspaper_orc_uprising.png',
-            image_alt: "A brutal orc drags a small, captured toad-like creature on the deck of a magitek airship. Another toad lies injured as a three-eyed rogue rushes to his side.",
-            date: "OCTOBER 24, YEAR 42",
-            author: "By Daily Paradox Staff",
-            content: `
-Just hours after the recapture of the _Vigilance_, an unexpected and brutal uprising by what appear to be Orcish forces loyal to the vanished sorceress X.O. shook the airship. While quickly suppressed by the unlikely heroes, the skirmish left casualties.
-
-The brave toad, Dan, hailed as a hero in the recent X.O. confrontation, was reportedly injured defending the ship's lower decks. Adding to the chaos, another toad, Bones, was brazenly kidnapped by the retreating Orcs. It is believed these Orcs were a secret splinter faction, a "Shadow WAAAGH!" cultivated by X.O. to destabilize the _Vigilance_ from within.
-
-The incident highlights the lingering threats still active in the wake of X.O.'s schemes. The search for Bones is ongoing, and the fate of the Orcs and their true allegiance remains a mystery. Authorities are questioning how such a large Orcish force could have infiltrated the _Vigilance_ undetected, and who will pay for the extensive property damage.
-            `,
-            type: 'side_story'
-        },
-        {
             id: 'side_2',
             title: "Princess Peach Dead: Mushroom Kingdom Plunges into Crisis",
             image: 'falling_figures.png', // Re-purposing an existing asset
@@ -142,9 +126,7 @@ It is rumored that Wario, ever the opportunist, is now seeking to reassemble his
             date: "OCTOBER 23, YEAR 42",
             author: "Military Analyst",
             content: `
-In a move that has stunned political observers, the fearsome warlord Bowser, recently a captive on the _Vigilance_, has reportedly formed an alliance with the very party that secured the airship. Intelligence reports indicate that his loyal Koopa Troop is now mobilizing, signaling a dramatic shift in the regional power dynamics.
-
-This alliance presents a complex challenge. While Bowser's forces add considerable might to the party, his long history of aggression against the Regal Empire and the Mushroom Protectorate could ignite new conflicts. Both the Empire and the Protectorate have expressed alarm, viewing this as a dangerous escalation. The ramifications of Bowser's sudden shift from prisoner to ally are yet to be fully understood, but it promises more fireworks on the horizon.
+In a move that has stunned political observers, the fearsome warlord Bowser, recently a captive on the _Vigilance_, has reportedly formed an alliance with the very party that secured the airship. This alliance was short-lived, as Bowser has now departed to deal with the fallout from Princess Peach's death, but his Koopa Troop remains a powerful, independent force. The ramifications of this temporary alliance are still unfolding.
             `,
             type: 'side_story'
         },

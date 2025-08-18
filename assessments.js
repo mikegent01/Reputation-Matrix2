@@ -8,8 +8,8 @@ export const FACTION_ASSESSMENTS = {
         bowser: `Bowser is a long-standing threat to Imperial interests and a rival monarch. His capture and subsequent alliance with the party are viewed with extreme suspicion. He has high notoriety as a significant and hostile foreign power.`,
     },
     iron_legion: {
-        archie: `The Legion's Old Guard despises Archie's lack of discipline. However, the younger War-Forged faction grudgingly respects his effectiveness and destructive power, seeing him as a potential, if messy, deniable asset. His name is known in Legion barracks, often as a cautionary tale.`,
-        markop: `A fallen paladin is the epitome of broken discipline to the Legion. They view Markop with contempt, seeing his current path as a betrayal of the martial orders they respect. He is a known associate of their enemies.`,
+        archie: `The party's presence is a catalyst for disaster. They have detained Legion members and are responsible for the death of at least one soldier. They are now considered a high-priority hostile force, and their chaotic methods are a direct threat to Legion objectives.`,
+        markop: `His failure to control his companions has led to the death of a Legionnaire. He is an accomplice to murder and a traitor to the concept of order. The Legion views him with utter contempt.`,
         humpik: `Humpik is recognized as a loyal and capable soldier, but one who serves a rival warlord. The Legion respects his strength and the power he commands but sees him as an enemy combatant by default.`,
         bowser: `The Iron Legion views Bowser as a rival military commander. They respect his strength and the power he commands but see him as an obstacle to Imperial expansion. He is a well-documented and recognized military threat.`,
     },
@@ -119,7 +119,7 @@ export const FACTION_ASSESSMENTS = {
         archie: `An accomplice to Bowser, the monster who created the chaos that killed our Princess. He is an enemy to be crushed.`,
         markop: `He consorts with our mortal enemy, Bowser. Any good he does for Dan the Toad is negated by this unforgivable alliance. He is a traitor to the cause of justice.`,
         humpik: `One of Bowser's beasts. He is a butcher and a villain, and will be shown no mercy when we restore the true Queen.`,
-        bowser: `The ultimate evil. He is the reason the Princess is gone. The Regency is too weak to bring him to justice, but we are not. He will pay for his crimes in blood.`,
+        bowser: `The beasts of the Koopa Troop have shown an unexpected sliver of honor by aiding in the rescue of our soldiers. While Bowser remains the ultimate enemy, this truce is a necessary evil to uncover the truth of the Princess's death. They are not to be trusted, but for now, they are not to be shot on sight.`,
     },
     fawfuls_furious_freaks: {
         archie: `A fool of chaos! His explosions are like a sandwich of noise that lacks the mustard of true evil genius! He is a distracting gnat to be swatted if he buzzes too near my magnificent castle!`,

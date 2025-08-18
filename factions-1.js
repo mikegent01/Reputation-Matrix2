@@ -4,8 +4,8 @@ export const FACTIONS_1 = {
         description: "The orderly, magitek-obsessed creators of the 'Vigilance', seeking to suppress chaos.",
         logo: 'faction_regal_empire.png',
         relations: { 
-            allies: ['iron_legion', 'oathbound_judges'], 
-            enemies: ['freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators', 'goodstyle_artisans'] 
+            allies: ['iron_legion', 'oathbound_judges', 'iron_fists'], 
+            enemies: ['freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators', 'goodstyle_artisans'] 
         },
         power_level: 10,
         category: "Major Powers",
@@ -67,7 +67,7 @@ export const FACTIONS_1 = {
     },
     iron_legion: {
         name: "The Iron Legion",
-        description: "Militaristic hardliners who believe in order through force and imperial expansion.",
+        description: "A highly organized militaristic faction dedicated to 'Order Through Expansion.' Operating from the Midlands, they seek to build a new empire through disciplined conquest and assimilation. They maintain a semi-autonomous sister legion, the Iron Crown Brigade, in the Mushroom Kingdom to undermine local factions and pave the way for annexation.",
         logo: 'faction_iron_legion.png',
         relations: { 
             allies: ['regal_empire'], 
@@ -76,57 +76,14 @@ export const FACTIONS_1 = {
         power_level: 9,
         category: "Major Powers",
         region: "The Midlands (Imperial Borders)",
-        leader: "general_marcus_ironhand",
+        leader: "lord_vexar_steelclad",
         notable_people: [
-            { name: "General Marcus Ironhand", role: "Supreme Commander", description: "The veteran leader of the Legion's Old Guard, known for his tactical brilliance." },
-            { name: "Colonel Vera Steelstorm", role: "War-Forged Leader", description: "A young, ambitious officer who leads the Legion's progressive faction." }
+            { name: "Lord Vexar Steelclad", role: "Grand Forgemaster", description: "The supreme leader of the entire Iron Legion, ruling from the Iron Citadel." },
+            { name: "General Marcus Ironhand", role: "Supreme Commander, Midland Legions", description: "The veteran leader of the Legion's main forces, a master of traditional warfare." },
+            { name: "Colonel Vera Steelstorm", role: "War-Forged Leader", description: "A young, ambitious officer who leads the Legion's progressive faction." },
+            { name: "Forgeheart", role: "Viceroy Hammer, Iron Crown Brigade", description: "The Toad commander of the Legion's covert operations in the Mushroom Kingdom." }
         ],
-        waluigi_tip: "WAH! These legionnaires are so predictable. The 'Old Guard' hate chaos, but the younger 'War-Forged' officers are hungry for glory. Give them a chance to prove themselves in a big, flashy fight, and they'll love you for it!",
-        internal_politics: {
-            ruling_faction: "old_guard",
-            sub_factions: {
-                old_guard: {
-                    name: "The Old Guard",
-                    description: "Veteran officers who value discipline, proven tactics, and loyalty to the Empire above all. They are suspicious of radical new technologies and unconventional allies.",
-                    opinion: "They see the party as a collection of undisciplined rogues. Markop's fall from grace is a tragedy, and Archie's chaos is a threat to military order.",
-                    influence: 50,
-                    reputation_modifiers: { archie: -15, markop: -10, humpik: -5, bowser: -10 },
-                    key_figures: [
-                        { name: "General Marcus Ironhand", role: "Supreme Commander", description: "The veteran leader of the Legion, known for his tactical brilliance and stubbornness." }
-                    ]
-                },
-                war_forged: {
-                    name: "The War-Forged",
-                    description: "Younger, ambitious officers who advocate for aggressive expansion and the use of any tool that brings victory, including dangerous artifacts and unsavory alliances.",
-                    opinion: "They are pragmatists. While the party is chaotic, their ability to get results (like defeating a dragon or disrupting the Iron Fists) is undeniable. They see potential for using them as deniable assets.",
-                    influence: 25,
-                    reputation_modifiers: { archie: 10, markop: 10, humpik: 5, bowser: 15 },
-                    key_figures: [
-                        { name: "Colonel Vera Steelstorm", role: "Rising Star", description: "A young, ambitious officer who leads the Legion's progressive faction." }
-                    ]
-                },
-                the_garrison: {
-                    name: "The Garrison",
-                    description: "Legionnaires stationed in occupied territories, focused more on policing and maintaining supply lines than frontline combat. They are pragmatic and often overworked.",
-                    opinion: "The party's actions stir up local resistance, making our job harder. We wish they would take their chaos elsewhere.",
-                    influence: 15,
-                    reputation_modifiers: { archie: -5, markop: 0, humpik: 0, bowser: -5 },
-                    key_figures: [
-                        { name: "Prefect Valerius", role: "Administrator of 'The Boiling Pot'", description: "A weary official trying to keep a rebellious province from exploding." }
-                    ]
-                },
-                siege_engineers: {
-                    name: "The Siege Engineers",
-                    description: "The artillery and engineering corps of the Legion. They believe any problem can be solved with sufficient application of explosive force.",
-                    opinion: "Archie's destructive capabilities are impressive, if uncontrolled. Bowser's siege weaponry is crude but effective. There is much to learn and counter.",
-                    influence: 10,
-                    reputation_modifiers: { archie: 10, markop: 0, humpik: 5, bowser: 10 },
-                    key_figures: [
-                        { name: "Master Engineer Tiber", role: "Artillery Chief", description: "Creator of the 'Sun-Breaker' cannon." }
-                    ]
-                }
-            }
-        }
+        waluigi_tip: "WAH! These legionnaires are so predictable. The 'Old Guard' under Ironhand hates chaos, but the younger 'War-Forged' officers are hungry for glory. Give them a chance to prove themselves in a big, flashy fight, and they'll love you for it!"
     },
     freelancer_underworld: {
         name: "Freelancer Underworld",
@@ -307,130 +264,41 @@ export const FACTIONS_1 = {
     },
     onyx_hand: {
         name: "The Onyx Hand",
-        description: "Ancient vampire covens from the dark heart of the Midlands, playing the long game for political power and influence.",
+        description: "A shadowy network of ancient vampire covens from the Midlands. They operate as a clandestine cabal, weaving intricate webs of political intrigue and subtle manipulation to amass influence. Their philosophy revolves around the 'Eternal Grasp,' the belief that true dominion comes from controlling the strings of society.",
         logo: 'faction_onyx_hand.png',
         relations: { 
             allies: ['koopa_troop'], 
             enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists']
         },
         power_level: 8,
-        leader: "lord_crimson",
+        leader: "lady_ebonveil",
         category: "Mystical & Ancient",
         region: "The Midlands (Southern Marchlands)",
         notable_people: [
-            { name: "Lord Crimson", role: "Elder Vampire", description: "An ancient vampire who orchestrated Archie's trial to weaken the Mages' Guild." },
-            { name: "Lady Nightshade", role: "Sanguine Blades Leader", description: "A younger vampire who leads the aggressive faction within the Hand." }
+            { name: "Lady Ebonveil", role: "Shadow Patriarch", description: "The immortal vampire elder who sits at the pinnacle of the Onyx Hand's shadowy hierarchy." },
+            { name: "Lord Crimson", role: "Onyx Lord", description: "An ancient and manipulative vampire who sits on the council of 13 master vampires." },
+            { name: "The Veil Matron", role: "Crimson Veil Leader", description: "Leads the Hand's autonomous sister coven in the Mushroom Kingdom." }
         ],
-        waluigi_tip: "Vampires think they're so clever. The 'Elders' are patient, but the young 'Sanguine Blades' are itching for a fight. If you want to start a vampire civil war—and who wouldn't?—just insult an Elder in front of a Blade. WAH-HAH-HAH!",
-        internal_politics: {
-            ruling_faction: "elders",
-            sub_factions: {
-                elders: {
-                    name: "The Council of Elders",
-                    description: "Ancient, patient vampires who prefer subtle manipulation and political maneuvering over open conflict. They orchestrated Archie's trial to weaken the Mages' Guild.",
-                    opinion: "Archie is a fascinating, unpredictable pawn. His trial was a resounding success, sowing discord among their rivals. They see him as a useful tool to be observed from a safe distance.",
-                    influence: 55,
-                    reputation_modifiers: { archie: 15, markop: -5, humpik: 0, bowser: 0 },
-                    key_figures: [
-                        { name: "Lord Crimson", role: "Ancient Mastermind", description: "He orchestrated Archie's trial to weaken the Mages' Guild." },
-                        { name: "Matron Volkov", role: "Keeper of Secrets", description: "The oldest and most cautious member of the council." }
-                    ]
-                },
-                sanguine_blades: {
-                    name: "The Sanguine Blades",
-                    description: "A younger, more aggressive faction of vampires who believe in ruling through fear and direct power. They see the Elders' subtlety as weakness.",
-                    opinion: "The party is a threat to our dominance, but we must admit, they are intriguing. We will wait and see how they develop.",
-                    influence: 20,
-                    reputation_modifiers: { archie: -5, markop: -10, humpik: -5, bowser: 5 },
-                    key_figures: [
-                        { name: "Lady Nightshade", role: "Faction Leader", description: "A charismatic and violent leader who challenges the Elders' authority." }
-                    ]
-                },
-                archivists_of_blood: {
-                    name: "The Archivists of Blood",
-                    description: "Vampiric scholars who obsessively track genealogies and bloodlines, believing a pure bloodline is the source of true power.",
-                    opinion: "The party members have... interesting lineages. The centaur, the warlord... their blood could hold secrets. They are subjects for study.",
-                    influence: 15,
-                    reputation_modifiers: { archie: 5, markop: 5, humpik: 5, bowser: 10 },
-                    key_figures: [
-                        { name: "Scribe Alaric", role: "Chief Genealogist", description: "He can trace a single drop of blood back a thousand years." }
-                    ]
-                },
-                whispering_courtiers: {
-                    name: "The Whispering Courtiers",
-                    description: "Vampires who have infiltrated mortal courts and institutions. They are spies and agents of influence, focused on long-term societal control.",
-                    opinion: "The party's actions are destabilizing the mortal institutions we have spent centuries controlling. They are a threat to our long-term plans.",
-                    influence: 10,
-                    reputation_modifiers: { archie: -10, markop: -5, humpik: -5, bowser: -15 },
-                    key_figures: [
-                        { name: "The Veiled Counselor", role: "Imperial Advisor", description: "A vampire who has the Emperor's ear." }
-                    ]
-                }
-            }
-        }
+        waluigi_tip: "Vampires think they're so clever. They play the 'long game,' but they hate surprises! Expose one of their secret plots in public and watch them scurry back to the shadows. WAH-HAH-HAH!"
     },
     mages_guild: {
         name: "Mages' Guild",
-        description: "A powerful and secretive organization dedicated to the control and study of magic.",
+        description: "A formidable and enigmatic organization dedicated to the mastery and control of magic. Its internal structure is fractured, torn between the traditionalist Conservators, who prioritize stability, and the radical Innovators, who push magical boundaries at any cost. The Aegis Magi enforce the will of the dominant faction.",
         logo: 'faction_mages_guild.png',
         relations: { 
             allies: ['goodstyle_artisans'], 
             enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists']
         },
         power_level: 8,
-        leader: "archmage_theron",
+        leader: "archmage_veyra",
         category: "Mystical & Ancient",
         region: "The Midlands (Autumn Wood)",
         notable_people: [
-            { name: "Archmage Theron", role: "Guild Leader", description: "The stern leader of the Conservator faction, dedicated to magical tradition." },
-            { name: "X.O.", role: "Former Member", description: "The powerful rogue mage who betrayed the guild and was recently defeated." }
+            { name: "Archmage Veyra", role: "Archmage Sovereign", description: "The elected leader of the Guild, struggling to mediate between the two main factions." },
+            { name: "Archmage Theron", role: "Conservator Leader", description: "The stern former leader who now heads the traditionalist Conservator faction." },
+            { name: "Janna Brightspark", role: "Innovator Leader", description: "A brilliant but reckless mage who leads the radical Innovator faction (character to be added)." }
         ],
-        waluigi_tip: "The Guild is a snake pit of rivalries. The 'Conservators' hate new magic, the 'Innovators' love it, and the 'Aegis' just wants to blow things up. Play them against each other for maximum chaos! WAH!",
-        internal_politics: {
-            ruling_faction: "conservators",
-            sub_factions: {
-                conservators: {
-                    name: "The Conservators",
-                    description: "An old guard of archmages who believe in tradition and strict control over magic. They see unsanctioned magic as a grave threat.",
-                    opinion: "The party's chaotic use of magic is an affront to the Guild's authority. X.O. was a product of this reckless mindset, and Archie is just as bad.",
-                    influence: 40,
-                    reputation_modifiers: { archie: -20, markop: -5, humpik: 0, bowser: -10 },
-                    key_figures: [
-                        { name: "Archmage Theron", role: "Guild Leader", description: "The stern leader of the Guild, dedicated to magical tradition." }
-                    ]
-                },
-                innovators: {
-                    name: "The Innovators",
-                    description: "A faction of younger mages and artificers pushing the boundaries of what's possible, often in ethically gray areas.",
-                    opinion: "The party, while crude, is a fascinating case study in practical, high-stakes magical application. Dan the Toad's nascent abilities are of particular interest.",
-                    influence: 25,
-                    reputation_modifiers: { archie: 10, markop: 5, humpik: 5, bowser: 5 },
-                    key_figures: [
-                        { name: "Janna Brightspark", role: "Lead Researcher", description: "A brilliant mind fascinated by dangerous and forbidden lore." }
-                    ]
-                },
-                aegis_magi: {
-                    name: "The Aegis Magi",
-                    description: "The military wing of the Guild, specializing in battle magic and defending Guild interests with overwhelming force.",
-                    opinion: "The party are either potential assets or priority targets, depending on who they are fighting. Their raw power is undeniable.",
-                    influence: 20,
-                    reputation_modifiers: { archie: 5, markop: 0, humpik: 0, bowser: 10 },
-                    key_figures: [
-                        { name: "Battle-Mage Kovar", role: "Commander", description: "A hardened warrior who leads the Guild's combat forces." }
-                    ]
-                },
-                lorekeepers: {
-                    name: "The Lorekeepers",
-                    description: "Librarians and researchers who believe knowledge is the truest form of power. They are neutral and seek only to preserve magical history.",
-                    opinion: "The party stumbles upon ancient artifacts and forgotten lore with alarming frequency. We must document their discoveries, even if we disapprove of their methods.",
-                    influence: 15,
-                    reputation_modifiers: { archie: 5, markop: 5, humpik: 5, bowser: 5 },
-                    key_figures: [
-                        { name: "Master Librarian Elara", role: "Head Archivist", description: "Protector of the Great Library of the Guild." }
-                    ]
-                }
-            }
-        }
+        waluigi_tip: "The Guild is a snake pit of rivalries. The 'Conservators' hate new magic, the 'Innovators' love it, and the 'Aegis' just wants to blow things up. Play them against each other for maximum chaos! WAH!"
     },
     rakasha_clans: {
         name: "Rakasha Clans",

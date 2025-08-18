@@ -174,7 +174,154 @@
 .seat-freelancer_underworld { background-color: var(--underworld-fringe-color); }
 .seat-unaligned, .coalition-heartland_alliance { background-color: var(--neutral-color); }
 
-/* --- Iron Legion & Koopa Troop: Org Chart --- */
+/* --- Detailed Faction Systems (Iron Legion, Onyx Hand, etc.) --- */
+.faction-detailed-system {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+}
+
+.system-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.system-tab-btn {
+    padding: 10px 16px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+.system-tab-btn:hover {
+    color: var(--text-color);
+}
+
+.system-tab-btn.active {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+.system-tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+.system-tab-content.active {
+    display: block;
+}
+
+/* Hierarchy Org Chart */
+.system-org-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+.org-chart-level {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+}
+.org-chart-level:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 16px;
+    background-color: var(--border-color);
+}
+.org-rank {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    margin-bottom: 4px;
+}
+.org-leader {
+    font-weight: bold;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+.org-description {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Info Cards for other tabs */
+.info-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+}
+.info-card {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--neutral-color);
+    border-radius: 6px;
+    padding: 16px;
+}
+.info-card h6 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+.info-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+.info-card p strong {
+    color: var(--text-secondary);
+}
+
+/* Specific Mechanic Styles */
+.mechanic-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+}
+.mechanic-card {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+}
+.mechanic-card.onyx-hand-mechanic { border-left: 4px solid var(--negative-color); }
+.mechanic-card.moonfang-pack-mechanic { border-left: 4px solid var(--regional-powers-color); }
+.mechanic-card.mages-guild-mechanic { border-left: 4px solid var(--mystical-ancient-color); }
+
+.mechanic-card h6 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+.mechanic-card.onyx-hand-mechanic h6 { color: var(--negative-color); }
+.mechanic-card.moonfang-pack-mechanic h6 { color: var(--regional-powers-color); }
+.mechanic-card.mages-guild-mechanic h6 { color: var(--mystical-ancient-color); }
+
+.mechanic-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* --- Koopa Troop: Org Chart --- */
 .org-chart {
     display: flex;
     flex-direction: column;

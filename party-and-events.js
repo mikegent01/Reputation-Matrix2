@@ -2,7 +2,7 @@ export const AUXILIARY_PARTY = {
     dan: {
         name: "Dan",
         weapon: "Longsword & Magic",
-        status: "Injured",
+        status: "Critically Injured",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -13,7 +13,7 @@ export const AUXILIARY_PARTY = {
         name: "Toad Lee",
         description: "A hardy toad warrior who fights with a surprisingly large axe.",
         weapon: "Axe",
-        status: "Alive",
+        status: "Critically Injured",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -23,7 +23,7 @@ export const AUXILIARY_PARTY = {
     eager: {
         name: "Eager",
         weapon: "Whip",
-        status: "Alive",
+        status: "Critically Injured",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -33,7 +33,7 @@ export const AUXILIARY_PARTY = {
     ryan: {
         name: "Ryan",
         weapon: "Spellcaster",
-        status: "Alive",
+        status: "Alive, recovering",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -43,7 +43,7 @@ export const AUXILIARY_PARTY = {
     roger: {
         name: "Roger",
         weapon: "Gun",
-        status: "Alive",
+        status: "Critically Injured",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -53,22 +53,12 @@ export const AUXILIARY_PARTY = {
     bones: {
         name: "Bones",
         weapon: "Grotesque",
-        status: "Kidnapped by Orcs",
+        status: "Alive",
         level: 1,
         xp: 0,
         xp_to_next: 100,
         log: [],
         abilities: []
-    },
-    traitor_toad: {
-        name: "Wally's Toad",
-        weapon: "Dagger & Deceit",
-        status: "Captured",
-        level: 1,
-        xp: 0,
-        xp_to_next: 100,
-        log: [{ reason: "Exposed as a Waluigi loyalist.", xp: 0 }],
-        abilities: [{ name: "Imposter", description: "Adept at disguise and deception."}]
     }
 };
 
@@ -158,13 +148,6 @@ export const RUMORS = [
         effects: { ratchet_raiders: 10, regal_empire: -5 }
     },
     {
-        id: 'orc_uprising',
-        title: "Orc Uprising",
-        description: "An orc faction loyal to X.O. attempted an uprising on the 'Vigilance', injuring Dan and kidnapping Bones.",
-        targets: ['dan_the_toad', 'bones', 'archie', 'markop'],
-        effects: { da_krumperz: -15, regal_empire: -10, iron_legion: -10, liberated_toads: -20, ratchet_raiders: -5 }
-    },
-    {
         id: 'markop_saves_lario',
         title: "Markop Saves Lario",
         description: "Markop warned the goblin Lario of an orc sneak attack, saving his life despite their animosity.",
@@ -238,6 +221,13 @@ export const RUMORS = [
             mages_guild: 5
         }
     },
+    {
+        id: 'iron_fists_conspiracy',
+        title: "Iron Fists' Imperial Contract?",
+        description: "A captured Iron Legion bomber revealed a shocking secret before his demise: the Iron Fists gang may be operating as a secret arm of the Regal Empire, creating chaos for the Empire to solve.",
+        targets: ['party'],
+        effects: { iron_fists: -5, regal_empire: -5, freelancer_underworld: 10 }
+    }
 ];
 
 export const TIMELINE = [
@@ -292,14 +282,14 @@ export const TIMELINE = [
     },
     {
         phase: '1040 BF',
-        title: 'Orc Uprising',
-        description: "<p>Remnants of X.O.'s forces, revealed to be a secret Ork splinter faction, stage an uprising. They injure Dan, kidnap Bones, and attempt to assassinate Lario before being partially thwarted by Markop and Archie.</p>",
-        participants: ['dan_the_toad', 'bones', 'archie', 'markop', 'lario']
-    },
-    {
-        phase: '1040 BF',
         title: 'The Syrup Schism & Core Crisis',
         description: "<p>The party frees the pirate Captain Syrup, who immediately turns hostile. A chaotic confrontation ensues, revealing a traitorous toad and culminating in Humpik disabling the airship's power core with an axe, sending the 'Vigilance' into a nose-dive.</p>",
         participants: ['archie', 'markop', 'humpik', 'bowser', 'waluigi', 'dan_the_toad', 'captain_syrup']
+    },
+    {
+        phase: '1040 BF',
+        title: 'Aftermath on the Vigilance',
+        description: "<p>The ship's power is restored using X.O.'s staff. In the chaos, Big T reappears only to be assassinated, Iron Legion agents attack and are detained, and Waluigi's agent 'Wally' is revealed before making a dramatic exit with Bowser, leaving the Liberated Toads critically injured.</p>",
+        participants: ['archie', 'markop', 'humpik', 'bowser', 'dan', 'ryan']
     }
 ];

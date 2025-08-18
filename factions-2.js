@@ -376,11 +376,11 @@ export const FACTIONS_2 = {
     },
     iron_fists: {
         name: "The Iron Fists",
-        description: "A brutal and aggressive criminal gang known for smuggling and extortion.",
+        description: "A brutal and aggressive criminal gang known for smuggling and extortion. Secretly, they have been operating as deniable assets for the Regal Empire, creating instability that the Empire can then quell.",
         logo: 'faction_iron_fists.png',
         relations: { 
-            allies: [], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators']
+            allies: ['regal_empire'], 
+            enemies: ['iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'da_krumperz', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators']
         },
         power_level: 5,
         leader: "boss_knuckles",

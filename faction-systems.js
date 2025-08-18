@@ -1,6 +1,134 @@
 import { state } from './state.js';
 import { LORE_DATA, CHARACTER_RELATIONS } from './lore.js';
 import { getSubFactionReputation } from './reputation.js';
+import { IRON_LEGION_DETAILS } from './iron-legion-details.js';
+import { ONYX_HAND_DETAILS } from './onyx-hand-details.js';
+import { MOONFANG_PACK_DETAILS } from './moonfang-pack-details.js';
+import { MAGES_GUILD_DETAILS } from './mages-guild-details.js';
+
+// --- HELPER FUNCTIONS ---
+const findCharKeyByName = (name) => {
+    return Object.keys(LORE_DATA.characters).find(key => LORE_DATA.characters[key].name === name);
+};
+
+// --- GENERIC DETAILED SYSTEM BUILDER ---
+function buildDetailedSystemHTML(details, description) {
+    const tabs = [];
+    const contents = [];
+
+    if (details.hierarchy) {
+        tabs.push({ id: 'hierarchy', label: 'Hierarchy' });
+        const hierarchyHTML = `
+            <div class="system-org-chart">
+                ${details.hierarchy.map(level => `
+                    <div class="org-chart-level">
+                        <div class="org-rank">${level.rank}</div>
+                        <div class="org-leader">${level.leader}</div>
+                        <p class="org-description">${level.description}</p>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+        contents.push({ id: 'hierarchy', html: hierarchyHTML });
+    }
+
+    if (details.recruitment) {
+        tabs.push({ id: 'recruitment', label: 'Recruitment' });
+        const recruitmentHTML = `
+            <div class="info-card-grid">
+                ${Object.values(details.recruitment).map(item => `
+                    <div class="info-card">
+                        <h6>${item.title}</h6>
+                        <p>${item.description}</p>
+                    </div>
+                `).join('')}
+            </div>`;
+        contents.push({ id: 'recruitment', html: recruitmentHTML });
+    }
+
+    if (details.tactics) {
+        tabs.push({ id: 'tactics', label: 'Tactics' });
+        const tacticsHTML = `
+            <div class="info-card-grid">
+                 ${Object.values(details.tactics).map(item => `
+                    <div class="info-card">
+                        <h6>${item.title}</h6>
+                        <p>${item.description}</p>
+                    </div>
+                `).join('')}
+            </div>`;
+        contents.push({ id: 'tactics', html: tacticsHTML });
+    }
+    
+    if (details.ideology) {
+        tabs.push({ id: 'ideology', label: 'Ideology & Culture' });
+        const ideologyHTML = `
+            <div class="info-card">
+                 <h6>${details.ideology.title}</h6>
+                 <p>${details.ideology.description}</p>
+            </div>
+        `;
+        contents.push({ id: 'ideology', html: ideologyHTML });
+    }
+    
+    if (details.shared_mechanic) {
+        tabs.push({ id: 'mechanic', label: details.shared_mechanic.tab_title || 'Unique Mechanic' });
+        const mechanicHTML = `
+            <div class="mechanic-container">
+                 ${Object.values(details.shared_mechanic.cards).map(card => `
+                    <div class="mechanic-card ${card.css_class}">
+                         <h6>${card.title}</h6>
+                         <p>${card.description}</p>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+        contents.push({ id: 'mechanic', html: mechanicHTML });
+    }
+
+
+    const tabsHTML = tabs.map((tab, index) => `<button class="system-tab-btn ${index === 0 ? 'active' : ''}" data-tab="${tab.id}">${tab.label}</button>`).join('');
+    const contentsHTML = contents.map((content, index) => `<div id="${content.id}" class="system-tab-content ${index === 0 ? 'active' : ''}">${content.html}</div>`).join('');
+
+    return `
+        <p class="system-description">${description}</p>
+        <div class="faction-detailed-system">
+            <div class="system-tabs">${tabsHTML}</div>
+            ${contentsHTML}
+        </div>
+    `;
+}
+
+
+// --- FACTION-SPECIFIC RENDERERS ---
+
+function renderIronLegionDetailedSystem() {
+    return buildDetailedSystemHTML(
+        IRON_LEGION_DETAILS,
+        "The Iron Legion is a well-oiled machine of conquest, with a rigid hierarchy and distinct operational doctrines for different territories. Explore their structure and methods below."
+    );
+}
+
+function renderOnyxHandDetailedSystem() {
+    return buildDetailedSystemHTML(
+        ONYX_HAND_DETAILS,
+        "The Onyx Hand operates through layers of secrecy and centuries of accumulated influence. Their true power lies not in armies, but in the control they exert from the shadows."
+    );
+}
+
+function renderMoonfangPackDetailedSystem() {
+     return buildDetailedSystemHTML(
+        MOONFANG_PACK_DETAILS,
+        "The Moonfang Pack is a primal society where strength dictates status. Their structure is fluid, adapting to the needs of the hunt and the eternal war against their rivals."
+    );
+}
+
+function renderMagesGuildDetailedSystem() {
+     return buildDetailedSystemHTML(
+        MAGES_GUILD_DETAILS,
+        "The Mages' Guild is a nexus of immense power, but it is deeply divided. Its internal politics pit the forces of stability against the agents of chaotic innovation, with the balance of power constantly in flux."
+    );
+}
 
 // --- HOLY MIDLANDS DIET - VISUALIZATION ---
 
@@ -314,9 +442,11 @@ function initHolyMidlandsDietListeners() {
  * @returns {string} HTML content for the unique system.
  */
 export function renderSystemForFaction(factionKey, factionData, currentState) {
-    if (!factionData.internal_politics?.sub_factions && factionKey !== 'liberated_toads') {
+    const detailedSystems = ['iron_legion', 'onyx_hand', 'moonfang_pack', 'mages_guild', 'regal_empire'];
+    if (!detailedSystems.includes(factionKey) && !factionData.internal_politics?.sub_factions && factionKey !== 'liberated_toads') {
         return '';
     }
+    
     const systemHTML = getSystemHTML(factionKey, factionData, currentState);
     
     return `
@@ -331,11 +461,18 @@ export function renderSystemForFaction(factionKey, factionData, currentState) {
  * Calls the correct rendering function based on the faction key.
  */
 function getSystemHTML(factionKey, factionData, currentState) {
-    const subFactions = factionData.internal_politics.sub_factions;
+    const subFactions = factionData.internal_politics?.sub_factions;
     switch (factionKey) {
         case 'regal_empire':
             return renderHolyMidlandsDiet();
         case 'iron_legion':
+            return renderIronLegionDetailedSystem();
+        case 'onyx_hand':
+            return renderOnyxHandDetailedSystem();
+        case 'moonfang_pack':
+             return renderMoonfangPackDetailedSystem();
+        case 'mages_guild':
+             return renderMagesGuildDetailedSystem();
         case 'koopa_troop':
             return renderOrgChart(subFactions, factionData.leader);
         case 'freelancer_underworld':
@@ -344,10 +481,6 @@ function getSystemHTML(factionKey, factionData, currentState) {
              return renderTurfWar(subFactions);
         case 'toad_cult':
             return renderProphecyTracker(subFactions);
-        case 'onyx_hand':
-            return renderGenerationalView(subFactions);
-        case 'mages_guild':
-            return renderMagicalStability(subFactions);
         case 'rakasha_clans':
             return renderSpiritualBalance(subFactions);
         case 'cosmic_jesters':
@@ -376,8 +509,6 @@ function getSystemHTML(factionKey, factionData, currentState) {
             return renderFuryEngine();
         case 'iron_fists':
             return renderCriminalEnterprise(subFactions);
-        case 'moonfang_pack':
-            return renderLunarCycle(subFactions);
         case 'diamond_city_investigators':
             return renderCaseBoard(subFactions);
         case 'goodstyle_artisans':
@@ -385,6 +516,7 @@ function getSystemHTML(factionKey, factionData, currentState) {
         case 'liberated_toads':
             return renderLiberatedToads(factionKey, factionData, currentState);
         default:
+            if(subFactions) return renderDefaultSubfactionList(subFactions, factionKey, state);
             return `<div class="system-content"><p>No unique system data available for this faction.</p></div>`;
     }
 }
@@ -392,9 +524,8 @@ function getSystemHTML(factionKey, factionData, currentState) {
 /**
  * Initializes any dynamic JS for a system after it has been rendered.
  * @param {string} factionKey - The key of the faction.
- * @param {object} factionData - The faction's data object.
  */
-export function initSystem(factionKey, factionData) {
+export function initSystem(factionKey) {
     if (factionKey === 'regal_empire') {
         initHolyMidlandsDietListeners();
     }
@@ -403,6 +534,27 @@ export function initSystem(factionKey, factionData) {
     }
      if (factionKey === 'diamond_city_investigators') {
         initCaseBoardLines();
+    }
+    
+    const detailedSystems = ['iron_legion', 'onyx_hand', 'moonfang_pack', 'mages_guild'];
+    if (detailedSystems.includes(factionKey)) {
+        const systemContainer = document.querySelector('.faction-detailed-system');
+        if (systemContainer) {
+            const tabsContainer = systemContainer.querySelector('.system-tabs');
+            const tabs = tabsContainer.querySelectorAll('.system-tab-btn');
+            const contents = systemContainer.querySelectorAll('.system-tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    contents.forEach(content => {
+                        content.classList.toggle('active', content.id === tab.dataset.tab);
+                    });
+                });
+            });
+        }
     }
 }
 
@@ -455,27 +607,6 @@ function renderTurfWar(subFactions) {
                 </div>
              `).join('')}
         </div>
-    `;
-}
-
-function renderMagicalStability(subFactions) {
-    const conservatorInfluence = subFactions.conservators.influence;
-    const innovatorInfluence = subFactions.innovators.influence;
-    // Scale is -50 (Unstable) to +50 (Stable). Center is 0.
-    const stability = conservatorInfluence - innovatorInfluence;
-    const indicatorPosition = 50 + stability; // As a percentage
-
-    return `
-         <p class="system-description">The Mages' Guild is torn between the traditionalist Conservators who seek control and stability, and the radical Innovators who push magical boundaries, risking chaos for progress. The Aegis Magi enforce the will of the dominant faction.</p>
-         <div class="system-content">
-            <div class="stability-meter-container">
-                <span class="stability-label negative">Chaotic</span>
-                <div class="stability-meter">
-                    <div class="stability-indicator" style="left: ${indicatorPosition}%;"></div>
-                </div>
-                <span class="stability-label positive">Stable</span>
-            </div>
-         </div>
     `;
 }
 
@@ -585,7 +716,6 @@ function renderDefaultSubfactionList(subFactions, factionKey, state) {
 
 // All other factions will get a simplified list for now
 function renderProphecyTracker(subFactions) { return renderDefaultSubfactionList(subFactions, 'toad_cult', state); }
-function renderGenerationalView(subFactions) { return renderDefaultSubfactionList(subFactions, 'onyx_hand', state); }
 function renderSpiritualBalance(subFactions) { return renderDefaultSubfactionList(subFactions, 'rakasha_clans', state); }
 function renderLiberationNetwork(subFactions) { return renderDefaultSubfactionList(subFactions, 'the_unchained', state); }
 function renderPurificationCrusade(subFactions) { return renderDefaultSubfactionList(subFactions, 'silver_flame', state); }
@@ -598,7 +728,6 @@ function renderCivilWarMap() { return `<div class="system-content"><p>A full ove
 function renderCrusadeTargets() { return `<div class="system-content"><p>The Loyalists are currently focused on two primary objectives: finding evidence of the 'true' heir to the throne, and bringing Bowser to justice for his crimes against the kingdom.</p></div>`;}
 function renderFuryEngine() { return `<div class="system-content"><p>Fawful's primary focus is bolstering the defenses of his new castle with bizarre and furious technology, while repelling the constant assaults from the Peach Loyalists.</p></div>`; }
 function renderCriminalEnterprise(subFactions) { return renderDefaultSubfactionList(subFactions, 'iron_fists', state); }
-function renderLunarCycle(subFactions) { return renderDefaultSubfactionList(subFactions, 'moonfang_pack', state); }
 function renderCulturalHeritage(subFactions) { return renderDefaultSubfactionList(subFactions, 'goodstyle_artisans', state); }
 
 

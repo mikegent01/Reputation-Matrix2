@@ -1,4 +1,5 @@
 
+
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
 import { FOCUS_TREES } from './focus-tree.js';
@@ -6,7 +7,7 @@ import { FOCUS_TREES } from './focus-tree.js';
 // --- STATE MANAGEMENT ---
 export const state = {
     loggedInUser: localStorage.getItem('vigilanceTerminalUser') || 'generic',
-    party: ['archie', 'markop', 'humpik', 'bowser'],
+    party: ['archie', 'markop', 'humpik'],
     activeRumors: [], 
     players: {
         archie: { name: 'Archie Miser', reputation: {}, notoriety: {} },
