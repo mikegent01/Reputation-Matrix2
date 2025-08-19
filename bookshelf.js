@@ -167,20 +167,14 @@ function showBookModal(bookKey) {
     // Check for and render detailed description
     const detailedDescription = BOOK_DESCRIPTIONS[bookKey];
     if (detailedDescription) {
-        let descriptionHTML = `<p><em>${detailedDescription.overview}</em></p>`;
-        
-        if (detailedDescription.binding) {
-            descriptionHTML += `<h5>Binding & Cover</h5><p>${detailedDescription.binding}</p>`;
-        }
-        if (detailedDescription.cover_art) {
-            descriptionHTML += `<h5>Cover Art</h5><p>${detailedDescription.cover_art}</p>`;
-        }
-        if (detailedDescription.interior_notes) {
-            descriptionHTML += `<h5>Archivist's Notes</h5><p>${detailedDescription.interior_notes}</p>`;
-        }
-        if (detailedDescription.properties) {
-            descriptionHTML += `<h5>Known Properties</h5><p><strong>${detailedDescription.properties.name}:</strong> ${detailedDescription.properties.description}</p><p><em><strong>Effect:</strong> ${detailedDescription.properties.effect}</em></p>`;
-        }
+        let descriptionHTML = `
+            <h5>Summary</h5>
+            <p>${detailedDescription.summary}</p>
+            
+            <h5>Details</h5>
+            <p><strong>Reading Time:</strong> ${detailedDescription.reading_time}</p>
+            <p><strong>Effect:</strong> <em>${detailedDescription.effect}</em></p>
+        `;
 
         bookDescriptionContainer.innerHTML = descriptionHTML;
         bookDescriptionContainer.style.display = 'block';
