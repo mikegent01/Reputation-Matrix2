@@ -64,7 +64,14 @@ export const state = {
     finalSubFactionReputations: {},
     calculationBreakdown: {},
     chartInstances: {},
-    focusTreeState: {} // New state for the focus tree
+    focusTreeState: {},
+    inventories: {
+        archie: { name: "Archie's Stash", items: [] },
+        markop: { name: "Markop's Pack", items: [] },
+        humpik: { name: "Humpik's Haul", items: [] },
+        bowser: { name: "Bowser's Treasury", items: ["Princess Peach's Diary"] },
+        shared: { name: "Liberated Toads' Items", items: ["Polished Brass Sun", "Pressure Gauge Needle"] }
+    }
 };
 
 function initReputation() {
@@ -251,17 +258,13 @@ export function initFocusTreeState() {
             dan: 0, toad_lee: 0, eager: 0,
             ryan: 0, roger: 0, bones: 0
         },
-        inventory: {
-            mundane: ["Polished Brass Sun", "Pressure Gauge Needle", "Princess Peach's Diary"],
-            lucky: {}
-        },
         flags: { waluigiPending: false }
     };
 }
 
 
 export function saveState() {
-    localStorage.setItem('vigilanceTerminalState', JSON.stringify(state));
+    // Data saving is disabled per user request to reset on every visit.
 }
 
 function calculateFinalReputations() {
@@ -386,31 +389,24 @@ function calculateFinalReputations() {
 }
 
 export function loadState() {
+    // Persist login and debug status across sessions, but reset game state.
     state.debugMode = localStorage.getItem('vigilanceDebugMode') === 'true';
-    const savedState = localStorage.getItem('vigilanceTerminalState');
-    if (savedState) {
-        const parsedState = JSON.parse(savedState);
-        // selectively assign properties to avoid overwriting the loggedInUser from the new session
-        Object.keys(parsedState).forEach(key => {
-            if (key !== 'loggedInUser' && key !== 'debugMode') { // also protect debugMode
-                state[key] = parsedState[key];
-            }
-        });
-        
-        // Reset chart instances on load
-        state.chartInstances = {};
-        initReputation();
-        
-        if (!state.auxiliary_party_state || Object.keys(state.auxiliary_party_state).length === 0) {
-             processInitialXP();
-        }
-        if (!state.focusTreeState || Object.keys(state.focusTreeState).length === 0) {
-            initFocusTreeState();
-        }
-    } else {
-        initReputation();
-        processInitialXP();
-        initFocusTreeState();
-    }
-    calculateFinalReputations(); 
+    state.loggedInUser = localStorage.getItem('vigilanceTerminalUser') || 'generic';
+
+    // Always initialize a fresh game state on load.
+    initReputation();
+    processInitialXP();
+    initFocusTreeState();
+    
+    // Explicitly reset inventories to default
+    state.inventories = {
+        archie: { name: "Archie's Stash", items: [] },
+        markop: { name: "Markop's Pack", items: [] },
+        humpik: { name: "Humpik's Haul", items: [] },
+        bowser: { name: "Bowser's Treasury", items: ["Princess Peach's Diary"] },
+        shared: { name: "Liberated Toads' Items", items: ["Polished Brass Sun", "Pressure Gauge Needle"] }
+    };
+
+    // Always calculate reputations from the fresh state.
+    calculateFinalReputations();
 }

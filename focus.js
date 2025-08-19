@@ -1,5 +1,3 @@
-
-
 import { state, saveState, loadState, initFocusTreeState } from './state.js';
 import { FOCUS_TREES } from './focus-tree.js';
 import { LORE_DATA } from './lore.js';
@@ -11,7 +9,7 @@ const treeContent = document.getElementById('focus-tree-content');
 const tooltip = document.getElementById('focus-tooltip');
 const dayCounter = document.querySelector('#info-day-counter .day-number');
 const logList = document.getElementById('log-list');
-const inventoryBookshelf = document.getElementById('inventory-bookshelf');
+const inventoryContainer = document.getElementById('inventory-bookshelf');
 const resetFocusBtn = document.getElementById('reset-focus-btn');
 
 // Load state immediately to ensure all data is available for rendering.
@@ -154,17 +152,56 @@ function renderInfoPanel() {
     });
 
     // Inventory Bookshelf
-    inventoryBookshelf.innerHTML = '';
-    state.focusTreeState.inventory.mundane.forEach(item => {
-        const itemEl = document.createElement('div');
-        const isDiary = item.toLowerCase().includes('diary');
-        itemEl.className = `inventory-item ${isDiary ? 'diary' : 'mundane'}`;
-        itemEl.textContent = item;
-        itemEl.title = isDiary ? "A leather-bound journal recovered from the castle. Its contents are... revealing." : "A mundane item of some importance.";
-        inventoryBookshelf.appendChild(itemEl);
-    });
-    if (inventoryBookshelf.innerHTML === '') {
-        inventoryBookshelf.innerHTML = '<p style="text-align: center; width: 100%; color: var(--text-secondary); font-size: 0.8rem;">Empty</p>';
+    inventoryContainer.innerHTML = '';
+
+    function getItemType(itemName) {
+        const lowerItem = itemName.toLowerCase();
+        if (lowerItem.includes('diary')) return 'diary';
+        if (lowerItem.includes('sun') || lowerItem.includes('needle')) return 'artifact';
+        return 'mundane';
+    }
+    
+    function getItemDescription(itemName) {
+        const lowerItem = itemName.toLowerCase();
+        if (lowerItem.includes('diary')) {
+            return "Princess Peach's personal diary, recovered from the castle. Its pages are filled with her thoughts in the days leading up to her death. What secrets does it hold about the true cause of the Mushroom Kingdom Civil War, and who was really responsible for her demise?";
+        }
+        if (lowerItem.includes('sun')) {
+            return "A strange, polished brass object that seems to absorb light. It feels warm to the touch.";
+        }
+        if (lowerItem.includes('needle')) {
+            return "The needle from a complex pressure gauge. It hums with a faint, residual energy.";
+        }
+        return "A mundane item of some importance.";
+    }
+
+    let hasItems = false;
+    for (const ownerKey in state.inventories) {
+        const inventory = state.inventories[ownerKey];
+        if (inventory.items.length > 0) {
+            hasItems = true;
+            const shelfLabel = document.createElement('div');
+            shelfLabel.className = 'shelf-label';
+            shelfLabel.textContent = inventory.name;
+            inventoryContainer.appendChild(shelfLabel);
+    
+            const shelf = document.createElement('div');
+            shelf.className = 'bookshelf-shelf';
+            
+            inventory.items.forEach(item => {
+                const itemEl = document.createElement('div');
+                const itemType = getItemType(item);
+                itemEl.className = `inventory-item ${itemType}`;
+                itemEl.textContent = item;
+                itemEl.title = getItemDescription(item);
+                shelf.appendChild(itemEl);
+            });
+            inventoryContainer.appendChild(shelf);
+        }
+    }
+
+    if (!hasItems) {
+        inventoryContainer.innerHTML = '<p style="text-align: center; width: 100%; color: var(--text-secondary); font-size: 0.8rem; padding-top: 20px;">All inventories are empty.</p>';
     }
 }
 
