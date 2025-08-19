@@ -38,8 +38,8 @@ export const QUEST_DATA = {
         status: "active",
         steps: [
             { id: 'step1', title: "Infiltrate Peach's Castle", status: 'completed', description: "A recon team of Koopa and Paratroopas teamed up with Toadette's forces and successfully infiltrated the castle during Fawful's Grand Gala." },
-            { id: 'step2', title: "Gather Clues from the Gala", status: 'active', description: "The team witnessed the bizarre collection of guests and overheard conversations, but the true culprit remains unknown. Fawful's intentions with a group of captured toads remain a primary concern." },
-            { id: 'step3', title: "Survive and Escape", status: 'completed', description: "After being discovered, the recon team helped Toadette and several of her soldiers escape the castle, solidifying a temporary truce." }
+            { id: 'step2', title: "Gather Clues from the Gala", status: 'active', description: "The recon team gathered significant intelligence from within the gala. They observed Chief Thornpaw among the guests, overhearing the Rakasha tradition of using a single public name. The team witnessed Fawful present other captured toads to the guests as 'dinner,' much to the horror of the captives who were shaken by the presence of the 'Evil Toad God.' During the chaos, Fawful spotted and pursued the Koopa trooper, while the Paratrooper encountered former Iron Legion soldiers now allied with Fawful." },
+            { id: 'step3', title: "Survive and Escape", status: 'completed', description: "The Paratrooper made contact with Captain Toadette and assisted in freeing her captured soldiers. In gratitude, Toadette acknowledged the Koopa Troop's aid and ordered a strategic withdrawal, solidifying their fragile truce to continue investigating the Princess's death." }
         ]
     },
     'war_of_blood_and_moon': {

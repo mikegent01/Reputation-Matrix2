@@ -161,30 +161,44 @@ function grantXP(charKey, amount, reason) {
 function processInitialXP() {
     state.auxiliary_party_state = structuredClone(LORE_DATA.auxiliary_party);
 
-    // Grant XP based on lore events
-    grantXP('dan', 150, "Landed the final blow on X.O./Skylla.");
-    grantXP('dan', 50, "Disarmed X.O. of her reality-bending staff.");
-    grantXP('dan', 50, "Survived a journey to the Tree of Woe.");
-    grantXP('dan', 25, "Accepted tutelage from the Rakasha shamans.");
-    grantXP('toad_lee', 50, "First to join the fight, showed immense courage.");
-    
-    const otherToads = ['toad_lee', 'eager', 'ryan', 'roger', 'bones'];
-    otherToads.forEach(toadKey => {
+    // Common XP for all toads for initial liberation
+    const allToads = ['dan', 'toad_lee', 'eager', 'ryan', 'roger', 'bones'];
+    allToads.forEach(toadKey => {
         grantXP(toadKey, 25, "Participated in the liberation and survived the aftermath.");
     });
 
-    grantXP('dan', 75, "Defended against the Orc uprising.");
-    grantXP('markop', 75, "Saved Lario from an Orc sneak attack.");
-    grantXP('bones', 25, "Survived the Orc kidnapping attempt.");
-
-    // XP from Syrup confrontation
+    // XP from X.O. & Syrup Confrontations
+    grantXP('dan', 150, "Landed the final blow on X.O./Skylla.");
+    grantXP('dan', 50, "Disarmed X.O. of her reality-bending staff.");
     grantXP('dan', 75, "Fought against Captain Syrup's forces.");
+    grantXP('dan', 25, "Bravely asserted ownership of the staff against Archie.");
+    grantXP('toad_lee', 50, "First to join the fight, showed immense courage.");
     grantXP('ryan', 50, "Assisted in the fight against Captain Syrup.");
-    grantXP('archie', 75, "Key player in the Syrup confrontation.");
-    grantXP('markop', 50, "Freed, then fought Captain Syrup.");
-    grantXP('humpik', 25, "Stopped Waluigi's escape.");
-    grantXP('humpik', 100, "Disabled the entire airship with one axe throw."); // It's an achievement, of a sort.
 
+    // XP from the "Vigilance" Aftermath
+    grantXP('toad_lee', 100, "Knocked out a disguised Iron Legion kidnapper.");
+    grantXP('eager', 50, "Tied up the captured Iron Legion kidnapper.");
+    grantXP('bones', 25, "Survived the ship's crash and was revived by Wally.");
+    grantXP('ryan', 15, "Attempted to secure Wally's powerful staff.");
+    
+    // XP for defending their group
+    allToads.forEach(toadKey => {
+        grantXP(toadKey, 30, "Fended off an attack from a kidnapper toad.");
+    });
+    
+    // XP for surviving the Iron Legion fire attack
+    grantXP('dan', 50, "Survived a direct hit from an Iron Legion fire attack.");
+    grantXP('toad_lee', 50, "Survived a direct hit from an Iron Legion fire attack.");
+    grantXP('eager', 50, "Survived a direct hit from an Iron Legion fire attack.");
+    grantXP('roger', 50, "Survived a direct hit from an Iron Legion fire attack.");
+    grantXP('ryan', 25, "Survived the Iron Legion fire attack.");
+    grantXP('bones', 25, "Survived the Iron Legion fire attack.");
+
+    // XP for uncovering the bomb plot
+    grantXP('eager', 75, "Discovered the Iron Legion's bomb plot.");
+    
+    // Miscellaneous XP
+    grantXP('dan', 25, "Accepted tutelage from the Rakasha shamans.");
 }
 
 export function initFocusTreeState() {
