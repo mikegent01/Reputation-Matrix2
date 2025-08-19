@@ -39,7 +39,10 @@
                         <img src="icon_dossier.png" alt="Quests Icon">
                         <span>Quests</span>
                     </a>
-                    
+                    <a href="bookshelf.html" class="nav-button">
+                        <img src="icon_dossier.png" alt="Bookshelf Icon">
+                        <span>Bookshelf</span>
+                    </a>
                     <a href="currency.html" class="nav-button">
                         <img src="icon_currency.png" alt="Currency Icon">
                         <span>Currency Exchange</span>
@@ -95,12 +98,6 @@
                             <div class="info-box">
                                <button id="reset-focus-btn">Reset All Progress</button>
                             </div>
-                             <div id="info-inventory" class="info-box">
-                                <h5>Inventory</h5>
-                                <div id="inventory-bookshelf">
-                                    <!-- Inventory items injected by JS -->
-                                </div>
-                            </div>
                             <div id="info-log" class="info-box">
                                 <h5>Event Log</h5>
                                 <div id="log-list-container">
@@ -116,12 +113,6 @@
         </div>
     </div>
     <div id="focus-tooltip" class="focus-tooltip"></div>
-    <div id="diary-modal" class="diary-modal-overlay">
-        <div class="diary-modal-content">
-            <button id="diary-modal-close" class="diary-modal-close">&times;</button>
-            <div id="diary-pages-container"></div>
-        </div>
-    </div>
     <script type="module" src="common.js"></script>
     <script type="module" src="focus.js"></script>
 </body>
