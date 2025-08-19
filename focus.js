@@ -1,6 +1,7 @@
 import { state, saveState, loadState, initFocusTreeState } from './state.js';
 import { FOCUS_TREES } from './focus-tree.js';
 import { LORE_DATA } from './lore.js';
+import { DIARY_ENTRIES } from './diary-content.js';
 
 const rosterList = document.getElementById('toad-roster-list');
 const treeHeader = document.getElementById('focus-tree-header');
@@ -11,6 +12,10 @@ const dayCounter = document.querySelector('#info-day-counter .day-number');
 const logList = document.getElementById('log-list');
 const inventoryContainer = document.getElementById('inventory-bookshelf');
 const resetFocusBtn = document.getElementById('reset-focus-btn');
+const diaryModal = document.getElementById('diary-modal');
+const diaryModalClose = document.getElementById('diary-modal-close');
+const diaryPagesContainer = document.getElementById('diary-pages-container');
+
 
 // Load state immediately to ensure all data is available for rendering.
 loadState();
@@ -176,9 +181,18 @@ function renderInfoPanel() {
     }
 
     let hasItems = false;
+    const allowedToReadDiary = state.loggedInUser === 'markop' || state.loggedInUser === 'generic' || state.debugMode;
+
     for (const ownerKey in state.inventories) {
         const inventory = state.inventories[ownerKey];
-        if (inventory.items.length > 0) {
+        const itemsToRender = inventory.items.filter(item => {
+            if (item.toLowerCase().includes('diary')) {
+                return allowedToReadDiary;
+            }
+            return true;
+        });
+
+        if (itemsToRender.length > 0) {
             hasItems = true;
             const shelfLabel = document.createElement('div');
             shelfLabel.className = 'shelf-label';
@@ -188,12 +202,20 @@ function renderInfoPanel() {
             const shelf = document.createElement('div');
             shelf.className = 'bookshelf-shelf';
             
-            inventory.items.forEach(item => {
+            itemsToRender.forEach(item => {
                 const itemEl = document.createElement('div');
                 const itemType = getItemType(item);
-                itemEl.className = `inventory-item ${itemType}`;
+
+                let extraClasses = '';
+                if (item.toLowerCase().includes('diary')) {
+                    extraClasses = ' interactive';
+                    itemEl.dataset.itemId = 'peach_diary';
+                }
+
+                itemEl.className = `inventory-item ${itemType}${extraClasses}`;
                 itemEl.textContent = item;
                 itemEl.title = getItemDescription(item);
+                
                 shelf.appendChild(itemEl);
             });
             inventoryContainer.appendChild(shelf);
@@ -204,6 +226,7 @@ function renderInfoPanel() {
         inventoryContainer.innerHTML = '<p style="text-align: center; width: 100%; color: var(--text-secondary); font-size: 0.8rem; padding-top: 20px;">All inventories are empty.</p>';
     }
 }
+
 
 function startFocus(toadKey, nodeId) {
     const node = findFocusNode(toadKey, nodeId);
@@ -234,6 +257,44 @@ function resetFocusTree() {
         addToLog('System', 'Focus tree progress has been reset.');
         saveState();
         renderAll();
+    }
+}
+
+// --- Diary Modal Logic ---
+function showDiaryModal() {
+    if (!diaryModal || !diaryPagesContainer) return;
+
+    diaryPagesContainer.innerHTML = '';
+    
+    const page1 = document.createElement('div');
+    page1.className = 'diary-page';
+    const page2 = document.createElement('div');
+    page2.className = 'diary-page';
+
+    DIARY_ENTRIES.forEach((entry, index) => {
+        const entryHTML = `
+            <div class="diary-entry">
+                <h6>${entry.date}</h6>
+                <p>${entry.entry}</p>
+            </div>
+        `;
+        // Distribute entries between two pages
+        if (index < DIARY_ENTRIES.length / 2) {
+            page1.innerHTML += entryHTML;
+        } else {
+            page2.innerHTML += entryHTML;
+        }
+    });
+
+    diaryPagesContainer.appendChild(page1);
+    diaryPagesContainer.appendChild(page2);
+
+    diaryModal.style.display = 'flex';
+}
+
+function hideDiaryModal() {
+    if (diaryModal) {
+        diaryModal.style.display = 'none';
     }
 }
 
@@ -307,6 +368,26 @@ function setupEventListeners() {
     });
 
     resetFocusBtn.addEventListener('click', resetFocusTree);
+    
+    if (inventoryContainer) {
+        inventoryContainer.addEventListener('click', (e) => {
+            if (e.target.closest('[data-item-id="peach_diary"]')) {
+                showDiaryModal();
+            }
+        });
+    }
+
+    if (diaryModal) {
+        diaryModal.addEventListener('click', (e) => {
+            if (e.target === diaryModal) {
+                hideDiaryModal();
+            }
+        });
+    }
+
+    if (diaryModalClose) {
+        diaryModalClose.addEventListener('click', hideDiaryModal);
+    }
 }
 
 

@@ -419,3 +419,102 @@
 #log-list li strong {
     color: var(--text-color);
 }
+
+/* --- Diary Modal --- */
+.diary-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 2000;
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.diary-modal-content {
+    background-color: #f3e9d2; /* Parchment color */
+    color: #4a2c2a; /* Dark brown text */
+    width: 90%;
+    max-width: 900px;
+    height: 90vh;
+    max-height: 600px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 10px #c8bda9;
+    position: relative;
+    display: flex;
+    font-family: 'Times New Roman', serif;
+    border: 2px solid #5D4037;
+}
+
+.diary-modal-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: #5D4037;
+    color: #f3e9d2;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #f3e9d2;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    text-align: center;
+    padding: 0;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+.diary-modal-close:hover {
+    transform: rotate(90deg);
+}
+
+#diary-pages-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    overflow-y: auto;
+    border-radius: 6px;
+}
+
+.diary-page {
+    flex: 1;
+    padding: 20px 30px;
+    position: relative;
+}
+.diary-page:first-child {
+    border-right: 2px dashed rgba(93, 64, 55, 0.3); /* Book spine */
+}
+
+.diary-entry {
+    margin-bottom: 24px;
+}
+
+.diary-entry h6 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #85603f;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+.diary-entry p {
+    font-size: 1rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    font-family: 'Georgia', serif;
+}
+
+/* --- Bookshelf item interaction --- */
+.inventory-item.interactive {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inventory-item.interactive:hover {
+    transform: rotate(180deg) translateY(-5px);
+    box-shadow: 4px 0 8px rgba(240, 185, 11, 0.5);
+}

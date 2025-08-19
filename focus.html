@@ -39,10 +39,6 @@
                         <img src="icon_dossier.png" alt="Quests Icon">
                         <span>Quests</span>
                     </a>
-                    <a href="focus.html" class="nav-button" style="display: none;">
-                        <img src="icon_currency.png" alt="Inventory Icon">
-                        <span>Inventory</span>
-                    </a>
                     
                     <a href="currency.html" class="nav-button">
                         <img src="icon_currency.png" alt="Currency Icon">
@@ -120,6 +116,12 @@
         </div>
     </div>
     <div id="focus-tooltip" class="focus-tooltip"></div>
+    <div id="diary-modal" class="diary-modal-overlay">
+        <div class="diary-modal-content">
+            <button id="diary-modal-close" class="diary-modal-close">&times;</button>
+            <div id="diary-pages-container"></div>
+        </div>
+    </div>
     <script type="module" src="common.js"></script>
     <script type="module" src="focus.js"></script>
 </body>

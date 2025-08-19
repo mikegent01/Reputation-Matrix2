@@ -70,7 +70,7 @@ export const state = {
         markop: { name: "Markop's Pack", items: [] },
         humpik: { name: "Humpik's Haul", items: [] },
         bowser: { name: "Bowser's Treasury", items: ["Princess Peach's Diary"] },
-        shared: { name: "Liberated Toads' Items", items: ["Polished Brass Sun", "Pressure Gauge Needle"] }
+        shared: { name: "Liberated Toads' Items", items: [] }
     }
 };
 
@@ -264,7 +264,7 @@ export function initFocusTreeState() {
 
 
 export function saveState() {
-    // Data saving is disabled per user request to reset on every visit.
+    localStorage.setItem('vigilanceTerminalState', JSON.stringify(state));
 }
 
 function calculateFinalReputations() {
@@ -389,24 +389,46 @@ function calculateFinalReputations() {
 }
 
 export function loadState() {
-    // Persist login and debug status across sessions, but reset game state.
     state.debugMode = localStorage.getItem('vigilanceDebugMode') === 'true';
-    state.loggedInUser = localStorage.getItem('vigilanceTerminalUser') || 'generic';
+    const savedState = localStorage.getItem('vigilanceTerminalState');
+    if (savedState) {
+        const parsedState = JSON.parse(savedState);
+        // selectively assign properties to avoid overwriting the loggedInUser from the new session
+        Object.keys(parsedState).forEach(key => {
+            if (key !== 'loggedInUser' && key !== 'debugMode') { // also protect debugMode
+                state[key] = parsedState[key];
+            }
+        });
+        
+        // Reset chart instances on load
+        state.chartInstances = {};
+        initReputation();
 
-    // Always initialize a fresh game state on load.
-    initReputation();
-    processInitialXP();
-    initFocusTreeState();
-    
-    // Explicitly reset inventories to default
-    state.inventories = {
-        archie: { name: "Archie's Stash", items: [] },
-        markop: { name: "Markop's Pack", items: [] },
-        humpik: { name: "Humpik's Haul", items: [] },
-        bowser: { name: "Bowser's Treasury", items: ["Princess Peach's Diary"] },
-        shared: { name: "Liberated Toads' Items", items: ["Polished Brass Sun", "Pressure Gauge Needle"] }
-    };
-
-    // Always calculate reputations from the fresh state.
-    calculateFinalReputations();
+        // Ensure inventories exist in saved state, otherwise initialize
+        if (!parsedState.inventories) {
+             state.inventories = {
+                archie: { name: "Archie's Stash", items: [] },
+                markop: { name: "Markop's Pack", items: [] },
+                humpik: { name: "Humpik's Haul", items: [] },
+                bowser: { name: "Bowser's Treasury", items: ["Princess Peach's Diary"] },
+                shared: { name: "Liberated Toads' Items", items: [] }
+            };
+        }
+        
+        if (state.focusTreeState && state.focusTreeState.inventory) {
+            delete state.focusTreeState.inventory;
+        }
+        
+        if (!state.auxiliary_party_state || Object.keys(state.auxiliary_party_state).length === 0) {
+             processInitialXP();
+        }
+        if (!state.focusTreeState || Object.keys(state.focusTreeState).length === 0) {
+            initFocusTreeState();
+        }
+    } else {
+        initReputation();
+        processInitialXP();
+        initFocusTreeState();
+    }
+    calculateFinalReputations(); 
 }
