@@ -173,6 +173,7 @@ function showBookModal(bookKey) {
             
             <h5>Details</h5>
             <p><strong>Reading Time:</strong> ${detailedDescription.reading_time}</p>
+            <p><strong>Pages:</strong> ${detailedDescription.pages}</p>
             <p><strong>Effect:</strong> <em>${detailedDescription.effect}</em></p>
         `;
 
