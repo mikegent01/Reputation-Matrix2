@@ -120,7 +120,7 @@ function renderBookshelf() {
         } else {
             const noItems = document.createElement('p');
             noItems.className = 'no-items-text';
-            noItems.textContent = 'Empty';
+            noItems.textContent = '';
             currentShelf.appendChild(noItems);
         }
         shelfIndex++;
