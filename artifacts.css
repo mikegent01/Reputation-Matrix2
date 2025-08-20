@@ -179,3 +179,12 @@
     color: var(--neutral-color);
     font-family: var(--font-display);
 }
+
+.redacted {
+    color: var(--negative-color);
+    font-style: italic;
+    background-color: var(--main-bg);
+    padding: 2px 4px;
+    border-radius: 3px;
+    user-select: none;
+}

@@ -1,4 +1,20 @@
 import { playSound } from './common.js';
+import { state } from './state.js';
+
+/**
+ * Calculates the intel level for a given faction based on the logged-in user.
+ * @param {string} factionKey - The key of the faction.
+ * @returns {number} The calculated intel level.
+ */
+function getIntelForFaction(factionKey) {
+    if (!state.intelLevels || !factionKey) return 0;
+    const loggedInUser = state.loggedInUser || 'generic';
+    const userIntel = state.intelLevels[loggedInUser] || state.intelLevels.generic;
+    if (!userIntel) return 0;
+    const defaultIntel = userIntel.default ?? (state.intelLevels.generic ? state.intelLevels.generic[factionKey] : 0) ?? 0;
+    return userIntel[factionKey] ?? defaultIntel;
+}
+
 
 const ARTIFACT_DATA = {
     main_artifacts: [
@@ -28,7 +44,12 @@ const ARTIFACT_DATA = {
             powers: "Rebellion's true powers remain largely unknown, as few have witnessed them and survived. Ancient texts speak of his ability to devour souls and incorporate their knowledge and abilities into his own. The darkness he commands is said to be sentient, a living extension of his will that hungers for life. Witnesses claim to have seen him split into multiple shadow forms, each capable of independent action, while his true body remains hidden. The most disturbing rumors suggest he can corrupt other Star Fragment bearers, slowly turning them into his thralls while they believe they maintain their free will.",
             fragment_name: "Crown Shard (Core Power)",
             fragment_desc: "The Crown Shard is the largest and most powerful fragment of the star. It contains the core essence of leadership and dominion, granting its bearer authority over other fragment holders to some degree. The shard pulses with a black light that seems to absorb rather than emit energy, growing stronger with each life it touches.",
-            history: "When the God Toad distributed the fragments, Rebellion was initially chosen for his loyalty. However, the fragment's power corrupted him, awakening a hunger for dominance. He established a fortress in the darkest corner of the Midlands, where no sunlight ever penetrates, and began plotting to collect all fragments for himself. He has already attempted to absorb the Ice Toad's fragment but was thwarted by the adventurers who now possess it. Ancient prophecies speak of him as 'The Star Devourer' who will bring eternal darkness if not stopped."
+            history: "When the God Toad distributed the fragments, Rebellion was initially chosen for his loyalty. However, the fragment's power corrupted him, awakening a hunger for dominance. He established a fortress in the darkest corner of the Midlands, where no sunlight ever penetrates, and began plotting to collect all fragments for himself. He has already attempted to absorb the Ice Toad's fragment but was thwarted by the adventurers who now possess it. Ancient prophecies speak of him as 'The Star Devourer' who will bring eternal darkness if not stopped.",
+            intel_requirements: {
+                identity: { faction: 'onyx_hand', level: 40 },
+                details: { faction: 'onyx_hand', level: 70 },
+                history: { faction: 'onyx_hand', level: 90 },
+            }
         },
         {
             id: 'charismatic',
@@ -36,7 +57,12 @@ const ARTIFACT_DATA = {
             powers: "Charismatic can ignite his body in flames that do not harm him but scorch everything he touches. He can project firebolts and create walls of flame to control the battlefield. His most devastating ability is Phoenix Form, which transforms him into a fiery entity that can fly and regenerate from seemingly fatal wounds.",
             fragment_name: "Warrior Shard (Combat Power)",
             fragment_desc: "The Warrior Shard contains the star's aspect of conflict and triumph. It burns with constant internal fire and grants exceptional combat instincts.",
-            history: "Once a gentle explorer who charted unknown territories of the Midlands, Charismatic was ambushed by werewolves and left for dead. The God Toad found him clinging to life and offered him the Warrior Shard. The fragment saved him but ignited an unquenchable fighting spirit. Now he roams the borderlands between vampire and werewolf territories, challenging the strongest warriors of both sides to hone his skills for the day when all fragments must be reunited."
+            history: "Once a gentle explorer who charted unknown territories of the Midlands, Charismatic was ambushed by werewolves and left for dead. The God Toad found him clinging to life and offered him the Warrior Shard. The fragment saved him but ignited an unquenchable fighting spirit. Now he roams the borderlands between vampire and werewolf territories, challenging the strongest warriors of both sides to hone his skills for the day when all fragments must be reunited.",
+            intel_requirements: {
+                identity: { faction: 'moonfang_pack', level: 35 },
+                details: { faction: 'moonfang_pack', level: 60 },
+                history: { faction: 'iron_legion', level: 80 },
+            }
         },
         {
             id: 'beauty',
@@ -44,7 +70,12 @@ const ARTIFACT_DATA = {
             powers: "Beauty can accelerate plant growth, creating deadly botanical traps and barriers within seconds. He can synthesize potent toxins from his body that cause hallucinations, paralysis, or slow death. His most insidious power is Verdant Subjugation, which allows him to implant spores in victims that slowly bring them under his control.",
             fragment_name: "Bloom Shard (Growth Power)",
             fragment_desc: "The Bloom Shard embodies the star's aspect of growth and transformation. It constantly pulses with green energy and enhances natural processes around its bearer.",
-            history: "Once a simple herbalist who cared for the sick in a small village, Beauty's personality twisted when he received the Bloom Shard. The fragment's power revealed to him how easily life could be manipulated, and he began using his healing knowledge for control instead of care. He has established a beautiful but deadly garden sanctuary in the heart of the Misty Forest, where countless explorers have wandered in but never returned."
+            history: "Once a simple herbalist who cared for the sick in a small village, Beauty's personality twisted when he received the Bloom Shard. The fragment's power revealed to him how easily life could be manipulated, and he began using his healing knowledge for control instead of care. He has established a beautiful but deadly garden sanctuary in the heart of the Misty Forest, where countless explorers have wandered in but never returned.",
+            intel_requirements: {
+                identity: { faction: 'rakasha_clans', level: 35 },
+                details: { faction: 'rakasha_clans', level: 60 },
+                history: { faction: 'rakasha_clans', level: 80 },
+            }
         },
         {
             id: 'refrain',
@@ -52,7 +83,12 @@ const ARTIFACT_DATA = {
             powers: "Refrain can summon winds powerful enough to uproot trees and deflect arrows or projectiles. He can create localized storms, complete with lightning and hail. His ultimate ability is Cyclone Manifestation, which creates a devastating tornado under his control.",
             fragment_name: "Tempest Shard (Storm Power)",
             fragment_desc: "The Tempest Shard embodies the star's aspect of movement and change. It constantly shifts between various shades of blue and gray, and sometimes emits small sparks of lightning.",
-            history: "Once a ship's navigator with an uncanny ability to predict weather changes, Refrain was chosen for his connection to the air. When he received the Tempest Shard, his emotional state became linked to atmospheric conditions. He makes his home on the Howling Cliffs overlooking the Midnight Sea, where sailors leave offerings in hopes that he will grant them safe passage through potentially stormy waters."
+            history: "Once a ship's navigator with an uncanny ability to predict weather changes, Refrain was chosen for his connection to the air. When he received the Tempest Shard, his emotional state became linked to atmospheric conditions. He makes his home on the Howling Cliffs overlooking the Midnight Sea, where sailors leave offerings in hopes that he will grant them safe passage through potentially stormy waters.",
+            intel_requirements: {
+                identity: { faction: 'crimson_fleet', level: 30 },
+                details: { faction: 'crimson_fleet', level: 55 },
+                history: { faction: 'freelancer_underworld', level: 75 },
+            }
         },
         {
             id: 'might',
@@ -60,7 +96,12 @@ const ARTIFACT_DATA = {
             powers: "Might possesses superhuman strength that allows him to shatter stone with his bare hands. His body is nearly indestructible, capable of withstanding tremendous physical punishment. His signature ability is Tectonic Impact, which creates shockwaves when he strikes the ground, capable of toppling buildings and creating fissures.",
             fragment_name: "Force Shard (Strength Power)",
             fragment_desc: "The Force Shard contains the star's aspect of physical power and resilience. It pulses with deep red energy and makes its bearer's body increasingly dense and powerful over time.",
-            history: "Originally a weak and sickly toad who was ridiculed for his frailty, Might was chosen by the God Toad specifically because he understood the value of strength. When he received the Force Shard, his body transformed dramatically. Rather than seeking revenge on those who mocked him, he established a sanctuary in the Earth Spine Mountains where he trains worthy fighters and protects the innocent from the creatures that lurk in the deeper caves."
+            history: "Originally a weak and sickly toad who was ridiculed for his frailty, Might was chosen by the God Toad specifically because he understood the value of strength. When he received the Force Shard, his body transformed dramatically. Rather than seeking revenge on those who mocked him, he established a sanctuary in the Earth Spine Mountains where he trains worthy fighters and protects the innocent from the creatures that lurk in the deeper caves.",
+             intel_requirements: {
+                identity: { faction: 'rebel_clans', level: 30 },
+                details: { faction: 'rebel_clans', level: 55 },
+                history: { faction: 'the_unchained', level: 75 },
+            }
         },
          {
             id: 'justice',
@@ -68,7 +109,12 @@ const ARTIFACT_DATA = {
             powers: "Justice can perceive lies and deception with perfect accuracy. He can create binding magical contracts that physically punish those who break them. His most feared power is Cosmic Verdict, which can restore balance by transferring fortune from the undeservingly prosperous to the unjustly suffering.",
             fragment_name: "Truth Shard (Balance Power)",
             fragment_desc: "The Truth Shard embodies the star's aspect of order and equilibrium. It glows with steady golden light and provides clarity of perception.",
-            history: "Once a simple village judge, Justice was chosen for his unwavering commitment to fairness. When he received the Truth Shard, his understanding expanded beyond human laws to the fundamental balance of the universe. He established the Hall of Equilibrium in the central mountains of the Midlands, where both humans and creatures of the night can seek impartial judgment for disputes too complex for ordinary resolution."
+            history: "Once a simple village judge, Justice was chosen for his unwavering commitment to fairness. When he received the Truth Shard, his understanding expanded beyond human laws to the fundamental balance of the universe. He established the Hall of Equilibrium in the central mountains of the Midlands, where both humans and creatures of the night can seek impartial judgment for disputes too complex for ordinary resolution.",
+            intel_requirements: {
+                identity: { faction: 'oathbound_judges', level: 40 },
+                details: { faction: 'oathbound_judges', level: 70 },
+                history: { faction: 'oathbound_judges', level: 90 },
+            }
         },
         {
             id: 'self_reflection',
@@ -76,7 +122,11 @@ const ARTIFACT_DATA = {
             powers: "Self Reflection can see possible futures branching from any present moment. He can communicate through dreams and visions over vast distances. His most valuable ability is Memory Walk, which allows him to project himself and others into past events as observers.",
             fragment_name: "Vision Shard (Insight Power)",
             fragment_desc: "The Vision Shard contains the star's aspect of perception and foresight. It appears as a clear crystal that sometimes shows swirling images of distant places or times.",
-            history: "Originally a scholarly toad who documented the forgotten histories of the Midlands, Self Reflection was chosen for his contemplative nature. When he received the Vision Shard, his consciousness expanded beyond linear time. He established a small sanctuary beside the Lake of Mirrors, where the waters sometimes reflect events yet to occur. Though physically the weakest of the fragment bearers, he is perhaps the most important, as his visions guide the others toward the eventual reunification of all fragments."
+            history: "Originally a scholarly toad who documented the forgotten histories of the Midlands, Self Reflection was chosen for his contemplative nature. When he received the Vision Shard, his consciousness expanded beyond linear time. He established a small sanctuary beside the Lake of Mirrors, where the waters sometimes reflect events yet to occur. Though physically the weakest of the fragment bearers, he is perhaps the most important, as his visions guide the others toward the eventual reunification of all fragments.",
+            intel_requirements: { // Identity is known by all
+                details: { faction: 'mages_guild', level: 50 },
+                history: { faction: 'mages_guild', level: 75 },
+            }
         },
         {
             id: 'unknown',
@@ -93,7 +143,11 @@ const ARTIFACT_DATA = {
         powers: "The God Toad exists simultaneously in multiple planes of reality, making him nearly impossible to truly comprehend, let alone defeat. Those who attempt to perceive his true form often find their minds fractured beyond repair. He can manipulate the very fabric of space and time in limited areas, creating pocket dimensions where physical laws bend to his will. There are accounts of him reversing the flow of time to undo events that displease him, though this appears to drain his power significantly. Some scholars believe he is not a single entity but a collective consciousness inhabiting a shared form, explaining his ability to maintain awareness across vast distances.",
         fragment_name: "Core Shard (Binding Power)",
         fragment_desc: "The Core Shard is unlike the others—it appears as a void rather than a physical object, a tear in reality through which the pure power of the star flows directly into its bearer. This fragment gives the God Toad his omniscience regarding the other fragments and may be the source of his apparent immortality.",
-        history: "After being betrayed by his adventuring companions who sought to steal the star's power for themselves, the God Toad shattered the star into nine fragments to prevent its misuse. He kept the Core Shard for himself and distributed the others to trusted followers who would become the Toad Guardians. What few know is that he deliberately corrupted each fragment differently, ensuring that their powers would drive their bearers toward specific goals—all part of a grand design that has been unfolding for centuries. His true motivation remains unknown, but ancient texts suggest he seeks to reshape the Midlands into something 'beyond mortal comprehension.'"
+        history: "After being betrayed by his adventuring companions who sought to steal the star's power for themselves, the God Toad shattered the star into nine fragments to prevent its misuse. He kept the Core Shard for himself and distributed the others to trusted followers who would become the Toad Guardians. What few know is that he deliberately corrupted each fragment differently, ensuring that their powers would drive their bearers toward specific goals—all part of a grand design that has been unfolding for centuries. His true motivation remains unknown, but ancient texts suggest he seeks to reshape the Midlands into something 'beyond mortal comprehension.'",
+         intel_requirements: { // Identity is known, details are hidden
+            details: { faction: 'mages_guild', level: 85 },
+            history: { faction: 'mages_guild', level: 95 },
+        }
     }
 };
 
@@ -122,21 +176,31 @@ function renderStarBearers() {
     const radius = 280; // Radius of the circle in pixels
     const numBearers = ARTIFACT_DATA.star_bearers.length; // Should be 8
 
-    // Render the 8 bearers in a circle
     ARTIFACT_DATA.star_bearers.forEach((bearer, i) => {
         const angle = (i / numBearers) * 2 * Math.PI - (Math.PI / 2); // Start from top
         const x = 50 + (radius / container.clientWidth * 100) * Math.cos(angle);
         const y = 50 + (radius / container.clientHeight * 100) * Math.sin(angle);
         
+        let identityKnown = state.debugMode || bearer.id === 'self_reflection' || bearer.id === 'unknown';
+        if (!identityKnown && bearer.intel_requirements?.identity) {
+            const req = bearer.intel_requirements.identity;
+            if (getIntelForFaction(req.faction) >= req.level) {
+                identityKnown = true;
+            }
+        }
+        
+        const displayName = identityKnown ? bearer.name.split(' - ')[0] : 'Unknown Bearer';
+        const displayImage = identityKnown ? `bearers/${bearer.id}.png` : 'bearers/unknown_bearer.png';
+        const altText = identityKnown ? bearer.name : 'Unknown Bearer';
+        
         html += `
             <div class="bearer-node" data-id="${bearer.id}" style="left: ${x}%; top: ${y}%; transform: translate(-50%, -50%);">
-                <img src="bearers/${bearer.id}.png" alt="${bearer.name}" class="bearer-image">
-                <span class="bearer-name">${bearer.name.split(' - ')[0]}</span>
+                <img src="${displayImage}" alt="${altText}" class="bearer-image">
+                <span class="bearer-name">${displayName}</span>
             </div>
         `;
     });
 
-    // Render the God Toad in the center
     const godToad = ARTIFACT_DATA.god_toad;
     html += `
         <div class="god-toad-node" data-id="${godToad.id}">
@@ -154,6 +218,73 @@ function showBearerModal(bearerId) {
     if (!bearer) return;
     
     playSound('click.mp3');
+    
+    const isDebug = state.debugMode;
+
+    let identityKnown = isDebug || bearer.id === 'self_reflection' || bearer.id === 'god_toad' || bearer.id === 'unknown';
+    if (!identityKnown && bearer.intel_requirements?.identity) {
+        const req = bearer.intel_requirements.identity;
+        if (getIntelForFaction(req.faction) >= req.level) {
+            identityKnown = true;
+        }
+    }
+
+    if (!identityKnown) {
+        modalContent.innerHTML = `
+            <div class="bearer-modal-header">
+                <img src="bearers/unknown_bearer.png" alt="Unknown Bearer">
+                <h3>Unknown Bearer</h3>
+            </div>
+            <div class="bearer-modal-section">
+                <p class="redacted">[You lack the required intelligence to view this dossier.]</p>
+            </div>
+        `;
+        modal.style.display = 'flex';
+        return;
+    }
+    
+    // Check details intel
+    let detailsKnown = isDebug || bearer.id === 'self_reflection' || bearer.id === 'unknown';
+    if (!detailsKnown && bearer.intel_requirements?.details) {
+        const req = bearer.intel_requirements.details;
+        if (getIntelForFaction(req.faction) >= req.level) {
+            detailsKnown = true;
+        }
+    }
+    
+    // Check history intel
+    let historyKnown = isDebug || bearer.id === 'self_reflection' || bearer.id === 'unknown';
+     if (!historyKnown && bearer.intel_requirements?.history) {
+        const req = bearer.intel_requirements.history;
+        if (getIntelForFaction(req.faction) >= req.level) {
+            historyKnown = true;
+        }
+    }
+    
+    const factionMap = {
+        onyx_hand: "Onyx Hand",
+        moonfang_pack: "Moonfang Pack",
+        rakasha_clans: "Rakasha Clans",
+        crimson_fleet: "Crimson Fleet",
+        rebel_clans: "Rebel Clans",
+        oathbound_judges: "Oathbound Judges",
+        mages_guild: "Mages' Guild",
+        iron_legion: "Iron Legion",
+        the_unchained: "The Unchained",
+        freelancer_underworld: "Freelancer Underworld",
+    };
+    
+    const powersHTML = detailsKnown 
+        ? `<p>${bearer.powers}</p>` 
+        : `<p class="redacted">[Intel Level ${bearer.intel_requirements.details.level} with ${factionMap[bearer.intel_requirements.details.faction] || 'a relevant faction'} required]</p>`;
+
+    const fragmentHTML = detailsKnown 
+        ? `<p>${bearer.fragment_desc}</p>` 
+        : `<p class="redacted">[Intel Level ${bearer.intel_requirements.details.level} with ${factionMap[bearer.intel_requirements.details.faction] || 'a relevant faction'} required]</p>`;
+
+    const historyHTML = historyKnown 
+        ? `<p>${bearer.history}</p>` 
+        : `<p class="redacted">[Intel Level ${bearer.intel_requirements.history.level} with ${factionMap[bearer.intel_requirements.history.faction] || 'a relevant faction'} required]</p>`;
 
     modalContent.innerHTML = `
         <div class="bearer-modal-header">
@@ -162,15 +293,15 @@ function showBearerModal(bearerId) {
         </div>
         <div class="bearer-modal-section">
             <h4>Powers & Abilities</h4>
-            <p>${bearer.powers}</p>
+            ${powersHTML}
         </div>
         <div class="bearer-modal-section fragment-info">
             <h4>Fragment: <strong>${bearer.fragment_name}</strong></h4>
-            <p>${bearer.fragment_desc}</p>
+            ${fragmentHTML}
         </div>
         <div class="bearer-modal-section">
             <h4>History</h4>
-            <p>${bearer.history}</p>
+            ${historyHTML}
         </div>
     `;
     modal.style.display = 'flex';
@@ -208,3 +339,17 @@ function init() {
 }
 
 init();
+// Image List:
+// artifacts/the_star_fragment.png
+// artifacts/the_fireflower.png
+// artifacts/the_mushroom.png
+// bearers/rebellion.png
+// bearers/charismatic.png
+// bearers/beauty.png
+// bearers/refrain.png
+// bearers/might.png
+// bearers/justice.png
+// bearers/self_reflection.png
+// bearers/unknown.png
+// bearers/god_toad.png
+// bearers/unknown_bearer.png
