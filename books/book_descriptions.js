@@ -1,26 +1,26 @@
 export const BOOK_DESCRIPTIONS = {
     "Princess Peach's Diary": {
-        summary: "A small, leather-bound diary filled with elegant script. It contains Princess Peach's personal thoughts on diplomacy, her concerns about Bowser's motivations, and surprisingly detailed notes on the weaknesses of various enemy types she's encountered.",
-        reading_time: "Approx. 8 hours",
-        pages: 124,
-        effect: "+10% effectiveness in diplomatic negotiations. Reveals one random enemy weakness when read before a major battle."
+        summary: "A small, leather-bound diary with a faded gold clasp. The elegant script within contains Princess Peach's final, increasingly paranoid thoughts in the days leading up to her death, hinting at a betrayal from within the castle and a strange, 'unfamiliar' evil.",
+        reading_time: "Approx. 1 hour",
+        pages: 4,
+        effect: "Provides crucial clues regarding the true nature of Fawful's rise to power and the circumstances surrounding the Princess's death."
     },
     "Mushroom Kingdom History, Vol. III": {
-        summary: "A weighty tome that chronicles the kingdom’s turbulent evolution during the Civil War and its ties to the broader Midlands conflicts, serving as a scholarly yet battle-scarred record.",
-        reading_time: "30 days",
-        pages: 512,
-        effect: "+15% knowledge gain when studying past events, but -5% if read during combat due to distraction."
+        summary: "A weighty tome bound in worn leather, this book chronicles the kingdom’s turbulent history, from the founding myths of the Star Sprites to the endless cycle of the Koopa Wars. It frames the current civil war not as a new conflict, but as the tragic, inevitable result of generations of unresolved tensions.",
+        reading_time: "Approx. 2 hours",
+        pages: 4,
+        effect: "Grants a deeper understanding of the motivations and historical grievances of the Mushroom Kingdom's various factions."
     },
-    "Basic Fungal Alchemy": {
-        summary: "A practical, heavily-stained manual detailing the properties of common Mushroom Kingdom fungi. It includes recipes for simple healing potions, poison antidotes, and explosive compounds derived from everyday mushrooms.",
-        reading_time: "20 days",
-        pages: 258,
-        effect: "Allows the party to craft one 'Minor Healing Potion' or 'Antidote' every 3 days from scavenged mushrooms. Unlocks the 'Fungal Bomb' crafting recipe."
+    "A Field Guide to Fungal Alchemy": {
+        summary: "A practical, heavily-stained manual filled with the notes of a master alchemist. It details the identification and preparation of various fungi from the Mushroom Kingdom and the Midlands, including recipes for healing, poisons, and stranger, more arcane compounds.",
+        reading_time: "Approx. 1.5 hours",
+        pages: 4,
+        effect: "Unlocks new crafting recipes and provides insight into the magical and practical properties of the world's flora."
     },
     "Koopa Troop Tactics": {
-        summary: "A military field manual bound in tough, green leather. It outlines the standard formations, strategies, and command structure of the Koopa Troop. It contains sections on siege warfare, aerial assaults, and psychological tactics used to intimidate foes.",
-        reading_time: "25 days",
-        pages: 350,
-        effect: "+10% damage against Koopa Troop enemies. Grants advantage on initiative rolls during the first round of combat against Koopa Troop forces."
+        summary: "A military field manual bound in tough, green leather, stamped with Bowser's insignia. It outlines the brutal and effective strategies of the Koopa Troop, emphasizing overwhelming force, psychological warfare, and loyalty to the King above all else.",
+        reading_time: "Approx. 1.5 hours",
+        pages: 4,
+        effect: "Provides insight into the command structure and battlefield strategies of the Koopa Troop and its remnants."
     }
 };

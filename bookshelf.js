@@ -29,7 +29,7 @@ let currentPage = -1; // -1 for cover, 0 for pg 1-2, 2 for 3-4 etc.
 const bookDataMap = {
     "Princess Peach's Diary": peachDiary,
     "Mushroom Kingdom History, Vol. III": mkHistory,
-    "Basic Fungal Alchemy": fungalAlchemy,
+    "A Field Guide to Fungal Alchemy": fungalAlchemy,
     "Koopa Troop Tactics": koopaTactics,
 };
 
