@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vigilance Terminal | Battlefield</title>
+    <title>Vigilance Terminal | Collected Artifacts</title>
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="components.css">
-    <link rel="stylesheet" href="battlefield.css">
+    <link rel="stylesheet" href="artifacts.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -20,7 +20,7 @@
                         <img src="logo.png" alt="Waluigi Terminal Logo" id="waluigi-logo">
                         <h1 class="flicker">Vigilance Terminal</h1>
                     </div>
-                    <p class="subtitle">Tactical Display</p>
+                    <p class="subtitle">Artifacts & Relics</p>
                 </header>
                 <nav id="main-nav-bar">
                     <a href="directory.html" class="nav-button">
@@ -43,7 +43,7 @@
                         <img src="icon_dossier.png" alt="Bookshelf Icon">
                         <span>Bookshelf</span>
                     </a>
-                    <a href="artifacts.html" class="nav-button">
+                    <a href="artifacts.html" class="nav-button" style="display: none;">
                         <img src="icon_magic.png" alt="Artifacts Icon">
                         <span>Collected Artifacts</span>
                     </a>
@@ -59,7 +59,7 @@
                         <img src="faction_fawful.png" alt="Fawful Icon">
                         <span>Current Events</span>
                     </a>
-                    <a href="battlefield.html" class="nav-button" style="display: none;">
+                    <a href="battlefield.html" class="nav-button">
                         <img src="icon_focus.png" alt="Battlefield Icon">
                         <span>Battlefield</span>
                     </a>
@@ -70,14 +70,32 @@
                 </footer>
             </aside>
             <main id="main-content">
-                 <h2 class="page-title">Tactical Overview</h2>
-                 <div id="battlefield-display">
-                    <!-- Battle information injected by JS -->
-                 </div>
+                <div id="main-artifacts-section">
+                    <h2 class="page-title">Artifacts of Balance</h2>
+                    <div id="artifacts-grid">
+                        <!-- Main artifacts will be injected here by JS -->
+                    </div>
+                </div>
+
+                <div id="star-bearers-section">
+                    <h2 class="page-title">Star Fragment Bearers</h2>
+                    <p class="page-subtitle">The nine fragments of the fallen star were distributed across the Midlands. Click on a bearer to view their dossier.</p>
+                    <div id="star-bearers-container">
+                        <!-- The star layout and its nodes will be injected here by JS -->
+                    </div>
+                </div>
             </main>
         </div>
     </div>
+    
+    <div id="bearer-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div id="bearer-modal-content"></div>
+        </div>
+    </div>
+
     <script type="module" src="common.js"></script>
-    <script type="module" src="battlefield.js"></script>
+    <script type="module" src="artifacts.js"></script>
 </body>
 </html>
