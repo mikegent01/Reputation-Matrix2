@@ -3,7 +3,7 @@ export const BOOK_DESCRIPTIONS = {
         summary: "A small, leather-bound diary with a faded gold clasp. The elegant script within contains Princess Peach's final, increasingly paranoid thoughts in the days leading up to her death, hinting at a betrayal from within the castle and a strange, 'unfamiliar' evil.",
         reading_time: "Approx. 1 hour",
         pages: 124,
-        effect: "Provides crucial clues regarding the true nature of Fawful's rise to power and the circumstances surrounding the Princess's death."
+        effect: "Provides crucial clues regarding the circumstances surrounding the Princess's death."
     },
     "Mushroom Kingdom History, Vol. III": {
         summary: "A weighty tome bound in worn leather, this book chronicles the kingdom’s turbulent history, from the founding myths of the Star Sprites to the endless cycle of the Koopa Wars. It frames the current civil war not as a new conflict, but as the tragic, inevitable result of generations of unresolved tensions.",
