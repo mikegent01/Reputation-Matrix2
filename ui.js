@@ -331,14 +331,18 @@ function renderAuxiliaryParty() {
     container.appendChild(grid);
     
     // Now render the content into the created containers
-    Object.values(state.auxiliary_party_state).forEach(member => {
+    Object.entries(state.auxiliary_party_state).forEach(([key, member]) => {
+        if (key === 'group') {
+            return; // Skip the 'group' entry, it's for the focus page
+        }
+
         const card = document.createElement('div');
         card.className = 'aux-member-card';
 
         const xpPercentage = (member.xp / member.xp_to_next) * 100;
 
-        const statusClass = member.status.includes("Injured") || member.status.includes("Kidnapped") || member.status.includes("Captured") ? 'negative' : 'positive';
-        const statusTextClass = member.status.includes("Injured") || member.status.includes("Kidnapped") || member.status.includes("Captured") ? 'negative' : 'status-ok';
+        const statusClass = member.status?.includes("Injured") || member.status?.includes("Kidnapped") || member.status?.includes("Captured") ? 'negative' : 'positive';
+        const statusTextClass = member.status?.includes("Injured") || member.status?.includes("Kidnapped") || member.status?.includes("Captured") ? 'negative' : 'status-ok';
 
         if(statusClass === 'negative'){
             card.classList.add('negative');
