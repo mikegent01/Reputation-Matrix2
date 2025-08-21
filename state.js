@@ -419,9 +419,31 @@ export function loadState() {
             delete state.focusTreeState.inventory;
         }
         
-        if (!state.auxiliary_party_state || Object.keys(state.auxiliary_party_state).length === 0) {
-             processInitialXP();
+        // Merge auxiliary party state to get latest statuses while preserving progress
+        const savedAuxPartyState = parsedState.auxiliary_party_state;
+        const freshAuxPartyData = LORE_DATA.auxiliary_party;
+        if (savedAuxPartyState && Object.keys(savedAuxPartyState).length > 0) {
+            const mergedAuxPartyState = {};
+            for (const toadKey in freshAuxPartyData) {
+                 if (Object.prototype.hasOwnProperty.call(freshAuxPartyData, toadKey)) {
+                    const freshToad = structuredClone(freshAuxPartyData[toadKey]);
+                    const savedToad = savedAuxPartyState[toadKey];
+
+                    if (savedToad) {
+                        freshToad.level = savedToad.level;
+                        freshToad.xp = savedToad.xp;
+                        freshToad.xp_to_next = savedToad.xp_to_next;
+                        freshToad.log = savedToad.log || [];
+                        freshToad.abilities = savedToad.abilities || [];
+                    }
+                    mergedAuxPartyState[toadKey] = freshToad;
+                 }
+            }
+            state.auxiliary_party_state = mergedAuxPartyState;
+        } else {
+            processInitialXP();
         }
+
         initFocusTreeState();
     } else {
         initReputation();
