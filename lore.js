@@ -35,7 +35,7 @@ const combinedFactions = {
 
 export const LORE_DATA = {
     characters: combinedCharacters,
-    auxiliary_party: AUXILIARY_PARTY,
+    auxiliary_party: { ...AUXILIARY_PARTY, group: { name: "Group Focuses" } },
     factions: combinedFactions,
     rumors: RUMORS,
     timeline: TIMELINE,

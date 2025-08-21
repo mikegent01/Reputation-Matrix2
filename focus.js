@@ -34,6 +34,15 @@ function renderToadRoster() {
         .filter(key => key !== 'traitor_toad')
         .sort((a, b) => (state.focusTreeState.influences[b] || 0) - (state.focusTreeState.influences[a] || 0));
 
+    // Add group to the top of the list
+    if (LORE_DATA.auxiliary_party['group']) {
+        const groupIndex = sortedToads.indexOf('group');
+        if (groupIndex > -1) {
+            sortedToads.splice(groupIndex, 1);
+        }
+        sortedToads.unshift('group');
+    }
+
     for (const toadKey of sortedToads) {
         const toadData = LORE_DATA.auxiliary_party[toadKey];
         const influence = state.focusTreeState.influences[toadKey] || 0;

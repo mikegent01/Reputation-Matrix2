@@ -233,7 +233,7 @@ export function initFocusTreeState() {
 
     state.focusTreeState = {
         buildVersionApplied: "2025-08-13-r1",
-        day: 1,
+        day: 2,
         activeToad: "dan",
         groupInfluence: 27,
         unlocked: {
@@ -422,9 +422,7 @@ export function loadState() {
         if (!state.auxiliary_party_state || Object.keys(state.auxiliary_party_state).length === 0) {
              processInitialXP();
         }
-        if (!state.focusTreeState || Object.keys(state.focusTreeState).length === 0) {
-            initFocusTreeState();
-        }
+        initFocusTreeState();
     } else {
         initReputation();
         processInitialXP();

@@ -304,7 +304,46 @@ export const FOCUS_TREES = {
     'group': {
         name: "Group Focuses",
         tree: [
-            // Shared tree nodes would go here
+            {
+                id: 'group_t1_repair_airship',
+                title: "Repair the Vigilance",
+                description: "The 'Vigilance' is badly damaged after Humpik's 'axe-ident'. The party needs to gather materials and find skilled engineers to get the airship flying again.",
+                cost: 100,
+                icon: 'icon_workshop.png',
+                position: { x: 450, y: 20 },
+                prerequisites: [],
+                effects: { storyEvent: 'airship_repaired', log: "The Vigilance is now operational, but its systems are still basic." }
+            },
+            {
+                id: 'group_t2_upgrade_engine',
+                title: "Upgrade the Engine",
+                description: "The current engine is barely functional. The party needs to find a new power source or significantly upgrade the existing one to improve the airship's speed and reliability.",
+                cost: 75,
+                icon: 'icon_workshop.png',
+                position: { x: 200, y: 150 },
+                prerequisites: ['group_t1_repair_airship'],
+                effects: { airshipStat: 'speed', log: "The Vigilance's engine has been upgraded, increasing its speed." }
+            },
+            {
+                id: 'group_t2_install_defenses',
+                title: "Install Defenses",
+                description: "The 'Vigilance' is vulnerable to attack. The party needs to install armor plating and defensive turrets to protect the airship from harm.",
+                cost: 60,
+                icon: 'icon_fortify.png',
+                position: { x: 450, y: 150 },
+                prerequisites: ['group_t1_repair_airship'],
+                effects: { airshipStat: 'defense', log: "The Vigilance is now equipped with basic defenses." }
+            },
+            {
+                id: 'group_t2_expand_cargo',
+                title: "Expand Cargo Hold",
+                description: "The airship's cargo hold is small and cramped. The party needs to expand it to carry more supplies and personnel.",
+                cost: 50,
+                icon: 'icon_trade.png',
+                position: { x: 700, y: 150 },
+                prerequisites: ['group_t1_repair_airship'],
+                effects: { airshipStat: 'cargo', log: "The Vigilance's cargo hold has been expanded." }
+            }
         ]
     }
 };
