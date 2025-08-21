@@ -15,6 +15,22 @@ function getIntelForFaction(factionKey) {
     return userIntel[factionKey] ?? defaultIntel;
 }
 
+/**
+ * Checks if the user has sufficient intel for a given requirement.
+ * Bypasses checks if debug mode is active.
+ * @param {object} requirement - An object like { faction: 'faction_key', level: 70 }.
+ * @returns {boolean} True if intel is sufficient or debug is on, false otherwise.
+ */
+function hasSufficientIntel(requirement) {
+    if (state.debugMode) {
+        return true;
+    }
+    if (!requirement || !requirement.faction || typeof requirement.level === 'undefined') {
+        return false;
+    }
+    return getIntelForFaction(requirement.faction) >= requirement.level;
+}
+
 
 const ARTIFACT_DATA = {
     main_artifacts: [
@@ -151,6 +167,33 @@ const ARTIFACT_DATA = {
     }
 };
 
+const FIRE_FLOWER_DATA = {
+    regions: [
+        {
+            name: "The Midlands",
+            totalFactions: 3,
+            collectedPetals: 0,
+            factions: [
+                { name: "The Regal Empire", holds_petal: false },
+                { name: "Iron Legion", holds_petal: true, intel_requirement: { faction: 'iron_legion', level: 85 } },
+                { name: "Mages' Guild", holds_petal: false }
+            ]
+        },
+        {
+            name: "Mushroom Kingdom",
+            totalFactions: 4,
+            collectedPetals: 0,
+            factions: [
+                { name: "Mushroom Regency", holds_petal: false },
+                { name: "Peach Loyalists", holds_petal: false },
+                { name: "Toad Gang", holds_petal: true, intel_requirement: { faction: 'toad_gang', level: 70 } },
+                { name: "Fawful's Furious Freaks", holds_petal: false }
+            ]
+        }
+    ]
+};
+
+
 const modal = document.getElementById('bearer-modal');
 const modalContent = document.getElementById('bearer-modal-content');
 const closeModalBtn = modal.querySelector('.modal-close');
@@ -168,6 +211,45 @@ function renderMainArtifacts() {
     `).join('');
 }
 
+function renderFireFlowerCollection() {
+    const container = document.getElementById('fire-flower-grid');
+    if (!container) return;
+
+    container.innerHTML = FIRE_FLOWER_DATA.regions.map(region => {
+        const factionsHTML = region.factions.map(faction => {
+            let factionName = faction.name;
+            let holderClass = '';
+
+            if (faction.holds_petal) {
+                holderClass = 'has-petal';
+                if (!hasSufficientIntel(faction.intel_requirement)) {
+                    factionName = `<span class="redacted-petal-holder">[SECRET HOLDER - Intel ${faction.intel_requirement.level} Required]</span>`;
+                }
+            }
+
+            return `
+                <li class="faction-petal-item ${holderClass}">
+                    <img src="artifacts/fire_flower_petal.png" alt="Petal Icon">
+                    <span>${factionName}</span>
+                </li>
+            `;
+        }).join('');
+
+        return `
+            <div class="region-card">
+                <div class="region-header">
+                    <h3>${region.name}</h3>
+                    <span class="region-progress">${region.collectedPetals}/${region.totalFactions} Factions</span>
+                </div>
+                <ul class="region-factions-list">
+                    ${factionsHTML}
+                </ul>
+            </div>
+        `;
+    }).join('');
+}
+
+
 function renderStarBearers() {
     const container = document.getElementById('star-bearers-container');
     if (!container) return;
@@ -181,13 +263,8 @@ function renderStarBearers() {
         const x = 50 + (radius / container.clientWidth * 100) * Math.cos(angle);
         const y = 50 + (radius / container.clientHeight * 100) * Math.sin(angle);
         
-        let identityKnown = state.debugMode || bearer.id === 'self_reflection' || bearer.id === 'unknown';
-        if (!identityKnown && bearer.intel_requirements?.identity) {
-            const req = bearer.intel_requirements.identity;
-            if (getIntelForFaction(req.faction) >= req.level) {
-                identityKnown = true;
-            }
-        }
+        const isAlwaysKnown = bearer.id === 'self_reflection' || bearer.id === 'unknown';
+        const identityKnown = isAlwaysKnown || hasSufficientIntel(bearer.intel_requirements?.identity);
         
         const displayName = identityKnown ? bearer.name.split(' - ')[0] : 'Unknown Bearer';
         const displayImage = identityKnown ? `bearers/${bearer.id}.png` : 'bearers/unknown_bearer.png';
@@ -216,18 +293,15 @@ function showBearerModal(bearerId) {
     const allBearers = [...ARTIFACT_DATA.star_bearers, ARTIFACT_DATA.god_toad];
     const bearer = allBearers.find(b => b.id === bearerId);
     if (!bearer) return;
-    
-    playSound('click.mp3');
-    
-    const isDebug = state.debugMode;
 
-    let identityKnown = isDebug || bearer.id === 'self_reflection' || bearer.id === 'god_toad' || bearer.id === 'unknown';
-    if (!identityKnown && bearer.intel_requirements?.identity) {
-        const req = bearer.intel_requirements.identity;
-        if (getIntelForFaction(req.faction) >= req.level) {
-            identityKnown = true;
-        }
-    }
+    playSound('click.mp3');
+
+    const isAlwaysKnownIdentity = ['self_reflection', 'unknown', 'god_toad'].includes(bearer.id);
+    const isAlwaysKnownDetails = ['self_reflection', 'unknown'].includes(bearer.id);
+
+    const identityKnown = isAlwaysKnownIdentity || hasSufficientIntel(bearer.intel_requirements?.identity);
+    const detailsKnown = isAlwaysKnownDetails || hasSufficientIntel(bearer.intel_requirements?.details);
+    const historyKnown = isAlwaysKnownDetails || hasSufficientIntel(bearer.intel_requirements?.history);
 
     if (!identityKnown) {
         modalContent.innerHTML = `
@@ -242,49 +316,22 @@ function showBearerModal(bearerId) {
         modal.style.display = 'flex';
         return;
     }
-    
-    // Check details intel
-    let detailsKnown = isDebug || bearer.id === 'self_reflection' || bearer.id === 'unknown';
-    if (!detailsKnown && bearer.intel_requirements?.details) {
-        const req = bearer.intel_requirements.details;
-        if (getIntelForFaction(req.faction) >= req.level) {
-            detailsKnown = true;
-        }
-    }
-    
-    // Check history intel
-    let historyKnown = isDebug || bearer.id === 'self_reflection' || bearer.id === 'unknown';
-     if (!historyKnown && bearer.intel_requirements?.history) {
-        const req = bearer.intel_requirements.history;
-        if (getIntelForFaction(req.faction) >= req.level) {
-            historyKnown = true;
-        }
-    }
-    
+
     const factionMap = {
-        onyx_hand: "Onyx Hand",
-        moonfang_pack: "Moonfang Pack",
-        rakasha_clans: "Rakasha Clans",
-        crimson_fleet: "Crimson Fleet",
-        rebel_clans: "Rebel Clans",
-        oathbound_judges: "Oathbound Judges",
-        mages_guild: "Mages' Guild",
-        iron_legion: "Iron Legion",
-        the_unchained: "The Unchained",
-        freelancer_underworld: "Freelancer Underworld",
+        onyx_hand: "Onyx Hand", moonfang_pack: "Moonfang Pack", rakasha_clans: "Rakasha Clans",
+        crimson_fleet: "Crimson Fleet", rebel_clans: "Rebel Clans", oathbound_judges: "Oathbound Judges",
+        mages_guild: "Mages' Guild", iron_legion: "Iron Legion", the_unchained: "The Unchained",
+        freelancer_underworld: "Freelancer Underworld", toad_gang: "Toad Gang", mushroom_regency: "Mushroom Regency"
     };
     
-    const powersHTML = detailsKnown 
-        ? `<p>${bearer.powers}</p>` 
-        : `<p class="redacted">[Intel Level ${bearer.intel_requirements.details.level} with ${factionMap[bearer.intel_requirements.details.faction] || 'a relevant faction'} required]</p>`;
+    const getRedactedText = (req) => {
+        const factionName = factionMap[req?.faction] || 'a relevant faction';
+        return `<p class="redacted">[Intel Level ${req?.level || '??'} with ${factionName} required]</p>`;
+    };
 
-    const fragmentHTML = detailsKnown 
-        ? `<p>${bearer.fragment_desc}</p>` 
-        : `<p class="redacted">[Intel Level ${bearer.intel_requirements.details.level} with ${factionMap[bearer.intel_requirements.details.faction] || 'a relevant faction'} required]</p>`;
-
-    const historyHTML = historyKnown 
-        ? `<p>${bearer.history}</p>` 
-        : `<p class="redacted">[Intel Level ${bearer.intel_requirements.history.level} with ${factionMap[bearer.intel_requirements.history.faction] || 'a relevant faction'} required]</p>`;
+    const powersHTML = detailsKnown ? `<p>${bearer.powers}</p>` : getRedactedText(bearer.intel_requirements.details);
+    const fragmentHTML = detailsKnown ? `<p>${bearer.fragment_desc}</p>` : getRedactedText(bearer.intel_requirements.details);
+    const historyHTML = historyKnown ? `<p>${bearer.history}</p>` : getRedactedText(bearer.intel_requirements.history);
 
     modalContent.innerHTML = `
         <div class="bearer-modal-header">
@@ -312,12 +359,18 @@ function hideBearerModal() {
 }
 
 function setupEventListeners() {
-    const container = document.getElementById('star-bearers-container');
-    if (container) {
-        container.addEventListener('click', e => {
-            const node = e.target.closest('.bearer-node, .god-toad-node');
-            if (node && node.dataset.id) {
-                showBearerModal(node.dataset.id);
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+        mainContent.addEventListener('click', e => {
+            const starNode = e.target.closest('.bearer-node, .god-toad-node');
+            if (starNode && starNode.dataset.id) {
+                showBearerModal(starNode.dataset.id);
+            }
+
+            const regionHeader = e.target.closest('.region-header');
+            if (regionHeader) {
+                playSound('click.mp3');
+                regionHeader.closest('.region-card').classList.toggle('expanded');
             }
         });
     }
@@ -334,6 +387,7 @@ function setupEventListeners() {
 
 function init() {
     renderMainArtifacts();
+    renderFireFlowerCollection();
     renderStarBearers();
     setupEventListeners();
 }
@@ -343,6 +397,7 @@ init();
 // artifacts/the_star_fragment.png
 // artifacts/the_fireflower.png
 // artifacts/the_mushroom.png
+// artifacts/fire_flower_petal.png
 // bearers/rebellion.png
 // bearers/charismatic.png
 // bearers/beauty.png
