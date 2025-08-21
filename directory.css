@@ -198,14 +198,10 @@
 }
 
 .aux-member-card.negative {
-    border: 1px solid var(--negative-color);
-    border-left: 5px solid var(--negative-color);
-    background-color: rgba(218, 54, 51, 0.1);
+    border-left-color: var(--negative-color);
 }
 .aux-member-card.positive {
-    border: 1px solid var(--positive-color);
-    border-left: 5px solid var(--positive-color);
-    background-color: rgba(35, 134, 54, 0.1);
+     border-left-color: var(--positive-color);
 }
 
 .aux-card-header {
