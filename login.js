@@ -5,6 +5,8 @@ const startupScreen = document.getElementById('startup-screen');
 const enterAppBtn = document.getElementById('enter-app-btn');
 const soundtrackBtn = document.getElementById('soundtrack-btn');
 const soundtrackModal = document.getElementById('soundtrack-modal');
+const playGameBtn = document.getElementById('play-game-btn');
+const playGameTimer = document.getElementById('play-game-timer');
 const closeModalBtn = soundtrackModal ? soundtrackModal.querySelector('.modal-close') : null;
 
 const loginScreen = document.getElementById('character-login-screen');
@@ -70,6 +72,48 @@ function setupLoginScreen() {
     }
 }
 
+function setupPlayGameButton() {
+    if (!playGameBtn || !playGameTimer) return;
+
+    const gameUrl = "http://countries-sacramento.gl.at.ply.gg:51542/join";
+
+    function updateTimerAndButton() {
+        const now = new Date();
+        const dayOfWeek = now.getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
+
+        // Enable button only on Monday
+        playGameBtn.disabled = (dayOfWeek !== 1);
+
+        // Calculate time to next Monday
+        let nextMonday = new Date(now);
+        nextMonday.setHours(0, 0, 0, 0); // Set to midnight
+
+        let daysToAdd = (1 - dayOfWeek + 7) % 7;
+        if (daysToAdd === 0) { // If it's Monday, we want next week's Monday for the countdown
+            daysToAdd = 7;
+        }
+
+        nextMonday.setDate(now.getDate() + daysToAdd);
+
+        const diff = nextMonday - now;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const timerString = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        playGameTimer.textContent = dayOfWeek === 1
+            ? `Game is available! Next session in: ${timerString}`
+            : `Next session in: ${timerString}`;
+    }
+
+    playGameBtn.addEventListener('click', () => window.open(gameUrl, '_blank'));
+
+    updateTimerAndButton(); // Initial call
+    setInterval(updateTimerAndButton, 1000); // Update every second
+}
+
 function showLoginOrApp() {
     // This function is triggered when the user clicks "Main Website" on the startup screen.
     if (startupScreen) {
@@ -127,6 +171,8 @@ function main() {
                 }
             });
         }
+
+        setupPlayGameButton();
     } else {
         // Fallback if there is no startup screen for some reason.
         const savedUser = localStorage.getItem('vigilanceTerminalUser');

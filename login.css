@@ -60,6 +60,28 @@
     box-shadow: 0 5px 15px rgba(138, 43, 226, 0.2);
 }
 
+.startup-btn:disabled {
+    cursor: not-allowed;
+    background-color: var(--main-bg);
+    color: var(--text-secondary);
+    opacity: 0.6;
+    border-color: var(--border-color);
+    transform: none;
+    box-shadow: none;
+}
+
+.game-action-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.timer-text {
+    font-family: var(--font-primary);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
 
 /* --- Character Login Screen --- */
 #character-login-screen {
@@ -180,4 +202,25 @@
 .login-option-btn:hover {
     border-color: var(--neutral-color);
     color: var(--neutral-color);
+}
+
+.next-session-container {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.next-session-container h3 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.next-session-container p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.4;
 }
