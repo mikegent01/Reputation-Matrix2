@@ -37,8 +37,8 @@ export const QUEST_DATA = {
         assignee: "Koopa Troop & Peach Loyalists",
         status: "active",
         steps: [
-            { id: 'step1', title: "Infiltrate Peach's Castle", status: 'completed', description: "A recon team of Koopa and Paratroopas teamed up with Toadette's forces and successfully infiltrated the castle during Fawful's Grand Gala." },
-            { id: 'step2', title: "Gather Clues from the Gala", status: 'completed', description: "The recon team gathered significant intelligence. They witnessed Fawful's monologue about using prisoners and tentacles to power the ship, and noted the presence of the 'Evil Toad God.' Most critically, they made contact with Chief Thornpaw of the Rakasha, who revealed a secret past with the Princess and the existence of a secret hatch in her chambers." },
+            { id: 'step1', title: "Infiltrate Peach's Castle", status: 'completed', description: "A recon team of Koopa and Paratroopas teamed up with Toadette's forces (Embercap and Mistveil) and successfully infiltrated the castle during Fawful's Grand Gala." },
+            { id: 'step2', title: "Gather Clues from the Gala", status: 'completed', description: "The recon team gathered significant intelligence. They witnessed Fawful's monologue about using prisoners and 'fury tentacles' to power the ship, and noted the presence of the 'Evil Toad God.' Most critically, they made contact with Chief Thornpaw of the Rakasha, who revealed a secret past with the Princess and the existence of a secret hatch in her chambers." },
             { id: 'step3', title: "Investigate the Secret Hatch", status: 'active', description: "Following Chief Thornpaw's explosive lead, the next step is to find a way to access Princess Peach's private chambers within the occupied castle and locate this hidden hatch. What secrets does it protect?" },
             { id: 'step4', title: "Confront the Truth", status: 'locked', description: "Once the secrets of the hatch are revealed, confront the true culprit or circumstances behind the Princess's death." }
         ]

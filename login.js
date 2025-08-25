@@ -81,21 +81,21 @@ function setupPlayGameButton() {
         const now = new Date();
         const dayOfWeek = now.getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
 
-        // Enable button only on Monday
-        playGameBtn.disabled = (dayOfWeek !== 1);
+        // Enable button only on Sunday
+        playGameBtn.disabled = (dayOfWeek !== 0);
 
-        // Calculate time to next Monday
-        let nextMonday = new Date(now);
-        nextMonday.setHours(0, 0, 0, 0); // Set to midnight
+        // Calculate time to next Sunday
+        let nextSunday = new Date(now);
+        nextSunday.setHours(0, 0, 0, 0); // Set to midnight
 
-        let daysToAdd = (1 - dayOfWeek + 7) % 7;
-        if (daysToAdd === 0) { // If it's Monday, we want next week's Monday for the countdown
+        let daysToAdd = (0 - dayOfWeek + 7) % 7;
+        if (daysToAdd === 0) { // If it's Sunday, we want next week's Sunday for the countdown
             daysToAdd = 7;
         }
 
-        nextMonday.setDate(now.getDate() + daysToAdd);
+        nextSunday.setDate(now.getDate() + daysToAdd);
 
-        const diff = nextMonday - now;
+        const diff = nextSunday - now;
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -103,7 +103,7 @@ function setupPlayGameButton() {
 
         const timerString = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-        playGameTimer.textContent = dayOfWeek === 1
+        playGameTimer.textContent = dayOfWeek === 0
             ? `Game is available! Next session in: ${timerString}`
             : `Next session in: ${timerString}`;
     }

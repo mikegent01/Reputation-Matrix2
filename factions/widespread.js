@@ -208,8 +208,8 @@ export const WIDESPREAD_FACTIONS = {
         description: "A notorious pirate fleet led by the cunning and ruthless Captain Syrup. They value freedom, treasure, and holding a grudge.",
         logo: 'faction_crimson_fleet.png',
         relations: { 
-            allies: ['freelancer_underworld', 'iron_legion'], 
-            enemies: ['regal_empire', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators', 'goodstyle_artisans']
+            allies: ['freelancer_underworld'], 
+            enemies: ['regal_empire', 'iron_legion', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators', 'goodstyle_artisans']
         },
         power_level: 5,
         leader: "captain_syrup",

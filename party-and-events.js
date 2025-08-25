@@ -226,6 +226,28 @@ export const RUMORS = [
         description: "A captured Iron Legion bomber revealed a shocking secret before his demise: the Iron Fists gang may be operating as a secret arm of the Regal Empire, creating chaos for the Empire to solve.",
         targets: ['party'],
         effects: { iron_fists: -5, regal_empire: -5, freelancer_underworld: 10 }
+    },
+    {
+        id: 'tea_party_incident',
+        title: "The Tea Party Incident",
+        description: "A meeting with the Tea Leaf Syndicate devolved into a massive brawl after a panic button was pressed. In the chaos, Archie killed numerous combatants, including most of the Syndicate's enforcers.",
+        targets: ['archie'],
+        effects: { 
+            tea_leaf_syndicate: -70, 
+            toad_gang: -30, 
+            iron_legion: -15,
+            freelancer_underworld: 10
+        }
+    },
+    {
+        id: 'koopa_loyalist_truce',
+        title: "Koopa-Loyalist Truce",
+        description: "The Koopa Troop remnants and the Peach Loyalists have formed a fragile truce to investigate the Princess's death, directing their mutual ire towards Fawful.",
+        targets: ['humpik', 'bowser'],
+        effects: { 
+            peach_loyalists: 10, 
+            koopa_troop: 5
+        }
     }
 ];
 
@@ -294,14 +316,14 @@ export const TIMELINE = [
     {
         phase: '1040 BF',
         title: 'Standoff and Sabotage',
-        description: "<p>A tense negotiation with the Iron Legion leads to a bomb plot being uncovered. Captain Syrup escapes using an illusion, while Lario and a revived Big T are caught trying to sabotage the power core. Humpik intervenes, forcing them to retreat.</p>",
-        participants: ['markop', 'humpik', 'lario', 'bigt']
+        description: "<p>A tense negotiation with the Iron Legion leads to a bomb plot being uncovered. Captain Syrup escapes using an illusion, while Lario and a revived Big T are caught trying to sabotage the power core. Humpik intervenes, forcing them both to retreat.</p>",
+        participants: ['markop', 'humpik', 'lario', 'bigt', 'captain_syrup']
     },
     {
         phase: '1040 BF',
         title: 'The Tea Party Incident',
-        description: "<p>Waluigi's schemes escalate as he attempts to use a new 'Tea Leaf Syndicate' to create a distraction. A red button is pushed, summoning both Iron Legion and Toad Gang forces. In the ensuing mayhem, Archie unleashes a fireball, killing multiple combatants and wiping out most of a Toad Gang squad.</p>",
-        participants: ['waluigi', 'archie', 'humpik', 'iron_legion', 'toad_gang']
+        description: "<p>An attempt by Archie to meet with the 'Tea Leaf Syndicate' devolves into a massive brawl after a panic button is pressed, summoning both Toad Gang and Iron Legion forces. In the chaos, Archie unleashes a fireball, killing numerous combatants, including most of the Syndicate's muscle, leaving only Earl Grey and Chai alive.</p>",
+        participants: ['archie', 'humpik', 'iron_legion', 'toad_gang']
     },
     {
         phase: '1040 BF',

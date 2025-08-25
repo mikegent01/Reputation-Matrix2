@@ -64,11 +64,11 @@ export const CHARACTERS_3 = {
     'earl_grey': {
         name: "Earl Grey",
         role: "Enforcer, The Tea Leaf Syndicate",
-        description: "A stoic and powerful toad who wields a heavy axe and shield. He is Green T's loyal bodyguard."
+        description: "A stoic and powerful toad who wields a heavy axe and shield. He is Green T's loyal bodyguard and one of the only survivors of Archie's infamous fireball."
     },
     'chai': {
         name: "Chai",
         role: "Diplomat, The Tea Leaf Syndicate",
-        description: "A smooth-talking toad who handles the Syndicate's negotiations and information gathering."
+        description: "A smooth-talking toad who handles the Syndicate's negotiations and information gathering. He also survived the 'Tea Party Incident' and now harbors a deep distrust of the party."
     }
 };

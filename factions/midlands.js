@@ -72,8 +72,8 @@ export const MIDLANDS_FACTIONS = {
         description: "A highly organized militaristic faction dedicated to 'Order Through Expansion.' Operating from the Midlands, they seek to build a new empire through disciplined conquest and assimilation. They maintain a semi-autonomous sister legion, the Iron Crown Brigade, in the Mushroom Kingdom to undermine local factions and pave the way for annexation.",
         logo: 'faction_iron_legion.png',
         relations: { 
-            allies: ['regal_empire', 'crimson_fleet'], 
-            enemies: ['freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators', 'goodstyle_artisans']
+            allies: ['regal_empire'], 
+            enemies: ['freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators', 'goodstyle_artisans']
         },
         power_level: 9,
         category: "Major Powers",

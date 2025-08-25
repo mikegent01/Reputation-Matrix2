@@ -3,11 +3,11 @@
 export const MUSHROOM_KINGDOM_FACTIONS = {
     toad_gang: { 
         name: "The Toad Gang", 
-        description: "Led by the tyrannical Big T, they seek to expand their 'Toadification' campaign. Big T recently attempted to destroy the Vigilance's core with Lario and failed.",
+        description: "Led by the tyrannical Big T, they seek to expand their 'Toadification' campaign.",
         logo: 'faction_toad_gang.png',
         relations: { 
             allies: ['toad_cult'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'fawfuls_furious_freaks', 'tea_leaf_syndicate'] 
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'fawfuls_furious_freaks'] 
         },
         power_level: 4,
         category: "Underworld & Fringe",
@@ -63,25 +63,6 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                 }
             }
         }
-    },
-     tea_leaf_syndicate: { 
-        name: "The Tea Leaf Syndicate", 
-        description: "A mysterious and sophisticated criminal organization operating under the guise of an exotic tea trading company. Led by the enigmatic 'Green T,' they are rivals to the brutish Toad Gang and are known for their subtlety, use of poisons, and information brokering.",
-        logo: 'icon_reputation.png',
-        relations: { 
-            allies: [], 
-            enemies: ['toad_gang', 'mushroom_regency'] 
-        },
-        power_level: 5,
-        category: "Underworld & Fringe",
-        region: "Mushroom Kingdom (Shadows)",
-        leader: "green_t",
-        notable_people: [
-            { name: "Green T", role: "Leader", description: "The well-dressed and mysterious leader of the Syndicate." },
-            { name: "Earl Grey", role: "Enforcer", description: "A stoic and powerful toad who wields a heavy axe and shield, serving as Green T's loyal bodyguard." },
-            { name: "Chai", role: "Diplomat", description: "A smooth-talking toad who handles the Syndicate's negotiations and information gathering." }
-        ],
-        waluigi_tip: "WAH! These tea-sippers are too quiet! Make a big scene at one of their 'tea houses' and they'll spill more than just their drinks!",
     },
     toad_cult: {
         name: "The Toad Cult",
@@ -154,11 +135,11 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
     },
     peach_loyalists: {
         name: "Peach Loyalists",
-        description: "A fanatical military faction, born from a century of frustration, that has split from the Regency. They believe the official government is too weak to hold Bowser accountable for the chaos that led to Princess Peach's death, and have taken it upon themselves to see 'justice' done through force.",
+        description: "A fanatical military faction, born from a century of frustration, that has split from the Regency. They believe the official government is too weak to hold Bowser accountable for the chaos that led to Princess Peach's death, and have taken it upon themselves to see 'justice' done through force. They are currently observing a fragile truce with the Koopa Remnants to investigate the true cause of the Princess's death.",
         logo: 'faction_peach_loyalists.png',
         relations: { 
             allies: [], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'fawfuls_furious_freaks']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'fawfuls_furious_freaks']
         },
         power_level: 4,
         leader: "captain_toadette",
@@ -174,7 +155,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
     },
     fawfuls_furious_freaks: {
         name: "Fawful's Furious Freaks",
-        description: "The erratic Beanish villain Fawful has seized Peach's Castle amidst the chaos, transforming it into a twisted stronghold. His army is a bizarre mix of brainwashed Toads, reprogrammed Goombas, and his own maniacal mechanical minions. They fight with unpredictable fury and chortles of doom.",
+        description: "The erratic Beanish villain Fawful has seized Peach's Castle amidst the chaos, transforming it into a twisted stronghold. He recently hosted a 'Grand Gala' for the underworld's elite, revealing that he is powering the castle's strange modifications by torturing prisoners and harvesting their 'fury tentacles'. His army is a bizarre mix of brainwashed Toads, reprogrammed Goombas, and his own maniacal mechanical minions.",
         logo: 'faction_fawful.png',
         relations: { 
             allies: [], 
@@ -185,7 +166,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
         category: "Regional Powers",
         region: "Mushroom Kingdom (Peach's Castle)",
         notable_people: [
-            { name: "Fawful", role: "Master of Fury", description: "A cunning Beanish villain with a penchant for maniacal laughter and green-hued schemes. He has been heard ranting about using tentacles and prisoners to power his ship." },
+            { name: "Fawful", role: "Master of Fury", description: "A cunning Beanish villain with a penchant for maniacal laughter and green-hued schemes." },
             { name: "The Evil Toad God", role: "Guest of Honor", description: "An ancient evil empowered by an artifact, attending Fawful's gala as a show of chaotic solidarity." },
             { name: "Crimson Spore", role: "Party Guest", description: "A flamboyant toad attending Fawful's party." },
             { name: "Sapphire Bloom", role: "Party Guest", description: "An elegant toad attending Fawful's party." },
@@ -209,7 +190,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
         category: "Underworld & Fringe",
         region: "Mushroom Kingdom (Nomadic)",
         notable_people: [
-            { name: "Dan", role: "Hero Leader", description: "The brave toad who defeated X.O. and now leads his fellow liberated toads. Claims to be friends with the enigmatic 'Green T'." },
+            { name: "Dan", role: "Hero Leader", description: "The brave toad who defeated X.O. and now leads his fellow liberated toads." },
             { name: "Toad Lee", role: "First Warrior", description: "The first toad to join the party, wielding a surprisingly large axe." },
             { name: "Bones", role: "The Survivor", description: "A grotesque but resilient toad who owes a debt to the Orcs who kidnapped and then spared him." }
         ],
@@ -325,4 +306,23 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
             }
         }
     },
+    tea_leaf_syndicate: {
+        name: "The Tea Leaf Syndicate",
+        description: "A mysterious and well-dressed criminal organization led by the enigmatic Green T. They attempted to form an alliance with Archie Miser, but the meeting devolved into a chaotic brawl that saw most of their enforcers wiped out by Archie's infamous fireball. They now harbor a deep and personal vendetta against him.",
+        logo: 'icon_quests.png',
+        relations: {
+            allies: ['freelancer_underworld'],
+            enemies: ['archie', 'humpik', 'koopa_troop', 'toad_gang', 'regal_empire', 'iron_legion']
+        },
+        power_level: 3,
+        category: "Underworld & Fringe",
+        region: "Mushroom Kingdom (Shadows)",
+        leader: "green_t",
+        notable_people: [
+            { name: "Green T", role: "Syndicate Leader", description: "The impeccably dressed and mysterious leader of the syndicate." },
+            { name: "Earl Grey", role: "Lead Enforcer", description: "A powerful toad with an axe and shield, and one of the few survivors of the 'Tea Party Incident'." },
+            { name: "Chai", role: "Diplomat & Fixer", description: "A smooth-talking negotiator who now holds a deep grudge against the party." }
+        ],
+        waluigi_tip: "WAH! So much for a secret meeting! These guys are furious, especially at Archie. If you want to really stir the pot, just remind them how one little guy with a fireball ruined their entire operation. Their rage will make them sloppy!"
+    }
 };
