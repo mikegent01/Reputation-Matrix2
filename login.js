@@ -75,7 +75,7 @@ function setupLoginScreen() {
 function setupPlayGameButton() {
     if (!playGameBtn || !playGameTimer) return;
 
-    const gameUrl = "http://countries-sacramento.gl.at.ply.gg:51542/join";
+    const gameUrl = "http://introduction-proceed.gl.at.ply.gg:62000/join";
 
     function updateTimerAndButton() {
         const now = new Date();
