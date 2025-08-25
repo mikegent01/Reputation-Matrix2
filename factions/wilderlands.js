@@ -14,7 +14,7 @@ export const WILDERLANDS_FACTIONS = {
         category: "Regional Powers",
         region: "Wilderlands",
         notable_people: [
-            { name: "Chief Thornpaw", role: "Spirit-Walker Leader", description: "The wise shaman who guides the clans and now teaches Dan magic." },
+            { name: "Chief Thornpaw", role: "Spirit-Walker Leader", description: "The wise shaman who guides the clans and now teaches Dan magic. He holds a deep secret: a past relationship with the late Princess Peach, giving him unique insight into a secret hatch in her room." },
             { name: "Warchief Ironmane", role: "Beast-Rider Champion", description: "The strongest warrior among the Beast-Riders, known for his massive tiger mount." }
         ],
         waluigi_tip: "The Rakasha are all about 'honor'. The Spirit-Walkers are the real power. Befriend them, and you can get the hot-headed Beast-Riders to do anything you want!",

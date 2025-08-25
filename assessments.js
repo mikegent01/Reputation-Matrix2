@@ -10,7 +10,7 @@ export const FACTION_ASSESSMENTS = {
     iron_legion: {
         archie: `The party's presence is a catalyst for disaster. They have detained Legion members and are responsible for the death of at least one soldier. They are now considered a high-priority hostile force, and their chaotic methods are a direct threat to Legion objectives.`,
         markop: `His failure to control his companions has led to the death of a Legionnaire. He is an accomplice to murder and a traitor to the concept of order. The Legion views him with utter contempt.`,
-        humpik: `Humpik is recognized as a loyal and capable soldier, but one who serves a rival warlord. The Legion respects his strength and the power he commands but sees him as an enemy combatant by default.`,
+        humpik: `Humpik is recognized as a powerful warrior serving a rival, but his blunt refusal of an honorable duel for the staff is seen by Legion traditionalists as a sign of Koopa barbarism and lack of true martial honor.`,
         bowser: `The Iron Legion views Bowser as a rival military commander. They respect his strength and the power he commands but see him as an obstacle to Imperial expansion. He is a well-documented and recognized military threat.`,
     },
     freelancer_underworld: {
@@ -92,7 +92,7 @@ export const FACTION_ASSESSMENTS = {
         bowser: `Bowser's offer of alliance is seen as a deal with a devil. While the New Wave is desperate enough to consider it, the Old Clans see him as just another tyrant trying to replace the Emperor. They do not trust him or his ambitions.`,
     },
     crimson_fleet: {
-        archie: `Archie has the spirit of a true pirate: he's chaotic, defies authority, and leaves destruction in his wake. The Free Captains love his style, and the Pirate Lords see him as someone with a strong, if unpredictable, 'reputation'.`,
+        archie: `Archie has the spirit of a true pirate: he's chaotic, defies authority, and leaves destruction in his wake. The Free Captains love his style. The party's continued possession of a powerful arcane staff makes their ship a high-value target.`,
         markop: `The Fleet is deeply suspicious of Markop. A man of the law, even a fallen one, is not to be trusted on a pirate vessel. They see him as a liability, likely to turn on them the moment it suits his moral code.`,
         humpik: `The pirates respect Humpik as a loyal first mate to a powerful captain (Bowser). He is seen as strong, reliable muscle, an essential part of any good crew.`,
         bowser: `The Pirate Lords see Bowser as a kindred spirit: a king of his own domain who answers to no one. They respect his power, his fleet, and his open defiance of the Empire, viewing him as a powerful potential ally on the high seas.`,

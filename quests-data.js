@@ -12,10 +12,10 @@ export const QUEST_DATA = {
         steps: [
             { id: 'step1', title: "Ally with Lario", status: 'completed', description: "The party supported Lario’s coup, securing the Regal Airship and establishing him as captain, granting them a mobile base to navigate the civil war." },
             { id: 'step2', title: "Recover X.O.’s Staff", status: 'completed', description: "During the stormy descent, the Sword Toad successfully snatched the staff mid-air, preventing its loss and making it a focal point of the quest." },
-            { id: 'step3', title: "Confront Captain Syrup", status: 'completed', description: "The party found themselves in a tense standoff with Captain Syrup. The confrontation was interrupted by multiple outside forces." },
-            { id: 'step4', title: "Repower the Vigilance", status: 'completed', description: "Overriding the wishes of Dan the Toad, Archie ordered the staff to be integrated with the ship's power core. The Vigilance is now operational again." }
+            { id: 'step3', title: "Confront Captain Syrup", status: 'completed', description: "The party found themselves in a tense standoff with Captain Syrup. The confrontation was interrupted by multiple outside forces, including the Iron Legion." },
+            { id: 'step4', title: "Repower the Vigilance", status: 'completed', description: "Overriding the wishes of Dan the Toad, Archie ordered the staff to be integrated with the ship's power core. The Vigilance is now operational again, but the staff is a constant target for factions like the Crimson Fleet and Iron Legion." }
         ],
-        finalDecision: { description: "The ship is powered, but at the cost of Dan's trust and the potential of the staff." }
+        finalDecision: { description: "The ship is powered, but at the cost of Dan's trust. The staff's immense power now acts as a beacon, drawing unwanted attention." }
     },
     'artifacts_of_balance': {
         id: 'artifacts_of_balance',
@@ -38,8 +38,9 @@ export const QUEST_DATA = {
         status: "active",
         steps: [
             { id: 'step1', title: "Infiltrate Peach's Castle", status: 'completed', description: "A recon team of Koopa and Paratroopas teamed up with Toadette's forces and successfully infiltrated the castle during Fawful's Grand Gala." },
-            { id: 'step2', title: "Gather Clues from the Gala", status: 'active', description: "The recon team gathered significant intelligence from within the gala. They observed Chief Thornpaw among the guests, overhearing the Rakasha tradition of using a single public name. The team witnessed Fawful present other captured toads to the guests as 'dinner,' much to the horror of the captives who were shaken by the presence of the 'Evil Toad God.' During the chaos, Fawful spotted and pursued the Koopa trooper, while the Paratrooper encountered former Iron Legion soldiers now allied with Fawful." },
-            { id: 'step3', title: "Survive and Escape", status: 'completed', description: "The Paratrooper made contact with Captain Toadette and assisted in freeing her captured soldiers. In gratitude, Toadette acknowledged the Koopa Troop's aid and ordered a strategic withdrawal, solidifying their fragile truce to continue investigating the Princess's death." }
+            { id: 'step2', title: "Gather Clues from the Gala", status: 'completed', description: "The recon team gathered significant intelligence. They witnessed Fawful's monologue about using prisoners and tentacles to power the ship, and noted the presence of the 'Evil Toad God.' Most critically, they made contact with Chief Thornpaw of the Rakasha, who revealed a secret past with the Princess and the existence of a secret hatch in her chambers." },
+            { id: 'step3', title: "Investigate the Secret Hatch", status: 'active', description: "Following Chief Thornpaw's explosive lead, the next step is to find a way to access Princess Peach's private chambers within the occupied castle and locate this hidden hatch. What secrets does it protect?" },
+            { id: 'step4', title: "Confront the Truth", status: 'locked', description: "Once the secrets of the hatch are revealed, confront the true culprit or circumstances behind the Princess's death." }
         ]
     },
     'war_of_blood_and_moon': {

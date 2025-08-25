@@ -3,11 +3,11 @@
 export const MUSHROOM_KINGDOM_FACTIONS = {
     toad_gang: { 
         name: "The Toad Gang", 
-        description: "Led by the tyrannical Big T, they seek to expand their 'Toadification' campaign.",
+        description: "Led by the tyrannical Big T, they seek to expand their 'Toadification' campaign. Big T recently attempted to destroy the Vigilance's core with Lario and failed.",
         logo: 'faction_toad_gang.png',
         relations: { 
             allies: ['toad_cult'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'fawfuls_furious_freaks'] 
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'fawfuls_furious_freaks', 'tea_leaf_syndicate'] 
         },
         power_level: 4,
         category: "Underworld & Fringe",
@@ -63,6 +63,25 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                 }
             }
         }
+    },
+     tea_leaf_syndicate: { 
+        name: "The Tea Leaf Syndicate", 
+        description: "A mysterious and sophisticated criminal organization operating under the guise of an exotic tea trading company. Led by the enigmatic 'Green T,' they are rivals to the brutish Toad Gang and are known for their subtlety, use of poisons, and information brokering.",
+        logo: 'icon_reputation.png',
+        relations: { 
+            allies: [], 
+            enemies: ['toad_gang', 'mushroom_regency'] 
+        },
+        power_level: 5,
+        category: "Underworld & Fringe",
+        region: "Mushroom Kingdom (Shadows)",
+        leader: "green_t",
+        notable_people: [
+            { name: "Green T", role: "Leader", description: "The well-dressed and mysterious leader of the Syndicate." },
+            { name: "Earl Grey", role: "Enforcer", description: "A stoic and powerful toad who wields a heavy axe and shield, serving as Green T's loyal bodyguard." },
+            { name: "Chai", role: "Diplomat", description: "A smooth-talking toad who handles the Syndicate's negotiations and information gathering." }
+        ],
+        waluigi_tip: "WAH! These tea-sippers are too quiet! Make a big scene at one of their 'tea houses' and they'll spill more than just their drinks!",
     },
     toad_cult: {
         name: "The Toad Cult",
@@ -166,7 +185,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
         category: "Regional Powers",
         region: "Mushroom Kingdom (Peach's Castle)",
         notable_people: [
-            { name: "Fawful", role: "Master of Fury", description: "A cunning Beanish villain with a penchant for maniacal laughter and green-hued schemes." },
+            { name: "Fawful", role: "Master of Fury", description: "A cunning Beanish villain with a penchant for maniacal laughter and green-hued schemes. He has been heard ranting about using tentacles and prisoners to power his ship." },
             { name: "The Evil Toad God", role: "Guest of Honor", description: "An ancient evil empowered by an artifact, attending Fawful's gala as a show of chaotic solidarity." },
             { name: "Crimson Spore", role: "Party Guest", description: "A flamboyant toad attending Fawful's party." },
             { name: "Sapphire Bloom", role: "Party Guest", description: "An elegant toad attending Fawful's party." },
@@ -190,7 +209,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
         category: "Underworld & Fringe",
         region: "Mushroom Kingdom (Nomadic)",
         notable_people: [
-            { name: "Dan", role: "Hero Leader", description: "The brave toad who defeated X.O. and now leads his fellow liberated toads." },
+            { name: "Dan", role: "Hero Leader", description: "The brave toad who defeated X.O. and now leads his fellow liberated toads. Claims to be friends with the enigmatic 'Green T'." },
             { name: "Toad Lee", role: "First Warrior", description: "The first toad to join the party, wielding a surprisingly large axe." },
             { name: "Bones", role: "The Survivor", description: "A grotesque but resilient toad who owes a debt to the Orcs who kidnapped and then spared him." }
         ],

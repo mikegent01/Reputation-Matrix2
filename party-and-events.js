@@ -290,5 +290,23 @@ export const TIMELINE = [
         title: 'Aftermath on the Vigilance',
         description: "<p>The ship's power is restored using X.O.'s staff. In the chaos, Big T reappears only to be assassinated, Iron Legion agents attack and are detained, and Waluigi's agent 'Wally' is revealed before making a dramatic exit with Bowser, leaving the Liberated Toads critically injured.</p>",
         participants: ['archie', 'markop', 'humpik', 'bowser', 'dan', 'ryan']
+    },
+    {
+        phase: '1040 BF',
+        title: 'Standoff and Sabotage',
+        description: "<p>A tense negotiation with the Iron Legion leads to a bomb plot being uncovered. Captain Syrup escapes using an illusion, while Lario and a revived Big T are caught trying to sabotage the power core. Humpik intervenes, forcing them to retreat.</p>",
+        participants: ['markop', 'humpik', 'lario', 'bigt']
+    },
+    {
+        phase: '1040 BF',
+        title: 'The Tea Party Incident',
+        description: "<p>Waluigi's schemes escalate as he attempts to use a new 'Tea Leaf Syndicate' to create a distraction. A red button is pushed, summoning both Iron Legion and Toad Gang forces. In the ensuing mayhem, Archie unleashes a fireball, killing multiple combatants and wiping out most of a Toad Gang squad.</p>",
+        participants: ['waluigi', 'archie', 'humpik', 'iron_legion', 'toad_gang']
+    },
+    {
+        phase: '1040 BF',
+        title: 'Secrets at the Gala',
+        description: "<p>Peach Loyalist scouts Embercap and Mistveil infiltrate Fawful's victory gala. During the event, Chief Thornpaw of the Rakasha finds Mistveil and reveals a stunning secret: he was in a relationship with Princess Peach and knows of a secret hatch in her room. This provides a massive new lead in the investigation of her death.</p>",
+        participants: ['captain_toadette', 'chief_thornpaw', 'fawful']
     }
 ];

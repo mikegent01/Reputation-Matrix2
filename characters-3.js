@@ -53,5 +53,22 @@ export const CHARACTERS_3 = {
         name: "Dewdrop",
         role: "Toad Medic, Peach Loyalists",
         description: "A compassionate medic with soft aqua-blue skin. His white robe is stained with herbs and blood from tending the wounded, and he provides a calming presence amidst the zealotry of the Loyalist army."
+    },
+
+    // --- TEA LEAF SYNDICATE ---
+    'green_t': {
+        name: "Green T",
+        role: "Leader, The Tea Leaf Syndicate",
+        description: "The mysterious and well-dressed leader of the Syndicate. His motives are unknown, but he commands loyalty through fear and reward."
+    },
+    'earl_grey': {
+        name: "Earl Grey",
+        role: "Enforcer, The Tea Leaf Syndicate",
+        description: "A stoic and powerful toad who wields a heavy axe and shield. He is Green T's loyal bodyguard."
+    },
+    'chai': {
+        name: "Chai",
+        role: "Diplomat, The Tea Leaf Syndicate",
+        description: "A smooth-talking toad who handles the Syndicate's negotiations and information gathering."
     }
 };

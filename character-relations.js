@@ -16,7 +16,8 @@ export const CHARACTER_RELATIONS = {
         'boss_knuckles': { type: 'enemy', text: "Archie on Knuckles: Thinks he's tough. He's just another obstacle. One that's fun to blow up." },
         'alpha_bloodmaw': { type: 'ally', text: "Archie on Bloodmaw: Angry, hairy, and hates vampires. What's not to like?" },
         'chancellor_toadsworth': { type: 'enemy', text: "Archie on Toadsworth: Just another bureaucrat trying to hold onto the scraps of a broken system. Pathetic." },
-        'captain_toadette': { type: 'enemy', text: "Archie on Toadette: A fanatic. Blind loyalty is even more boring than regular loyalty. At least she's angry." }
+        'captain_toadette': { type: 'enemy', text: "Archie on Toadette: A fanatic. Blind loyalty is even more boring than regular loyalty. At least she's angry." },
+        'earl_grey': { type: 'enemy', text: "Archie on Earl Grey: Big guy with an axe. Almost as boring as Humpik, but on the wrong side." }
     },
     'markop': {
         'archie': { type: 'ally', text: "Markop on Archie: A force of pure chaos. His methods are reprehensible, but his actions sometimes lead to a greater good. A soul to be guided, if possible." },
