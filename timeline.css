@@ -1,0 +1,168 @@
+/* --- Timeline Styles --- */
+#timeline-page-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+#timeline-page-container::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--border-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.timeline-event {
+    padding: 10px 40px;
+    position: relative;
+    background-color: transparent;
+    width: 50%;
+}
+
+.timeline-event.left {
+    left: 0;
+}
+.timeline-event.right {
+    left: 50%;
+}
+
+/* Timeline Event Circle */
+.timeline-event::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px; /* For left events */
+    background-color: var(--main-bg);
+    border: 3px solid var(--border-color);
+    top: 32px;
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.timeline-event.right::after {
+    left: -10px;
+}
+
+.timeline-content {
+    padding: 20px;
+    background-color: var(--sidebar-bg);
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.timeline-event:hover .timeline-content {
+    border-color: var(--accent-color);
+}
+.timeline-event:hover::after {
+    border-color: var(--accent-color);
+}
+
+/* Arrow */
+.timeline-content::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 30px;
+    width: 0;
+    z-index: 1;
+    border: medium solid var(--border-color);
+}
+.timeline-event.left .timeline-content::before {
+    right: -18px;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--border-color);
+}
+.timeline-event.right .timeline-content::before {
+    left: -18px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--border-color) transparent transparent;
+}
+
+/* Content Header */
+.timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+.timeline-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+.timeline-title-group h4 {
+    font-family: var(--font-display);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin: 0;
+}
+.timeline-date {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.timeline-content p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Era Header */
+.timeline-era-header {
+    position: relative;
+    z-index: 2;
+    padding: 10px 20px;
+    margin: 20px 0;
+    width: 100%;
+}
+.timeline-era-header h2 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
+    text-align: center;
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 900px) {
+    #timeline-page-container::after {
+        left: 31px;
+    }
+    .timeline-event {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    .timeline-event.right {
+        left: 0%;
+    }
+    .timeline-event::after {
+        left: 22px;
+    }
+    .timeline-content::before {
+        left: -18px;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent var(--border-color) transparent transparent;
+    }
+}

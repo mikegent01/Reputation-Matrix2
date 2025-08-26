@@ -1,5 +1,5 @@
 {
-  "name": "Base",
-  "description": "An empty app",
+  "name": "DND base",
+  "description": "Contains the base systems for my website\n",
   "requestFramePermissions": []
 }

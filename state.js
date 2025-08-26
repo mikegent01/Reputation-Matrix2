@@ -224,7 +224,7 @@ export function initFocusTreeState() {
                  initialActiveFocuses.push({
                     toadKey: toadKey,
                     nodeId: firstFocus.id,
-                    remainingDays: firstFocus.cost,
+                    remainingDays: firstFocus.cost - 1,
                     totalDays: firstFocus.cost
                 });
             }
@@ -233,7 +233,7 @@ export function initFocusTreeState() {
 
     state.focusTreeState = {
         buildVersionApplied: "2025-08-13-r1",
-        day: 2,
+        day: 3,
         activeToad: "dan",
         groupInfluence: 27,
         unlocked: {

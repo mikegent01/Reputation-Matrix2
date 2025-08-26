@@ -26,10 +26,10 @@ export const FACTION_ASSESSMENTS = {
         bowser: `The Toad Gang sees Bowser as just another tyrant, no different from the Empire. They have no respect for his monarchical ambitions and view him as a potential competitor in the business of oppression.`,
     },
     toad_cult: {
-        archie: `The cult is divided on Archie. The mainstream Chosen see his chaos as a blight upon the natural world. While some younger warriors respect his power, the leadership views him as an unstable and destructive force, a walking natural disaster.`,
-        markop: `Markop's orderly nature and his attempts to guide others toward a 'good' path make him an antagonist to the cult's chaotic beliefs. He is seen as an agent of the status quo they wish to unravel.`,
-        humpik: `Humpik is largely ignored by the cult. His straightforward nature and loyalty offer nothing of interest to their esoteric and chaotic prophecies. He is simply not part of their divine equation.`,
-        bowser: `The cultists find Bowser's straightforward ambition for conquest to be utterly boring. He seeks to impose a new order, while they seek to dissolve all order. He is irrelevant to their grand, mad design.`,
+        archie: `The cult is divided on Archie. The mainstream Chosen see his chaos as part of their prophecy, a sign that paves the way for their god's return. The more radical New Bloom schismatics, however, see him as a heretic who must be sacrificed.`,
+        markop: `His attempts to impose order and justice are seen as a direct counter to the cult's goals of entropy and rebirth. He is an obstacle to their prophecy.`,
+        humpik: `A simple brute. The cult sees his loyalty to a monarch as pointless and unenlightened. He is irrelevant to their grand cosmic plans.`,
+        bowser: `Another king trying to impose his will. The cult sees him as no different from the Empire or the Regency—just another system that must be dissolved for the Ascended One to return.`
     },
     onyx_hand: {
         archie: `The vampire elders see Archie as a magnificent pawn. His acquittal in their tribunal was a masterstroke that sowed chaos within the rival Mages' Guild. He is highly notorious and viewed as a valuable, if unpredictable, tool to be observed from a safe distance.`,
@@ -150,5 +150,11 @@ export const FACTION_ASSESSMENTS = {
         markop: `A potential ally, were it not for his companions. The Artisans see Markop's appreciation for order and history, but his failure to restrain Archie's destructive impulses is a source of deep disappointment. He is a tragic, flawed figure in their eyes.`,
         humpik: `Humpik is seen as a simple-minded brute, an instrument of Bowser's vulgar ambitions. He is the kind of creature who would smash a thousand-year-old vase without a second thought, and is therefore viewed with disdain.`,
         bowser: `To the Artisans, Bowser is a tyrant with gaudy, tasteless ambitions. He seeks to conquer and build monuments to himself, destroying centuries of culture in the process. He represents the triumph of brute force over refined beauty.`,
+    },
+    tea_leaf_syndicate: {
+        archie: `The Syndicate views Archie with a mixture of terror and white-hot hatred. He single-handedly dismantled their enforcement wing in a display of chaotic power they find both terrifying and deeply insulting. He is their number one target.`,
+        markop: `As Archie's associate during the 'Tea Party Incident', Markop is considered an accomplice to the massacre. The Syndicate sees him as a hypocrite, a former lawman who stands by as his companion commits mass murder.`,
+        humpik: `Humpik was present at the 'Tea Party Incident' and fought against their enforcers. He is viewed as a powerful, brutish enemy and a key associate of their primary target.`,
+        bowser: `The Syndicate has no direct quarrel with Bowser, but his association with Archie and Humpik makes him an enemy by proxy. They see him as the leader of a rival criminal enterprise.`
     }
 };

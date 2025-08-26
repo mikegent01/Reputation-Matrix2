@@ -3,7 +3,7 @@ const BATTLEFIELD_STATE = {
         title: "Mushroom Kingdom Civil War (Toad Town Front)",
         image: "battle_mushroom_kingdom.png",
         image_alt: "A chaotic battlefield showing Mushroom Regency guards clashing with Peach Loyalists near a burning village, while Koopa Troop remnants skirmish in the background.",
-        day: 12,
+        day: 13,
         time: "Afternoon",
         status: "Current Major Offensive",
         factions: {
@@ -56,7 +56,7 @@ const BATTLEFIELD_STATE = {
         title: "The Battle of Ravencreek",
         image: "battle.png",
         image_alt: "A tactical overview of the Battle of Ravencreek",
-        day: 3,
+        day: 4,
         time: "Mid-day",
         status: "Active Skirmishing",
         factions: {

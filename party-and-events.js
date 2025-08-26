@@ -2,7 +2,7 @@ export const AUXILIARY_PARTY = {
     dan: {
         name: "Dan",
         weapon: "Longsword & Magic",
-        status: "Critically Injured",
+        status: "Recovering",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -13,7 +13,7 @@ export const AUXILIARY_PARTY = {
         name: "Toad Lee",
         description: "A hardy toad warrior who fights with a surprisingly large axe.",
         weapon: "Axe",
-        status: "Critically Injured",
+        status: "Recovering",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -23,7 +23,7 @@ export const AUXILIARY_PARTY = {
     eager: {
         name: "Eager",
         weapon: "Whip",
-        status: "Critically Injured",
+        status: "Recovering",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -43,7 +43,7 @@ export const AUXILIARY_PARTY = {
     roger: {
         name: "Roger",
         weapon: "Gun",
-        status: "Critically Injured",
+        status: "Recovering",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -322,7 +322,7 @@ export const TIMELINE = [
     {
         phase: '1040 BF',
         title: 'The Tea Party Incident',
-        description: "<p>An attempt by Archie to meet with the 'Tea Leaf Syndicate' devolves into a massive brawl after a panic button is pressed, summoning both Toad Gang and Iron Legion forces. In the chaos, Archie unleashes a fireball, killing numerous combatants, including most of the Syndicate's muscle, leaving only Earl Grey and Chai alive.</p>",
+        description: "<p>An attempt by Archie to meet with the 'Tea Leaf Syndicate' devolved into a massive brawl after a panic button is pressed, summoning both Toad Gang and Iron Legion forces. In the chaos, Archie unleashes a fireball, killing numerous combatants, including most of the Syndicate's muscle, leaving only Earl Grey and Chai alive.</p>",
         participants: ['archie', 'humpik', 'iron_legion', 'toad_gang']
     },
     {

@@ -361,10 +361,6 @@
     border-bottom: none;
 }
 
-.aux-ability strong {
-    color: var(--accent-color);
-}
-
 .no-abilities {
     font-size: 0.85rem;
     color: var(--text-secondary);
@@ -512,4 +508,36 @@
 
 #faction-legend a:hover {
     color: var(--accent-color);
+}
+
+/* Intel & Agenda Section */
+.intel-and-agenda-container {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+    margin: 16px 0;
+}
+.intel-and-agenda-container h5 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    margin-bottom: 12px;
+}
+.rumor, .agenda-item {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--border-color);
+}
+.rumors-list, .agenda-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.rumor:last-child, .agenda-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+.rumor-title, .agenda-title {
+    color: var(--text-color);
 }

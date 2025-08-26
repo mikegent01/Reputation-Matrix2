@@ -3,6 +3,7 @@ import { LORE_DATA } from './lore.js';
 import { getReputation, getNotoriety, getDetailedFactionAssessment, getGenericFactionAssessment } from './reputation.js';
 import { playSound } from './common.js';
 import * as factionSystems from './faction-systems.js';
+import { BOP_STATE } from './balance-of-power.js';
 
 const viewContainer = document.getElementById('view-container');
 const partyList = document.getElementById('party-list');
@@ -437,26 +438,77 @@ function renderFactionDetail(factionKey) {
         `;
     }
 
-    // Rumors & Intel
-    let rumorsHTML = '';
+    // Rumors, Intel & Active Agenda
+    let intelSectionHTML = '';
     if (intelLevel >= 60 || isDebug) {
         const relevantRumors = LORE_DATA.rumors.filter(rumor =>
             state.activeRumors.includes(rumor.id) && rumor.effects[factionKey]
         );
-        if (relevantRumors.length > 0) {
-            rumorsHTML = `
-                <div class="character-assessments-container">
-                    <h4>Active Rumors & Intel:</h4>
-                    ${relevantRumors.map(rumor => `
-                        <div class="rumor">
-                            <strong class="rumor-title">${rumor.title}</strong>
-                            <p class="assessment-text">${rumor.description} (Rep ${rumor.effects[factionKey] > 0 ? '+' : ''}${rumor.effects[factionKey]})</p>
-                        </div>`).join('')
-                    }
-                </div>
-            `;
+        
+        // Find leader and their active plans from the Balance of Power state
+        const bopLeaderMap = {
+            'mushroom_regency': 'chancellor_toadsworth',
+            'peach_loyalists': 'captain_toadette',
+            'koopa_troop': 'kamek',
+            'toad_gang': 'skull_cap_murphy',
+            'fawfuls_furious_freaks': 'fawful',
+            'regal_empire': 'emperor_elagabalus',
+            'onyx_hand': 'baron_von_hess',
+            'moonfang_pack': 'grak_ironhide'
+        };
+        const factionBOPLeaderKey = bopLeaderMap[factionKey];
+        const bopPlans = { ...(BOP_STATE.mushroom_kingdom.plans || {}), ...(BOP_STATE.midlands.plans || {}) };
+        const activeBopPlans = [ ...(BOP_STATE.mushroom_kingdom.active_plans || []), ...(BOP_STATE.midlands.active_plans || []) ];
+
+        let activePlans = [];
+        if (factionBOPLeaderKey && bopPlans[factionBOPLeaderKey]) {
+            const leaderPlans = bopPlans[factionBOPLeaderKey];
+            const activeLeaderPlans = activeBopPlans.filter(p => p.leader === factionBOPLeaderKey);
+            
+            activeLeaderPlans.forEach(activePlan => {
+                const planDetails = leaderPlans.find(p => p.id === activePlan.planId);
+                if (planDetails) {
+                    activePlans.push({ ...planDetails, ...activePlan });
+                }
+            });
+        }
+
+        if (relevantRumors.length > 0 || activePlans.length > 0) {
+            intelSectionHTML = `<div class="intel-and-agenda-container">`;
+
+            if (relevantRumors.length > 0) {
+                intelSectionHTML += `
+                    <h5>Active Rumors & Intel</h5>
+                    <div class="rumors-list">
+                        ${relevantRumors.map(rumor => `
+                            <div class="rumor">
+                                <strong class="rumor-title">${rumor.title}</strong>
+                                <p class="assessment-text">${rumor.description} (Rep ${rumor.effects[factionKey] > 0 ? '+' : ''}${rumor.effects[factionKey]})</p>
+                            </div>`).join('')
+                        }
+                    </div>
+                `;
+            }
+
+            if (activePlans.length > 0) {
+                intelSectionHTML += `
+                    <h5 style="margin-top: ${relevantRumors.length > 0 ? '16px' : '0'};">Active Agenda</h5>
+                    <div class="agenda-list">
+                        ${activePlans.map(plan => `
+                            <div class="agenda-item">
+                                <strong class="agenda-title">${plan.name} (${plan.days} days remaining)</strong>
+                                <p class="assessment-text">${plan.description}</p>
+                                <p class="assessment-text"><em><strong>Effect:</strong> ${plan.effect}</em></p>
+                            </div>`).join('')
+                        }
+                    </div>
+                `;
+            }
+
+            intelSectionHTML += `</div>`;
         }
     }
+
 
     // Notable People
     let notablePeopleHTML = '';
@@ -557,7 +609,7 @@ function renderFactionDetail(factionKey) {
                 </div>
             </div>
             ${partyRepHTML}
-            ${rumorsHTML}
+            ${intelSectionHTML}
             ${notablePeopleHTML}
             ${uniqueSystemHTML}
             ${characterAssessmentsHTML}
