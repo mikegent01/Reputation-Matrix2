@@ -4,14 +4,22 @@ const resultsContainer = document.getElementById('results-container');
 // List of all HTML files in the project
 const PROJECT_PAGES = [
     'index.html',
+    'directory.html',
+    'assembly.html',
     'relations.html',
+    'rumors.html',
+    'calendar.html',
+    'timeline.html',
     'focus.html',
-    'newspaper.html',
-    'currency.html',
-    'politics.html',
     'quests.html',
+    'guilds.html',
+    'bookshelf.html',
+    'artifacts.html',
+    'currency.html',
+    'newspaper.html',
     'fawfuls-party.html',
     'battlefield.html',
+    'status.html',
     'developer.html'
 ];
 

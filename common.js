@@ -117,12 +117,15 @@ function showScannerModal(missingImages) {
 
 // --- GLOBAL EVENT LISTENERS ---
 function setupCommonEventListeners() {
-    const logo = document.getElementById('waluigi-logo');
-    if (logo) {
-        logo.addEventListener('click', scanCurrentPageForMissingImages);
-    }
+    // Use event delegation for the logo click to avoid race conditions
+    // as the logo is loaded asynchronously.
+    document.body.addEventListener('click', (event) => {
+        if (event.target.closest('#waluigi-logo')) {
+            scanCurrentPageForMissingImages();
+        }
+    });
 
-    // Init audio on first user interaction
+    // Init audio on the first user interaction anywhere on the page.
     document.body.addEventListener('click', () => {
         initAudio();
     }, { once: true });

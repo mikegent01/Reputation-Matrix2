@@ -1,0 +1,250 @@
+
+
+#assembly-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    height: calc(100% - 80px); /* Adjust for page title */
+}
+
+#assembly-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+#assembly-chamber-container {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    flex-grow: 1;
+}
+
+#assembly-chamber {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    aspect-ratio: 2 / 1; /* Semicircle shape */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.delegation-pod {
+    position: absolute;
+    bottom: 0;
+    transform-origin: bottom center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.delegation-pod:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
+.delegation-pod.active {
+    z-index: 11;
+}
+.delegation-pod.active .pod-label {
+    color: var(--accent-color);
+    text-shadow: 0 0 5px var(--accent-color);
+}
+.delegation-pod.active .delegate-icons-container {
+    border-color: var(--accent-color);
+}
+
+
+.delegate-icons-container {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+    max-width: 120px;
+}
+
+.delegate-icon {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--text-secondary);
+}
+
+.pod-label {
+    font-size: 0.75rem;
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    text-align: center;
+    white-space: nowrap;
+}
+
+#assembly-detail-panel {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+#assembly-detail-content {
+    overflow-y: auto;
+    height: 100%;
+}
+.panel-placeholder {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.nation-detail-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+.nation-detail-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 4px;
+}
+.nation-detail-header p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.nation-detail-section h5 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+.nation-stats, .delegate-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 16px;
+}
+.nation-stats li, .delegate-list li {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+.nation-stats li strong, .delegate-list li strong {
+    color: var(--text-color);
+}
+
+.delegate-leanings-container {
+    background-color: var(--main-bg);
+    border-radius: 4px;
+    padding: 10px;
+}
+.leaning-item {
+    margin-bottom: 12px;
+}
+.leaning-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+.leaning-color-box {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+.bloc-description, .nation-rationale, .leaning-rationale {
+    font-size: 0.85rem;
+    padding: 8px 0 0 20px;
+    margin-top: 8px;
+    border-left: 2px solid var(--border-color);
+    margin-left: 6px; /* Align with color box center */
+}
+.bloc-description h6, .nation-rationale h6, .leaning-rationale h6 {
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+.bloc-description p, .nation-rationale p, .leaning-rationale p {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0;
+}
+
+
+#power-balance-container {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    height: 350px; /* Bug Fix: Constrain height */
+    display: flex; /* Added for centering */
+    flex-direction: column; /* Added for centering */
+}
+#power-balance-container h4 {
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 12px;
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+#power-balance-chart-wrapper {
+    position: relative;
+    flex-grow: 1; /* Allow wrapper to fill space */
+    min-height: 0; /* Fix for flexbox sizing issue with canvas */
+}
+
+
+#global-issues-container {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+}
+#global-issues-container h4 {
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 12px;
+}
+#global-issues-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+}
+.issue-card {
+    background-color: var(--main-bg);
+    padding: 12px;
+    border-radius: 6px;
+    border-left: 3px solid var(--neutral-color);
+}
+.issue-card h6 {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 4px;
+}
+.issue-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 1200px) {
+    #assembly-layout {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,164 @@
+#guilds-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 24px;
+}
+
+.guild-card {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.guild-header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.guild-logo {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    padding: 4px;
+    background-color: var(--main-bg);
+}
+
+.guild-title-group h3 {
+    font-family: var(--font-display);
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.guild-title-group p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.guild-body > p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.guild-info-block {
+    background-color: var(--main-bg);
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.guild-info-block ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 0.9rem;
+}
+
+.guild-info-block li {
+     color: var(--text-secondary);
+}
+
+.guild-info-block li strong {
+    color: var(--text-color);
+    min-width: 60px;
+    display: inline-block;
+}
+
+/* --- Tab Styles --- */
+.guild-details-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.guild-tab-btn {
+    padding: 10px 16px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.guild-tab-btn:hover {
+    color: var(--text-color);
+}
+
+.guild-tab-btn.active {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+.guild-tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.guild-tab-content.active {
+    display: block;
+}
+
+.guild-tab-content h5 {
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.guild-tab-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.guild-tab-content li {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    padding-left: 12px;
+    border-left: 2px solid var(--border-color);
+}
+.guild-tab-content li strong {
+    color: var(--text-color);
+}
+
+.guild-tab-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+
+/* Sub-Guilds */
+.sub-guild-card {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 8px;
+}
+
+.sub-guild-card h6 {
+    font-family: var(--font-display);
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.sub-guild-card p {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}

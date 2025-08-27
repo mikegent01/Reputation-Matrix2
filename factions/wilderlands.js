@@ -14,7 +14,7 @@ export const WILDERLANDS_FACTIONS = {
         category: "Regional Powers",
         region: "Wilderlands",
         notable_people: [
-            { name: "Chief Thornpaw", role: "Spirit-Walker Leader", description: "The wise shaman who guides the clans and now teaches Dan magic. He holds a deep secret: a past relationship with the late Princess Peach, which gives him unique insight into the kingdom's history and a personal stake in the investigation of her death." },
+            { name: "Chief Thornpaw", role: "Spirit-Walker Leader", description: "The wise shaman who guides the clans and now teaches Dan magic." },
             { name: "Warchief Ironmane", role: "Beast-Rider Champion", description: "The strongest warrior among the Beast-Riders, known for his massive tiger mount." }
         ],
         waluigi_tip: "The Rakasha are all about 'honor'. The Spirit-Walkers are the real power. Befriend them, and you can get the hot-headed Beast-Riders to do anything you want!",
@@ -51,7 +51,7 @@ export const WILDERLANDS_FACTIONS = {
         logo: 'faction_koopa_troop.png',
         relations: { 
             allies: ['onyx_hand', 'moonfang_pack'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'liberated_toads', 'wario_land', 'mushroom_regency', 'fawfuls_furious_freaks']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'the_unchained', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'fawfuls_furious_freaks']
         },
         power_level: 7,
         leader: "bowser",

@@ -408,5 +408,43 @@ export const WIDESPREAD_FACTIONS = {
                 }
             }
         }
+    },
+    world_assembly: {
+        name: "World Assembly",
+        description: "A global body founded on the philosophical principles of the legendary peacemaker, Fabian. It aims to prevent catastrophic wars by fostering dialogue, but is deeply fractured between those who seek true global unity and those who wish to use it as a tool to undermine the current world leaders.",
+        logo: 'icon_world_assembly.png',
+        relations: {
+            allies: ['the_unchained', 'mushroom_regency', 'goodstyle_artisans'],
+            enemies: ['regal_empire', 'iron_legion', 'onyx_hand', 'silver_flame']
+        },
+        power_level: 6,
+        leader: "The Triumvirate",
+        category: "Regional Powers",
+        region: "Widespread (Neutral Territories)",
+        notable_people: [
+            { name: "Ambassador Thorne", role: "Diplomatic Triumvir", description: "A patient diplomat who believes in incremental change and working with existing governments." },
+            { name: "Free-Speaker Kael", role: "Progressive Triumvir", description: "A fiery revolutionary who sees the current monarchs and leaders as the root of all conflict." },
+            { name: "Mediator Lyra", role: "Neutral Triumvir", description: "A pragmatist tasked with the impossible job of finding common ground between the two opposing factions." }
+        ],
+        waluigi_tip: "WAH! These do-gooders are so easy to play! Tell the Diplomats that the Progressives are planning a violent coup. Tell the Progressives that the Diplomats just sold them out to the Empire! Sit back and watch the fireworks! So much drama!",
+        internal_politics: {
+            ruling_faction: "diplomatic_corps",
+            sub_factions: {
+                diplomatic_corps: {
+                    name: "The Diplomatic Corps",
+                    description: "Diplomats and idealists who follow Fabian's original teachings. They work with existing leaders to build a lasting peace through patient negotiation and mutual understanding.",
+                    opinion: "The party's chaotic actions are a threat to stability. However, their role in exposing corruption and freeing the enslaved shows they can be a force for good. We must guide them toward more peaceful solutions.",
+                    influence: 55,
+                    reputation_modifiers: { archie: -10, markop: 15, humpik: 0, bowser: -15 }
+                },
+                progressive_bloc: {
+                    name: "The Progressive Bloc",
+                    description: "Revolutionaries and radicals who believe the current world leaders are the source of all conflict. They see the Assembly as a vehicle to inspire global revolution and overthrow the old guard.",
+                    opinion: "The party are true agents of change! Their defiance of the Empire and their willingness to topple the old order are an inspiration! They are the spark that will light the fire of global revolution!",
+                    influence: 45,
+                    reputation_modifiers: { archie: 25, markop: 10, humpik: 5, bowser: 10 }
+                }
+            }
+        }
     }
 };
