@@ -1,4 +1,5 @@
 import { LORE_DATA, CHARACTER_RELATIONS } from './lore.js';
+import { state } from './state.js';
 
 // --- Detail Panel Logic ---
 const appContainer = document.getElementById('app');
@@ -6,6 +7,15 @@ const detailPanel = document.getElementById('detail-panel');
 const detailPanelContent = document.getElementById('detail-panel-content');
 const detailPanelClose = document.getElementById('detail-panel-close');
 let selectedNode = null;
+
+function getIntelForFaction(factionKey) {
+    if (!state.intelLevels || !factionKey) return 0;
+    const loggedInUser = state.loggedInUser || 'generic';
+    const userIntel = state.intelLevels[loggedInUser] || state.intelLevels.generic;
+    if (!userIntel) return 0;
+    const defaultIntel = userIntel.default ?? (state.intelLevels.generic ? state.intelLevels.generic[factionKey] : 0) ?? 0;
+    return userIntel[factionKey] ?? defaultIntel;
+}
 
 function hideDetailPanel() {
     detailPanel.classList.remove('visible');
@@ -92,7 +102,7 @@ function showDetailPanel(data, nodeElement) {
     appContainer.classList.add('panel-visible');
 }
 
-detailPanelClose.addEventListener('click', hideDetailPanel);
+if(detailPanelClose) detailPanelClose.addEventListener('click', hideDetailPanel);
 
 // --- D3 Force-Directed Graph ---
 
@@ -109,51 +119,58 @@ const categoryColorMap = {
 function processGraphData() {
     const allFactions = LORE_DATA.factions;
     const allCharacters = LORE_DATA.characters;
+    const isDebug = state.debugMode;
+
+    const knownFactionKeys = new Set(Object.keys(LORE_DATA.factions).filter(key => isDebug || getIntelForFaction(key) > 0));
 
     const nodes = [];
     const links = [];
     const characterNodeIds = new Set();
-
-    Object.keys(allFactions).forEach(key => {
+    
+    // Process Factions
+    knownFactionKeys.forEach(key => {
         const faction = allFactions[key];
         nodes.push({ id: key, type: 'faction', name: faction.name, category: faction.category, power: faction.power_level, logo: faction.logo });
     });
 
+    // Process Characters (Leaders & Party)
     Object.keys(allCharacters).forEach(key => {
         const char = allCharacters[key];
-        // Only add characters that are in the party or explicitly linked in relations to avoid clutter
-        if (char.isParty || CHARACTER_RELATIONS[key] || Object.values(CHARACTER_RELATIONS).some(rels => rels[key])) {
-             nodes.push({ id: key, type: char.isParty ? 'party' : 'leader', name: char.name, role: char.role || (char.isParty ? "Main Party" : "Key Figure") });
-             characterNodeIds.add(key);
+        const isParty = char.isParty;
+        const leaderFactionKey = Object.keys(allFactions).find(fKey => allFactions[fKey].leader === key || allFactions[fKey].notable_people?.some(p => p.name === char.name));
+
+        if (isParty || (leaderFactionKey && knownFactionKeys.has(leaderFactionKey))) {
+            nodes.push({ id: key, type: isParty ? 'party' : 'leader', name: char.name, role: char.role || (isParty ? "Main Party" : "Key Figure") });
+            characterNodeIds.add(key);
         }
     });
 
-    Object.keys(allFactions).forEach(sourceKey => {
+    const knownNodeIds = new Set(nodes.map(n => n.id));
+
+    // Process Links
+    knownFactionKeys.forEach(sourceKey => {
         const faction = allFactions[sourceKey];
         if (faction.relations?.allies) {
-            faction.relations.allies.forEach(targetKey => { if (allFactions[targetKey]) links.push({ source: sourceKey, target: targetKey, type: 'ally' }); });
+            faction.relations.allies.forEach(targetKey => { if (knownFactionKeys.has(targetKey)) links.push({ source: sourceKey, target: targetKey, type: 'ally' }); });
         }
         if (faction.relations?.enemies) {
-            faction.relations.enemies.forEach(targetKey => { if (allFactions[targetKey]) links.push({ source: sourceKey, target: targetKey, type: 'enemy' }); });
+            faction.relations.enemies.forEach(targetKey => { if (knownFactionKeys.has(targetKey)) links.push({ source: sourceKey, target: targetKey, type: 'enemy' }); });
         }
     });
-    
-    // Add tethers for all known leaders, not just faction leaders
+
+    // Add tethers for known leaders to their known factions
     nodes.forEach(node => {
-        if(node.type === 'leader') {
-            const leaderFaction = Object.values(allFactions).find(f => f.notable_people?.some(p => p.name === node.name) || f.leader === node.id);
-            if(leaderFaction) {
-                const factionNode = nodes.find(n => n.name === leaderFaction.name);
-                if(factionNode) {
-                    links.push({ source: node.id, target: factionNode.id, type: 'tether' });
-                }
+        if (node.type === 'leader') {
+            const leaderFactionKey = Object.keys(allFactions).find(fKey => allFactions[fKey].leader === node.id || allFactions[fKey].notable_people?.some(p => p.name === node.name));
+            if (leaderFactionKey && knownNodeIds.has(leaderFactionKey)) {
+                links.push({ source: node.id, target: leaderFactionKey, type: 'tether' });
             }
         }
     });
 
     Object.keys(CHARACTER_RELATIONS).forEach(sourceKey => {
         Object.keys(CHARACTER_RELATIONS[sourceKey]).forEach(targetKey => {
-            if(characterNodeIds.has(sourceKey) && characterNodeIds.has(targetKey)) {
+            if (knownNodeIds.has(sourceKey) && knownNodeIds.has(targetKey)) {
                 const relation = CHARACTER_RELATIONS[sourceKey][targetKey];
                 links.push({ source: sourceKey, target: targetKey, type: relation.type, text: relation.text });
             }
@@ -191,6 +208,8 @@ function setupGraphCanvas(container) {
         }).strength(d => d.type === 'tether' ? 0.2 : 0.1))
         .force("charge", d3.forceManyBody().strength(d => d.type === 'faction' ? -400 : -100))
         .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("x", d3.forceX(width / 2).strength(0.04)) // A gentle pull to the horizontal center
+        .force("y", d3.forceY(height / 2).strength(0.04)) // A gentle pull to the vertical center
         .force("collide", d3.forceCollide().radius(d => (d.type === 'faction' ? 10 + d.power * 2.5 : d.type === 'party' ? 15 : 12) + 5));
     
     const zoom = d3.zoom().scaleExtent([0.1, 4]).on('zoom', (event) => {
@@ -332,9 +351,12 @@ function createRelationsMatrix() {
     const container = document.getElementById('relations-container');
     if (!container) return;
 
+    const isDebug = state.debugMode;
+    const knownFactionKeys = Object.keys(LORE_DATA.factions).filter(key => isDebug || getIntelForFaction(key) > 0);
+
     const factions = LORE_DATA.factions;
     const categoryOrder = ['Major Powers', 'Regional Powers', 'Mystical & Ancient', 'Underworld & Fringe', 'Interdimensional Threats'];
-    const sortedFactionKeys = Object.keys(factions).sort((a, b) => {
+    const sortedFactionKeys = knownFactionKeys.sort((a, b) => {
         const indexA = categoryOrder.indexOf(factions[a].category);
         const indexB = categoryOrder.indexOf(factions[b].category);
         if (indexA !== indexB) return (indexA === -1 ? 99 : indexA) - (indexB === -1 ? 99 : indexB);

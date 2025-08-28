@@ -80,8 +80,31 @@
 #sidebar footer {
     margin-top: auto;
     text-align: center;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+#sidebar footer p {
     font-size: 0.75rem;
     color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+#switch-operator-btn {
+    width: 90%;
+    padding: 8px 12px;
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#switch-operator-btn:hover {
+    border-color: var(--negative-color);
+    color: var(--negative-color);
 }
 
 /* --- Main Content --- */

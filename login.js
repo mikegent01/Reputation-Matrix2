@@ -12,7 +12,6 @@ const closeModalBtn = soundtrackModal ? soundtrackModal.querySelector('.modal-cl
 const loginScreen = document.getElementById('character-login-screen');
 const grid = document.getElementById('character-select-grid');
 const genericBtn = document.getElementById('generic-login-btn');
-const debugBtn = document.getElementById('debug-login-btn');
 const skipBtn = document.getElementById('skip-intro-btn');
 
 const MAIN_CHARACTERS = ['archie', 'markop', 'humpik', 'bowser'];
@@ -58,18 +57,6 @@ function setupLoginScreen() {
     
     if (genericBtn) genericBtn.addEventListener('click', () => selectProfile('generic'));
     if (skipBtn) skipBtn.addEventListener('click', () => selectProfile('generic'));
-    if (debugBtn) {
-        debugBtn.addEventListener('click', () => {
-            const password = prompt("Enter Debug Password:");
-            if (password === 'a') {
-                alert("Debug Mode Activated!");
-                localStorage.setItem('vigilanceDebugMode', 'true');
-                selectProfile('generic'); // Log in as generic user with debug powers
-            } else if (password !== null) { // Check for null in case user cancels
-                alert("Incorrect Password.");
-            }
-        });
-    }
 }
 
 function setupPlayGameButton() {

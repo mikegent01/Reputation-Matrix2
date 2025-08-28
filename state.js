@@ -8,8 +8,18 @@ import { FOCUS_TREES } from './focus-tree.js';
 function generateGenericIntel() {
     const intel = {};
     for (const factionKey in LORE_DATA.factions) {
-        intel[factionKey] = 30;
+        intel[factionKey] = 0;
     }
+    // Give the generic user some baseline knowledge of major players.
+    intel['regal_empire'] = 30;
+    intel['iron_legion'] = 25;
+    intel['mushroom_regency'] = 25;
+    intel['koopa_troop'] = 20;
+    intel['freelancer_underworld'] = 15;
+    intel['mages_guild'] = 15;
+    intel['onyx_hand'] = 10;
+    intel['moonfang_pack'] = 10;
+    
     return intel;
 }
 
@@ -41,13 +51,12 @@ export const state = {
         humpik: {
             koopa_troop: 95, toad_gang: 60, regal_empire: 25, iron_legion: 30,
             rakasha_clans: 40, rebel_clans: 30, moonfang_pack: 35,
-            liberated_toads: 45, default: 20
+            liberated_toads: 45
         },
         bowser: {
             koopa_troop: 100, mushroom_regency: 75, peach_loyalists: 70,
             regal_empire: 65, iron_legion: 60, rebel_clans: 50,
-            onyx_hand: 40, moonfang_pack: 45, crimson_fleet: 40,
-            default: 30
+            onyx_hand: 40, moonfang_pack: 45, crimson_fleet: 40
         },
         generic: generateGenericIntel(),
     },

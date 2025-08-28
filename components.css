@@ -78,13 +78,11 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-.status-link {
-    text-decoration: none;
-}
-.status-link .status-ok {
+#debug-toggle-btn {
+    cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
-.status-link:hover .status-ok {
+#debug-toggle-btn:hover {
     color: var(--accent-color);
     text-shadow: 0 0 5px var(--accent-color);
 }

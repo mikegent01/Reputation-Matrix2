@@ -4,6 +4,7 @@ import { getReputation, getNotoriety, getDetailedFactionAssessment, getGenericFa
 import { playSound } from './common.js';
 import * as factionSystems from './faction-systems.js';
 import { BOP_STATE } from './balance-of-power.js';
+import { getIntelForFaction } from './systems/common.js';
 
 const viewContainer = document.getElementById('view-container');
 const partyList = document.getElementById('party-list');
@@ -64,39 +65,32 @@ export function renderEventList() {
 
 // --- VIEW-SPECIFIC RENDERERS ---
 
-function getIntelForFaction(factionKey) {
-    const loggedInUser = state.loggedInUser || 'generic';
-    const userIntel = state.intelLevels[loggedInUser] || state.intelLevels.generic;
-    // Provide a fallback chain: user-specific -> user's default -> generic for that faction -> 0
-    const defaultIntel = userIntel.default ?? (state.intelLevels.generic ? state.intelLevels.generic[factionKey] : 0) ?? 0;
-    return userIntel[factionKey] ?? defaultIntel;
-}
-
-
 function renderFactionDirectory() {
     viewContainer.innerHTML = ''; // Clear previous view
     const grid = document.createElement('div');
     grid.className = 'faction-directory-grid';
     viewContainer.appendChild(grid);
     
-    // Get unique regions and render filter
-    const regions = [...new Set(Object.values(LORE_DATA.factions).map(f => f.region))].sort();
+    const isDebug = state.debugMode;
+    const knownFactions = Object.entries(LORE_DATA.factions).filter(([key]) => isDebug || getIntelForFaction(key) > 0);
+
+    // Get unique regions from known factions and render filter
+    const knownRegions = [...new Set(knownFactions.map(([, f]) => f.region))].sort();
     const regionFilterList = document.getElementById('region-filter-list');
     
     let regionsHTML = `<li data-region="All Regions" class="${activeRegion === 'All Regions' ? 'active' : ''}">All Regions</li>`;
-    regionsHTML += regions.map(region => 
+    regionsHTML += knownRegions.map(region => 
         `<li data-region="${region}" class="${region === activeRegion ? 'active' : ''}">${region}</li>`
     ).join('');
     regionFilterList.innerHTML = regionsHTML;
     
     // Filter and render factions for the active region
-    const factionsToRender = Object.entries(LORE_DATA.factions)
+    const factionsToRender = knownFactions
         .filter(([, faction]) => activeRegion === 'All Regions' || faction.region === activeRegion)
         .sort(([, a], [, b]) => (b.power_level || 0) - (a.power_level || 0));
 
     grid.innerHTML = ''; // Clear existing grid before re-rendering
-    const isDebug = state.debugMode;
-
+    
     factionsToRender.forEach(([factionKey, faction]) => {
         const intelLevel = getIntelForFaction(factionKey);
         

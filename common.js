@@ -117,11 +117,35 @@ function showScannerModal(missingImages) {
 
 // --- GLOBAL EVENT LISTENERS ---
 function setupCommonEventListeners() {
-    // Use event delegation for the logo click to avoid race conditions
-    // as the logo is loaded asynchronously.
+    // Use event delegation for various clicks to avoid race conditions
+    // as elements are loaded asynchronously.
     document.body.addEventListener('click', (event) => {
+        // Logo click for asset scanner
         if (event.target.closest('#waluigi-logo')) {
             scanCurrentPageForMissingImages();
+        }
+
+        // Sidebar status click for debug mode
+        if (event.target.id === 'debug-toggle-btn') {
+            const isDebug = localStorage.getItem('vigilanceDebugMode') === 'true';
+            const newDebugState = !isDebug;
+            
+            localStorage.setItem('vigilanceDebugMode', String(newDebugState));
+            
+            playSound('confirm.mp3', 0.5);
+            
+            const message = `Debug Mode ${newDebugState ? 'ACTIVATED' : 'DEACTIVATED'}. Page will now reload.`;
+            alert(message);
+            
+            window.location.reload();
+        }
+
+        // Logout button
+        if (event.target.id === 'switch-operator-btn') {
+            playSound('wah.mp3', 0.8);
+            localStorage.removeItem('vigilanceTerminalUser');
+            localStorage.removeItem('vigilanceDebugMode');
+            window.location.href = 'index.html';
         }
     });
 

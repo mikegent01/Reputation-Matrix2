@@ -17,7 +17,8 @@ export const CHARACTER_RELATIONS = {
         'alpha_bloodmaw': { type: 'ally', text: "Archie on Bloodmaw: Angry, hairy, and hates vampires. What's not to like?" },
         'chancellor_toadsworth': { type: 'enemy', text: "Archie on Toadsworth: Just another bureaucrat trying to hold onto the scraps of a broken system. Pathetic." },
         'captain_toadette': { type: 'enemy', text: "Archie on Toadette: A fanatic. Blind loyalty is even more boring than regular loyalty. At least she's angry." },
-        'earl_grey': { type: 'enemy', text: "Archie on Earl Grey: Big guy with an axe. Almost as boring as Humpik, but on the wrong side." }
+        'earl_grey': { type: 'enemy', text: "Archie on Earl Grey: Big guy with an axe. Almost as boring as Humpik, but on the wrong side." },
+        'lario': { type: 'ally', text: "Archie on Lario: A greasy little goblin who'd sell his own brother for a gold coin. Which he basically is. Useful for fixing things and taking the fall." }
     },
     'markop': {
         'archie': { type: 'ally', text: "Markop on Archie: A force of pure chaos. His methods are reprehensible, but his actions sometimes lead to a greater good. A soul to be guided, if possible." },
@@ -32,7 +33,8 @@ export const CHARACTER_RELATIONS = {
         'high_inquisitor_vale': { type: 'enemy', text: "Markop on Vale: He has twisted the faith I once held into a weapon of blind hatred. He is a cautionary tale, a mirror of what I could have become." },
         'captain_syrup': { type: 'enemy', text: "Markop on Syrup: A pirate who lives by no code but her own greed. She is a symptom of the lawlessness we must fight." },
         'chancellor_toadsworth': { type: 'ally', text: "Markop on Toadsworth: A good man trying to hold his world together in a time of crisis. He has my sympathies, and my aid if he should ask it." },
-        'captain_toadette': { type: 'enemy', text: "Markop on Toadette: Her loyalty is admirable, but it has become a blinding fanaticism. She cannot see that her actions are creating more chaos, not less." }
+        'captain_toadette': { type: 'enemy', text: "Markop on Toadette: Her loyalty is admirable, but it has become a blinding fanaticism. She cannot see that her actions are creating more chaos, not less." },
+        'lario': { type: 'ally', text: "Markop on Lario: A greedy and cowardly mechanic, but there is a flicker of decency in him. He can be reasoned with, which sets him apart from many we've encountered." }
     },
     'humpik': {
         'bowser': { type: 'ally', text: "Humpik on Bowser: The King is strong. A powerful ally. We fight well together. He respects my strength, and I respect his." },
@@ -40,7 +42,8 @@ export const CHARACTER_RELATIONS = {
         'markop': { type: 'ally', text: "Humpik on Markop: The horse-man is too serious. But he fights good. I respect that." },
         'dan': { type: 'ally', text: "Humpik on Dan: He's a little guy, but he's tough! Like a tiny Bowser! Gwahahaha!" },
         'emperor_elagabalus': { type: 'enemy', text: "Humpik on Elagabalus: He's the King's enemy! So he's my enemy! I'll smash his castle!" },
-        'general_marcus_ironhand': { type: 'enemy', text: "Humpik on Ironhand: He's got a big army, but they're no match for the Koopa Troop! Or me!" }
+        'general_marcus_ironhand': { type: 'enemy', text: "Humpik on Ironhand: He's got a big army, but they're no match for the Koopa Troop! Or me!" },
+        'lario': { type: 'ally', text: "Humpik on Lario: Sneaky little guy. Good with machines. The King says he's useful, so he's useful." }
     },
     'bowser': {
         'humpik': { type: 'ally', text: "Bowser on Humpik: Humpik is a warrior of immense power and conviction. An equal on the battlefield. His counsel is direct, and his axe is true." },
@@ -51,7 +54,25 @@ export const CHARACTER_RELATIONS = {
         'general_marcus_ironhand': { type: 'enemy', text: "Bowser on Ironhand: His Legion is disciplined, I'll give him that. But they lack the passion of my Troop! I'll break them." },
         'chancellor_toadsworth': { type: 'enemy', text: "Bowser on the Council: Weak fools who couldn't protect their own Princess. Their kingdom is mine for the taking." },
         'archmage_theron': { type: 'enemy', text: "Bowser on Theron: His precious Guild thinks their magic is so refined. My Magikoopas get results. That's all that matters." },
-        'captain_syrup': { type: 'ally', text: "Bowser on Syrup: A pirate queen? She has ambition. Perhaps we can make a deal." }
+        'captain_syrup': { type: 'ally', text: "Bowser on Syrup: A pirate queen? She has ambition. Perhaps we can make a deal." },
+        'lario': { type: 'ally', text: "Bowser on Lario: A useful mechanic. He got my Clown Car running again. For a price." }
+    },
+    // --- NEWLY ADDED CHARACTERS ---
+    'waluigi': {
+        'wario': { type: 'enemy', text: "Waluigi on Wario: My old partner! Always obsessed with garlic and gold. He had no appreciation for true artistry in villainy! Now he's a ghost? WAH! Pathetic!" },
+        'lario': { type: 'enemy', text: "Waluigi on Lario: A cheap imitation of his brother. No style, no grace, just greed. He is an insignificant pawn in my grand game. WAH-ha-ha!" },
+        'captain_syrup': { type: 'enemy', text: "Waluigi on Syrup: A foolish pirate captain! She thought she could outsmart me, Waluigi! Now she has a grudge? Let her get in line! The line of my many jealous admirers!" },
+        'archie': { type: 'ally', text: "Waluigi on Archie: A true artist of chaos! His methods are crude, but his results are undeniably spectacular! A kindred spirit, though he lacks my magnificent style." },
+        'markop': { type: 'enemy', text: "Waluigi on Markop: So boring! All 'honor' and 'justice'! He is the color beige in a world that I am trying to paint purple! WAH!" }
+    },
+    'lario': {
+        'wario': { type: 'ally', text: "Lario on Wario: My brother! A genius! A bit... demanding, now that he's a ghost. But family is family! And business is business!" },
+        'archie': { type: 'ally', text: "Lario on Archie: That three-eyed weirdo is a walking disaster! But he breaks things, and broken things mean scrap, and scrap means money! Good for business, bad for my nerves." },
+        'markop': { type: 'ally', text: "Lario on Markop: The big horse-guy... he saved my skin. I don't get it. Why would he do that? Must want something. Nobody does something for nothing." },
+        'humpik': { type: 'ally', text: "Lario on Humpik: A big, dumb hammer looking for a nail. Useful when pointed at someone else's property." },
+        'bowser': { type: 'ally', text: "Lario on Bowser: Now HE'S a proper villain! Intimidating! Has his own army! Probably has lots and lots of treasure. A potential high-value customer!" },
+        'captain_syrup': { type: 'enemy', text: "Lario on Captain Syrup: That woman is crazy! The deal was simple! It wasn't my fault things got complicated! I hope I never see her again." },
+        'waluigi': { type: 'enemy', text: "Lario on Waluigi: Wario's old partner. Always trying to be flashy and steal the spotlight. He's bad for business. Too much... purple." }
     },
     // --- NPC OPINIONS ON PARTY ---
     'emperor_elagabalus': {
@@ -85,7 +106,9 @@ export const CHARACTER_RELATIONS = {
     'captain_syrup': {
         'archie': { type: 'enemy', text: "Syrup on Archie: That chaotic fool! He got in the way of my revenge and my treasure. He owes me, big time." },
         'markop': { type: 'enemy', text: "Syrup on Markop: His 'honorable' meddling cost me a perfectly good airship. He'll pay for that." },
-        'bowser': { type: 'enemy', text: "Syrup on Bowser: Thinks he's king of the world. My fleet answers to no one, especially not some overgrown turtle." }
+        'bowser': { type: 'enemy', text: "Syrup on Bowser: Thinks he's king of the world. My fleet answers to no one, especially not some overgrown turtle." },
+        'waluigi': { type: 'enemy', text: "Syrup on Waluigi: That skinny purple rat! He set me up! Him and that greasy little goblin Lario. They'll both walk the plank for this!" },
+        'lario': { type: 'enemy', text: "Syrup on Lario: That treacherous, spineless goblin! He'll regret ever crossing the Captain of the Crimson Fleet. His workshop will make a lovely pile of kindling." }
     },
     'chief_thornpaw': {
         'archie': { type: 'enemy', text: "Thornpaw on Archie: His energy is a sickness upon the land. He walks a path of destruction that scars the natural world." },
