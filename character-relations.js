@@ -49,7 +49,7 @@ export const CHARACTER_RELATIONS = {
         'dan': { type: 'enemy', text: "Bowser on Dan: Another annoying toad. This one has magic? Kamek will deal with him." },
         'emperor_elagabalus': { type: 'enemy', text: "Bowser on Elagabalus: A rival king hiding in his shiny castle. I'll enjoy taking it from him." },
         'general_marcus_ironhand': { type: 'enemy', text: "Bowser on Ironhand: His Legion is disciplined, I'll give him that. But they lack the passion of my Troop! I'll break them." },
-        'mushroom_protectorate_leader': { type: 'enemy', text: "Bowser on the Council: Weak fools who couldn't protect their own Princess. Their kingdom is mine for the taking." },
+        'chancellor_toadsworth': { type: 'enemy', text: "Bowser on the Council: Weak fools who couldn't protect their own Princess. Their kingdom is mine for the taking." },
         'archmage_theron': { type: 'enemy', text: "Bowser on Theron: His precious Guild thinks their magic is so refined. My Magikoopas get results. That's all that matters." },
         'captain_syrup': { type: 'ally', text: "Bowser on Syrup: A pirate queen? She has ambition. Perhaps we can make a deal." }
     },

@@ -30,14 +30,17 @@
         <div id="app">
             <aside id="sidebar"></aside>
             <main id="main-content">
-                <div id="directory-controls">
-                    <span>Sort Directory By:</span>
-                    <button data-sort="power" class="dir-control-button active">Power</button>
-                    <button data-sort="name" class="dir-control-button">Name</button>
-                    <button data-sort="region" class="dir-control-button">Region</button>
-                </div>
-                <div id="view-container">
-                    <!-- Faction Directory or Details will be injected here by JS -->
+                <h2 class="page-title">Faction Directory</h2>
+                <div id="directory-layout">
+                    <aside id="region-filter-sidebar">
+                        <h4>Filter by Region</h4>
+                        <ul id="region-filter-list">
+                            <!-- Region filters will be injected by JS -->
+                        </ul>
+                    </aside>
+                    <div id="view-container">
+                        <!-- Faction Directory or Details will be injected here by JS -->
+                    </div>
                 </div>
             </main>
             <aside id="detail-panel">

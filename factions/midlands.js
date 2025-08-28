@@ -11,7 +11,7 @@ export const MIDLANDS_FACTIONS = {
         },
         power_level: 10,
         category: "Major Powers",
-        region: "The Midlands (Capital)",
+        region: "The Midlands",
         leader: "emperor_elagabalus",
         notable_people: [
             { name: "Emperor Elagabalus", role: "Supreme Ruler", description: "The divine ruler of the Empire, believed to be immortal and all-knowing." },
@@ -77,7 +77,7 @@ export const MIDLANDS_FACTIONS = {
         },
         power_level: 9,
         category: "Major Powers",
-        region: "The Midlands (Imperial Borders)",
+        region: "The Midlands",
         leader: "lord_vexar_steelclad",
         notable_people: [
             { name: "Lord Vexar Steelclad", role: "Grand Forgemaster", description: "The supreme leader of the entire Iron Legion, ruling from the Iron Citadel." },
@@ -85,7 +85,7 @@ export const MIDLANDS_FACTIONS = {
             { name: "Colonel Vera Steelstorm", role: "War-Forged Leader", description: "A young, ambitious officer who leads the Legion's progressive faction." },
             { name: "Forgeheart", role: "Viceroy Hammer, Iron Crown Brigade", description: "The Toad commander of the Legion's covert operations in the Mushroom Kingdom." }
         ],
-        waluigi_tip: "WAH! These legionnaires are so predictable. The 'Old Guard' under Ironhand hates chaos, but the younger 'War-Forged' officers are hungry for glory. Give them a chance to prove themselves in a big, flashy fight, and they'll love you for it!"
+        waluigi_tip: "WAH! These legionnaires are so predictable. The 'Old Guard' under Ironhand hates chaos, but the 'War-Forged' officers are hungry for glory. Give them a chance to prove themselves in a big, flashy fight, and they'll love you for it!"
     },
     onyx_hand: {
         name: "The Onyx Hand",
@@ -98,7 +98,7 @@ export const MIDLANDS_FACTIONS = {
         power_level: 8,
         leader: "lady_ebonveil",
         category: "Mystical & Ancient",
-        region: "The Midlands (Southern Marchlands)",
+        region: "The Midlands",
         notable_people: [
             { name: "Lady Ebonveil", role: "Shadow Patriarch", description: "The immortal vampire elder who sits at the pinnacle of the Onyx Hand's shadowy hierarchy." },
             { name: "Lord Crimson", role: "Onyx Lord", description: "An ancient and manipulative vampire who sits on the council of 13 master vampires." },
@@ -117,7 +117,7 @@ export const MIDLANDS_FACTIONS = {
         power_level: 8,
         leader: "archmage_veyra",
         category: "Mystical & Ancient",
-        region: "The Midlands (Autumn Wood)",
+        region: "The Midlands",
         notable_people: [
             { name: "Archmage Veyra", role: "Archmage Sovereign", description: "The elected leader of the Guild, struggling to mediate between the two main factions." },
             { name: "Archmage Theron", role: "Conservator Leader", description: "The stern former leader who now heads the traditionalist Conservator faction." },
@@ -136,7 +136,7 @@ export const MIDLANDS_FACTIONS = {
         power_level: 7,
         leader: "high_inquisitor_vale",
         category: "Mystical & Ancient",
-        region: "The Midlands (Holy Enclaves)",
+        region: "The Midlands",
         notable_people: [
             { name: "High Inquisitor Vale", role: "Purifier Leader", description: "A zealous paladin who sees all supernatural creatures as abominations." },
             { name: "Templar Captain Dorn", role: "Torch Bearer", description: "A more moderate leader who believes in redemption before destruction." }
@@ -180,7 +180,7 @@ export const MIDLANDS_FACTIONS = {
         power_level: 7,
         leader: "judge_eternal_korven",
         category: "Regional Powers",
-        region: "The Midlands (Citadel of Law)",
+        region: "The Midlands",
         notable_people: [
             { name: "Judge Eternal Korven", role: "Supreme Arbiter", description: "The immortal leader of the Truthbearers, known for his unwavering dedication to law." },
             { name: "Arbitrix Mira", role: "Intent Reader", description: "A younger judge who considers the spirit of the law as much as the letter." }
@@ -217,7 +217,7 @@ export const MIDLANDS_FACTIONS = {
         power_level: 7,
         leader: "alpha_bloodmaw",
         category: "Mystical & Ancient",
-        region: "The Midlands (Dark Valley)",
+        region: "The Midlands",
         notable_people: [
             { name: "Alpha Bloodmaw", role: "Pack Leader", description: "The strongest werewolf who leads the pack through dominance and fury." },
             { name: "Shaman Moonwhisper", role: "Spirit Guide", description: "The pack's spiritual leader who communes with lunar spirits." }

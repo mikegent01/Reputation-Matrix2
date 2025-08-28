@@ -11,7 +11,7 @@ export const WIDESPREAD_FACTIONS = {
         },
         power_level: 7,
         category: "Underworld & Fringe",
-        region: "Widespread (Shadows)",
+        region: "Widespread",
         leader: "the_broker",
         notable_people: [
             { name: "The Broker", role: "Information Kingpin", description: "A mysterious figure who trades in secrets and favors." },
@@ -75,7 +75,7 @@ export const WIDESPREAD_FACTIONS = {
         power_level: 5,
         leader: "the_jester",
         category: "Mystical & Ancient",
-        region: "Everywhere & Nowhere",
+        region: "Widespread",
         notable_people: [
             { name: "The Cosmic Jester", role: "Chaotic Deity", description: "The unknowable entity of madness and chaos worshipped by the cult." },
             { name: "Giggling Pete", role: "High Fool", description: "The most devoted servant of chaos, known for his reality-bending pranks." }
@@ -118,7 +118,7 @@ export const WIDESPREAD_FACTIONS = {
         },
         power_level: 5,
         category: "Underworld & Fringe",
-        region: "Widespread (Rebel Territories)",
+        region: "Widespread",
         leader: "free_name_sarah",
         notable_people: [
             { name: "Free-Name Sarah", role: "Revolutionary Leader", description: "A former slave who leads the Ideologues with inspiring speeches." },
@@ -163,7 +163,7 @@ export const WIDESPREAD_FACTIONS = {
         power_level: 4,
         leader: "lario",
         category: "Underworld & Fringe",
-        region: "Wastelands & Borderlands",
+        region: "Widespread",
         notable_people: [
             { name: "Lario", role: "Workshop Owner", description: "Wario's brother who runs a questionable workshop with 'toad-powered polishing' services." },
             { name: "Captain Zipwire", role: "Speed Freek Leader", description: "The fastest goblin pilot who leads the adrenaline junkies." }
@@ -214,7 +214,7 @@ export const WIDESPREAD_FACTIONS = {
         power_level: 5,
         leader: "captain_syrup",
         category: "Underworld & Fringe",
-        region: "Skies & Seas",
+        region: "Widespread",
         notable_people: [
             { name: "Captain Syrup", role: "Fleet Captain", description: "A cunning pirate captain with a grudge against Waluigi and the party after being freed, then immediately attacked." },
             { name: "First Mate Jones", role: "Quartermaster", description: "The loyal and pragmatic second-in-command of the Crimson Fleet." }
@@ -257,7 +257,7 @@ export const WIDESPREAD_FACTIONS = {
         power_level: 4,
         leader: "wario",
         category: "Underworld & Fringe",
-        region: "Diamond City (Greed Pits)",
+        region: "Diamond City",
         notable_people: [
             { name: "Wario", role: "Secret Leader", description: "The ghostly mastermind pulling the strings, driven by insatiable greed." },
             { name: "Lario", role: "Public Leader", description: "Wario's brother, the public face of the gang and a skilled, if cowardly, mechanic." }
@@ -300,7 +300,7 @@ export const WIDESPREAD_FACTIONS = {
         power_level: 5,
         leader: "boss_knuckles",
         category: "Underworld & Fringe",
-        region: "Widespread (Urban Centers)",
+        region: "Widespread",
         notable_people: [
             { name: "Boss Knuckles", role: "Gang Leader", description: "The ruthless leader of the Old Bosses who wants revenge on the party." },
             { name: "Iron Mike", role: "Enforcer Captain", description: "The strongest fighter in the gang, known for his metal gauntlets." }
@@ -344,7 +344,7 @@ export const WIDESPREAD_FACTIONS = {
         power_level: 3,
         leader: "detective_penny",
         category: "Underworld & Fringe",
-        region: "Diamond City (Metropolis)",
+        region: "Diamond City",
         notable_people: [
             { name: "Detective Penny", role: "Lead Investigator", description: "A sharp-witted detective with a passion for puzzles and justice. She has made it her personal mission to dismantle Wario's criminal empire." }
         ],
@@ -385,7 +385,7 @@ export const WIDESPREAD_FACTIONS = {
         power_level: 2,
         leader: "master_goodstyle",
         category: "Regional Powers",
-        region: "Diamond City (Cultural Sector)",
+        region: "Diamond City",
         notable_people: [
             { name: "Master Goodstyle", role: "Patron of the Arts", description: "An ancient and revered artisan who believes that beauty is the world's most valuable currency. He despises Wario for his crude materialism." }
         ],

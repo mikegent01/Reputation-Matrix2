@@ -49,6 +49,14 @@
     border-color: var(--accent-hover);
 }
 
+/* Faction Card Category Borders */
+.faction-card.legend-major-powers-border { border-left: 5px solid var(--major-powers-color); }
+.faction-card.legend-regional-powers-border { border-left: 5px solid var(--regional-powers-color); }
+.faction-card.legend-mystical-ancient-border { border-left: 5px solid var(--mystical-ancient-color); }
+.faction-card.legend-underworld-fringe-border { border-left: 5px solid var(--underworld-fringe-color); }
+.faction-card.legend-interdimensional-threats-border { border-left: 5px solid var(--interdimensional-threat-color); }
+
+
 .terminal-back-button {
     display: inline-block;
     padding: 10px 16px;

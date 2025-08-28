@@ -306,4 +306,23 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
             }
         }
     },
+    tea_leaf_syndicate: {
+        name: "The Tea Leaf Syndicate",
+        description: "An ostensibly legitimate merchant guild dealing in exotic teas, but secretly a ruthless criminal organization controlling information and poison networks in the Mushroom Kingdom. They were crippled by Archie's 'Tea Party Incident'.",
+        logo: 'icon_currency.png', // Placeholder
+        relations: {
+            allies: [],
+            enemies: ['archie', 'markop', 'humpik', 'bowser', 'toad_gang', 'mushroom_regency', 'freelancer_underworld']
+        },
+        power_level: 3, // Weakened
+        category: "Underworld & Fringe",
+        region: "Mushroom Kingdom (Urban Centers)",
+        leader: "green_t",
+        notable_people: [
+            { name: "Green T", role: "Leader", description: "The mysterious and well-dressed leader of the Syndicate." },
+            { name: "Earl Grey", role: "Enforcer", description: "A powerful toad enforcer and one of the only survivors of Archie's fireball." },
+            { name: "Chai", role: "Diplomat", description: "A smooth-talking information broker who also survived the 'Tea Party Incident'." }
+        ],
+        waluigi_tip: "WAH! They think their tea parties are so fancy! Just replace their rare 'Silver Needle' tea with common gutter water. Their reputation will be ruined! And I'll sell them the real stuff for double the price!"
+    }
 };

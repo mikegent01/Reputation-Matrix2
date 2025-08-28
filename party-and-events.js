@@ -68,7 +68,7 @@ export const RUMORS = [
         title: "X.O.'s Defeat",
         description: "The party, with the help of a liberated toad slave, defeated the rogue mage X.O. and secured the 'Vigilance'.",
         targets: ['party', 'dan_the_toad'],
-        effects: { regal_empire: 5, mages_guild: 5, the_unchained: 10, mushroom_protectorate: 5, liberated_toads: 25 }
+        effects: { regal_empire: 5, mages_guild: 5, the_unchained: 10, mushroom_regency: 5, liberated_toads: 25 }
     },
     {
         id: 'archie_acquittal',
@@ -103,7 +103,7 @@ export const RUMORS = [
         title: "Dan's Training",
         description: "The heroic toad, Dan, is being trained in magic by the Rakasha, under Markop's supervision.",
         targets: ['markop', 'dan_the_toad'],
-        effects: { rakasha_clans: 15, mages_guild: 5, mushroom_protectorate: 10, liberated_toads: 15 }
+        effects: { rakasha_clans: 15, mages_guild: 5, mushroom_regency: 10, liberated_toads: 15 }
     },
     {
         id: 'wario_escape',
@@ -117,7 +117,7 @@ export const RUMORS = [
         title: "Bowser's Alliance",
         description: "The warlord Bowser, formerly a captive, is now a key ally of the party. His Koopa Troop is mobilizing.",
         targets: ['bowser', 'humpik'],
-        effects: { koopa_troop: 20, regal_empire: -10, mushroom_protectorate: -10 }
+        effects: { koopa_troop: 20, regal_empire: -10, mushroom_regency: -10 }
     },
     {
         id: 'cosmic_static',
@@ -159,7 +159,7 @@ export const RUMORS = [
         title: "Big T's Legacy",
         description: "Big T's body has gone missing from the ship, while his signature sword has been recovered, sparking fears of his revival.",
         targets: ['party'],
-        effects: { toad_gang: -10, mushroom_protectorate: -5, freelancer_underworld: 5 }
+        effects: { toad_gang: -10, mushroom_regency: -5, freelancer_underworld: 5 }
     },
     {
         id: 'peach_death_fallout',
@@ -167,7 +167,7 @@ export const RUMORS = [
         description: "Princess Peach was killed during the Mushroom Kingdom Civil War. While the exact circumstances are unclear, many blame Bowser's relentless aggression for creating the instability that led to the conflict.",
         targets: ['bowser'],
         effects: { 
-            mushroom_protectorate: -50, 
+            mushroom_regency: -50, 
             regal_empire: -15, 
             silver_flame: -15,
             oathbound_judges: -15

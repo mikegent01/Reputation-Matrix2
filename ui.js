@@ -9,13 +9,14 @@ const viewContainer = document.getElementById('view-container');
 const partyList = document.getElementById('party-list');
 const eventList = document.getElementById('event-list');
 let currentFactionDetail = null;
-let currentSort = 'power'; // Default sort order
+let activeRegion = 'All Regions'; // Default active region
 
 // --- ROUTING ---
 
 export function router() {
     const hash = window.location.hash;
     const [path, param] = hash.substring(1).split('/');
+    const layout = document.getElementById('directory-layout');
 
     // Clear old chart instances before rendering new view
     Object.values(state.chartInstances).forEach(chart => chart.destroy());
@@ -23,9 +24,11 @@ export function router() {
 
     if (path === 'faction' && param && LORE_DATA.factions[param]) {
         currentFactionDetail = param;
+        if (layout) layout.classList.add('detail-view-active');
         renderFactionDetail(param);
     } else {
         currentFactionDetail = null;
+        if (layout) layout.classList.remove('detail-view-active');
         renderFactionDirectory();
     }
 }
@@ -59,19 +62,6 @@ export function renderEventList() {
     });
 }
 
-function renderRegionLegend(regions) {
-    const legendList = document.getElementById('faction-legend-list');
-    if (!legendList) return;
-
-    legendList.innerHTML = '';
-    regions.forEach(regionName => {
-        const regionId = regionName.toLowerCase().replace(/\s/g, '-').replace(/[\(\)]/g, '');
-        const li = document.createElement('li');
-        li.innerHTML = `<a href="#${regionId}">${regionName}</a>`;
-        legendList.appendChild(li);
-    });
-}
-
 // --- VIEW-SPECIFIC RENDERERS ---
 
 function getIntelForFaction(factionKey) {
@@ -83,65 +73,33 @@ function getIntelForFaction(factionKey) {
 }
 
 
-function renderFactionDirectory(sortBy = currentSort) {
-    currentSort = sortBy;
+function renderFactionDirectory() {
     viewContainer.innerHTML = ''; // Clear previous view
-
-    const homeViewWrapper = document.createElement('div');
-    homeViewWrapper.id = 'home-view';
-    
-    // Render components that are only on the home view
-    const summaryContainer = document.createElement('div');
-    summaryContainer.id = 'character-summary-container';
-    homeViewWrapper.appendChild(summaryContainer);
-
-    const auxContainer = document.createElement('div');
-    auxContainer.id = 'auxiliary-party-container';
-    homeViewWrapper.appendChild(auxContainer);
-
-    const directoryContainer = document.createElement('div');
-    directoryContainer.id = 'faction-directory';
-    directoryContainer.innerHTML = `<h2 class="page-title" style="margin-bottom: 24px;">Faction Directory</h2>`;
     const grid = document.createElement('div');
     grid.className = 'faction-directory-grid';
-    directoryContainer.appendChild(grid);
-    homeViewWrapper.appendChild(directoryContainer);
+    viewContainer.appendChild(grid);
     
-    viewContainer.appendChild(homeViewWrapper);
+    // Get unique regions and render filter
+    const regions = [...new Set(Object.values(LORE_DATA.factions).map(f => f.region))].sort();
+    const regionFilterList = document.getElementById('region-filter-list');
     
-    // Now render the content into the created containers
-    renderCharacterSummaries();
-    renderAuxiliaryParty();
-
-    const factionKeys = Object.keys(LORE_DATA.factions);
+    let regionsHTML = `<li data-region="All Regions" class="${activeRegion === 'All Regions' ? 'active' : ''}">All Regions</li>`;
+    regionsHTML += regions.map(region => 
+        `<li data-region="${region}" class="${region === activeRegion ? 'active' : ''}">${region}</li>`
+    ).join('');
+    regionFilterList.innerHTML = regionsHTML;
     
-    // Sort factions based on the selected criteria
-    const sortedFactionKeys = factionKeys.sort((a, b) => {
-        const factionA = LORE_DATA.factions[a];
-        const factionB = LORE_DATA.factions[b];
-        switch(currentSort) {
-            case 'name':
-                return factionA.name.localeCompare(factionB.name);
-            case 'region':
-                return (factionA.region || 'ZZZ').localeCompare(factionB.region || 'ZZZ');
-            case 'power':
-            default:
-                 return (factionB.power_level || 0) - (factionA.power_level || 0);
-        }
-    });
-    
-    const legendList = document.getElementById('faction-legend-list');
-    if (legendList) legendList.innerHTML = '';
+    // Filter and render factions for the active region
+    const factionsToRender = Object.entries(LORE_DATA.factions)
+        .filter(([, faction]) => activeRegion === 'All Regions' || faction.region === activeRegion)
+        .sort(([, a], [, b]) => (b.power_level || 0) - (a.power_level || 0));
 
     grid.innerHTML = ''; // Clear existing grid before re-rendering
-    
     const isDebug = state.debugMode;
 
-    sortedFactionKeys.forEach(factionKey => {
-        const faction = LORE_DATA.factions[factionKey];
+    factionsToRender.forEach(([factionKey, faction]) => {
         const intelLevel = getIntelForFaction(factionKey);
-        const categoryClass = `legend-${faction.category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`;
-
+        
         // Leader
         let leaderHTML = '';
         if (intelLevel >= 40 || isDebug) {
@@ -207,7 +165,7 @@ function renderFactionDirectory(sortBy = currentSort) {
         `;
 
         const card = document.createElement('a');
-        card.className = `faction-directory-card ${categoryClass}-border`;
+        card.className = `faction-directory-card`;
         card.href = `#faction/${factionKey}`;
         card.innerHTML = `
             <div class="faction-directory-header">
@@ -215,7 +173,6 @@ function renderFactionDirectory(sortBy = currentSort) {
                 <div class="faction-info">
                     <h4 class="faction-directory-title">${faction.name}</h4>
                      <p class="assessment-text" style="font-size: 0.8rem; margin-top: 4px; font-style: normal;">
-                        <strong>Region:</strong> ${faction.region || 'Unknown'}<br/>
                         ${powerHTML}
                      </p>
                      ${leaderHTML}
@@ -223,175 +180,6 @@ function renderFactionDirectory(sortBy = currentSort) {
             </div>
              <p class="assessment-text" style="font-size: 0.8rem">${faction.description}</p>
             ${standingHTML}
-        `;
-        grid.appendChild(card);
-    });
-
-    document.querySelectorAll('#directory-controls button').forEach(button => {
-        button.classList.toggle('active', button.dataset.sort === currentSort);
-    });
-}
-
-
-function renderCharacterSummaries() {
-    const container = document.getElementById('character-summary-container');
-    if (!container) return; // Exit if container doesn't exist
-    container.innerHTML = '';
-
-    state.party.forEach(playerKey => {
-        const player = LORE_DATA.characters[playerKey];
-        if (!player) return;
-
-        const playerIntel = state.intelLevels[playerKey] || {};
-        const partyReps = state.players[playerKey].reputation;
-
-        const topAllies = Object.entries(partyReps).filter(([fKey, rep]) => rep >= 25).sort((a, b) => b[1] - a[1]).slice(0, 3);
-        const topEnemies = Object.entries(partyReps).filter(([fKey, rep]) => rep <= -25).sort((a, b) => a[1] - b[1]).slice(0, 3);
-
-        const categoryReps = {};
-        const categoryCounts = {};
-        for (const fKey in LORE_DATA.factions) {
-            const category = LORE_DATA.factions[fKey].category || 'Uncategorized';
-            if (!categoryReps[category]) {
-                categoryReps[category] = 0;
-                categoryCounts[category] = 0;
-            }
-            categoryReps[category] += getReputation(playerKey, fKey);
-            categoryCounts[category]++;
-        }
-
-        const categoryAverages = {};
-        const categoryOrder = ['Major Powers', 'Regional Powers', 'Mystical & Ancient', 'Underworld & Fringe', 'Interdimensional Threats'];
-        categoryOrder.forEach(cat => {
-            if (categoryReps[cat] !== undefined) {
-                categoryAverages[cat] = Math.round(categoryReps[cat] / categoryCounts[cat]);
-            }
-        });
-
-        let overallStandingHTML = `<div class="char-overall-standing" style="display: block;">
-            <h5>Overall Standing</h5>
-            <ul>`;
-        for (const cat in categoryAverages) {
-            const avg = categoryAverages[cat];
-            const avgClass = avg > 10 ? 'positive' : avg < -10 ? 'negative' : 'neutral';
-            overallStandingHTML += `<li>${cat}: <span class="${avgClass}">${avg}</span></li>`;
-        }
-        overallStandingHTML += `</ul>`;
-
-        if (topAllies.length > 0) {
-            overallStandingHTML += `<h6>Key Allies:</h6><ul>${topAllies.map(a => {
-                const factionData = LORE_DATA.factions[a[0]];
-                if (!factionData) return ''; // Gracefully handle missing faction
-                return `<li>${factionData.name} <span class="positive">(+${a[1]})</span></li>`;
-            }).join('')}</ul>`;
-        }
-        if (topEnemies.length > 0) {
-            overallStandingHTML += `<h6>Key Enemies:</h6><ul>${topEnemies.map(e => {
-                const factionData = LORE_DATA.factions[e[0]];
-                if (!factionData) return ''; // Gracefully handle missing faction
-                return `<li>${factionData.name} <span class="negative">(${e[1]})</span></li>`;
-            }).join('')}</ul>`;
-        }
-        overallStandingHTML += `</div>`;
-
-        const totalIntel = Object.values(playerIntel).reduce((a, b) => a + (typeof b === 'number' ? b : 0), 0);
-        const factionCount = Object.keys(LORE_DATA.factions).length;
-        const averageIntel = factionCount > 0 ? Math.round(totalIntel / factionCount) : 0;
-
-        const card = document.createElement('div');
-        card.className = 'character-summary-card';
-
-        card.innerHTML = `
-            <h3>${player.name}</h3>
-            ${overallStandingHTML}
-            <div class="char-intel-section">
-                <h5>Average Intel Level: ${averageIntel}</h5>
-                <div class="intel-bar-container">
-                    <div class="intel-bar" style="width: ${averageIntel}%"></div>
-                </div>
-            </div>
-        `;
-        container.appendChild(card);
-    });
-}
-
-function renderAuxiliaryParty() {
-    const container = document.getElementById('auxiliary-party-container');
-    if (!container) return;
-    container.innerHTML = `
-        <h3 class="page-title" style="font-size: 1.5rem; color: var(--text-secondary);">
-            Liberated Toads: Strategic Focus
-            <a href="focus.html" class="faction-link" style="font-size: 0.9rem; color: var(--accent-color); text-decoration: none; margin-left: 8px;">
-                (Manage Focus Trees)
-            </a>
-        </h3>
-    `;
-
-    const grid = document.createElement('div');
-    grid.className = 'auxiliary-party-grid';
-    container.appendChild(grid);
-    
-    // Now render the content into the created containers
-    Object.entries(state.auxiliary_party_state).forEach(([key, member]) => {
-        if (key === 'group') {
-            return; // Skip the 'group' entry, it's for the focus page
-        }
-
-        const card = document.createElement('div');
-        card.className = 'aux-member-card';
-
-        const xpPercentage = (member.xp / member.xp_to_next) * 100;
-
-        const statusClass = member.status?.includes("Injured") || member.status?.includes("Kidnapped") || member.status?.includes("Captured") ? 'negative' : 'positive';
-        const statusTextClass = member.status?.includes("Injured") || member.status?.includes("Kidnapped") || member.status?.includes("Captured") ? 'negative' : 'status-ok';
-
-        if(statusClass === 'negative'){
-            card.classList.add('negative');
-        } else {
-            card.classList.add('positive');
-        }
-
-        const logHTML = member.log.slice().reverse().map(entry => { // .slice().reverse() to show newest first
-             if (entry.isLevelUp) {
-                return `<li class="log-levelup">${entry.reason}</li>`;
-            }
-            if(entry.isAbility) {
-                return `<li class="log-ability">${entry.reason}</li>`;
-            }
-            return `<li>${entry.reason} <span>[+${entry.xp} XP]</span></li>`;
-        }).join('');
-
-        const abilitiesHTML = member.abilities.length > 0 ?
-            member.abilities.map(ability => `
-                <div class="aux-ability">
-                    <strong>${ability.name}:</strong> ${ability.description}
-                </div>
-            `).join('') :
-            '<p class="no-abilities">No special abilities learned yet.</p>';
-
-        card.innerHTML = `
-            <div class="aux-card-header">
-                <span class="aux-name">${member.name}</span>
-                <span class="aux-level">Level ${member.level}</span>
-            </div>
-            <div class="aux-details">
-                <span><strong>Weapon:</strong> ${member.weapon}</span>
-                <span><strong>Status:</strong> <span class="${statusTextClass}">${member.status}</span></span>
-            </div>
-            <div class="xp-bar-container">
-                <div class="xp-bar" style="width: ${xpPercentage}%"></div>
-                <span class="xp-text">${member.xp} / ${member.xp_to_next} XP</span>
-            </div>
-            <div class="aux-abilities">
-                <h6>Abilities</h6>
-                ${abilitiesHTML}
-            </div>
-            <div class="aux-log">
-                <h6>Progression Log</h6>
-                <ul>
-                    ${logHTML}
-                </ul>
-            </div>
         `;
         grid.appendChild(card);
     });
@@ -412,7 +200,7 @@ function renderFactionDetail(factionKey) {
     const intelLevel = getIntelForFaction(factionKey);
     const isDebug = state.debugMode;
 
-    const categoryClass = `legend-${faction.category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`;
+    const categoryClass = `legend-${faction.category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}-border`;
     
     // Party Reputation
     let partyRepHTML = '';
@@ -600,7 +388,7 @@ function renderFactionDetail(factionKey) {
 
     detailWrapper.innerHTML = `
         <a href="#" class="terminal-back-button">&laquo; Back to Directory</a>
-        <div class="card faction-card ${categoryClass}-border" id="${factionKey}">
+        <div class="card faction-card ${categoryClass}" id="${factionKey}">
              <div class="faction-card-header">
                 <img src="${faction.logo}" class="faction-logo" alt="${faction.name} Logo">
                 <div class="faction-info">
@@ -638,14 +426,15 @@ export function setupEventListeners() {
         }
     });
 
-    const directoryControls = document.getElementById('directory-controls');
-    if (directoryControls) {
-        directoryControls.addEventListener('click', (e) => {
-            if (e.target.tagName === 'BUTTON') {
-                const sortBy = e.target.dataset.sort;
-                if (sortBy) {
+    const regionFilterList = document.getElementById('region-filter-list');
+    if(regionFilterList) {
+        regionFilterList.addEventListener('click', e => {
+            if(e.target.tagName === 'LI') {
+                const region = e.target.dataset.region;
+                if(region) {
                     playSound('click.mp3');
-                    renderFactionDirectory(sortBy);
+                    activeRegion = region;
+                    renderFactionDirectory();
                 }
             }
         });
