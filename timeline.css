@@ -143,6 +143,12 @@
     transform: translateX(-50%);
 }
 
+.redacted-intel {
+    color: var(--negative-color);
+    font-style: italic;
+    text-align: center;
+}
+
 
 /* Responsive Design */
 @media screen and (max-width: 900px) {

@@ -38,7 +38,7 @@
     flex-grow: 1;
 }
 
-/* --- Fire Flower Collection --- */
+/* --- Fire Flower Regional Analysis --- */
 #fire-flower-section {
     margin-bottom: 48px;
     padding-bottom: 24px;
@@ -46,8 +46,8 @@
 }
 
 #fire-flower-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 24px;
 }
 
@@ -56,6 +56,12 @@
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.region-card:hover {
+    border-color: var(--accent-hover);
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
 }
 
 .region-header {
@@ -64,12 +70,11 @@
     align-items: center;
     cursor: pointer;
     padding-bottom: 12px;
-    border-bottom: 1px solid var(--border-color);
 }
 .region-header h3 {
     font-family: var(--font-display);
     color: var(--text-color);
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin: 0;
 }
 .region-progress {
@@ -81,45 +86,102 @@
     content: '▼';
     color: var(--text-secondary);
     transition: transform 0.3s ease;
+    font-size: 1.2rem;
+    margin-left: 16px;
 }
 .region-card.expanded .region-header::after {
     transform: rotate(180deg);
 }
+.region-card.expanded .region-header {
+     border-bottom: 1px solid var(--border-color);
+}
 
-.region-factions-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 12px;
+.region-details {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.7s ease-in-out;
 }
-.region-card.expanded .region-factions-list {
-    max-height: 500px;
+.region-card.expanded .region-details {
+    max-height: 2000px; /* Large enough for content */
+    padding-top: 16px;
 }
 
-.faction-petal-item {
-    display: flex;
-    align-items: center;
+.region-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 12px;
-    padding: 8px;
-    background-color: var(--main-bg);
-    border-radius: 4px;
-    margin-bottom: 8px;
-}
-.faction-petal-item img {
-    width: 24px;
-    height: 24px;
-    opacity: 0.3;
-}
-.faction-petal-item.has-petal img {
-    opacity: 1;
-    filter: drop-shadow(0 0 5px var(--negative-color));
+    margin-bottom: 20px;
+    font-size: 0.9rem;
 }
 
-.redacted-petal-holder {
+.stat-item {
+    color: var(--text-secondary);
+}
+
+.stat-item strong {
+    color: var(--text-color);
+    display: block;
+}
+
+.region-factions h4 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    margin-bottom: 12px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+}
+
+.faction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.faction-item {
+    background-color: var(--main-bg);
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.faction-name {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.rumor {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
     font-style: italic;
-    color: var(--negative-color);
+    margin-top: 6px;
+    padding-left: 10px;
+    border-left: 2px solid var(--border-color);
+}
+
+.rumor-source {
+    display: block;
+    text-align: right;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    opacity: 0.8;
+    margin-top: 4px;
+}
+
+.region-summary {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.overall-rumor {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+.overall-rumor strong {
+    color: var(--neutral-color);
+    font-style: normal;
 }
 
 

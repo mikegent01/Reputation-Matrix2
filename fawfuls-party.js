@@ -18,14 +18,14 @@ const TIMELINE_DATA = [
         title: "Dinner is Served!",
         icon: "faction_peach_loyalists.png",
         description: "The main course, consisting of captured Peach Loyalist soldiers, will be presented to the guests. It will be a meal of victory and fury! Their despair will be the most delicious sauce!",
-        isCurrent: true,
+        isCurrent: false,
     },
     {
         time: "22:00 - Gloating",
         title: "Post-Dinner Monologue",
         icon: "icon_focus.png",
         description: "After the guests have feasted on failure, Fawful will deliver a second, even more brilliant monologue. He will detail the next phase of his glorious plan for domination.",
-        isCurrent: false,
+        isCurrent: true,
     },
     {
         time: "23:00 - Finale",

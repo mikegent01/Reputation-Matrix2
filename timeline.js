@@ -1,4 +1,19 @@
 import { HISTORICAL_TIMELINE } from './calendar-data.js';
+import { state } from './state.js';
+
+/**
+ * Calculates the intel level for a given faction based on the logged-in user.
+ * @param {string} factionKey - The key of the faction.
+ * @returns {number} The calculated intel level.
+ */
+function getIntelForFaction(factionKey) {
+    if (!state.intelLevels || !factionKey) return 0;
+    const loggedInUser = state.loggedInUser || 'generic';
+    const userIntel = state.intelLevels[loggedInUser] || state.intelLevels.generic;
+    if (!userIntel) return 0;
+    const defaultIntel = userIntel.default ?? (state.intelLevels.generic ? state.intelLevels.generic[factionKey] : 0) ?? 0;
+    return userIntel[factionKey] ?? defaultIntel;
+}
 
 function renderTimeline() {
     const container = document.getElementById('timeline-page-container');
@@ -6,12 +21,10 @@ function renderTimeline() {
 
     const getSortKey = (event) => {
         if (event.type === 'era_header') {
-            // Assign sort keys to headers to place them correctly in a newest-first list.
-            // The key should be slightly higher (newer) than the newest event in that era.
-            if (event.title.includes('Distant Past')) return 8001; // Newest event is 8000 AF.
-            if (event.title.includes('Prophesied Era')) return 101; // Newest event is 100 AF.
-            if (event.title.includes('Before Fabian')) return -899; // Newest event is ~900 BF (-900).
-            return 0; // Fallback for other headers.
+            if (event.title.includes('Distant Past')) return 8001;
+            if (event.title.includes('Prophesied Era')) return 101;
+            if (event.title.includes('Before Fabian')) return -899;
+            return 0;
         }
         const dateStr = event.date;
         const isBF = dateStr.includes('BF');
@@ -20,22 +33,28 @@ function renderTimeline() {
 
         if (isBF) return -year;
         if (isAF) return year;
-        return -year; // Default to BF for sorting purposes if no era is specified
+        return -year;
     };
 
-    // Sort events and headers together into a single chronological list (oldest to newest).
-    const sortedTimeline = [...HISTORICAL_TIMELINE].sort((a, b) => {
-        return getSortKey(a) - getSortKey(b);
-    });
+    const sortedTimeline = [...HISTORICAL_TIMELINE].sort((a, b) => getSortKey(a) - getSortKey(b));
 
     let html = '';
     let eventCounter = 0;
-    // Render sorted events, newest first
+    
     sortedTimeline.slice().reverse().forEach((event) => {
         if (event.type === 'era_header') {
             html += `<div class="timeline-era-header"><h2>${event.title}</h2></div>`;
         } else {
             const side = eventCounter % 2 === 0 ? 'left' : 'right';
+            
+            let description = event.description;
+            if (event.intel_required && !state.debugMode) {
+                const intel = getIntelForFaction(event.faction);
+                if (intel < event.intel_required) {
+                    description = `<p class="redacted-intel">[Intel Level ${event.intel_required} with ${event.faction_name} required to view details.]</p>`;
+                }
+            }
+
             html += `
                 <div class="timeline-event ${side}">
                     <div class="timeline-content">
@@ -46,7 +65,7 @@ function renderTimeline() {
                                 <span class="timeline-date">${event.date}</span>
                              </div>
                         </div>
-                        <p>${event.description}</p>
+                        <p>${description}</p>
                     </div>
                 </div>
             `;
@@ -56,7 +75,6 @@ function renderTimeline() {
 
     container.innerHTML = html;
 }
-
 
 function init() {
     renderTimeline();

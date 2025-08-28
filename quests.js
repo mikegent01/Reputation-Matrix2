@@ -1,10 +1,11 @@
-import { QUEST_DATA } from './quests-data.js';
+import { QUEST_DATA, BOUNTY_BOARD_QUESTS } from './quests-data.js';
 import { playSound } from './common.js';
 
-const container = document.getElementById('quest-container');
+const mainQuestContainer = document.getElementById('quest-container');
+const bountyBoardContainer = document.getElementById('quest-board-list');
 
-function renderQuests() {
-    if (!container) return;
+function renderMainQuests() {
+    if (!mainQuestContainer) return;
 
     const questsByStatus = {
         active: [],
@@ -36,7 +37,7 @@ function renderQuests() {
         }
     });
 
-    container.innerHTML = html;
+    mainQuestContainer.innerHTML = html;
 }
 
 function renderQuestCard(quest) {
@@ -89,8 +90,27 @@ function renderQuestStep(step) {
     `;
 }
 
+function renderBountyBoard() {
+    if (!bountyBoardContainer) return;
+
+    bountyBoardContainer.innerHTML = BOUNTY_BOARD_QUESTS.map(quest => {
+        const rewardClass = quest.reward_type || 'neutral';
+        return `
+            <div class="quest-note">
+                <div class="quest-pin"></div>
+                <h4 class="note-title">${quest.title}</h4>
+                <p class="note-content">${quest.description}</p>
+                <div class="note-footer">
+                    <p><strong>Reward:</strong> <span class="${rewardClass}">${quest.reward}</span></p>
+                    <p>- ${quest.posted_by}</p>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
 function setupEventListeners() {
-    container.addEventListener('click', e => {
+    mainQuestContainer.addEventListener('click', e => {
         const header = e.target.closest('.quest-header');
         if (header) {
             playSound('click.mp3');
@@ -100,9 +120,10 @@ function setupEventListeners() {
     });
 }
 
-
 function init() {
-    renderQuests();
+    if (!mainQuestContainer) return; // Only run on the quests page
+    renderMainQuests();
+    renderBountyBoard();
     setupEventListeners();
 }
 

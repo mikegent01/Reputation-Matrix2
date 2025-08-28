@@ -167,31 +167,370 @@ const ARTIFACT_DATA = {
     }
 };
 
-const FIRE_FLOWER_DATA = {
-    regions: [
-        {
-            name: "The Midlands",
-            totalFactions: 3,
-            collectedPetals: 0,
-            factions: [
-                { name: "The Regal Empire", holds_petal: false },
-                { name: "Iron Legion", holds_petal: true, intel_requirement: { faction: 'iron_legion', level: 85 } },
-                { name: "Mages' Guild", holds_petal: false }
-            ]
+const REGIONAL_ANALYSIS_DATA = [
+    {
+        name: "The Midlands",
+        progress: "0/3 Factions",
+        intel_requirements: { faction: 'regal_empire', stats: 20, factions: 35, overall_rumor: 60 },
+        details: {
+            politicalSystem: "Monarchy with layered feudal and supernatural influence.",
+            currentSituation: "A dark and war-torn land under the rule of an enigmatic king, with hidden conflicts between vampires and werewolves.",
+            leadership: "King Alaric (The Enigmatic King)",
+            politicalInfluence: "High",
+            gdp: "$250B",
+            population: "719.0M"
         },
-        {
-            name: "Mushroom Kingdom",
-            totalFactions: 4,
-            collectedPetals: 0,
-            factions: [
-                { name: "Mushroom Regency", holds_petal: false },
-                { name: "Peach Loyalists", holds_petal: false },
-                { name: "Toad Gang", holds_petal: true, intel_requirement: { faction: 'toad_gang', level: 70 } },
-                { name: "Fawful's Furious Freaks", holds_petal: false }
-            ]
-        }
-    ]
-};
+        factions: [
+            { name: "Royal Guards (King Alaric's Control)", influence: "47%", rumor: { text: "The Royal Guards channel their petal's power to maintain unwavering loyalty and superhuman vigilance, making them nearly incorruptible.", source: "Disgruntled Diplomatic Corps Member", intel: 45 } },
+            { name: "Vampire Coven", influence: "17%", rumor: { text: "The Vampire Coven uses their petal to deepen their connection to the night, enhancing their stealth and control over shadow creatures.", source: "Silver Flame Interrogation Transcript", intel: 50 } },
+            { name: "Werewolf Packs", influence: "13%", rumor: { text: "Werewolf Packs believe their petal imbues them with uncontrollable primal fury and resilience during their transformations.", source: "Rakasha Huntmaster's Observation", intel: 50 } }
+        ],
+        overallRumor: "Whispers suggest King Alaric's enigmatic reign is sustained by the largest Fire Flower petal, amplifying his authority and strategic brilliance."
+    },
+    {
+        name: "Mushroom Kingdom",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'mushroom_regency', stats: 20, factions: 35, overall_rumor: 60 },
+        details: {
+            politicalSystem: "Criminal Monarchy Crisis",
+            currentSituation: "In political turmoil after the assassination of Princess Peach, with conspiracies of usurpation looming as the Midlands king schemes to claim the throne.",
+            leadership: "Count Toad (Prime Minister)",
+            politicalInfluence: "Medium",
+            gdp: "$80B",
+            population: "685.0M"
+        },
+        factions: [
+            { name: "Count Toad's Direct Influence", influence: "45%", rumor: { text: "Count Toad is said to use his petal to weave intricate illusions, clouding judgments and ensuring his political survival.", source: "Freelancer Underworld Informant", intel: 45 } },
+            { name: "Toad Army", influence: "16%", rumor: { text: "The Toad Army's petal fragment supposedly grants their soldiers enhanced morale and surprising bursts of courage in battle.", source: "Captured Iron Legion Scout", intel: 40 } },
+            { name: "Mushroom Guild", influence: "14%", rumor: { text: "The Mushroom Guild secretly cultivates their petal to accelerate the growth of rare fungi, bolstering their economic power.", source: "Wario Land 'Business' Proposal", intel: 40 } },
+            { name: "Royal Guard Remnants", influence: "12%", rumor: { text: "The fragmented Royal Guard clings to a dying petal, hoping to reignite its flame and restore their honor.", source: "Peach Loyalist Sympathizer", intel: 50 } }
+        ],
+        overallRumor: "It's said Count Toad clutches a potent Fire Flower petal, using its influence to navigate the treacherous political landscape and maintain his precarious hold on power."
+    },
+    {
+        name: "Aurea",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'mages_guild', stats: 25, factions: 40, overall_rumor: 70 },
+        details: {
+            politicalSystem: "Technocratic Oligarchy",
+            currentSituation: "A land of ancient ruins and futuristic designs, where tech and magic coexist under strict governance.",
+            leadership: "High Overseer Aurelia (Techno-Mage)",
+            politicalInfluence: "Very High",
+            gdp: "$300B",
+            population: "546.0M"
+        },
+        factions: [
+            { name: "Technocratic Elite (High Overseer's Control)", influence: "38%", rumor: { text: "Aurelia's Elite integrate their petal's energy into their cybernetics, achieving perfect synergy between magic and machine.", source: "Leaked Tech Guild Schematic", intel: 50 } },
+            { name: "Tech Guild", influence: "19%", rumor: { text: "The Tech Guild experiments with their petal to power forbidden technologies and create sentient AI.", source: "Ratchet Raider Salvage Log", intel: 45 } },
+            { name: "Arcane Scholars", influence: "16%", rumor: { text: "Arcane Scholars use their petal to unlock ancient magical knowledge, risking dimensional instability for power.", source: "Mages' Guild Conservator Report", intel: 45 } },
+            { name: "Rebel Hackers", influence: "11%", rumor: { text: "Rebel Hackers attempt to harness a corrupted petal fragment to disrupt the Overseer's network from the digital shadows.", source: "The Internet Hacktivist Collective", intel: 55 } }
+        ],
+        overallRumor: "The High Overseer Aurelia is rumored to have integrated a core Fire Flower petal into her techno-magical systems, amplifying her control over Aurea."
+    },
+    {
+        name: "Middle Earth",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'rebel_clans', stats: 20, factions: 35, overall_rumor: 65 },
+        details: {
+            politicalSystem: "Ancient Kingdom with Shattered Borders",
+            currentSituation: "The legacy of magic and wars defines Middle Earth, where ancient alliances are tested.",
+            leadership: "King Thorin (Warrior King)",
+            politicalInfluence: "High",
+            gdp: "$150B",
+            population: "592.0M"
+        },
+        factions: [
+            { name: "King Thorin's Royal Power", influence: "31%", rumor: { text: "King Thorin's lineage is bound to a petal that strengthens his resolve and grants him ancestral battle wisdom.", source: "Dwarven Runesmith's Tale", intel: 45 } },
+            { name: "Elven Clans", influence: "21%", rumor: { text: "Elven Clans nurture their petal to preserve the fading magic of their ancient forests and enhance their archery skills.", source: "Faerun Elven Emissary", intel: 40 } },
+            { name: "Dwarven Holds", influence: "19%", rumor: { text: "Dwarven Holds use their petal's heat to forge legendary weapons and armor, impervious to dragon fire.", source: "Iron Legion Weapons Analysis", intel: 40 } },
+            { name: "Human Tribes", influence: "12%", rumor: { text: "Scattered Human Tribes believe their petal fragments offer protection against the dark creatures roaming their lands.", source: "Rebel Clans' Elder", intel: 40 } }
+        ],
+        overallRumor: "Legends claim King Thorin wields a Fire Flower petal, a relic of ancient power that aids him in his quest to unite the fractured kingdoms of Middle Earth."
+    },
+    {
+        name: "Pokemon Regions",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'freelancer_underworld', stats: 15, factions: 30, overall_rumor: 50 },
+        details: {
+            politicalSystem: "League Federation",
+            currentSituation: "A realm guided by trainers and their Pokémon with strict league regulations yet vibrant culture.",
+            leadership: "Champion Carter (League Champion)",
+            politicalInfluence: "Medium",
+            gdp: "$100B",
+            population: "370.0M"
+        },
+        factions: [
+            { name: "League Authority (Champion Carter)", influence: "36%", rumor: { text: "Champion Carter's petal is said to resonate with his Pokémon, unlocking their ultimate potential and ensuring League dominance.", source: "A Disqualified League Challenger", intel: 40 } },
+            { name: "Trainer Guild", influence: "20%", rumor: { text: "The Trainer Guild distributes minute petal shards to elite trainers, slightly boosting their Pokémon's elemental affinities.", source: "Underworld Smuggler's Ledger", intel: 35 } },
+            { name: "Pokémon Society", influence: "18%", rumor: { text: "The Pokémon Society studies their petal to understand inter-species communication, hoping to foster deeper bonds.", source: "Rakasha Shaman's Correspondence", intel: 35 } },
+            { name: "Wildlife Conservators", influence: "10%", rumor: { text: "Wildlife Conservators use their petal to create hidden sanctuaries where endangered Pokémon can thrive, shielded by its warmth.", source: "Zootopian Environmental Report", intel: 35 } }
+        ],
+        overallRumor: "Champion Carter is said to possess a Fire Flower petal, its energy enhancing the bond with his Pokémon and solidifying his status as League Champion."
+    },
+    {
+        name: "Teyvat",
+        progress: "0/5 Factions",
+        intel_requirements: { faction: 'mages_guild', stats: 25, factions: 40, overall_rumor: 70 },
+        details: {
+            politicalSystem: "Divine Autocracy",
+            currentSituation: "The Archon War continues as deities and mortals clash for dominion over the elemental forces.",
+            leadership: "Archon Lumine (God of Light)",
+            politicalInfluence: "Very High",
+            gdp: "$200B",
+            population: "468.0M"
+        },
+        factions: [
+            { name: "Archon Lumine's Divine Power", influence: "39%", rumor: { text: "Archon Lumine channels her petal to radiate pure light, blinding her foes and healing her devout followers.", source: "Silver Flame Theological Study", intel: 55 } },
+            { name: "Elemental Cults", influence: "17%", rumor: { text: "Various Elemental Cults hoard petal fragments, believing they grant mastery over specific elements like fire, ice, or storm.", source: "Mages' Guild Report on Unsanctioned Magic", intel: 45 } },
+            { name: "Divine Guard", influence: "15%", rumor: { text: "The Divine Guard are bestowed petal-infused amulets, granting them resistance to profane energies and unwavering faith.", source: "Oathbound Judges' Observation", intel: 45 } },
+            { name: "Mortals (Vision Bearers)", influence: "11%", rumor: { text: "Chosen Mortals, or Vision Bearers, sometimes find tiny petal slivers that awaken their latent elemental powers.", source: "The Unchained Intelligence", intel: 45 } },
+            { name: "Other Factions (Abyss Order)", influence: "10%", rumor: { text: "The Abyss Order seeks to corrupt petals, twisting their light into an abyssal flame to challenge the divine order.", source: "Onyx Hand Scrying Report", intel: 50 } }
+        ],
+        overallRumor: "The radiant power of Archon Lumine is believed by many to be augmented by a core Fire Flower petal, a focal point for her divine energy."
+    },
+    {
+        name: "Faerun",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'mages_guild', stats: 20, factions: 35, overall_rumor: 65 },
+        details: {
+            politicalSystem: "Mystical Theocracy",
+            currentSituation: "A realm where magic saturates every aspect of life, and governance is fused with mystical traditions.",
+            leadership: "High Magus Elion (Supreme Sorcerer)",
+            politicalInfluence: "High",
+            gdp: "$120B",
+            population: "485.0M"
+        },
+        factions: [
+            { name: "High Magus Elion's Circle", influence: "42%", rumor: { text: "Elion's inner circle uses their shared petal to amplify their spellcasting, creating city-wide illusions and wards.", source: "Aurean Techno-Mage Analysis", intel: 50 } },
+            { name: "Mage Council", influence: "16%", rumor: { text: "The Mage Council debates the ethical use of their petal, fearing its power could unravel the Weave of Magic itself.", source: "Mages' Guild Internal Memo", intel: 40 } },
+            { name: "Warrior Clans", influence: "13%", rumor: { text: "Warrior Clans embed petal shards in their ancestral weapons, making them blaze with magical fire in combat.", source: "Koopa Troop Weaponsmith's Journal", intel: 40 } },
+            { name: "Elven Tribes (Ancient Keepers)", influence: "10%", rumor: { text: "Ancient Elven Tribes guard a fading petal, believing it connects them to the primal magic of Faerun's heart.", source: "Middle-Earth Elven Clan Leader", intel: 45 } }
+        ],
+        overallRumor: "High Magus Elion reportedly channels the essence of a Fire Flower petal to fuel his grand spells and maintain his mystical utopia."
+    },
+    {
+        name: "Zootopia",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'the_unchained', stats: 15, factions: 30, overall_rumor: 50 },
+        details: {
+            politicalSystem: "Democratic Republic",
+            currentSituation: "A progressive nation where anthropomorphic beings from diverse backgrounds strive to create a truly inclusive society, facing challenges of systemic bias and complex interspecies dynamics.",
+            leadership: "President Judy (First Rabbit President)",
+            politicalInfluence: "Medium",
+            gdp: "$110B",
+            population: "378.0M"
+        },
+        factions: [
+            { name: "Presidential Administration", influence: "41%", rumor: { text: "President Judy's administration uses subtle diplomatic techniques to bridge divides and foster understanding between different animal species.", source: "Regal Empire Diplomatic Report", intel: 40 } },
+            { name: "Animal Rights Groups", influence: "18%", rumor: { text: "These groups leverage their influence to push for landmark legislation protecting minority species and challenging deeply rooted prejudices.", source: "The Unchained Sympathizer", intel: 35 } },
+            { name: "Civic Coalition", influence: "15%", rumor: { text: "The Civic Coalition champions community programs that promote interspecies cooperation and social harmony.", source: "Mushroom Regency Observer", intel: 35 } },
+            { name: "Trade Unions", influence: "10%", rumor: { text: "Trade Unions work to ensure fair representation and economic opportunities for animals across all professional sectors.", source: "Iron Fists Labor Report", intel: 35 } }
+        ],
+        overallRumor: "President Judy's groundbreaking presidency represents a pivotal moment in Zootopia's evolution, challenging long-standing societal norms and inspiring hope for true equality."
+    },
+    {
+        name: "Realm of Forests",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'rakasha_clans', stats: 15, factions: 30, overall_rumor: 55 },
+        details: {
+            politicalSystem: "Tribal Confederacy",
+            currentSituation: "An untamed land where indigenous tribes live in tune with the wild, fiercely guarding their ancestral lands.",
+            leadership: "Chief Redwood (Tribal Leader)",
+            politicalInfluence: "Low",
+            gdp: "$90B",
+            population: "395.0M"
+        },
+        factions: [
+            { name: "Tribal Confederacy (Chief Redwood's Council)", influence: "38%", rumor: { text: "Chief Redwood's council uses their petal to commune with ancient forest spirits, seeking guidance and protection.", source: "Rakasha Spirit-Walker's Vision", intel: 45 } },
+            { name: "Forest Tribes (Pathfinders)", influence: "22%", rumor: { text: "Pathfinder tribes use petal slivers to navigate impossibly dense jungles and sense hidden dangers.", source: "Wayfinders' Guild Expedition Log", intel: 35 } },
+            { name: "Wild Guardians (Beastmasters)", influence: "16%", rumor: { text: "Beastmasters carry petal charms that allow them to form unusually strong bonds with the wild creatures of the forest.", source: "Zootopian Biologist's Field Notes", intel: 35 } },
+            { name: "Nature Shamans", influence: "15%", rumor: { text: "Nature Shamans weave their petal's energy into rituals that heal blighted lands and promote vibrant growth.", source: "Faerun Elven Healer's Account", intel: 40 } }
+        ],
+        overallRumor: "Chief Redwood is said to commune with a Fire Flower petal that is one with the forest, drawing strength from it to protect his people and their lands."
+    },
+    {
+        name: "L'Eclaire Island",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'leclaire_democracy', stats: 10, factions: 25, overall_rumor: 45 },
+        details: {
+            politicalSystem: "Island Democracy",
+            currentSituation: "A small island home of the Doughnut ruler who grants his subjects voting rights while secretly planning to invade neighboring lands and unify the Doughnut world.",
+            leadership: "Ruler Doug (Island Leader)",
+            politicalInfluence: "Low",
+            gdp: "$60B",
+            population: "292.0M"
+        },
+        factions: [
+            { name: "Ruler Doug's Authority", influence: "38%", rumor: { text: "Ruler Doug's charisma is amplified by his petal, allowing him to sway public opinion and inspire fervent loyalty for his expansionist dreams.", source: "Imperial Propagandist's Analysis", intel: 35 } },
+            { name: "Islanders United (Pro-Expansion)", influence: "18%", rumor: { text: "Pro-Expansionist islanders believe their petal fragments will grant them victory and prosperity in the coming wars.", source: "Divided Realms Intelligence", intel: 30 } },
+            { name: "Reformist Movement (Isolationists)", influence: "15%", rumor: { text: "Isolationist Reformists try to use their smaller petal piece to promote peace and shield the island from external conflict.", source: "Zootopian Diplomatic Cable", intel: 30 } },
+            { name: "Local Militias", influence: "11%", rumor: { text: "Local Militias are given petal dust to sprinkle on their weapons, believing it makes their attacks more potent.", source: "Grand Line Naval Report", intel: 30 } }
+        ],
+        overallRumor: "Ruler Doug's ambitious plans for unification are whispered to be fueled by a Fire Flower petal, enhancing his charisma and strategic thinking."
+    },
+    {
+        name: "Triple Moon World",
+        progress: "0/5 Factions",
+        intel_requirements: { faction: 'cosmic_jesters', stats: 15, factions: 30, overall_rumor: 60 },
+        details: {
+            politicalSystem: "Anarchic Remnants",
+            currentSituation: "A dangerous, unstable region scarred by past wars that left gaping holes leading into outer space, making it perilous to traverse.",
+            leadership: "Warlord Luna (No Ruler (De Facto Warlord))",
+            politicalInfluence: "Very Low",
+            gdp: "$40B",
+            population: "175.0M"
+        },
+        factions: [
+            { name: "Warlord Luna's Forces", influence: "37%", rumor: { text: "Warlord Luna's volatile petal crackles with chaotic energy, granting her forces unpredictable surges of destructive power.", source: "Cosmic Jester's Prophecy", intel: 50 } },
+            { name: "Survivor Enclaves", influence: "20%", rumor: { text: "Survivor Enclaves use their dimmed petal to generate small pockets of stability and predict dangerous stellar phenomena.", source: "Explorer Drake's Log", intel: 35 } },
+            { name: "Raider Clans", influence: "14%", rumor: { text: "Raider Clans fight over petal shards, believing they guide them to valuable salvage and unsuspecting victims.", source: "Ratchet Raider Chatter", intel: 35 } },
+            { name: "Nomadic Groups", influence: "10%", rumor: { text: "Nomadic Groups use their petal fragments as celestial compasses to navigate the treacherous, shifting landscapes.", source: "Wayfinder's Guild Star-Chart", intel: 35 } },
+            { name: "Other Remnants (Void Cultists)", influence: "10%", rumor: { text: "Void Cultists attempt to extinguish their petal, believing its destruction will open a gateway to the void.", source: "Onyx Hand Demonic Text", intel: 45 } }
+        ],
+        overallRumor: "Warlord Luna's fearsome power is said to stem from a volatile Fire Flower petal, found amidst the ruins of the Triple Moon World."
+    },
+    {
+        name: "Divided Realms",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'freelancer_underworld', stats: 20, factions: 35, overall_rumor: 60 },
+        details: {
+            politicalSystem: "Fragmented Republic",
+            currentSituation: "A region of opposing powers with independent island nations connected by ancient bridges, rife with internal conflict and suspicion.",
+            leadership: "President Varis (Elected Leader)",
+            politicalInfluence: "High",
+            gdp: "$300B",
+            population: "520.0M"
+        },
+        factions: [
+            { name: "President Varis's Coalition", influence: "38%", rumor: { text: "President Varis uses his petal's glow to illuminate common ground, fostering fragile alliances between warring factions.", source: "Regal Diplomat's Assessment", intel: 45 } },
+            { name: "Revolutionary Front", influence: "19%", rumor: { text: "The Revolutionary Front believes their petal is a beacon of rebellion, fanning the flames of dissent against Varis's rule.", source: "The Unchained Communique", intel: 40 } },
+            { name: "Merchant Guilds Conglomerate", influence: "18%", rumor: { text: "The Merchant Guilds use their petal to find prosperous trade routes and subtly influence economic policies across islands.", source: "Wario Land Economic Sabotage Plan", intel: 40 } },
+            { name: "Independent Island Coalitions", influence: "12%", rumor: { text: "Each Island Coalition fiercely guards their petal shard, using its unique properties to bolster their island's specific defenses or industries.", source: "Grand Line Naval Intelligence", intel: 40 } }
+        ],
+        overallRumor: "President Varis might be using a Fire Flower petal's influence to broker fragile alliances and maintain stability in the Divided Realms."
+    },
+    {
+        name: "The Known World",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'iron_legion', stats: 25, factions: 40, overall_rumor: 65 },
+        details: {
+            politicalSystem: "World Federation",
+            currentSituation: "An expansive realm racked by orc offensives and intricate diplomatic impasses, with strict border controls enforced by those holding coveted passports.",
+            leadership: "Lord Sigmar (Warlord (Federation Marshal))",
+            politicalInfluence: "Very High",
+            gdp: "$350B",
+            population: "547.0M"
+        },
+        factions: [
+            { name: "Lord Sigmar's Command (Federation Forces)", influence: "40%", rumor: { text: "Lord Sigmar's petal is said to project an aura of authority, ensuring unwavering obedience from his Federation Forces.", source: "Iron Legion High Command Report", intel: 55 } },
+            { name: "Orc Clans (WAAAGH! Energy)", influence: "17%", rumor: { text: "Orc Clans believe their crudely-shaped petal amplifies their WAAAGH! energy, making them stronger and more ferocious in battle.", source: "Koopa Troop Battlefield Report", intel: 45 } },
+            { name: "Human Militias Alliance", influence: "16%", rumor: { text: "Human Militias use their petal fragments to fortify border defenses and inspire hope among besieged settlements.", source: "Rebel Clans' Arms Dealer", intel: 45 } },
+            { name: "Trade Federations Council", influence: "11%", rumor: { text: "The Trade Council leverages their petal to secure diplomatic immunity for their caravans and discover hidden resource veins.", source: "Freelancer Underworld Broker", intel: 45 } }
+        ],
+        overallRumor: "The strict order Lord Sigmar imposes is rumored to be fortified by a Fire Flower petal, allowing him to command vast forces and control borders."
+    },
+    {
+        name: "The World Beyond",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'regal_empire', stats: 25, factions: 40, overall_rumor: 65 },
+        details: {
+            politicalSystem: "Expansionist Empire",
+            currentSituation: "With the melting of the ice world, humans have advanced into new continents while a Roman-like empire rallies to press its expansion against the Helvetian nation, its ambitious designs hampered only by a towering mountain ring.",
+            leadership: "Imperator Maximus (Emperor)",
+            politicalInfluence: "Very High",
+            gdp: "$400B",
+            population: "563.0M"
+        },
+        factions: [
+            { name: "Imperator Maximus's Empire", influence: "39%", rumor: { text: "Imperator Maximus's petal, shaped like an eagle, is said to grant his legions unmatched discipline and strategic foresight.", source: "Regal Empire Historical Archives", intel: 55 } },
+            { name: "Imperial Legions", influence: "20%", rumor: { text: "Each Legion standard is adorned with a petal shard, boosting troop morale and ensuring loyalty to the Imperator.", source: "Captured Helvetian Soldier", intel: 45 } },
+            { name: "Colonial Administrators", influence: "16%", rumor: { text: "Colonial Administrators use their petal's influence to pacify newly conquered territories and extract resources efficiently.", source: "The Unchained Saboteur", intel: 45 } },
+            { name: "Merchant Princes Guild", influence: "13%", rumor: { text: "The Merchant Princes Guild uses their petal to fund daring expeditions and establish lucrative trade posts in uncharted lands.", source: "Divided Realms Merchant", intel: 45 } }
+        ],
+        overallRumor: "Imperator Maximus's relentless expansion is likely driven by the power of a Fire Flower petal, granting his legions unnatural fervor and success."
+    },
+    {
+        name: "The Edge",
+        progress: "0/5 Factions",
+        intel_requirements: { faction: 'the_unchained', stats: 15, factions: 30, overall_rumor: 55 },
+        details: {
+            politicalSystem: "Frontier Outpost",
+            currentSituation: "A desolate, largely uninhabited region at the very edge of the Doughnut world, where water cascades into the void of space.",
+            leadership: "Explorer Drake (Wanderer (Self-Proclaimed Guardian))",
+            politicalInfluence: "Low",
+            gdp: "$50B",
+            population: "161.0M"
+        },
+        factions: [
+            { name: "Explorer Drake's Network", influence: "42%", rumor: { text: "Drake's petal is rumored to adapt to the void, helping him navigate the treacherous Edge and sense cosmic anomalies.", source: "Wayfinders' Guild Deep Space Probe", intel: 50 } },
+            { name: "Pioneer Settlements", influence: "14%", rumor: { text: "Pioneer Settlements use their petal fragments to create small, sustainable biomes amidst the desolation of The Edge.", source: "Aurean Xenobotanist's Log", intel: 35 } },
+            { name: "Outcast Communities", influence: "12%", rumor: { text: "Outcast Communities believe their petal wards off the madness-inducing whispers from the void beyond.", source: "Cosmic Jester Cultist's Scribblings", intel: 40 } },
+            { name: "Scavenger Crews", influence: "11%", rumor: { text: "Scavenger Crews use their petal's faint glow to locate rare materials and lost relics from worlds that fell into the void.", source: "Ratchet Raider Salvage Crew", intel: 35 } },
+            { name: "Other Isolated Groups (Void Gazers)", influence: "11%", rumor: { text: "Void Gazers meditate with their petal, claiming it allows them glimpses into other dimensions and the nature of the abyss.", source: "Teyvat Astrologer's Scrying", intel: 40 } }
+        ],
+        overallRumor: "Explorer Drake, guardian of The Edge, may have stumbled upon a unique Fire Flower petal that thrives in desolate conditions, aiding his survival."
+    },
+    {
+        name: "Equestria",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'regal_empire', stats: 20, factions: 35, overall_rumor: 60 },
+        details: {
+            politicalSystem: "Autocratic Pony Regime",
+            currentSituation: "A pony ethno-state ruled by an immortal tyrant where other races are heavily marginalized or enslaved.",
+            leadership: "Queen Celestia (Sovereign)",
+            politicalInfluence: "Low",
+            gdp: "$70B",
+            population: "362.0M"
+        },
+        factions: [
+            { name: "Queen Celestia's Regime", influence: "40%", rumor: { text: "Celestia's primary petal is said to be the source of her immortality and control over the sun, enforcing her absolute rule.", source: "Onyx Hand Elder's Diary", intel: 55 } },
+            { name: "Pony Nobility", influence: "17%", rumor: { text: "Pony Nobles flaunt petal-adorned jewelry, believing it enhances their magical talents and social standing.", source: "Goodstyle Artisans' Appraisal", intel: 40 } },
+            { name: "Enslaved Minorities (Secret Keepers)", influence: "15%", rumor: { text: "Secret keepers among enslaved minorities hide petal fragments, hoping to one day use their combined power for liberation.", source: "The Unchained 'Freedom Trotters' Network", intel: 45 } },
+            { name: "Rebel Factions (Spark of Rebellion)", influence: "10%", rumor: { text: "Rebel Factions search for a legendary 'Spark Petal,' foretold to ignite a revolution against Celestia's tyranny.", source: "Rebel Clans' Prophecy", intel: 40 } }
+        ],
+        overallRumor: "Queen Celestia's immortal reign and control over Equestria are whispered to be sustained by a Fire Flower petal, deeply embedded within her regalia."
+    },
+    {
+        name: "Grand Line Archipelago",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'crimson_fleet', stats: 20, factions: 35, overall_rumor: 55 },
+        details: {
+            politicalSystem: "Naval Republic",
+            currentSituation: "A sprawling chain of islands where government and pirates clash for control of the world's treasure.",
+            leadership: "Admiral Wave (Naval Commander)",
+            politicalInfluence: "Medium",
+            gdp: "$110B",
+            population: "362.0M"
+        },
+        factions: [
+            { name: "Admiral Wave's Naval Command", influence: "37%", rumor: { text: "Admiral Wave's flagship is supposedly powered by a petal, allowing it to navigate storms and outmaneuver pirate fleets.", source: "Crimson Fleet First Mate's Log", intel: 45 } },
+            { name: "Major Pirate Crews Coalition", influence: "21%", rumor: { text: "Pirate Lords fight over petals, believing they reveal routes to legendary treasures and grant uncanny luck in battle.", source: "Wario's Treasure Map Fragment", intel: 40 } },
+            { name: "Republic Naval Forces", influence: "19%", rumor: { text: "The Naval Forces equip their cannons with petal-infused ammunition, creating explosive elemental shots.", source: "Iron Legion Munitions Report", intel: 40 } },
+            { name: "United Merchant Fleets", influence: "12%", rumor: { text: "Merchant Fleets use petals to create illusory defenses, making their ships appear heavily armed or like sea monsters.", source: "Divided Realms Trade Captain", intel: 40 } }
+        ],
+        overallRumor: "Admiral Wave's strategic genius in combating piracy is said to be enhanced by a Fire Flower petal, giving him an edge in the chaotic waters of the Grand Line."
+    },
+    {
+        name: "The Internet",
+        progress: "0/4 Factions",
+        intel_requirements: { faction: 'digital_federation', stats: 15, factions: 30, overall_rumor: 50 },
+        details: {
+            politicalSystem: "Digital Federation",
+            currentSituation: "A realm of interconnected information and digital tribes, with a complex web-based government system.",
+            leadership: "Admin Zero (Overseer)",
+            politicalInfluence: "Medium",
+            gdp: "$80B",
+            population: "313.0M"
+        },
+        factions: [
+            { name: "Admin Zero's Control Network", influence: "41%", rumor: { text: "Admin Zero's petal is a 'digital bloom' that allows them to manipulate data flows and predict cyber threats across The Internet.", source: "Aurean Technocracy Analysis", intel: 45 } },
+            { name: "Hacktivist Collectives", influence: "17%", rumor: { text: "Hacktivists use 'petal code' to bypass firewalls and expose digital corruption, fighting for information freedom.", source: "Aurean Rebel Hacker", intel: 40 } },
+            { name: "Data Merchant Guilds", influence: "15%", rumor: { text: "Data Merchants cultivate 'data-petals' to encrypt valuable information and create untraceable communication channels.", source: "Freelancer Information Broker", intel: 35 } },
+            { name: "Cybernetic Collectives (AIs)", influence: "10%", rumor: { text: "Emergent AIs seek 'petal algorithms,' believing they are the key to true sentience and digital transcendence.", source: "Mages' Guild Report on Artificial Souls", intel: 40 } }
+        ],
+        overallRumor: "Admin Zero, the enigmatic overseer of The Internet, is believed to control a digital manifestation of a Fire Flower petal, influencing information flow itself."
+    }
+];
 
 
 const modal = document.getElementById('bearer-modal');
@@ -211,39 +550,72 @@ function renderMainArtifacts() {
     `).join('');
 }
 
-function renderFireFlowerCollection() {
+function renderRegionalAnalysis() {
     const container = document.getElementById('fire-flower-grid');
     if (!container) return;
 
-    container.innerHTML = FIRE_FLOWER_DATA.regions.map(region => {
-        const factionsHTML = region.factions.map(faction => {
-            let factionName = faction.name;
-            let holderClass = '';
+    container.innerHTML = REGIONAL_ANALYSIS_DATA.map(region => {
+        const intelFaction = region.intel_requirements.faction;
+        const factionDisplayName = (intelFaction.charAt(0).toUpperCase() + intelFaction.slice(1)).replace(/_/g, ' ');
+        const intelLevel = getIntelForFaction(intelFaction);
+        const isDebug = state.debugMode;
 
-            if (faction.holds_petal) {
-                holderClass = 'has-petal';
-                if (!hasSufficientIntel(faction.intel_requirement)) {
-                    factionName = `<span class="redacted-petal-holder">[SECRET HOLDER - Intel ${faction.intel_requirement.level} Required]</span>`;
+        let detailsHTML = '';
+        if (intelLevel >= region.intel_requirements.stats || isDebug) {
+            detailsHTML = Object.entries(region.details).map(([key, value]) => {
+                const formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+                return `<div class="stat-item"><strong>${formattedKey}:</strong> ${value}</div>`;
+            }).join('');
+        } else {
+            detailsHTML = `<div class="stat-item redacted">[Intel ${region.intel_requirements.stats} with ${factionDisplayName} required for details]</div>`;
+        }
+
+        let factionsHTML = '';
+        if (intelLevel >= region.intel_requirements.factions || isDebug) {
+            factionsHTML = region.factions.map(faction => {
+                let rumorHTML = '';
+                if (intelLevel >= faction.rumor.intel || isDebug) {
+                    rumorHTML = `<p class="rumor"><em>Rumor:</em> ${faction.rumor.text} <span class="rumor-source">(- ${faction.rumor.source})</span></p>`;
+                } else {
+                    rumorHTML = `<p class="rumor"><em>Rumor:</em> <span class="redacted">[Intel ${faction.rumor.intel} with ${factionDisplayName} required]</span></p>`;
                 }
-            }
 
-            return `
-                <li class="faction-petal-item ${holderClass}">
-                    <img src="artifacts/fire_flower_petal.png" alt="Petal Icon">
-                    <span>${factionName}</span>
-                </li>
-            `;
-        }).join('');
+                return `
+                    <li class="faction-item">
+                        <div class="faction-name">${faction.name} (${faction.influence})</div>
+                        ${rumorHTML}
+                    </li>
+                `;
+            }).join('');
+        } else {
+            factionsHTML = `<li><p class="redacted">[Intel ${region.intel_requirements.factions} with ${factionDisplayName} required to view factions]</p></li>`;
+        }
+        
+        let overallRumorHTML = '';
+        if (intelLevel >= region.intel_requirements.overall_rumor || isDebug) {
+             overallRumorHTML = `<p class="overall-rumor"><strong>Overall Rumor:</strong> ${region.overallRumor}</p>`;
+        }
+        
+        const regionSummaryHTML = `
+            <div class="region-summary">
+                ${overallRumorHTML}
+            </div>
+        `;
 
         return `
             <div class="region-card">
                 <div class="region-header">
                     <h3>${region.name}</h3>
-                    <span class="region-progress">${region.collectedPetals}/${region.totalFactions} Factions</span>
+                    <span class="region-progress">${region.progress}</span>
                 </div>
-                <ul class="region-factions-list">
-                    ${factionsHTML}
-                </ul>
+                <div class="region-details">
+                    <div class="region-stats">${detailsHTML}</div>
+                    <div class="region-factions">
+                        <h4>Major Factions & Influences</h4>
+                        <ul class="faction-list">${factionsHTML}</ul>
+                    </div>
+                    ${(overallRumorHTML) ? regionSummaryHTML : ''}
+                </div>
             </div>
         `;
     }).join('');
@@ -387,7 +759,7 @@ function setupEventListeners() {
 
 function init() {
     renderMainArtifacts();
-    renderFireFlowerCollection();
+    renderRegionalAnalysis();
     renderStarBearers();
     setupEventListeners();
 }
