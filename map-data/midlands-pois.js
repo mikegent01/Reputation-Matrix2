@@ -2,6 +2,7 @@
 
 const midlandsData = {
     pointsOfInterest: [
+        // #66
         {
             id: 'poi_mid_capital_district',
             x: 81.28,
@@ -16,6 +17,7 @@ const midlandsData = {
             military_strength: 7,
             population: 25000
         },
+        // #67
         {
             id: 'poi_mid_imperial_palace',
             x: 84.50,
@@ -30,6 +32,7 @@ const midlandsData = {
             military_strength: 8,
             population: 5000
         },
+        // #68
         {
             id: 'poi_mid_aegis_command',
             x: 78.5,
@@ -44,6 +47,7 @@ const midlandsData = {
             military_strength: 10,
             population: 10000
         },
+        // #69
         {
             id: 'poi_mid_magitek_foundries',
             x: 75.0,
@@ -58,6 +62,7 @@ const midlandsData = {
             military_strength: 6,
             population: 8000
         },
+        // #70
         {
             id: 'poi_mid_silent_service_hq',
             x: 87.0,
@@ -72,6 +77,7 @@ const midlandsData = {
             military_strength: 8,
             population: 1500
         },
+        // #71
         {
             id: 'poi_mid_grand_market',
             x: 79.0,
@@ -86,6 +92,7 @@ const midlandsData = {
             military_strength: 3,
             population: 6000
         },
+        // #72
         {
             id: 'poi_mid_great_orrery',
             x: 82.0,
@@ -100,6 +107,7 @@ const midlandsData = {
             military_strength: 2,
             population: 200
         },
+        // #73
         {
             id: 'poi_mid_undercroft',
             x: 76.5,
@@ -114,6 +122,7 @@ const midlandsData = {
             military_strength: 4,
             population: 2500
         },
+        // #74
         {
             id: 'poi_mid_sunstone_gate',
             x: 83.0,
@@ -128,6 +137,7 @@ const midlandsData = {
             military_strength: 8,
             population: 500
         },
+        // #75
         {
             id: 'poi_mid_imperial_university',
             x: 85.5,
@@ -142,6 +152,7 @@ const midlandsData = {
             military_strength: 3,
             population: 4000
         },
+        // #76
         {
             id: 'poi_mid_cathedral_flame',
             x: 89.0,
@@ -156,6 +167,7 @@ const midlandsData = {
             military_strength: 6,
             population: 1000
         },
+        // #77
         {
             id: 'poi_mid_imperial_diet',
             x: 82.5,
@@ -170,6 +182,7 @@ const midlandsData = {
             military_strength: 5,
             population: 1000
         },
+        // #78
         {
             id: 'poi_mid_noble_district',
             x: 86.5,
@@ -184,6 +197,7 @@ const midlandsData = {
             military_strength: 4,
             population: 3000
         },
+        // #79
         {
             id: 'poi_mid_mages_guild_spire',
             x: 77.0,
@@ -198,6 +212,7 @@ const midlandsData = {
             military_strength: 6,
             population: 500
         },
+        // #80
         {
             id: 'poi_mid_onyx_embassy',
             x: 88.5,
@@ -212,6 +227,7 @@ const midlandsData = {
             military_strength: 6,
             population: 100
         },
+        // #81
         {
             id: 'poi_mid_fighting_pit',
             x: 74.5,
@@ -226,6 +242,7 @@ const midlandsData = {
             military_strength: 5,
             population: 300
         },
+        // #82
         {
             id: 'poi_mid_imperial_mint',
             x: 73.0,
@@ -240,6 +257,7 @@ const midlandsData = {
             military_strength: 8,
             population: 400
         },
+        // #83
         {
             id: 'poi_mid_grand_library',
             x: 79.5,
@@ -254,6 +272,7 @@ const midlandsData = {
             military_strength: 3,
             population: 300
         },
+        // #84
         {
             id: 'poi_mid_diplomatic_quarter',
             x: 90.5,
@@ -268,6 +287,7 @@ const midlandsData = {
             military_strength: 6,
             population: 1200
         },
+        // #85
         {
             id: 'poi_mid_artificers_guild',
             x: 73.5,
@@ -282,6 +302,7 @@ const midlandsData = {
             military_strength: 3,
             population: 1800
         },
+        // #86
         {
             id: 'poi_mid_citadel_of_law',
             x: 84.5,
@@ -296,6 +317,7 @@ const midlandsData = {
             military_strength: 7,
             population: 600
         },
+        // #87
         {
             id: 'poi_mid_imperial_menagerie',
             x: 92.0,
@@ -309,6 +331,66 @@ const midlandsData = {
             economic_value: 4,
             military_strength: 4,
             population: 300
+        },
+        // #88
+        {
+            id: 'poi_mid_gilded_gryphon_barracks',
+            x: 77.5,
+            y: 15.0,
+            type: 'barracks',
+            name: "Gilded Gryphon Barracks",
+            description: "The urban barracks for the Gilded Gryphon Mercenary Company. When not on contract, they can be found here, training, gambling, and spending their coin.",
+            factionId: 'unaligned',
+            intelReq: 25,
+            political_influence: 3,
+            economic_value: 5,
+            military_strength: 6,
+            population: 600
+        },
+        // #89
+        {
+            id: 'poi_mid_wayfinders_guildhall',
+            x: 71.0,
+            y: 14.5,
+            type: 'academy',
+            name: "Wayfinders' Guildhall",
+            description: "The capital chapterhouse of the Wayfinders' Guild. A place filled with maps, artifacts, and adventurers planning their next expedition into the unknown.",
+            factionId: 'unaligned',
+            intelReq: 20,
+            political_influence: 4,
+            economic_value: 4,
+            military_strength: 2,
+            population: 200
+        },
+        // #90
+        {
+            id: 'poi_mid_cosmic_jester_shrine',
+            x: 93.0,
+            y: 4.0,
+            type: 'shrine',
+            name: "Hidden Shrine to the Jester",
+            description: "A secret, nonsensical shrine to the Cosmic Jester, hidden in the attic of a noble's estate. It is maintained by a small, influential cult of aristocrats who find Imperial order dreadfully boring.",
+            factionId: 'cosmic_jesters',
+            intelReq: 85,
+            political_influence: 4,
+            economic_value: 1,
+            military_strength: 1,
+            population: 15
+        },
+        // #158
+        {
+            id: 'poi_mid_heralds_plaza',
+            x: 80.5,
+            y: 2.0,
+            type: 'landmark',
+            name: "Imperial Herald's Plaza",
+            description: "A grand plaza where Imperial Heralds make public proclamations and post official news bulletins. It is a key tool for state propaganda, and a place where the Silent Service subtly monitors public opinion.",
+            factionId: 'regal_empire',
+            intelReq: 15,
+            political_influence: 6,
+            economic_value: 2,
+            military_strength: 3,
+            population: 500
         }
     ],
     fogOfWar: []

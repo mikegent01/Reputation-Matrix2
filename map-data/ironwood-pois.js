@@ -141,12 +141,22 @@ export const ironwoodData = {
             economic_value: 1,
             military_strength: 2,
             population: 30
+        },
+        // #160
+        {
+            id: 'poi_iw_massacre_site',
+            x: 33.0,
+            y: 18.0,
+            type: 'battlefield',
+            name: "The Poacher's Folly",
+            description: "The site of a recent, brutal massacre. An entire camp of poachers was wiped out, but not by Imperial or Rakasha forces. The bodies show signs of both extreme cold and strange, crystalline wounds, a mystery that has unnerved both sides of the conflict.",
+            factionId: 'unaligned',
+            intelReq: 30,
+            political_influence: 1,
+            economic_value: 1,
+            military_strength: 1,
+            population: 0
         }
     ],
-    fogOfWar: [
-        {
-            id: 'fog_ironwood',
-            points: "23.00,22.06 26.45,22.89 29.16,21.73 33.56,20.40 38.13,28.54 41.59,28.87 43.93,27.71 46.08,22.06 47.57,21.89 49.72,14.25 48.69,9.60 44.95,4.45 40.66,3.79 31.41,6.78 28.14,6.94 24.68,7.44 20.57,8.77 19.63,13.26"
-        }
-    ]
+    fogOfWar: []
 };

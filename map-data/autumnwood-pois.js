@@ -141,12 +141,22 @@ export const autumnwoodData = {
             economic_value: 1,
             military_strength: 6,
             population: 60
+        },
+        // #161
+        {
+            id: 'poi_aw_mana_springs',
+            x: 36.0,
+            y: 62.0,
+            type: 'ley_line',
+            name: "The Volatile Mana-Springs",
+            description: "A series of hot springs where raw magical energy bubbles to the surface. The Innovators wish to harness this power for their experiments, while the Conservators believe it is too unstable and must be sealed. The debate is... heated.",
+            factionId: 'mages_guild',
+            intelReq: 40,
+            political_influence: 4,
+            economic_value: 5,
+            military_strength: 3,
+            population: 5
         }
     ],
-    fogOfWar: [
-        {
-            id: 'fog_autumnwood',
-            points: "31.78,55.45 28.79,57.28 24.12,59.60 24.77,65.91 25.33,68.24 27.58,69.57 28.79,70.07 30.10,71.89 30.85,75.38 34.02,76.38 37.67,72.72 39.44,70.40 39.91,67.57 41.12,62.26 41.12,58.77 39.26,56.11"
-        }
-    ]
+    fogOfWar: []
 };

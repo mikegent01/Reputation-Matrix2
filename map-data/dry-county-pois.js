@@ -141,12 +141,22 @@ export const dryCountyData = {
             economic_value: 1,
             military_strength: 5,
             population: 40
+        },
+        // #162
+        {
+            id: 'poi_dc_lost_socks',
+            x: 73.0,
+            y: 67.0,
+            type: 'library',
+            name: "The Bureau of Lost Socks",
+            description: "A small, unassuming building that is, inexplicably, the cosmic repository for every sock that has ever gone missing from a laundry load. The archive is infinite, maddening, and guarded by a polite but firm gnome who will not let you find the matching pair.",
+            factionId: 'cosmic_jesters',
+            intelReq: 50,
+            political_influence: 2,
+            economic_value: 1,
+            military_strength: 1,
+            population: 1
         }
     ],
-    fogOfWar: [
-        {
-            id: 'fog_dry_county',
-            points: "58.32,48.14 55.79,50.47 56.17,56.11 56.63,64.75 56.73,71.73 59.34,77.04 63.46,78.04 67.19,75.22 70.84,71.73 74.67,68.74 79.06,73.55 82.05,75.05 84.29,71.89 82.98,67.74 83.17,61.26 79.62,57.61 79.53,53.12 75.70,47.81 68.31,48.31 62.33,45.81 60.65,45.65"
-        }
-    ]
+    fogOfWar: []
 };

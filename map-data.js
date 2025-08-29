@@ -29,6 +29,15 @@ import { lockerwoodData } from './map-data/lockerwood-pois.js';
 import { dragonMountainData } from './map-data/dragon-mountain-pois.js';
 import { autumnwoodData } from './map-data/autumnwood-pois.js';
 import { dryCountyData } from './map-data/dry-county-pois.js';
+import { ludorIslesData } from './map-data/ludor-isles-pois.js';
+import { theghduralData } from './map-data/theghdural-pois.js';
+import { jungleOfThornsData } from './map-data/jungle-of-thorns-pois.js';
+import { baldoraPlainsData } from './map-data/baldora-plains-pois.js';
+import { yaleShoresData } from './map-data/yale-shores-pois.js';
+import { lowerHillsData } from './map-data/lower-hills-pois.js';
+import { yalCentralData } from './map-data/yal-central-pois.js';
+import { northernLandsData } from './map-data/northern-lands-pois.js';
+
 
 // Re-export BUILDING_TYPES so other modules can access it from this central file
 export { BUILDING_TYPES };
@@ -61,6 +70,7 @@ export const MAP_DATA = {
             ...iceIceOutpostData.pointsOfInterest,
             ...chramalotKingdomData.pointsOfInterest,
             ...piantaSeaData.pointsOfInterest,
+            ...yaleShoresData.pointsOfInterest,
         ],
         fogOfWar: [
             ...(mushroomKingdomData.fogOfWar || []),
@@ -83,6 +93,7 @@ export const MAP_DATA = {
             ...(iceIceOutpostData.fogOfWar || []),
             ...(chramalotKingdomData.fogOfWar || []),
             ...(piantaSeaData.fogOfWar || []),
+            ...(yaleShoresData.fogOfWar || []),
         ],
         poiSourceFile: null 
     },
@@ -196,6 +207,16 @@ export const MAP_DATA = {
         fogOfWar: piantaSeaData.fogOfWar || [],
         poiSourceFile: 'map-data/pianta-sea-pois.js'
     },
+    yale_shores: {
+        id: 'yale_shores',
+        name: 'Yale Shores',
+        imageSrc: 'mushroom_kingdom.jpg',
+        order: 13,
+        group: 'Mushroom Kingdom Regions',
+        pointsOfInterest: yaleShoresData.pointsOfInterest,
+        fogOfWar: yaleShoresData.fogOfWar || [],
+        poiSourceFile: 'map-data/yale-shores-pois.js'
+    },
     barrel_volcano: {
         id: 'barrel_volcano',
         name: 'Barrel Volcano',
@@ -291,6 +312,13 @@ export const MAP_DATA = {
             ...dragonMountainData.pointsOfInterest,
             ...autumnwoodData.pointsOfInterest,
             ...dryCountyData.pointsOfInterest,
+            ...ludorIslesData.pointsOfInterest,
+            ...theghduralData.pointsOfInterest,
+            ...jungleOfThornsData.pointsOfInterest,
+            ...baldoraPlainsData.pointsOfInterest,
+            ...lowerHillsData.pointsOfInterest,
+            ...yalCentralData.pointsOfInterest,
+            ...northernLandsData.pointsOfInterest,
         ],
         fogOfWar: [
             ...(midlandsData.fogOfWar || []),
@@ -301,6 +329,13 @@ export const MAP_DATA = {
             ...(dragonMountainData.fogOfWar || []),
             ...(autumnwoodData.fogOfWar || []),
             ...(dryCountyData.fogOfWar || []),
+            ...(ludorIslesData.fogOfWar || []),
+            ...(theghduralData.fogOfWar || []),
+            ...(jungleOfThornsData.fogOfWar || []),
+            ...(baldoraPlainsData.fogOfWar || []),
+            ...(lowerHillsData.fogOfWar || []),
+            ...(yalCentralData.fogOfWar || []),
+            ...(northernLandsData.fogOfWar || []),
         ],
         poiSourceFile: null
     },
@@ -384,7 +419,77 @@ export const MAP_DATA = {
         fogOfWar: dryCountyData.fogOfWar,
         poiSourceFile: 'map-data/dry-county-pois.js'
     },
-     chramalot_kingdom: {
+    theghdural: {
+        id: 'theghdural',
+        name: 'Theghdural',
+        imageSrc: 'fullmap.png',
+        order: 10,
+        group: 'The Midlands',
+        pointsOfInterest: theghduralData.pointsOfInterest,
+        fogOfWar: theghduralData.fogOfWar,
+        poiSourceFile: 'map-data/theghdural-pois.js'
+    },
+    jungle_of_thorns: {
+        id: 'jungle_of_thorns',
+        name: 'Jungle of Thorns',
+        imageSrc: 'fullmap.png',
+        order: 11,
+        group: 'The Midlands',
+        pointsOfInterest: jungleOfThornsData.pointsOfInterest,
+        fogOfWar: jungleOfThornsData.fogOfWar,
+        poiSourceFile: 'map-data/jungle-of-thorns-pois.js'
+    },
+    ludor_isles: {
+        id: 'ludor_isles',
+        name: 'Ludor Isles',
+        imageSrc: 'fullmap.png',
+        order: 12,
+        group: 'The Midlands',
+        pointsOfInterest: ludorIslesData.pointsOfInterest,
+        fogOfWar: ludorIslesData.fogOfWar,
+        poiSourceFile: 'map-data/ludor-isles-pois.js'
+    },
+    baldora_plains: {
+        id: 'baldora_plains',
+        name: 'Baldora Plains',
+        imageSrc: 'fullmap.png',
+        order: 13,
+        group: 'The Midlands',
+        pointsOfInterest: baldoraPlainsData.pointsOfInterest,
+        fogOfWar: baldoraPlainsData.fogOfWar,
+        poiSourceFile: 'map-data/baldora-plains-pois.js'
+    },
+    lower_hills: {
+        id: 'lower_hills',
+        name: 'Lower Hills',
+        imageSrc: 'fullmap.png',
+        order: 14,
+        group: 'The Midlands',
+        pointsOfInterest: lowerHillsData.pointsOfInterest,
+        fogOfWar: lowerHillsData.fogOfWar,
+        poiSourceFile: 'map-data/lower-hills-pois.js'
+    },
+    yal_central: {
+        id: 'yal_central',
+        name: 'Yal Central',
+        imageSrc: 'fullmap.png',
+        order: 15,
+        group: 'The Midlands',
+        pointsOfInterest: yalCentralData.pointsOfInterest,
+        fogOfWar: yalCentralData.fogOfWar,
+        poiSourceFile: 'map-data/yal-central-pois.js'
+    },
+    northern_lands: {
+        id: 'northern_lands',
+        name: 'The Northern Lands',
+        imageSrc: 'fullmap.png',
+        order: 16,
+        group: 'The Midlands',
+        pointsOfInterest: northernLandsData.pointsOfInterest,
+        fogOfWar: northernLandsData.fogOfWar,
+        poiSourceFile: 'map-data/northern-lands-pois.js'
+    },
+    chramalot_kingdom: {
         id: 'chramalot_kingdom',
         name: 'Chramalot Kingdom',
         imageSrc: 'mushroom_kingdom.jpg',

@@ -2,6 +2,7 @@
 
 export const lockerwoodData = {
     pointsOfInterest: [
+        // #38
         {
             id: 'poi_lw_oakhaven',
             x: 35.0,
@@ -16,6 +17,7 @@ export const lockerwoodData = {
             military_strength: 4,
             population: 12000
         },
+        // #39
         {
             id: 'poi_lw_whisperwood',
             x: 32.0,
@@ -30,6 +32,7 @@ export const lockerwoodData = {
             military_strength: 7,
             population: 500
         },
+        // #40
         {
             id: 'poi_lw_bloodmoon_manor',
             x: 38.0,
@@ -44,6 +47,7 @@ export const lockerwoodData = {
             military_strength: 6,
             population: 150
         },
+        // #41
         {
             id: 'poi_lw_great_granary',
             x: 37.0,
@@ -58,6 +62,7 @@ export const lockerwoodData = {
             military_strength: 5,
             population: 300
         },
+        // #42
         {
             id: 'poi_lw_battle_of_ravencreek',
             x: 34.0,
@@ -72,6 +77,7 @@ export const lockerwoodData = {
             military_strength: 3,
             population: 0
         },
+        // #43
         {
             id: 'poi_lw_silver_flame_chapel',
             x: 40.0,
@@ -86,6 +92,7 @@ export const lockerwoodData = {
             military_strength: 6,
             population: 80
         },
+        // #44
         {
             id: 'poi_lw_crossroads_inn',
             x: 38.0,
@@ -100,6 +107,7 @@ export const lockerwoodData = {
             military_strength: 2,
             population: 100
         },
+        // #45
         {
             id: 'poi_lw_howling_den',
             x: 31.0,
@@ -114,6 +122,7 @@ export const lockerwoodData = {
             military_strength: 8,
             population: 200
         },
+        // #46
         {
             id: 'poi_lw_imperial_garrison',
             x: 39.0,
@@ -128,6 +137,7 @@ export const lockerwoodData = {
             military_strength: 7,
             population: 500
         },
+        // #47
         {
             id: 'poi_lw_forgotten_shrine',
             x: 35.0,
@@ -141,12 +151,82 @@ export const lockerwoodData = {
             economic_value: 1,
             military_strength: 1,
             population: 0
+        },
+        // #48
+        {
+            id: 'poi_lw_millers_creek',
+            x: 36.5,
+            y: 38.5,
+            type: 'village',
+            name: "Miller's Creek",
+            description: "A small, hardworking village known for its water-powered mills that grind the grain for the entire province. A vital part of Lockerwood's economy.",
+            factionId: 'unaligned',
+            intelReq: 10,
+            political_influence: 2,
+            economic_value: 8,
+            military_strength: 2,
+            population: 600
+        },
+        // #49
+        {
+            id: 'poi_lw_blood_farm',
+            x: 39.5,
+            y: 47.0,
+            type: 'farm',
+            name: "The Crimson Orchard (Blood Farm)",
+            description: "A seemingly normal apple orchard that is secretly a 'blood farm' for the Onyx Hand, where 'donors' are kept and cared for. The apples grown here are unnaturally red.",
+            factionId: 'onyx_hand',
+            intelReq: 65,
+            political_influence: 2,
+            economic_value: 4,
+            military_strength: 4,
+            population: 40
+        },
+        // #50
+        {
+            id: 'poi_lw_moonfang_totem',
+            x: 33.0,
+            y: 46.5,
+            type: 'landmark',
+            name: "Moonfang Clan Totem",
+            description: "A massive, crudely carved wooden totem pole that marks the edge of the Moonfang Pack's territory. It is adorned with the bones of their enemies and serves as a stark warning.",
+            factionId: 'moonfang_pack',
+            intelReq: 30,
+            political_influence: 3,
+            economic_value: 0,
+            military_strength: 3,
+            population: 0
+        },
+        // #51
+        {
+            id: 'poi_lw_abandoned_farmstead',
+            x: 33.5,
+            y: 37.0,
+            type: 'ruins',
+            name: "Abandoned Farmstead",
+            description: "A farmstead that was abandoned after its owners fled from the escalating supernatural conflict. It is now a common ambush spot for both vampire and werewolf patrols.",
+            factionId: 'unaligned',
+            intelReq: 15,
+            political_influence: 0,
+            economic_value: 1,
+            military_strength: 2,
+            population: 0
+        },
+        // #159
+        {
+            id: 'poi_lw_brewery',
+            x: 36.0,
+            y: 42.5,
+            type: 'inn',
+            name: "The Half-Moon Brewery",
+            description: "A fiercely neutral brewery caught in the crossfire between the Moonfang Pack and Onyx Hand. Its potent 'Grave-Stout' is legendary, making it a popular, if dangerous, meeting place for mercenaries and spies from all sides.",
+            factionId: 'unaligned',
+            intelReq: 20,
+            political_influence: 3,
+            economic_value: 6,
+            military_strength: 2,
+            population: 30
         }
     ],
-    fogOfWar: [
-        {
-            id: 'fog_lockerwood',
-            points: "39.07,34.19 38.32,37.01 34.49,39.17 31.31,42.82 29.91,45.98 34.68,52.62 38.23,48.97 41.59,40.17 42.15,37.18 41.31,34.19"
-        }
-    ]
+    fogOfWar: []
 };

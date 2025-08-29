@@ -141,12 +141,36 @@ export const dragonMountainData = {
             economic_value: 1,
             military_strength: 2,
             population: 0
+        },
+        // #157
+        {
+            id: 'poi_dm_larios_workshop',
+            x: 45.0,
+            y: 46.0,
+            type: 'workshop',
+            name: "Lario's Makeshift Workshop",
+            description: "A hastily assembled workshop hidden among the ruins, where the goblin mechanic Lario tinkers with salvaged Imperial tech. He's trying to build something big, and is always looking for 'investors' or 'test subjects'.",
+            factionId: 'ratchet_raiders',
+            intelReq: 25,
+            political_influence: 2,
+            economic_value: 5,
+            military_strength: 3,
+            population: 5
+        },
+        {
+            id: 'poi_dm_rakasha_shrine',
+            x: 41.0,
+            y: 47.5,
+            type: 'shrine',
+            name: "Shrine of the Lost Princess",
+            description: "A small, hidden shrine maintained by the Rakasha, recently re-sanctified. Chief Thornpaw has been seen meditating here, seeking guidance from the spirits on a matter of great importance—a broken promise related to the late Princess Peach. The air is heavy with ancient sorrow and unresolved duty.",
+            factionId: 'rakasha_clans',
+            intelReq: 75,
+            political_influence: 3,
+            economic_value: 1,
+            military_strength: 2,
+            population: 5
         }
     ],
-    fogOfWar: [
-        {
-            id: 'fog_dragon_mountain',
-            points: "42.62,49.80 45.42,45.65 47.48,44.32 48.04,39.34 45.80,35.35 43.27,34.02 40.28,40.00 38.88,43.99 35.98,51.96 39.26,52.79"
-        }
-    ]
+    fogOfWar: []
 };

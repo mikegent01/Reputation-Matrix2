@@ -2,13 +2,14 @@
 
 export const vemilliaData = {
     pointsOfInterest: [
+        // #1
         {
-            id: 'poi_vm_port_vemia',
+            id: 'poi_vm_vemia_city',
             x: 75.0,
             y: 30.0,
-            type: 'port',
-            name: "Port Vemia",
-            description: "The largest port on the eastern coast of the Midlands. A bustling hub of trade, Imperial naval power, and a hotbed for smugglers and pirates.",
+            type: 'major_city',
+            name: "Vemia City",
+            description: "The largest trade hub in the eastern Midlands. Though landlocked, its position at the convergence of several major Imperial roads makes it a bustling center of commerce, Imperial administration, and a hotbed for smugglers and spies.",
             factionId: 'regal_empire',
             intelReq: 10,
             political_influence: 8,
@@ -16,13 +17,14 @@ export const vemilliaData = {
             military_strength: 7,
             population: 60000
         },
+        // #2
         {
             id: 'poi_vm_naval_shipyard',
             x: 79.0,
             y: 25.0,
             type: 'workshop',
-            name: "Imperial Naval Shipyard",
-            description: "The primary shipyard for the Imperial Eastern Fleet. The constant sound of construction echoes as new warships are built to project the Empire's power across the seas.",
+            name: "Imperial Landship Yard",
+            description: "The primary shipyard for the Imperial Eastern Fleet's massive land-crawling battleships. The constant sound of construction echoes as new warships are built to project the Empire's power across the plains.",
             factionId: 'iron_legion',
             intelReq: 30,
             political_influence: 5,
@@ -30,13 +32,14 @@ export const vemilliaData = {
             military_strength: 9,
             population: 7000
         },
+        // #3
         {
             id: 'poi_vm_merchants_guild',
             x: 74.0,
             y: 33.0,
             type: 'market',
             name: "Merchants' Guildhall",
-            description: "The opulent headquarters of the powerful merchants' guild that controls much of the trade in Port Vemia. A place of wealth, influence, and cutthroat business deals.",
+            description: "The opulent headquarters of the powerful merchants' guild that controls much of the trade in Vemia. A place of wealth, influence, and cutthroat business deals.",
             factionId: 'unaligned',
             intelReq: 20,
             political_influence: 6,
@@ -44,13 +47,14 @@ export const vemilliaData = {
             military_strength: 3,
             population: 1500
         },
+        // #4
         {
-            id: 'poi_vm_smugglers_cove',
+            id: 'poi_vm_smugglers_tunnel',
             x: 70.0,
             y: 38.0,
             type: 'cave_entrance',
-            name: "Smuggler's Cove",
-            description: "A series of hidden sea caves used by the Crimson Fleet and other smugglers to bypass Imperial customs. It is a dangerous place, filled with traps and pirates.",
+            name: "Smuggler's Tunnel",
+            description: "A series of hidden tunnels beneath the city used by the Crimson Fleet and other smugglers to bypass Imperial customs. It is a dangerous place, filled with traps and hired thugs.",
             factionId: 'crimson_fleet',
             intelReq: 45,
             political_influence: 2,
@@ -58,13 +62,14 @@ export const vemilliaData = {
             military_strength: 4,
             population: 200
         },
+        // #5
         {
-            id: 'poi_vm_lighthouse',
+            id: 'poi_vm_road_wardens_spire',
             x: 81.0,
             y: 35.0,
             type: 'watchtower',
-            name: "The VEMIA Lighthouse",
-            description: "A massive, magically-powered lighthouse that guides ships safely into port. It also serves as a watchtower for the Imperial Navy, monitoring the sea for pirates.",
+            name: "The Road Warden's Spire",
+            description: "A massive, magically-powered watchtower that overlooks the great Imperial roads. It also serves as a watchtower for the Imperial Guard, monitoring the roads for bandits.",
             factionId: 'regal_empire',
             intelReq: 15,
             political_influence: 3,
@@ -72,13 +77,14 @@ export const vemilliaData = {
             military_strength: 6,
             population: 50
         },
+        // #6
         {
-            id: 'poi_vm_fishermans_wharf',
+            id: 'poi_vm_caravanserai',
             x: 72.0,
             y: 28.0,
             type: 'village',
-            name: "Fisherman's Wharf",
-            description: "A bustling district of docks and canneries that provides the capital with much of its seafood. The fishermen here are a tight-knit community with their own laws.",
+            name: "The Great Caravanserai",
+            description: "A bustling district of inns and stables that provides services to the thousands of merchants passing through the city. The caravan masters here form a powerful, independent community.",
             factionId: 'unaligned',
             intelReq: 10,
             political_influence: 2,
@@ -86,13 +92,14 @@ export const vemilliaData = {
             military_strength: 2,
             population: 3000
         },
+        // #7
         {
             id: 'poi_vm_fort_horizon',
             x: 77.0,
             y: 20.0,
             type: 'fortress',
             name: "Fort Horizon",
-            description: "A heavily armed coastal fortress that guards the northern approach to Port Vemia. Its cannons can shell any ship that approaches without permission.",
+            description: "A heavily armed fortress that guards the northern approach to Vemia City. Its cannons can shell any army that approaches without permission.",
             factionId: 'iron_legion',
             intelReq: 25,
             political_influence: 3,
@@ -100,13 +107,14 @@ export const vemilliaData = {
             military_strength: 9,
             population: 800
         },
+        // #8
         {
-            id: 'poi_vm_temple_of_the_deep',
+            id: 'poi_vm_temple_of_coin',
             x: 78.0,
             y: 40.0,
             type: 'temple',
-            name: "Temple of the Deep",
-            description: "A mysterious temple dedicated to an ancient sea god. Its priests are said to be able to predict storms and calm the waves, a service for which sailors pay dearly.",
+            name: "Temple of the Gilded Hand",
+            description: "A lavish temple dedicated to the god of commerce and luck. Merchants make offerings here before every major deal, hoping for a favorable outcome.",
             factionId: 'unaligned',
             intelReq: 40,
             political_influence: 4,
@@ -114,13 +122,14 @@ export const vemilliaData = {
             military_strength: 2,
             population: 100
         },
+        // #9
         {
             id: 'poi_vm_salt_mines',
             x: 68.0,
             y: 25.0,
             type: 'mine',
             name: "The Salt Mines of Vemilia",
-            description: "Vast salt mines that are a major source of wealth for the province. The work is grueling and often performed by political prisoners and indentured servants.",
+            description: "Vast salt mines that are a major source of wealth for the province. The work is grueling and often performed by political prisoners and indentured servants from The Unchained.",
             factionId: 'regal_empire',
             intelReq: 20,
             political_influence: 2,
@@ -128,25 +137,51 @@ export const vemilliaData = {
             military_strength: 4,
             population: 2500
         },
+        // #10
         {
-            id: 'poi_vm_shipwreck_graveyard',
+            id: 'poi_vm_trade_road_ruins',
             x: 69.0,
             y: 33.0,
-            type: 'shipwreck',
-            name: "Shipwreck Graveyard",
-            description: "A treacherous reef that has claimed countless ships over the centuries. It is a dangerous place to navigate, but is rumored to hold vast amounts of sunken treasure.",
+            type: 'ruins',
+            name: "Old Trade Road Ruins",
+            description: "The crumbling remains of an ancient trade road from a forgotten empire. It is now a dangerous, bandit-infested route, but is rumored to hold forgotten treasures.",
             factionId: 'unaligned',
             intelReq: 30,
             political_influence: 1,
             economic_value: 5,
             military_strength: 2,
             population: 0
+        },
+        // #11
+        {
+            id: 'poi_vm_onyx_hand_villa',
+            x: 80.5,
+            y: 38.0,
+            type: 'lair',
+            name: "Onyx Hand Villa",
+            description: "A secluded, opulent villa that serves as a secret base of operations for the Onyx Hand. Here, they manipulate the city's merchant guilds and gather intelligence on Imperial movements.",
+            factionId: 'onyx_hand',
+            intelReq: 70,
+            political_influence: 6,
+            economic_value: 4,
+            military_strength: 5,
+            population: 50
+        },
+        // #12
+        {
+            id: 'poi_vm_silent_service_archive',
+            x: 71.5,
+            y: 22.0,
+            type: 'prison',
+            name: "Silent Service Archive",
+            description: "A seemingly innocuous warehouse that is actually a secure archive for the Empire's intelligence agency. It holds blackmail material on nearly every important figure in the province.",
+            factionId: 'regal_empire',
+            intelReq: 90,
+            political_influence: 7,
+            economic_value: 2,
+            military_strength: 8,
+            population: 120
         }
     ],
-    fogOfWar: [
-        {
-            id: 'fog_vemillia',
-            points: "80.09,17.24 74.67,17.91 72.99,19.07 70.00,23.55 66.07,30.03 68.03,36.35 72.43,42.99 78.22,45.48 83.64,44.49 84.48,33.52 83.64,27.54 82.89,20.73 80.55,17.74"
-        }
-    ]
+    fogOfWar: []
 };

@@ -2,6 +2,7 @@
 
 export const yalBelanorData = {
     pointsOfInterest: [
+        // #52
         {
             id: 'poi_yb_belanor_city',
             x: 55.0,
@@ -16,6 +17,7 @@ export const yalBelanorData = {
             military_strength: 7,
             population: 45000
         },
+        // #53
         {
             id: 'poi_yb_silverstream',
             x: 48.5,
@@ -30,6 +32,7 @@ export const yalBelanorData = {
             military_strength: 1,
             population: 0
         },
+        // #54
         {
             id: 'poi_yb_veridia_estate',
             x: 60.0,
@@ -44,6 +47,7 @@ export const yalBelanorData = {
             military_strength: 4,
             population: 800
         },
+        // #55
         {
             id: 'poi_yb_elven_ruins',
             x: 42.5,
@@ -58,6 +62,7 @@ export const yalBelanorData = {
             military_strength: 2,
             population: 0
         },
+        // #56
         {
             id: 'poi_yb_knightly_academy',
             x: 57.0,
@@ -72,6 +77,7 @@ export const yalBelanorData = {
             military_strength: 8,
             population: 2000
         },
+        // #57
         {
             id: 'poi_yb_whisperwood_edge',
             x: 41.0,
@@ -86,6 +92,7 @@ export const yalBelanorData = {
             military_strength: 3,
             population: 0
         },
+        // #58
         {
             id: 'poi_yb_stonebridge_keep',
             x: 65.0,
@@ -100,6 +107,7 @@ export const yalBelanorData = {
             military_strength: 9,
             population: 1200
         },
+        // #59
         {
             id: 'poi_yb_sunstone_vineyards',
             x: 52.0,
@@ -114,6 +122,7 @@ export const yalBelanorData = {
             military_strength: 2,
             population: 600
         },
+        // #60
         {
             id: 'poi_yb_wayfinders_lodge',
             x: 45.0,
@@ -128,6 +137,7 @@ export const yalBelanorData = {
             military_strength: 3,
             population: 40
         },
+        // #61
         {
             id: 'poi_yb_hermits_cave',
             x: 69.0,
@@ -141,12 +151,67 @@ export const yalBelanorData = {
             economic_value: 1,
             military_strength: 1,
             population: 1
+        },
+        // #62
+        {
+            id: 'poi_yb_griffon_roost',
+            x: 67.0,
+            y: 12.0,
+            type: 'lair',
+            name: "Griffon Roost",
+            description: "The high, inaccessible mountain peaks where the noble griffons of Belanor make their nests. Only the most skilled knights of the academy are able to befriend and ride these majestic beasts.",
+            factionId: 'regal_empire',
+            intelReq: 45,
+            political_influence: 3,
+            economic_value: 2,
+            military_strength: 6,
+            population: 0
+        },
+        // #63
+        {
+            id: 'poi_yb_imperial_archives',
+            x: 54.0,
+            y: 13.0,
+            type: 'library',
+            name: "Provincial Archives",
+            description: "A grand library in Belanor City that holds the genealogical records of all major noble houses, making it a treasure trove for those seeking to exploit political secrets.",
+            factionId: 'regal_empire',
+            intelReq: 30,
+            political_influence: 5,
+            economic_value: 3,
+            military_strength: 3,
+            population: 100
+        },
+        // #64
+        {
+            id: 'poi_yb_standing_stones',
+            x: 48.0,
+            y: 6.0,
+            type: 'ancient_circle',
+            name: "The Standing Stones of the First Men",
+            description: "An ancient circle of monoliths that predates the Empire. They hum with a faint, primal magic, and local legends say they mark a site of great power.",
+            factionId: 'unaligned',
+            intelReq: 35,
+            political_influence: 1,
+            economic_value: 2,
+            military_strength: 2,
+            population: 0
+        },
+        // #65
+        {
+            id: 'poi_yb_blackwood_manor',
+            x: 47.0,
+            y: 24.0,
+            type: 'village',
+            name: "Blackwood Manor",
+            description: "A fortified manor house belonging to a minor noble family rumored to have ties to the Onyx Hand. A place of dark secrets and quiet corruption.",
+            factionId: 'onyx_hand',
+            intelReq: 60,
+            political_influence: 4,
+            economic_value: 3,
+            military_strength: 5,
+            population: 200
         }
     ],
-    fogOfWar: [
-        {
-            id: 'fog_yal_belanor',
-            points: "54.49,3.12 64.39,1.96 68.50,1.96 68.78,6.78 72.05,16.41 71.68,20.56 68.69,23.55 66.17,26.88 56.91,28.37 49.16,29.04 47.48,28.54 45.24,26.88 45.24,23.55 41.78,16.91 40.10,12.59 37.01,7.77 37.11,4.62 42.90,-0.03 56.07,2.13 64.58,2.29"
-        }
-    ]
+    fogOfWar: []
 };

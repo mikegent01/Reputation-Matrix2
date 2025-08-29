@@ -1,8 +1,8 @@
-
 // map-data/dry-dry-desert-pois.js
 
 export const dryDryDesertData = {
     pointsOfInterest: [
+        // #13
         {
             id: 'poi_ddd_outpost',
             x: 35.0,
@@ -17,6 +17,7 @@ export const dryDryDesertData = {
             military_strength: 2,
             population: 300
         },
+        // #14
         {
             id: 'poi_ddd_prison',
             x: 47.0,
@@ -31,6 +32,7 @@ export const dryDryDesertData = {
             military_strength: 6,
             population: 150
         },
+        // #15
         {
             id: 'poi_ddd_spire',
             x: 40.0,
@@ -45,6 +47,7 @@ export const dryDryDesertData = {
             military_strength: 2,
             population: 0
         },
+        // #16
         {
             id: 'poi_ddd_kamek',
             x: 48.0,
@@ -59,6 +62,7 @@ export const dryDryDesertData = {
             military_strength: 5,
             population: 40
         },
+        // #17
         {
             id: 'poi_ddd_sinkhole',
             x: 42.0,
@@ -73,6 +77,7 @@ export const dryDryDesertData = {
             military_strength: 7,
             population: 1
         },
+        // #18
         {
             id: 'poi_ddd_gerudo_ruins',
             x: 34.0,
@@ -87,6 +92,7 @@ export const dryDryDesertData = {
             military_strength: 3,
             population: 0
         },
+        // #19
         {
             id: 'poi_ddd_scavengers_hope',
             x: 38.0,
@@ -101,6 +107,7 @@ export const dryDryDesertData = {
             military_strength: 4,
             population: 400
         },
+        // #20
         {
             id: 'poi_ddd_crystal_oasis',
             x: 44.0,
@@ -115,6 +122,7 @@ export const dryDryDesertData = {
             military_strength: 3,
             population: 20
         },
+        // #21
         {
             id: 'poi_ddd_bandits_bluff',
             x: 48.0,
@@ -129,6 +137,7 @@ export const dryDryDesertData = {
             military_strength: 7,
             population: 200
         },
+        // #22
         {
             id: 'poi_ddd_sand_king_tomb',
             x: 34.0,
@@ -143,6 +152,7 @@ export const dryDryDesertData = {
             military_strength: 3,
             population: 0
         },
+        // #23
         {
             id: 'poi_ddd_iron_legion_drill',
             x: 49.5,
@@ -157,6 +167,7 @@ export const dryDryDesertData = {
             military_strength: 6,
             population: 350
         },
+        // #24
         {
             id: 'poi_ddd_glass_dunes',
             x: 38.5,
@@ -171,6 +182,7 @@ export const dryDryDesertData = {
             military_strength: 1,
             population: 0
         },
+        // #25
         {
             id: 'poi_ddd_nomadimouse_camp',
             x: 36.5,
@@ -185,6 +197,7 @@ export const dryDryDesertData = {
             military_strength: 1,
             population: 150
         },
+        // #26
         {
             id: 'poi_ddd_sunken_ship',
             x: 45.5,
@@ -199,6 +212,7 @@ export const dryDryDesertData = {
             military_strength: 1,
             population: 0
         },
+        // #27
         {
             id: 'poi_ddd_silent_statue',
             x: 33.0,
@@ -213,6 +227,7 @@ export const dryDryDesertData = {
             military_strength: 2,
             population: 30
         },
+        // #28
         {
             id: 'poi_ddd_colossal_krock',
             x: 33.5,
@@ -227,6 +242,7 @@ export const dryDryDesertData = {
             military_strength: 2,
             population: 0
         },
+        // #29
         {
             id: 'poi_ddd_mirage_village',
             x: 40.0,
@@ -241,6 +257,7 @@ export const dryDryDesertData = {
             military_strength: 1,
             population: 100
         },
+        // #30
         {
             id: 'poi_ddd_shy_guy_bazaar',
             x: 43.5,
@@ -255,6 +272,7 @@ export const dryDryDesertData = {
             military_strength: 2,
             population: 250
         },
+        // #31
         {
             id: 'poi_ddd_tweester_ravine',
             x: 49.0,
@@ -269,6 +287,7 @@ export const dryDryDesertData = {
             military_strength: 1,
             population: 0
         },
+        // #32
         {
             id: 'poi_ddd_buried_airship',
             x: 39.0,
@@ -283,6 +302,7 @@ export const dryDryDesertData = {
             military_strength: 4,
             population: 0
         },
+        // #33
         {
             id: 'poi_ddd_sandfall',
             x: 49.0,
@@ -297,6 +317,7 @@ export const dryDryDesertData = {
             military_strength: 1,
             population: 0
         },
+        // #34
         {
             id: 'poi_ddd_mummy_deku',
             x: 36.0,
@@ -311,6 +332,7 @@ export const dryDryDesertData = {
             military_strength: 1,
             population: 0
         },
+        // #35
         {
             id: 'poi_ddd_scarab_rock',
             x: 46.5,
@@ -325,6 +347,7 @@ export const dryDryDesertData = {
             military_strength: 2,
             population: 60
         },
+        // #36
         {
             id: 'poi_ddd_salt_flats',
             x: 33.0,
@@ -339,6 +362,7 @@ export const dryDryDesertData = {
             military_strength: 2,
             population: 10
         },
+        // #37
         {
             id: 'poi_ddd_buzzar_nest',
             x: 37.0,
