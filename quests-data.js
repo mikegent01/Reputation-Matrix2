@@ -230,6 +230,21 @@ export const QUEST_DATA = {
             { id: 'step3', title: "The Ritual", status: 'locked', description: "Perform a ritual at the chosen location to seal the new oath, which will likely attract spiritual guardians or old foes who wish to see him fail." }
         ]
     },
+     'markop_fathers_search': {
+        id: 'markop_fathers_search',
+        title: "The Father's Shadow",
+        type: 'personal',
+        category: 'Personal - Markop',
+        objective: "Markop's father, a renowned Imperial general named Tiberius Judi, disappeared years ago under mysterious circumstances. Markop believes he is still alive and seeks to find him, hoping for answers and reconciliation.",
+        assignee: "Markop",
+        status: "active",
+        motivation: "Markop's relationship with his father was strained by Tiberius's unwavering loyalty to the Empire. He wants to find him not just out of familial duty, but to understand the man who chose the Empire over his own family, a choice that has haunted Markop his entire life.",
+        steps: [
+            { id: 'step1', title: "The Last Known Command", status: 'active', description: "Investigate General Tiberius Judi's last known command post in the northern territories, seeking any logs, letters, or witnesses that might point to where he went after he was relieved of duty." },
+            { id: 'step2', title: "A Coded Communique", status: 'locked', description: "Uncover a coded message or a hidden journal entry that suggests Tiberius was investigating corruption within the Iron Legion's high command." },
+            { id: 'step3', title: "A Difficult Truth", status: 'locked', description: "Follow the trail to a retired Imperial officer or a Silent Service spymaster who knows the truth: Was Tiberius silenced, or did he go into hiding?" }
+        ]
+    },
 
     // --- HUMPIK'S PERSONAL QUESTS ---
     'humpik_honor_quest': {
@@ -430,6 +445,21 @@ export const QUEST_DATA = {
             { id: 'step1', title: "Investigate the Whispering Grove", status: 'active', description: "Travel to the nearby grove and search for signs of the unnatural corruption Thornpaw spoke of." },
             { id: 'step2', title: "Identify the Source", status: 'locked', description: "Find the epicenter of the blight and determine what foul magic or creature is causing it." },
             { id: 'step3', title: "Perform the Cleansing Ritual", status: 'locked', description: "Using the teachings of the Rakasha, perform the ritual to purify the land and restore its balance." }
+        ]
+    },
+    'dan_reclaim_the_staff': {
+        id: 'dan_reclaim_the_staff',
+        title: "The Staff's Burden",
+        type: 'side',
+        category: 'Liberated Toads',
+        objective: "Dan feels a deep connection to X.O.'s staff, the instrument of his victory. He believes its reality-bending power is too dangerous to be used as a simple battery for the Vigilance and seeks to reclaim it from Archie to protect it, or perhaps, to understand it better.",
+        assignee: "Dan",
+        status: "available",
+        motivation: "Dan sees the staff as both a symbol of his own newfound strength and a terrible danger. He feels a personal responsibility to ensure its power isn't misused, which puts him in direct conflict with Archie's pragmatic decision to use it to power the ship.",
+        steps: [
+            { id: 'step1', title: "A Question of Power", status: 'active', description: "Confront Archie about the staff's use. Dan must argue that the risk of the staff's magic corrupting the ship or attracting even more powerful enemies outweighs the benefit of having the Vigilance powered." },
+            { id: 'step2', title: "An Alternative Source", status: 'locked', description: "To convince Archie, Dan must find a viable alternative power source for the Vigilance. This might involve trading with the Ratchet Raiders for a goblin-made engine or finding a stable arcane crystal." },
+            { id: 'step3', title: "The Choice of a Hero", status: 'locked', description: "With the staff finally in his possession, Dan must decide what to do with it. Does he destroy it, hide it away, or attempt to learn to wield its power responsibly, risking the same corruption that took X.O.?" }
         ]
     },
     'dan_sword_and_spell': {

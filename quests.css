@@ -11,12 +11,24 @@
 
 #quest-counter {
     font-family: var(--font-display);
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--text-color);
+    display: flex;
+    gap: 12px;
+    align-items: center;
 }
 
-#quest-counter.limit-reached {
+.player-quest-count {
+    padding: 6px 10px;
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.player-quest-count.limit-reached {
     color: var(--negative-color);
+    border-color: var(--negative-color);
     animation: pulse-red 2s infinite;
 }
 

@@ -1,6 +1,8 @@
 import { QUEST_DATA } from './quests-data.js';
 import { BOUNTY_BOARD_QUESTS } from './bounty-quests-data.js';
 import { playSound } from './common.js';
+import { state } from './state.js';
+import { LORE_DATA } from './lore.js';
 
 const mainQuestContainer = document.getElementById('quest-container');
 const bountyBoardContainer = document.getElementById('quest-board-list');
@@ -95,9 +97,26 @@ function renderQuests() {
     mainQuestContainer.innerHTML = html;
 
     // 5. Update quest counter
-    const activeQuests = Object.values(QUEST_DATA).filter(q => q.status === 'active').length;
-    questCounter.textContent = `Active Quests: ${activeQuests} / 5`;
-    questCounter.classList.toggle('limit-reached', activeQuests >= 5);
+    const players = state.party; // ['archie', 'markop', 'humpik']
+    const questLimit = 3;
+    let counterHTML = '';
+
+    players.forEach(playerKey => {
+        const player = LORE_DATA.characters[playerKey];
+        if (!player) return;
+
+        const playerFirstName = player.name.split(' ')[0];
+        const activeQuests = Object.values(QUEST_DATA).filter(q => q.assignee === playerFirstName && q.status === 'active').length;
+
+        const isOverLimit = activeQuests >= questLimit;
+        counterHTML += `
+            <div class="player-quest-count ${isOverLimit ? 'limit-reached' : ''}" title="${player.name}'s Active Quests">
+                ${playerFirstName}: ${activeQuests} / ${questLimit}
+            </div>
+        `;
+    });
+
+    questCounter.innerHTML = counterHTML;
 }
 
 function renderCategory(title, quests, cssClass = '') {
