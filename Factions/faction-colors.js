@@ -28,13 +28,14 @@ export const FACTION_COLORS = {
     'iron_fists': '#708090',         // SlateGray
     'diamond_city_investigators': '#00BFFF', // DeepSkyBlue
     'goodstyle_artisans': '#AFEEEE',   // PaleTurquoise
+    'tea_leaf_syndicate': '#006400', // DarkGreen
 
     // Wilderlands
     'rakasha_clans': '#CD853F',      // Peru
     'koopa_troop': '#228B22',       // ForestGreen
     'rebel_clans': '#B22222',       // Firebrick
 
-    // New Factions
+    // Other Kingdoms/Factions
     'beanbean_kingdom': '#9ACD32',      // YellowGreen
     'flower_kingdom': '#FF1493',        // DeepPink
     'dk_crew': '#D2691E',               // Chocolate
