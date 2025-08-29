@@ -220,7 +220,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                     opinion: {
                         archie: "He's a madman. A useful madman, for now. As long as he points his explosions away from us.",
                         markop: "A true leader. He gave us weapons and a fighting chance. I'd follow him into battle any day.",
-                        humpik: "Good sparring partner. Strong. Loyal to his allies, which I can respect.",
+                        humpik: "Good sparring partner. Strong. Loyal to his boss, which I can respect.",
                         bowser: "I don't like kings. They're all the same. He's just another master."
                     },
                     events: {
@@ -250,7 +250,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                     opinion: {
                         archie: "He has firepower. I respect firepower. But he's a loose cannon. Unreliable.",
                         markop: "He has a plan. I like plans. His plans are usually 'charge', but it's better than nothing.",
-                        humpik: "A walking pile of muscle. Good for drawing fire. He seems to be a loyal ally, which is smart.",
+                        humpik: "A walking pile of muscle. Good for drawing fire. He seems to be loyal to the big boss, which is smart.",
                         bowser: "He's the one with the gold and the army. For now, we're on his side. It's just good sense."
                     },
                     events: {

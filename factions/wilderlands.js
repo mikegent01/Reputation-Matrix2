@@ -68,7 +68,7 @@ export const WILDERLANDS_FACTIONS = {
                 bowsers_elite: {
                     name: "Bowser's Elite",
                     description: "The command structure of the Troop, including the Koopalings and other high-ranking officers. They are fanatically loyal to Bowser.",
-                    opinion: "Bowser is testing his new allies. We trust his judgment. Humpik is a peer and a trusted ally in this venture. The others are tools to be used for the glory of the Troop.",
+                    opinion: "The King is testing his new allies. We trust his judgment. Humpik is a loyal servant. The others are tools to be used for the King's glory.",
                     influence: 50,
                     reputation_modifiers: { archie: 5, markop: 5, humpik: 25, bowser: 100 }
                 },

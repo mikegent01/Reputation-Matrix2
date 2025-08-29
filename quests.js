@@ -8,21 +8,29 @@ const mainQuestContainer = document.getElementById('quest-container');
 const bountyBoardContainer = document.getElementById('quest-board-list');
 const questCounter = document.getElementById('quest-counter');
 const sorterContainer = document.getElementById('quest-sorter');
+const filtererContainer = document.getElementById('quest-filterer');
 
-let currentSort = 'status'; // Default sort
+
+let currentSort = 'status';
+let activeFilter = 'all';
 
 function renderQuests() {
     if (!mainQuestContainer) return;
 
-    // 1. Separate quests into buckets
+    // 1. Filter quests based on the active filter
+    let questsToDisplay = Object.values(QUEST_DATA);
+    if (activeFilter !== 'all') {
+        questsToDisplay = questsToDisplay.filter(q => q.assigneeKey === activeFilter);
+    }
+    
+    // 2. Separate quests into buckets
     const completedQuests = [];
     const failedQuests = [];
     const otherQuests = [];
 
-    for (const questId in QUEST_DATA) {
-        const quest = QUEST_DATA[questId];
+    for (const quest of questsToDisplay) {
         if (quest.status === 'hidden' && quest.steps.every(s => s.status === 'locked')) {
-            continue; // Skip fully hidden quests
+            continue;
         }
         
         switch (quest.status) {
@@ -32,13 +40,13 @@ function renderQuests() {
             case 'failed':
                 failedQuests.push(quest);
                 break;
-            default: // active, available, hidden
+            default:
                 otherQuests.push(quest);
                 break;
         }
     }
 
-    // 2. Group the "other" quests by their category
+    // 3. Group the "other" quests by their category
     const questsByCategory = {};
     for (const quest of otherQuests) {
         const category = quest.category || 'Miscellaneous';
@@ -48,7 +56,7 @@ function renderQuests() {
         questsByCategory[category].push(quest);
     }
     
-    // 3. Sort quests within each category
+    // 4. Sort quests within each category
     const statusOrder = { 'active': 1, 'available': 2, 'hidden': 3, 'completed': 4, 'failed': 5 };
     const typeOrder = { 'main': 1, 'personal': 2, 'side': 3, 'mystery': 4 };
 
@@ -59,7 +67,6 @@ function renderQuests() {
         if (currentSort === 'type') {
             return (typeOrder[a.type] || 99) - (typeOrder[b.type] || 99);
         }
-        // 'category' sort is handled by the grouping, but we can add a secondary sort by title
         return a.title.localeCompare(b.title);
     };
 
@@ -69,8 +76,7 @@ function renderQuests() {
     completedQuests.sort((a,b) => a.title.localeCompare(b.title));
     failedQuests.sort((a,b) => a.title.localeCompare(b.title));
 
-
-    // 4. Build the final HTML
+    // 5. Build the final HTML
     let html = '';
     const sortedCategories = Object.keys(questsByCategory).sort((a, b) => {
         if (a === 'Main Story') return -1;
@@ -78,26 +84,29 @@ function renderQuests() {
         return a.localeCompare(b);
     });
     
-    // Render active/available categories
-    for (const category of sortedCategories) {
-        const quests = questsByCategory[category];
-        html += renderCategory(category, quests);
-    }
-    
-    // Render completed category if it has quests
-    if (completedQuests.length > 0) {
-        html += renderCategory('Completed Quests', completedQuests, 'completed-quests');
-    }
-    
-    // Render failed category if it has quests
-    if (failedQuests.length > 0) {
-        html += renderCategory('Failed Quests', failedQuests, 'failed-quests');
+    if(sortedCategories.length === 0 && completedQuests.length === 0 && failedQuests.length === 0) {
+        html = `<div class="quest-category"><p>No quests match the current filter.</p></div>`;
+    } else {
+        for (const category of sortedCategories) {
+            const quests = questsByCategory[category];
+            html += renderCategory(category, quests);
+        }
+        if (completedQuests.length > 0) {
+            html += renderCategory('Completed Quests', completedQuests, 'completed-quests');
+        }
+        if (failedQuests.length > 0) {
+            html += renderCategory('Failed Quests', failedQuests, 'failed-quests');
+        }
     }
 
     mainQuestContainer.innerHTML = html;
 
-    // 5. Update quest counter
-    const players = state.party; // ['archie', 'markop', 'humpik']
+    // 6. Update quest counter
+    updateQuestCounter();
+}
+
+function updateQuestCounter() {
+    const players = state.party;
     const questLimit = 3;
     let counterHTML = '';
 
@@ -106,7 +115,7 @@ function renderQuests() {
         if (!player) return;
 
         const playerFirstName = player.name.split(' ')[0];
-        const activeQuests = Object.values(QUEST_DATA).filter(q => q.assignee === playerFirstName && q.status === 'active').length;
+        const activeQuests = Object.values(QUEST_DATA).filter(q => q.assigneeKey === playerKey && q.status === 'active').length;
 
         const isOverLimit = activeQuests >= questLimit;
         counterHTML += `
@@ -119,6 +128,7 @@ function renderQuests() {
     questCounter.innerHTML = counterHTML;
 }
 
+
 function renderCategory(title, quests, cssClass = '') {
     return `
         <div class="quest-category ${cssClass}">
@@ -129,7 +139,6 @@ function renderCategory(title, quests, cssClass = '') {
         </div>
     `;
 }
-
 
 function renderQuestCard(quest) {
     const contextHTML = quest.motivation ? `
@@ -242,6 +251,17 @@ function setupEventListeners() {
             playSound('confirm.mp3', 0.5);
             currentSort = button.dataset.sort;
             sorterContainer.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            renderQuests();
+        }
+    });
+
+    filtererContainer.addEventListener('click', e => {
+        const button = e.target.closest('.control-btn');
+        if (button && !button.classList.contains('active')) {
+            playSound('confirm.mp3', 0.5);
+            activeFilter = button.dataset.filter;
+            filtererContainer.querySelectorAll('.control-btn').forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
             renderQuests();
         }

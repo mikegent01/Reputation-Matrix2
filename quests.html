@@ -18,12 +18,24 @@
             <main id="main-content">
                  <h2 class="page-title">Active Mission & Quest Log</h2>
                  <div id="quest-log-header">
-                    <div id="quest-counter">Active Quests: 0 / 5</div>
-                    <div id="quest-sorter">
-                        <span>Sort by:</span>
-                        <button class="sort-btn active" data-sort="status">Status</button>
-                        <button class="sort-btn" data-sort="category">Assignee</button>
-                        <button class="sort-btn" data-sort="type">Type</button>
+                    <div class="quest-header-row">
+                        <div id="quest-counter"></div>
+                    </div>
+                    <div class="quest-header-row" id="quest-controls">
+                        <div id="quest-filterer" class="quest-control-group">
+                            <span>Filter:</span>
+                            <button class="control-btn active" data-filter="all">All</button>
+                            <button class="control-btn" data-filter="full_party">Party</button>
+                            <button class="control-btn" data-filter="archie">Archie</button>
+                            <button class="control-btn" data-filter="markop">Markop</button>
+                            <button class="control-btn" data-filter="humpik">Humpik</button>
+                            <button class="control-btn" data-filter="bowser">Bowser</button>
+                        </div>
+                        <div id="quest-sorter" class="quest-control-group">
+                            <span>Sort by:</span>
+                            <button class="control-btn sort-btn active" data-sort="status">Status</button>
+                            <button class="control-btn sort-btn" data-sort="type">Type</button>
+                        </div>
                     </div>
                 </div>
                  <div id="quest-container">

@@ -1,12 +1,20 @@
 #quest-log-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 16px;
     padding: 16px;
     background-color: var(--sidebar-bg);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     margin-bottom: 24px;
+}
+
+.quest-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 #quest-counter {
@@ -37,18 +45,25 @@
 }
 
 
-#quest-sorter {
+#quest-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.quest-control-group {
     display: flex;
     gap: 8px;
     align-items: center;
 }
 
-#quest-sorter span {
+.quest-control-group span {
     color: var(--text-secondary);
     font-size: 0.9rem;
 }
 
-.sort-btn {
+.control-btn {
     padding: 8px 12px;
     background-color: var(--main-bg);
     border: 1px solid var(--border-color);
@@ -59,12 +74,12 @@
     transition: all 0.2s ease;
 }
 
-.sort-btn:hover {
+.control-btn:hover {
     color: var(--text-color);
     border-color: var(--accent-hover);
 }
 
-.sort-btn.active {
+.control-btn.active {
     color: var(--accent-color);
     border-color: var(--accent-color);
     background-color: rgba(138, 43, 226, 0.1);
