@@ -1,3 +1,4 @@
+
 import { HISTORICAL_TIMELINE } from './calendar-data.js';
 import { state } from './state.js';
 
@@ -21,10 +22,9 @@ function renderTimeline() {
 
     const getSortKey = (event) => {
         if (event.type === 'era_header') {
-            if (event.title.includes('Distant Past')) return 8001;
-            if (event.title.includes('Prophesied Era')) return 101;
-            if (event.title.includes('Before Fabian')) return -899;
-            return 0;
+            if (event.title.includes('Distant Past')) return -10000; // Should appear first
+            if (event.title.includes('Prophesied Era')) return 0.5; // Should appear between BF and AF events
+            return 0; // Fallback
         }
         const dateStr = event.date;
         const isBF = dateStr.includes('BF');
@@ -33,7 +33,7 @@ function renderTimeline() {
 
         if (isBF) return -year;
         if (isAF) return year;
-        return -year;
+        return -year; // Fallback for dateless entries if any
     };
 
     const sortedTimeline = [...HISTORICAL_TIMELINE].sort((a, b) => getSortKey(a) - getSortKey(b));
