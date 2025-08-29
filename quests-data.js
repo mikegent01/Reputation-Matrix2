@@ -80,7 +80,7 @@ export const QUEST_DATA = {
         title: "An Audience with a God",
         type: 'personal',
         category: 'Personal - Archie',
-        objective: "Years ago, Archie betrayed a powerful toad who held a single, potent Star Fragment. That toad has since used its power to shatter it into nine pieces, distribute them to his followers, and ascend to godhood. Archie must now confront the chaotic god he helped create.",
+        objective: "Months ago, Archie betrayed a powerful toad who held a single, potent Star Fragment. That toad has since used its power to shatter it into nine pieces, distribute them to his followers, and ascend to godhood. Archie must now confront the chaotic god he helped create.",
         assignee: "Archie",
         status: "available",
         motivation: "This isn't just about power; it's about confronting the past. Archie's betrayal set these events in motion, and he feels a twisted responsibility. He seeks an audience not to apologize, but to understand the being he unleashed and perhaps find a reflection of his own chaotic nature in a divine form.",
