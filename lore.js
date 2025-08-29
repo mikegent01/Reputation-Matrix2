@@ -8,9 +8,6 @@ import { MIDLANDS_FACTIONS } from './factions/midlands.js';
 import { MUSHROOM_KINGDOM_FACTIONS } from './factions/mushroom-kingdom.js';
 import { WIDESPREAD_FACTIONS } from './factions/widespread.js';
 import { WILDERLANDS_FACTIONS } from './factions/wilderlands.js';
-import { EXPANDED_REALMS_AUREA_TO_FAERUN } from './factions/expanded-realms-aurea-to-faerun.js';
-import { EXPANDED_REALMS_ZOOTOPIA_TO_DIVIDED } from './factions/expanded-realms-zootopia-to-divided.js';
-import { EXPANDED_REALMS_KNOWN_TO_INTERNET } from './factions/expanded-realms-known-to-internet.js';
 
 
 import { AUXILIARY_PARTY, RUMORS, TIMELINE } from './party-and-events.js';
@@ -34,9 +31,6 @@ const combinedFactions = {
     ...MUSHROOM_KINGDOM_FACTIONS,
     ...WIDESPREAD_FACTIONS,
     ...WILDERLANDS_FACTIONS,
-    ...EXPANDED_REALMS_AUREA_TO_FAERUN,
-    ...EXPANDED_REALMS_ZOOTOPIA_TO_DIVIDED,
-    ...EXPANDED_REALMS_KNOWN_TO_INTERNET
 };
 
 export const LORE_DATA = {
