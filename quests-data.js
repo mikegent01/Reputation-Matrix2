@@ -206,6 +206,20 @@ export const QUEST_DATA = {
             { id: 'step3', title: "Gather Arcane Flora", status: 'locked', description: "Collect the specific magically-infused fungi mentioned in the guide, such as glowing 'Aether-bloom' moss and tough 'Ship-Scale' fungus." },
             { id: 'step4', title: "Brew the Healing Salve", status: 'locked', description: "Using scavenged medical equipment and a heat source from the engine room, successfully brew a batch of potent healing salves to treat the injured toads." }
         ]
+    },
+    'humpik_honor_quest': {
+        id: 'humpik_honor_quest',
+        title: "The Honor of the Shell",
+        objective: "The Iron Legion's elite mock Humpik for his 'barbaric' refusal of a duel, tarnishing the Koopa Troop's name. To restore his honor and that of the Koopa Troop, Humpik must seek out a renowned Legion champion and defeat them in a formal, sanctioned duel.",
+        assignee: "Humpik",
+        status: "available",
+        steps: [
+            { id: 'step1', title: "Identify a Worthy Champion", status: 'active', description: "The most respected duelist among the Legion's progressive 'War-Forged' faction is Colonel Vera Steelstorm. Use underworld contacts or military intelligence to pinpoint her current location on the Midlands front." },
+            { id: 'step2', title: "Issue a Formal Challenge", status: 'locked', description: "The Legion follows strict protocols for challenges of honor. Humpik must present a formal, written challenge to Colonel Steelstorm, adhering to their traditions to prove he is not a mere savage.", options: ["Consult with Markop on the proper etiquette.", "Bribe a Freelancer to draft the challenge.", "Just roar really loud and hope for the best."] },
+            { id: 'step3', title: "The Gauntlet of Cinders", status: 'locked', description: "Steelstorm agrees to the duel, but only if Humpik can first prove his mettle by surviving the Legion's infamous training ground—a field of deadly traps, automated war machines, and scorching hazards." },
+            { id: 'step4', title: "Duel of Fates", status: 'locked', description: "Face Colonel Vera Steelstorm in a one-on-one, sanctioned duel. The outcome will dramatically shift the Iron Legion's perception of the Koopa Troop and their new allies." }
+        ],
+        finalDecision: null
     }
 };
 

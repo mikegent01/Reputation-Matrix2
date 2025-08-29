@@ -22,7 +22,7 @@ export const CHARACTER_RELATIONS = {
     },
     'markop': {
         'archie': { type: 'ally', text: "Markop on Archie: A force of pure chaos. His methods are reprehensible, but his actions sometimes lead to a greater good. A soul to be guided, if possible." },
-        'humpik': { type: 'ally', text: "Markop on Humpik: His loyalty is commendable, though his master is questionable. A strong arm in a just fight." },
+        'humpik': { type: 'ally', text: "Markop on Humpik: His loyalty is commendable, though his ally is questionable. A strong arm in a just fight." },
         'bowser': { type: 'enemy', text: "Markop on Bowser: A tyrant and a warlord. His goals are antithetical to justice and order. An alliance of desperation, not trust." },
         'dan': { type: 'ally', text: "Markop on Dan: A student with a purer heart than I ever had. He is a reflection of the good we fight for, and I must not fail him." },
         'emperor_elagabalus': { type: 'enemy', text: "Markop on Elagabalus: His Imperial 'peace' is a gilded cage built on the backs of the oppressed. True order comes from justice, not force." },
@@ -37,13 +37,13 @@ export const CHARACTER_RELATIONS = {
         'lario': { type: 'ally', text: "Markop on Lario: A greedy and cowardly mechanic, but there is a flicker of decency in him. He can be reasoned with, which sets him apart from many we've encountered." }
     },
     'humpik': {
-        'bowser': { type: 'ally', text: "Humpik on Bowser: The King is strong. A powerful ally. We fight well together. He respects my strength, and I respect his." },
+        'bowser': { type: 'ally', text: "Humpik on Bowser: Bowser is strong. A powerful ally. We fight well together. He respects my strength, and I respect his." },
         'archie': { type: 'ally', text: "Humpik on Archie: The little guy is crazy! But he makes big explosions! Good to have in a scrap." },
         'markop': { type: 'ally', text: "Humpik on Markop: The horse-man is too serious. But he fights good. I respect that." },
         'dan': { type: 'ally', text: "Humpik on Dan: He's a little guy, but he's tough! Like a tiny Bowser! Gwahahaha!" },
-        'emperor_elagabalus': { type: 'enemy', text: "Humpik on Elagabalus: He's the King's enemy! So he's my enemy! I'll smash his castle!" },
+        'emperor_elagabalus': { type: 'enemy', text: "Humpik on Elagabalus: He's Bowser's enemy! So he's my enemy! I'll smash his castle!" },
         'general_marcus_ironhand': { type: 'enemy', text: "Humpik on Ironhand: He's got a big army, but they're no match for the Koopa Troop! Or me!" },
-        'lario': { type: 'ally', text: "Humpik on Lario: Sneaky little guy. Good with machines. The King says he's useful, so he's useful." }
+        'lario': { type: 'ally', text: "Humpik on Lario: Sneaky little guy. Good with machines. Bowser says he's useful, so he's useful." }
     },
     'bowser': {
         'humpik': { type: 'ally', text: "Bowser on Humpik: Humpik is a warrior of immense power and conviction. An equal on the battlefield. His counsel is direct, and his axe is true." },
@@ -114,7 +114,7 @@ export const CHARACTER_RELATIONS = {
         'archie': { type: 'enemy', text: "Thornpaw on Archie: His energy is a sickness upon the land. He walks a path of destruction that scars the natural world." },
         'markop': { type: 'ally', text: "Thornpaw on Markop: He seeks balance in himself and the world. He understands honor. He is a friend to the clans." },
         'bowser': { type: 'enemy', text: "Thornpaw on Bowser: He seeks to conquer, to tame the wild. He does not understand that the wild cannot be tamed, only respected." },
-        'humpik': { type: 'ally', text: "Thornpaw on Humpik: His loyalty to his chief is a value our clans understand. He is a strong warrior." }
+        'humpik': { type: 'ally', text: "Thornpaw on Humpik: His loyalty to his ally is a value our clans understand. He is a strong warrior." }
     },
     'high_inquisitor_vale': {
         'archie': { type: 'enemy', text: "Vale on Archie: A heretic consorting with fiends and practicing profane arts. He is a blight to be burned clean." },
@@ -186,7 +186,7 @@ export const CHARACTER_RELATIONS = {
     },
     'grak_ironhide': {
         'archie': { type: 'enemy', text: "Grak Ironhide on Archie: He is a wildfire. Dangerous, but he burns our enemies. Stay out of his way." },
-        'humpik': { type: 'ally', text: "Grak Ironhide on Humpik: He is strong. Loyal to his Alpha. I respect that." },
+        'humpik': { type: 'ally', text: "Grak Ironhide on Humpik: He is strong. Loyal to his ally. I respect that." },
         'bowser': { type: 'ally', text: "Grak Ironhide on Bowser: A strong Alpha. Leads his pack well. Fights our enemies. He is a worthy ally." },
         'lady_elara_veridia': { type: 'enemy', text: "Grak Ironhide on Lady Veridia: Her words are weak. She fears strength she cannot control. She is prey." },
         'baron_von_hess': { type: 'enemy', text: "Grak Ironhide on Baron Von Hess: Leech. His scent fouls this chamber. One day, I will snap his spine." }
