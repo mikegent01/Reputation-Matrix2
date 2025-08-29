@@ -1,5 +1,3 @@
-
-
 import { state, saveState } from './state.js';
 import { MAP_DATA, BUILDING_TYPES } from './map-data.js';
 import { FACTION_COLORS } from './factions/faction-colors.js';
@@ -56,6 +54,10 @@ export function renderMap(mapId) {
         interactiveLayer.style.left = `${left}px`;
         zoomWrapper.appendChild(interactiveLayer);
 
+        // Report dimensions back to the controller
+        map.setRenderedMapDimensions({ width: renderedWidth, height: renderedHeight });
+
+
         renderPois();
         renderFog();
 
@@ -79,7 +81,7 @@ export function renderPois() {
     
     interactiveLayer.querySelectorAll('.poi-marker').forEach(el => el.remove());
 
-    const poiSource = map.isEditMode ? map.editSessionData.pois : MAP_DATA[map.activeMapId].pointsOfInterest;
+    const poiSource = map.isEditMode ? map.editSessionData.pois : (MAP_DATA[map.activeMapId]?.pointsOfInterest || []);
 
     let allPois = poiSource.filter(poi => {
         if (map.isEditMode) return true;
@@ -168,7 +170,7 @@ export function renderFog() {
 
     interactiveLayer.querySelectorAll('#map-fog-overlay').forEach(el => el.remove());
 
-    const fogSource = map.isEditMode ? map.editSessionData.fogs : MAP_DATA[map.activeMapId].fogOfWar;
+    const fogSource = map.isEditMode ? map.editSessionData.fogs : (MAP_DATA[map.activeMapId]?.fogOfWar || []);
 
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.id = 'map-fog-overlay';
@@ -247,13 +249,17 @@ export function renderMapModeLegend() {
     
     switch(map.activeMapMode) {
         case 'political':
-            const visibleFactions = [...new Set(currentPois.map(p => p.factionId).filter(id => id && id !== 'unaligned'))];
+            const visibleFactions = [...new Set(currentPois
+                .map(p => p.factionId)
+                .filter(id => id && id !== 'unaligned' && FACTION_COLORS[id]))];
+
             const sortedFactions = visibleFactions.sort((a,b) => LORE_DATA.factions[a].name.localeCompare(LORE_DATA.factions[b].name));
 
             legendHTML = `
                 <div class="map-mode-legend">
                     <h4>Political View</h4>
                     <p>Locations are colored by their controlling faction. Size indicates political influence.</p>
+                    ${sortedFactions.length > 0 ? `
                     <ul class="legend-list">
                         ${sortedFactions.map(factionId => `
                             <li class="legend-item">
@@ -262,6 +268,7 @@ export function renderMapModeLegend() {
                             </li>
                         `).join('')}
                     </ul>
+                    ` : `<p class="panel-placeholder">No politically aligned factions in current view.</p>`}
                 </div>
             `;
             break;

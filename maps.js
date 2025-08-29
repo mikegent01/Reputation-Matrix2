@@ -1,6 +1,3 @@
-
-
-
 import { state, loadState, saveState } from './state.js';
 import * as ui from './map-ui.js';
 import * as renderer from './map-renderer.js';
@@ -14,6 +11,7 @@ export let activeMapId = 'mushroom_kingdom_full'; // Default value
 export let activeMapMode = 'standard';
 export let isEditMode = false;
 export let editSessionData = null; // Holds cloned data for an edit session
+export let renderedMapDimensions = { width: 0, height: 0 }; // Authoritative dimensions
 
 // --- STATE MUTATORS ---
 export function setActiveMapId(mapId) {
@@ -28,12 +26,16 @@ export function setEditMode(mode) {
 export function setEditSessionData(data) {
     editSessionData = data;
 }
+export function setRenderedMapDimensions(dimensions) {
+    renderedMapDimensions = dimensions;
+}
+
 
 // --- INITIALIZATION ---
 function init() {
     const pathname = window.location.pathname;
     if (pathname.includes('midlands-maps.html')) {
-        activeMapId = 'midlands';
+        activeMapId = 'midlands_full';
     } else {
         activeMapId = 'mushroom_kingdom_full';
     }

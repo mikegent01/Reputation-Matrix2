@@ -22,6 +22,13 @@ import { iceIceOutpostData } from './map-data/ice-ice-outpost-pois.js';
 import { chramalotKingdomData } from './map-data/chramalot-kingdom-pois.js';
 import { piantaSeaData } from './map-data/pianta-sea-pois.js';
 import midlandsData from './map-data/midlands-pois.js';
+import { yalBelanorData } from './map-data/yal-belanor-pois.js';
+import { vemilliaData } from './map-data/vemillia-pois.js';
+import { ironwoodData } from './map-data/ironwood-pois.js';
+import { lockerwoodData } from './map-data/lockerwood-pois.js';
+import { dragonMountainData } from './map-data/dragon-mountain-pois.js';
+import { autumnwoodData } from './map-data/autumnwood-pois.js';
+import { dryCountyData } from './map-data/dry-county-pois.js';
 
 // Re-export BUILDING_TYPES so other modules can access it from this central file
 export { BUILDING_TYPES };
@@ -269,22 +276,120 @@ export const MAP_DATA = {
         fogOfWar: iceIceOutpostData.fogOfWar || [],
         poiSourceFile: 'map-data/ice-ice-outpost-pois.js'
     },
-    midlands: {
-        id: 'midlands',
-        name: 'The Midlands',
+    midlands_full: {
+        id: 'midlands_full',
+        name: 'The Midlands (Full)',
         imageSrc: 'fullmap.png',
         order: 1,
+        group: 'The Midlands',
+        pointsOfInterest: [
+            ...midlandsData.pointsOfInterest,
+            ...yalBelanorData.pointsOfInterest,
+            ...vemilliaData.pointsOfInterest,
+            ...ironwoodData.pointsOfInterest,
+            ...lockerwoodData.pointsOfInterest,
+            ...dragonMountainData.pointsOfInterest,
+            ...autumnwoodData.pointsOfInterest,
+            ...dryCountyData.pointsOfInterest,
+        ],
+        fogOfWar: [
+            ...(midlandsData.fogOfWar || []),
+            ...(yalBelanorData.fogOfWar || []),
+            ...(vemilliaData.fogOfWar || []),
+            ...(ironwoodData.fogOfWar || []),
+            ...(lockerwoodData.fogOfWar || []),
+            ...(dragonMountainData.fogOfWar || []),
+            ...(autumnwoodData.fogOfWar || []),
+            ...(dryCountyData.fogOfWar || []),
+        ],
+        poiSourceFile: null
+    },
+    midlands_capital: {
+        id: 'midlands_capital',
+        name: 'Regal Capital',
+        imageSrc: 'fullmap.png',
+        order: 2,
         group: 'The Midlands',
         pointsOfInterest: midlandsData.pointsOfInterest,
         fogOfWar: midlandsData.fogOfWar,
         poiSourceFile: 'map-data/midlands-pois.js'
     },
+    yal_belanor: {
+        id: 'yal_belanor',
+        name: 'Yal Belanor',
+        imageSrc: 'fullmap.png',
+        order: 3,
+        group: 'The Midlands',
+        pointsOfInterest: yalBelanorData.pointsOfInterest,
+        fogOfWar: yalBelanorData.fogOfWar,
+        poiSourceFile: 'map-data/yal-belanor-pois.js'
+    },
+    vemillia: {
+        id: 'vemillia',
+        name: 'Vemilia',
+        imageSrc: 'fullmap.png',
+        order: 4,
+        group: 'The Midlands',
+        pointsOfInterest: vemilliaData.pointsOfInterest,
+        fogOfWar: vemilliaData.fogOfWar,
+        poiSourceFile: 'map-data/vemillia-pois.js'
+    },
+    ironwood: {
+        id: 'ironwood',
+        name: 'Ironwood',
+        imageSrc: 'fullmap.png',
+        order: 5,
+        group: 'The Midlands',
+        pointsOfInterest: ironwoodData.pointsOfInterest,
+        fogOfWar: ironwoodData.fogOfWar,
+        poiSourceFile: 'map-data/ironwood-pois.js'
+    },
+    lockerwood: {
+        id: 'lockerwood',
+        name: 'Lockerwood',
+        imageSrc: 'fullmap.png',
+        order: 6,
+        group: 'The Midlands',
+        pointsOfInterest: lockerwoodData.pointsOfInterest,
+        fogOfWar: lockerwoodData.fogOfWar,
+        poiSourceFile: 'map-data/lockerwood-pois.js'
+    },
+     dragon_mountain: {
+        id: 'dragon_mountain',
+        name: 'Dragon Mountain',
+        imageSrc: 'fullmap.png',
+        order: 7,
+        group: 'The Midlands',
+        pointsOfInterest: dragonMountainData.pointsOfInterest,
+        fogOfWar: dragonMountainData.fogOfWar,
+        poiSourceFile: 'map-data/dragon-mountain-pois.js'
+    },
+    autumnwood: {
+        id: 'autumnwood',
+        name: 'Autumnwood',
+        imageSrc: 'fullmap.png',
+        order: 8,
+        group: 'The Midlands',
+        pointsOfInterest: autumnwoodData.pointsOfInterest,
+        fogOfWar: autumnwoodData.fogOfWar,
+        poiSourceFile: 'map-data/autumnwood-pois.js'
+    },
+    dry_county: {
+        id: 'dry_county',
+        name: 'Dry County',
+        imageSrc: 'fullmap.png',
+        order: 9,
+        group: 'The Midlands',
+        pointsOfInterest: dryCountyData.pointsOfInterest,
+        fogOfWar: dryCountyData.fogOfWar,
+        poiSourceFile: 'map-data/dry-county-pois.js'
+    },
      chramalot_kingdom: {
         id: 'chramalot_kingdom',
         name: 'Chramalot Kingdom',
         imageSrc: 'mushroom_kingdom.jpg',
-        order: 2,
-        group: 'The Midlands',
+        order: 9,
+        group: 'Islands & Outer Realms',
         pointsOfInterest: chramalotKingdomData.pointsOfInterest,
         fogOfWar: chramalotKingdomData.fogOfWar || [],
         poiSourceFile: 'map-data/chramalot-kingdom-pois.js'

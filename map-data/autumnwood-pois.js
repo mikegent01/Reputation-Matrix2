@@ -1,0 +1,152 @@
+// map-data/autumnwood-pois.js
+
+export const autumnwoodData = {
+    pointsOfInterest: [
+        {
+            id: 'poi_aw_mages_spire',
+            x: 35.00,
+            y: 65.00,
+            type: 'mages_tower',
+            name: "Spire of the Mages' Guild",
+            description: "The provincial headquarters of the Mages' Guild. A gleaming, impossibly tall tower that serves as a center for arcane research, learning, and the enforcement of magical law in the region.",
+            factionId: 'mages_guild',
+            intelReq: 10,
+            political_influence: 9,
+            economic_value: 6,
+            military_strength: 8,
+            population: 2500
+        },
+        {
+            id: 'poi_aw_golden_grove',
+            x: 30.00,
+            y: 62.00,
+            type: 'forest',
+            name: "The Golden Grove",
+            description: "A vast forest where all the trees have perpetually golden leaves. The grove is a place of immense, tranquil magic, but its beauty hides ancient and powerful fey guardians.",
+            factionId: 'unaligned',
+            intelReq: 25,
+            political_influence: 2,
+            economic_value: 5,
+            military_strength: 4,
+            population: 0
+        },
+        {
+            id: 'poi_aw_conservator_archive',
+            x: 38.00,
+            y: 68.00,
+            type: 'library',
+            name: "The Conservator's Archive",
+            description: "A hidden, magically-sealed library containing the Mages' Guild's most dangerous and forbidden texts. It is the seat of power for the traditionalist Conservator faction, led by Archmage Theron.",
+            factionId: 'mages_guild',
+            intelReq: 60,
+            political_influence: 7,
+            economic_value: 3,
+            military_strength: 6,
+            population: 100
+        },
+        {
+            id: 'poi_aw_innovator_workshop',
+            x: 32.00,
+            y: 59.00,
+            type: 'workshop',
+            name: "Innovator's Unstable Workshop",
+            description: "The chaotic and frequently exploding workshop of Janna Brightspark and the radical Innovator faction. Here, they push the boundaries of magic, often with disastrous but potent results.",
+            factionId: 'mages_guild',
+            intelReq: 45,
+            political_influence: 5,
+            economic_value: 5,
+            military_strength: 6,
+            population: 80
+        },
+        {
+            id: 'poi_aw_fey_crossing',
+            x: 27.00,
+            y: 67.00,
+            type: 'portal',
+            name: "Fey Crossing",
+            description: "A shimmering curtain of light where the veil between the mortal world and the Feywild is thin. A place of unpredictable magic, where time and space do not follow normal rules.",
+            factionId: 'unaligned',
+            intelReq: 50,
+            political_influence: 2,
+            economic_value: 3,
+            military_strength: 3,
+            population: 0
+        },
+        {
+            id: 'poi_aw_silent_pool',
+            x: 34.00,
+            y: 73.00,
+            type: 'ley_line',
+            name: "The Silent Pool",
+            description: "A perfectly still, circular pool of water that reflects the stars even during the day. It is a powerful scrying focus, and control of it is contested by all factions with magical sight.",
+            factionId: 'unaligned',
+            intelReq: 40,
+            political_influence: 3,
+            economic_value: 2,
+            military_strength: 1,
+            population: 0
+        },
+        {
+            id: 'poi_aw_amber_river',
+            x: 39.00,
+            y: 60.00,
+            type: 'river',
+            name: "The Amber River",
+            description: "A slow-moving river whose waters flow with the color and consistency of liquid amber. It is a potent source of magical ingredients, but is home to territorial river spirits.",
+            factionId: 'unaligned',
+            intelReq: 15,
+            political_influence: 1,
+            economic_value: 7,
+            military_strength: 2,
+            population: 0
+        },
+        {
+            id: 'poi_aw_witchs_hovel',
+            x: 25.00,
+            y: 60.00,
+            type: 'village',
+            name: "The Witch's Hovel",
+            description: "The secluded home of a powerful hedge witch who operates outside the Mages' Guild's laws. She offers potions and prophecies, but always for a strange and terrible price.",
+            factionId: 'unaligned',
+            intelReq: 35,
+            political_influence: 2,
+            economic_value: 4,
+            military_strength: 3,
+            population: 1
+        },
+        {
+            id: 'poi_aw_sunken_temple',
+            x: 28.00,
+            y: 72.00,
+            type: 'ruins',
+            name: "Sunken Temple of the Moon",
+            description: "The vine-covered ruins of a temple dedicated to a forgotten moon deity. It is now half-submerged in a marsh, and its chambers are said to hold ancient secrets of lunar magic.",
+            factionId: 'unaligned',
+            intelReq: 55,
+            political_influence: 2,
+            economic_value: 5,
+            military_strength: 3,
+            population: 0
+        },
+        {
+            id: 'poi_aw_silver_flame_outpost',
+            x: 39.50,
+            y: 72.00,
+            type: 'outpost',
+            name: "Silver Flame Outpost",
+            description: "A small, heavily warded outpost of the Order of the Silver Flame. They view the Mages' Guild with deep suspicion and monitor their activities, ready to intervene at the first sign of 'heretical' magic.",
+            factionId: 'silver_flame',
+            intelReq: 40,
+            political_influence: 3,
+            economic_value: 1,
+            military_strength: 6,
+            population: 60
+        }
+    ],
+    fogOfWar: [
+        {
+            id: 'fog_autumnwood',
+            points: "31.78,55.45 28.79,57.28 24.12,59.60 24.77,65.91 25.33,68.24 27.58,69.57 28.79,70.07 30.10,71.89 30.85,75.38 34.02,76.38 37.67,72.72 39.44,70.40 39.91,67.57 41.12,62.26 41.12,58.77 39.26,56.11"
+        }
+    ]
+};

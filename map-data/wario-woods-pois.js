@@ -1,4 +1,3 @@
-
 // map-data/wario-woods-pois.js
 
 export const warioWoodsData = {
@@ -19,8 +18,8 @@ export const warioWoodsData = {
         },
         {
             id: 'poi_ww_warioscastle',
-            x: 41.0,
-            y: 33.0,
+            x: 28.0,
+            y: 44.0,
             type: 'fortress',
             name: "Wario's Castle",
             description: "A vulgar, gold-trimmed fortress built atop a mountain of treasure. It's filled with elaborate traps designed to thwart treasure hunters and is guarded by Wario's most loyal (and well-paid) minions.",
@@ -117,8 +116,8 @@ export const warioWoodsData = {
         },
         {
             id: 'poi_ww_shakekingruins',
-            x: 28.0,
-            y: 44.0,
+            x: 41.0,
+            y: 33.0,
             type: 'ruins',
             name: "Shake King's Ruins",
             description: "The crumbling remains of a forgotten kingdom once ruled by the Shake King, a rival of Wario's. The ruins are haunted by his greedy spirit and filled with his cursed, bottomless coin bags.",

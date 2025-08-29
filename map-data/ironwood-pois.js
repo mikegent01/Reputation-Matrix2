@@ -1,0 +1,152 @@
+// map-data/ironwood-pois.js
+
+export const ironwoodData = {
+    pointsOfInterest: [
+        {
+            id: 'poi_iw_fort_ironhand',
+            x: 35.0,
+            y: 15.0,
+            type: 'fortress',
+            name: "Fort Ironhand",
+            description: "A massive, grim fortress that serves as the headquarters for the Iron Legion's western divisions. A symbol of Imperial power on the edge of the wilderness.",
+            factionId: 'iron_legion',
+            intelReq: 20,
+            political_influence: 7,
+            economic_value: 3,
+            military_strength: 10,
+            population: 8000
+        },
+        {
+            id: 'poi_iw_ironwood_forest',
+            x: 30.0,
+            y: 20.0,
+            type: 'forest',
+            name: "The Ironwood Forest",
+            description: "A vast, ancient forest known for its incredibly dense, metal-like trees. The forest is a source of immense wealth, but is also home to dangerous beasts and protective Rakasha clans.",
+            factionId: 'unaligned',
+            intelReq: 10,
+            political_influence: 2,
+            economic_value: 8,
+            military_strength: 4,
+            population: 100
+        },
+        {
+            id: 'poi_iw_logging_camp',
+            x: 40.0,
+            y: 23.0,
+            type: 'workshop',
+            name: "Ironwood Logging Camp",
+            description: "A large, heavily-guarded logging operation run by the Empire. They clear-cut sections of the forest, a practice that has put them in direct conflict with the local Rakasha.",
+            factionId: 'regal_empire',
+            intelReq: 15,
+            political_influence: 3,
+            economic_value: 9,
+            military_strength: 5,
+            population: 1500
+        },
+        {
+            id: 'poi_iw_rakasha_hunting_grounds',
+            x: 25.0,
+            y: 15.0,
+            type: 'lair',
+            name: "Rakasha Hunting Grounds",
+            description: "The ancestral hunting grounds of a proud Rakasha clan. They view the Imperial logging operations as a desecration and frequently launch raids against them.",
+            factionId: 'rakasha_clans',
+            intelReq: 40,
+            political_influence: 4,
+            economic_value: 2,
+            military_strength: 6,
+            population: 300
+        },
+        {
+            id: 'poi_iw_isle_of_burbary',
+            x: 21.0,
+            y: 10.0,
+            type: 'prison',
+            name: "Isle of Burbary",
+            description: "A small, windswept island that houses an Imperial penal colony for political prisoners. It is said to be inescapable, guarded by the sea and a legion of ruthless wardens.",
+            factionId: 'regal_empire',
+            intelReq: 60,
+            political_influence: 3,
+            economic_value: 1,
+            military_strength: 8,
+            population: 1000
+        },
+        {
+            id: 'poi_iw_abandoned_mine',
+            x: 38.0,
+            y: 8.0,
+            type: 'mine',
+            name: "Abandoned Iron Mine",
+            description: "An old iron mine that was abandoned after the miners delved too deep and awoke something ancient and hostile. It is now a place of dark rumors and is avoided by all.",
+            factionId: 'unaligned',
+            intelReq: 30,
+            political_influence: 1,
+            economic_value: 3,
+            military_strength: 3,
+            population: 0
+        },
+        {
+            id: 'poi_iw_river_outpost',
+            x: 32.0,
+            y: 25.0,
+            type: 'outpost',
+            name: "River Watch Outpost",
+            description: "A small Iron Legion outpost that guards a key river crossing, controlling the flow of lumber from the forest to the heart of the Empire.",
+            factionId: 'iron_legion',
+            intelReq: 25,
+            political_influence: 2,
+            economic_value: 4,
+            military_strength: 7,
+            population: 200
+        },
+        {
+            id: 'poi_iw_ancient_spirit_tree',
+            x: 28.0,
+            y: 12.0,
+            type: 'ley_line',
+            name: "The Ancient Spirit Tree",
+            description: "A colossal, glowing tree that is sacred to the Rakasha. It is a place of immense natural power, and the shamans of the clan come here to commune with the spirits of the forest.",
+            factionId: 'rakasha_clans',
+            intelReq: 50,
+            political_influence: 5,
+            economic_value: 3,
+            military_strength: 4,
+            population: 10
+        },
+        {
+            id: 'poi_iw_poachers_camp',
+            x: 36.0,
+            y: 20.0,
+            type: 'bandit_camp',
+            name: "Poacher's Camp",
+            description: "A hidden camp of poachers who illegally hunt the rare and magical beasts of the Ironwood for the black market. They are a thorn in the side of both the Empire and the Rakasha.",
+            factionId: 'freelancer_underworld',
+            intelReq: 35,
+            political_influence: 1,
+            economic_value: 5,
+            military_strength: 3,
+            population: 50
+        },
+        {
+            id: 'poi_iw_monastery_of_silence',
+            x: 23.0,
+            y: 8.0,
+            type: 'monastery',
+            name: "Monastery of Silence",
+            description: "A remote, secluded monastery on the Isle of Burbary where monks take a vow of absolute silence. They are said to be keepers of a dangerous secret.",
+            factionId: 'unaligned',
+            intelReq: 65,
+            political_influence: 2,
+            economic_value: 1,
+            military_strength: 2,
+            population: 30
+        }
+    ],
+    fogOfWar: [
+        {
+            id: 'fog_ironwood',
+            points: "23.00,22.06 26.45,22.89 29.16,21.73 33.56,20.40 38.13,28.54 41.59,28.87 43.93,27.71 46.08,22.06 47.57,21.89 49.72,14.25 48.69,9.60 44.95,4.45 40.66,3.79 31.41,6.78 28.14,6.94 24.68,7.44 20.57,8.77 19.63,13.26"
+        }
+    ]
+};

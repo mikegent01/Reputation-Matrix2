@@ -1,5 +1,3 @@
-
-
 import { playSound } from './common.js';
 import * as map from './maps.js';
 import * as renderer from './map-renderer.js';
@@ -43,7 +41,7 @@ export function toggleEditMode(enable) {
         const currentMapData = MAP_DATA[map.activeMapId];
         map.setEditSessionData({
             pois: structuredClone(currentMapData.pointsOfInterest),
-            fogs: structuredClone(currentMapData.fogOfWar)
+            fogs: structuredClone(currentMapData.fogOfWar || [])
         });
         editorToolbar.style.display = 'flex';
         if (editButton) editButton.style.display = 'none';
@@ -92,10 +90,12 @@ function generateAndShowCode() {
     const poiCodeString = map.editSessionData.pois.map(poi => {
         let poiString = '  {\n';
         Object.entries(poi).forEach(([key, value]) => {
-            const keyName = key.replace(/([A-Z])/g, '_$1').toLowerCase();
+            const keyName = key; // Keep camelCase for JS objects
             if (value !== undefined) {
                  if (typeof value === 'string') {
-                    poiString += `    ${keyName}: "${value.replace(/"/g, '\\"').replace(/\n/g, '\\n')}",\n`;
+                    // Escape backslashes and double quotes properly for a string literal
+                    const escapedValue = value.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n');
+                    poiString += `    ${keyName}: "${escapedValue}",\n`;
                  } else if (typeof value === 'number') {
                     poiString += `    ${keyName}: ${key === 'x' || key === 'y' ? value.toFixed(2) : value},\n`;
                  } else {
@@ -145,11 +145,13 @@ function handlePoiFormSubmit(e) {
         type: pendingPoiData.type,
         name: document.getElementById('poi-name').value,
         description: document.getElementById('poi-description').value,
-        factionId: document.getElementById('poi-faction').value || undefined,
-        intelReq: document.getElementById('poi-intel').value ? parseInt(document.getElementById('poi-intel').value, 10) : undefined,
+        factionId: document.getElementById('poi-faction').value || 'unaligned',
+        intelReq: document.getElementById('poi-intel').value ? parseInt(document.getElementById('poi-intel').value, 10) : 0,
+        political_influence: 1, economic_value: 1, military_strength: 1, population: 0 // Defaults for new POIs
     };
-    if (!newPoi.factionId) delete newPoi.factionId;
-    if (isNaN(newPoi.intelReq)) delete newPoi.intelReq;
+    if (newPoi.factionId === 'unaligned') delete newPoi.factionId;
+    if (isNaN(newPoi.intelReq)) newPoi.intelReq = 0;
+    
     map.editSessionData.pois.push(newPoi);
     renderer.renderPois();
     poiEditorModal.style.display = 'none';
@@ -158,7 +160,7 @@ function handlePoiFormSubmit(e) {
 
 function populateFactionSelect(selectElementId, selectedValue = '') {
     const select = document.getElementById(selectElementId);
-    select.innerHTML = '<option value="">None</option>';
+    select.innerHTML = '<option value="">Unaligned</option>';
     const sortedFactions = Object.entries(LORE_DATA.factions).sort(([, a], [, b]) => a.name.localeCompare(b.name));
     sortedFactions.forEach(([key, faction]) => {
         const option = document.createElement('option');
@@ -179,7 +181,7 @@ function renderItemEditorPanel(item, type) {
         <form id="${formId}">
             ${type === 'poi' ? `
             <div class="form-group"><label>Type:</label><p class="editor-panel-type">${typeInfo.icon} ${typeInfo.name}</p></div>
-            <div class="form-group"><label for="editor-name">Name:</label><input type="text" id="editor-name" value="${item.name}" required></div>
+            <div class="form-group"><label for="editor-name">Name:</label><input type="text" id="editor-name" value="${item.name || ''}" required></div>
             <div class="form-group"><label for="editor-description">Description:</label><textarea id="editor-description">${item.description || ''}</textarea></div>
             <div class="form-group"><label for="editor-political_influence">Political Influence:</label><input type="number" id="editor-political_influence" min="0" value="${item.political_influence || 0}"></div>
             <div class="form-group"><label for="editor-economic_value">Economic Value:</label><input type="number" id="editor-economic_value" min="0" value="${item.economic_value || 0}"></div>
@@ -215,6 +217,7 @@ function renderItemEditorPanel(item, type) {
 
             playSound('confirm.mp3');
             detailPanel.innerHTML = `<p class="panel-placeholder positive">Changes saved.</p>`;
+            renderer.renderPois(); // Re-render to show changes
         }
     });
 }
@@ -238,9 +241,10 @@ function finalizeFogPolygon() {
 
 function handleMapDrawClick(e) {
     if (e.button !== 0) return; // Only left click
+    if (!map.renderedMapDimensions) return;
     const rect = document.getElementById('interactive-map-layer').getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    const x = ((e.clientX - rect.left) / map.renderedMapDimensions.width) * 100;
+    const y = ((e.clientY - rect.top) / map.renderedMapDimensions.height) * 100;
     currentFogPoints.push({ x, y });
     renderer.renderDrawingPreview(currentFogPoints);
 }
@@ -319,9 +323,12 @@ export function setupEditorEventListeners() {
     displayArea.addEventListener('drop', e => {
         e.preventDefault();
         displayArea.classList.remove('editing-poi');
+        if (!map.renderedMapDimensions) return;
+        
         const rect = document.getElementById('interactive-map-layer').getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        const x = ((e.clientX - rect.left) / map.renderedMapDimensions.width) * 100;
+        const y = ((e.clientY - rect.top) / map.renderedMapDimensions.height) * 100;
+
         const type = e.dataTransfer.getData('text/plain');
         if (BUILDING_TYPES[type]) {
             pendingPoiData = { x, y, type };

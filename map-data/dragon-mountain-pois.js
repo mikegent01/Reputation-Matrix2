@@ -1,0 +1,152 @@
+// map-data/dragon-mountain-pois.js
+
+export const dragonMountainData = {
+    pointsOfInterest: [
+        {
+            id: 'poi_dm_blast_crater',
+            x: 42.50,
+            y: 43.00,
+            type: 'landmark',
+            name: "The Great Blast Crater",
+            description: "Ground zero of the catastrophic explosion that tore the mountain apart. The rock here has been fused into black, jagged glass, and the area hums with unstable magical energy. A place of immense destruction and sorrow.",
+            factionId: 'unaligned',
+            intelReq: 20,
+            political_influence: 1,
+            economic_value: 3,
+            military_strength: 2,
+            population: 0
+        },
+        {
+            id: 'poi_dm_fort_tiberius',
+            x: 40.00,
+            y: 48.00,
+            type: 'ruins',
+            name: "Ruins of Fort Tiberius",
+            description: "The ruined Imperial fort once commanded by Markop's father, General Tiberius Judi. It was almost completely destroyed in the blast, and its skeletal remains are a grim reminder of the lives lost. A place of personal significance for Markop.",
+            factionId: 'regal_empire',
+            intelReq: 35,
+            political_influence: 3,
+            economic_value: 2,
+            military_strength: 3,
+            population: 0
+        },
+        {
+            id: 'poi_dm_wyrms_scar',
+            x: 46.00,
+            y: 41.00,
+            type: 'mountain_pass',
+            name: "Wyrm's Scar",
+            description: "A massive chasm torn into the mountainside, rumored to have been carved by the claws of an ancient dragon during the disaster. It is now a treacherous path infested with lesser drakes and wyverns.",
+            factionId: 'unaligned',
+            intelReq: 25,
+            political_influence: 1,
+            economic_value: 2,
+            military_strength: 5,
+            population: 0
+        },
+        {
+            id: 'poi_dm_ashfall_village',
+            x: 38.00,
+            y: 51.00,
+            type: 'ruins',
+            name: "Ashfall Village",
+            description: "A mining village completely buried in ash and rubble from the explosion. The ghosts of the miners are said to haunt the ruins, forever searching for their lost comrades.",
+            factionId: 'unaligned',
+            intelReq: 15,
+            political_influence: 1,
+            economic_value: 1,
+            military_strength: 1,
+            population: 0
+        },
+        {
+            id: 'poi_dm_elders_eyrie',
+            x: 46.50,
+            y: 37.00,
+            type: 'lair',
+            name: "The Elder's Eyrie",
+            description: "A high, inaccessible cave system believed to be the lair of a powerful, ancient dragon—perhaps the one responsible for the kidnapping of General Judi. Its entrance is wreathed in a perpetual storm.",
+            factionId: 'unaligned',
+            intelReq: 80,
+            political_influence: 2,
+            economic_value: 5,
+            military_strength: 9,
+            population: 1
+        },
+        {
+            id: 'poi_dm_orc_scavengers',
+            x: 44.50,
+            y: 48.00,
+            type: 'bandit_camp',
+            name: "Orc Scavenger Camp",
+            description: "A large warband of Orcs has moved into the disaster zone to scavenge for scrap metal and Imperial magitek from the ruins of Fort Tiberius. They are hostile to all outsiders.",
+            factionId: 'unaligned',
+            intelReq: 20,
+            political_influence: 2,
+            economic_value: 4,
+            military_strength: 6,
+            population: 250
+        },
+        {
+            id: 'poi_dm_obsidian_fields',
+            x: 44.00,
+            y: 44.00,
+            type: 'landmark',
+            name: "Obsidian Fields",
+            description: "The intense heat of the blast flash-melted a vast swathe of the mountainside into a sharp, treacherous field of volcanic glass. Valuable, but nearly impossible to cross safely.",
+            factionId: 'unaligned',
+            intelReq: 10,
+            political_influence: 0,
+            economic_value: 6,
+            military_strength: 1,
+            population: 0
+        },
+        {
+            id: 'poi_dm_dwarven_mine',
+            x: 40.50,
+            y: 38.00,
+            type: 'mine',
+            name: "Sealed Dwarven Mithril Mine",
+            description: "A once-prosperous Dwarven mine that was sealed from the inside during the explosion to prevent the disaster from collapsing their deeper tunnels. The fate of the miners within is unknown.",
+            factionId: 'unaligned',
+            intelReq: 45,
+            political_influence: 2,
+            economic_value: 7,
+            military_strength: 2,
+            population: 0
+        },
+        {
+            id: 'poi_dm_dragon_cult',
+            x: 42.00,
+            y: 51.50,
+            type: 'shrine',
+            name: "Dragon Cultist Shrine",
+            description: "A hidden shrine where a secretive cult worships dragons as gods. They believe the great explosion was a divine act of purification and are openly hostile to the Empire.",
+            factionId: 'unaligned',
+            intelReq: 60,
+            political_influence: 3,
+            economic_value: 1,
+            military_strength: 4,
+            population: 40
+        },
+        {
+            id: 'poi_dm_last_stand',
+            x: 40.50,
+            y: 46.00,
+            type: 'battlefield',
+            name: "Judi's Last Stand",
+            description: "An area of scarred earth and shattered banners outside Fort Tiberius, showing signs of a desperate, organized defense. This is likely where General Judi made his last stand before his disappearance.",
+            factionId: 'unaligned',
+            intelReq: 40,
+            political_influence: 1,
+            economic_value: 1,
+            military_strength: 2,
+            population: 0
+        }
+    ],
+    fogOfWar: [
+        {
+            id: 'fog_dragon_mountain',
+            points: "42.62,49.80 45.42,45.65 47.48,44.32 48.04,39.34 45.80,35.35 43.27,34.02 40.28,40.00 38.88,43.99 35.98,51.96 39.26,52.79"
+        }
+    ]
+};
