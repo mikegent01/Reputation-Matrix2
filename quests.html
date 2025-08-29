@@ -17,8 +17,17 @@
              <aside id="sidebar"></aside>
             <main id="main-content">
                  <h2 class="page-title">Active Mission & Quest Log</h2>
+                 <div id="quest-log-header">
+                    <div id="quest-counter">Active Quests: 0 / 5</div>
+                    <div id="quest-sorter">
+                        <span>Sort by:</span>
+                        <button class="sort-btn active" data-sort="status">Status</button>
+                        <button class="sort-btn" data-sort="category">Assignee</button>
+                        <button class="sort-btn" data-sort="type">Type</button>
+                    </div>
+                </div>
                  <div id="quest-container">
-                    <!-- Main Story Quests will be injected here by JS -->
+                    <!-- Quest categories and cards will be injected here by JS -->
                  </div>
 
                  <div id="quest-board-section" class="quest-category">

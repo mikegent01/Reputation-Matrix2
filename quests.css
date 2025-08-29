@@ -1,3 +1,64 @@
+#quest-log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+#quest-counter {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+#quest-counter.limit-reached {
+    color: var(--negative-color);
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    50% { text-shadow: 0 0 8px var(--negative-color); }
+}
+
+
+#quest-sorter {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+#quest-sorter span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.sort-btn {
+    padding: 8px 12px;
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-family: var(--font-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sort-btn:hover {
+    color: var(--text-color);
+    border-color: var(--accent-hover);
+}
+
+.sort-btn.active {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background-color: rgba(138, 43, 226, 0.1);
+}
+
+
 #quest-container {
     display: flex;
     flex-direction: column;
@@ -17,12 +78,8 @@
     margin-bottom: 24px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--border-color);
+    color: var(--accent-color);
 }
-
-.quest-category-title.active { color: var(--neutral-color); }
-.quest-category-title.available { color: var(--text-secondary); }
-.quest-category-title.completed { color: var(--positive-color); }
-.quest-category-title.failed { color: var(--negative-color); }
 
 .quest-list {
     display: grid;
@@ -41,12 +98,14 @@
 .quest-card.status-available { border-left: 4px solid var(--text-secondary); }
 .quest-card.status-completed { border-left: 4px solid var(--positive-color); }
 .quest-card.status-failed { border-left: 4px solid var(--negative-color); }
+.quest-card.status-hidden { border-left: 4px solid var(--mystical-ancient-color); }
+
 
 .quest-header {
     padding: 16px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     cursor: pointer;
 }
 
@@ -59,6 +118,13 @@
     font-size: 1.2rem;
     color: var(--text-color);
     margin: 0;
+}
+.quest-type {
+    font-size: 0.8rem;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-top: 4px;
 }
 
 .quest-assignee {
@@ -75,11 +141,15 @@
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-left: 16px;
 }
 .quest-card.status-active .quest-status { background-color: rgba(240, 185, 11, 0.1); color: var(--neutral-color); }
 .quest-card.status-available .quest-status { background-color: rgba(139, 148, 158, 0.1); color: var(--text-secondary); }
 .quest-card.status-completed .quest-status { background-color: rgba(35, 134, 54, 0.1); color: var(--positive-color); }
 .quest-card.status-failed .quest-status { background-color: rgba(218, 54, 51, 0.1); color: var(--negative-color); }
+.quest-card.status-hidden .quest-status { background-color: rgba(138, 43, 226, 0.1); color: var(--mystical-ancient-color); }
+
 
 .quest-body {
     max-height: 0;
@@ -103,11 +173,22 @@
     margin-top: 0;
 }
 
-.quest-objective p, .quest-final-decision p {
+.quest-objective p, .quest-final-decision p, .quest-context p {
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.6;
 }
+
+.quest-context {
+    background-color: var(--sidebar-bg);
+    padding: 10px;
+    border-radius: 4px;
+    border-left: 2px solid var(--accent-color);
+}
+.quest-context strong {
+    color: var(--text-secondary);
+}
+
 
 .quest-step-list {
     list-style: none;
@@ -162,10 +243,17 @@
 }
 
 .quest-step.status-locked {
-    opacity: 0.5;
+    opacity: 0.6;
 }
 .quest-step.status-locked .step-marker {
     background-color: var(--border-color);
+}
+.quest-step.status-locked .step-content .step-title {
+    color: var(--text-secondary);
+}
+.quest-step.status-locked .step-content .step-description {
+    font-style: italic;
+    color: var(--text-secondary);
 }
 
 .step-content {
@@ -203,6 +291,25 @@
 .step-options li {
     padding: 4px 0;
 }
+
+.quest-category.completed-quests,
+.quest-category.failed-quests {
+    background-color: var(--main-bg);
+}
+
+.quest-category.completed-quests .quest-card,
+.quest-category.failed-quests .quest-card {
+    opacity: 0.8;
+}
+
+.quest-category.completed-quests .quest-category-title {
+    color: var(--positive-color);
+}
+
+.quest-category.failed-quests .quest-category-title {
+    color: var(--negative-color);
+}
+
 
 /* --- Quest Board --- */
 #quest-board-section {
