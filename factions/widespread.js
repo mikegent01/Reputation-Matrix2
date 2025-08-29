@@ -408,5 +408,83 @@ export const WIDESPREAD_FACTIONS = {
                 }
             }
         }
+    },
+    beanbean_kingdom: {
+        name: "Beanbean Kingdom",
+        description: "The quirky, laughter-loving neighboring kingdom to the Mushroom Kingdom, known for its unique flora and culture.",
+        logo: 'icon_focus.png',
+        relations: { 
+            allies: ['mushroom_regency'], 
+            enemies: ['fawfuls_furious_freaks']
+        },
+        power_level: 5,
+        category: "Regional Powers",
+        region: "Beanbean Kingdom",
+        leader: "queen_bean",
+    },
+    flower_kingdom: {
+        name: "Flower Kingdom",
+        description: "A whimsical neighboring kingdom where strange 'Wonder Flowers' can dramatically alter reality.",
+        logo: 'icon_magic.png',
+        relations: { 
+            allies: ['mushroom_regency'], 
+            enemies: ['koopa_troop']
+        },
+        power_level: 5,
+        category: "Regional Powers",
+        region: "Flower Kingdom",
+        leader: "prince_florian",
+    },
+    dk_crew: {
+        name: "The DK Crew",
+        description: "Donkey Kong and his family of laid-back but powerful apes. They protect their island home and their massive banana hoard with surprising ferocity.",
+        logo: 'icon_focus.png',
+        relations: { 
+            allies: ['mushroom_regency'], 
+            enemies: ['kremling_krew', 'koopa_troop']
+        },
+        power_level: 6,
+        category: "Regional Powers",
+        region: "Yoshi & DK's Islands",
+        leader: "donkey_kong",
+    },
+    yoshi_clans: {
+        name: "The Yoshi Clans",
+        description: "The peaceful, fruit-loving dinosaur inhabitants of Yoshi's Island. Generally pacifists, but fiercely protective of their young.",
+        logo: 'icon_focus.png',
+        relations: { 
+            allies: ['mushroom_regency'], 
+            enemies: ['koopa_troop']
+        },
+        power_level: 4,
+        category: "Regional Powers",
+        region: "Yoshi & DK's Islands",
+        leader: "yoshi_elder",
+    },
+    kremling_krew: {
+        name: "The Kremling Krew",
+        description: "A militaristic army of crocodile-like Kremlings led by the tyrannical King K. Rool. They are the sworn enemies of the DK Crew and seek to steal the banana hoard.",
+        logo: 'icon_pirate.png',
+        relations: { 
+            allies: [], 
+            enemies: ['dk_crew', 'mushroom_regency']
+        },
+        power_level: 5,
+        category: "Regional Powers",
+        region: "Yoshi & DK's Islands",
+        leader: "king_k_rool",
+    },
+    knights_of_the_gilded_lily: {
+        name: "Knights of the Gilded Lily",
+        description: "A chivalric order of knights from the swampy kingdom of Chramalot. They value honor and courtly love, but their kingdom is beset by internal political strife.",
+        logo: 'icon_focus.png',
+        relations: { 
+            allies: ['mushroom_regency'], 
+            enemies: ['onyx_hand']
+        },
+        power_level: 5,
+        category: "Regional Powers",
+        region: "Chramalot Kingdom",
+        leader: "king_chalmus_iii",
     }
 };

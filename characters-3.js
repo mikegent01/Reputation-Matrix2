@@ -70,5 +70,22 @@ export const CHARACTERS_3 = {
         name: "Chai",
         role: "Diplomat, The Tea Leaf Syndicate",
         description: "A smooth-talking toad who handles the Syndicate's negotiations and information gathering. He also survived the 'Tea Party Incident' and now harbors a deep distrust of the party."
+    },
+
+    // --- NEW FACTION LEADERS ---
+    'queen_bean': {
+        name: "Queen Bean",
+        role: "Ruler of the Beanbean Kingdom",
+        description: "The hearty and jovial ruler of the Beanbean Kingdom. Known for her powerful voice and her deep love for her people and Chuckola Cola."
+    },
+    'prince_florian': {
+        name: "Prince Florian",
+        role: "Ruler of the Flower Kingdom",
+        description: "The small, caterpillar-like prince of the Flower Kingdom. He is a kind and gentle ruler, but holds the immense power of the Wonder Flowers."
+    },
+    'king_k_rool': {
+        name: "King K. Rool",
+        role: "Tyrant King of the Kremling Krew",
+        description: "The bombastic and egotistical king of the Kremlings. He is obsessed with stealing the Crystal Coconut and Donkey Kong's banana hoard."
     }
 };

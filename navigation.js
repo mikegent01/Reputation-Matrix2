@@ -22,9 +22,16 @@ async function initializeSidebar() {
 
         // Hide the navigation button for the current page
         const currentPage = window.location.pathname.split('/').pop();
+        const mapPages = ['maps.html', 'mushroom-kingdom-maps.html', 'midlands-maps.html'];
         const navLinks = sidebar.querySelectorAll('.nav-button');
+
         navLinks.forEach(link => {
-            if (link.getAttribute('href') === currentPage) {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPage) {
+                link.style.display = 'none';
+            }
+            // If we are on any map page, hide the main "Tactical Maps" link
+            if (mapPages.includes(currentPage) && linkHref === 'maps.html') {
                 link.style.display = 'none';
             }
         });

@@ -1,6 +1,7 @@
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
 import { FOCUS_TREES } from './focus-tree.js';
+import { MAP_DATA } from './map-data.js';
 
 // --- STATE MANAGEMENT ---
 
@@ -80,6 +81,17 @@ export const state = {
         humpik: { name: "Humpik's Haul", items: [] },
         bowser: { name: "Bowser's Treasury", items: ["Princess Peach's Diary"] },
         shared: { name: "Liberated Toads' Items", items: ["Mushroom Kingdom History, Vol. III", "A Field Guide to Fungal Alchemy", "Koopa Troop Tactics"] }
+    },
+    mapState: {
+        discoveredFogs: [],
+        userPois: {
+            mushroom_kingdom: [],
+            midlands: [],
+        },
+        userFogs: {
+            mushroom_kingdom: [],
+            midlands: [],
+        }
     }
 };
 
@@ -408,13 +420,34 @@ export function loadState() {
                 state[key] = parsedState[key];
             }
         });
-        
-        // Reset chart instances on load
-        state.chartInstances = {};
+    }
+
+    // --- ROBUSTNESS FIX ---
+    // Ensure mapState and its sub-properties exist to prevent errors from old save states.
+    if (!state.mapState) state.mapState = {};
+    if (!state.mapState.userPois) state.mapState.userPois = {};
+    if (!state.mapState.discoveredFogs) state.mapState.discoveredFogs = [];
+    if (!state.mapState.userFogs) state.mapState.userFogs = {};
+
+    // Dynamically ensure userPois and userFogs have keys for all maps defined in MAP_DATA.
+    for (const mapId in MAP_DATA) {
+        if (!state.mapState.userPois[mapId]) {
+            state.mapState.userPois[mapId] = [];
+        }
+        if (!state.mapState.userFogs[mapId]) {
+            state.mapState.userFogs[mapId] = [];
+        }
+    }
+    // --- END FIX ---
+    
+    // Reset chart instances on load
+    state.chartInstances = {};
+    
+    if (savedState) {
         initReputation();
 
         // Ensure inventories exist in saved state, otherwise initialize
-        if (!parsedState.inventories) {
+        if (!state.inventories) {
              state.inventories = {
                 archie: { name: "Archie's Stash", items: [] },
                 markop: { name: "Markop's Pack", items: [] },
@@ -429,7 +462,7 @@ export function loadState() {
         }
         
         // Merge auxiliary party state to get latest statuses while preserving progress
-        const savedAuxPartyState = parsedState.auxiliary_party_state;
+        const savedAuxPartyState = JSON.parse(savedState).auxiliary_party_state;
         const freshAuxPartyData = LORE_DATA.auxiliary_party;
         if (savedAuxPartyState && Object.keys(savedAuxPartyState).length > 0) {
             const mergedAuxPartyState = {};

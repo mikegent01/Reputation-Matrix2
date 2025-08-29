@@ -1,0 +1,497 @@
+
+
+#maps-layout {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 24px;
+    height: calc(100% - 80px);
+}
+
+#map-view-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#map-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: var(--sidebar-bg);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.map-group-header {
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.map-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.map-tab-btn {
+    padding: 8px 16px;
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-family: var(--font-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.map-tab-btn:hover {
+    color: var(--text-color);
+    border-color: var(--accent-hover);
+}
+.map-tab-btn.active {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background-color: rgba(138, 43, 226, 0.1);
+}
+
+#map-display-area {
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+#map-display-area.editing-poi {
+    cursor: copy;
+}
+#map-display-area.editing-fog {
+    cursor: crosshair;
+}
+#map-display-area.removing-item {
+    cursor: not-allowed;
+}
+
+#map-zoom-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-origin: 0 0;
+}
+
+
+#map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#interactive-map-layer {
+    pointer-events: none; /* Pass clicks through the layer itself */
+}
+
+
+.poi-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    background-color: rgba(13, 17, 23, 0.7);
+    border: 1px solid var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 18px;
+    z-index: 5;
+    pointer-events: all; /* Make markers clickable */
+}
+
+.poi-marker:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 0 10px var(--accent-color);
+    z-index: 10;
+}
+
+.removing-item .poi-marker:hover {
+    border-color: var(--negative-color);
+    box-shadow: 0 0 10px var(--negative-color);
+    background-color: var(--negative-color);
+}
+
+
+#map-fog-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+#map-fog-overlay polygon {
+    fill: var(--bg-color);
+    opacity: 0.85;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: all; /* Make polygons clickable in edit mode */
+}
+
+#map-display-area.edit-mode #map-fog-overlay polygon,
+#map-display-area.edit-mode .poi-marker {
+    cursor: pointer;
+}
+
+
+.removing-item #map-fog-overlay polygon:hover {
+    fill: var(--negative-color);
+    opacity: 0.6;
+}
+
+
+#map-fog-overlay polygon.discovered {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#map-detail-panel {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+#map-detail-content {
+    overflow-y: auto;
+    height: 100%;
+}
+.panel-placeholder {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+.poi-detail h3 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    margin-bottom: 8px;
+}
+.poi-detail .poi-type {
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+.poi-detail .poi-description {
+    font-size: 0.9rem;
+}
+
+.poi-detail .poi-intel-req {
+    margin-top: 16px;
+    padding: 8px;
+    background-color: var(--main-bg);
+    border-left: 3px solid var(--neutral-color);
+    font-size: 0.85rem;
+}
+
+
+/* Editor Toolbar */
+#map-editor-toolbar {
+    background-color: var(--sidebar-bg);
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+#poi-palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 60%;
+}
+
+.poi-palette-item {
+    font-size: 20px;
+    cursor: grab;
+    padding: 4px;
+    border-radius: 4px;
+    background-color: var(--main-bg);
+    transition: background-color 0.2s;
+}
+
+.poi-palette-item:hover {
+    background-color: var(--accent-color);
+}
+
+.toolbar-actions {
+    display: flex;
+    gap: 8px;
+}
+.toolbar-actions .control-btn.positive {
+    border-color: var(--positive-color);
+    color: var(--positive-color);
+}
+.toolbar-actions .control-btn.positive:hover {
+    background-color: var(--positive-color);
+    color: white;
+}
+.toolbar-actions .control-btn.negative {
+    border-color: var(--negative-color);
+    color: var(--negative-color);
+}
+.toolbar-actions .control-btn.negative:hover {
+    background-color: var(--negative-color);
+    color: white;
+}
+#remove-item-btn.active {
+    background-color: var(--negative-color);
+    border-color: var(--negative-color);
+    color: white;
+}
+
+
+/* Drawing Overlay */
+#map-drawing-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 20;
+}
+
+#map-drawing-svg .draw-point {
+    fill: var(--accent-color);
+}
+
+#map-drawing-svg .draw-line {
+    stroke: var(--accent-color);
+    stroke-width: 2px;
+    stroke-dasharray: 4, 4;
+    fill: rgba(138, 43, 226, 0.2);
+}
+
+
+/* POI Editor Modal & Panel*/
+#poi-editor-modal .modal-content, #item-editor-panel {
+    max-width: 400px;
+}
+#poi-form, #item-editor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.form-group label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.form-group input,
+.form-group textarea,
+.form-group select,
+.form-group p {
+    width: 100%;
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 8px;
+    color: var(--text-color);
+    font-family: var(--font-primary);
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+#poi-form-type, .editor-panel-type {
+    min-height: 38px; /* match input height */
+    display: flex;
+    align-items: center;
+}
+.editor-panel-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+
+@media (max-width: 1024px) {
+    #maps-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.poi-marker.draggable-poi {
+    cursor: grab;
+}
+.poi-marker.draggable-poi:active {
+    cursor: grabbing;
+}
+
+/* Code Output Modal */
+#code-output-modal .modal-content {
+    max-width: 700px;
+}
+
+#code-output-modal p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.code-output-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.code-output-group label {
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+}
+
+.code-output-textarea {
+    width: 100%;
+    height: 250px;
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+    color: var(--text-color);
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    resize: vertical;
+    white-space: pre;
+    overflow-wrap: normal;
+    overflow-x: auto;
+}
+
+/* Map Modes */
+#map-mode-selector {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+#map-mode-selector span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-family: var(--font-display);
+}
+.mode-btn {
+    padding: 6px 12px;
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-family: var(--font-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.mode-btn:hover {
+    color: var(--text-color);
+    border-color: var(--accent-hover);
+}
+.mode-btn.active {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background-color: rgba(138, 43, 226, 0.1);
+}
+
+.poi-marker.political-view {
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+}
+.poi-marker.economic-view {
+    border: 2px solid white;
+    color: var(--main-bg);
+    border-radius: 4px; /* Square for economic */
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.poi-marker.military-view {
+    border: 2px solid white;
+    color: white;
+    border-radius: 0; /* Diamond shape */
+    transform: translate(-50%, -50%) rotate(45deg);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.poi-marker.military-view:hover {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.2);
+}
+.poi-marker.military-view .icon-wrapper,
+.poi-marker.economic-view .icon-wrapper {
+    transform: rotate(0deg);
+}
+.poi-marker.military-view .icon-wrapper {
+     transform: rotate(-45deg);
+}
+
+.poi-marker.population-view {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+
+/* Legend Styles */
+.map-mode-legend {
+    padding: 16px;
+}
+.map-mode-legend h4 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    margin-bottom: 12px;
+}
+.map-mode-legend p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.legend-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+.legend-color-box {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
