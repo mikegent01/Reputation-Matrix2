@@ -38,31 +38,7 @@ export function wasDragged() {
 
 
 export function zoomToPoi(poi) {
-    const svg = d3.select("#map-display-area");
-    const displayArea = document.getElementById('map-display-area');
-    if (svg.empty() || !displayArea || !poi || !map.renderedMapDimensions) return;
-    
-    const scale = 4;
-    
-    // Get the container's dimensions for centering.
-    const containerRect = displayArea.getBoundingClientRect();
-    
-    // Get the authoritative, pre-calculated dimensions of the interactive layer
-    const { width: baseLayerWidth, height: baseLayerHeight } = map.renderedMapDimensions;
-
-    // 1. Find the POI's absolute pixel position within the BASE interactive layer
-    const targetX = (poi.x / 100) * baseLayerWidth;
-    const targetY = (poi.y / 100) * baseLayerHeight;
-    
-    // 2. Calculate the translation to bring this point to the center of the container, accounting for the new scale
-    const x = (containerRect.width / 2) - (targetX * scale);
-    const y = (containerRect.height / 2) - (targetY * scale);
-
-    const transform = d3.zoomIdentity.translate(x, y).scale(scale);
-
-    svg.transition()
-        .duration(750)
-        .call(d3Zoom.transform, transform);
+  
 }
 
 export function resetTransform() {
