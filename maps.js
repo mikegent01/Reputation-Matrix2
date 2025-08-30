@@ -86,7 +86,6 @@ function setupEventListeners() {
                     const poi = findPoiById(marker.dataset.poiId);
                     if (poi) {
                         renderer.renderDetailPanel(poi.id);
-                        transform.zoomToPoi(poi);
                     }
                 } else {
                     // Clicked on map background, not a POI

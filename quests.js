@@ -3,6 +3,7 @@ import { BOUNTY_BOARD_QUESTS } from './bounty-quests-data.js';
 import { playSound } from './common.js';
 import { state } from './state.js';
 import { LORE_DATA } from './lore.js';
+import { MAP_DATA } from './map-data.js';
 
 const mainQuestContainer = document.getElementById('quest-container');
 const bountyBoardContainer = document.getElementById('quest-board-list');
@@ -13,6 +14,17 @@ const filtererContainer = document.getElementById('quest-filterer');
 
 let currentSort = 'status';
 let activeFilter = 'all';
+
+function findPoiById(poiId) {
+    for (const mapKey in MAP_DATA) {
+        const mapData = MAP_DATA[mapKey];
+        if (mapData.pointsOfInterest) {
+            const poi = mapData.pointsOfInterest.find(p => p.id === poiId);
+            if (poi) return poi;
+        }
+    }
+    return null;
+}
 
 function renderQuests() {
     if (!mainQuestContainer) return;
@@ -162,6 +174,14 @@ function renderQuestCard(quest) {
         </div>
     ` : '';
 
+    let locationHTML = '';
+    if (quest.type === 'request' && quest.locationId) {
+        const location = findPoiById(quest.locationId);
+        if (location) {
+            locationHTML = `<p class="quest-location"><strong>Location:</strong> ${location.name}</p>`;
+        }
+    }
+
     return `
         <div class="quest-card status-${quest.status}" id="${quest.id}">
             <div class="quest-header">
@@ -169,6 +189,7 @@ function renderQuestCard(quest) {
                     <h4 class="quest-title">${quest.title}</h4>
                     <p class="quest-type">${quest.type}</p>
                     <p class="quest-assignee">Assignee: ${quest.assignee}</p>
+                    ${locationHTML}
                 </div>
                 <div class="quest-status">${quest.status}</div>
             </div>

@@ -1,6 +1,5 @@
 
 
-
 #maps-layout {
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -487,7 +486,7 @@
     align-items: center;
     gap: 8px;
     font-size: 0.85rem;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 }
 .legend-color-box {
     width: 16px;
@@ -547,4 +546,132 @@
     font-size: 0.85rem;
     color: var(--text-secondary);
     margin: 0;
+}
+
+/* --- Battle Elements --- */
+.troop-marker {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    background-size: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 8px rgba(0,0,0,0.8);
+    cursor: pointer;
+    z-index: 6;
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+}
+
+.troop-marker.battlefront::after {
+    content: '⚔️';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1.2rem;
+    animation: pulse-battle 1.5s infinite;
+}
+
+@keyframes pulse-battle {
+    50% { transform: scale(1.2); }
+}
+
+.unit-type-icon {
+    font-size: 14px;
+    color: white;
+    background-color: rgba(0,0,0,0.6);
+    padding: 2px 4px;
+    border-radius: 4px;
+    text-shadow: 1px 1px 2px black;
+}
+
+.vigilance-path {
+    stroke: var(--accent-color);
+    stroke-width: 0.5px;
+    stroke-dasharray: 4, 4;
+    fill: none;
+    z-index: 3;
+    animation: dash-flow 20s linear infinite;
+}
+
+@keyframes dash-flow {
+    to {
+        stroke-dashoffset: -1000;
+    }
+}
+
+
+.vigilance-marker {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    transform: translate(-50%, -50%);
+    background-image: url('newspaper_airship.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 7;
+    pointer-events: all;
+    cursor: help;
+    animation: pulse-purple-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-purple-glow {
+    50% { filter: drop-shadow(0 0 10px var(--accent-color)); }
+}
+
+
+.vigilance-label {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    background-color: rgba(13, 17, 23, 0.8);
+    color: var(--text-secondary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 8;
+    pointer-events: none;
+}
+
+/* --- Tactical Legend --- */
+.troop-marker-legend {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-size: cover;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.troop-marker-legend .unit-type-icon {
+    font-size: 10px;
+}
+.battlefront-legend {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px dashed var(--neutral-color);
+    animation: pulse-yellow 2s infinite;
+    flex-shrink: 0;
+}
+.vigilance-marker-legend {
+    width: 24px;
+    height: 24px;
+    background-image: url('newspaper_airship.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+}
+.vigilance-path-legend {
+    width: 24px;
+    height: 2px;
+    background-image: linear-gradient(to right, var(--accent-color) 50%, transparent 50%);
+    background-size: 8px 2px;
+    background-repeat: repeat-x;
+    flex-shrink: 0;
 }

@@ -1,4 +1,5 @@
 
+
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
 import { FOCUS_TREES } from './focus-tree.js';
@@ -259,7 +260,7 @@ export function initFocusTreeState() {
     });
 
     state.focusTreeState = {
-        buildVersionApplied: "2025-08-13-r1",
+        buildVersionApplied: "2024-05-18-r1", // Note the date of the last structural change
         day: 3,
         activeToad: "dan",
         groupInfluence: 27,
@@ -415,7 +416,7 @@ export function loadState() {
     processInitialXP();
 
     // Check if focus tree state needs initialization
-    if (!state.focusTreeState || state.focusTreeState.buildVersionApplied !== "2025-08-13-r1") {
+    if (!state.focusTreeState || state.focusTreeState.buildVersionApplied !== "2024-05-18-r1") {
         initFocusTreeState();
     }
     

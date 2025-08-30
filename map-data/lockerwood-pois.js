@@ -226,6 +226,20 @@ export const lockerwoodData = {
             economic_value: 6,
             military_strength: 2,
             population: 30
+        },
+        {
+            id: 'poi_lw_crimson_wing_aerie',
+            x: 41.0,
+            y: 46.0,
+            type: 'port',
+            name: "Aerie of the Crimson Wing",
+            description: "A high-security Imperial airship dock built to service the administrative and military needs of the southern provinces. Its proximity to the Onyx Hand's territory is no coincidence; it serves as a base for the Silent Service to monitor the vampires. It was from this aerie that the 'Vigilance' began its ill-fated journey.",
+            factionId: 'regal_empire',
+            intelReq: 45,
+            political_influence: 6,
+            economic_value: 5,
+            military_strength: 8,
+            population: 700
         }
     ],
     fogOfWar: []

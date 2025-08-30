@@ -154,11 +154,16 @@
     margin-top: 4px;
 }
 
-.quest-assignee {
+.quest-assignee, .quest-location {
     font-size: 0.85rem;
     color: var(--text-secondary);
     font-style: italic;
     margin: 4px 0 0 0;
+}
+
+.quest-location strong {
+    color: var(--neutral-color);
+    font-style: normal;
 }
 
 .quest-status {

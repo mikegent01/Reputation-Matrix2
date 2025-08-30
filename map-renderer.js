@@ -1,3 +1,5 @@
+
+
 import { state, saveState } from './state.js';
 import { MAP_DATA, BUILDING_TYPES } from './map-data.js';
 import { FACTION_COLORS } from './factions/faction-colors.js';
@@ -6,6 +8,7 @@ import { LORE_DATA } from './lore.js';
 import { getIntelForFaction } from './systems/common.js';
 import { resetTransform } from './map-transform.js';
 import { QUEST_DATA } from './quests-data.js';
+import { BATTLE_MAP_DATA } from './map-battle-data.js';
 
 const displayArea = document.getElementById('map-display-area');
 const detailPanel = document.getElementById('map-detail-content');
@@ -61,6 +64,10 @@ export function renderMap(mapId) {
 
         renderPois();
         renderFog();
+        
+        if (map.activeMapMode === 'tactical') {
+            renderBattleElements(mapId);
+        }
 
         // Add drawing overlay for edit mode
         if (map.isEditMode) {
@@ -74,6 +81,80 @@ export function renderMap(mapId) {
 
     renderMapModeLegend();
     resetTransform();
+}
+
+function renderBattleElements(mapId) {
+    const interactiveLayer = document.getElementById('interactive-map-layer');
+    if (!interactiveLayer) return;
+
+    // Render Vigilance Journey
+    if (BATTLE_MAP_DATA.vigilance_journey.mapId === mapId) {
+        renderVigilance(interactiveLayer);
+    }
+
+    // Render Troop Deployments
+    const troopsOnThisMap = BATTLE_MAP_DATA.troop_deployments.filter(t => t.mapId === mapId);
+    troopsOnThisMap.forEach(troop => {
+        const troopMarker = document.createElement('div');
+        troopMarker.className = 'troop-marker';
+        if (troop.battlefront) {
+            troopMarker.classList.add('battlefront');
+        }
+        troopMarker.style.left = `${troop.x}%`;
+        troopMarker.style.top = `${troop.y}%`;
+        const faction = LORE_DATA.factions[troop.factionId];
+        if (faction) {
+            troopMarker.style.backgroundImage = `url(${faction.logo})`;
+            troopMarker.style.borderColor = FACTION_COLORS[troop.factionId] || 'white';
+        }
+        troopMarker.title = `${troop.name}\nStrength: ${troop.strength}`;
+        
+        let unitIcon = '';
+        switch(troop.unitType) {
+            case 'infantry': unitIcon = '⚔️'; break;
+            case 'special': unitIcon = '✨'; break;
+            case 'cavalry': unitIcon = '🐺'; break;
+            default: unitIcon = '🛡️'; break;
+        }
+        troopMarker.innerHTML = `<div class="unit-type-icon">${unitIcon}</div>`;
+        interactiveLayer.appendChild(troopMarker);
+    });
+}
+
+function renderVigilance(container) {
+    const journey = BATTLE_MAP_DATA.vigilance_journey;
+    
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.style.position = 'absolute';
+    svg.style.width = '100%';
+    svg.style.height = '100%';
+    svg.style.pointerEvents = 'none';
+    svg.style.zIndex = '3';
+    svg.setAttribute('viewBox', '0 0 100 100');
+    svg.setAttribute('preserveAspectRatio', 'none');
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', journey.path);
+    path.classList.add('vigilance-path');
+    svg.appendChild(path);
+    container.appendChild(svg);
+
+    const pathLength = path.getTotalLength();
+    const progress = journey.currentDay / journey.totalDays;
+    const currentPoint = path.getPointAtLength(pathLength * progress);
+
+    const marker = document.createElement('div');
+    marker.className = 'vigilance-marker';
+    marker.style.left = `${currentPoint.x}%`;
+    marker.style.top = `${currentPoint.y}%`;
+    marker.title = "The 'Vigilance'";
+    
+    const label = document.createElement('div');
+    label.className = 'vigilance-label';
+    label.textContent = `${journey.daysRemaining} days to Capital`;
+    marker.appendChild(label);
+    
+    container.appendChild(marker);
 }
 
 export function renderPois() {
@@ -119,41 +200,50 @@ export function renderPois() {
             marker.appendChild(requestIndicator);
         }
 
-        switch(map.activeMapMode) {
-            case 'political':
-                marker.classList.add('political-view');
-                marker.style.backgroundColor = FACTION_COLORS[poi.factionId] || 'var(--text-secondary)';
-                const politicalSize = 16 + (poi.political_influence || 1) * 2;
-                marker.style.width = `${politicalSize}px`;
-                marker.style.height = `${politicalSize}px`;
-                iconWrapper.innerHTML = '';
-                break;
-            case 'economic':
-                marker.classList.add('economic-view');
-                const economicSize = 16 + (poi.economic_value || 1) * 2;
-                marker.style.width = `${economicSize}px`;
-                marker.style.height = `${economicSize}px`;
-                iconWrapper.innerHTML = poi.economic_value || '?';
-                break;
-            case 'military':
-                marker.classList.add('military-view');
-                const militarySize = 16 + (poi.military_strength || 1) * 2;
-                marker.style.width = `${militarySize}px`;
-                marker.style.height = `${militarySize}px`;
-                iconWrapper.innerHTML = poi.military_strength || '?';
-                break;
-            case 'population':
-                marker.classList.add('population-view');
-                const popSize = 12 + Math.log2(Math.max(1, poi.population || 1)) * 2.5;
-                marker.style.width = `${popSize}px`;
-                marker.style.height = `${popSize}px`;
-                marker.style.backgroundColor = getPopulationColor(poi.population || 0);
-                marker.style.opacity = poi.population > 0 ? '0.9' : '0.5';
-                break;
-            case 'standard':
-            default:
-                iconWrapper.innerHTML = BUILDING_TYPES[poi.type]?.icon || '❓';
-                break;
+        if (map.activeMapMode === 'tactical') {
+            marker.style.opacity = '0.5';
+            marker.style.width = '16px';
+            marker.style.height = '16px';
+            iconWrapper.innerHTML = BUILDING_TYPES[poi.type]?.icon || '❓';
+            iconWrapper.style.fontSize = '10px';
+        } else {
+             marker.style.opacity = '1';
+            switch (map.activeMapMode) {
+                case 'political':
+                    marker.classList.add('political-view');
+                    marker.style.backgroundColor = FACTION_COLORS[poi.factionId] || 'var(--text-secondary)';
+                    const politicalSize = 16 + (poi.political_influence || 1) * 2;
+                    marker.style.width = `${politicalSize}px`;
+                    marker.style.height = `${politicalSize}px`;
+                    iconWrapper.innerHTML = '';
+                    break;
+                case 'economic':
+                    marker.classList.add('economic-view');
+                    const economicSize = 16 + (poi.economic_value || 1) * 2;
+                    marker.style.width = `${economicSize}px`;
+                    marker.style.height = `${economicSize}px`;
+                    iconWrapper.innerHTML = poi.economic_value || '?';
+                    break;
+                case 'military':
+                    marker.classList.add('military-view');
+                    const militarySize = 16 + (poi.military_strength || 1) * 2;
+                    marker.style.width = `${militarySize}px`;
+                    marker.style.height = `${militarySize}px`;
+                    iconWrapper.innerHTML = poi.military_strength || '?';
+                    break;
+                case 'population':
+                    marker.classList.add('population-view');
+                    const popSize = 12 + Math.log2(Math.max(1, poi.population || 1)) * 2.5;
+                    marker.style.width = `${popSize}px`;
+                    marker.style.height = `${popSize}px`;
+                    marker.style.backgroundColor = getPopulationColor(poi.population || 0);
+                    marker.style.opacity = poi.population > 0 ? '0.9' : '0.5';
+                    break;
+                case 'standard':
+                default:
+                    iconWrapper.innerHTML = BUILDING_TYPES[poi.type]?.icon || '❓';
+                    break;
+            }
         }
 
         if (map.isEditMode) {
@@ -219,7 +309,7 @@ export function renderDrawingPreview(points) {
 
     // Draw connecting line/polygon
     if (points.length > 1) {
-        const pointsString = points.map(p => `${p.x},${p.y}`).join(' ');
+        const pointsString = points.map(p => `${p.x.toFixed(2)},${p.y.toFixed(2)}`).join(' ');
         const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
         polyline.setAttribute('points', pointsString);
         polyline.classList.add('draw-line');
@@ -314,6 +404,36 @@ export function renderMapModeLegend() {
                     <h4>Military View</h4>
                     <p>The size and number indicate relative strategic strength.</p>
                 </div>`;
+            break;
+        case 'tactical':
+            legendHTML = `
+                <div class="map-mode-legend">
+                    <h4>Tactical View</h4>
+                    <p>Shows dynamic troop movements and key strategic assets.</p>
+                    <ul class="legend-list">
+                        <li class="legend-item">
+                            <div class="troop-marker-legend" style="background-image: url('faction_peach_loyalists.png'); border-color: ${FACTION_COLORS['peach_loyalists']};"><div class="unit-type-icon">⚔️</div></div>
+                            <span>Troop Battalion (Infantry)</span>
+                        </li>
+                        <li class="legend-item">
+                            <div class="troop-marker-legend" style="background-image: url('faction_koopa_troop.png'); border-color: ${FACTION_COLORS['koopa_troop']};"><div class="unit-type-icon">✨</div></div>
+                            <span>Specialist Unit</span>
+                        </li>
+                         <li class="legend-item">
+                             <div class="battlefront-legend"></div>
+                            <span>Active Battlefront</span>
+                        </li>
+                        <li class="legend-item">
+                             <div class="vigilance-marker-legend"></div>
+                            <span>The Vigilance</span>
+                        </li>
+                        <li class="legend-item">
+                             <div class="vigilance-path-legend"></div>
+                            <span>Vigilance Flight Path</span>
+                        </li>
+                    </ul>
+                </div>
+            `;
             break;
         case 'population':
              legendHTML = `
