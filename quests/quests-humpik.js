@@ -19,7 +19,7 @@ export const HUMPIK_QUESTS = {
     },
     'humpik_great_feast': {
         id: 'humpik_great_feast',
-        title: "The Great Feast",
+        title: "The Great Feast", 
         type: 'personal',
         category: 'Personal - Humpik',
         objective: "Hunt the legendary Titan-Turtle of the Whispering Marshes, whose shell is said to be impenetrable and whose meat, when cooked, grants temporary invincibility.",
