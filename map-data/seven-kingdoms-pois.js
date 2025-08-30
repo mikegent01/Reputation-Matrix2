@@ -135,7 +135,7 @@ export const sevenKingdomsData = {
             type: 'shipwreck',
             name: "Sunken Ghost Ship",
             description: "The ghostly wreck of a Koopa warship, sunk in a past conflict. It is now haunted by Boos and is a place of dread, avoided by even the Koopa Troop.",
-            factionId: 'unaligned',
+            factionId: 'regal_empire',
             intelReq: 25,
             political_influence: 1,
             economic_value: 3,
