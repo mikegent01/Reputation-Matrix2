@@ -49,20 +49,20 @@ export const HUMPIK_QUESTS = {
             { id: 'step3', title: "Unleash the WAAAGH!", status: 'locked', description: "Lead the full-scale assault, focusing on overwhelming force and pure aggression to shatter the enemy's morale and claim victory." }
         ]
     },
-    'humpik_biggest_axe': {
-        id: 'humpik_biggest_axe',
-        title: "The Biggest Axe",
+    'humpik_waaaghluigi_axe': {
+        id: 'humpik_waaaghluigi_axe',
+        title: "The WAAAGH!-luigi Axe",
         type: 'personal',
         category: 'Personal - Humpik',
-        objective: "Humpik's axe is big, but it could be bigger. He seeks out a legendary, slightly unhinged Orc Mekboy from 'Da Krumperz' guild, who is said to be able to forge an ultimate weapon from the hull of the crashed Vigilance.",
+        objective: "Humpik wants an upgrade for his axe and commissions Lario to build the ultimate magitek weapon. Waluigi, seeing an opportunity for chaos, secretly 'improves' the design, turning it into a dangerously unpredictable artifact.",
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "available",
-        motivation: "A bigger axe means bigger hitting. The logic is simple and beautiful to Humpik. He desires a weapon that is as strong and indomitable as he is.",
+        motivation: "Humpik desires a bigger, better axe. He hears Lario is the best mechanic for weird tech. Waluigi sees an opportunity to sow chaos, test a new invention, and annoy Lario, all at once.",
         steps: [
-            { id: 'step1', title: "Find the Mekboy", status: 'active', description: "Locate the reclusive Orc Mekboy, 'Grimgutz Rivet-Head', in his scrap-heap workshop in the Midlands borderlands." },
-            { id: 'step2', title: "A Worthy Payment", status: 'locked', description: "Grimgutz doesn't work for coin. Humpik must pay him with something he desires: the still-glowing power core from an Imperial war-walker." },
-            { id: 'step3', title: "The Forging", status: 'locked', description: "Assist Grimgutz in the chaotic and dangerous forging process, which involves a lot of shouting, hitting things with hammers, and experimental explosions." }
+            { id: 'step1', title: "A Worthy Commission", status: 'active', description: "Gather a ridiculously large pile of high-quality scrap metal and a rare power source (like a capacitor from a downed Iron Legion walker) to pay Lario for the job." },
+            { id: 'step2', title: "Waluigi's 'Help'", status: 'locked', description: "Waluigi secretly breaks into Lario's workshop and installs a 'Chaos Drive' into the axe's power matrix, claiming it will make it 'more flashy'." },
+            { id: 'step3', title: "The Field Test", status: 'locked', description: "Lario, unaware of the sabotage, presents Humpik with the 'WAAAGH!-luigi Axe.' During its first field test, the axe proves to be incredibly powerful but also wildly unpredictable, randomly teleporting, changing size, or shouting 'WAH!'." }
         ]
     },
     'humpik_rivals_respect': {
@@ -111,19 +111,20 @@ export const HUMPIK_QUESTS = {
             { id: 'step2', title: "The Echo", status: 'locked', description: "Unleash a roar so powerful it causes a minor avalanche, which conveniently blocks the path of a pursuing Iron Legion patrol." }
         ]
     },
-    'humpik_smash_club': {
-        id: 'humpik_smash_club',
-        title: "The Smash Club",
+    'humpik_scrap_heap_scramble': {
+        id: 'humpik_scrap_heap_scramble',
+        title: "The Scrap-Heap Scramble",
         type: 'personal',
         category: 'Personal - Humpik',
-        objective: "Humpik learns of an underground fighting ring run by the Iron Fists. He decides to enter, not for money, but for the sheer joy of a good fight.",
+        objective: "Lario is hosting a gladiatorial tournament in Wario City to attract clients. Humpik enters to prove he's the strongest, only to find the final round is against Lario's newest battle robot, with Waluigi running a crooked betting pool.",
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "available",
-        motivation: "Humpik is a warrior who feels most alive in battle. The idea of a place with an endless supply of opponents to smash is his version of paradise.",
+        motivation: "Humpik hears of a tournament for the strongest fighters and must enter to uphold his and Bowser's honor.",
         steps: [
-            { id: 'step1', title: "Find the Arena", status: 'active', description: "Get information on the location of the Iron Fists' secret fighting arena, 'The Grinder'." },
-            { id: 'step2', title: "The Main Event", status: 'locked', description: "Fight his way through the ranks of the Smash Club, culminating in a battle against their current champion, 'Iron Mike'." }
+            { id: 'step1', title: "The Buy-In", status: 'active', description: "Enter the tournament by defeating one of the Iron Fists' enforcers, 'Iron Mike', in a preliminary match." },
+            { id: 'step2', title: "The Bracket", status: 'locked', description: "Fight through a series of increasingly bizarre opponents in Lario's scrap-heap arena, from cybernetically enhanced Goombas to a rogue cleaning drone with saw blades." },
+            { id: 'step3', title: "The Main Event", status: 'locked', description: "Face the final champion: The 'Wario-bot 9000'. During the fight, Humpik must also deal with Waluigi's attempts to cheat from the sidelines (e.g., dropping banana peels, using magnets)." }
         ]
     },
     'humpik_no_more_talk': {
@@ -201,19 +202,20 @@ export const HUMPIK_QUESTS = {
             { id: 'step2', title: "The Nest", status: 'locked', description: "Build a comfortable nest for Rocky in the corner of the cargo bay, using soft materials like captured enemy uniforms." }
         ]
     },
-    'humpik_mighty_thirst': {
-        id: 'humpik_mighty_thirst',
-        title: "A Mighty Thirst",
+    'humpik_gulp_shroom_getaway': {
+        id: 'humpik_gulp_shroom_getaway',
+        title: "The Gulp-Shroom Getaway",
         type: 'personal',
         category: 'Personal - Humpik',
-        objective: "Humpik hears tales of a Dwarven ale so strong it can dissolve steel. He must have some.",
+        objective: "Waluigi tricks Humpik into creating a diversion at Lario's workshop with the promise of finding a legendary, delicious 'Gulp-Shroom', allowing Waluigi to steal a valuable power core.",
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "available",
-        motivation: "The pursuit of the ultimate drinking experience.",
+        motivation: "The promise of the ultimate drink is enough for Humpik. He will follow Waluigi's 'plan' to get it.",
         steps: [
-            { id: 'step1', title: "Find the Brewery", status: 'active', description: "Travel to the Dwarven capital and find the legendary 'Anvil-Gut Brewery'." },
-            { id: 'step2', title: "Prove Your Worth", status: 'locked', description: "The Dwarves don't serve their strongest ale to just anyone. Humpik must prove his worth by winning a drinking contest against their champion." }
+            { id: 'step1', title: "The 'Map'", status: 'active', description: "Waluigi gives Humpik a fake map and tells him the 'real' map is in a safe in Lario's workshop. Humpik's direct approach (smashing the wall) creates the perfect diversion for Waluigi." },
+            { id: 'step2', title: "The Fungus Hunt", status: 'locked', description: "The stolen map leads Humpik on a wild goose chase through a swamp filled with aggressive flora, while Waluigi makes off with the real prize." },
+            { id: 'step3', title: "The 'Reward'", status: 'locked', description: "Humpik finds a large, strange-looking mushroom. It's not the Gulp-Shroom, but when Waluigi meets him to share it, it has... unpredictable side effects (e.g., temporary flight, turning purple)." }
         ]
     },
     'humpik_no_like_spiders': {
