@@ -1,7 +1,16 @@
-#guilds-container {
+#guilds-container, #charters-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     gap: 24px;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .guild-card {
@@ -12,6 +21,29 @@
     display: flex;
     flex-direction: column;
 }
+
+.charter-card {
+    background: url(https://www.transparenttextures.com/patterns/old-paper.png), #f3e9d2;
+    border: 1px solid #c8bca7;
+    color: #4a2c2a;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.charter-card .guild-header { border-bottom-color: #c8bca7; }
+.charter-card .guild-title-group h3 { color: #5D4037; }
+.charter-card .guild-title-group p { color: #795548; }
+.charter-card .guild-body > p { color: #6d4c41; }
+.charter-card .guild-info-block { background-color: rgba(93, 64, 55, 0.05); }
+.charter-card .guild-info-block li { color: #6d4c41; }
+.charter-card .guild-info-block li strong { color: #4E342E; }
+.charter-card .guild-tab-btn { color: #795548; }
+.charter-card .guild-tab-btn:hover { color: #4E342E; }
+.charter-card .guild-tab-btn.active { color: #8A2BE2; border-bottom-color: #8A2BE2; } /* Keep accent for active */
+.charter-card .guild-tab-content h5 { color: #795548; }
+.charter-card .guild-tab-content li { color: #6d4c41; border-left-color: #c8bca7; }
+.charter-card .guild-tab-content li strong { color: #4E342E; }
+.charter-card .guild-tab-content p { color: #6d4c41; }
+
 
 .guild-header {
     display: flex;

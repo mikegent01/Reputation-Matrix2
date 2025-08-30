@@ -1,39 +1,7 @@
 import { LORE_DATA } from './lore.js';
+import { NEW_GUILDS, NEW_CHARTERS } from './guilds-data-new.js';
 
-export const GUILD_DATA = {
-    'gilded_gryphon': {
-        name: "The Gilded Gryphon Mercenary Company",
-        description: "A highly disciplined and expensive mercenary company formed from the remnants of a disgraced Iron Legion cohort. They operate under a strict charter and value contracts and coin above all else. They are known for their professionalism and their heavy infantry.",
-        leader: "Commander Valerius 'The Gilded'",
-        sponsoring_faction: "iron_legion",
-        headquarters: "The Gryphon's Roost, Midlands Border",
-        goals: [
-            "Secure high-value contracts from major powers.",
-            "Rebuild the company's reputation and treasury.",
-            "Recruit skilled warriors from any background."
-        ],
-        ranks: [
-            { title: "Commander", description: "The supreme leader of the company." },
-            { title: "Captain", description: "Leads a full wing of soldiers (approx. 100)." },
-            { title: "Gryphon Knight", description: "Veteran officers, proven in battle." },
-            { title: "Mercenary", description: "Rank-and-file soldiers under contract." },
-            { title: "Initiate", description: "New recruits undergoing the Forge Trials." }
-        ],
-        rules: [
-            "A contract is bond. Fulfill it to the letter.",
-            "Payment is paramount. Secure it before the blood is dry.",
-            "Discipline is our shield. Maintain it or be broken.",
-            "Leave politics to the politicians. We serve the coin, not the crown."
-        ],
-        recruitment: "Recruitment is open to any skilled warrior, regardless of origin. Prospective members must survive the grueling 'Forge Trials'—a series of combat and survival tests—and then swear an unbreakable oath to the company's charter.",
-        sub_guilds: [
-            {
-                name: "The Siegebreakers",
-                leader: "Engineer Tiber",
-                description: "A specialized unit focused on siege warfare and artillery. They are often hired out separately for fortress assaults."
-            }
-        ]
-    },
+const EXISTING_GUILDS = {
     'wayfinders_guild': {
         name: "The Wayfinders' Guild",
         description: "An independent organization dedicated to charting the unknown regions of the world, from the deepest dungeons to the skies beyond The Edge. They sell maps and recovered artifacts to fund their expeditions.",
@@ -92,32 +60,6 @@ export const GUILD_DATA = {
                 description: "A sub-guild specializing in disposing of evidence, bodies, and other inconvenient messes. Their discretion is legendary."
             }
         ]
-    },
-    'goodstyle_collective': {
-        name: "The Goodstyle Collective",
-        description: "An expansion of the Goodstyle Artisans faction into a formal guild. They are a collective of the world's finest craftsmen, dedicated to creating and preserving beauty. They often find themselves in conflict with treasure hunters and plunderers who see art as mere coin.",
-        leader: "Master Goodstyle",
-        sponsoring_faction: "goodstyle_artisans",
-        headquarters: "The Grand Atrium, Diamond City",
-        goals: [
-            "Preserve historical artifacts from destruction.",
-            "Create new masterpieces that inspire future generations.",
-            "Counter the influence of materialistic factions like Wario Land."
-        ],
-        ranks: [
-            { title: "Master Artisan", description: "Creators of legendary works, leaders of the Collective." },
-            { title: "Virtuoso", description: "Highly skilled artisans recognized for their unique style." },
-            { title: "Craftsman", description: "Certified members of the Collective." },
-            { title: "Apprentice", description: "Students learning under a Master." }
-        ],
-        rules: [
-            "Beauty is currency. Protect it from the crude.",
-            "Form is function. Strive for perfection in both.",
-            "Share your craft. Knowledge elevates all.",
-            "Never create for a tyrant or a destroyer."
-        ],
-        recruitment: "To join, an artisan must submit a 'Masterwork' to be judged by the Collective's council. If the work displays exceptional skill and artistic vision, the creator is invited to join as a Craftsman. Apprenticeships are rare and highly sought after.",
-        sub_guilds: []
     },
     'aegis_magi': {
         name: "The Aegis Magi",
@@ -275,6 +217,118 @@ export const GUILD_DATA = {
         recruitment: "Prospective members must solve a series of increasingly complex cryptographic puzzles hidden in Aurea's public data network. Those who succeed receive a cryptic invitation to join the guild. To accept is to erase one's official identity and be reborn in the Glitchstream.",
         sub_guilds: []
     },
+     'alchemists_union': {
+        name: "#11 The Alchemists' Union",
+        description: "A professional guild for alchemists, potion-makers, and poisoners. They regulate the trade of rare ingredients, share complex recipes, and ensure quality standards are met. They are famously neutral but fiercely protective of their alchemical secrets.",
+        leader: "Grand Brewer Elara",
+        sponsoring_faction: null, 
+        headquarters: "The Bubbling Cauldron, Port Prisma",
+        goals: [
+            "Control the trade of rare alchemical reagents.",
+            "Advance the science of alchemy through shared research.",
+            "Remain neutral in political conflicts to ensure market access."
+        ],
+        ranks: [
+            { title: "Grand Brewer", description: "The elected head of the Union." },
+            { title: "Master Alchemist", description: "A creator of legendary potions or poisons." },
+            { title: "Journeyman", description: "A licensed alchemist with their own shop." },
+            { title: "Apprentice", description: "A student learning the trade." }
+        ],
+        rules: [
+            "Never share a Union-patented recipe with an outsider.",
+            "An alchemist's word on a potion's effect is their bond.",
+            "Do not create plagues or world-ending concoctions. It's bad for business."
+        ],
+        recruitment: "Entry is via a rigorous apprenticeship under a Master Alchemist, culminating in the creation of a unique potion that must be approved by the Union's council.",
+        sub_guilds: []
+    },
+    'cartographers_society': {
+        name: "#12 The Cartographers' Society",
+        description: "A more academic and less adventurous cousin to the Wayfinders' Guild. The Society focuses on compiling, verifying, and publishing accurate maps of the known world. They are meticulous, scholarly, and often get into heated debates over minor border discrepancies.",
+        leader: "Chief Scribe Ortelius",
+        sponsoring_faction: "mushroom_regency",
+        headquarters: "The Map House, Mushroom City",
+        goals: [
+            "Create a definitive, comprehensive atlas of the Doughnut World.",
+            "Verify the claims of explorers and adventurers.",
+            "Preserve historical maps and celestial charts."
+        ],
+        ranks: [
+            { title: "Chief Scribe", description: "The head of the society, responsible for the final atlas." },
+            { title: "Master Cartographer", description: "Leads regional mapping projects." },
+            { title: "Drafter", description: "A skilled map-maker and surveyor." },
+            { title: "Apprentice", description: "Learns the arts of surveying, drafting, and calligraphy." }
+        ],
+        rules: [
+            "The map must reflect the truth on the ground.",
+            "Acknowledge the source of all data.",
+            "Beauty in a map is secondary to its accuracy."
+        ],
+        recruitment: "Applicants must submit a portfolio of their own drafted maps. If their work shows promise, they are accepted as an apprentice and tasked with the tedious but essential job of verifying existing coastlines.",
+        sub_guilds: []
+    }
+};
+
+const EXISTING_CHARTERS = {
+    'gilded_gryphon': {
+        name: "The Gilded Gryphon Mercenary Company",
+        description: "A highly disciplined and expensive mercenary company formed from the remnants of a disgraced Iron Legion cohort. They operate under a strict charter and value contracts and coin above all else. They are known for their professionalism and their heavy infantry.",
+        leader: "Commander Valerius 'The Gilded'",
+        sponsoring_faction: "iron_legion",
+        headquarters: "The Gryphon's Roost, Midlands Border",
+        goals: [
+            "Secure high-value contracts from major powers.",
+            "Rebuild the company's reputation and treasury.",
+            "Recruit skilled warriors from any background."
+        ],
+        ranks: [
+            { title: "Commander", description: "The supreme leader of the company." },
+            { title: "Captain", description: "Leads a full wing of soldiers (approx. 100)." },
+            { title: "Gryphon Knight", description: "Veteran officers, proven in battle." },
+            { title: "Mercenary", description: "Rank-and-file soldiers under contract." },
+            { title: "Initiate", description: "New recruits undergoing the Forge Trials." }
+        ],
+        rules: [
+            "A contract is bond. Fulfill it to the letter.",
+            "Payment is paramount. Secure it before the blood is dry.",
+            "Discipline is our shield. Maintain it or be broken.",
+            "Leave politics to the politicians. We serve the coin, not the crown."
+        ],
+        recruitment: "Recruitment is open to any skilled warrior, regardless of origin. Prospective members must survive the grueling 'Forge Trials'—a series of combat and survival tests—and then swear an unbreakable oath to the company's charter.",
+        sub_guilds: [
+            {
+                name: "The Siegebreakers",
+                leader: "Engineer Tiber",
+                description: "A specialized unit focused on siege warfare and artillery. They are often hired out separately for fortress assaults."
+            }
+        ]
+    },
+    'goodstyle_collective': {
+        name: "The Goodstyle Collective",
+        description: "An expansion of the Goodstyle Artisans faction into a formal guild. They are a collective of the world's finest craftsmen, dedicated to creating and preserving beauty. They often find themselves in conflict with treasure hunters and plunderers who see art as mere coin.",
+        leader: "Master Goodstyle",
+        sponsoring_faction: "goodstyle_artisans",
+        headquarters: "The Grand Atrium, Diamond City",
+        goals: [
+            "Preserve historical artifacts from destruction.",
+            "Create new masterpieces that inspire future generations.",
+            "Counter the influence of materialistic factions like Wario Land."
+        ],
+        ranks: [
+            { title: "Master Artisan", description: "Creators of legendary works, leaders of the Collective." },
+            { title: "Virtuoso", description: "Highly skilled artisans recognized for their unique style." },
+            { title: "Craftsman", description: "Certified members of the Collective." },
+            { title: "Apprentice", description: "Students learning under a Master." }
+        ],
+        rules: [
+            "Beauty is currency. Protect it from the crude.",
+            "Form is function. Strive for perfection in both.",
+            "Share your craft. Knowledge elevates all.",
+            "Never create for a tyrant or a destroyer."
+        ],
+        recruitment: "To join, an artisan must submit a 'Masterwork' to be judged by the Collective's council. If the work displays exceptional skill and artistic vision, the creator is invited to join as a Craftsman. Apprenticeships are rare and highly sought after.",
+        sub_guilds: []
+    },
     'da_krumperz': {
         name: "Da Krumperz Mercenary Warband",
         description: "The biggest, meanest, and most 'cunnin' Orc warband from the Known World, led by the infamous Warboss Skarjaw. They hire themselves out to the highest bidder, seeking not just coin, but a proper good fight and shiny loot to add to their scrap-heap fortresses.",
@@ -300,5 +354,58 @@ export const GUILD_DATA = {
         ],
         recruitment: "If you're an Orc (or a very tough goblin) and you can beat one of Da Krumperz in a fight without dying, you're in. Alternatively, bringing the Warboss a particularly shiny piece of scrap or a promise of a really, really big battle might get you a spot on the team.",
         sub_guilds: []
+    },
+    'sunstone_trading': {
+        name: "#14 The Sunstone Trading Company",
+        description: "A merchant charter granted by the Regal Empire, giving them exclusive rights to trade routes in the southern provinces. They are wealthy, well-connected, and ruthless in their pursuit of profit. Their caravans are famously well-defended.",
+        leader: "Guildmaster Tiberius",
+        sponsoring_faction: "regal_empire",
+        headquarters: "The Gilded Hall, Vemia City",
+        goals: [
+            "Maximize profits for the company's shareholders (all Imperial nobles).",
+            "Expand Imperial economic influence through trade.",
+            "Eliminate rival, non-chartered merchant operations."
+        ],
+        ranks: [
+            { title: "Guildmaster", description: "The CEO of the company." },
+            { title: "Caravan Master", description: "Leads a trade caravan and its guards." },
+            { title: "Factor", description: "Manages a trading post in a remote town." },
+            { title: "Guard / Merchant", description: "The rank-and-file employees." }
+        ],
+        rules: [
+            "The company's profit comes before all else.",
+            "An Imperial charter is a license to print money. Do not squander it.",
+            "A deal is a deal, but a better deal is always possible."
+        ],
+        recruitment: "One must be a citizen in good standing with the Empire and purchase a share in the company. Guards are hired from mercenary pools, with preference given to ex-Iron Legion soldiers.",
+        sub_guilds: []
+    },
+    'azure_blade_bounty': {
+        name: "#15 The Azure Blade Bounty Hunters",
+        description: "A chartered organization of bounty hunters, sanctioned by the Oathbound Judges. They are authorized to pursue and apprehend high-value targets across the Midlands. They are known for their professionalism and their distinctive blue-steel weapons.",
+        leader: "Hunt-Master Kaelen",
+        sponsoring_faction: "oathbound_judges",
+        headquarters: "The Justicar's Hall, near the Citadel of Law",
+        goals: [
+            "Fulfill all bounties issued by the Judges.",
+            "Maintain a reputation for efficiency and discretion.",
+            "Bring fugitives to justice, dead or alive."
+        ],
+        ranks: [
+            { title: "Hunt-Master", description: "The leader who assigns bounties." },
+            { title: "Justicar", description: "An elite hunter trusted with the most dangerous targets." },
+            { title: "Tracker", description: "A full member of the charter." },
+            { title: "Initiate", description: "An apprentice learning the trade." }
+        ],
+        rules: [
+            "The bounty is the law. Do not question its legitimacy.",
+            "Never interfere with another Blade's hunt.",
+            "Collateral damage will be deducted from your pay."
+        ],
+        recruitment: "Aspiring hunters must have a proven track record of successful captures. They undergo a rigorous background check by the Judges' scribes. If accepted, they are given their first, low-level bounty as a test.",
+        sub_guilds: []
     }
 };
+
+export const GUILD_DATA = { ...EXISTING_GUILDS, ...NEW_GUILDS };
+export const CHARTER_DATA = { ...EXISTING_CHARTERS, ...NEW_CHARTERS };

@@ -57,6 +57,7 @@ export function renderMap(mapId) {
         // Report dimensions back to the controller
         map.setRenderedMapDimensions({ width: renderedWidth, height: renderedHeight });
 
+
         renderPois();
         renderFog();
 
@@ -89,7 +90,7 @@ export function renderPois() {
         if (state.debugMode) return true;
         
         const poiFactionId = poi.factionId;
-        if (!poiFactionId) return true;
+        if(!poiFactionId) return true;
         
         return getIntelForFaction(poiFactionId) >= poi.intelReq;
     });
@@ -216,6 +217,7 @@ export function renderDrawingPreview(points) {
     }
 }
 
+
 export function renderDetailPanel(poiId) {
     const poiSource = MAP_DATA[map.activeMapId]?.pointsOfInterest || [];
     const userPois = state.mapState.userPois[map.activeMapId] || [];
@@ -224,7 +226,7 @@ export function renderDetailPanel(poiId) {
     if (!poi) return;
 
     const typeInfo = BUILDING_TYPES[poi.type] || { name: 'Unknown' };
-    const faction = poi.factionId ? LORE_DATA.factions[poi.factionId] : null;
+    const faction = LORE_DATA.factions[poi.factionId];
 
     let intelReqHTML = '';
     if (poi.intelReq && faction) {
@@ -249,18 +251,9 @@ export function renderMapModeLegend() {
         case 'political':
             const visibleFactions = [...new Set(currentPois
                 .map(p => p.factionId)
-                .filter(id => 
-                    id &&
-                    id !== 'unaligned' &&
-                    FACTION_COLORS[id] &&
-                    LORE_DATA.factions[id] // ✅ ensure faction exists
-                ))];
+                .filter(id => id && id !== 'unaligned' && FACTION_COLORS[id]))];
 
-            const sortedFactions = visibleFactions.sort((a,b) => {
-                const fa = LORE_DATA.factions[a]?.name || '';
-                const fb = LORE_DATA.factions[b]?.name || '';
-                return fa.localeCompare(fb);
-            });
+            const sortedFactions = visibleFactions.sort((a,b) => LORE_DATA.factions[a].name.localeCompare(LORE_DATA.factions[b].name));
 
             legendHTML = `
                 <div class="map-mode-legend">
@@ -271,7 +264,7 @@ export function renderMapModeLegend() {
                         ${sortedFactions.map(factionId => `
                             <li class="legend-item">
                                 <div class="legend-color-box" style="background-color: ${FACTION_COLORS[factionId]};"></div>
-                                <span>${LORE_DATA.factions[factionId]?.name || 'Unknown Faction'}</span>
+                                <span>${LORE_DATA.factions[factionId].name}</span>
                             </li>
                         `).join('')}
                     </ul>
