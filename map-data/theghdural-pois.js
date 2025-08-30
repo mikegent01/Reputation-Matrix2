@@ -85,7 +85,7 @@ export const theghduralData = {
             type: 'mountain_pass',
             name: "Broken Fang Pass",
             description: "The primary route through the jagged mountains of Theghdural. It is a constant battleground, with werewolf ambush parties preying on any who try to cross.",
-            factionId: 'regal_empire',
+            factionId: 'unaligned',
             intelReq: 10,
             political_influence: 1,
             economic_value: 2,

@@ -1,3 +1,4 @@
+
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
 import { FOCUS_TREES } from './focus-tree.js';
@@ -20,6 +21,7 @@ function generateGenericIntel() {
     intel['mages_guild'] = 15;
     intel['onyx_hand'] = 10;
     intel['moonfang_pack'] = 10;
+    intel['unaligned'] = 100;
     
     return intel;
 }
@@ -37,7 +39,8 @@ export const state = {
             koopa_troop: 50, rebel_clans: 60, crimson_fleet: 65,
             wario_land: 55, mushroom_regency: 45, peach_loyalists: 40,
             fawfuls_furious_freaks: 50, iron_fists: 85, moonfang_pack: 70,
-            liberated_toads: 90, diamond_city_investigators: 70, goodstyle_artisans: 30
+            liberated_toads: 90, diamond_city_investigators: 70, goodstyle_artisans: 30,
+            unaligned: 100
         },
         markop: {
             regal_empire: 70, iron_legion: 65, freelancer_underworld: 20,
@@ -47,17 +50,20 @@ export const state = {
             koopa_troop: 35, rebel_clans: 50, crimson_fleet: 20,
             wario_land: 15, mushroom_regency: 60, peach_loyalists: 55,
             fawfuls_furious_freaks: 20, iron_fists: 60, moonfang_pack: 70,
-            liberated_toads: 95, diamond_city_investigators: 40, goodstyle_artisans: 50
+            liberated_toads: 95, diamond_city_investigators: 40, goodstyle_artisans: 50,
+            unaligned: 100
         },
         humpik: {
             koopa_troop: 95, toad_gang: 60, regal_empire: 25, iron_legion: 30,
             rakasha_clans: 40, rebel_clans: 30, moonfang_pack: 35,
-            liberated_toads: 45
+            liberated_toads: 45,
+            unaligned: 100
         },
         bowser: {
             koopa_troop: 100, mushroom_regency: 75, peach_loyalists: 70,
             regal_empire: 65, iron_legion: 60, rebel_clans: 50,
-            onyx_hand: 40, moonfang_pack: 45, crimson_fleet: 40
+            onyx_hand: 40, moonfang_pack: 45, crimson_fleet: 40,
+            unaligned: 100
         },
         generic: generateGenericIntel(),
     },
@@ -318,91 +324,74 @@ function calculateFinalReputations() {
                     }
                 }
             });
-
-            finalReps[playerKey].reputation[factionKey] = state.players[playerKey].reputation[factionKey] + rumorRepModifier;
-            finalReps[playerKey].notoriety[factionKey] = (state.players[playerKey].notoriety[factionKey] || 0) + rumorNotorietyModifier;
+            finalReps[playerKey].reputation[factionKey] += rumorRepModifier;
+            finalReps[playerKey].notoriety[factionKey] += rumorNotorietyModifier;
         }
     }
 
-    const propagationPasses = 1; // FIX: Reduced from 3 to 1 to prevent runaway values.
-    for (let i = 0; i < propagationPasses; i++) {
-        const repsBeforePropagation = structuredClone(finalReps);
-
-        for (const playerKey in finalReps) {
-            for (const factionKey in finalReps[playerKey].reputation) {
-                const faction = LORE_DATA.factions[factionKey];
-
-                if (!faction) {
-                    console.warn(`Faction "${factionKey}" found in reputation data but not in LORE_DATA. Skipping propagation.`);
-                    continue; 
-                }
-
-                let propagatedRep = 0;
-                let passPropagationEffects = [];
-
-                faction.relations?.allies?.forEach(allyKey => {
-                    const allyRep = repsBeforePropagation[playerKey].reputation[allyKey] || 0;
-                    if (Math.abs(allyRep) > 20) {
-                        const effect = Math.round(allyRep / 8);
-                        propagatedRep += effect;
-                        if (i === 0 && effect !== 0) passPropagationEffects.push({ source: LORE_DATA.factions[allyKey].name, value: effect });
-                    }
-                });
-                faction.relations?.enemies?.forEach(enemyKey => {
-                    const enemyRep = repsBeforePropagation[playerKey].reputation[enemyKey] || 0;
-                     if (enemyRep > 20) { 
-                        const effect = -Math.round(enemyRep / 10);
-                        propagatedRep += effect;
-                         if (i === 0 && effect !== 0) passPropagationEffects.push({ source: LORE_DATA.factions[enemyKey].name, value: effect });
-                     }
-                     if (enemyRep < -20) { 
-                        const effect = Math.round(Math.abs(enemyRep) / 10);
-                        propagatedRep += effect;
-                         if (i === 0 && effect !== 0) passPropagationEffects.push({ source: LORE_DATA.factions[enemyKey].name, value: effect });
-                     }
-                });
-
-                if (playerKey === 'humpik') {
-                    const bowserRep = repsBeforePropagation['bowser'].reputation[factionKey] || 0;
-                    if (Math.abs(bowserRep) > 30) { 
-                        const effect = Math.round(bowserRep / 4);
-                        propagatedRep += effect;
-                        if (i === 0 && effect !== 0) passPropagationEffects.push({ source: "Bowser's Influence", value: effect });
-                    }
-                }
-
-                finalReps[playerKey].reputation[factionKey] += propagatedRep;
-                if (i === 0) {
-                    calculationBreakdown[playerKey][factionKey].propagation = passPropagationEffects;
-                }
-            }
-        }
-    }
-
+    // A simple propagation model: an ally's friends like you a little more, an enemy's friends like you a little less
+    const propagationFactor = 0.2;
     for (const playerKey in finalReps) {
-        for (const factionKey in finalReps[playerKey].reputation) {
-             finalReps[playerKey].reputation[factionKey] = Math.round(Math.max(-100, Math.min(100, finalReps[playerKey].reputation[factionKey])));
-             finalReps[playerKey].notoriety[factionKey] = Math.round(Math.max(0, Math.min(100, finalReps[playerKey].notoriety[factionKey])));
-        }
+        const playerRep = finalReps[playerKey].reputation;
+        const propagatedChanges = {};
+
+        factionKeys.forEach(targetFactionKey => {
+            let propagatedEffect = 0;
+            const targetFaction = LORE_DATA.factions[targetFactionKey];
+            if(!targetFaction) return;
+
+            factionKeys.forEach(sourceFactionKey => {
+                if (sourceFactionKey === targetFactionKey) return;
+                const sourceFaction = LORE_DATA.factions[sourceFactionKey];
+                if (!sourceFaction || !sourceFaction.relations) return;
+
+                const repWithSource = playerRep[sourceFactionKey] || 0;
+
+                if (sourceFaction.relations.allies && sourceFaction.relations.allies.includes(targetFactionKey)) {
+                    const change = repWithSource * propagationFactor;
+                    propagatedEffect += change;
+                    if(Math.abs(change) > 1) calculationBreakdown[playerKey][targetFactionKey].propagation.push({ source: sourceFaction.name, value: Math.round(change) });
+                }
+                if (sourceFaction.relations.enemies && sourceFaction.relations.enemies.includes(targetFactionKey)) {
+                     const change = repWithSource * -propagationFactor;
+                     propagatedEffect -= change;
+                     if(Math.abs(change) > 1) calculationBreakdown[playerKey][targetFactionKey].propagation.push({ source: sourceFaction.name, value: Math.round(change) });
+                }
+            });
+            propagatedChanges[targetFactionKey] = propagatedEffect;
+        });
+
+        factionKeys.forEach(factionKey => {
+            playerRep[factionKey] += Math.round(propagatedChanges[factionKey] || 0);
+        });
     }
 
-    // Calculate Sub-Faction Reputations
+    // Sub-faction reputation calculations
     for (const playerKey in state.players) {
         finalSubFactionReps[playerKey] = {};
         for (const factionKey in LORE_DATA.factions) {
             const faction = LORE_DATA.factions[factionKey];
-            if (faction.internal_politics?.sub_factions) {
+            if (faction.internal_politics && faction.internal_politics.sub_factions) {
                 finalSubFactionReps[playerKey][factionKey] = {};
                 for (const subFactionKey in faction.internal_politics.sub_factions) {
                     const subFaction = faction.internal_politics.sub_factions[subFactionKey];
-                    const baseRep = finalReps[playerKey].reputation[factionKey] || 0;
-                    const modifier = subFaction.reputation_modifiers?.[playerKey] || 0;
-                    const finalSubRep = Math.round(Math.max(-100, Math.min(100, baseRep + modifier)));
-                    finalSubFactionReps[playerKey][factionKey][subFactionKey] = finalSubRep;
+                    let subRep = finalReps[playerKey].reputation[factionKey] || 0;
+                    if (subFaction.reputation_modifiers && subFaction.reputation_modifiers[playerKey] !== undefined) {
+                        subRep += subFaction.reputation_modifiers[playerKey];
+                    }
+                    finalSubFactionReps[playerKey][factionKey][subFactionKey] = Math.round(subRep);
                 }
             }
         }
     }
+    
+    // Final clamp and assignment
+    Object.keys(finalReps).forEach(playerKey => {
+        Object.keys(finalReps[playerKey].reputation).forEach(factionKey => {
+            finalReps[playerKey].reputation[factionKey] = Math.max(-100, Math.min(100, finalReps[playerKey].reputation[factionKey]));
+            finalReps[playerKey].notoriety[factionKey] = Math.round(Math.max(0, Math.min(100, finalReps[playerKey].notoriety[factionKey])));
+        });
+    });
 
     state.finalReputations = finalReps;
     state.finalSubFactionReputations = finalSubFactionReps;
@@ -410,26 +399,27 @@ function calculateFinalReputations() {
 }
 
 export function loadState() {
-    state.debugMode = localStorage.getItem('vigilanceDebugMode') === 'true';
     const savedState = localStorage.getItem('vigilanceTerminalState');
     if (savedState) {
         const parsedState = JSON.parse(savedState);
-        // selectively assign properties to avoid overwriting the loggedInUser from the new session
-        Object.keys(parsedState).forEach(key => {
-            if (key !== 'loggedInUser' && key !== 'debugMode') { // also protect debugMode
-                state[key] = parsedState[key];
-            }
-        });
+        // Merge saved state into the default state structure
+        Object.assign(state, parsedState);
     }
+    
+    const savedDebug = localStorage.getItem('vigilanceDebugMode');
+    state.debugMode = savedDebug === 'true';
 
-    // --- ROBUSTNESS FIX ---
-    // Ensure mapState and its sub-properties exist to prevent errors from old save states.
-    if (!state.mapState) state.mapState = {};
-    if (!state.mapState.userPois) state.mapState.userPois = {};
-    if (!state.mapState.discoveredFogs) state.mapState.discoveredFogs = [];
-    if (!state.mapState.userFogs) state.mapState.userFogs = {};
+    // Always run these initializations to ensure data structure is up-to-date
+    initReputation();
+    calculateFinalReputations();
+    processInitialXP();
 
-    // Dynamically ensure userPois and userFogs have keys for all maps defined in MAP_DATA.
+    // Check if focus tree state needs initialization
+    if (!state.focusTreeState || state.focusTreeState.buildVersionApplied !== "2025-08-13-r1") {
+        initFocusTreeState();
+    }
+    
+    // Ensure map state objects exist for all maps
     for (const mapId in MAP_DATA) {
         if (!state.mapState.userPois[mapId]) {
             state.mapState.userPois[mapId] = [];
@@ -438,59 +428,7 @@ export function loadState() {
             state.mapState.userFogs[mapId] = [];
         }
     }
-    // --- END FIX ---
-    
-    // Reset chart instances on load
-    state.chartInstances = {};
-    
-    if (savedState) {
-        initReputation();
 
-        // Ensure inventories exist in saved state, otherwise initialize
-        if (!state.inventories) {
-             state.inventories = {
-                archie: { name: "Archie's Stash", items: [] },
-                markop: { name: "Markop's Pack", items: [] },
-                humpik: { name: "Humpik's Haul", items: [] },
-                bowser: { name: "Bowser's Treasury", items: ["Princess Peach's Diary"] },
-                shared: { name: "Liberated Toads' Items", items: ["Mushroom Kingdom History, Vol. III", "A Field Guide to Fungal Alchemy", "Koopa Troop Tactics"] }
-            };
-        }
-        
-        if (state.focusTreeState && state.focusTreeState.inventory) {
-            delete state.focusTreeState.inventory;
-        }
-        
-        // Merge auxiliary party state to get latest statuses while preserving progress
-        const savedAuxPartyState = JSON.parse(savedState).auxiliary_party_state;
-        const freshAuxPartyData = LORE_DATA.auxiliary_party;
-        if (savedAuxPartyState && Object.keys(savedAuxPartyState).length > 0) {
-            const mergedAuxPartyState = {};
-            for (const toadKey in freshAuxPartyData) {
-                 if (Object.prototype.hasOwnProperty.call(freshAuxPartyData, toadKey)) {
-                    const freshToad = structuredClone(freshAuxPartyData[toadKey]);
-                    const savedToad = savedAuxPartyState[toadKey];
-
-                    if (savedToad) {
-                        freshToad.level = savedToad.level;
-                        freshToad.xp = savedToad.xp;
-                        freshToad.xp_to_next = savedToad.xp_to_next;
-                        freshToad.log = savedToad.log || [];
-                        freshToad.abilities = savedToad.abilities || [];
-                    }
-                    mergedAuxPartyState[toadKey] = freshToad;
-                 }
-            }
-            state.auxiliary_party_state = mergedAuxPartyState;
-        } else {
-            processInitialXP();
-        }
-
-        initFocusTreeState();
-    } else {
-        initReputation();
-        processInitialXP();
-        initFocusTreeState();
-    }
-    calculateFinalReputations(); 
+    // Update loggedInUser from localStorage again, in case it changed in another tab
+    state.loggedInUser = localStorage.getItem('vigilanceTerminalUser') || 'generic';
 }

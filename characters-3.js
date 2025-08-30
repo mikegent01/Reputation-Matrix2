@@ -87,5 +87,20 @@ export const CHARACTERS_3 = {
         name: "King K. Rool",
         role: "Tyrant King of the Kremling Krew",
         description: "The bombastic and egotistical king of the Kremlings. He is obsessed with stealing the Crystal Coconut and Donkey Kong's banana hoard."
+    },
+    'donkey_kong': {
+        name: "Donkey Kong",
+        role: "Leader of the DK Crew",
+        description: "The powerful but easy-going leader of the Kong family. He enjoys a simple life of bananas and sunshine, but will fly into a rage if his friends or hoard are threatened."
+    },
+    'yoshi_elder': {
+        name: "Yoshi Elder",
+        role: "Leader of the Yoshi Clans",
+        description: "The wise and ancient leader of the Yoshis of Yoshi's Island. He is a source of wisdom and history for his people."
+    },
+    'king_chalmus_iii': {
+        name: "King Chalmus III",
+        role: "Ruler of Chramalot",
+        description: "The noble but indecisive king of the Chramalot Kingdom. He struggles to maintain order amidst the political machinations of his court."
     }
 };
