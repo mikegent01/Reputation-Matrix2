@@ -38,7 +38,7 @@ export function wasDragged() {
 
 
 export function zoomToPoi(poi) {
-  
+    
 }
 
 export function resetTransform() {

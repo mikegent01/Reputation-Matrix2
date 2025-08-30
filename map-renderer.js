@@ -5,6 +5,7 @@ import * as map from './maps.js';
 import { LORE_DATA } from './lore.js';
 import { getIntelForFaction } from './systems/common.js';
 import { resetTransform } from './map-transform.js';
+import { QUEST_DATA } from './quests-data.js';
 
 const displayArea = document.getElementById('map-display-area');
 const detailPanel = document.getElementById('map-detail-content');
@@ -108,6 +109,15 @@ export function renderPois() {
         const iconWrapper = document.createElement('div');
         iconWrapper.className = 'icon-wrapper';
         marker.appendChild(iconWrapper);
+
+        // Check for available requests
+        const hasRequest = Object.values(QUEST_DATA).some(q => q.locationId === poi.id && q.status === 'available');
+        if (hasRequest && !map.isEditMode) {
+            const requestIndicator = document.createElement('div');
+            requestIndicator.className = 'poi-request-indicator';
+            requestIndicator.textContent = '!';
+            marker.appendChild(requestIndicator);
+        }
 
         switch(map.activeMapMode) {
             case 'political':
@@ -233,6 +243,24 @@ export function renderDetailPanel(poiId) {
         intelReqHTML = `<p class="poi-intel-req"><strong>Intel Source:</strong> Requires ${poi.intelReq} Intel with ${faction.name}.</p>`;
     }
 
+    // Check for available requests
+    const availableRequests = Object.values(QUEST_DATA).filter(q => q.locationId === poiId && q.status === 'available');
+    let requestsHTML = '';
+    if (availableRequests.length > 0) {
+        requestsHTML = `
+            <div class="poi-requests-section">
+                <h4>Available Requests</h4>
+                ${availableRequests.map(req => `
+                    <div class="poi-request-item">
+                        <strong>${req.title}</strong>
+                        <p>${req.objective}</p>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+
     detailPanel.innerHTML = `
         <div class="poi-detail">
             <h3>${poi.name}</h3>
@@ -240,6 +268,7 @@ export function renderDetailPanel(poiId) {
             <p class="poi-description">${poi.description || 'No further details available.'}</p>
             ${intelReqHTML}
         </div>
+        ${requestsHTML}
     `;
 }
 

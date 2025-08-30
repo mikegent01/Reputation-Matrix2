@@ -29,7 +29,7 @@ function renderQuests() {
     const otherQuests = [];
 
     for (const quest of questsToDisplay) {
-        if (quest.status === 'hidden' && quest.steps.every(s => s.status === 'locked')) {
+        if (quest.status === 'hidden' && quest.steps?.every(s => s.status === 'locked')) {
             continue;
         }
         
@@ -58,7 +58,7 @@ function renderQuests() {
     
     // 4. Sort quests within each category
     const statusOrder = { 'active': 1, 'available': 2, 'hidden': 3, 'completed': 4, 'failed': 5 };
-    const typeOrder = { 'main': 1, 'personal': 2, 'side': 3, 'mystery': 4 };
+    const typeOrder = { 'main': 1, 'personal': 2, 'side': 3, 'request': 4, 'mystery': 5 };
 
     const sortFn = (a, b) => {
         if (currentSort === 'status') {
@@ -153,6 +153,15 @@ function renderQuestCard(quest) {
     
     const isHidden = quest.status === 'hidden';
 
+    const stepsHTML = (quest.steps && quest.steps.length > 0) ? `
+        <div class="quest-steps-container">
+            <h5>Checkpoints</h5>
+            <ul class="quest-step-list">
+                ${quest.steps.map(step => renderQuestStep(step, isHidden)).join('')}
+            </ul>
+        </div>
+    ` : '';
+
     return `
         <div class="quest-card status-${quest.status}" id="${quest.id}">
             <div class="quest-header">
@@ -169,12 +178,7 @@ function renderQuestCard(quest) {
                     <p>${quest.objective}</p>
                 </div>
                 ${contextHTML}
-                <div class="quest-steps-container">
-                    <h5>Checkpoints</h5>
-                    <ul class="quest-step-list">
-                        ${quest.steps.map(step => renderQuestStep(step, isHidden)).join('')}
-                    </ul>
-                </div>
+                ${stepsHTML}
                 ${quest.finalDecision ? `
                 <div class="quest-final-decision">
                     <h5>Final Decision</h5>
