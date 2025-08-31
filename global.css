@@ -5,16 +5,23 @@
     --border-color: #21262d;
     --text-color: #e6edf3;
     --text-secondary: #7d8590;
-    --accent-color: #58a6ff; /* New Blue Accent */
+
+    /* Primary Accent */
+    --accent-color: #58a6ff;
     --accent-hover: #79c0ff;
+
+    /* Status Colors */
     --positive-color: #3fb950;
     --negative-color: #f85149;
     --neutral-color: #e3b341;
-    --major-powers-color: #f2ff00; /* Main Accent Blue */
-    --regional-powers-color: #388bfd; /* Deeper Blue */
-    --mystical-ancient-color: #a371f7; /* Saturated Purple */
-    --underworld-fringe-color: #7d8590; /* Secondary Grey */
-    --interdimensional-threat-color: #e94a89; /* Vibrant Pink */
+
+    /* Faction Category Colors - Thematic & Cohesive Palette */
+    --major-powers-color: #e3b341;          /* Gold for powerful, established factions */
+    --regional-powers-color: #fd7e14;      /* Orange for distinct regional entities */
+    --mystical-ancient-color: #a371f7;      /* Purple for magic, mystery, ancient powers */
+    --underworld-fringe-color: #6a737d;    /* Slate Grey for criminal, fringe groups */
+    --interdimensional-threat-color: #e94a89; /* Vibrant Pink for chaotic, dangerous threats */
+
     --font-primary: 'Roboto Mono', monospace;
     --font-display: 'Orbitron', sans-serif;
 }
