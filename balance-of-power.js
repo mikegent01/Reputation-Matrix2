@@ -1,6 +1,7 @@
 // This file manages the "Balance of Power" mini-game on the politics screen.
 
 import { LORE_DATA } from './lore.js';
+import { FACTION_COLORS } from './factions/faction-colors.js';
 
 export const BOP_STATE = {
     mushroom_kingdom: {
@@ -90,12 +91,20 @@ function renderMushroomKingdom() {
     const data = BOP_STATE.mushroom_kingdom;
     const totalInfluence = Object.values(data.influence).reduce((a, b) => a + b, 0);
 
+    const influenceColors = {
+        regency: FACTION_COLORS['mushroom_regency'],
+        loyalists: FACTION_COLORS['peach_loyalists'],
+        fawful: FACTION_COLORS['fawfuls_furious_freaks'],
+        warlords: FACTION_COLORS['koopa_troop'],
+        criminals: FACTION_COLORS['toad_gang']
+    };
+
     const influenceBarHTML = `
-        <div class="influence-bar-segment" style="width: ${data.influence.regency / totalInfluence * 100}%; background-color: var(--major-powers-color);" title="Regency Influence">Regency</div>
-        <div class="influence-bar-segment" style="width: ${data.influence.loyalists / totalInfluence * 100}%; background-color: var(--accent-color);" title="Loyalist Influence">Loyalists</div>
-        <div class="influence-bar-segment" style="width: ${data.influence.fawful / totalInfluence * 100}%; background-color: var(--positive-color);" title="Fawful's Influence">Fawful</div>
-        <div class="influence-bar-segment" style="width: ${data.influence.warlords / totalInfluence * 100}%; background-color: var(--neutral-color);" title="Koopa Remnant Influence">Warlords</div>
-        <div class="influence-bar-segment" style="width: ${data.influence.criminals / totalInfluence * 100}%; background-color: var(--underworld-fringe-color);" title="Criminal Underworld Influence">Criminals</div>
+        <div class="influence-bar-segment" style="width: ${data.influence.regency / totalInfluence * 100}%; background-color: ${influenceColors.regency};" title="Regency Influence">Regency</div>
+        <div class="influence-bar-segment" style="width: ${data.influence.loyalists / totalInfluence * 100}%; background-color: ${influenceColors.loyalists};" title="Loyalist Influence">Loyalists</div>
+        <div class="influence-bar-segment" style="width: ${data.influence.fawful / totalInfluence * 100}%; background-color: ${influenceColors.fawful};" title="Fawful's Influence">Fawful</div>
+        <div class="influence-bar-segment" style="width: ${data.influence.warlords / totalInfluence * 100}%; background-color: ${influenceColors.warlords};" title="Koopa Remnant Influence">Warlords</div>
+        <div class="influence-bar-segment" style="width: ${data.influence.criminals / totalInfluence * 100}%; background-color: ${influenceColors.criminals};" title="Criminal Underworld Influence">Criminals</div>
     `;
 
     const getPlansHTML = (leaderKey) => {

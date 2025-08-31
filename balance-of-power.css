@@ -100,9 +100,9 @@
     border-left: 4px solid var(--border-color);
 }
 
-.location-item.control-werewolf { border-color: var(--regional-powers-color); }
-.location-item.control-vampire { border-color: var(--negative-color); }
-.location-item.control-regal { border-color: var(--major-powers-color); }
+.location-item.control-werewolf { border-color: var(--faction-moonfang-pack); }
+.location-item.control-vampire { border-color: var(--faction-onyx-hand); }
+.location-item.control-regal { border-color: var(--faction-regal-empire); }
 .location-item.control-neutral { border-color: var(--text-secondary); }
 
 .location-item.is-battlefront {

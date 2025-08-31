@@ -2,19 +2,54 @@
     --bg-color: #0d1117;
     --sidebar-bg: #161b22;
     --main-bg: #010409;
-    --border-color: #30363d;
-    --text-color: #c9d1d9;
-    --text-secondary: #8b949e;
-    --accent-color: #8A2BE2; /* Waluigi Purple */
-    --accent-hover: #9932CC;
-    --positive-color: #238636;
-    --negative-color: #da3633;
-    --neutral-color: #f0b90b;
-    --major-powers-color: #C9B037; /* Gold */
-    --regional-powers-color: #A9A9A9; /* Silver */
-    --mystical-ancient-color: #8A2BE2; /* Purple */
-    --underworld-fringe-color: #A52A2A; /* Brown */
-    --interdimensional-threat-color: #d11d67; /* Magenta/Pink for weirdness */
+    --border-color: #21262d;
+    --text-color: #e6edf3;
+    --text-secondary: #7d8590;
+    --accent-color: #58a6ff;
+    --accent-hover: #79c0ff;
+    --positive-color: #3fb950;
+    --negative-color: #f85149;
+    --neutral-color: #e3b341;
+
+    /* Faction Colors */
+    --faction-regal-empire: #4A90E2; /* Imperial Blue */
+    --faction-iron-legion: #7F8C8D; /* Steel Grey */
+    --faction-onyx-hand: #C0392B; /* Blood Red */
+    --faction-mages-guild: #8E44AD; /* Arcane Purple */
+    --faction-silver-flame: #F1C40F; /* Holy Gold */
+    --faction-oathbound-judges: #D2B48C; /* Parchment Tan */
+    --faction-moonfang-pack: #34495E; /* Moonlight Blue-Grey */
+    --faction-toad-gang: #E67E22; /* Gaudy Orange */
+    --faction-toad-cult: #BF55EC; /* Mystic Lavender */
+    --faction-mushroom-regency: #E74C3C; /* Royal Red */
+    --faction-peach-loyalists: #FFC0CB; /* Pastel Pink */
+    --faction-fawfuls-furious-freaks: #2ECC71; /* Maniacal Green */
+    --faction-liberated-toads: #3498DB; /* Hopeful Sky Blue */
+    --faction-freelancer-underworld: #4a4a4a; /* Shadow Grey */
+    --faction-cosmic-jesters: #9B59B6; /* Wacky Purple */
+    --faction-the-unchained: #A0522D; /* Earthy Sienna */
+    --faction-ratchet-raiders: #D35400; /* Rusty Orange */
+    --faction-crimson-fleet: #E74C3C; /* Bright Crimson */
+    --faction-wario-land: #f1c40f; /* Greed Gold */
+    --faction-iron-fists: #616A6B; /* Bruised Grey */
+    --faction-diamond-city-investigators: #1560BD; /* Detective Blue */
+    --faction-goodstyle-artisans: #1ABC9C; /* Turquoise */
+    --faction-unaligned: #95A5A6; /* Neutral Grey */
+    --faction-tea-leaf-syndicate: #27AE60; /* Deep Green */
+    --faction-beanbean-kingdom: #8BC34A; /* Bean Green */
+    --faction-flower-kingdom: #FF69B4; /* Hot Pink */
+    --faction-dk-crew: #964B00; /* Wood Brown */
+    --faction-yoshi-clans: #2ecc71; /* Yoshi Green */
+    --faction-kremling-krew: #1E8449; /* Swamp Green */
+    --faction-knights-of-the-gilded-lily: #FFD700; /* Gilded Gold */
+    --faction-internet-federation: #00A3E0; /* Data Stream Cyan */
+    --faction-hacktivist-collectives: #00FF00; /* Matrix Green */
+    --faction-data-merchant-guilds: #FFA500; /* Amber Orange */
+    --faction-cybernetic-collectives: #87CEEB; /* Cool Sky Blue */
+    --faction-rakasha-clans: #CD853F; /* Peruvian Brown */
+    --faction-koopa-troop: #F39C12; /* Koopa Orange */
+    --faction-rebel-clans: #854442; /* Rebel Red-Brown */
+
     --font-primary: 'Roboto Mono', monospace;
     --font-display: 'Orbitron', sans-serif;
 }

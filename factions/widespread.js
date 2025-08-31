@@ -74,7 +74,7 @@ export const WIDESPREAD_FACTIONS = {
         },
         power_level: 5,
         leader: "the_jester",
-        category: "Mystical & Ancient",
+        category: "Interdimensional Threats",
         region: "Everywhere & Nowhere",
         notable_people: [
             { name: "The Cosmic Jester", role: "Chaotic Deity", description: "The unknowable entity of madness and chaos worshipped by the cult." },

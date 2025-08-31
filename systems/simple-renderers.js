@@ -88,57 +88,75 @@ export function renderTurfWar(subFactions) {
 }
 
 /**
- * Renders the unique opinion list for the Liberated Toads.
+ * Renders the unique opinion list for the Liberated Toads with a modern card-based layout.
  */
 export function renderLiberatedToads(factionKey, factionData, currentState) {
     const subFactions = factionData.internal_politics.sub_factions;
-    const subFactionListHTML = Object.entries(subFactions).map(([subKey, subFaction]) => {
-        const playerRepHTML = currentState.party.map(playerKey => {
+
+    // Additional metadata not present in the faction file
+    const toadMetadata = {
+        dan: { weapon: 'Longsword & Magic', portrait: 'toads/dan.png' },
+        toad_lee: { weapon: 'Axe', portrait: 'toads/toad_lee.png' },
+        eager: { weapon: 'Whip', portrait: 'toads/eager.png' },
+        roger: { weapon: 'Gun', portrait: 'toads/roger.png' },
+        ryan: { weapon: 'Spellcaster', portrait: 'toads/ryan.png' },
+        bones: { weapon: 'Grotesque Resilience', portrait: 'toads/bones.png' },
+        wallys_toad: { weapon: 'Deceit', portrait: 'toads/wallys_toad.png' }
+    };
+
+    const subFactionCardsHTML = Object.entries(subFactions).map(([subKey, subFaction]) => {
+        const metadata = toadMetadata[subKey] || { weapon: 'Unknown', portrait: 'toads/unknown.png' };
+        
+        const playerOpinionsHTML = currentState.party.map(playerKey => {
             const relation = CHARACTER_RELATIONS[subKey]?.[playerKey];
             let opinionText = "No strong opinion.";
             if (relation && relation.text) {
                 const parts = relation.text.split(':');
-                if (parts.length > 1) {
-                    opinionText = parts.slice(1).join(':').trim();
-                } else {
-                    opinionText = relation.text; // Fallback for unexpected format
-                }
+                opinionText = (parts.length > 1) ? parts.slice(1).join(':').trim() : relation.text;
             }
 
-            return `<div class="subfaction-opinion">
-                        <span class="char-name">${LORE_DATA.characters[playerKey].name}:</span>
-                        <p>"${opinionText}"</p>
+            return `<div class="toad-opinion-item">
+                        <strong>${LORE_DATA.characters[playerKey].name}:</strong> "<em>${opinionText}</em>"
                     </div>`;
         }).join('');
         
-        let extraMechanicHTML = '';
-         if (subFaction.current_focus) {
-            extraMechanicHTML = `
-                <div class="subfaction-details">
-                    <h6>Current Focus</h6>
-                    <p>${subFaction.current_focus}</p>
+        const focusHTML = subFaction.current_focus ? `
+            <div class="toad-focus">
+                <h6>🎯 Current Focus</h6>
+                <p>${subFaction.current_focus}</p>
+            </div>
+        ` : '';
+
+        return `
+            <div class="liberated-toad-card">
+                <div class="toad-card-header">
+                    <img src="${metadata.portrait}" alt="${subFaction.name}" class="toad-portrait">
+                    <div class="toad-title-group">
+                        <h4 class="toad-name">${subFaction.name}</h4>
+                        <div class="toad-stats">
+                            <span>⭐ Influence: <strong>${subFaction.influence || '??'}%</strong></span>
+                            <span>⚔️ Weapon: <strong>${metadata.weapon}</strong></span>
+                        </div>
+                    </div>
                 </div>
-            `;
-        }
-        return `<li class="subfaction-item">
-                    <div class="subfaction-header">
-                        <span class="subfaction-name">${subFaction.name}</span>
-                        <span class="subfaction-influence">(${subFaction.influence || '??'}% Influence)</span>
+                <p class="toad-description">${subFaction.description}</p>
+                ${focusHTML}
+                <div class="toad-opinions">
+                    <h6>🗣️ Party Opinions</h6>
+                    <div class="toad-opinions-list">
+                        ${playerOpinionsHTML}
                     </div>
-                    <p class="subfaction-description">${subFaction.description}</p>
-                    ${extraMechanicHTML}
-                    <div class="subfaction-opinions-container">
-                        ${playerRepHTML}
-                    </div>
-                </li>`;
+                </div>
+            </div>
+        `;
     }).join('');
 
     return `
         <p class="system-description">The Liberated Toads are not a monolithic bloc, but a diverse group of individuals with strong opinions shaped by their recent trauma and newfound freedom. Their support is personal and must be earned. Their development is tracked on the <a href="focus.html">Toad Focus</a> page.</p>
         <div class="system-content">
-            <ul class="subfaction-list">
-                ${subFactionListHTML}
-            </ul>
+            <div class="liberated-toads-grid">
+                ${subFactionCardsHTML}
+            </div>
         </div>
     `;
 }

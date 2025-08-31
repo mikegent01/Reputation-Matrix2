@@ -38,37 +38,37 @@ const MIDLANDS_DIET_DATA = {
     coalitions: {
         imperial_concordat: {
             name: 'The Imperial Concordat',
-            color: 'var(--major-powers-color)',
+            color: 'var(--faction-regal-empire)',
             factions: ['regal_empire', 'iron_legion'],
             description: "A coalition representing the old guard of the Regal Empire, championing order, tradition, and human supremacy. They seek to expand Imperial borders, increase military funding, and restrict the rights of supernatural beings."
         },
         sanguine_covenant: {
             name: 'The Sanguine Covenant',
-            color: 'var(--negative-color)',
+            color: 'var(--faction-onyx-hand)',
             factions: ['onyx_hand'],
             description: "The political arm of the ancient vampire covens. They operate through shadow, blackmail, and centuries of accumulated influence, voting to legalize their shadow economy and subtly expand their power, viewing mortal politics as a trivial game to be played for their own amusement and gain."
         },
         territorial_pact: {
             name: 'The Territorial Pact',
-            color: 'var(--regional-powers-color)',
+            color: 'var(--faction-moonfang-pack)',
             factions: ['moonfang_pack'],
             description: "Representing the fierce werewolf clans, this bloc is concerned with one thing: sovereignty. They vote to protect their ancestral hunting grounds, oppose any Imperial or vampiric encroachment, and uphold the right to govern themselves by their own laws of strength and honor."
         },
         arcane_congress: {
             name: 'The Arcane Congress',
-            color: 'var(--mystical-ancient-color)',
+            color: 'var(--faction-mages-guild)',
             factions: ['mages_guild'],
             description: "The Mages' Guild acts as its own independent and influential voting bloc. They are isolationist and focused on magical regulation, voting to protect Guild autonomy, fund arcane research, and contain any magical threats—regardless of who wields them."
         },
         heartland_alliance: {
             name: 'The Heartland Alliance',
-            color: 'var(--neutral-color)',
+            color: 'var(--faction-unaligned)',
             factions: ['unaligned'],
             description: "This pragmatic bloc represents the interests of the common folk from unaligned agricultural and trade provinces. Their votes are often the deciding factor in the Diet, traded not for coin, but for policies that ensure prosperity and provincial autonomy."
         },
         chaos_caucus: {
             name: 'The Chaos Caucus',
-            color: 'var(--interdimensional-threat-color)',
+            color: 'var(--faction-cosmic-jesters)',
             factions: ['cosmic_jesters', 'freelancer_underworld'],
             description: "Less a political party and more a force of pure disruption. Led by the unpredictable Servants of the Cosmic Jester, their goal is not to gain power, but to undermine the very concept of organized government through absurdity and randomness."
         }

@@ -2,46 +2,47 @@
 
 export const FACTION_COLORS = {
     // Midlands
-    'regal_empire': '#C0C0C0',       // Silver
-    'iron_legion': '#6c757d',       // Steel Grey
-    'onyx_hand': '#4B0082',         // Indigo
-    'mages_guild': '#8A2BE2',       // BlueViolet
-    'silver_flame': '#FFD700',      // Gold
-    'oathbound_judges': '#D2B48C',   // Tan
-    'moonfang_pack': '#A0522D',      // Sienna
+    'regal_empire': 'var(--faction-regal-empire)',
+    'iron_legion': 'var(--faction-iron-legion)',
+    'onyx_hand': 'var(--faction-onyx-hand)',
+    'mages_guild': 'var(--faction-mages-guild)',
+    'silver_flame': 'var(--faction-silver-flame)',
+    'oathbound_judges': 'var(--faction-oathbound-judges)',
+    'moonfang_pack': 'var(--faction-moonfang-pack)',
     
     // Mushroom Kingdom
-    'mushroom_regency': '#FF6347',   // Tomato
-    'peach_loyalists': '#FF69B4',    // HotPink
-    'fawfuls_furious_freaks': '#32CD32', // LimeGreen
-    'toad_gang': '#8B4513',         // SaddleBrown
-    'toad_cult': '#9932CC',         // DarkOrchid
-    'liberated_toads': '#4682B4',    // SteelBlue
+    'mushroom_regency': 'var(--faction-mushroom-regency)',
+    'peach_loyalists': 'var(--faction-peach-loyalists)',
+    'fawfuls_furious_freaks': 'var(--faction-fawfuls-furious-freaks)',
+    'toad_gang': 'var(--faction-toad-gang)',
+    'toad_cult': 'var(--faction-toad-cult)',
+    'liberated_toads': 'var(--faction-liberated-toads)',
 
     // Widespread
-    'freelancer_underworld': '#2F4F4F', // DarkSlateGray
-    'cosmic_jesters': '#FF00FF',     // Magenta
-    'the_unchained': '#FFA500',      // Orange
-    'ratchet_raiders': '#B8860B',    // DarkGoldenRod
-    'crimson_fleet': '#DC143C',      // Crimson
-    'wario_land': '#FFD700',         // Gold (same as Silver Flame, Wario is greedy)
-    'iron_fists': '#708090',         // SlateGray
-    'diamond_city_investigators': '#00BFFF', // DeepSkyBlue
-    'goodstyle_artisans': '#AFEEEE',   // PaleTurquoise
-    'tea_leaf_syndicate': '#006400', // DarkGreen
+    'freelancer_underworld': 'var(--faction-freelancer-underworld)',
+    'cosmic_jesters': 'var(--faction-cosmic-jesters)',
+    'the_unchained': 'var(--faction-the-unchained)',
+    'ratchet_raiders': 'var(--faction-ratchet-raiders)',
+    'crimson_fleet': 'var(--faction-crimson-fleet)',
+    'wario_land': 'var(--faction-wario-land)',
+    'iron_fists': 'var(--faction-iron-fists)',
+    'diamond_city_investigators': 'var(--faction-diamond-city-investigators)',
+    'goodstyle_artisans': 'var(--faction-goodstyle-artisans)',
+    'unaligned': 'var(--faction-unaligned)',
+    'tea_leaf_syndicate': 'var(--faction-tea-leaf-syndicate)',
+    'beanbean_kingdom': 'var(--faction-beanbean-kingdom)',
+    'flower_kingdom': 'var(--faction-flower-kingdom)',
+    'dk_crew': 'var(--faction-dk-crew)',
+    'yoshi_clans': 'var(--faction-yoshi-clans)',
+    'kremling_krew': 'var(--faction-kremling-krew)',
+    'knights_of_the_gilded_lily': 'var(--faction-knights-of-the-gilded-lily)',
+    'internet_federation': 'var(--faction-internet-federation)',
+    'hacktivist_collectives': 'var(--faction-hacktivist-collectives)',
+    'data_merchant_guilds': 'var(--faction-data-merchant-guilds)',
+    'cybernetic_collectives': 'var(--faction-cybernetic-collectives)',
 
     // Wilderlands
-    'rakasha_clans': '#CD853F',      // Peru
-    'koopa_troop': '#228B22',       // ForestGreen
-    'rebel_clans': '#B22222',       // Firebrick
-
-    // Other Kingdoms/Factions
-    'beanbean_kingdom': '#9ACD32',      // YellowGreen
-    'flower_kingdom': '#FF1493',        // DeepPink
-    'dk_crew': '#D2691E',               // Chocolate
-    'yoshi_clans': '#ADFF2F',           // GreenYellow
-    'kremling_krew': '#006400',          // DarkGreen
-    'knights_of_the_gilded_lily': '#F5F5DC', // Beige
-
-    'unaligned': '#808080'           // Grey
+    'rakasha_clans': 'var(--faction-rakasha-clans)',
+    'koopa_troop': 'var(--faction-koopa-troop)',
+    'rebel_clans': 'var(--faction-rebel-clans)',
 };

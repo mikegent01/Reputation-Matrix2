@@ -1,0 +1,110 @@
+/* liberated-toads-system.css */
+
+.liberated-toads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.liberated-toad-card {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.2s ease-in-out;
+}
+
+.liberated-toad-card:hover {
+    border-color: var(--accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.toad-card-header {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+}
+
+.toad-portrait {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.toad-title-group {
+    flex-grow: 1;
+}
+
+.toad-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.toad-stats {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.toad-stats span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.toad-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0;
+}
+
+.toad-focus, .toad-opinions {
+    background-color: var(--sidebar-bg);
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.toad-focus h6, .toad-opinions h6 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    margin: 0 0 8px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.toad-focus p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.toad-opinions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.toad-opinion-item {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.toad-opinion-item strong {
+    color: var(--text-color);
+}
