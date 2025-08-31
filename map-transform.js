@@ -36,11 +36,6 @@ export function wasDragged() {
     return wasDraggedFlag;
 }
 
-
-export function zoomToPoi(poi) {
-    
-}
-
 export function resetTransform() {
     const svg = d3.select("#map-display-area");
     if (svg.empty() || !d3Zoom) return;

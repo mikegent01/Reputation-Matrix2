@@ -53,6 +53,7 @@ export function renderTabs() {
         <button class="mode-btn ${map.activeMapMode === 'political' ? 'active' : ''}" data-mode="political">Political</button>
         <button class="mode-btn ${map.activeMapMode === 'economic' ? 'active' : ''}" data-mode="economic">Economic</button>
         <button class="mode-btn ${map.activeMapMode === 'military' ? 'active' : ''}" data-mode="military">Military</button>
+        <button class="mode-btn ${map.activeMapMode === 'tactical' ? 'active' : ''}" data-mode="tactical">Tactical</button>
         <button class="mode-btn ${map.activeMapMode === 'population' ? 'active' : ''}" data-mode="population">Population</button>
     `;
     mapControls.appendChild(modeSelector);
@@ -87,6 +88,7 @@ export function setupTabEventListeners() {
             modeButton.classList.add('active');
             renderer.renderPois();
             renderer.renderMapModeLegend();
+            renderer.renderMap(map.activeMapId); // Re-render map to show/hide tactical elements
         }
     });
 }

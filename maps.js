@@ -1,3 +1,5 @@
+
+
 import { state, loadState, saveState } from './state.js';
 import * as ui from './map-ui.js';
 import * as renderer from './map-renderer.js';
@@ -5,6 +7,7 @@ import * as editor from './map-editor.js';
 import * as transform from './map-transform.js';
 import { playSound } from './common.js';
 import { MAP_DATA } from './map-data.js';
+import { BATTLE_MAP_DATA } from './map-battle-data.js';
 
 // --- STATE ---
 export let activeMapId = 'mushroom_kingdom_full'; // Default value
@@ -80,16 +83,24 @@ function setupEventListeners() {
     if (displayArea) {
         displayArea.addEventListener('click', e => {
             if (!isEditMode && !transform.wasDragged()) {
-                const marker = e.target.closest('.poi-marker');
-                if (marker) {
+                const poiMarker = e.target.closest('.poi-marker');
+                const troopMarker = e.target.closest('.troop-marker');
+                const vigilanceMarker = e.target.closest('.vigilance-marker');
+
+                if (poiMarker) {
                     playSound('click.mp3');
-                    const poi = findPoiById(marker.dataset.poiId);
+                    const poi = findPoiById(poiMarker.dataset.poiId);
                     if (poi) {
                         renderer.renderDetailPanel(poi.id);
-                        transform.zoomToPoi(poi);
                     }
-                } else {
-                    // Clicked on map background, not a POI
+                } else if (troopMarker) {
+                    playSound('click.mp3');
+                    renderer.renderTacticalDetailPanel(troopMarker.dataset.troopId, 'troop');
+                } else if (vigilanceMarker) {
+                     playSound('click.mp3');
+                    renderer.renderTacticalDetailPanel(vigilanceMarker.dataset.vigilanceId, 'vigilance');
+                } else if (!e.target.closest('.clickable-tactical')) {
+                    // Clicked on map background, not a POI or clickable tactical SVG element
                     renderer.renderMapModeLegend();
                     transform.resetTransform();
                 }
