@@ -11,6 +11,7 @@ import { GUILDS_QUESTS } from './quests/quests-guilds.js';
 import { REQUESTS } from './quests/quests-requests.js';
 import { NEW_MK_QUESTS } from './quests/quests-mushroom-kingdom-new.js';
 import { NEW_MIDLANDS_QUESTS } from './quests/quests-midlands-new.js';
+import { INTERNET_QUESTS } from './quests/quests-internet.js';
 
 
 export const QUEST_DATA = {
@@ -26,4 +27,5 @@ export const QUEST_DATA = {
     ...REQUESTS,
     ...NEW_MK_QUESTS,
     ...NEW_MIDLANDS_QUESTS,
+    ...INTERNET_QUESTS,
 };

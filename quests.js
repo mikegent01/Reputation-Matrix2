@@ -10,6 +10,7 @@ const bountyBoardContainer = document.getElementById('quest-board-list');
 const questCounter = document.getElementById('quest-counter');
 const sorterContainer = document.getElementById('quest-sorter');
 const filtererContainer = document.getElementById('quest-filterer');
+const statusFiltererContainer = document.getElementById('status-filterer');
 
 let currentSort = 'status';
 
@@ -32,6 +33,15 @@ let filterStates = allAssignees.reduce((acc, assignee) => {
     return acc;
 }, {});
 
+let statusFilterStates = {
+    active: 'off',
+    available: 'off',
+    pending: 'off',
+    completed: 'off',
+    failed: 'off'
+};
+
+
 function findPoiById(poiId) {
     for (const mapKey in MAP_DATA) {
         const mapData = MAP_DATA[mapKey];
@@ -43,7 +53,7 @@ function findPoiById(poiId) {
     return null;
 }
 
-function updateFilterButtonsUI() {
+function updateAssigneeFilterButtonsUI() {
     if (!filtererContainer) return;
     const filterButtons = filtererContainer.querySelectorAll('.control-btn');
     filterButtons.forEach(btn => {
@@ -60,23 +70,49 @@ function updateFilterButtonsUI() {
     });
 }
 
+function updateStatusFilterButtonsUI() {
+    if (!statusFiltererContainer) return;
+    const filterButtons = statusFiltererContainer.querySelectorAll('.control-btn');
+    filterButtons.forEach(btn => {
+        const filterKey = btn.dataset.filter;
+        btn.classList.remove('active-include', 'active-exclude');
+        const state = statusFilterStates[filterKey];
+        if (state === 'include') {
+            btn.classList.add('active-include');
+        } else if (state === 'exclude') {
+            btn.classList.add('active-exclude');
+        }
+    });
+}
 
 function renderQuests() {
     if (!mainQuestContainer) return;
 
     // 1. Filter quests based on the new state object
-    const includeFilters = Object.keys(filterStates).filter(key => filterStates[key] === 'include');
-    const excludeFilters = Object.keys(filterStates).filter(key => filterStates[key] === 'exclude');
+    const includeAssignees = Object.keys(filterStates).filter(key => filterStates[key] === 'include');
+    const excludeAssignees = Object.keys(filterStates).filter(key => filterStates[key] === 'exclude');
+    const includeStatuses = Object.keys(statusFilterStates).filter(key => statusFilterStates[key] === 'include');
+    const excludeStatuses = Object.keys(statusFilterStates).filter(key => statusFilterStates[key] === 'exclude');
+
 
     let questsToDisplay = Object.values(QUEST_DATA).filter(quest => {
-        // IMPORTANT CHANGE: Filter by quest.assignee, not quest.assigneeKey
+        // Assignee Filtering
         const sanitizedAssignee = sanitizeKey(quest.assignee);
-        if (!sanitizedAssignee) return false;
-
-        const isIncluded = includeFilters.length === 0 || includeFilters.includes(sanitizedAssignee);
-        const isExcluded = excludeFilters.includes(sanitizedAssignee);
+        const assigneeIncluded = includeAssignees.length === 0 || includeAssignees.includes(sanitizedAssignee);
+        const assigneeExcluded = excludeAssignees.includes(sanitizedAssignee);
+        if (!assigneeIncluded || assigneeExcluded) {
+            return false;
+        }
         
-        return isIncluded && !isExcluded;
+        // Status Filtering
+        const questStatus = quest.status;
+        const statusIncluded = includeStatuses.length === 0 || includeStatuses.includes(questStatus);
+        const statusExcluded = excludeStatuses.includes(questStatus);
+        if (!statusIncluded || statusExcluded) {
+            return false;
+        }
+
+        return true;
     });
     
     // 2. Separate quests into buckets
@@ -344,6 +380,9 @@ function setupEventListeners() {
                     for (const key in filterStates) {
                         filterStates[key] = 'off';
                     }
+                    for (const key in statusFilterStates) {
+                        statusFilterStates[key] = 'off';
+                    }
                 } else if (filterStates.hasOwnProperty(filterKey)) {
                     const currentState = filterStates[filterKey];
                     if (currentState === 'off') {
@@ -355,7 +394,30 @@ function setupEventListeners() {
                     }
                 }
                 
-                updateFilterButtonsUI();
+                updateAssigneeFilterButtonsUI();
+                updateStatusFilterButtonsUI();
+                renderQuests();
+            }
+        });
+    }
+
+    if (statusFiltererContainer) {
+        statusFiltererContainer.addEventListener('click', e => {
+            const button = e.target.closest('.control-btn');
+            if (button) {
+                playSound('confirm.mp3', 0.5);
+                const filterKey = button.dataset.filter;
+                if (statusFilterStates.hasOwnProperty(filterKey)) {
+                    const currentState = statusFilterStates[filterKey];
+                    if (currentState === 'off') {
+                        statusFilterStates[filterKey] = 'include';
+                    } else if (currentState === 'include') {
+                        statusFilterStates[filterKey] = 'exclude';
+                    } else { // currentState is 'exclude'
+                        statusFilterStates[filterKey] = 'off';
+                    }
+                }
+                updateStatusFilterButtonsUI();
                 renderQuests();
             }
         });

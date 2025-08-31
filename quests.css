@@ -47,20 +47,29 @@
 
 #quest-controls {
     display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 20px;
-    align-items: center;
 }
 
 .quest-control-group {
     display: flex;
+    flex-direction: column;
     gap: 8px;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .quest-control-group span {
     color: var(--text-secondary);
     font-size: 0.9rem;
+    padding-left: 4px;
+}
+
+#quest-filterer, #status-filterer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .control-btn {

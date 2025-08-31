@@ -171,6 +171,5 @@ export const dragonMountainData = {
             military_strength: 2,
             population: 5
         }
-    ],
-    fogOfWar: []
+    ]
 };

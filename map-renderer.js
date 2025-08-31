@@ -1,4 +1,5 @@
 
+
 import { state, saveState } from './state.js';
 import { MAP_DATA, BUILDING_TYPES } from './map-data.js';
 import { FACTION_COLORS } from './factions/faction-colors.js';
@@ -416,34 +417,7 @@ function getPopulationColor(population) {
     return '#f46d43';
 }
 
-export function renderDrawingPreview(points) {
-    const drawingSvg = document.getElementById('map-drawing-svg');
-    if (!drawingSvg) return;
-
-    drawingSvg.innerHTML = '';
-
-    if (points.length === 0) return;
-
-    points.forEach(p => {
-        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        circle.setAttribute('cx', p.x);
-        circle.setAttribute('cy', p.y);
-        circle.setAttribute('r', '0.5');
-        circle.classList.add('draw-point');
-        drawingSvg.appendChild(circle);
-    });
-
-    if (points.length > 1) {
-        const pointsString = points.map(p => `${p.x.toFixed(2)},${p.y.toFixed(2)}`).join(' ');
-        const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-        polyline.setAttribute('points', pointsString);
-        polyline.classList.add('draw-line');
-        drawingSvg.appendChild(polyline);
-    }
-}
-
-
-export function renderDetailPanel(poiId) {
+export async function renderDetailPanel(poiId) {
     const poiSource = MAP_DATA[map.activeMapId]?.pointsOfInterest || [];
     const userPois = state.mapState.userPois[map.activeMapId] || [];
     const poi = [...poiSource, ...userPois].find(p => p.id === poiId);
@@ -476,6 +450,31 @@ export function renderDetailPanel(poiId) {
         `;
     }
 
+    let libraryHTML = '';
+    if (poi.libraryStockKey) {
+        // Dynamically import book data only when needed
+        const { LIBRARY_STOCKS } = await import('./books/library_stocks.js');
+        const { BOOK_DESCRIPTIONS } = await import('./books/book_descriptions.js');
+
+        const bookKeys = LIBRARY_STOCKS[poi.libraryStockKey] || [];
+        if (bookKeys.length > 0) {
+            libraryHTML = `
+                <div class="poi-books-section">
+                    <h4>Books in Stock</h4>
+                    ${bookKeys.map(key => {
+                        const book = BOOK_DESCRIPTIONS[key];
+                        return book ? `
+                            <div class="book-in-stock-item">
+                                <strong>${key}</strong>
+                                <p>${book.summary}</p>
+                            </div>
+                        ` : '';
+                    }).join('')}
+                </div>
+            `;
+        }
+    }
+
     detailPanel.innerHTML = `
         <div class="poi-detail">
             <h3>${poi.name}</h3>
@@ -484,6 +483,7 @@ export function renderDetailPanel(poiId) {
             ${intelReqHTML}
         </div>
         ${requestsHTML}
+        ${libraryHTML}
     `;
 }
 

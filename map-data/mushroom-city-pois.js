@@ -1,4 +1,3 @@
-
 // map-data/mushroom-city-pois.js
 
 export const mushroomCityData = {
@@ -142,6 +141,21 @@ export const mushroomCityData = {
             economic_value: 9,
             military_strength: 5,
             population: 1200
+        },
+        {
+            id: 'poi_mc_royal_archives',
+            x: 62.5,
+            y: 3.5,
+            type: 'library',
+            name: "The Royal Archives",
+            description: "A grand and silent library, repository of the Mushroom Kingdom's history, laws, and lore. The party can access the kingdom's public digital book collection from the terminals here.",
+            factionId: 'mushroom_regency',
+            intelReq: 10,
+            political_influence: 6,
+            economic_value: 4,
+            military_strength: 3,
+            population: 150,
+            libraryStockKey: 'mushroom_kingdom'
         }
     ],
     fogOfWar: []

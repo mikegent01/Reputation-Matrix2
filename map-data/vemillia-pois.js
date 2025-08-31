@@ -181,6 +181,21 @@ export const vemilliaData = {
             economic_value: 2,
             military_strength: 8,
             population: 120
+        },
+        {
+            id: 'poi_vm_scribes_guildhall',
+            x: 76.5,
+            y: 32.0,
+            type: 'library',
+            name: "Scribe's Guildhall & Public Library",
+            description: "The headquarters of the Imperial Scribes' Guild and the public library for Vemia City. It contains vast archives of Imperial history and military doctrine. The party can access their public digital book collection from the terminals here.",
+            factionId: 'regal_empire',
+            intelReq: 15,
+            political_influence: 5,
+            economic_value: 5,
+            military_strength: 3,
+            population: 400,
+            libraryStockKey: 'midlands'
         }
     ],
     fogOfWar: []

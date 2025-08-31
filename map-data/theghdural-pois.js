@@ -167,6 +167,5 @@ export const theghduralData = {
             military_strength: 3,
             population: 0
         }
-    ],
-    fogOfWar: []
+    ]
 };

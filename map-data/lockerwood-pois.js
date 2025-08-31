@@ -241,6 +241,5 @@ export const lockerwoodData = {
             military_strength: 8,
             population: 700
         }
-    ],
-    fogOfWar: []
+    ]
 };

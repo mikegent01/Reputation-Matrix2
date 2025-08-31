@@ -39,6 +39,8 @@ function init() {
     const pathname = window.location.pathname;
     if (pathname.includes('midlands-maps.html')) {
         activeMapId = 'midlands_full';
+    } else if (pathname.includes('internet-maps.html')) {
+        activeMapId = 'the_internet';
     } else {
         activeMapId = 'mushroom_kingdom_full';
     }
@@ -88,15 +90,21 @@ function setupEventListeners() {
                 const vigilanceMarker = e.target.closest('.vigilance-marker');
 
                 if (poiMarker) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     playSound('click.mp3');
                     const poi = findPoiById(poiMarker.dataset.poiId);
                     if (poi) {
                         renderer.renderDetailPanel(poi.id);
                     }
                 } else if (troopMarker) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     playSound('click.mp3');
                     renderer.renderTacticalDetailPanel(troopMarker.dataset.troopId, 'troop');
                 } else if (vigilanceMarker) {
+                    e.preventDefault();
+                    e.stopPropagation();
                      playSound('click.mp3');
                     renderer.renderTacticalDetailPanel(vigilanceMarker.dataset.vigilanceId, 'vigilance');
                 } else if (!e.target.closest('.clickable-tactical')) {
@@ -111,6 +119,6 @@ function setupEventListeners() {
 
 // Run the application
 const currentPage = window.location.pathname.split('/').pop();
-if (['mushroom-kingdom-maps.html', 'midlands-maps.html'].includes(currentPage)) {
+if (['mushroom-kingdom-maps.html', 'midlands-maps.html', 'internet-maps.html'].includes(currentPage)) {
     init();
 }

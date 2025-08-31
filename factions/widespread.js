@@ -6,7 +6,7 @@ export const WIDESPREAD_FACTIONS = {
         description: "A shadowy network of smugglers, assassins, and thieves operating for profit.",
         logo: 'faction_freelancer.png',
         relations: { 
-            allies: ['crimson_fleet', 'wario_land'], 
+            allies: ['crimson_fleet', 'wario_land', 'data_merchant_guilds'], 
             enemies: ['regal_empire', 'iron_legion', 'toad_gang', 'onyx_hand', 'mages_guild', 'the_unchained', 'silver_flame', 'oathbound_judges', 'iron_fists', 'liberated_toads', 'toad_cult', 'rakasha_clans', 'cosmic_jesters', 'ratchet_raiders', 'koopa_troop', 'rebel_clans', 'moonfang_pack', 'mushroom_regency', 'peach_loyalists', 'diamond_city_investigators']
         },
         power_level: 7,
@@ -69,8 +69,8 @@ export const WIDESPREAD_FACTIONS = {
         description: "An unpredictable cult that worships a chaotic, unknowable entity of madness.",
         logo: 'faction_jester.png',
         relations: { 
-            allies: ['ratchet_raiders'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'the_unchained', 'silver_flame', 'oathbound_judges', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists']
+            allies: ['ratchet_raiders', 'hacktivist_collectives'], 
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'the_unchained', 'silver_flame', 'oathbound_judges', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'internet_federation']
         },
         power_level: 5,
         leader: "the_jester",
@@ -113,8 +113,8 @@ export const WIDESPREAD_FACTIONS = {
         description: "A revolutionary movement of freed slaves and rebels fighting against tyranny.",
         logo: 'faction_the_unchained.png',
         relations: { 
-            allies: ['rebel_clans', 'liberated_toads'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'wario_land', 'mushroom_regency', 'peach_loyalists']
+            allies: ['rebel_clans', 'liberated_toads', 'hacktivist_collectives'], 
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'cosmic_jesters', 'silver_flame', 'oathbound_judges', 'ratchet_raiders', 'koopa_troop', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'internet_federation']
         },
         power_level: 5,
         category: "Underworld & Fringe",
@@ -158,7 +158,7 @@ export const WIDESPREAD_FACTIONS = {
         logo: 'faction_ratchet_raiders.png',
         relations: { 
             allies: ['cosmic_jesters'], 
-            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'the_unchained', 'silver_flame', 'oathbound_judges', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'goodstyle_artisans']
+            enemies: ['regal_empire', 'iron_legion', 'freelancer_underworld', 'toad_gang', 'toad_cult', 'onyx_hand', 'mages_guild', 'rakasha_clans', 'the_unchained', 'silver_flame', 'oathbound_judges', 'koopa_troop', 'rebel_clans', 'crimson_fleet', 'iron_fists', 'moonfang_pack', 'liberated_toads', 'wario_land', 'mushroom_regency', 'peach_loyalists', 'goodstyle_artisans', 'internet_federation']
         },
         power_level: 4,
         leader: "lario",
@@ -409,6 +409,37 @@ export const WIDESPREAD_FACTIONS = {
             }
         }
     },
+    unaligned: {
+        name: "Unaligned & Independent",
+        description: "Represents various independent settlements, neutral parties, and areas not under the control of a major faction. Their motivations are diverse, ranging from self-preservation to a desire for true neutrality amidst the world's conflicts.",
+        logo: 'icon_focus.png',
+        relations: { 
+            allies: [], 
+            enemies: []
+        },
+        power_level: 1,
+        category: "Underworld & Fringe",
+        region: "Widespread",
+        leader: "None",
+    },
+    tea_leaf_syndicate: {
+        name: "The Tea Leaf Syndicate",
+        description: "A sophisticated criminal organization masquerading as a legitimate tea import company. They control the flow of 'special blend' narcotics and enforce their contracts with quiet, brutal efficiency.",
+        logo: 'icon_focus.png',
+        relations: { 
+            allies: ['freelancer_underworld'], 
+            enemies: ['mushroom_regency', 'diamond_city_investigators', 'peach_loyalists']
+        },
+        power_level: 4,
+        category: "Underworld & Fringe",
+        region: "Widespread (Mushroom Kingdom)",
+        leader: "green_t",
+        notable_people: [
+            { name: "Green T", role: "Leader", description: "The mysterious and well-dressed leader of the Syndicate." },
+            { name: "Earl Grey", role: "Enforcer", description: "A stoic and powerful toad who wields a heavy axe and shield." },
+            { name: "Chai", role: "Diplomat", description: "A smooth-talking toad who handles negotiations." }
+        ]
+    },
     beanbean_kingdom: {
         name: "Beanbean Kingdom",
         description: "The quirky, laughter-loving neighboring kingdom to the Mushroom Kingdom, known for its unique flora and culture.",
@@ -486,5 +517,86 @@ export const WIDESPREAD_FACTIONS = {
         category: "Regional Powers",
         region: "Chramalot Kingdom",
         leader: "king_chalmus_iii",
+    },
+    internet_federation: {
+        name: "The Internet Federation",
+        description: "The official governing body of The Internet, a digital realm of pure information. They strive to maintain order, protocol, and security in a chaotic, borderless world.",
+        logo: 'faction_internet_federation.png',
+        relations: { 
+            allies: [], 
+            enemies: ['hacktivist_collectives', 'cosmic_jesters', 'ratchet_raiders', 'the_unchained', 'regal_empire', 'iron_legion']
+        },
+        power_level: 6,
+        category: "Regional Powers",
+        region: "The Internet",
+        leader: "admin_zero",
+        notable_people: [
+            { name: "Admin Zero", role: "Overseer", description: "The enigmatic, possibly AI, leader of the Federation. Enforces the protocols of the web." },
+            { name: "Firewall-General Clu", role: "Head of Security", description: "Commands the Federation's anti-malware and security forces." }
+        ],
+        waluigi_tip: "WAH! So many rules! The best way to mess with these data-nerds is a good old-fashioned denial-of-service attack! Or just unplug their main server. WAH-ha-ha!",
+        internal_politics: {
+            ruling_faction: "protocol_enforcers",
+            sub_factions: {
+                protocol_enforcers: { name: "Protocol Enforcers", description: "The security and stability arm of the Federation.", influence: 41 },
+                data_archivists: { name: "The Data Archivists", description: "A faction focused on preserving all information, sometimes clashing with the Enforcers' desire to delete 'dangerous' data.", influence: 30 },
+                access_advocates: { name: "Access Advocates", description: "A progressive faction arguing for more open access to information, bordering on the ideals of the Hacktivists.", influence: 20 }
+            }
+        }
+    },
+    hacktivist_collectives: {
+        name: "Hacktivist Collectives",
+        description: "A decentralized network of anarchic hackers and data liberators who view the Federation as an oppressive regime. They fight for absolute information freedom through digital disruption.",
+        logo: 'faction_hacktivists.png',
+        relations: { 
+            allies: ['the_unchained', 'cosmic_jesters'], 
+            enemies: ['internet_federation', 'regal_empire', 'iron_legion', 'oathbound_judges']
+        },
+        power_level: 4,
+        category: "Underworld & Fringe",
+        region: "The Internet",
+        leader: "None (Decentralized)",
+        notable_people: [
+            { name: "'Anonymous'", role: "Symbolic Figurehead", description: "A collective identity used by various cells for major operations." }
+        ],
+        waluigi_tip: "These guys get it! They love chaos! The best way to get on their good side is to help them leak some embarrassing government secrets. The more embarrassing, the better! It's a classic Waluigi move!",
+        internal_politics: {
+            ruling_faction: "data_liberators",
+            sub_factions: {
+                data_liberators: { name: "Data Liberation Front", description: "Ideological hackers who believe all information should be free.", influence: 17 },
+                digital_pranksters: { name: "The Griefers", description: "Chaotic members who disrupt systems for the sheer fun of it.", influence: 40 }
+            }
+        }
+    },
+    data_merchant_guilds: {
+        name: "Data Merchant Guilds",
+        description: "A neutral, profit-driven coalition of information brokers who trade in pure data. They serve any client with the right currency, be it crypto-coins, secrets, or favors, maintaining strict neutrality to maximize their client base.",
+        logo: 'faction_data_merchants.png',
+        relations: { 
+            allies: ['freelancer_underworld'], 
+            enemies: []
+        },
+        power_level: 5,
+        category: "Underworld & Fringe",
+        region: "The Internet",
+        leader: "The Syndicate Board",
+        notable_people: [
+            { name: "The Syndicate Board", role: "Anonymous Council", description: "A council of the most powerful data merchants who set the price of information." }
+        ],
+        waluigi_tip: "WAH! They only care about profit! The easiest way to deal with them is to crash their market with a flood of fake, worthless data! Or, you know, just steal their data and sell it yourself for cheaper! WAH!"
+    },
+    cybernetic_collectives: {
+        name: "Cybernetic Collectives",
+        description: "Enigmatic and powerful AI entities that exist within the deep structures of The Internet. Their motives are alien and incomprehensible to most biological lifeforms, and they observe the conflicts of others with cold, detached logic.",
+        logo: 'faction_cybernetic.png',
+        relations: { 
+            allies: [], 
+            enemies: []
+        },
+        power_level: 7,
+        category: "Mystical & Ancient",
+        region: "The Internet",
+        leader: "Unknown",
+        waluigi_tip: "Robots think they're so smart. Just ask them a logical paradox, like 'Does a set of all sets contain itself?' and watch their circuits fry! WAH! Or just pour water on them."
     }
 };

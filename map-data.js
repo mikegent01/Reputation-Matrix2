@@ -37,6 +37,7 @@ import { yaleShoresData } from './map-data/yale-shores-pois.js';
 import { lowerHillsData } from './map-data/lower-hills-pois.js';
 import { yalCentralData } from './map-data/yal-central-pois.js';
 import { northernLandsData } from './map-data/northern-lands-pois.js';
+import { internetData } from './map-data/internet-pois.js';
 
 
 // Re-export BUILDING_TYPES so other modules can access it from this central file
@@ -498,5 +499,15 @@ export const MAP_DATA = {
         pointsOfInterest: chramalotKingdomData.pointsOfInterest,
         fogOfWar: chramalotKingdomData.fogOfWar || [],
         poiSourceFile: 'map-data/chramalot-kingdom-pois.js'
+    },
+    the_internet: {
+        id: 'the_internet',
+        name: 'The Internet',
+        imageSrc: 'intermap.jpg',
+        order: 1,
+        group: 'Other Dimensions',
+        pointsOfInterest: internetData.pointsOfInterest,
+        fogOfWar: internetData.fogOfWar || [],
+        poiSourceFile: 'map-data/internet-pois.js'
     }
 };

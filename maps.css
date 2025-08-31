@@ -1,4 +1,5 @@
 
+
 #maps-layout {
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -831,5 +832,36 @@
 .tactical-objective p {
     font-size: 0.9rem;
     color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* --- NEW: Library book list styles --- */
+.poi-books-section {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+.poi-books-section h4 {
+    font-family: var(--font-display);
+    color: var(--neutral-color);
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+.book-in-stock-item {
+    background-color: var(--main-bg);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    border-left: 3px solid var(--neutral-color);
+}
+.book-in-stock-item strong {
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 4px;
+}
+.book-in-stock-item p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
     font-style: italic;
 }

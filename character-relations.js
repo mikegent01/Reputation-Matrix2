@@ -24,7 +24,9 @@ export const CHARACTER_RELATIONS = {
         'chancellor_toadsworth': { type: 'enemy', text: "Archie on Toadsworth: Just another bureaucrat trying to hold onto the scraps of a broken system. Pathetic." },
         'captain_toadette': { type: 'enemy', text: "Archie on Toadette: A fanatic. Blind loyalty is even more boring than regular loyalty. At least she's angry." },
         'earl_grey': { type: 'enemy', text: "Archie on Earl Grey: Big guy with an axe. Almost as boring as Humpik, but on the wrong side." },
-        'lario': { type: 'ally', text: "Archie on Lario: A greasy little goblin who'd sell his own brother for a gold coin. Which he basically is. Useful for fixing things and taking the fall." }
+        'lario': { type: 'ally', text: "Archie on Lario: A greasy little goblin who'd sell his own brother for a gold coin. Which he basically is. Useful for fixing things and taking the fall." },
+        'internet_federation': { type: 'enemy', text: "Archie on The Internet Federation: More boring 'order' in a shiny new package. All their rules and protocols are just begging to be broken. A new playground!" },
+        'hacktivist_collectives': { type: 'ally', text: "Archie on The Hacktivist Collectives: Finally, some people who get it! Information freedom, chaos, disrupting the system... they're artists! My kind of people." }
     },
     'markop': {
         'archie': { type: 'ally', text: "Markop on Archie: A force of pure chaos. His methods are reprehensible, but his actions sometimes lead to a greater good. A soul to be guided, if possible. His recent 'interest' in Dan's training is... concerning. I must ensure the boy's path remains his own." },
@@ -146,7 +148,9 @@ export const CHARACTER_RELATIONS = {
         'archie': { type: 'enemy', text: "Elagabalus on Archie: A high-priority anarchist. His chaotic influence is a disease that must be purged to ensure Imperial peace." },
         'markop': { type: 'enemy', text: "Elagabalus on Markop: A failed paladin. His betrayal of his oaths is an insult to the very concept of order." },
         'bowser': { type: 'enemy', text: "Elagabalus on Bowser: A brutish, unsophisticated warlord. A persistent annoyance that will eventually be crushed." },
-        'humpik': { type: 'enemy', text: "Elagabalus on Humpik: The monster is merely a reflection of its master's savagery. An irrelevance." }
+        'humpik': { type: 'enemy', text: "Elagabalus on Humpik: The monster is merely a reflection of its master's savagery. An irrelevance." },
+        'internet_federation': { type: 'ally', text: "Elagabalus on The Internet Federation: A nascent attempt at order in a realm of chaos. Their methods are crude, but their goal of a centralized, controlled network is a step in the right direction. They could be a useful Imperial asset." },
+        'hacktivist_collectives': { type: 'enemy', text: "Elagabalus on The Hacktivist Collectives: Digital terrorists. Anarchists who threaten the very fabric of information stability. They are a pestilence to be eradicated." }
     },
     'general_marcus_ironhand': {
         'archie': { type: 'enemy', text: "Ironhand on Archie: An undisciplined madman. His disregard for strategy is an affront to military science." },

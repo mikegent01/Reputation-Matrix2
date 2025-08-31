@@ -30,20 +30,7 @@ export const mountainEnclaveData = {
             military_strength: 2,
             population: 50
         },
-        {
-            id: 'poi_me_dracoburg',
-            x: 29.00,
-            y: 24.00,
-            type: 'village',
-            name: "Dragon's Maw Citadel",
-            description: "A village built into the cliffs and caverns of the mountainside, known for its unique draconic architecture and the tamed Rexes that serve as mounts. It's a neutral trading hub, but has come under increasing pressure from the Iron Crown Brigade, who see it as a strategic prize.",
-            factionId: 'unaligned',
-            intelReq: 20,
-            political_influence: 6,
-            economic_value: 6,
-            military_strength: 5,
-            population: 2000
-        },
+        // NOTE: Rogueport and Dragon's Maw Citadel were swapped as requested.
         {
             id: 'poi_me_rogueport',
             x: 25.00,
@@ -57,6 +44,20 @@ export const mountainEnclaveData = {
             economic_value: 9,
             military_strength: 3,
             population: 3500
+        },
+        {
+            id: 'poi_me_dracoburg',
+            x: 29.00,
+            y: 24.00,
+            type: 'village',
+            name: "Dragon's Maw Citadel",
+            description: "A village built into the cliffs and caverns of the mountainside, known for its unique draconic architecture and the tamed Rexes that serve as mounts. It's a neutral trading hub, but has come under increasing pressure from the Iron Crown Brigade, who see it as a strategic prize.",
+            factionId: 'unaligned',
+            intelReq: 20,
+            political_influence: 6,
+            economic_value: 6,
+            military_strength: 5,
+            population: 2000
         },
         {
             id: 'poi_me_birdobadlands',

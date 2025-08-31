@@ -1,5 +1,3 @@
-
-
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
 import { FOCUS_TREES } from './focus-tree.js';
@@ -87,7 +85,14 @@ export const state = {
         markop: { name: "Markop's Pack", items: [] },
         humpik: { name: "Humpik's Haul", items: [] },
         bowser: { name: "Bowser's Treasury", items: ["Princess Peach's Diary"] },
-        shared: { name: "Liberated Toads' Items", items: ["Mushroom Kingdom History, Vol. III", "A Field Guide to Fungal Alchemy", "Koopa Troop Tactics"] }
+        shared: { 
+            name: "Party Items", 
+            items: [
+                "Mushroom Kingdom History, Vol. III", 
+                "A Field Guide to Fungal Alchemy", 
+                "Koopa Troop Tactics"
+            ] 
+        }
     },
     mapState: {
         discoveredFogs: [],

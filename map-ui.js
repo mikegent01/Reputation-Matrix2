@@ -16,6 +16,8 @@ export function renderTabs() {
     const currentPage = window.location.pathname.split('/').pop();
     const relevantGroups = currentPage.includes('midlands') 
         ? ['The Midlands'] 
+        : currentPage.includes('internet-maps.html')
+        ? ['Other Dimensions']
         : ['Mushroom Kingdom Regions', 'Islands & Outer Realms'];
 
     const groupedMaps = Object.values(MAP_DATA).reduce((acc, map) => {
