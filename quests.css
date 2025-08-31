@@ -79,10 +79,22 @@
     border-color: var(--accent-hover);
 }
 
-.control-btn.active {
+#quest-sorter .control-btn.active {
     color: var(--accent-color);
     border-color: var(--accent-color);
     background-color: rgba(138, 43, 226, 0.1);
+}
+
+.control-btn.active-include {
+    color: var(--positive-color);
+    border-color: var(--positive-color);
+    background-color: rgba(35, 134, 54, 0.1);
+}
+
+.control-btn.active-exclude {
+    color: var(--negative-color);
+    border-color: var(--negative-color);
+    background-color: rgba(218, 54, 51, 0.1);
 }
 
 

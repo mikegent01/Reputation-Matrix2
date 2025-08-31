@@ -11,9 +11,26 @@ const questCounter = document.getElementById('quest-counter');
 const sorterContainer = document.getElementById('quest-sorter');
 const filtererContainer = document.getElementById('quest-filterer');
 
-
 let currentSort = 'status';
-let activeFilter = 'all';
+
+// Helper to create a consistent key from assignee names
+function sanitizeKey(name) {
+    if (!name) return '';
+    return name.toLowerCase()
+               .replace(/\s*&\s*/g, '_&_') // ' & ' -> '_&_'
+               .replace(/[\s']/g, '_')     // ' ' or ''' -> '_'
+               .replace(/[^a-z0-9_&]/g, ''); // remove other special chars
+}
+
+// Dynamically generate filter keys from the quest data
+const allAssignees = [...new Set(Object.values(QUEST_DATA).map(q => q.assignee))];
+let filterStates = allAssignees.reduce((acc, assignee) => {
+    const key = sanitizeKey(assignee);
+    if (key) {
+        acc[key] = 'off';
+    }
+    return acc;
+}, {});
 
 function findPoiById(poiId) {
     for (const mapKey in MAP_DATA) {
@@ -26,14 +43,41 @@ function findPoiById(poiId) {
     return null;
 }
 
+function updateFilterButtonsUI() {
+    if (!filtererContainer) return;
+    const filterButtons = filtererContainer.querySelectorAll('.control-btn');
+    filterButtons.forEach(btn => {
+        const filterKey = btn.dataset.filter;
+        if (filterKey === 'reset') return; 
+
+        btn.classList.remove('active-include', 'active-exclude');
+        const state = filterStates[filterKey];
+        if (state === 'include') {
+            btn.classList.add('active-include');
+        } else if (state === 'exclude') {
+            btn.classList.add('active-exclude');
+        }
+    });
+}
+
+
 function renderQuests() {
     if (!mainQuestContainer) return;
 
-    // 1. Filter quests based on the active filter
-    let questsToDisplay = Object.values(QUEST_DATA);
-    if (activeFilter !== 'all') {
-        questsToDisplay = questsToDisplay.filter(q => q.assigneeKey === activeFilter);
-    }
+    // 1. Filter quests based on the new state object
+    const includeFilters = Object.keys(filterStates).filter(key => filterStates[key] === 'include');
+    const excludeFilters = Object.keys(filterStates).filter(key => filterStates[key] === 'exclude');
+
+    let questsToDisplay = Object.values(QUEST_DATA).filter(quest => {
+        // IMPORTANT CHANGE: Filter by quest.assignee, not quest.assigneeKey
+        const sanitizedAssignee = sanitizeKey(quest.assignee);
+        if (!sanitizedAssignee) return false;
+
+        const isIncluded = includeFilters.length === 0 || includeFilters.includes(sanitizedAssignee);
+        const isExcluded = excludeFilters.includes(sanitizedAssignee);
+        
+        return isIncluded && !isExcluded;
+    });
     
     // 2. Separate quests into buckets
     const completedQuests = [];
@@ -265,36 +309,57 @@ function renderBountyBoard() {
 }
 
 function setupEventListeners() {
-    mainQuestContainer.addEventListener('click', e => {
-        const header = e.target.closest('.quest-header');
-        if (header) {
-            playSound('click.mp3');
-            const card = header.closest('.quest-card');
-            card.classList.toggle('is-expanded');
-        }
-    });
+    if (mainQuestContainer) {
+        mainQuestContainer.addEventListener('click', e => {
+            const header = e.target.closest('.quest-header');
+            if (header) {
+                playSound('click.mp3');
+                const card = header.closest('.quest-card');
+                card.classList.toggle('is-expanded');
+            }
+        });
+    }
 
-    sorterContainer.addEventListener('click', e => {
-        const button = e.target.closest('.sort-btn');
-        if (button && !button.classList.contains('active')) {
-            playSound('confirm.mp3', 0.5);
-            currentSort = button.dataset.sort;
-            sorterContainer.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            renderQuests();
-        }
-    });
+    if (sorterContainer) {
+        sorterContainer.addEventListener('click', e => {
+            const button = e.target.closest('.sort-btn');
+            if (button && !button.classList.contains('active')) {
+                playSound('confirm.mp3', 0.5);
+                currentSort = button.dataset.sort;
+                sorterContainer.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                renderQuests();
+            }
+        });
+    }
 
-    filtererContainer.addEventListener('click', e => {
-        const button = e.target.closest('.control-btn');
-        if (button && !button.classList.contains('active')) {
-            playSound('confirm.mp3', 0.5);
-            activeFilter = button.dataset.filter;
-            filtererContainer.querySelectorAll('.control-btn').forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            renderQuests();
-        }
-    });
+    if (filtererContainer) {
+        filtererContainer.addEventListener('click', e => {
+            const button = e.target.closest('.control-btn');
+            if (button) {
+                playSound('confirm.mp3', 0.5);
+                const filterKey = button.dataset.filter;
+
+                if (filterKey === 'reset') {
+                    for (const key in filterStates) {
+                        filterStates[key] = 'off';
+                    }
+                } else if (filterStates.hasOwnProperty(filterKey)) {
+                    const currentState = filterStates[filterKey];
+                    if (currentState === 'off') {
+                        filterStates[filterKey] = 'include';
+                    } else if (currentState === 'include') {
+                        filterStates[filterKey] = 'exclude';
+                    } else { // currentState is 'exclude'
+                        filterStates[filterKey] = 'off';
+                    }
+                }
+                
+                updateFilterButtonsUI();
+                renderQuests();
+            }
+        });
+    }
 }
 
 function init() {
