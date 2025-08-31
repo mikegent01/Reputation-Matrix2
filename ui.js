@@ -1,4 +1,3 @@
-
 import { state } from './state.js';
 import { LORE_DATA } from './lore.js';
 import { getReputation, getNotoriety, getDetailedFactionAssessment, getGenericFactionAssessment } from './reputation.js';
@@ -173,7 +172,7 @@ function renderFactionDirectory() {
                      ${leaderHTML}
                 </div>
             </div>
-             <p class="assessment-text" style="font-size: 0.8rem">${faction.description}</p>
+             <p class="assessment-text" style="flex-grow: 1;">${faction.description}</p>
             ${standingHTML}
         `;
         grid.appendChild(card);
@@ -182,6 +181,12 @@ function renderFactionDirectory() {
 
 function getPortraitForPerson(personName) {
     const nameMap = {
+        // Main Party
+        'Archie Miser': 'archie.png',
+        'Markop Judi': 'markop.png',
+        'Humpik': 'humpik.png',
+        'Bowser': 'bowser.png',
+        
         // Toads
         'Dan': 'toads/dan.png',
         'Toad Lee': 'toads/toad_lee.png',
@@ -205,7 +210,6 @@ function getPortraitForPerson(personName) {
         // Others
         'Fawful': 'portraits/fawful.png',
         'X.O.': 'portraits/xo.png',
-        'Bowser': 'portraits/bowser.png',
         'Kamek': 'portraits/kamek.png',
         'Emperor Elagabalus': 'portraits/emperor_elagabalus.png',
         'General Marcus Ironhand': 'portraits/general_marcus_ironhand.png',
@@ -227,6 +231,16 @@ function getPortraitForPerson(personName) {
         'Master Goodstyle': 'portraits/master_goodstyle.png',
     };
     return nameMap[personName] || 'portraits/unknown.png'; // Default portrait
+}
+
+function getReputationTier(rep) {
+    if (rep >= 75) return "Allied";
+    if (rep >= 50) return "Respected";
+    if (rep >= 25) return "Friendly";
+    if (rep > -25) return "Neutral";
+    if (rep > -50) return "Distrusted";
+    if (rep > -75) return "Disliked";
+    return "Hated";
 }
 
 
@@ -251,9 +265,7 @@ function renderFactionDetail(factionKey) {
     let partyRepHTML = '';
     if (intelLevel >= 40 || isDebug) {
         let partyRepTotal = 0;
-        state.party.forEach(playerKey => {
-            partyRepTotal += getReputation(playerKey, factionKey);
-        });
+        state.party.forEach(playerKey => { partyRepTotal += getReputation(playerKey, factionKey); });
         const partyRep = Math.round(partyRepTotal / state.party.length);
         const partyRepClass = partyRep > 10 ? 'positive' : partyRep < -10 ? 'negative' : 'neutral';
         const partyBarWidth = Math.min(Math.abs(partyRep), 100);
@@ -372,14 +384,19 @@ function renderFactionDetail(factionKey) {
     // Individual Character Assessments
     let characterAssessmentsHTML = '';
     if (intelLevel >= 80 || isDebug) {
-        let assessments = '';
+        let assessments = '<div class="standing-grid">';
         const loggedInUser = state.loggedInUser;
         state.party.forEach(playerKey => {
-            const player = state.players[playerKey];
+            const player = LORE_DATA.characters[playerKey];
             const reputation = getReputation(playerKey, factionKey);
+            const repTier = getReputationTier(reputation);
             const repClass = reputation > 10 ? 'positive' : reputation < -10 ? 'negative' : 'neutral';
-            const personalStandingClass = (loggedInUser !== 'generic' && loggedInUser === playerKey) ? 'personal-standing' : '';
+            const repBarWidth = (reputation + 100) / 2; // Convert -100 to 100 range to 0 to 100
+            
             const notoriety = getNotoriety(playerKey, factionKey);
+            
+            const personalStandingClass = (loggedInUser !== 'generic' && loggedInUser === playerKey) ? 'personal-standing' : '';
+            
             const hasMeaningfulConnection = state.calculationBreakdown[playerKey]?.[factionKey] && (
                 state.calculationBreakdown[playerKey][factionKey].rumors.length > 0 ||
                 (state.calculationBreakdown[playerKey][factionKey].propagation && state.calculationBreakdown[playerKey][factionKey].propagation.length > 0) ||
@@ -387,34 +404,57 @@ function renderFactionDetail(factionKey) {
             );
 
             assessments += `
-                <div class="character-assessment ${personalStandingClass}">
-                    <div class="char-rep-header">
-                        <span class="char-name ${repClass}">${player.name}: ${reputation}</span>
-                        <span class="char-notoriety">Notoriety: ${notoriety}</span>
+                <div class="standing-card ${personalStandingClass}">
+                    <div class="standing-card-header">
+                        <img src="${getPortraitForPerson(player.name)}" alt="${player.name}" class="standing-portrait">
+                        <div class="standing-info">
+                            <h6>${player.name} ${loggedInUser === playerKey ? '<span class="personal-tag">YOU</span>' : ''}</h6>
+                            <p>${getDetailedFactionAssessment(factionKey, playerKey, reputation, notoriety)}</p>
+                        </div>
                     </div>
-                    <div class="assessment-text">${getDetailedFactionAssessment(factionKey, playerKey, reputation, notoriety)}</div>
+                    <div class="standing-gauges">
+                        <div class="gauge-container">
+                            <div class="gauge-label">
+                                <span>Reputation</span>
+                                <span class="rep-tier ${repClass}">${repTier} (${reputation})</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar-fill ${repClass}" style="width: ${repBarWidth}%"></div>
+                            </div>
+                        </div>
+                        <div class="gauge-container">
+                            <div class="gauge-label">
+                                <span>Notoriety</span>
+                                <span>${notoriety}</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar-fill notoriety-bar" style="width: ${notoriety}%"></div>
+                            </div>
+                        </div>
+                    </div>
                     ${hasMeaningfulConnection ? `
                     <div class="calculation-breakdown">
                         <details>
-                            <summary class="calculation-breakdown summary">Show Calculation</summary>
+                            <summary>View Intel Breakdown</summary>
                             <ul>
-                                <li>Base Reputation: ${state.calculationBreakdown[playerKey][factionKey].base}</li>
-                                ${state.calculationBreakdown[playerKey][factionKey].rumors.map(r => `<li>Rumor: "${r.title}": ${r.value > 0 ? '+' : ''}${r.value}</li>`).join('')}
-                                ${state.calculationBreakdown[playerKey][factionKey].propagation ? state.calculationBreakdown[playerKey][factionKey].propagation.map(p => `<li>From ${p.source}: ${p.value > 0 ? '+' : ''}${p.value}</li>`).join('') : ''}
-                                <li><em>(Further propagation passes applied)</em></li>
-                                <li><strong>Final Total: ${reputation}</strong></li>
+                                <li>Base Reputation: <strong>${state.calculationBreakdown[playerKey][factionKey].base}</strong></li>
+                                ${state.calculationBreakdown[playerKey][factionKey].rumors.map(r => `<li>Rumor: "${r.title}": <strong>${r.value > 0 ? '+' : ''}${r.value}</strong></li>`).join('')}
+                                ${state.calculationBreakdown[playerKey][factionKey].propagation ? state.calculationBreakdown[playerKey][factionKey].propagation.map(p => `<li>From ${p.source}: <strong>${p.value > 0 ? '+' : ''}${p.value}</strong></li>`).join('') : ''}
+                                <li style="border-top: 1px solid var(--border-color); color: var(--text-color);"><strong>Final Total: ${reputation}</strong></li>
                             </ul>
                         </details>
                     </div>` : ''}
                 </div>`;
         });
+        assessments += '</div>';
         characterAssessmentsHTML = `
             <div class="character-assessments-container">
-                <h4>Individual Standing & Overall Faction Opinion:</h4>
+                <h5>Individual Standing & Overall Faction Opinion:</h5>
                 ${assessments}
             </div>
         `;
     }
+
 
     // Waluigi Tip
     let waluigiTipHTML = '';

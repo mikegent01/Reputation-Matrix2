@@ -410,3 +410,131 @@
 .koopa-war-status p strong {
     color: var(--text-color);
 }
+
+
+/* --- Generic Subfaction Card Grid --- */
+.generic-subfaction-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.generic-subfaction-card {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.2s ease-in-out;
+}
+
+.generic-subfaction-card:hover {
+    border-color: var(--accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.generic-subfaction-header {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+}
+
+.generic-subfaction-portrait {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    object-fit: contain; /* Use contain for logos */
+    padding: 4px; /* Give logos some space */
+    background-color: var(--sidebar-bg);
+    flex-shrink: 0;
+}
+
+.generic-subfaction-title-group {
+    flex-grow: 1;
+}
+
+.generic-subfaction-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.generic-subfaction-stats {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.generic-subfaction-stats span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.generic-subfaction-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0;
+}
+
+.generic-subfaction-details-block {
+    background-color: var(--sidebar-bg);
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.generic-subfaction-details-block h6 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    margin: 0 0 8px 0;
+    font-size: 0.9rem;
+}
+
+.key-figures-list {
+    list-style: none;
+    padding: 0;
+    font-size: 0.85rem;
+}
+
+.key-figures-list li {
+    color: var(--text-secondary);
+}
+
+.key-figures-list li strong {
+    color: var(--text-color);
+}
+
+.generic-subfaction-reps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.generic-subfaction-player-rep {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.generic-subfaction-player-rep .char-name {
+    color: var(--text-secondary);
+}
+
+.generic-subfaction-player-rep .rep-value {
+    font-weight: bold;
+}
+
+.generic-subfaction-opinion-text {
+    font-style: italic;
+    color: var(--text-secondary);
+}

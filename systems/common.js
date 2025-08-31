@@ -130,30 +130,77 @@ export function initTabbedSystem() {
 }
 
 /**
- * A fallback renderer for factions that have subfactions but no unique visualization.
+ * Renders subfactions using a generic, card-based layout.
  * @param {object} subFactions - The subfaction data object.
  * @param {string} factionKey - The key of the parent faction.
  * @param {object} currentState - The global application state.
- * @returns {string} HTML for the subfaction list.
+ * @returns {string} HTML for the subfaction card grid.
  */
 export function renderDefaultSubfactionList(subFactions, factionKey, currentState) {
-     const subFactionListHTML = Object.entries(subFactions).map(([subKey, subFaction]) => {
+    const faction = LORE_DATA.factions[factionKey];
+    if (!faction) return '';
+
+    const subFactionCardsHTML = Object.entries(subFactions).map(([subKey, subFaction]) => {
+        
+        const keyFiguresHTML = subFaction.key_figures && subFaction.key_figures.length > 0 ? `
+            <div class="generic-subfaction-details-block">
+                <h6>Key Figures</h6>
+                <ul class="key-figures-list">
+                    ${subFaction.key_figures.map(f => `<li><strong>${f.role}:</strong> ${f.name}</li>`).join('')}
+                </ul>
+            </div>
+        ` : '';
+
+        let opinionHTML = '';
+        if (subFaction.opinion) {
+            opinionHTML = `
+                <div class="generic-subfaction-details-block">
+                    <h6>Overall Opinion</h6>
+                    <p class="generic-subfaction-opinion-text">"${subFaction.opinion}"</p>
+                </div>
+            `;
+        } else {
             const playerRepHTML = currentState.party.map(playerKey => {
                 const subRep = getSubFactionReputation(playerKey, factionKey, subKey);
                 const repClass = subRep > 10 ? 'positive' : subRep < -10 ? 'negative' : 'neutral';
-                    return `<div class="subfaction-player-rep">
+                return `<div class="generic-subfaction-player-rep">
                             <span class="char-name">${LORE_DATA.characters[playerKey].name}:</span>
                             <span class="rep-value ${repClass}">${subRep}</span>
                         </div>`;
             }).join('');
-        return `<li class="subfaction-item">
-                    <div class="subfaction-header">
-                        <span class="subfaction-name">${subFaction.name}</span>
-                        <span class="subfaction-influence">(${subFaction.influence || '??'}% Influence)</span>
+            opinionHTML = `
+                <div class="generic-subfaction-details-block">
+                    <h6>Party Standing</h6>
+                    <div class="generic-subfaction-reps-container">${playerRepHTML}</div>
+                </div>
+            `;
+        }
+        
+        return `
+            <div class="generic-subfaction-card">
+                <div class="generic-subfaction-header">
+                    <img src="${faction.logo}" alt="${faction.name}" class="generic-subfaction-portrait">
+                    <div class="generic-subfaction-title-group">
+                        <h4 class="generic-subfaction-name">${subFaction.name}</h4>
+                        <div class="generic-subfaction-stats">
+                            <span>⭐ Influence: <strong>${subFaction.influence || '??'}%</strong></span>
+                        </div>
                     </div>
-                    <p class="subfaction-description">${subFaction.description}</p>
-                    <div class="subfaction-reps-container">${playerRepHTML}</div>
-                </li>`;
+                </div>
+                <p class="generic-subfaction-description">${subFaction.description}</p>
+                ${keyFiguresHTML}
+                ${opinionHTML}
+            </div>
+        `;
+
     }).join('');
-    return `<div class="system-content"><ul class="subfaction-list">${subFactionListHTML}</ul></div>`;
+
+    const description = "The faction's power is not monolithic. Various internal groups, or sub-factions, vie for influence, each with their own agenda and opinion of the party.";
+
+    return `
+        <p class="system-description">${description}</p>
+        <div class="generic-subfaction-grid">
+            ${subFactionCardsHTML}
+        </div>
+    `;
 }
