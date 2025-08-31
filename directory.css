@@ -1,3 +1,4 @@
+
 /* --- Directory Page Layout --- */
 #directory-layout {
     display: grid;
@@ -308,4 +309,60 @@
 }
 .rumor-title, .agenda-title {
     color: var(--text-color);
+}
+
+
+/* --- Notable People Cards --- */
+.notable-people-container {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+.notable-people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+}
+.notable-person-card {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    transition: all 0.2s ease-in-out;
+}
+.notable-person-card:hover {
+    border-color: var(--accent-hover);
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.1);
+}
+.person-portrait {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.person-info {
+    flex-grow: 1;
+}
+.person-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0 0 4px 0;
+}
+.person-role {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    font-style: italic;
+    display: block;
+    margin-bottom: 8px;
+}
+.person-description {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
 }
