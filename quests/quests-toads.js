@@ -8,8 +8,9 @@ export const TOADS_QUESTS = {
         category: 'Personal - Dan',
         objective: "Chief Thornpaw has sensed a corruption spreading from a nearby grove. He has asked Dan, as part of his training, to investigate and cleanse it.",
         assignee: "Dan",
-        assigneeKey: 'markop', // Dan is an NPC, Markop is his guardian
+        assigneeKey: 'archie', // Archie is pushing Dan to take this on.
         status: "pending",
+        motivation: "Archie sees Dan's magical potential as a new, chaotic tool to play with. Pushing him to cleanse a corrupted grove is the perfect test to see what this new 'toy' can do. He's not interested in helping the Rakasha; he's interested in the potential for spectacular success or failure.",
         pending_condition: "The party must first find a way to travel from the Vigilance to the Whispering Grove in the Midlands.",
         start_condition: "Triggered after Dan begins his magical training with the Rakasha.",
         steps: [
@@ -25,10 +26,10 @@ export const TOADS_QUESTS = {
         category: 'Personal - Dan',
         objective: "Dan feels a deep connection to X.O.'s staff, the instrument of his victory. He believes its reality-bending power is too dangerous to be used as a simple battery for the Vigilance and seeks to reclaim it from Archie to protect it, or perhaps, to understand it better.",
         assignee: "Dan",
-        assigneeKey: 'markop',
+        assigneeKey: 'archie', // This is a direct conflict driven by Archie's actions.
         status: "pending",
-        pending_condition: "This quest involves a direct confrontation with Archie over the staff powering the ship. Markop must decide the right moment to initiate this risky conversation.",
-        motivation: "Dan sees the staff as both a symbol of his own newfound strength and a terrible danger. He feels a personal responsibility to ensure its power isn't misused, which puts him in direct conflict with Archie's pragmatic decision to use it to power the ship.",
+        pending_condition: "This quest involves a direct confrontation with Archie over the staff powering the ship. The party must decide the right moment to initiate this risky conversation.",
+        motivation: "Archie sees Dan's attachment to the staff as a potential lever of control. While he finds the toad's sense of 'responsibility' naive, he's curious to see if Dan has the guts to challenge him for it. A confrontation would be amusing, and might forge the boy into a more useful, assertive asset.",
         steps: [
             { id: 'step1', title: "A Question of Power", status: 'active', description: "Confront Archie about the staff's use. With the staff now integrated into the Vigilance's core, this is a direct and dangerous conflict. Dan must argue that the risk of the staff's magic corrupting the ship outweighs the benefit, and be prepared for Archie's volatile reaction." },
             { id: 'step2', title: "An Alternative Source", status: 'locked', description: "To convince Archie, Dan must find a viable alternative power source for the Vigilance. This might involve trading with the Ratchet Raiders for a goblin-made engine or finding a stable arcane crystal." },
@@ -42,8 +43,9 @@ export const TOADS_QUESTS = {
         category: 'Personal - Dan',
         objective: "Dan feels pulled between his warrior training from Markop and his magical studies. He seeks to find a way to merge the two paths by finding the lost tomb of a legendary 'Spellsword' champion.",
         assignee: "Dan",
-        assigneeKey: 'markop',
+        assigneeKey: 'archie', // Archie encourages this to see what happens.
         status: "pending",
+        motivation: "Seeing Dan pulled between two mentors, Archie finds the conflict entertaining. He 'helps' Dan find the Spellsword's tomb, not to aid his development, but to accelerate his power growth in unpredictable ways. A magic-wielding toad warrior is a far more chaotic and interesting piece on the board than a simple paladin-in-training.",
         pending_condition: "The party must first research the location of the Tomb of the Azure Knight using the ship's library or underworld contacts before they can travel there.",
         start_condition: "Dan reaches Level 3.",
         steps: [

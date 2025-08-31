@@ -2,7 +2,7 @@
 // that do not require complex, separate initialization logic.
 
 import { state } from '../state.js';
-import { LORE_DATA } from '../lore.js';
+import { LORE_DATA, CHARACTER_RELATIONS } from '../lore.js';
 import { buildDetailedSystemHTML } from './common.js';
 import { IRON_LEGION_DETAILS } from '../iron-legion-details.js';
 import { SILVER_FLAME_DETAILS } from '../silver-flame-details.js';
@@ -92,9 +92,19 @@ export function renderTurfWar(subFactions) {
  */
 export function renderLiberatedToads(factionKey, factionData, currentState) {
     const subFactions = factionData.internal_politics.sub_factions;
-    const subFactionListHTML = Object.values(subFactions).map(subFaction => {
+    const subFactionListHTML = Object.entries(subFactions).map(([subKey, subFaction]) => {
         const playerRepHTML = currentState.party.map(playerKey => {
-            const opinionText = subFaction.opinion?.[playerKey] || "No strong opinion.";
+            const relation = CHARACTER_RELATIONS[subKey]?.[playerKey];
+            let opinionText = "No strong opinion.";
+            if (relation && relation.text) {
+                const parts = relation.text.split(':');
+                if (parts.length > 1) {
+                    opinionText = parts.slice(1).join(':').trim();
+                } else {
+                    opinionText = relation.text; // Fallback for unexpected format
+                }
+            }
+
             return `<div class="subfaction-opinion">
                         <span class="char-name">${LORE_DATA.characters[playerKey].name}:</span>
                         <p>"${opinionText}"</p>

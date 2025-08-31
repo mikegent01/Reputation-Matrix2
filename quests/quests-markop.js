@@ -82,7 +82,7 @@ export const MARKOP_QUESTS = {
             { id: 'step3', title: "The Ritual", status: 'locked', description: "Perform a ritual at the chosen location to seal the new oath, which will likely attract spiritual guardians or old foes who wish to see him fail." }
         ]
     },
-     'markop_fathers_search': {
+    'markop_fathers_search': {
         id: 'markop_fathers_search',
         title: "The Father's Shadow",
         type: 'personal',

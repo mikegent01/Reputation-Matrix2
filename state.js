@@ -68,7 +68,7 @@ export const state = {
         },
         generic: generateGenericIntel(),
     },
-    party: ['archie', 'markop', 'humpik'],
+    party: ['archie', 'markop', 'humpik', 'bowser'],
     activeRumors: [], 
     players: {
         archie: { name: 'Archie Miser', reputation: {}, notoriety: {} },

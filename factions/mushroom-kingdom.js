@@ -202,12 +202,6 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                     name: "Dan, The Hero",
                     description: "His incredible bravery in the face of X.O. has made him the de facto leader and hero of the group. He is learning magic from the Rakasha.",
                     influence: 40,
-                    opinion: {
-                        archie: "He's scary, and I don't understand him... but he helped free us. I owe him for that.",
-                        markop: "My teacher and protector. I trust him completely. He showed me that we didn't have to be victims.",
-                        humpik: "He's big and loud, but he fought for us. He has a good heart, I think.",
-                        bowser: "A King? He seems just as bad as the ones who enslaved us. I don't trust him."
-                    },
                     events: {
                         peach_death: "The Princess is dead? But... she was a symbol of hope for so many. This is a tragedy, and Bowser's aggression is surely to blame."
                     },
@@ -217,12 +211,6 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                     name: "Toad Lee, The First",
                     description: "The first toad to join the party and a powerful warrior. He acts as the group's enforcer and protector.",
                     influence: 25,
-                    opinion: {
-                        archie: "He's a madman. A useful madman, for now. As long as he points his explosions away from us.",
-                        markop: "A true leader. He gave us weapons and a fighting chance. I'd follow him into battle any day.",
-                        humpik: "Good sparring partner. Strong. Loyal to his boss, which I can respect.",
-                        bowser: "I don't like kings. They're all the same. He's just another master."
-                    },
                     events: {
                         peach_death: "Another ruler falls. It proves we can only rely on our own strength, not on monarchs."
                     },
@@ -232,12 +220,6 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                     name: "Eager, The Swift",
                     description: "A nimble and quick-witted toad who prefers to keep his distance, using his whip to control the battlefield.",
                     influence: 10,
-                    opinion: {
-                        archie: "He creates the best distractions! When he starts yelling, nobody is looking at me. It's great!",
-                        markop: "He's a bit too... noble. Always talking about 'honor'. But he's a good shield to hide behind.",
-                        humpik: "So big! He must be slow. Easy to stay away from. He seems okay, though.",
-                        bowser: "I don't want to get stepped on. I'll stay far away from him, thanks."
-                    },
                     events: {
                         peach_death: "Oh no! That's terrible! Does this mean more fighting? I don't like fighting."
                     },
@@ -247,12 +229,6 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                     name: "Roger, The Pragmatist",
                     description: "A practical toad who sees the world for what it is. He found a gun and has become a crack shot.",
                     influence: 10,
-                    opinion: {
-                        archie: "He has firepower. I respect firepower. But he's a loose cannon. Unreliable.",
-                        markop: "He has a plan. I like plans. His plans are usually 'charge', but it's better than nothing.",
-                        humpik: "A walking pile of muscle. Good for drawing fire. He seems to be loyal to the big boss, which is smart.",
-                        bowser: "He's the one with the gold and the army. For now, we're on his side. It's just good sense."
-                    },
                     events: {
                         peach_death: "A power vacuum. This is bad for stability. Bad for business. Bowser's fault, probably."
                     },
@@ -262,12 +238,6 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                     name: "Ryan, The Studious",
                     description: "A quiet toad with a natural, if untrained, affinity for magic. He watches Dan's training with intense focus.",
                     influence: 10,
-                    opinion: {
-                        archie: "His magic is... loud. Unfocused. Powerful, yes, but dangerous. I prefer Dan's way.",
-                        markop: "He sees the potential in Dan, so he must be wise. He protects us.",
-                        humpik: "He doesn't seem to understand magic at all. Just shouting.",
-                        bowser: "His Magikoopas are interesting. Their magic is different. I want to learn more."
-                    },
                     events: {
                         peach_death: "Her magic was said to be protective, a light in the darkness. For that light to be extinguished... it's a great loss for the world."
                     },
@@ -277,12 +247,6 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                     name: "Bones, The Hardened",
                     description: "A tough, grotesque toad who has seen the worst of the world and survived. He is resilient and cynical.",
                     influence: 5,
-                    opinion: {
-                        archie: "He's seen things. I can tell. He's broken, like me. I trust that.",
-                        markop: "He talks of hope. Hope gets you killed. But he can fight, so he's useful.",
-                        humpik: "He's never been hungry. Never been beaten. He doesn't understand.",
-                        bowser: "Another boss. Another cage. I'll fight for him, but I won't serve him."
-                    },
                     events: {
                         peach_death: "She was a princess in a castle. Never knew real suffering. Her death changes nothing for toads like us."
                     },
@@ -292,12 +256,6 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                     name: "Wally's Toad (Traitor)",
                     description: "A Waluigi loyalist who infiltrated the group. His discovery has sown seeds of distrust among the toads.",
                     influence: 0,
-                    opinion: {
-                       archie: "The three-eyed fool is too chaotic to control. A liability to the Master's plan.",
-                       markop: "This paladin's 'honor' is a weakness to be exploited.",
-                       humpik: "A simple-minded brute. Easily distracted.",
-                       bowser: "A rival to the Master. Must be undermined."
-                    },
                     events: {
                         peach_death: "Good. One less monarch to complicate things. All according to the WAH-ster plan!"
                     },

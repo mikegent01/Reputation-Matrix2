@@ -6,6 +6,12 @@ export const CHARACTER_RELATIONS = {
         'humpik': { type: 'ally', text: "Archie on Humpik: Simple. Predictable. Useful for hitting things. Points in the right direction and he goes." },
         'bowser': { type: 'ally', text: "Archie on Bowser: Another would-be king, but his desire to smash the Empire is useful. A temporary, powerful convenience." },
         'dan': { type: 'ally', text: "Archie on Dan: The kid's got guts, I'll give him that. But all that 'hope' stuff is gonna get him killed. Or worse, make him boring. He's Markop's project, but a little push in a more... *interesting* direction couldn't hurt. For his own good, of course." },
+        'toad_lee': { type: 'ally', text: "Archie on Toad Lee: Big axe, bigger frown. He's useful for hitting things, but don't expect any sparkling conversation." },
+        'eager': { type: 'ally', text: "Archie on Eager: Skittish little guy. All that jumping around with his whip is... amusing. For a minute." },
+        'roger': { type: 'ally', text: "Archie on Roger: This one's got the right idea. A gun solves a lot of problems talk can't. Smart." },
+        'ryan': { type: 'ally', text: "Archie on Ryan: He's watching the kid with the staff. Good. Competition makes things interesting. Maybe he'll learn something useful, like how to make a proper explosion." },
+        'bones': { type: 'ally', text: "Archie on Bones: He gets it. The world's a trash fire. He's just trying to stay warm. Respectable." },
+        'wallys_toad': { type: 'ally', text: "Archie on Wally's Toad: A spy! In our little band of misfits! WAH-nderful! Waluigi's got style. Pity he got caught." },
         'emperor_elagabalus': { type: 'enemy', text: "Archie on Elagabalus: The ultimate symbol of the oppressive, boring order I despise. His Empire needs to be torn down, brick by brick." },
         'general_marcus_ironhand': { type: 'enemy', text: "Archie on Ironhand: Discipline is just another word for boring. He wouldn't know a good opportunity if it blew up in his face. I should arrange that." },
         'lord_crimson': { type: 'ally', text: "Archie on Lord Crimson: He understands the value of chaos. A dangerous, but amusing, player in the game." },
@@ -25,6 +31,12 @@ export const CHARACTER_RELATIONS = {
         'humpik': { type: 'ally', text: "Markop on Humpik: His loyalty is commendable, though his ally is questionable. A strong arm in a just fight." },
         'bowser': { type: 'enemy', text: "Markop on Bowser: A tyrant and a warlord. His goals are antithetical to justice and order. An alliance of desperation, not trust." },
         'dan': { type: 'ally', text: "Markop on Dan: A student with a purer heart than I ever had. He is a reflection of the good we fight for, and I must not fail him." },
+        'toad_lee': { type: 'ally', text: "Markop on Toad Lee: A steadfast warrior. His dedication to protecting the others is admirable. He is the rock upon which their safety is built." },
+        'eager': { type: 'ally', text: "Markop on Eager: His speed is an asset, but he must learn to master his fear. Courage is not the absence of fear, but acting in spite of it." },
+        'roger': { type: 'ally', text: "Markop on Roger: His methods are... direct. A firearm is not an honorable weapon, but in these times, survival often outweighs tradition. He is a capable protector." },
+        'ryan': { type: 'ally', text: "Markop on Ryan: He has a gift. I hope he learns to wield it with wisdom and restraint, for magic is a powerful but dangerous tool." },
+        'bones': { type: 'ally', text: "Markop on Bones: He has endured much. His cynicism is a scar, a shield against a world that has been cruel. But there is strength in him yet." },
+        'wallys_toad': { type: 'enemy', text: "Markop on Wally's Toad: Treachery is a poison that can destroy us from within. He must answer for his betrayal, but justice, not vengeance, must guide our hand." },
         'emperor_elagabalus': { type: 'enemy', text: "Markop on Elagabalus: His Imperial 'peace' is a gilded cage built on the backs of the oppressed. True order comes from justice, not force." },
         'general_marcus_ironhand': { type: 'enemy', text: "Markop on Ironhand: A man who confuses discipline with cruelty. His Legion brings order, but it is the order of the executioner's block." },
         'lord_crimson': { type: 'enemy', text: "Markop on Lord Crimson: An ancient evil that plays with mortals as if they were pawns. He represents a corruption that must be cleansed." },
@@ -41,6 +53,12 @@ export const CHARACTER_RELATIONS = {
         'archie': { type: 'ally', text: "Humpik on Archie: The little guy is crazy! But he makes big explosions! Good to have in a scrap." },
         'markop': { type: 'ally', text: "Humpik on Markop: The horse-man is too serious. But he fights good. I respect that. He and the little guy argue a lot now. About the other little guy. Weird." },
         'dan': { type: 'ally', text: "Humpik on Dan: He's a little guy, but he's tough! Like a tiny Bowser! Gwahahaha!" },
+        'toad_lee': { type: 'ally', text: "Humpik on Toad Lee: He has a big axe! He fights good! GWAHAHA!" },
+        'eager': { type: 'ally', text: "Humpik on Eager: He's fast! Hard to hit! Good!" },
+        'roger': { type: 'ally', text: "Humpik on Roger: He has a boom-stick! Loud! Good for fighting!" },
+        'ryan': { type: 'ally', text: "Humpik on Ryan: He does the sparkly stuff. Like Kamek. Weird, but can be strong." },
+        'bones': { type: 'ally', text: "Humpik on Bones: He looks like he's been in a lot of fights. He's a tough little guy." },
+        'wallys_toad': { type: 'enemy', text: "Humpik on Wally's Toad: He was a bad toad! Not loyal! Bad!" },
         'emperor_elagabalus': { type: 'enemy', text: "Humpik on Elagabalus: He's Bowser's enemy! So he's my enemy! I'll smash his castle!" },
         'general_marcus_ironhand': { type: 'enemy', text: "Humpik on Ironhand: He's got a big army, but they're no match for the Koopa Troop! Or me!" },
         'lario': { type: 'ally', text: "Humpik on Lario: Sneaky little guy. Good with machines. Bowser says he's useful, so he's useful." }
@@ -50,6 +68,12 @@ export const CHARACTER_RELATIONS = {
         'archie': { type: 'ally', text: "Bowser on Archie: A chaotic, unpredictable weapon. Useful for breaking things I don't want to waste my own forces on." },
         'markop': { type: 'enemy', text: "Bowser on Markop: His talk of 'honor' is a weakness. But he's a strong fighter. I can use that. He seems distracted by his three-eyed companion's meddling. An exploitable weakness." },
         'dan': { type: 'enemy', text: "Bowser on Dan: Another annoying toad. This one has magic? Kamek will deal with him." },
+        'toad_lee': { type: 'enemy', text: "Bowser on Toad Lee: This one has some fight in him. He'd make a decent front-line trooper." },
+        'eager': { type: 'enemy', text: "Bowser on Eager: Fast, but weak. A nuisance." },
+        'roger': { type: 'enemy', text: "Bowser on Roger: A toad with a gun? Amusing. Perhaps he has some potential after all." },
+        'ryan': { type: 'enemy', text: "Bowser on Ryan: More magic? Kamek should see if he has any real power." },
+        'bones': { type: 'enemy', text: "Bowser on Bones: He's survived. That's worth something. Maybe." },
+        'wallys_toad': { type: 'enemy', text: "Bowser on Wally's Toad: Of course there was a spy. Mortals are so predictable. A failed spy is useless." },
         'emperor_elagabalus': { type: 'enemy', text: "Bowser on Elagabalus: A rival king hiding in his shiny castle. I'll enjoy taking it from him." },
         'general_marcus_ironhand': { type: 'enemy', text: "Bowser on Ironhand: His Legion is disciplined, I'll give him that. But they lack the passion of my Troop! I'll break them." },
         'chancellor_toadsworth': { type: 'enemy', text: "Bowser on the Council: Weak fools who couldn't protect their own Princess. Their kingdom is mine for the taking." },
@@ -74,6 +98,49 @@ export const CHARACTER_RELATIONS = {
         'captain_syrup': { type: 'enemy', text: "Lario on Captain Syrup: That woman is crazy! The deal was simple! It wasn't my fault things got complicated! I hope I never see her again." },
         'waluigi': { type: 'enemy', text: "Lario on Waluigi: Wario's old partner. Always trying to be flashy and steal the spotlight. He's bad for business. Too much... purple." }
     },
+    // --- LIBERATED TOAD OPINIONS ---
+    'dan': {
+        'archie': { type: 'ally', text: "Dan on Archie: He's scary, and I don't understand him... but he helped free us. He's... trying to help me get stronger now. I think. It feels different from Markop's training." },
+        'markop': { type: 'ally', text: "Dan on Markop: My teacher and protector. I trust him completely. He showed me that we didn't have to be victims." },
+        'humpik': { type: 'ally', text: "Dan on Humpik: He's very loud, but he fought for us. I think he's a good person, deep down." },
+        'bowser': { type: 'enemy', text: "Dan on Bowser: He's another king who wants to conquer and rule. We just escaped one tyrant, I won't follow another." }
+    },
+    'toad_lee': {
+        'archie': { type: 'ally', text: "Toad Lee on Archie: He's dangerous. We owe him our freedom, but I don't trust him. He's a storm that could drown us all. He's spending a lot of time with Dan... I don't like it." },
+        'markop': { type: 'ally', text: "Toad Lee on Markop: He is a true commander. He fights for us, trains us. He has honor. I follow his lead. But he lets that three-eyed lunatic get too close to Dan." },
+        'humpik': { type: 'ally', text: "Toad Lee on Humpik: He is strong. A good ally to have at your back in a shield wall." },
+        'bowser': { type: 'enemy', text: "Toad Lee on Bowser: Another king. Another warlord. We just got free. I won't bow to another." }
+    },
+    'eager': {
+        'archie': { type: 'ally', text: "Eager on Archie: He makes loud noises and things break! It's scary! But he did save us... I think I'll stay over here." },
+        'markop': { type: 'ally', text: "Eager on Markop: He's very serious, but he's kind. He makes me feel safer." },
+        'humpik': { type: 'ally', text: "Eager on Humpik: He's so big! And loud! But he fights the bad guys, so that's good!" },
+        'bowser': { type: 'enemy', text: "Eager on Bowser: Another big, scary one! Why are we friends with him? This is all too much!" }
+    },
+    'roger': {
+        'archie': { type: 'ally', text: "Roger on Archie: Chaos is a ladder. He kicks it over, but sometimes you find a gold coin in the wreckage. A calculated risk." },
+        'markop': { type: 'ally', text: "Roger on Markop: His ideals are expensive, but his protection is a good investment. He's a net positive on the balance sheet." },
+        'humpik': { type: 'ally', text: "Roger on Humpik: A valuable asset for heavy lifting and security. High maintenance, but effective." },
+        'bowser': { type: 'ally', text: "Roger on Bowser: An alliance with him offers significant military power. A risky merger, but the potential returns are high." }
+    },
+    'ryan': {
+        'archie': { type: 'ally', text: "Ryan on Archie: His magic is... wild. Uncontrolled. Fascinating. And terrifying. His interest in Dan's growth is... peculiar. I will observe." },
+        'markop': { type: 'ally', text: "Ryan on Markop: He has a quiet strength. A paladin's oath is a powerful kind of magic, even a broken one." },
+        'humpik': { type: 'ally', text: "Ryan on Humpik: His strength is a force of nature. Simple, direct, powerful." },
+        'bowser': { type: 'ally', text: "Ryan on Bowser: His power is that of a king. An authority that commands. It is a different kind of magic, one of conquest." }
+    },
+    'bones': {
+        'archie': { type: 'ally', text: "Bones on Archie: He's crazy. I like him. He sees the world for the joke it is." },
+        'markop': { type: 'ally', text: "Bones on Markop: He talks about honor and justice. Fancy words. Let's see if they stop a knife in the dark. He tries, though. That's something." },
+        'humpik': { type: 'ally', text: "Bones on Humpik: Big. Strong. Dumb. Useful." },
+        'bowser': { type: 'enemy', text: "Bones on Bowser: A king is a king. They build their castles on our bones. He's no different." }
+    },
+    'wallys_toad': {
+        'archie': { type: 'enemy', text: "Wally's Toad on Archie: A magnificent fool! His chaos serves the WAH-ster's plan perfectly, even if he doesn't know it!" },
+        'markop': { type: 'enemy', text: "Wally's Toad on Markop: The sad horse-man! So full of RULES! It is pathetic! WAH!" },
+        'humpik': { type: 'enemy', text: "Wally's Toad on Humpik: Just a big, dumb animal for the turtle king. Easily tricked." },
+        'bowser': { type: 'enemy', text: "Wally's Toad on Bowser: A brute who thinks he's a king. He is but a stepping stone for the true master of villainy, Waluigi!" }
+    },
     // --- NPC OPINIONS ON PARTY ---
     'emperor_elagabalus': {
         'archie': { type: 'enemy', text: "Elagabalus on Archie: A high-priority anarchist. His chaotic influence is a disease that must be purged to ensure Imperial peace." },
@@ -96,12 +163,6 @@ export const CHARACTER_RELATIONS = {
         'archie': { type: 'enemy', text: "Theron on Archie: A magical terrorist. He represents the gravest threat of uncontrolled arcane power and must be neutralized." },
         'markop': { type: 'enemy', text: "Theron on Markop: He stands by and allows a magical anomaly like Archie to run rampant. His inaction is complicity." },
         'bowser': { type: 'enemy', text: "Theron on Bowser: His court 'magicians' are a mockery of the arcane arts. They use magic like a club, with no finesse or understanding." }
-    },
-    'dan': {
-        'archie': { type: 'ally', text: "Dan on Archie: He's scary, and I don't understand him... but he helped free us. I owe him for that." },
-        'markop': { type: 'ally', text: "Dan on Markop: My teacher and protector. I trust him completely. He showed me that we didn't have to be victims." },
-        'humpik': { type: 'ally', text: "Dan on Humpik: He's very loud, but he fought for us. I think he's a good person, deep down." },
-        'bowser': { type: 'enemy', text: "Dan on Bowser: He's another king who wants to conquer and rule. We just escaped one tyrant, I won't follow another." }
     },
     'captain_syrup': {
         'archie': { type: 'enemy', text: "Syrup on Archie: That chaotic fool! He got in the way of my revenge and my treasure. He owes me, big time." },
