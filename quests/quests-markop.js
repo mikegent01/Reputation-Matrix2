@@ -187,7 +187,7 @@ export const MARKOP_QUESTS = {
         steps: [
             { id: 'step1', title: "The Key", status: 'active', description: "Find a disgraced Imperial historian who knows the location of the true, unaltered historical records within the Archive." },
             { id: 'step2', title: "The Infiltration", status: 'locked', description: "Sneak into the heavily guarded Imperial Grand Archive and navigate its labyrinthine halls." },
-            { id: 'step3', "The Escape", status: 'locked', description: "Escape with the 'Codex of Veracity' and deliver it to a neutral party, like the Mages' Guild, for safekeeping." }
+            { id: 'step3', title: "The Escape" , status: 'locked', description: "Escape with the 'Codex of Veracity' and deliver it to a neutral party, like the Mages' Guild, for safekeeping." }
         ]
     },
     'markop_shield_of_the_innocent': {
