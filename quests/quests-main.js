@@ -26,7 +26,7 @@ export const MAIN_QUESTS = {
         objective: "Recover the Star of Radiance, Fire Crystal, and Mushroom of Life—three legendary artifacts that hold the power to restore balance to the world. However, the journey will be fraught with peril, as a powerful evil toad has obtained the Star of Radiance, ascending to godhood.",
         assignee: "Full Party",
         assigneeKey: 'full_party',
-        status: "available",
+        status: "active",
         start_condition: "This quest was revealed in ancient texts found in the Vigilance's library.",
         steps: [
             { id: 'step1', title: "The Star of Radiance – The Rise of a God", status: 'available', description: "This legendary artifact, known for its celestial energy, has already fallen into the hands of the Evil Toad. He has absorbed its power, becoming something far beyond mortal comprehension. His influence has begun warping reality itself—skies twist with unnatural storms, the land cracks, and the laws of magic shift unpredictably.", options: ["Find a way to weaken the Toad-God before challenging him directly.", "Seek out an ancient force that may counterbalance the power of the Star.", "Risk a head-on battle in his newly formed celestial domain."] },
@@ -43,7 +43,7 @@ export const MAIN_QUESTS = {
         objective: "The death of Princess Peach plunged the kingdom into chaos. With Bowser gone, the Koopa Troop and Peach Loyalists have formed a fragile truce to investigate the true circumstances of her demise by infiltrating Fawful's Gala.",
         assignee: "Koopa Troop & Peach Loyalists",
         assigneeKey: 'full_party',
-        status: "available",
+        status: "active",
         start_condition: "A fragile truce was brokered between Kamek and Captain Toadette.",
         steps: [
             { id: 'step1', title: "Infiltrate Peach's Castle", status: 'completed', description: "A recon team of Koopa and Paratroopas teamed up with Toadette's forces (Embercap and Mistveil) and successfully infiltrated the castle during Fawful's Grand Gala." },
