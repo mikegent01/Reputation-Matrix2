@@ -69,7 +69,7 @@ function renderQuests() {
     }
     
     // 4. Sort quests within each category
-    const statusOrder = { 'active': 1, 'available': 2, 'hidden': 3, 'completed': 4, 'failed': 5 };
+    const statusOrder = { 'active': 1, 'pending': 2, 'available': 3, 'hidden': 4, 'completed': 5, 'failed': 6 };
     const typeOrder = { 'main': 1, 'personal': 2, 'side': 3, 'request': 4, 'mystery': 5 };
 
     const sortFn = (a, b) => {
@@ -153,7 +153,11 @@ function renderCategory(title, quests, cssClass = '') {
 }
 
 function renderQuestCard(quest) {
-    const contextHTML = quest.motivation ? `
+    const contextHTML = quest.pending_condition ? `
+        <div class="quest-context pending">
+            <strong>Pending Activation:</strong> <p>${quest.pending_condition}</p>
+        </div>
+    ` : quest.motivation ? `
         <div class="quest-context">
             <strong>Motivation:</strong> <p>${quest.motivation}</p>
         </div>

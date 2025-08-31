@@ -9,10 +9,11 @@ export const TOADS_QUESTS = {
         objective: "Chief Thornpaw has sensed a corruption spreading from a nearby grove. He has asked Dan, as part of his training, to investigate and cleanse it.",
         assignee: "Dan",
         assigneeKey: 'markop', // Dan is an NPC, Markop is his guardian
-        status: "available",
+        status: "pending",
+        pending_condition: "The party must first find a way to travel from the Vigilance to the Whispering Grove in the Midlands.",
         start_condition: "Triggered after Dan begins his magical training with the Rakasha.",
         steps: [
-            { id: 'step1', title: "Investigate the Whispering Grove", status: 'active', description: "Travel to the nearby grove and search for signs of the unnatural corruption Thornpaw spoke of." },
+            { id: 'step1', title: "Investigate the Whispering Grove", status: 'active', description: "The party is currently aboard the Vigilance. To reach the grove, they must either convince the airship's temperamental goblin captain, Lario, to make a detour, or find an alternative, likely more dangerous, method of reaching the location on their own." },
             { id: 'step2', title: "Identify the Source", status: 'locked', description: "Find the epicenter of the blight and determine what foul magic or creature is causing it." },
             { id: 'step3', title: "Perform the Cleansing Ritual", status: 'locked', description: "Using the teachings of the Rakasha, perform the ritual to purify the land and restore its balance." }
         ]
@@ -25,10 +26,11 @@ export const TOADS_QUESTS = {
         objective: "Dan feels a deep connection to X.O.'s staff, the instrument of his victory. He believes its reality-bending power is too dangerous to be used as a simple battery for the Vigilance and seeks to reclaim it from Archie to protect it, or perhaps, to understand it better.",
         assignee: "Dan",
         assigneeKey: 'markop',
-        status: "available",
+        status: "pending",
+        pending_condition: "This quest involves a direct confrontation with Archie over the staff powering the ship. Markop must decide the right moment to initiate this risky conversation.",
         motivation: "Dan sees the staff as both a symbol of his own newfound strength and a terrible danger. He feels a personal responsibility to ensure its power isn't misused, which puts him in direct conflict with Archie's pragmatic decision to use it to power the ship.",
         steps: [
-            { id: 'step1', title: "A Question of Power", status: 'active', description: "Confront Archie about the staff's use. Dan must argue that the risk of the staff's magic corrupting the ship or attracting even more powerful enemies outweighs the benefit of having the Vigilance powered." },
+            { id: 'step1', title: "A Question of Power", status: 'active', description: "Confront Archie about the staff's use. With the staff now integrated into the Vigilance's core, this is a direct and dangerous conflict. Dan must argue that the risk of the staff's magic corrupting the ship outweighs the benefit, and be prepared for Archie's volatile reaction." },
             { id: 'step2', title: "An Alternative Source", status: 'locked', description: "To convince Archie, Dan must find a viable alternative power source for the Vigilance. This might involve trading with the Ratchet Raiders for a goblin-made engine or finding a stable arcane crystal." },
             { id: 'step3', title: "The Choice of a Hero", status: 'locked', description: "With the staff finally in his possession, Dan must decide what to do with it. Does he destroy it, hide it away, or attempt to learn to wield its power responsibly, risking the same corruption that took X.O.?" }
         ]
@@ -41,10 +43,11 @@ export const TOADS_QUESTS = {
         objective: "Dan feels pulled between his warrior training from Markop and his magical studies. He seeks to find a way to merge the two paths by finding the lost tomb of a legendary 'Spellsword' champion.",
         assignee: "Dan",
         assigneeKey: 'markop',
-        status: "available",
+        status: "pending",
+        pending_condition: "The party must first research the location of the Tomb of the Azure Knight using the ship's library or underworld contacts before they can travel there.",
         start_condition: "Dan reaches Level 3.",
         steps: [
-            { id: 'step1', title: "Find the Tomb", status: 'active', description: "Research ancient legends to find the location of the Tomb of the Azure Knight, a warrior who perfectly blended swordplay and magic." },
+            { id: 'step1', title: "Find the Tomb", status: 'active', description: "Research ancient legends in the Vigilance's library or through contacts in the Freelancer Underworld to find the location of the Tomb of the Azure Knight, a warrior who perfectly blended swordplay and magic." },
             { id: 'step2', title: "Pass the Trials", status: 'locked', description: "The tomb is protected by trials that test both martial prowess and magical intellect. Dan must overcome them to prove his worth." },
             { id: 'step3', title: "Claim the Legacy", status: 'locked', description: "Claim the Azure Knight's enchanted blade, which allows the wielder to channel spells through their weapon strikes." }
         ]

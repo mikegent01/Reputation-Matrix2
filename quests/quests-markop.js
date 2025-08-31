@@ -90,7 +90,7 @@ export const MARKOP_QUESTS = {
         objective: "Markop's father, an Imperial general named Tiberius Judi, was reportedly kidnapped by dragons during a massive explosion at Dragon Mountain. Markop must travel to the ruins of the mountain to search for clues about his father's fate and the true cause of the disaster.",
         assignee: "Markop",
         assigneeKey: 'markop',
-        status: "active",
+        status: "available",
         motivation: "Markop's relationship with his father was strained by Tiberius's unwavering loyalty to the Empire. He wants to find him not just out of familial duty, but to understand the man who chose the Empire over his own family, a choice that has haunted Markop his entire life. The violent nature of his disappearance has only made this need more urgent.",
         steps: [
             { id: 'step1', title: "Investigate Dragon Mountain", status: 'active', description: "Travel to the site of the Dragon Mountain explosion and investigate the ruins for any sign of General Judi or his captors." },
@@ -187,7 +187,7 @@ export const MARKOP_QUESTS = {
         steps: [
             { id: 'step1', title: "The Key", status: 'active', description: "Find a disgraced Imperial historian who knows the location of the true, unaltered historical records within the Archive." },
             { id: 'step2', title: "The Infiltration", status: 'locked', description: "Sneak into the heavily guarded Imperial Grand Archive and navigate its labyrinthine halls." },
-            { id: 'step3', title: "The Escape", status: 'locked', description: "Escape with the 'Codex of Veracity' and deliver it to a neutral party, like the Mages' Guild, for safekeeping." }
+            { id: 'step3', "The Escape", status: 'locked', description: "Escape with the 'Codex of Veracity' and deliver it to a neutral party, like the Mages' Guild, for safekeeping." }
         ]
     },
     'markop_shield_of_the_innocent': {

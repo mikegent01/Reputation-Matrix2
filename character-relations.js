@@ -2,10 +2,10 @@
 export const CHARACTER_RELATIONS = {
     // --- PARTY MEMBER OPINIONS ---
     'archie': {
-        'markop': { type: 'ally', text: "Archie on Markop: A stuffy, self-righteous shield. But he's a reliable shield, and sometimes, you need one of those." },
+        'markop': { type: 'ally', text: "Archie on Markop: A stuffy, self-righteous shield. But he's a reliable shield, and sometimes, you need one of those. He's taking forever with the kid. If you want something done, you have to nudge the 'honorable' ones in the right direction." },
         'humpik': { type: 'ally', text: "Archie on Humpik: Simple. Predictable. Useful for hitting things. Points in the right direction and he goes." },
         'bowser': { type: 'ally', text: "Archie on Bowser: Another would-be king, but his desire to smash the Empire is useful. A temporary, powerful convenience." },
-        'dan': { type: 'ally', text: "Archie on Dan: The kid's got guts, I'll give him that. But all that 'hope' stuff is gonna get him killed. Or worse, make him boring." },
+        'dan': { type: 'ally', text: "Archie on Dan: The kid's got guts, I'll give him that. But all that 'hope' stuff is gonna get him killed. Or worse, make him boring. He's Markop's project, but a little push in a more... *interesting* direction couldn't hurt. For his own good, of course." },
         'emperor_elagabalus': { type: 'enemy', text: "Archie on Elagabalus: The ultimate symbol of the oppressive, boring order I despise. His Empire needs to be torn down, brick by brick." },
         'general_marcus_ironhand': { type: 'enemy', text: "Archie on Ironhand: Discipline is just another word for boring. He wouldn't know a good opportunity if it blew up in his face. I should arrange that." },
         'lord_crimson': { type: 'ally', text: "Archie on Lord Crimson: He understands the value of chaos. A dangerous, but amusing, player in the game." },
@@ -21,7 +21,7 @@ export const CHARACTER_RELATIONS = {
         'lario': { type: 'ally', text: "Archie on Lario: A greasy little goblin who'd sell his own brother for a gold coin. Which he basically is. Useful for fixing things and taking the fall." }
     },
     'markop': {
-        'archie': { type: 'ally', text: "Markop on Archie: A force of pure chaos. His methods are reprehensible, but his actions sometimes lead to a greater good. A soul to be guided, if possible." },
+        'archie': { type: 'ally', text: "Markop on Archie: A force of pure chaos. His methods are reprehensible, but his actions sometimes lead to a greater good. A soul to be guided, if possible. His recent 'interest' in Dan's training is... concerning. I must ensure the boy's path remains his own." },
         'humpik': { type: 'ally', text: "Markop on Humpik: His loyalty is commendable, though his ally is questionable. A strong arm in a just fight." },
         'bowser': { type: 'enemy', text: "Markop on Bowser: A tyrant and a warlord. His goals are antithetical to justice and order. An alliance of desperation, not trust." },
         'dan': { type: 'ally', text: "Markop on Dan: A student with a purer heart than I ever had. He is a reflection of the good we fight for, and I must not fail him." },
@@ -39,7 +39,7 @@ export const CHARACTER_RELATIONS = {
     'humpik': {
         'bowser': { type: 'ally', text: "Humpik on Bowser: Bowser is strong. A powerful ally. We fight well together. He respects my strength, and I respect his." },
         'archie': { type: 'ally', text: "Humpik on Archie: The little guy is crazy! But he makes big explosions! Good to have in a scrap." },
-        'markop': { type: 'ally', text: "Humpik on Markop: The horse-man is too serious. But he fights good. I respect that." },
+        'markop': { type: 'ally', text: "Humpik on Markop: The horse-man is too serious. But he fights good. I respect that. He and the little guy argue a lot now. About the other little guy. Weird." },
         'dan': { type: 'ally', text: "Humpik on Dan: He's a little guy, but he's tough! Like a tiny Bowser! Gwahahaha!" },
         'emperor_elagabalus': { type: 'enemy', text: "Humpik on Elagabalus: He's Bowser's enemy! So he's my enemy! I'll smash his castle!" },
         'general_marcus_ironhand': { type: 'enemy', text: "Humpik on Ironhand: He's got a big army, but they're no match for the Koopa Troop! Or me!" },
@@ -48,7 +48,7 @@ export const CHARACTER_RELATIONS = {
     'bowser': {
         'humpik': { type: 'ally', text: "Bowser on Humpik: Humpik is a warrior of immense power and conviction. An equal on the battlefield. His counsel is direct, and his axe is true." },
         'archie': { type: 'ally', text: "Bowser on Archie: A chaotic, unpredictable weapon. Useful for breaking things I don't want to waste my own forces on." },
-        'markop': { type: 'enemy', text: "Bowser on Markop: His talk of 'honor' is a weakness. But he's a strong fighter. I can use that." },
+        'markop': { type: 'enemy', text: "Bowser on Markop: His talk of 'honor' is a weakness. But he's a strong fighter. I can use that. He seems distracted by his three-eyed companion's meddling. An exploitable weakness." },
         'dan': { type: 'enemy', text: "Bowser on Dan: Another annoying toad. This one has magic? Kamek will deal with him." },
         'emperor_elagabalus': { type: 'enemy', text: "Bowser on Elagabalus: A rival king hiding in his shiny castle. I'll enjoy taking it from him." },
         'general_marcus_ironhand': { type: 'enemy', text: "Bowser on Ironhand: His Legion is disciplined, I'll give him that. But they lack the passion of my Troop! I'll break them." },

@@ -122,6 +122,7 @@
 }
 
 .quest-card.status-active { border-left: 4px solid var(--neutral-color); }
+.quest-card.status-pending { border-left: 4px solid #1f6feb; }
 .quest-card.status-available { border-left: 4px solid var(--text-secondary); }
 .quest-card.status-completed { border-left: 4px solid var(--positive-color); }
 .quest-card.status-failed { border-left: 4px solid var(--negative-color); }
@@ -177,6 +178,7 @@
     margin-left: 16px;
 }
 .quest-card.status-active .quest-status { background-color: rgba(240, 185, 11, 0.1); color: var(--neutral-color); }
+.quest-card.status-pending .quest-status { background-color: rgba(31, 111, 235, 0.1); color: #1f6feb; }
 .quest-card.status-available .quest-status { background-color: rgba(139, 148, 158, 0.1); color: var(--text-secondary); }
 .quest-card.status-completed .quest-status { background-color: rgba(35, 134, 54, 0.1); color: var(--positive-color); }
 .quest-card.status-failed .quest-status { background-color: rgba(218, 54, 51, 0.1); color: var(--negative-color); }
@@ -216,6 +218,9 @@
     padding: 10px;
     border-radius: 4px;
     border-left: 2px solid var(--accent-color);
+}
+.quest-context.pending {
+    border-left-color: #1f6feb;
 }
 .quest-context strong {
     color: var(--text-secondary);
