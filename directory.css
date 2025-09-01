@@ -1,3 +1,4 @@
+
 /* --- Directory Page Layout --- */
 #directory-layout {
     display: grid;
@@ -111,6 +112,7 @@
     font-size: 0.85rem;
     color: var(--text-secondary);
     font-style: italic;
+    margin-top: 4px;
     margin: 0;
     padding: 0;
 }
@@ -363,142 +365,4 @@
     font-size: 0.85rem;
     color: var(--text-secondary);
     margin: 0;
-}
-
-
-/* --- NEW: Individual Standing Cards --- */
-.character-assessments-container {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border-color);
-}
-.standing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 16px;
-}
-
-.standing-card {
-    background-color: var(--main-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.standing-card.personal-standing {
-    border-color: var(--neutral-color);
-    box-shadow: 0 0 15px rgba(227, 179, 65, 0.2);
-}
-
-.standing-card-header {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-.standing-portrait {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 2px solid var(--border-color);
-    object-fit: cover;
-    flex-shrink: 0;
-}
-.standing-info h6 {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    color: var(--text-color);
-}
-.standing-info p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    font-style: italic;
-}
-.personal-tag {
-    background-color: var(--neutral-color);
-    color: var(--main-bg);
-    font-size: 0.7rem;
-    font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 4px;
-    margin-left: 8px;
-}
-
-.standing-gauges {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.gauge-container {
-    display: flex;
-    flex-direction: column;
-}
-.gauge-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-bottom: 4px;
-}
-.gauge-label .rep-tier {
-    font-weight: bold;
-}
-.gauge-label .rep-tier.positive { color: var(--positive-color); }
-.gauge-label .rep-tier.negative { color: var(--negative-color); }
-.gauge-label .rep-tier.neutral { color: var(--neutral-color); }
-
-.bar-container {
-    height: 12px;
-    background-color: var(--sidebar-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    padding: 2px;
-}
-.bar-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.5s ease-in-out;
-}
-.bar-fill.positive { background-color: var(--positive-color); }
-.bar-fill.negative { background-color: var(--negative-color); }
-.bar-fill.neutral { background-color: var(--neutral-color); }
-
-.notoriety-bar {
-    background-color: var(--accent-color);
-}
-
-.standing-card .calculation-breakdown details {
-    margin-top: 12px;
-    background-color: var(--sidebar-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-}
-.standing-card .calculation-breakdown summary {
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    font-weight: bold;
-    outline: none;
-}
-.standing-card .calculation-breakdown summary:hover {
-    color: var(--text-color);
-}
-.standing-card .calculation-breakdown summary::marker {
-    color: var(--accent-color);
-}
-.standing-card .calculation-breakdown ul {
-    list-style: none;
-    padding: 0 12px 12px 12px;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-}
-.standing-card .calculation-breakdown li {
-    padding: 4px 8px;
-    border-top: 1px dashed var(--border-color);
-}
-.standing-card .calculation-breakdown li strong {
-    color: var(--text-color);
 }

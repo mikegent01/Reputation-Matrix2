@@ -226,14 +226,14 @@
 }
 
 /* Faction/Coalition Colors for Seats */
-.seat-regal_empire { background-color: var(--faction-regal-empire); }
-.seat-iron_legion { background-color: var(--faction-iron-legion); }
-.seat-moonfang_pack { background-color: var(--faction-moonfang-pack); }
-.seat-onyx_hand { background-color: var(--faction-onyx-hand); }
-.seat-mages_guild { background-color: var(--faction-mages-guild); }
-.seat-cosmic_jesters { background-color: var(--faction-cosmic-jesters); }
-.seat-freelancer_underworld { background-color: var(--faction-freelancer-underworld); }
-.seat-unaligned { background-color: var(--faction-unaligned); }
+.seat-regal_empire { background-color: var(--major-powers-color); }
+.seat-iron_legion { background-color: #6c757d; }
+.seat-moonfang_pack { background-color: var(--regional-powers-color); }
+.seat-onyx_hand { background-color: var(--negative-color); }
+.seat-mages_guild { background-color: var(--mystical-ancient-color); }
+.seat-cosmic_jesters { background-color: var(--interdimensional-threat-color); }
+.seat-freelancer_underworld { background-color: var(--underworld-fringe-color); }
+.seat-unaligned { background-color: var(--neutral-color); }
 
 
 #parliament-tooltip {
