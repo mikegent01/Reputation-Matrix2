@@ -30,7 +30,8 @@ export const CHARACTERS_3 = {
     'jade_grit': {
         name: "Jade Grit",
         role: "Party Guest",
-        description: "A stoic and resilient toad with deep jade-green skin. He wears a rugged vest and a tool belt, appearing more like a worker drawn into the chaos than a willing participant."
+        status: "Deceased",
+        description: "A stoic and resilient toad who was attending Fawful's party. She was tragically killed when Embercap fell on her during his escape attempt."
     },
     'violet_hush': {
         name: "Violet Hush",
@@ -42,7 +43,8 @@ export const CHARACTERS_3 = {
     'embercap': {
         name: "Embercap",
         role: "Toad Soldier, Peach Loyalists",
-        description: "A steadfast soldier in Toadette's army. His fiery orange cap is singed at the edges, and his patched red tunic and dented shield show the signs of constant battle in his captain's fanatical crusade."
+        status: "Banished",
+        description: "A steadfast soldier in Toadette's army. After an infiltration mission went wrong, he was caught by a witch and banished to another realm."
     },
     'mistveil': {
         name: "Mistveil",
@@ -59,16 +61,19 @@ export const CHARACTERS_3 = {
     'green_t': {
         name: "Green T",
         role: "Leader, The Tea Leaf Syndicate",
+        status: "Detained by party",
         description: "The mysterious and well-dressed leader of the Syndicate. His motives are unknown, but he commands loyalty through fear and reward."
     },
     'earl_grey': {
         name: "Earl Grey",
         role: "Enforcer, The Tea Leaf Syndicate",
+        status: "Detained by party",
         description: "A stoic and powerful toad who wields a heavy axe and shield. He is Green T's loyal bodyguard and one of the only survivors of Archie's infamous fireball."
     },
     'chai': {
         name: "Chai",
         role: "Diplomat, The Tea Leaf Syndicate",
+        status: "Detained by party",
         description: "A smooth-talking toad who handles the Syndicate's negotiations and information gathering. He also survived the 'Tea Party Incident' and now harbors a deep distrust of the party."
     },
 
@@ -102,5 +107,32 @@ export const CHARACTERS_3 = {
         name: "King Chalmus III",
         role: "Ruler of Chramalot",
         description: "The noble but indecisive king of the Chramalot Kingdom. He struggles to maintain order amidst the political machinations of his court."
+    },
+    // --- AIRSHIP BATTLE CHARACTERS ---
+    'iron_thorn': {
+        name: "Iron Thorn",
+        role: "Iron Legion Enforcer",
+        description: "A powerful and ruthless enforcer for the Iron Legion. He boarded the Vigilance during the standoff and was notable for his aggressive tactics."
+    },
+    'black_t': {
+        name: "Black T",
+        role: "Tea Smuggler",
+        description: "A mysterious toad dressed in black, seemingly involved in the Tea Leaf Syndicate's operations. He was seen on the Vigilance's catwalks during the battle, claiming to be taking care of a friend and revealing a massive toad trafficking operation."
+    },
+    'purple_t': {
+        name: "Purple T",
+        role: "Friend of Black T",
+        description: "A toad seen in the care of Black T during the battle on the Vigilance. Their role and allegiances are unknown."
+    },
+    'herbal_t': {
+        name: "Herbal T",
+        role: "Unknown",
+        description: "A toad discovered by Ryan inside a crate on the Vigilance. Her identity and purpose are a complete mystery."
+    },
+    'bryan': {
+        name: "Bryan",
+        role: "Mushroom Skulls Vindicator",
+        status: "Alive",
+        description: "A toad with a tragic past seeking vengeance against Archie Miser. Believing Archie betrayed him in an airship explosion, he was saved by the 'God Toad' and has since joined the Mushroom Skulls gang."
     }
 };

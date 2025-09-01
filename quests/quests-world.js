@@ -238,5 +238,20 @@ export const WORLD_QUESTS = {
             { id: 'step2', title: "The Sunken Observatory", status: 'locked', description: "Find the underwater observatory, now home to a grumpy Kraken." },
             { id: 'step3', title: "The Void Observatory", status: 'locked', description: "Travel to the observatory at The Edge of the world, which is periodically battered by cosmic storms." }
         ]
+    },
+    'world_imperial_demand': {
+        id: 'world_imperial_demand',
+        title: "The Imperial Demand",
+        type: 'side',
+        category: 'World Quests',
+        objective: "The Iron Legion, citing Imperial law against slavery and trafficking, has demanded the party hand over Green T (leader of the Tea Leaf Syndicate) and Lario (for complicity in toad-powered labor) for trial and judgment. The party must decide whether to comply with the Empire's demand, defy a major military power, or find a third option.",
+        assignee: "Full Party",
+        assigneeKey: 'full_party',
+        status: "active",
+        start_condition: "Triggered after the Iron Legion boards the Vigilance.",
+        steps: [
+            { id: 'step1', title: "The Ultimatum", status: 'active', description: "The Iron Legion commander has presented a formal, non-negotiable demand. They have given the party 24 hours to comply before they consider the Vigilance and its crew a hostile entity.", options: ["Comply and hand over Green T and Lario.", "Refuse and prepare for a fight.", "Attempt to negotiate or find a loophole."] },
+            { id: 'step2', title: "Consequences", status: 'locked', description: "Face the political and military consequences of the party's decision." }
+        ]
     }
 };

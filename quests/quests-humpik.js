@@ -8,7 +8,7 @@ export const HUMPIK_QUESTS = {
         objective: "The Iron Legion's elite mock Humpik for his 'barbaric' refusal of a duel, tarnishing the Koopa Troop's name. To restore his and the Koopa Troop's honor, Humpik must seek out a renowned Legion champion and defeat them in a formal, sanctioned duel.",
         assignee: "Humpik",
         assigneeKey: 'humpik',
-        status: "available",
+        status: "pending",
         motivation: "Humpik's identity is tied to his strength and the reputation of the Koopa Troop. The Legion's insults are not just personal; they are an attack on his ally and his people. He feels compelled to prove, in their own rigid way, that Koopa might is disciplined and honorable.",
         steps: [
             { id: 'step1', title: "Identify a Worthy Champion", status: 'active', description: "The most respected duelist among the Legion's progressive 'War-Forged' faction is Colonel Vera Steelstorm. Use underworld contacts or military intelligence to pinpoint her current location on the Midlands front." },
@@ -41,7 +41,7 @@ export const HUMPIK_QUESTS = {
         objective: "The Koopa remnants are demoralized. Humpik decides the only cure is a good, old-fashioned, large-scale assault on a well-defended enemy position to remind them of their strength.",
         assignee: "Humpik",
         assigneeKey: 'humpik',
-        status: "available",
+        status: "pending",
         motivation: "Humpik believes that the soul of an army is found in battle. He wants to reignite the Koopa Troop's fighting spirit with a glorious, head-on charge against an impossible-looking target.",
         steps: [
             { id: 'step1', title: "Pick a Target", status: 'active', description: "Identify a suitable target for the assault, such as a fortified Peach Loyalist forward base or a major Toad Gang fortress." },
@@ -229,6 +229,57 @@ export const HUMPIK_QUESTS = {
         steps: [
             { id: 'step1', title: "Find Nest", status: 'active', description: "Track the spiders to their nest in the ventilation system." },
             { id: 'step2', title: "Smash Nest", status: 'locked', description: "Apply axe liberally to the nest and its inhabitants." }
+        ]
+    },
+    'humpik_gryphon_cargo': {
+        id: 'humpik_gryphon_cargo',
+        title: "A Mercenary's Trust",
+        type: 'personal',
+        category: 'Personal - Humpik',
+        objective: "Humpik, seeking to prove the Koopa Troop's reliability, has taken on a contract from the Gilded Gryphon Mercenary Company. He must secure a lost cargo shipment from a bandit-infested canyon.",
+        assignee: "Humpik",
+        assigneeKey: 'humpik',
+        status: "pending",
+        pending_condition: "Humpik must first prove his worth to the Gilded Gryphon Mercenary Company by completing a smaller, less critical task for them, such as winning in their fighting pits.",
+        motivation: "Humpik wishes to build a reputation for the Koopa Troop as honorable and reliable mercenaries, not just savages. Successfully completing a contract for a respected company like the Gilded Gryphons would be a major step.",
+        steps: [
+            { id: 'step1', title: "Locate the Canyon", status: 'active', description: "Find the Whisperwood canyon where the caravan was last seen." },
+            { id: 'step2', title: "Clear Out the Bandits", status: 'locked', description: "Defeat the bandits who ambushed the caravan." },
+            { id: 'step3', title: "Secure and Return the Cargo", status: 'locked', description: "Secure the high-grade steel and return it to Commander Valerius for payment." }
+        ]
+    },
+    'humpik_ork_vermin': {
+        id: 'humpik_ork_vermin',
+        title: "A Proper Fight",
+        type: 'personal',
+        category: 'Personal - Humpik',
+        objective: "Humpik has been challenged by Warboss Skarjaw of 'Da Krumperz' to a 'proper fight'. To earn the Orcs' respect (and a lucrative contract), he must clear out a scrap heap that has been infested with rival Ratchet Raiders.",
+        assignee: "Humpik",
+        assigneeKey: 'humpik',
+        status: "pending",
+        pending_condition: "Humpik needs to gain the respect of Warboss Skarjaw by demonstrating his strength in a formal challenge.",
+        motivation: "Humpik sees the Orcs as kindred spirits who appreciate a good brawl. This isn't just a job; it's a chance to prove his might and forge an alliance with a faction that understands the language of strength.",
+        steps: [
+            { id: 'step1', title: "Go to Da Scrap-Heap", status: 'active', description: "Travel to the scrap heap claimed by Da Krumperz." },
+            { id: 'step2', title: "Smash 'Em Gud", status: 'locked', description: "Defeat the Ratchet Raiders and their ramshackle mechs." },
+            { id: 'step3', title: "Claim the Reward", status: 'locked', description: "Return to Warboss Skarjaw to claim the shiny bitz and his respect." }
+        ]
+    },
+    'humpik_waluigi_favor': {
+        id: 'humpik_waluigi_favor',
+        title: "A... Favor for Waluigi",
+        type: 'personal',
+        category: 'Personal - Humpik',
+        objective: "Waluigi has somehow convinced Humpik to perform a 'favor' for him: acquire a 'certain blueprint' from Lario's Workshop. This sneaky task goes against Humpik's nature, but Waluigi can be very persuasive...",
+        assignee: "Humpik",
+        assigneeKey: 'humpik',
+        status: "pending",
+        pending_condition: "Waluigi needs to find some leverage over Humpik (perhaps involving Bowser or a debt of honor) to convince him to undertake such a sneaky task.",
+        motivation: "Humpik is not a thief, but he is fiercely loyal. Waluigi has presented this task as a vital component in helping Bowser. Though he feels dishonorable, his loyalty to his king compels him to undertake this stealthy, and likely chaotic, mission.",
+        steps: [
+            { id: 'step1', title: "Infiltrate Lario's Workshop", status: 'active', description: "Find a way into Lario's well-guarded workshop without causing a scene." },
+            { id: 'step2', title: "Find the Blueprint", status: 'locked', description: "Locate the specific, vaguely-described blueprint amidst the chaotic mess of Lario's inventions." },
+            { id: 'step3', title: "WAH-scape!", status: 'locked', description: "Escape with the blueprint and deliver it to Waluigi." }
         ]
     }
 };

@@ -257,7 +257,7 @@ export function initFocusTreeState() {
                  initialActiveFocuses.push({
                     toadKey: toadKey,
                     nodeId: firstFocus.id,
-                    remainingDays: firstFocus.cost - 1,
+                    remainingDays: firstFocus.cost - 3, // 3 days have passed now
                     totalDays: firstFocus.cost
                 });
             }
@@ -266,18 +266,18 @@ export function initFocusTreeState() {
 
     state.focusTreeState = {
         buildVersionApplied: "2024-05-18-r1", // Note the date of the last structural change
-        day: 3,
+        day: 5,
         activeToad: "dan",
         groupInfluence: 27,
         unlocked: {
             dan: [], toad_lee: [], eager: [],
-            ryan: [], roger: [], bones: [],
+            ryan: [], roger: [], bones: [], bryan: [],
             group: []
         },
         activeFocuses: initialActiveFocuses,
         influences: {
             dan: 40, toad_lee: 25, eager: 10,
-            ryan: 10, roger: 10, bones: 5
+            ryan: 10, roger: 10, bones: 5, bryan: 0
         },
         log: [
             { who: "System", what: "System online. Focus protocols initiated.", when: new Date().toISOString() },
@@ -289,7 +289,7 @@ export function initFocusTreeState() {
         ],
         luckyItemCooldowns: {
             dan: 0, toad_lee: 0, eager: 0,
-            ryan: 0, roger: 0, bones: 0
+            ryan: 0, roger: 0, bones: 0, bryan: 0
         },
         flags: { waluigiPending: false }
     };

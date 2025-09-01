@@ -38,7 +38,8 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                     influence: 45,
                     reputation_modifiers: { archie: 5, markop: -5, humpik: -5, bowser: 0 },
                     key_figures: [
-                        { name: "Skull-Cap Murphy", role: "New Leader", description: "The violent toad who seized power after Big T's defeat." }
+                        { name: "Skull-Cap Murphy", role: "New Leader", description: "The violent toad who seized power after Big T's defeat." },
+                        { name: "Bryan", role: "Vindicator", description: "A vengeful toad empowered by the 'God Toad', hunting Archie Miser." }
                     ]
                 },
                 the_extortionists: {
@@ -155,7 +156,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
     },
     fawfuls_furious_freaks: {
         name: "Fawful's Furious Freaks",
-        description: "The erratic Beanish villain Fawful has seized Peach's Castle amidst the chaos, transforming it into a twisted stronghold. His army is a bizarre mix of brainwashed Toads, reprogrammed Goombas, and his own maniacal mechanical minions. They fight with unpredictable fury and chortles of doom.",
+        description: "The erratic Beanish villain Fawful has seized Peach's Castle amidst the chaos, transforming it into a twisted stronghold. In a shocking move, he has formed an alliance with dragons and revealed that the very stones of the castle are alive. His army is a bizarre mix of brainwashed Toads, reprogrammed Goombas, and his own maniacal mechanical minions. They fight with unpredictable fury and chortles of doom.",
         logo: 'faction_fawful.png',
         relations: { 
             allies: [], 
@@ -179,7 +180,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
     },
     liberated_toads: {
         name: "The Liberated Toads",
-        description: "A group of former slaves freed by the party. Led by the heroic Dan, they are finding their place in a dangerous world.",
+        description: "A group of former slaves freed by the party. Led by the heroic Dan, they are finding their place in a dangerous world, now burdened with the knowledge that over 150 more trafficked toads were aboard the Vigilance.",
         logo: 'faction_liberated_toads.png',
         relations: { 
             allies: ['rakasha_clans', 'the_unchained', 'rebel_clans', 'mushroom_regency'], 
@@ -253,13 +254,13 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                     current_focus: "Wrestling with the 'debt' he owes to the Orcs who kidnapped and then spared him."
                 },
                 wallys_toad: {
-                    name: "Wally's Toad (Traitor)",
-                    description: "A Waluigi loyalist who infiltrated the group. His discovery has sown seeds of distrust among the toads.",
+                    name: "Wally's Toad (De-programmed)",
+                    description: "A Waluigi loyalist who infiltrated the group. He was captured by the Iron Legion, who removed a strange seed from his head, turning him back into a normal, confused toad. His discovery has sown seeds of distrust among the toads.",
                     influence: 0,
                     events: {
                         peach_death: "Good. One less monarch to complicate things. All according to the WAH-ster plan!"
                     },
-                    current_focus: "Interrogation and imprisonment."
+                    current_focus: "Held by the Iron Legion for observation."
                 }
             }
         }

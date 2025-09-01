@@ -329,5 +329,21 @@ export const TOADS_QUESTS = {
             { id: 'step2', title: "Acquire Seeds", status: 'locked', description: "Seeds are scarce. The Toads must either trade with a nearby settlement, raid an abandoned farm, or find a cache of wild, edible plants.", options: ["Trade with the Mushroom Regency.", "Scavenge from the war-torn farmlands.", "Forage for wild seeds."] },
             { id: 'step3', title: "Protect the Crop", status: 'locked', description: "The growing crops will attract hungry wildlife and opportunistic bandits. The Toads must stand guard and protect their harvest until it's ready." }
         ]
+    },
+    'toads_unseen_cargo': {
+        id: 'toads_unseen_cargo',
+        title: "The Unseen Cargo",
+        type: 'side',
+        category: 'Liberated Toads',
+        objective: "The party has discovered that the Vigilance was being used to traffic over 150 toads for the Freelancer Underworld. The Liberated Toads must decide the fate of these captives.",
+        assignee: "Liberated Toads",
+        assigneeKey: 'full_party',
+        status: "active",
+        start_condition: "Triggered after Black T reveals the toad trafficking operation.",
+        steps: [
+            { id: 'step1', title: "Secure the Cargo Hold", status: 'active', description: "The trafficked toads are located in a hidden, secure cargo hold on the Vigilance. The party must find a way to access it and deal with any remaining guards or automated defenses." },
+            { id: 'step2', title: "The People's Council", status: 'locked', description: "Dan must hold a council with the other Liberated Toads. What should they do? Free them and take them in? Turn them over to the Regency? The decision will have major consequences for their small community." },
+            { id: 'step3', title: "A New Burden", status: 'locked', description: "Carry out the council's decision, dealing with the logistical and political fallout of suddenly having 150 new mouths to feed or a new, volatile political situation to manage." }
+        ]
     }
 };

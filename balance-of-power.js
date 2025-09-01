@@ -9,10 +9,10 @@ export const BOP_STATE = {
         description: "The kingdom has shattered into a five-way conflict. The Regency attempts to restore order, the Loyalists pursue their crusade against the new occupier of Peach's Castle, the maniacal Fawful. Elsewhere, Koopa Troop remnants fight for survival and the criminal Underworld exploits the chaos.",
         influence: { regency: 35, loyalists: 20, warlords: 15, criminals: 15, fawful: 15 },
         active_plans: [
-            { leader: 'chancellor_toadsworth', planId: 'regency_1', days: 22 },
-            { leader: 'captain_toadette', planId: 'loyalist_2', days: 16 },
-            { leader: 'kamek', planId: 'warlord_2', days: 30 },
-            { leader: 'fawful', planId: 'fawful_1', days: 18 },
+            { leader: 'chancellor_toadsworth', planId: 'regency_1', days: 19 },
+            { leader: 'captain_toadette', planId: 'loyalist_2', days: 13 },
+            { leader: 'kamek', planId: 'warlord_2', days: 25 },
+            { leader: 'fawful', planId: 'fawful_1', days: 15 },
         ],
         plans: {
             chancellor_toadsworth: [
@@ -67,8 +67,8 @@ export const BOP_STATE = {
             { id: 'edgeshade', name: 'Edgeshade', type: 'ruins', control: 'neutral', note: 'Destroyed by dragon', icon: 'icon_focus.png' },
         ],
         active_plans: [
-            { leader: 'baron_von_hess', planId: 'vampire_2', days: 41, target: 'southern_march' },
-            { leader: 'grak_ironhide', planId: 'werewolf_1', days: 11, target: 'dark_valley' },
+            { leader: 'baron_von_hess', planId: 'vampire_2', days: 38, target: 'southern_march' },
+            { leader: 'grak_ironhide', planId: 'werewolf_1', days: 8, target: 'dark_valley' },
         ],
         plans: {
             emperor_elagabalus: [

@@ -1,3 +1,4 @@
+
 export const AUXILIARY_PARTY = {
     dan: {
         name: "Dan",
@@ -330,5 +331,11 @@ export const TIMELINE = [
         title: 'Secrets at the Gala',
         description: "<p>Peach Loyalist scouts Embercap and Mistveil infiltrate Fawful's victory gala. During the event, Chief Thornpaw of the Rakasha finds Mistveil and reveals a stunning secret: he was in a relationship with Princess Peach and knows of a secret hatch in her room. This provides a massive new lead in the investigation of her death.</p>",
         participants: ['captain_toadette', 'chief_thornpaw', 'fawful']
+    },
+    {
+        phase: '1040 BF, Day 11',
+        title: 'Chaos on the Vigilance',
+        description: "<p>A series of chaotic events unfolds aboard the Vigilance. Fawful reveals an alliance with dragons. Embercap's infiltration of Fawful's gala goes wrong, resulting in the death of Jade Grit and his own banishment. The main party battles the Tea Leaf Syndicate and Iron Legion forces. Waluigi saves Humpik, Wario is found in a barrel, and the ship's use in a massive toad trafficking operation is revealed. The day ends with the Iron Legion demanding the party hand over key prisoners, and a new, personal vendetta against Archie is revealed in the form of the toad, Bryan.</p>",
+        participants: ['archie', 'markop', 'humpik', 'bowser', 'waluigi', 'lario', 'dan', 'toad_lee', 'roger', 'ryan', 'bones', 'earl_grey', 'chai', 'green_t']
     }
 ];

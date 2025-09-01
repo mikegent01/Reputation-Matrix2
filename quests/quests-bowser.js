@@ -8,7 +8,7 @@ export const BOWSER_QUESTS = {
         objective: "Re-establish contact with the scattered remnants of the Koopa Troop, unite them under a single banner, and forge them into an effective fighting force once more.",
         assignee: "Bowser",
         assigneeKey: 'bowser',
-        status: "available",
+        status: "pending",
         motivation: "Bowser's strength is his army. Without it, he is just a king without a kingdom. His immediate priority is to reclaim his power base and remind the world of the Koopa Troop's might before he can pursue his larger ambitions.",
         steps: [
             { id: 'step1', title: "Contact Kamek", status: 'active', description: "Establish a secure line of communication with Kamek, who commands the largest surviving contingent of the Koopa Troop." },

@@ -25,7 +25,7 @@ export const MARKOP_QUESTS = {
         objective: "Find a community ravaged by the ongoing wars and protect it, helping them rebuild and offering a bastion of hope amidst the chaos.",
         assignee: "Markop",
         assigneeKey: 'markop',
-        status: "available",
+        status: "pending",
         motivation: "Markop is haunted by the death and destruction he has been a party to. He feels his oath has been tarnished, and seeks to atone not by seeking forgiveness from his old orders, but by performing a selfless act of protection for the innocent.",
         steps: [
             { id: 'step1', title: "Find a Community in Need", status: 'active', description: "Search the war-torn borderlands for a refugee camp or small village that has been forgotten by the major powers and is beset by bandits or monsters." },
@@ -58,7 +58,7 @@ export const MARKOP_QUESTS = {
         objective: "To deepen his bond with the Rakasha and prove his worthiness as Dan's guardian, Chief Thornpaw asks Markop to undergo the 'Trial of the Three Spirits': The Spirit of the Hunt, the Spirit of the Mountain, and the Spirit of the Heart.",
         assignee: "Markop",
         assigneeKey: 'markop',
-        status: "available",
+        status: "pending",
         motivation: "Markop sees the Rakasha's wisdom and honor as a path to his own spiritual recovery. He embraces the trial not as a challenge, but as a necessary step to cleanse his spirit and prove to himself, and his allies, that he is worthy of their trust.",
         steps: [
             { id: 'step1', title: "The Hunt", status: 'active', description: "Track and non-lethally subdue a legendary Shadow Cat, a creature known for its cunning and near-invisibility." },
@@ -198,7 +198,7 @@ export const MARKOP_QUESTS = {
         objective: "Markop has lost his faith, but not his purpose. He hears of a legendary, unbreakable shield said to appear only to those who wish to protect others. He seeks to prove himself worthy of it.",
         assignee: "Markop",
         assigneeKey: 'markop',
-        status: "available",
+        status: "pending",
         motivation: "Markop needs a new symbol for his calling. No longer a sword of a divine order, he seeks to be a shield for those who cannot defend themselves. Finding this artifact is a test of his new, selfless purpose.",
         steps: [
             { id: 'step1', title: "The Legend", status: 'active', description: "Research the legend of the 'Aegis of the Guardian' and its last known location." },
@@ -233,6 +233,22 @@ export const MARKOP_QUESTS = {
         steps: [
             { id: 'step1', title: "The Flashpoint", status: 'active', description: "Race to the site of a skirmish between a Koopa patrol and a Loyalist scouting party." },
             { id: 'step2', title: "The Mediation", status: 'locked', description: "Step between the two forces and negotiate a de-escalation, appealing to both sides' desire for the truth." }
+        ]
+    },
+    'markop_koopa_rescue_assist': {
+        id: 'markop_koopa_rescue_assist',
+        title: "A Brother in Arms",
+        type: 'side',
+        category: 'Personal - Markop',
+        objective: "Humpik is planning a solo mission to rescue captured Koopa Troopas from the Peach Loyalists. While admiring his loyalty, Markop knows a solo assault is a suicide mission. He must convince Humpik to accept his help and plan a more strategic rescue.",
+        assignee: "Markop",
+        assigneeKey: 'markop',
+        status: "pending",
+        motivation: "Markop sees Humpik as a comrade and respects his loyalty. He cannot stand by and watch his friend charge to his death. This is an opportunity to forge a deeper bond and demonstrate that true strength lies in teamwork and strategy, not just brute force.",
+        steps: [
+            { id: 'step1', title: "Learn of Humpik's Plan", status: 'active', description: "Humpik is preparing for a solo mission. Markop must approach him to learn the details of his reckless plan." },
+            { id: 'step2', title: "A Council of War", status: 'locked', description: "Convince the proud Koopa warrior that accepting help is a sign of strength, not weakness. Plan a joint rescue mission that utilizes both of their skills." },
+            { id: 'step3', title: "Execute the Plan", status: 'locked', description: "Infiltrate the Loyalist prison camp and free the captured Koopas together." }
         ]
     }
 };

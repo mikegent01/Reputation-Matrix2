@@ -165,15 +165,15 @@ export const ARCHIE_QUESTS = {
         title: "A Dish Served Loud",
         type: 'personal',
         category: 'Personal - Archie',
-        objective: "The Tea Leaf Syndicate is rebuilding after Archie's... 'redecoration' of their headquarters. He learns they are having a quiet, somber memorial for their fallen enforcers. Archie decides to liven it up.",
+        objective: "The Tea Leaf Syndicate attempted to strong-arm the party. Archie responded by turning their meeting into a massive, explosive brawl, effectively crushing their local power base.",
         assignee: "Archie",
         assigneeKey: 'archie',
-        status: "available",
-        motivation: "They tried to kill him, and Archie considers that very rude. He sees their memorial as the perfect opportunity to remind them that messing with him is a bad idea, and also to test out his new sonic grenades.",
+        status: "completed",
+        motivation: "They tried to kill him, and Archie considers that very rude. He saw their meeting as the perfect opportunity to remind them that messing with him is a bad idea, and also to test out his new sonic grenades.",
         steps: [
-            { id: 'step1', title: "The 'Party Favors'", status: 'active', description: "Acquire a dozen 'Shrieker' grenades from the Ratchet Raiders, which emit a deafening, high-pitched noise for several minutes." },
-            { id: 'step2', title: "Crash the Wake", status: 'locked', description: "Infiltrate the memorial service and plant the grenades in the floral arrangements." },
-            { id: 'step3', title: "A Moment of Silence... Not", status: 'locked', description: "Trigger the grenades remotely during the moment of silence, ensuring the Syndicate's memorial is anything but." }
+            { id: 'step1', title: "Attend the 'Meeting'", status: 'completed', description: "Archie and Humpik attended a meeting with the Tea Leaf Syndicate that was clearly a trap." },
+            { id: 'step2', title: "Press the Panic Button", status: 'completed', description: "Sensing a double-cross, Archie pressed a panic button, summoning Toad Gang and Iron Legion forces to the fray." },
+            { id: 'step3', title: "Unleash Chaos", status: 'completed', description: "In the ensuing chaos, Archie unleashed a massive fireball, killing most of the Syndicate's enforcers and crippling their organization." }
         ]
     },
     'archie_fawful_fanboy': {
@@ -238,6 +238,22 @@ export const ARCHIE_QUESTS = {
             { id: 'step1', title: "The Law Library", status: 'active', description: "Acquire a copy of the Oathbound Judges' legal code, a tome of infinite length and soul-crushing boredom." },
             { id: 'step2', title: "The Loophole", status: 'locked', description: "Find an ancient, forgotten law—for example, a law stating that all legal disputes must be postponed if a goose steals the judge's gavel." },
             { id: 'step3', title: "The Goose", status: 'locked', description: "Train a goose." }
+        ]
+    },
+    'archie_bryan_vengeance': {
+        id: 'archie_bryan_vengeance',
+        title: "The Ghost of the Past",
+        type: 'personal',
+        category: 'Personal - Archie',
+        objective: "Confront Bryan, a toad from Archie's past who believes Archie betrayed him and left him for dead in an airship explosion. Bryan, now a member of the Mushroom Skulls and empowered by the 'God Toad', is actively hunting Archie for revenge.",
+        assignee: "Archie",
+        assigneeKey: 'archie',
+        status: "active",
+        motivation: "This isn't just another bounty hunter; this is personal. Bryan represents a past Archie thought was buried. Confronting him is about tying up a loose end, but also facing a direct consequence of his chaotic lifestyle, a consequence that now has divine backing and a serious grudge.",
+        steps: [
+            { id: 'step1', title: "The First Encounter", status: 'active', description: "Bryan is hunting you. The first step is to survive his initial, surprise attack." },
+            { id: 'step2', title: "Investigate the 'God Toad'", status: 'locked', description: "Learn more about the entity that saved and empowered Bryan. Understanding the source of his new power is key to defeating him." },
+            { id: 'step3', title: "The Final Showdown", status: 'locked', description: "Confront Bryan and deal with his quest for vengeance, one way or another." }
         ]
     }
 };
