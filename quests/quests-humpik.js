@@ -9,7 +9,7 @@ export const HUMPIK_QUESTS = {
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "pending",
-        pending_condition: "Humpik's identity is tied to his strength and the reputation of the Koopa Troop. The Legion's insults are not just personal; they are an attack on his ally and his people. He feels compelled to prove, in their own rigid way, that Koopa might is disciplined and honorable.",
+        pending_condition: "Pending Activation: To issue a formal challenge, Humpik must be in a location where he can interact with the Iron Legion, such as the Midlands or an Imperial-controlled city. This requires the party to disembark from the Vigilance.",
         steps: [
             { id: 'step1', title: "Identify a Worthy Champion", status: 'active', description: "The most respected duelist among the Legion's progressive 'War-Forged' faction is Colonel Vera Steelstorm. Use underworld contacts or military intelligence to pinpoint her current location on the Midlands front." },
             { id: 'step2', title: "Issue a Formal Challenge", status: 'locked', description: "The Legion follows strict protocols for challenges of honor. Humpik must present a formal, written challenge to Colonel Steelstorm, adhering to their traditions to prove he is not a mere savage.", options: ["Consult with Markop on the proper etiquette.", "Bribe a Freelancer to draft the challenge.", "Just roar really loud and hope for the best."] },
@@ -42,7 +42,7 @@ export const HUMPIK_QUESTS = {
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "pending",
-        pending_condition: "Humpik believes that the soul of an army is found in battle. He wants to reignite the Koopa Troop's fighting spirit with a glorious, head-on charge against an impossible-looking target.",
+        pending_condition: "Pending Activation: Humpik must first be reunited with a significant portion of the Koopa Troop remnants before he can lead them in a large-scale assault.",
         steps: [
             { id: 'step1', title: "Pick a Target", status: 'active', description: "Identify a suitable target for the assault, such as a fortified Peach Loyalist forward base or a major Toad Gang fortress." },
             { id: 'step2', title: "Rally the Troops", status: 'locked', description: "Give a series of loud, inspiring speeches, and lead by example in a few smaller skirmishes to get the Koopa Troop's blood pumping." },
@@ -240,7 +240,7 @@ export const HUMPIK_QUESTS = {
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "pending",
-        pending_condition: "Pending Activation: Humpik must first prove his worth to the Gilded Gryphon Mercenary Company by completing a smaller, less critical task for them, such as winning in their fighting pits.",
+        pending_condition: "Pending Activation: Humpik must first build a reputation with the Gilded Gryphon Mercenary Company. He can do this by completing other available contracts for them or by impressing their commander, Valerius, through a show of strength.",
         steps: [
             { id: 'step1', title: "Locate the Canyon", status: 'active', description: "Find the Whisperwood canyon where the caravan was last seen." },
             { id: 'step2', title: "Clear Out the Bandits", status: 'locked', description: "Defeat the bandits who ambushed the caravan." },
@@ -256,7 +256,7 @@ export const HUMPIK_QUESTS = {
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "pending",
-        pending_condition: "Pending Activation: Humpik needs to gain the respect of Warboss Skarjaw by demonstrating his strength in a formal challenge.",
+        pending_condition: "Pending Activation: Humpik must travel to the Known World Borderlands and find Warboss Skarjaw. He will need to prove his strength in a trial of the Warboss's choosing to unlock this contract.",
         steps: [
             { id: 'step1', title: "Go to Da Scrap-Heap", status: 'active', description: "Travel to the scrap heap claimed by Da Krumperz." },
             { id: 'step2', title: "Smash 'Em Gud", status: 'locked', description: "Defeat the Ratchet Raiders and their ramshackle mechs." },
@@ -272,7 +272,7 @@ export const HUMPIK_QUESTS = {
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "pending",
-        pending_condition: "Pending Activation: Waluigi needs to find some leverage over Humpik (perhaps involving Bowser or a debt of honor) to convince him to undertake such a sneaky task.",
+        pending_condition: "Pending Activation: This quest will only become available after Waluigi decides to call in the life-debt Humpik owes him for the rescue from the Vigilance.",
         steps: [
             { id: 'step1', title: "Infiltrate Lario's Workshop", status: 'active', description: "Find a way into Lario's well-guarded workshop without causing a scene." },
             { id: 'step2', title: "Find the Blueprint", status: 'locked', description: "Locate the specific, vaguely-described blueprint amidst the chaotic mess of Lario's inventions." },

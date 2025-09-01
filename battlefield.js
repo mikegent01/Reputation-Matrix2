@@ -13,7 +13,7 @@ const BATTLEFIELD_STATE = {
                 morale: 60,
                 strength: "Approx. 800 guardsmen",
                 orders: "Restore order and secure key infrastructure. Avoid direct confrontation with Loyalists if possible.",
-                color: "var(--major-powers-color)",
+                color: "var(--faction-mushroom_regency)",
                 icon: "faction_mushroom_regency.png",
             },
             loyalists: {
@@ -22,7 +22,7 @@ const BATTLEFIELD_STATE = {
                 morale: 95,
                 strength: "Approx. 500 zealous fighters",
                 orders: "Hold Bowser accountable for the chaos that claimed the Princess. View the Regency as an illegitimate obstacle.",
-                color: "var(--accent-color)",
+                color: "var(--faction-peach_loyalists)",
                 icon: "faction_peach_loyalists.png",
                 units: ["Embercap (Soldier)", "Mistveil (Scout)", "Dewdrop (Medic)"]
             },
@@ -32,7 +32,7 @@ const BATTLEFIELD_STATE = {
                 morale: 70,
                 strength: "Unknown, scattered",
                 orders: "Survive, regroup, and exploit the chaos. Avoid large-scale engagements.",
-                color: "var(--regional-powers-color)",
+                color: "var(--faction-koopa_troop)",
                 icon: "faction_koopa_troop.png",
             },
              fawful: {
@@ -41,7 +41,7 @@ const BATTLEFIELD_STATE = {
                 morale: 100,
                 strength: "An unknown number of minions and machines",
                 orders: "Defend the newly-acquired castle from all intruders with maximum fury and chortles.",
-                color: "var(--positive-color)",
+                color: "var(--faction-fawfuls_furious_freaks)",
                 icon: "faction_fawful.png",
             }
         },
@@ -66,7 +66,7 @@ const BATTLEFIELD_STATE = {
                 morale: 75,
                 strength: "Approx. 450 warriors",
                 orders: "Harass vampire flanks; secure the northern bridge access.",
-                color: "var(--regional-powers-color)",
+                color: "var(--faction-moonfang_pack)",
                 icon: "faction_moonfang.png",
             },
             vampires: {
@@ -75,7 +75,7 @@ const BATTLEFIELD_STATE = {
                 morale: 85,
                 strength: "Approx. 300 thralls, 50 knights",
                 orders: "Hold Ravencreek at all costs; break the werewolf assault at the river.",
-                color: "var(--negative-color)",
+                color: "var(--faction-onyx_hand)",
                 icon: "faction_onyx_hand.png",
             },
             regal: {
@@ -84,7 +84,7 @@ const BATTLEFIELD_STATE = {
                 morale: 100,
                 strength: "120 Legionnaires",
                 orders: "Observe and contain the conflict. Do not engage unless Imperial assets are threatened.",
-                color: "var(--major-powers-color)",
+                color: "var(--faction-regal_empire)",
                 icon: "faction_regal_empire.png",
             }
         },

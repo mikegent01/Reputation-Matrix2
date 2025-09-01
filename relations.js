@@ -1,5 +1,6 @@
 import { LORE_DATA, CHARACTER_RELATIONS } from './lore.js';
 import { state } from './state.js';
+import { FACTION_COLORS } from './factions/faction-colors.js';
 
 // --- Detail Panel Logic ---
 const appContainer = document.getElementById('app');
@@ -109,12 +110,6 @@ if(detailPanelClose) detailPanelClose.addEventListener('click', hideDetailPanel)
 let masterNodes = [];
 let masterLinks = [];
 let svg, graphGroup, tooltip, simulation;
-
-const categoryColorMap = {
-    "Major Powers": "var(--major-powers-color)", "Regional Powers": "var(--regional-powers-color)",
-    "Mystical & Ancient": "var(--mystical-ancient-color)", "Underworld & Fringe": "var(--underworld-fringe-color)",
-    "Interdimensional Threats": "var(--interdimensional-threat-color)",
-};
 
 function processGraphData() {
     const allFactions = LORE_DATA.factions;
@@ -233,7 +228,7 @@ function updateGraphVisualization(nodes, links) {
 
     node.append("circle")
         .attr("r", d => d.type === 'faction' ? 10 + d.power * 2.5 : d.type === 'party' ? 14 : 10)
-        .attr("fill", d => d.type === 'faction' ? (categoryColorMap[d.category] || "var(--text-secondary)") : "var(--sidebar-bg)")
+        .style("fill", d => d.type === 'faction' ? (FACTION_COLORS[d.id] || "var(--text-secondary)") : "var(--sidebar-bg)")
         .classed("logged-in-player", d => d.id === loggedInUser);
 
     node.filter(d => d.type === 'faction').append("image")

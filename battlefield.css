@@ -57,15 +57,15 @@
     color: var(--text-color);
 }
 /* Ravencreek Factions */
-.faction-werewolves h4 { color: var(--regional-powers-color); }
-.faction-vampires h4 { color: var(--negative-color); }
-.faction-regal h4 { color: var(--major-powers-color); }
+.faction-werewolves h4 { color: var(--faction-moonfang_pack); }
+.faction-vampires h4 { color: var(--faction-onyx_hand); }
+.faction-regal h4 { color: var(--faction-regal_empire); }
 
 /* Mushroom Kingdom Factions */
-.faction-regency h4 { color: var(--major-powers-color); }
-.faction-loyalists h4 { color: var(--accent-color); }
-.faction-koopa h4 { color: var(--regional-powers-color); }
-.faction-fawful h4 { color: var(--positive-color); }
+.faction-regency h4 { color: var(--faction-mushroom_regency); }
+.faction-loyalists h4 { color: var(--faction-peach_loyalists); }
+.faction-koopa h4 { color: var(--faction-koopa_troop); }
+.faction-fawful h4 { color: var(--faction-fawfuls_furious_freaks); }
 
 
 .command-details p {

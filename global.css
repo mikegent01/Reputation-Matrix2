@@ -21,6 +21,41 @@
     --mystical-ancient-color: #a371f7;      /* Purple for magic, mystery, ancient powers */
     --underworld-fringe-color: #6a737d;    /* Slate Grey for criminal, fringe groups */
     --interdimensional-threat-color: #e94a89; /* Vibrant Pink for chaotic, dangerous threats */
+    
+    /* -- Faction Specific Colors -- */
+    --faction-regal_empire: #FFD700;
+    --faction-iron_legion: #ADB5BD;
+    --faction-onyx_hand: #8B0000;
+    --faction-mages_guild: #8A2BE2;
+    --faction-silver_flame: #C0C0C0;
+    --faction-oathbound_judges: #007BFF;
+    --faction-moonfang_pack: #556B2F;
+    --faction-toad_gang: #A0522D;
+    --faction-toad_cult: #9932CC;
+    --faction-mushroom_regency: #4169E1;
+    --faction-peach_loyalists: #FFDAB9;
+    --faction-fawfuls_furious_freaks: #32CD32;
+    --faction-liberated_toads: #87CEEB;
+    --faction-freelancer_underworld: #2F4F4F;
+    --faction-cosmic_jesters: #FF69B4;
+    --faction-the_unchained: #FF4500;
+    --faction-ratchet_raiders: #D2691E;
+    --faction-crimson_fleet: #DC143C;
+    --faction-wario_land: #FFAC1C;
+    --faction-iron_fists: #495057;
+    --faction-diamond_city_investigators: #8B4513;
+    --faction-goodstyle_artisans: #20B2AA;
+    --faction-unaligned: #6c757d;
+    --faction-tea_leaf_syndicate: #6B8E23;
+    --faction-beanbean_kingdom: #90EE90;
+    --faction-flower_kingdom: #FFB6C1;
+    --faction-dk_crew: #FFE135;
+    --faction-yoshi_clans: #7FFF00;
+    --faction-kremling_krew: #808000;
+    --faction-knights_of_the_gilded_lily: #FAFAD2;
+    --faction-rakasha_clans: #D2B48C;
+    --faction-koopa_troop: #006400;
+    --faction-rebel_clans: #800000;
 
     --font-primary: 'Roboto Mono', monospace;
     --font-display: 'Orbitron', sans-serif;

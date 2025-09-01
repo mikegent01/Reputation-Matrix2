@@ -23,12 +23,12 @@ const MIDLANDS_DIET_DATA = {
         { name: 'Yale Shores', votes: 2, bias: 'magic', loyalty: 55, faction: 'mages_guild' }
     ],
     coalitions: {
-        imperial_concordat: { name: 'The Imperial Concordat', color: 'var(--major-powers-color)', factions: ['regal_empire', 'iron_legion'], description: "Represents the old guard of the Regal Empire, championing order, tradition, and human supremacy." },
-        sanguine_covenant: { name: 'The Sanguine Covenant', color: 'var(--negative-color)', factions: ['onyx_hand'], description: "The political arm of the ancient vampire covens, operating through shadow, blackmail, and centuries of accumulated influence." },
-        territorial_pact: { name: 'The Territorial Pact', color: 'var(--regional-powers-color)', factions: ['moonfang_pack'], description: "Represents the fierce werewolf clans, concerned primarily with sovereignty and protecting their ancestral hunting grounds." },
-        arcane_congress: { name: 'The Arcane Congress', color: 'var(--mystical-ancient-color)', factions: ['mages_guild'], description: "The Mages' Guild acts as its own independent and influential voting bloc, focused on magical regulation and Guild autonomy." },
-        heartland_alliance: { name: 'The Heartland Alliance', color: 'var(--neutral-color)', factions: ['unaligned'], description: "A pragmatic bloc representing the common folk, whose votes are often the deciding factor in the Diet." },
-        chaos_caucus: { name: 'The Chaos Caucus', color: 'var(--interdimensional-threat-color)', factions: ['cosmic_jesters', 'freelancer_underworld'], description: "A force of pure disruption, seeking to undermine organized government through absurdity and randomness." }
+        imperial_concordat: { name: 'The Imperial Concordat', color: 'var(--faction-regal_empire)', factions: ['regal_empire', 'iron_legion'], description: "Represents the old guard of the Regal Empire, championing order, tradition, and human supremacy." },
+        sanguine_covenant: { name: 'The Sanguine Covenant', color: 'var(--faction-onyx_hand)', factions: ['onyx_hand'], description: "The political arm of the ancient vampire covens, operating through shadow, blackmail, and centuries of accumulated influence." },
+        territorial_pact: { name: 'The Territorial Pact', color: 'var(--faction-moonfang_pack)', factions: ['moonfang_pack'], description: "Represents the fierce werewolf clans, concerned primarily with sovereignty and protecting their ancestral hunting grounds." },
+        arcane_congress: { name: 'The Arcane Congress', color: 'var(--faction-mages_guild)', factions: ['mages_guild'], description: "The Mages' Guild acts as its own independent and influential voting bloc, focused on magical regulation and Guild autonomy." },
+        heartland_alliance: { name: 'The Heartland Alliance', color: 'var(--faction-unaligned)', factions: ['unaligned'], description: "A pragmatic bloc representing the common folk, whose votes are often the deciding factor in the Diet." },
+        chaos_caucus: { name: 'The Chaos Caucus', color: 'var(--faction-cosmic_jesters)', factions: ['cosmic_jesters', 'freelancer_underworld'], description: "A force of pure disruption, seeking to undermine organized government through absurdity and randomness." }
     }
 };
 

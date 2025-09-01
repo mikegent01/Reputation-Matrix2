@@ -26,7 +26,7 @@ export const MARKOP_QUESTS = {
         assignee: "Markop",
         assigneeKey: 'markop',
         status: "pending",
-        motivation: "Markop is haunted by the death and destruction he has been a party to. He feels his oath has been tarnished, and seeks to atone not by seeking forgiveness from his old orders, but by performing a selfless act of protection for the innocent.",
+        pending_condition: "Pending Activation: The party must travel to a war-torn region on the ground, such as the Mushroom Kingdom heartlands or the Midlands border, and find a community that is not aligned with a major power and is in desperate need of a protector.",
         steps: [
             { id: 'step1', title: "Find a Community in Need", status: 'active', description: "Search the war-torn borderlands for a refugee camp or small village that has been forgotten by the major powers and is beset by bandits or monsters." },
             { id: 'step2', title: "Earn Their Trust", status: 'locked', description: "The people are rightly suspicious of armed strangers. Markop must prove his intentions are noble by defending them from a threat without asking for reward." },
@@ -59,7 +59,7 @@ export const MARKOP_QUESTS = {
         assignee: "Markop",
         assigneeKey: 'markop',
         status: "pending",
-        pending_condition: "Markop sees the Rakasha's wisdom and honor as a path to his own spiritual recovery. He embraces the trial not as a challenge, but as a necessary step to cleanse his spirit and prove to himself, and his allies, that he is worthy of their trust.",
+        pending_condition: "Pending Activation: Markop must travel to the Wilderlands and formally request the trial from Chief Thornpaw. This can only be done once the party has disembarked from the Vigilance and established contact with the Rakasha clans.",
         steps: [
             { id: 'step1', title: "The Hunt", status: 'active', description: "Track and non-lethally subdue a legendary Shadow Cat, a creature known for its cunning and near-invisibility." },
             { id: 'step2', title: "The Mountain", status: 'locked', description: "Survive three days and nights alone on the highest peak of the mountains, with no food or supplies, meditating on the balance of the world." },
@@ -199,7 +199,7 @@ export const MARKOP_QUESTS = {
         assignee: "Markop",
         assigneeKey: 'markop',
         status: "pending",
-        pending_condition: "Markop needs a new symbol for his calling. No longer a sword of a divine order, he seeks to be a shield for those who cannot defend themselves. Finding this artifact is a test of his new, selfless purpose.",
+        pending_condition: "Pending Activation: The party must first research the legends of the 'Aegis of the Guardian' in a well-stocked library, such as the one in the Mages' Guild Spire or the Royal Archives, to learn of its possible whereabouts.",
         steps: [
             { id: 'step1', title: "The Legend", status: 'active', description: "Research the legend of the 'Aegis of the Guardian' and its last known location." },
             { id: 'step2', title: "The Trial", status: 'locked', description: "The Aegis is not simply found, but earned. Markop must face a trial where he must choose to protect a group of innocents over achieving a great personal victory." }
@@ -244,7 +244,7 @@ export const MARKOP_QUESTS = {
         assignee: "Markop",
         assigneeKey: 'markop',
         status: "pending",
-        pending_condition: "Markop sees Humpik as a comrade and respects his loyalty. He cannot stand by and watch his friend charge to his death. This is an opportunity to forge a deeper bond and demonstrate that true strength lies in teamwork and strategy, not just brute force.",
+        pending_condition: "Pending Activation: This quest becomes available when Humpik decides to activate his 'Koopa Rescue Mission' quest. Markop must then speak with Humpik to convince him to accept help.",
         steps: [
             { id: 'step1', title: "Learn of Humpik's Plan", status: 'active', description: "Humpik is preparing for a solo mission. Markop must approach him to learn the details of his reckless plan." },
             { id: 'step2', title: "A Council of War", status: 'locked', description: "Convince the proud Koopa warrior that accepting help is a sign of strength, not weakness. Plan a joint rescue mission that utilizes both of their skills." },
