@@ -238,5 +238,11 @@ export const BOOK_DESCRIPTIONS = {
         reading_time: "Approx. 30 minutes",
         pages: 50,
         effect: "Provides bonuses to survival and negotiation checks in lawless territories."
+    },
+    "A Guide to the Great Libraries": {
+        summary: "A comprehensive guide to the various public and private libraries across the Doughnut World, written by an archivist from the Mages' Guild.",
+        reading_time: "Approx. 30 minutes",
+        pages: 68,
+        effect: "Provides a list of known libraries and a general idea of their collections, helping players find specific information."
     }
 };

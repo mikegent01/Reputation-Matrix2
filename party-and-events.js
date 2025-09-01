@@ -1,4 +1,3 @@
-
 export const AUXILIARY_PARTY = {
     dan: {
         name: "Dan",
@@ -231,13 +230,14 @@ export const RUMORS = [
     {
         id: 'tea_party_incident',
         title: "The Tea Party Incident",
-        description: "A meeting with the Tea Leaf Syndicate devolved into a massive brawl after a panic button was pressed. In the chaos, Archie killed numerous combatants, including most of the Syndicate's enforcers.",
-        targets: ['archie'],
-        effects: { 
-            tea_leaf_syndicate: -70, 
-            toad_gang: -30, 
+        description: "A meeting with the 'Tea Leaf Syndicate' devolved into a massive brawl after a panic button is pressed, summoning both Toad Gang and Iron Legion forces. In the chaos, Archie unleashes a fireball, killing numerous combatants, including most of the Syndicate's muscle, leaving only Earl Grey and Chai alive.",
+        targets: ['archie', 'humpik', 'iron_legion', 'toad_gang'],
+        effects: {
+            tea_leaf_syndicate: -50,
             iron_legion: -15,
-            freelancer_underworld: 10
+            toad_gang: -15,
+            freelancer_underworld: 10,
+            regal_empire: -10
         }
     },
     {
@@ -249,93 +249,5 @@ export const RUMORS = [
             peach_loyalists: 10, 
             koopa_troop: 5
         }
-    }
-];
-
-export const TIMELINE = [
-    {
-        phase: '1020 BF',
-        title: 'War of Blood and Moon Begins',
-        description: "<p>The start of the now-generational shadow war between the vampire covens of the Onyx Hand and the werewolf clans of the Moonfang Pack.</p>",
-        participants: []
-    },
-    {
-        phase: '936 BF',
-        title: 'Mushroom Civil War Ignites',
-        description: "<p>The Mushroom Kingdom fractures into a prolonged civil war after years of mounting instability.</p>",
-        participants: []
-    },
-    {
-        phase: '934 BF',
-        title: 'Death of the Princess',
-        description: "<p>Princess Peach is killed amidst the chaos of the civil war, a pivotal event that deepens the existing schisms and fuels over a century of conflict.</p>",
-        participants: ['bowser'] // Bowser is blamed for the instability
-    },
-    // All subsequent events are considered "Current Events" in 1040 BF
-    {
-        phase: '1040 BF',
-        title: 'Dragon Slain',
-        description: "<p>The party defeats the dragon Ignis in the northern mountains, an act praised by militarists but condemned by magical researchers.</p>",
-        participants: ['archie', 'markop']
-    },
-    {
-        phase: '1040 BF',
-        title: 'Underworld Politics',
-        description: "<p>Archie Miser is acquitted of killing a mage by an Onyx Hand tribunal, greatly angering the Mages' Guild.</p>",
-        participants: ['archie']
-    },
-    {
-        phase: '1040 BF',
-        title: 'Smuggling Bust',
-        description: "<p>The party dismantles a key Iron Fists smuggling ring, placing a bounty on their heads.</p>",
-        participants: ['archie', 'markop']
-    },
-    {
-        phase: '1040 BF',
-        title: 'Airship Hijacked',
-        description: "<p>X.O. betrays the party, seizing control of the airship 'Vigilance'. Warlord Bowser is taken captive.</p>",
-        participants: ['xo', 'archie', 'markop', 'humpik', 'bowser']
-    },
-    {
-        phase: '1040 BF',
-        title: 'The Great Betrayal',
-        description: "<p>In a final, chaotic confrontation, the party, with the critical assistance of Dan the Toad, manages to neutralize X.O. and regain control of the Vigilance. The airship is secured, but the full extent of X.O.'s plans and the whereabouts of her allies remain unknown.</p>",
-        participants: ['archie', 'markop', 'humpik', 'bowser', 'xo', 'dan_the_toad']
-    },
-    {
-        phase: '1040 BF',
-        title: 'The Syrup Schism & Core Crisis',
-        description: "<p>The party frees the pirate Captain Syrup, who immediately turns hostile. A chaotic confrontation ensues, revealing a traitorous toad and culminating in Humpik disabling the airship's power core with an axe, sending the 'Vigilance' into a nose-dive.</p>",
-        participants: ['archie', 'markop', 'humpik', 'bowser', 'waluigi', 'dan_the_toad', 'captain_syrup']
-    },
-    {
-        phase: '1040 BF',
-        title: 'Aftermath on the Vigilance',
-        description: "<p>The ship's power is restored using X.O.'s staff. In the chaos, Big T reappears only to be assassinated, Iron Legion agents attack and are detained, and Waluigi's agent 'Wally' is revealed before making a dramatic exit with Bowser, leaving the Liberated Toads critically injured.</p>",
-        participants: ['archie', 'markop', 'humpik', 'bowser', 'dan', 'ryan']
-    },
-    {
-        phase: '1040 BF',
-        title: 'Standoff and Sabotage',
-        description: "<p>A tense negotiation with the Iron Legion leads to a bomb plot being uncovered. Captain Syrup escapes using an illusion, while Lario and a revived Big T are caught trying to sabotage the power core. Humpik intervenes, forcing them both to retreat.</p>",
-        participants: ['markop', 'humpik', 'lario', 'bigt', 'captain_syrup']
-    },
-    {
-        phase: '1040 BF',
-        title: 'The Tea Party Incident',
-        description: "<p>An attempt by Archie to meet with the 'Tea Leaf Syndicate' devolved into a massive brawl after a panic button is pressed, summoning both Toad Gang and Iron Legion forces. In the chaos, Archie unleashes a fireball, killing numerous combatants, including most of the Syndicate's muscle, leaving only Earl Grey and Chai alive.</p>",
-        participants: ['archie', 'humpik', 'iron_legion', 'toad_gang']
-    },
-    {
-        phase: '1040 BF',
-        title: 'Secrets at the Gala',
-        description: "<p>Peach Loyalist scouts Embercap and Mistveil infiltrate Fawful's victory gala. During the event, Chief Thornpaw of the Rakasha finds Mistveil and reveals a stunning secret: he was in a relationship with Princess Peach and knows of a secret hatch in her room. This provides a massive new lead in the investigation of her death.</p>",
-        participants: ['captain_toadette', 'chief_thornpaw', 'fawful']
-    },
-    {
-        phase: '1040 BF, Day 11',
-        title: 'Chaos on the Vigilance',
-        description: "<p>A series of chaotic events unfolds aboard the Vigilance. Fawful reveals an alliance with dragons. Embercap's infiltration of Fawful's gala goes wrong, resulting in the death of Jade Grit and his own banishment. The main party battles the Tea Leaf Syndicate and Iron Legion forces. Waluigi saves Humpik, Wario is found in a barrel, and the ship's use in a massive toad trafficking operation is revealed. The day ends with the Iron Legion demanding the party hand over key prisoners, and a new, personal vendetta against Archie is revealed in the form of the toad, Bryan.</p>",
-        participants: ['archie', 'markop', 'humpik', 'bowser', 'waluigi', 'lario', 'dan', 'toad_lee', 'roger', 'ryan', 'bones', 'earl_grey', 'chai', 'green_t']
     }
 ];

@@ -10,7 +10,7 @@ import { WIDESPREAD_FACTIONS } from './factions/widespread.js';
 import { WILDERLANDS_FACTIONS } from './factions/wilderlands.js';
 
 
-import { AUXILIARY_PARTY, RUMORS, TIMELINE } from './party-and-events.js';
+import { AUXILIARY_PARTY, RUMORS } from './party-and-events.js';
 import { PARLIAMENT_MEMBERS } from './parliament-members.js';
 import { RAKASHA_DETAILS } from './rakasha-clans-details.js';
 import { REBEL_CLANS_DETAILS } from './rebel-clans-details.js';
@@ -38,7 +38,6 @@ export const LORE_DATA = {
     auxiliary_party: { ...AUXILIARY_PARTY, group: { name: "Group Focuses" } },
     factions: combinedFactions,
     rumors: RUMORS,
-    timeline: TIMELINE,
     faction_details: {
         rakasha_clans: RAKASHA_DETAILS,
         rebel_clans: REBEL_CLANS_DETAILS,

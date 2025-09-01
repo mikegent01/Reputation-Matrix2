@@ -90,7 +90,8 @@ export const state = {
             items: [
                 "Mushroom Kingdom History, Vol. III", 
                 "A Field Guide to Fungal Alchemy", 
-                "Koopa Troop Tactics"
+                "Koopa Troop Tactics",
+                "A Guide to the Great Libraries"
             ] 
         }
     },

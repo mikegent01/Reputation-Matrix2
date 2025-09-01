@@ -41,6 +41,7 @@ import { BOOK_DATA as rootkitGrimoire } from './books/rootkit_grimoire.js';
 import { BOOK_DATA as navigatingDatastream } from './books/navigating_datastream.js';
 import { BOOK_DATA as studyInMemetics } from './books/study_in_memetics.js';
 import { BOOK_DATA as ironLegionManual } from './books/iron_legion_manual.js';
+import { BOOK_DATA as greatLibraries } from './books/great_libraries.js';
 
 import { BOOK_DESCRIPTIONS } from './books/book_descriptions.js';
 
@@ -105,6 +106,7 @@ const bookDataMap = {
     "Navigating the Datastream": navigatingDatastream,
     "A Study in Memetics": studyInMemetics,
     "Iron Legion Field Manual": ironLegionManual,
+    "A Guide to the Great Libraries": greatLibraries,
 };
 
 function getBookCoverUrl(bookTitle) {
@@ -112,6 +114,7 @@ function getBookCoverUrl(bookTitle) {
     if (bookTitle.includes("History")) return 'book_cover_history.png';
     if (bookTitle.includes("Alchemy")) return 'book_cover_alchemy.png';
     if (bookTitle.includes("Tactics")) return 'book_cover_tactics.png';
+    if (bookTitle.includes("Libraries")) return 'book_cover_library.png';
     return 'book_cover_history.png'; // default/fallback
 }
 

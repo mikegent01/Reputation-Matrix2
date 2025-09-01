@@ -1,6 +1,4 @@
-
-import { HISTORICAL_TIMELINE } from './calendar-data.js';
-import { TIMELINE as RECENT_TIMELINE } from './party-and-events.js'; // Import recent events
+import { HISTORICAL_TIMELINE as combinedTimeline } from './timeline-data.js';
 import { playSound } from './common.js';
 
 const timelineContainer = document.getElementById('timeline-container');
@@ -9,44 +7,47 @@ const filterBar = document.getElementById('timeline-filter-bar');
 let activeFilters = new Set();
 let observer;
 
-// Normalize recent events to match the historical timeline structure
-const normalizedRecentEvents = RECENT_TIMELINE.map(event => ({
-    date: event.phase,
-    title: event.title,
-    description: event.description.replace(/<p>|<\/p>/g, ''), // Remove p tags
-    icon: 'icon_focus.png', // Assign a default icon
-    category: 'Recent Event'
-}));
-
-// Combine historical and recent events
-const combinedTimeline = [...HISTORICAL_TIMELINE, ...normalizedRecentEvents];
-
+/**
+ * Generates a numeric key for sorting timeline events.
+ * Handles headers, BF/AF epochs, and day-of-the-year sorting.
+ * @param {object} event - The timeline event object.
+ * @returns {number|string} A value for sorting. Higher numbers are older.
+ */
 function getSortKey(event) {
+    // Headers sort first/last
     if (event.type === 'era_header') {
-        if (event.title.includes('Distant Past')) return -100000;
-        if (event.title.includes('Prophesied Era')) return 0.5; // This will come after all BF events
+        if (event.title.includes('Distant Past')) return Infinity;
+        if (event.title.includes('Prophesied Era')) return -0.5;
         return 0;
     }
-    
-    const dateStr = event.date || event.phase;
-    const isBF = dateStr.includes('BF');
-    const isAF = dateStr.includes('AF');
-    
-    // Extract only the first sequence of digits for the year
-    const yearMatch = dateStr.match(/\d+/);
-    const year = yearMatch ? parseInt(yearMatch[0], 10) : 0;
 
-    if (isBF) return -year;
-    if (isAF) return year;
-    return -year; // Default assumption for dates without epoch
+    const dateStr = event.date || event.phase;
+    const isAF = dateStr.includes('AF');
+
+    // Match the primary year number (e.g., the '1' in '1 BF (Year 1040)')
+    const yearMatch = dateStr.match(/^c\.\s*(\d+)|(\d+)/);
+    const year = yearMatch ? parseInt(yearMatch[1] || yearMatch[2], 10) : 0;
+    
+    // Match the day number if present
+    const dayMatch = dateStr.match(/Day (\d+)/);
+    const day = dayMatch ? parseInt(dayMatch[1], 10) : 0;
+
+    if (isAF) {
+        // AF dates sort ascending (1 AF, 2 AF...).
+        // We make them negative so they appear after BF dates in a reverse sort.
+        return -(year + day / 100);
+    } else {
+        // BF dates sort descending (8000 BF, ..., 1 BF...).
+        // Larger number is older. We subtract the day fraction to sort within a year.
+        return year - day / 100;
+    }
 }
 
-const sortedTimeline = combinedTimeline.sort((a, b) => getSortKey(a) - getSortKey(b));
 
 function renderFilters() {
     if (!filterBar) return;
 
-    const categories = [...new Set(sortedTimeline.filter(e => e.category).map(e => e.category))];
+    const categories = [...new Set(combinedTimeline.filter(e => e.category).map(e => e.category))];
     
     let filterHTML = '<button class="filter-btn active" data-category="all">All</button>';
     filterHTML += categories.sort().map(cat => 
@@ -63,11 +64,14 @@ function renderTimeline() {
         observer.disconnect();
     }
 
+    // Sort descending, so largest year (oldest BF date) comes first
+    const sortedTimeline = combinedTimeline.sort((a, b) => getSortKey(b) - getSortKey(a));
+
     timelineContainer.innerHTML = '';
 
     const filteredEvents = activeFilters.size === 0 
         ? sortedTimeline 
-        : sortedTimeline.filter(event => event.type === 'era_header' || activeFilters.has(event.category)); // Always show headers
+        : sortedTimeline.filter(event => event.type === 'era_header' || activeFilters.has(event.category));
     
     filteredEvents.forEach(event => {
         const eventElement = document.createElement('div');
