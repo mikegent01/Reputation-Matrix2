@@ -59,7 +59,7 @@ export const MARKOP_QUESTS = {
         assignee: "Markop",
         assigneeKey: 'markop',
         status: "pending",
-        motivation: "Markop sees the Rakasha's wisdom and honor as a path to his own spiritual recovery. He embraces the trial not as a challenge, but as a necessary step to cleanse his spirit and prove to himself, and his allies, that he is worthy of their trust.",
+        pending_condition: "Markop sees the Rakasha's wisdom and honor as a path to his own spiritual recovery. He embraces the trial not as a challenge, but as a necessary step to cleanse his spirit and prove to himself, and his allies, that he is worthy of their trust.",
         steps: [
             { id: 'step1', title: "The Hunt", status: 'active', description: "Track and non-lethally subdue a legendary Shadow Cat, a creature known for its cunning and near-invisibility." },
             { id: 'step2', title: "The Mountain", status: 'locked', description: "Survive three days and nights alone on the highest peak of the mountains, with no food or supplies, meditating on the balance of the world." },
@@ -199,7 +199,7 @@ export const MARKOP_QUESTS = {
         assignee: "Markop",
         assigneeKey: 'markop',
         status: "pending",
-        motivation: "Markop needs a new symbol for his calling. No longer a sword of a divine order, he seeks to be a shield for those who cannot defend themselves. Finding this artifact is a test of his new, selfless purpose.",
+        pending_condition: "Markop needs a new symbol for his calling. No longer a sword of a divine order, he seeks to be a shield for those who cannot defend themselves. Finding this artifact is a test of his new, selfless purpose.",
         steps: [
             { id: 'step1', title: "The Legend", status: 'active', description: "Research the legend of the 'Aegis of the Guardian' and its last known location." },
             { id: 'step2', title: "The Trial", status: 'locked', description: "The Aegis is not simply found, but earned. Markop must face a trial where he must choose to protect a group of innocents over achieving a great personal victory." }
@@ -244,7 +244,7 @@ export const MARKOP_QUESTS = {
         assignee: "Markop",
         assigneeKey: 'markop',
         status: "pending",
-        motivation: "Markop sees Humpik as a comrade and respects his loyalty. He cannot stand by and watch his friend charge to his death. This is an opportunity to forge a deeper bond and demonstrate that true strength lies in teamwork and strategy, not just brute force.",
+        pending_condition: "Markop sees Humpik as a comrade and respects his loyalty. He cannot stand by and watch his friend charge to his death. This is an opportunity to forge a deeper bond and demonstrate that true strength lies in teamwork and strategy, not just brute force.",
         steps: [
             { id: 'step1', title: "Learn of Humpik's Plan", status: 'active', description: "Humpik is preparing for a solo mission. Markop must approach him to learn the details of his reckless plan." },
             { id: 'step2', title: "A Council of War", status: 'locked', description: "Convince the proud Koopa warrior that accepting help is a sign of strength, not weakness. Plan a joint rescue mission that utilizes both of their skills." },
