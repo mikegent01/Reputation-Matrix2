@@ -17,6 +17,7 @@ export const deviantWebPois = [
         description: "An infinite, ever-expanding library containing stories about every character and world imaginable, written by devoted fans. Quality varies wildly.",
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 10 },
         political_influence: 2, economic_value: 3, military_strength: 1, population: 1000,
+        library_summary: "An infinite, ever-expanding library containing stories about every character and world imaginable, written by devoted fans. Quality varies wildly, but the passion is undeniable. The collection is vast and chaotic, covering every conceivable genre and crossover.",
         libraryStockKey: 'fanfic_scriptorium'
     },
     {

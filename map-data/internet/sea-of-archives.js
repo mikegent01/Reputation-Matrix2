@@ -33,6 +33,7 @@ export const seaOfArchivesPois = [
         description: "A library dedicated to the history of Admin Zero. Most of the books are either empty, written in binary, or simply contain the word 'REDACTED'.",
         factionId: 'internet_federation', intelReq: { faction: 'internet_federation', level: 90 },
         political_influence: 5, economic_value: 2, military_strength: 6, population: 50,
+        library_summary: "A library dedicated to the history of Admin Zero. Most of the books are either empty, written in binary, or simply contain the word 'REDACTED'. It offers more questions than answers, but contains a basic guide to navigating the datastream.",
         libraryStockKey: 'library_of_zero'
     },
     {

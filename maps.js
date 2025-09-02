@@ -1,5 +1,3 @@
-
-
 import { state, loadState, saveState } from './state.js';
 import * as ui from './map-ui.js';
 import * as renderer from './map-renderer.js';
@@ -16,6 +14,13 @@ export let isEditMode = false;
 export let editSessionData = null; // Holds cloned data for an edit session
 export let renderedMapDimensions = { width: 0, height: 0 }; // Authoritative dimensions
 
+// --- DOM ELEMENTS ---
+const mapModal = document.getElementById('map-modal');
+const mapModalTitle = document.getElementById('map-modal-title');
+const mapModalContent = document.getElementById('map-modal-content');
+const mapModalClose = document.getElementById('map-modal-close');
+
+
 // --- STATE MUTATORS ---
 export function setActiveMapId(mapId) {
     activeMapId = mapId;
@@ -31,6 +36,21 @@ export function setEditSessionData(data) {
 }
 export function setRenderedMapDimensions(dimensions) {
     renderedMapDimensions = dimensions;
+}
+
+
+// --- MODAL LOGIC ---
+export function showMapModal(title, content) {
+    if (!mapModal) return;
+    mapModalTitle.innerHTML = title;
+    mapModalContent.innerHTML = content;
+    mapModal.style.display = 'flex';
+}
+
+export function hideMapModal() {
+    if (mapModal) {
+        mapModal.style.display = 'none';
+    }
 }
 
 
@@ -81,34 +101,55 @@ function setupEventListeners() {
     ui.setupTabEventListeners();
     editor.setupEditorEventListeners();
 
+    if (mapModalClose) {
+        mapModalClose.addEventListener('click', hideMapModal);
+    }
+    if (mapModal) {
+        mapModal.addEventListener('click', (e) => {
+            if (e.target === mapModal) {
+                hideMapModal();
+            }
+        });
+    }
+
     const displayArea = document.getElementById('map-display-area');
     if (displayArea) {
         displayArea.addEventListener('click', e => {
-            if (!isEditMode && !transform.wasDragged()) {
-                const poiMarker = e.target.closest('.poi-marker');
-                const troopMarker = e.target.closest('.troop-marker');
-                const vigilanceMarker = e.target.closest('.vigilance-marker');
+            if (isEditMode || transform.wasDragged()) return;
+            
+            const poiMarker = e.target.closest('.poi-marker');
+            const troopMarker = e.target.closest('.troop-marker');
+            const vigilanceMarker = e.target.closest('.vigilance-marker');
 
-                if (poiMarker) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    playSound('click.mp3');
-                    const poi = findPoiById(poiMarker.dataset.poiId);
-                    if (poi) {
-                        renderer.renderDetailPanel(poi.id);
+            if (poiMarker) {
+                e.preventDefault();
+                e.stopPropagation();
+                playSound('click.mp3');
+                const poi = findPoiById(poiMarker.dataset.poiId);
+                if (poi) {
+                    if (poi.libraryStockKey) {
+                        renderer.showLibraryPopup(poi);
+                    } else if (activeMapMode === 'laws') {
+                        renderer.showLawsPopup(poi);
+                    } else {
+                        renderer.showDetailPanel(poi.id);
                     }
-                } else if (troopMarker) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    playSound('click.mp3');
-                    renderer.renderTacticalDetailPanel(troopMarker.dataset.troopId, 'troop');
-                } else if (vigilanceMarker) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                     playSound('click.mp3');
-                    renderer.renderTacticalDetailPanel(vigilanceMarker.dataset.vigilanceId, 'vigilance');
-                } else if (!e.target.closest('.clickable-tactical')) {
-                    // Clicked on map background, not a POI or clickable tactical SVG element
+                }
+            } else if (troopMarker) {
+                e.preventDefault();
+                e.stopPropagation();
+                playSound('click.mp3');
+                renderer.renderTacticalDetailPanel(troopMarker.dataset.troopId, 'troop');
+            } else if (vigilanceMarker) {
+                e.preventDefault();
+                e.stopPropagation();
+                 playSound('click.mp3');
+                renderer.renderTacticalDetailPanel(vigilanceMarker.dataset.vigilanceId, 'vigilance');
+            } else if (!e.target.closest('.clickable-tactical')) {
+                // Clicked on map background
+                if(activeMapMode === 'laws') {
+                    renderer.showLawsPopup(null); // Show base laws for the region
+                } else {
                     renderer.renderMapModeLegend();
                     transform.resetTransform();
                 }

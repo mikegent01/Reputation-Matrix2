@@ -33,6 +33,7 @@ export const deepWebPois = [
         description: "A legendary library containing all the information that has ever been deleted or censored from the Surface Web. A place of dangerous, forbidden knowledge.",
         factionId: 'unaligned', intelReq: { faction: 'hacktivist_collectives', level: 85 },
         political_influence: 5, economic_value: 7, military_strength: 3, population: 10,
+        library_summary: "A legendary library containing all the information that has ever been deleted or censored from the Surface Web. A place of dangerous, forbidden knowledge, accessible only to those who can find it in the depths of the anonymous network.",
         libraryStockKey: 'unseen_library'
     },
     {

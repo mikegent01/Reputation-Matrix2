@@ -155,6 +155,7 @@ export const mushroomCityData = {
             economic_value: 4,
             military_strength: 3,
             population: 150,
+            library_summary: "The official repository of the Mushroom Kingdom's history, containing millennia of royal decrees, historical accounts, and genealogical records. Access is restricted, but its public terminals provide a wealth of sanitized information.",
             libraryStockKey: 'mushroom_kingdom'
         }
     ],

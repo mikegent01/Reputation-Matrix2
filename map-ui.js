@@ -1,5 +1,3 @@
-
-
 import { playSound } from './common.js';
 import { MAP_DATA } from './map-data.js';
 import * as map from './maps.js';
@@ -57,6 +55,7 @@ export function renderTabs() {
         <button class="mode-btn ${map.activeMapMode === 'military' ? 'active' : ''}" data-mode="military">Military</button>
         <button class="mode-btn ${map.activeMapMode === 'tactical' ? 'active' : ''}" data-mode="tactical">Tactical</button>
         <button class="mode-btn ${map.activeMapMode === 'population' ? 'active' : ''}" data-mode="population">Population</button>
+        <button class="mode-btn ${map.activeMapMode === 'laws' ? 'active' : ''}" data-mode="laws">Laws & Traditions</button>
     `;
     mapControls.appendChild(modeSelector);
 }

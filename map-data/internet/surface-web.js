@@ -33,6 +33,7 @@ export const surfaceWebPois = [
         description: "A vast, serene garden where every plant and stone is inscribed with a piece of user-submitted information. It is constantly tended by a legion of volunteer editors. Its public data-terminals allow access to its collection of digital books.",
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 5 },
         political_influence: 7, economic_value: 6, military_strength: 2, population: 2000,
+        library_summary: "A vast, serene garden where every plant and stone is inscribed with a piece of user-submitted information. It is constantly tended by a legion of volunteer editors who protect its neutrality. Its data-terminals provide access to a wide range of public domain texts.",
         libraryStockKey: 'internet'
     },
     {
@@ -122,6 +123,7 @@ export const surfaceWebPois = [
         description: "A vast, visual archive that serves as the primary host for the images and GIFs that fuel the meme economy. Its servers are under constant strain but are a vital cultural repository.",
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 10 },
         political_influence: 5, economic_value: 6, military_strength: 2, population: 500,
+        library_summary: "A vast, visual archive that serves as the primary host for the images and GIFs that fuel the meme economy. While not a traditional library, its cultural significance is immense, containing a single, bizarre text on 'The Art of the WAH'.",
         libraryStockKey: 'imgurian_archives'
     },
     {

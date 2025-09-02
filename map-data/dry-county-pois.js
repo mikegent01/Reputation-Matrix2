@@ -156,6 +156,7 @@ export const dryCountyData = {
             economic_value: 1,
             military_strength: 1,
             population: 1,
+            library_summary: "Welcome to the Bureau of Lost Socks, the cosmic repository for every sock that has ever gone missing. Our infinite, maddening archive is tended by a polite gnome who can help you find *a* sock, but never, ever its matching pair. The library's single, user-submitted tome is a treatise on memetic theory, which may or may not be related.",
             libraryStockKey: 'lost_socks'
         }
     ]

@@ -1,4 +1,5 @@
 import { LAW_DATA, UNRECOGNIZED_CODES } from './laws-data.js';
+import { LORE_DATA } from './lore.js';
 import { playSound } from './common.js';
 
 const recognizedGrid = document.getElementById('recognized-nations-grid');
@@ -12,17 +13,44 @@ const ICONS = {
     penal: '⚖️'
 };
 
+function renderFactionOpinions(opinions) {
+    if (!opinions || Object.keys(opinions).length === 0) {
+        return '';
+    }
+
+    const opinionsHTML = Object.entries(opinions).map(([factionKey, opinion]) => {
+        const faction = LORE_DATA.factions[factionKey];
+        if (!faction) return '';
+        const stanceClass = opinion.stance.toLowerCase() === 'support' ? 'stance-support' : 'stance-oppose';
+        return `
+            <div class="faction-opinion">
+                <strong>${faction.name} (<span class="${stanceClass}">${opinion.stance}</span>):</strong>
+                <p>"${opinion.reason}"</p>
+            </div>
+        `;
+    }).join('');
+
+    return `
+        <details class="law-opinions-details">
+            <summary>View Faction Opinions</summary>
+            <div class="law-opinions-content">
+                ${opinionsHTML}
+            </div>
+        </details>
+    `;
+}
+
 function renderPolicySpectrum(law) {
     return `
         <div class="policy-spectrum-container">
             ${law.spectrum.map((policy, index) => {
                 const isCurrent = index === law.current;
-                let trendClass = '';
+                let trendIndicator = '';
                 if (isCurrent) {
-                    if (law.trend === 1) trendClass = 'trending-up';
-                    if (law.trend === -1) trendClass = 'trending-down';
+                    if (law.trend === 1) trendIndicator = '<span class="trend-arrow" style="color: var(--positive-color);">▲</span>';
+                    if (law.trend === -1) trendIndicator = '<span class="trend-arrow" style="color: var(--negative-color);">▼</span>';
                 }
-                return `<div class="spectrum-step ${isCurrent ? 'current' : ''} ${trendClass}" title="${policy}">${policy}</div>`;
+                return `<div class="spectrum-step ${isCurrent ? 'current' : ''}" title="${policy.description}">${policy.name}${trendIndicator}</div>`;
             }).join('')}
         </div>
     `;
@@ -31,16 +59,16 @@ function renderPolicySpectrum(law) {
 function renderLawCard(data) {
     const tabs = ['political', 'military', 'economic', 'social', 'penal'];
     
-    const tabsHTML = tabs.map((tab, index) => {
-        if (!data[tab] || data[tab].length === 0) return '';
-        return `<button class="law-tab-btn ${index === 0 ? 'active' : ''}" data-tab="${tab}">
-            ${tab.charAt(0).toUpperCase() + tab.slice(1)}
-        </button>`;
-    }).join('');
+    const availableTabs = tabs.filter(tab => data[tab] && data[tab].length > 0);
+    if (availableTabs.length === 0) return ''; // Don't render card if no laws are defined
 
-    const contentHTML = tabs.map((tab, index) => {
-        if (!data[tab] || data[tab].length === 0) return '';
-        return `
+    const tabsHTML = availableTabs.map((tab, index) => `
+        <button class="law-tab-btn ${index === 0 ? 'active' : ''}" data-tab="${tab}">
+            ${tab.charAt(0).toUpperCase() + tab.slice(1)}
+        </button>
+    `).join('');
+
+    const contentHTML = availableTabs.map((tab, index) => `
         <div class="law-tab-content ${index === 0 ? 'active' : ''}" data-tab-content="${tab}">
             <ul class="law-list">
                 ${(data[tab] || []).map(law => `
@@ -51,11 +79,14 @@ function renderLawCard(data) {
                         </div>
                         <p class="current-policy-description">${law.description}</p>
                         ${renderPolicySpectrum(law)}
+                        ${renderFactionOpinions(law.opinions)}
                     </li>
                 `).join('')}
             </ul>
-        </div>`;
-    }).join('');
+        </div>`).join('');
+    
+    const supportersHTML = (data.supporters || []).map(key => `<li>${LORE_DATA.factions[key]?.name || key}</li>`).join('');
+    const opponentsHTML = (data.opponents || []).map(key => `<li>${LORE_DATA.factions[key]?.name || key}</li>`).join('');
 
     return `
         <div class="law-card" id="law-${data.name.toLowerCase().replace(/\s/g, '-')}">
@@ -64,6 +95,16 @@ function renderLawCard(data) {
                 <div class="law-card-title">
                     <h3>${data.name}</h3>
                     <p>${data.description}</p>
+                </div>
+            </div>
+            <div class="law-supporters-opponents">
+                <div class="supporter-list">
+                    <h6>Supporters</h6>
+                    <ul>${supportersHTML || '<li>None</li>'}</ul>
+                </div>
+                <div class="opponent-list">
+                    <h6>Opponents</h6>
+                    <ul>${opponentsHTML || '<li>None</li>'}</ul>
                 </div>
             </div>
             <div class="law-tabs">${tabsHTML}</div>
@@ -100,6 +141,10 @@ function setupEventListeners() {
             if (activeContent) {
                 activeContent.classList.add('active');
             }
+        }
+        
+        if (e.target.tagName === 'SUMMARY') {
+            playSound('click.mp3', 0.5);
         }
     });
 }

@@ -1,7 +1,6 @@
-
-
 import { state, saveState } from './state.js';
 import { MAP_DATA, BUILDING_TYPES } from './map-data.js';
+import { LEGAL_DATA } from './legal_data.js';
 import { FACTION_COLORS } from './factions/faction-colors.js';
 import * as map from './maps.js';
 import { LORE_DATA } from './lore.js';
@@ -38,23 +37,16 @@ function hideTooltip() {
     if (tooltip) tooltip.classList.remove('visible');
 }
 
-/**
- * Checks if the user has sufficient intel for a given requirement.
- * @param {object} requirement - An object like { faction: 'faction_key', level: 70 }.
- * @returns {boolean} True if intel is sufficient, debug is on, or no requirement exists.
- */
 function hasSufficientIntel(requirement) {
-    if (!requirement) {
-        return true; // No requirement means visible
+    if (!requirement) return true;
+    if (state.debugMode) return true;
+    if (typeof requirement === 'number') { // Simple intel check
+        return getIntelForFaction(map.activeMapId) >= requirement; // This might need refinement
     }
-    if (state.debugMode) {
-        return true;
+    if (typeof requirement.faction === 'string' && typeof requirement.level === 'number') {
+        return getIntelForFaction(requirement.faction) >= requirement.level;
     }
-    if (typeof requirement.faction !== 'string' || typeof requirement.level !== 'number') {
-        console.warn("Malformed intel requirement object:", requirement);
-        return true; // Fail open
-    }
-    return getIntelForFaction(requirement.faction) >= requirement.level;
+    return true; // Fail open
 }
 
 
@@ -159,7 +151,7 @@ function renderBattleElements(mapId) {
         line.setAttribute('points', fl.points);
         line.classList.add('front-line', 'clickable-tactical');
         line.addEventListener('click', () => {
-            playSound('click.mp3');
+            map.playSound('click.mp3');
             renderTacticalDetailPanel(fl.id, 'frontline');
         });
         svg.appendChild(line);
@@ -304,7 +296,7 @@ export function renderPois() {
         marker.dataset.poiId = poi.id;
         marker.title = poi.name;
 
-        marker.classList.remove('political-view', 'economic-view', 'military-view', 'population-view');
+        marker.classList.remove('political-view', 'economic-view', 'military-view', 'population-view', 'laws-view');
         
         const iconWrapper = document.createElement('div');
         iconWrapper.className = 'icon-wrapper';
@@ -359,6 +351,15 @@ export function renderPois() {
                     marker.style.height = `${popSize}px`;
                     marker.style.backgroundColor = getPopulationColor(poi.population || 0);
                     marker.style.opacity = poi.population > 0 ? '0.9' : '0.5';
+                    break;
+                case 'laws':
+                    marker.classList.add('laws-view');
+                    if (LEGAL_DATA.poi_laws[poi.id]) {
+                        iconWrapper.innerHTML = '📜'; // Special icon for POIs with custom laws
+                    } else {
+                        marker.style.opacity = '0.4'; // Dim POIs without specific laws
+                        iconWrapper.innerHTML = BUILDING_TYPES[poi.type]?.icon || '❓';
+                    }
                     break;
                 case 'standard':
                 default:
@@ -417,20 +418,152 @@ function getPopulationColor(population) {
     return '#f46d43';
 }
 
-export async function renderDetailPanel(poiId) {
+function getLandmassKey(mapId) {
+    const mapInfo = MAP_DATA[mapId];
+    if (!mapInfo || !mapInfo.group) return null;
+
+    if (mapInfo.group.includes('Mushroom Kingdom')) return 'mushroom_kingdom_full';
+    if (mapInfo.group.includes('The Midlands')) return 'midlands_full';
+    if (mapInfo.group.includes('Other Dimensions')) return 'the_internet';
+    if (mapInfo.group.includes('Islands')) return 'mushroom_kingdom_full';
+    
+    return null;
+}
+
+export function showLawsPopup(poi) {
+    const mapId = map.activeMapId;
+    const landmassKey = getLandmassKey(mapId);
+
+    // BUG FIX: Check if landmassKey and the corresponding law data exist before proceeding.
+    if (!landmassKey || !LEGAL_DATA.landmass_laws[landmassKey]) {
+        map.showMapModal('Law Data Unavailable', '<p>Could not determine the base legal system for this region.</p>');
+        return;
+    }
+    const baseLaws = LEGAL_DATA.landmass_laws[landmassKey];
+
+    // Determine the governing law for the currently viewed region, applying overrides.
+    let governingLawSet = structuredClone(baseLaws);
+    const regionalOverride = LEGAL_DATA.region_laws[mapId];
+    if (regionalOverride) {
+        governingLawSet.name = regionalOverride.name;
+        governingLawSet.description = regionalOverride.description;
+        governingLawSet.laws = { ...governingLawSet.laws, ...regionalOverride.laws };
+    }
+
+    if (!poi) {
+        // Map background clicked, show the governing law for the current map view.
+        const lawsHTML = Object.entries(governingLawSet.laws).map(([lawKey, variantKey]) => {
+            const lawDef = LEGAL_DATA.law_definitions[lawKey];
+            const variantDef = lawDef?.variants[variantKey];
+            if (!variantDef) return '';
+            return `
+                <div class="law-popup-item">
+                    <h5>${lawDef.icon} ${lawDef.name}</h5>
+                    <p><strong>${variantDef.name}:</strong> ${variantDef.description}</p>
+                </div>
+            `;
+        }).join('');
+        const content = `
+            <div class="law-popup-content">
+                <div class="law-popup-header"><p>${governingLawSet.description}</p></div>
+                <div class="law-popup-list">${lawsHTML}</div>
+            </div>`;
+        map.showMapModal(governingLawSet.name, content);
+        return;
+    }
+
+    // A POI was clicked. Check for specific local laws.
+    const localLaws = LEGAL_DATA.poi_laws[poi.id];
+    if (localLaws && localLaws.popup_summary) {
+        // POI has specific overrides.
+        let finalLaws = { ...governingLawSet.laws, ...localLaws.laws };
+        const lawsHTML = Object.entries(finalLaws).map(([lawKey, variantKey]) => {
+            const lawDef = LEGAL_DATA.law_definitions[lawKey];
+            const variantDef = lawDef?.variants[variantKey];
+            if (!variantDef) return '';
+            return `
+                <div class="law-popup-item">
+                    <h5>${lawDef.icon} ${lawDef.name}</h5>
+                    <p><strong>${variantDef.name}:</strong> ${variantDef.description}</p>
+                </div>
+            `;
+        }).join('');
+
+        const traditionsHTML = (localLaws.custom_traditions || []).map(tradition => `
+            <div class="law-popup-item">
+                <h5>📜 ${tradition.name}</h5>
+                <p>${tradition.description}</p>
+            </div>
+        `).join('');
+
+        const content = `
+            <div class="law-popup-content">
+                <div class="law-popup-header"><p>${localLaws.popup_summary}</p></div>
+                <div class="law-popup-list">${lawsHTML}</div>
+                ${traditionsHTML ? `<div class="law-popup-traditions"><h4>Local Customs & Traditions</h4><div class="law-popup-list">${traditionsHTML}</div></div>` : ''}
+            </div>`;
+        map.showMapModal(`Laws of ${poi.name}`, content);
+    } else {
+        // POI follows the regional law. Display a simple message with a hyperlink.
+        const content = `
+            <div class="law-popup-content">
+                <div class="law-popup-header">
+                    <p>This location adheres to the standard <a href="legal_systems.html" class="character-link">${governingLawSet.name}</a>.</p>
+                </div>
+            </div>`;
+        map.showMapModal(`Laws of ${poi.name}`, content);
+    }
+}
+
+
+export async function showLibraryPopup(poi) {
+    const { LIBRARY_STOCKS } = await import('./books/library_stocks.js');
+    const { BOOK_DESCRIPTIONS } = await import('./books/book_descriptions.js');
+    
+    const bookKeys = LIBRARY_STOCKS[poi.libraryStockKey] || [];
+    let booksHTML = '';
+
+    if (bookKeys.length > 0) {
+        booksHTML = bookKeys.map(key => {
+            const book = BOOK_DESCRIPTIONS[key];
+            return book ? `
+                <div class="library-popup-book">
+                    <strong>${key}</strong>
+                    <p>${book.summary}</p>
+                </div>
+            ` : '';
+        }).join('');
+    } else {
+        booksHTML = `<p class="panel-placeholder">No books are currently catalogued for this library.</p>`;
+    }
+
+    const summaryHTML = poi.library_summary 
+        ? `<p class="library-popup-summary">${poi.library_summary}</p>` 
+        : '';
+    
+    const content = `${summaryHTML}<div class="library-popup-list">${booksHTML}</div>`;
+    map.showMapModal(`Books in Stock: ${poi.name}`, content);
+}
+
+
+export async function showDetailPanel(poiId) {
     const poiSource = MAP_DATA[map.activeMapId]?.pointsOfInterest || [];
     const userPois = state.mapState.userPois[map.activeMapId] || [];
     const poi = [...poiSource, ...userPois].find(p => p.id === poiId);
 
     if (!poi) return;
-
+    
     const typeInfo = BUILDING_TYPES[poi.type] || { name: 'Unknown' };
     
     let intelReqHTML = '';
     if (poi.intelReq) {
-        const faction = LORE_DATA.factions[poi.intelReq.faction];
-        if (faction) {
-             intelReqHTML = `<p class="poi-intel-req"><strong>Intel Source:</strong> Requires ${poi.intelReq.level} Intel with ${faction.name}.</p>`;
+         if (typeof poi.intelReq === 'number') { // Old simple format
+            intelReqHTML = `<p class="poi-intel-req"><strong>Intel Source:</strong> Requires Intel Level ${poi.intelReq}.</p>`;
+        } else if (typeof poi.intelReq === 'object') { // New detailed format
+            const faction = LORE_DATA.factions[poi.intelReq.faction];
+            if (faction) {
+                intelReqHTML = `<p class="poi-intel-req"><strong>Intel Source:</strong> Requires ${poi.intelReq.level} Intel with ${faction.name}.</p>`;
+            }
         }
     }
 
@@ -450,31 +583,6 @@ export async function renderDetailPanel(poiId) {
         `;
     }
 
-    let libraryHTML = '';
-    if (poi.libraryStockKey) {
-        // Dynamically import book data only when needed
-        const { LIBRARY_STOCKS } = await import('./books/library_stocks.js');
-        const { BOOK_DESCRIPTIONS } = await import('./books/book_descriptions.js');
-
-        const bookKeys = LIBRARY_STOCKS[poi.libraryStockKey] || [];
-        if (bookKeys.length > 0) {
-            libraryHTML = `
-                <div class="poi-books-section">
-                    <h4>Books in Stock</h4>
-                    ${bookKeys.map(key => {
-                        const book = BOOK_DESCRIPTIONS[key];
-                        return book ? `
-                            <div class="book-in-stock-item">
-                                <strong>${key}</strong>
-                                <p>${book.summary}</p>
-                            </div>
-                        ` : '';
-                    }).join('')}
-                </div>
-            `;
-        }
-    }
-
     detailPanel.innerHTML = `
         <div class="poi-detail">
             <h3>${poi.name}</h3>
@@ -483,7 +591,6 @@ export async function renderDetailPanel(poiId) {
             ${intelReqHTML}
         </div>
         ${requestsHTML}
-        ${libraryHTML}
     `;
 }
 
@@ -647,6 +754,13 @@ export function renderMapModeLegend() {
                 <div class="map-mode-legend">
                     <h4>Population View</h4>
                     <p>Color and size indicate population density, from sparse (blue) to dense (red).</p>
+                </div>`;
+            break;
+        case 'laws':
+             legendHTML = `
+                <div class="map-mode-legend">
+                    <h4>Laws & Traditions</h4>
+                    <p>POIs with unique local laws or customs are highlighted with a scroll icon (📜). Click on them to view the specific legal code.</p>
                 </div>`;
             break;
         default:

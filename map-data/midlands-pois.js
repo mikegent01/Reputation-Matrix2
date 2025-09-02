@@ -270,6 +270,7 @@ const midlandsData = {
             economic_value: 4,
             military_strength: 3,
             population: 300,
+            library_summary: "The largest public library in the Regal Empire. While its collection is vast, many texts concerning the Empire's more questionable history or forbidden magic have been heavily redacted or are kept in locked vaults, accessible only to the Silent Service.",
             libraryStockKey: 'midlands'
         },
         // #84
