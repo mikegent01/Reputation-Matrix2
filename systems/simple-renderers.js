@@ -108,7 +108,7 @@ export function renderLiberatedToads(factionKey, factionData, currentState) {
         const metadata = toadMetadata[subKey] || { weapon: 'Unknown', portrait: 'toads/unknown.png' };
         
         const playerOpinionsHTML = currentState.party.map(playerKey => {
-            const relation = CHARACTER_RELATIONS[subKey]?.[playerKey];
+            const relation = CHARACTER_RELATIONS[playerKey]?.[subKey];
             let opinionText = "No strong opinion.";
             if (relation && relation.text) {
                 const parts = relation.text.split(':');

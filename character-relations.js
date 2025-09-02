@@ -70,7 +70,14 @@ export const CHARACTER_RELATIONS = {
         'archie': { type: 'ally', text: "Bowser on Archie: He's useful, but his chaos nearly cost us everything! I thought he had this under control. He's on thin ice." },
         'markop': { type: 'ally', text: "Bowser on Markop: The horse-man has honor, which is a weakness. But he's a strong fighter. He keeps the little guys in line, so he's useful for now." },
         'humpik': { type: 'ally', text: "Bowser on Humpik: My most loyal soldier! He is the strength of the Koopa Troop made manifest! GWAHAHAHA!" },
-        'waluigi': { type: 'neutral', text: "Bowser on Waluigi: The purple string bean? He's a schemer. Useful for now, but not to be trusted. He got Humpik out, so... credit where it's due." }
+        'waluigi': { type: 'neutral', text: "Bowser on Waluigi: The purple string bean? He's a schemer. Useful for now, but not to be trusted. He got Humpik out, so... credit where it's due." },
+        'dan': { type: 'neutral', text: "Bowser on Dan: A spark of defiance. He fought well. But his loyalty to the Centaur is a waste. A toad with that much fire should serve a true king. GWAHAHA!" },
+        'toad_lee': { type: 'neutral', text: "Bowser on Toad Lee: He carries a big axe. Good. A minion should be armed and ready to fight. He has potential, if he can learn to serve a real master." },
+        'eager': { type: 'neutral', text: "Bowser on Eager: Skittish. Fast, maybe, but fear is a weakness. The troop has no use for cowards." },
+        'roger': { type: 'neutral', text: "Bowser on Roger: He uses a firearm. A crude weapon for a crude creature. But effective. Pragmatism is a useful trait in a subordinate." },
+        'ryan': { type: 'neutral', text: "Bowser on Ryan: He dabbles in magic. A weak imitation of Kamek's power. Unimpressive." },
+        'bones': { type: 'neutral', text: "Bowser on Bones: Grotesque. He has seen hardship. That can forge strength... or just break you. The jury is out." },
+        'wallys_toad': { type: 'enemy', text: "Bowser on Wally's Toad: A spy! Deceit is a tool of the weak. Waluigi's pathetic games are an annoyance." }
     },
     'waluigi': {
         'archie': { type: 'ally', text: "Waluigi on Archie: WAH! A true artist of chaos! He understands the beauty of a well-placed explosion! A worthy apprentice!" },
