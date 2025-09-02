@@ -1,6 +1,7 @@
 import { state, saveState } from './state.js';
 import { MAP_DATA, BUILDING_TYPES } from './map-data.js';
 import { LEGAL_DATA } from './legal_data.js';
+import { ALL_LEGAL_CODES } from './laws-data.js';
 import { FACTION_COLORS } from './factions/faction-colors.js';
 import * as map from './maps.js';
 import { LORE_DATA } from './lore.js';
@@ -354,11 +355,14 @@ export function renderPois() {
                     break;
                 case 'laws':
                     marker.classList.add('laws-view');
-                    if (LEGAL_DATA.poi_laws[poi.id]) {
-                        iconWrapper.innerHTML = '📜'; // Special icon for POIs with custom laws
+                    marker.style.backgroundColor = FACTION_COLORS[poi.factionId] || 'var(--underworld-fringe-color)';
+                    iconWrapper.innerHTML = '📜';
+                    if (LEGAL_DATA.poi_traditions[poi.id]) {
+                        marker.style.borderColor = 'var(--accent-color)';
+                        marker.style.boxShadow = '0 0 8px var(--accent-color)';
                     } else {
-                        marker.style.opacity = '0.4'; // Dim POIs without specific laws
-                        iconWrapper.innerHTML = BUILDING_TYPES[poi.type]?.icon || '❓';
+                        marker.style.borderColor = 'var(--border-color)';
+                        marker.style.boxShadow = 'none';
                     }
                     break;
                 case 'standard':
@@ -422,97 +426,77 @@ function getLandmassKey(mapId) {
     const mapInfo = MAP_DATA[mapId];
     if (!mapInfo || !mapInfo.group) return null;
 
-    if (mapInfo.group.includes('Mushroom Kingdom')) return 'mushroom_kingdom_full';
+    if (mapInfo.group.includes('Mushroom Kingdom') || mapInfo.group.includes('Islands')) return 'mushroom_kingdom_full';
     if (mapInfo.group.includes('The Midlands')) return 'midlands_full';
     if (mapInfo.group.includes('Other Dimensions')) return 'the_internet';
-    if (mapInfo.group.includes('Islands')) return 'mushroom_kingdom_full';
     
     return null;
 }
 
-export function showLawsPopup(poi) {
+function renderTraditionItems(traditionKeys) {
+    if (!traditionKeys || traditionKeys.length === 0) return '';
+    return traditionKeys.map(tradKey => {
+        for (const category in LEGAL_DATA.traditions) {
+            const tradition = LEGAL_DATA.traditions[category].find(t => t.id === tradKey);
+            if (tradition) {
+                return `
+                    <div class="law-popup-item">
+                        <h5>${tradition.icon} ${tradition.name}</h5>
+                        <p>${tradition.description}</p>
+                    </div>
+                `;
+            }
+        }
+        return '';
+    }).join('');
+}
+
+export function showTraditionsPopup(poi) {
     const mapId = map.activeMapId;
     const landmassKey = getLandmassKey(mapId);
+    
+    let title = '';
+    let summaryHTML = '';
+    let traditionsHTML = '';
+    
+    if (poi) {
+        title = `Laws & Customs of ${poi.name}`;
+        const factionId = poi.factionId || 'unaligned';
+        const governingCode = ALL_LEGAL_CODES[factionId];
+        
+        if (governingCode) {
+            const lawLink = `<a href="#" class="law-link" data-law-key="${factionId}">${governingCode.name}</a>`;
+            summaryHTML = `<p>This location is controlled by <strong>${LORE_DATA.factions[factionId].name}</strong> and is governed by <strong>"${lawLink}"</strong>: <em>${governingCode.description}</em></p>`;
+        } else {
+             summaryHTML = `<p>This location is unaligned and follows the general traditions of <strong>${MAP_DATA[mapId].name}</strong>.</p>`;
+        }
+        
+        const regionalKeys = LEGAL_DATA.regional_traditions[landmassKey] || [];
+        if(regionalKeys.length > 0) {
+            traditionsHTML += `<h4>Regional Traditions</h4>${renderTraditionItems(regionalKeys)}`;
+        }
 
-    // BUG FIX: Check if landmassKey and the corresponding law data exist before proceeding.
-    if (!landmassKey || !LEGAL_DATA.landmass_laws[landmassKey]) {
-        map.showMapModal('Law Data Unavailable', '<p>Could not determine the base legal system for this region.</p>');
-        return;
-    }
-    const baseLaws = LEGAL_DATA.landmass_laws[landmassKey];
+        const poiTraditionsData = LEGAL_DATA.poi_traditions[poi.id];
+        if (poiTraditionsData) {
+            summaryHTML += `<hr style="border-color: var(--border-color); margin: 12px 0;">`;
+            summaryHTML += `<p><strong>Specific Local Customs:</strong> ${poiTraditionsData.summary}</p>`;
+            traditionsHTML += `<h4>Local Customs</h4>${renderTraditionItems(poiTraditionsData.traditions)}`;
+        }
 
-    // Determine the governing law for the currently viewed region, applying overrides.
-    let governingLawSet = structuredClone(baseLaws);
-    const regionalOverride = LEGAL_DATA.region_laws[mapId];
-    if (regionalOverride) {
-        governingLawSet.name = regionalOverride.name;
-        governingLawSet.description = regionalOverride.description;
-        governingLawSet.laws = { ...governingLawSet.laws, ...regionalOverride.laws };
-    }
-
-    if (!poi) {
-        // Map background clicked, show the governing law for the current map view.
-        const lawsHTML = Object.entries(governingLawSet.laws).map(([lawKey, variantKey]) => {
-            const lawDef = LEGAL_DATA.law_definitions[lawKey];
-            const variantDef = lawDef?.variants[variantKey];
-            if (!variantDef) return '';
-            return `
-                <div class="law-popup-item">
-                    <h5>${lawDef.icon} ${lawDef.name}</h5>
-                    <p><strong>${variantDef.name}:</strong> ${variantDef.description}</p>
-                </div>
-            `;
-        }).join('');
-        const content = `
-            <div class="law-popup-content">
-                <div class="law-popup-header"><p>${governingLawSet.description}</p></div>
-                <div class="law-popup-list">${lawsHTML}</div>
-            </div>`;
-        map.showMapModal(governingLawSet.name, content);
-        return;
+    } else { // Clicked on map background
+        title = `General Traditions of ${MAP_DATA[mapId].name}`;
+        summaryHTML = `<p>These are the overarching traditions that govern unaligned territories in this region.</p>`;
+        const regionalKeys = LEGAL_DATA.regional_traditions[landmassKey] || [];
+        traditionsHTML += renderTraditionItems(regionalKeys);
     }
 
-    // A POI was clicked. Check for specific local laws.
-    const localLaws = LEGAL_DATA.poi_laws[poi.id];
-    if (localLaws && localLaws.popup_summary) {
-        // POI has specific overrides.
-        let finalLaws = { ...governingLawSet.laws, ...localLaws.laws };
-        const lawsHTML = Object.entries(finalLaws).map(([lawKey, variantKey]) => {
-            const lawDef = LEGAL_DATA.law_definitions[lawKey];
-            const variantDef = lawDef?.variants[variantKey];
-            if (!variantDef) return '';
-            return `
-                <div class="law-popup-item">
-                    <h5>${lawDef.icon} ${lawDef.name}</h5>
-                    <p><strong>${variantDef.name}:</strong> ${variantDef.description}</p>
-                </div>
-            `;
-        }).join('');
+    const content = `
+        <div class="law-popup-content">
+            <div class="law-popup-header">${summaryHTML}</div>
+            <div class="law-popup-list">${traditionsHTML}</div>
+        </div>`;
 
-        const traditionsHTML = (localLaws.custom_traditions || []).map(tradition => `
-            <div class="law-popup-item">
-                <h5>📜 ${tradition.name}</h5>
-                <p>${tradition.description}</p>
-            </div>
-        `).join('');
-
-        const content = `
-            <div class="law-popup-content">
-                <div class="law-popup-header"><p>${localLaws.popup_summary}</p></div>
-                <div class="law-popup-list">${lawsHTML}</div>
-                ${traditionsHTML ? `<div class="law-popup-traditions"><h4>Local Customs & Traditions</h4><div class="law-popup-list">${traditionsHTML}</div></div>` : ''}
-            </div>`;
-        map.showMapModal(`Laws of ${poi.name}`, content);
-    } else {
-        // POI follows the regional law. Display a simple message with a hyperlink.
-        const content = `
-            <div class="law-popup-content">
-                <div class="law-popup-header">
-                    <p>This location adheres to the standard <a href="legal_systems.html" class="character-link">${governingLawSet.name}</a>.</p>
-                </div>
-            </div>`;
-        map.showMapModal(`Laws of ${poi.name}`, content);
-    }
+    map.showMapModal(title, content);
 }
 
 
@@ -543,6 +527,32 @@ export async function showLibraryPopup(poi) {
     
     const content = `${summaryHTML}<div class="library-popup-list">${booksHTML}</div>`;
     map.showMapModal(`Books in Stock: ${poi.name}`, content);
+}
+
+export function showLawCodexModal(lawKey) {
+    const lawData = ALL_LEGAL_CODES[lawKey];
+    if (!lawData) return;
+
+    const ICONS = { political: '🏛️', military: '⚔️', economic: '💰', social: '❤️‍🩹', penal: '⚖️' };
+    let content = '';
+    
+    ['political', 'military', 'economic', 'social', 'penal'].forEach(category => {
+        if (lawData[category] && lawData[category].length > 0) {
+            content += `<h4>${ICONS[category]} ${category.charAt(0).toUpperCase() + category.slice(1)} Laws</h4>`;
+            content += `<div class="law-popup-list">`;
+            lawData[category].forEach(law => {
+                content += `
+                    <div class="law-popup-item">
+                        <h5>${law.name}</h5>
+                        <p>${law.description}</p>
+                    </div>
+                `;
+            });
+            content += `</div>`;
+        }
+    });
+
+    map.showMapModal(`Codex: ${lawData.name}`, `<div class="law-popup-content">${content}</div>`);
 }
 
 
@@ -759,8 +769,8 @@ export function renderMapModeLegend() {
         case 'laws':
              legendHTML = `
                 <div class="map-mode-legend">
-                    <h4>Laws & Traditions</h4>
-                    <p>POIs with unique local laws or customs are highlighted with a scroll icon (📜). Click on them to view the specific legal code.</p>
+                    <h4>Traditions & Customs</h4>
+                    <p>POIs are colored by their ruling faction. Those with unique local customs glow. Click any POI or the map background to view its customs.</p>
                 </div>`;
             break;
         default:

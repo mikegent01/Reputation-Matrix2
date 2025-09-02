@@ -109,6 +109,14 @@ function setupEventListeners() {
             if (e.target === mapModal) {
                 hideMapModal();
             }
+            // Handle clicks on law links within the modal
+            const lawLink = e.target.closest('.law-link');
+            if (lawLink) {
+                e.preventDefault();
+                playSound('click.mp3');
+                const lawKey = lawLink.dataset.lawKey;
+                renderer.showLawCodexModal(lawKey);
+            }
         });
     }
 
@@ -130,7 +138,7 @@ function setupEventListeners() {
                     if (poi.libraryStockKey) {
                         renderer.showLibraryPopup(poi);
                     } else if (activeMapMode === 'laws') {
-                        renderer.showLawsPopup(poi);
+                        renderer.showTraditionsPopup(poi);
                     } else {
                         renderer.showDetailPanel(poi.id);
                     }
@@ -148,7 +156,7 @@ function setupEventListeners() {
             } else if (!e.target.closest('.clickable-tactical')) {
                 // Clicked on map background
                 if(activeMapMode === 'laws') {
-                    renderer.showLawsPopup(null); // Show base laws for the region
+                    renderer.showTraditionsPopup(null); // Show base traditions for the region
                 } else {
                     renderer.renderMapModeLegend();
                     transform.resetTransform();

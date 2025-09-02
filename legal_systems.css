@@ -1,17 +1,38 @@
 #codex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tradition-category-section {
+    margin-bottom: 16px;
+}
+
+.tradition-category-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.traditions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 24px;
 }
 
-.law-category-card {
+.tradition-card {
     background-color: var(--sidebar-bg);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 24px;
+    display: flex;
+    flex-direction: column;
 }
 
-.law-category-header {
+.tradition-card-header {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -20,43 +41,61 @@
     border-bottom: 1px solid var(--border-color);
 }
 
-.law-category-icon {
+.tradition-icon {
     font-size: 2rem;
 }
 
-.law-category-header h3 {
+.tradition-card-header h3 {
     font-family: var(--font-display);
-    color: var(--accent-color);
+    color: var(--text-color);
     font-size: 1.5rem;
     margin: 0;
 }
 
-.law-variants-list {
+.tradition-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    flex-grow: 1;
+}
+
+.tradition-followers {
+    margin-top: auto;
+}
+
+.tradition-followers h4 {
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 12px;
+}
+
+.followers-list {
     list-style: none;
     padding: 0;
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.variant-item {
+.follower-tag {
     background-color: var(--main-bg);
-    padding: 12px;
-    border-radius: 6px;
-    border-left: 3px solid var(--border-color);
-}
-
-.variant-item strong {
-    color: var(--text-color);
-    display: block;
-    margin-bottom: 4px;
-}
-
-.variant-item p {
-    font-size: 0.9rem;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
     color: var(--text-secondary);
-    margin: 0;
-    line-height: 1.5;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.follower-tag img {
+    width: 16px;
+    height: 16px;
 }
 
 .page-subtitle {
@@ -68,36 +107,4 @@
     max-width: 80ch;
     margin-left: auto;
     margin-right: auto;
-}
-
-/* --- New Follower Styles --- */
-.followers-section {
-    margin-top: 12px;
-    padding-top: 8px;
-    border-top: 1px dashed var(--border-color);
-}
-
-.followers-title {
-    font-family: var(--font-display);
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    margin-bottom: 8px;
-    font-weight: normal;
-}
-
-.followers-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.follower-tag {
-    background-color: var(--sidebar-bg);
-    padding: 3px 8px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
 }
