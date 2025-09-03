@@ -244,5 +244,29 @@ export const BOOK_DESCRIPTIONS = {
         reading_time: "Approx. 30 minutes",
         pages: 68,
         effect: "Provides a list of known libraries and a general idea of their collections, helping players find specific information."
+    },
+    "The Lay of Lúthien: An Analysis": {
+        summary: "A scholarly analysis of the epic poem detailing the love between the mortal Beren and the immortal Elf-maiden Lúthien. It explores themes of love, sacrifice, mortality, and the overcoming of impossible odds. A cornerstone of Elven and Dúnedain literature.",
+        reading_time: "Approx. 2 hours",
+        pages: 280,
+        effect: "Grants deep insight into the culture of the Elves, their views on mortals, and the history of the Silmarils."
+    },
+    "Silmarils: A Study of Light and Power": {
+        summary: "A treatise by an Elven lore-master on the nature of the three legendary Silmarils. It details their creation by Fëanor, their theft by Morgoth, and the terrible oath that led to untold sorrow. A cautionary tale about the peril of coveting absolute beauty.",
+        reading_time: "Approx. 1.5 hours",
+        pages: 190,
+        effect: "Provides profound lore on the First Age, the nature of powerful magical artifacts, and the history of the Elves."
+    },
+    "Khazad-dûm: A History of Stone and Shadow": {
+        summary: "A detailed history of the greatest of the Dwarven cities, from its founding by Durin the Deathless to its golden age of wealth and power, and its eventual fall to the Balrog known as Durin's Bane. Written by a Dwarven scholar, it is a work of great pride and sorrow.",
+        reading_time: "Approx. 3 hours",
+        pages: 450,
+        effect: "Grants extensive knowledge of Dwarven engineering, the properties of Mithril, and the ancient grudges of Durin's folk."
+    },
+    "The Last Alliance: A Military History": {
+        summary: "A military historian's account of the War of the Last Alliance of Elves and Men against Sauron at the end of the Second Age. It details the major battles, key commanders like Gil-galad and Elendil, and the tactical strengths and weaknesses of the opposing armies.",
+        reading_time: "Approx. 2.5 hours",
+        pages: 320,
+        effect: "Provides tactical advantages when dealing with the forces of Mordor and insight into the military history of Gondor and the Elves."
     }
 };

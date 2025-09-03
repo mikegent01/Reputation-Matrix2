@@ -1,6 +1,65 @@
 // laws-data-militaristic.js
 
 export const MILITARISTIC_CODES = {
+    kingdom_of_gondor: {
+        name: "The Law of the Stewards",
+        logo: "faction_regal_empire.png", // Placeholder, will need a Gondor logo
+        description: "The ancient laws of Gondor, derived from Númenórean tradition. They are the laws of a kingdom under constant threat, valuing duty, vigilance, and the authority of the Steward who rules in the King's stead.",
+        supporters: ['kingdom_of_rohan', 'elves_of_lindon'],
+        opponents: ['mordor', 'freelancer_underworld'], // Corsairs
+        political: [
+            {
+                name: "The Rule of the Stewards",
+                policy: "Governance Policy",
+                spectrum: [
+                    { name: "Feudal Fiefdoms", description: "The great lords of the fiefs (Dol Amroth, Lossarnach, etc.) hold significant autonomy." },
+                    { name: "Absolute Stewardship", description: "The Steward's authority is absolute, overriding the will of the local lords." }
+                ],
+                current: 1,
+                trend: 0,
+                description: "Gondor is a feudal kingdom, but in these dark days, the Steward's authority is absolute, commanding the loyalty of all fiefs."
+            }
+        ],
+        military: [
+            {
+                name: "The Call to Arms",
+                policy: "Conscription Policy",
+                spectrum: [
+                    { name: "Levy of the Fiefs", description: "The lords of the fiefdoms are called to supply troops as needed." },
+                    { name: "The Great Host", description: "All able-bodied men of Gondor are called to war, mustering the full strength of the kingdom." }
+                ],
+                current: 0,
+                trend: 1,
+                description: "The defense of the realm relies on the levies provided by its various fiefdoms, but with the growing threat, there is increasing pressure for a full muster."
+            }
+        ],
+        social: [
+            {
+                name: "The Long Defeat",
+                policy: "Cultural Outlook",
+                spectrum: [
+                    { name: "Veneration of the Past", description: "Society is deeply conservative, venerating the glories of the past and seeking to preserve what remains." },
+                    { name: "Hope for Renewal", description: "A growing movement believes Gondor can rise to its former glory through bold action." }
+                ],
+                current: 0,
+                trend: 0,
+                description: "Gondorian culture is deeply rooted in its long, noble, but declining history. They seek to preserve the light of the past against the encroaching darkness."
+            }
+        ],
+        penal: [
+            {
+                name: "The King's Law",
+                policy: "Penal System Policy",
+                spectrum: [
+                    { name: "Local Justice", description: "Local lords are responsible for justice in their own lands." },
+                    { name: "The Steward's Justice", description: "All serious crimes are judged by the Steward's courts in Minas Tirith." }
+                ],
+                current: 1,
+                trend: 0,
+                description: "Justice is stern and swift. While local lords handle minor disputes, all serious crimes fall under the jurisdiction of the Steward, and the law of Númenor is unforgiving."
+            }
+        ]
+    },
     iron_legion: {
         name: "The Hammer Code",
         logo: "faction_iron_legion.png",

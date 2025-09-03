@@ -108,6 +108,11 @@ export const CHARACTERS_3 = {
         role: "Ruler of Chramalot",
         description: "The noble but indecisive king of the Chramalot Kingdom. He struggles to maintain order amidst the political machinations of his court."
     },
+    'king_thorin': {
+        name: "King Thorin",
+        role: "Warrior King",
+        description: "The stoic and powerful warrior-king of the united kingdoms of Middle Earth. He wields an ancestral war-axe and is known for his deep wisdom and even deeper distrust of outsiders."
+    },
     // --- AIRSHIP BATTLE CHARACTERS ---
     'iron_thorn': {
         name: "Iron Thorn",

@@ -17,5 +17,6 @@ export const UNRECOGNIZED_CODES = {
 // New export for easy lookup
 export const ALL_LEGAL_CODES = {
     ...LAW_DATA,
-    ...UNRECOGNIZED_CODES
+    ...UNRECOGNIZED_CODES,
+    kingdom_of_gondor: MILITARISTIC_CODES.kingdom_of_gondor, // Ensure it's here too
 };

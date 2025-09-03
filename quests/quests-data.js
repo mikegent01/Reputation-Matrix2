@@ -8,6 +8,11 @@ import { BOWSER_QUESTS } from './quests/quests-bowser.js';
 import { TOADS_QUESTS } from './quests/quests-toads.js';
 import { WORLD_QUESTS } from './quests/quests-world.js';
 import { GUILDS_QUESTS } from './quests/quests-guilds.js';
+import { REQUESTS } from './quests/quests-requests.js';
+import { NEW_MK_QUESTS } from './quests/quests-mushroom-kingdom-new.js';
+import { NEW_MIDLANDS_QUESTS } from './quests/quests-midlands-new.js';
+import { INTERNET_QUESTS } from './quests/quests-internet.js';
+
 
 export const QUEST_DATA = {
     ...MAIN_QUESTS,
@@ -19,4 +24,8 @@ export const QUEST_DATA = {
     ...TOADS_QUESTS,
     ...WORLD_QUESTS,
     ...GUILDS_QUESTS,
+    ...REQUESTS,
+    ...NEW_MK_QUESTS,
+    ...NEW_MIDLANDS_QUESTS,
+    ...INTERNET_QUESTS,
 };

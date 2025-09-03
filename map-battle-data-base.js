@@ -13,6 +13,18 @@ export const BASE_BATTLE_DATA = {
             mapId: 'midlands_full',
             points: "31,45 34,43 36,46 39,44",
             description: "The contested battlefront at Ravencreek between the Moonfang Pack and the Onyx Hand."
+        },
+        {
+            id: 'fl_me_war_in_the_north',
+            mapId: 'middle_earth_full',
+            points: "32,22 35,19 38,23",
+            description: "The contested lands around the ruins of Fornost, where Rangers of the North clash with Orcs and Hill-men from Angmar."
+        },
+        {
+            id: 'fl_inet_data_breach',
+            mapId: 'internet_full',
+            points: "28,68 32,64 36,69",
+            description: "The front line of a major data breach, where Federation Anti-Virus programs battle a self-replicating logic virus emerging from the Criminal Web."
         }
     ],
     vigilance_journey: {

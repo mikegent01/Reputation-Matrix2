@@ -15,7 +15,9 @@ export const lockerwoodData = {
             political_influence: 7,
             economic_value: 9,
             military_strength: 4,
-            population: 12000
+            population: 12000,
+            age_of_antiquity: 6,
+            crime_rate: 3
         },
         // #39
         {
@@ -30,7 +32,9 @@ export const lockerwoodData = {
             political_influence: 4,
             economic_value: 3,
             military_strength: 7,
-            population: 500
+            population: 500,
+            age_of_antiquity: 10,
+            crime_rate: 8
         },
         // #40
         {
@@ -45,7 +49,9 @@ export const lockerwoodData = {
             political_influence: 6,
             economic_value: 5,
             military_strength: 6,
-            population: 150
+            population: 150,
+            age_of_antiquity: 7,
+            crime_rate: 6
         },
         // #41
         {
@@ -60,7 +66,9 @@ export const lockerwoodData = {
             political_influence: 4,
             economic_value: 10,
             military_strength: 5,
-            population: 300
+            population: 300,
+            age_of_antiquity: 5,
+            crime_rate: 2
         },
         // #42
         {
@@ -75,7 +83,9 @@ export const lockerwoodData = {
             political_influence: 1,
             economic_value: 1,
             military_strength: 3,
-            population: 0
+            population: 0,
+            age_of_antiquity: 1,
+            crime_rate: 10
         },
         // #43
         {
@@ -90,7 +100,9 @@ export const lockerwoodData = {
             political_influence: 4,
             economic_value: 2,
             military_strength: 6,
-            population: 80
+            population: 80,
+            age_of_antiquity: 4,
+            crime_rate: 1
         },
         // #44
         {
@@ -105,7 +117,9 @@ export const lockerwoodData = {
             political_influence: 3,
             economic_value: 5,
             military_strength: 2,
-            population: 100
+            population: 100,
+            age_of_antiquity: 5,
+            crime_rate: 5
         },
         // #45
         {
@@ -120,7 +134,9 @@ export const lockerwoodData = {
             political_influence: 3,
             economic_value: 1,
             military_strength: 8,
-            population: 200
+            population: 200,
+            age_of_antiquity: 9,
+            crime_rate: 7
         },
         // #46
         {
@@ -135,7 +151,9 @@ export const lockerwoodData = {
             political_influence: 5,
             economic_value: 2,
             military_strength: 7,
-            population: 500
+            population: 500,
+            age_of_antiquity: 3,
+            crime_rate: 1
         },
         // #47
         {
@@ -150,7 +168,9 @@ export const lockerwoodData = {
             political_influence: 1,
             economic_value: 1,
             military_strength: 1,
-            population: 0
+            population: 0,
+            age_of_antiquity: 10,
+            crime_rate: 2
         },
         // #48
         {
@@ -165,7 +185,9 @@ export const lockerwoodData = {
             political_influence: 2,
             economic_value: 8,
             military_strength: 2,
-            population: 600
+            population: 600,
+            age_of_antiquity: 5,
+            crime_rate: 2
         },
         // #49
         {
@@ -180,7 +202,9 @@ export const lockerwoodData = {
             political_influence: 2,
             economic_value: 4,
             military_strength: 4,
-            population: 40
+            population: 40,
+            age_of_antiquity: 4,
+            crime_rate: 10
         },
         // #50
         {
@@ -195,7 +219,9 @@ export const lockerwoodData = {
             political_influence: 3,
             economic_value: 0,
             military_strength: 3,
-            population: 0
+            population: 0,
+            age_of_antiquity: 7,
+            crime_rate: 7
         },
         // #51
         {
@@ -210,7 +236,9 @@ export const lockerwoodData = {
             political_influence: 0,
             economic_value: 1,
             military_strength: 2,
-            population: 0
+            population: 0,
+            age_of_antiquity: 2,
+            crime_rate: 8
         },
         // #159
         {
@@ -225,7 +253,9 @@ export const lockerwoodData = {
             political_influence: 3,
             economic_value: 6,
             military_strength: 2,
-            population: 30
+            population: 30,
+            age_of_antiquity: 5,
+            crime_rate: 4
         },
         {
             id: 'poi_lw_crimson_wing_aerie',
@@ -239,7 +269,9 @@ export const lockerwoodData = {
             political_influence: 6,
             economic_value: 5,
             military_strength: 8,
-            population: 700
+            population: 700,
+            age_of_antiquity: 3,
+            crime_rate: 2
         }
     ]
 };

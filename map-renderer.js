@@ -1,3 +1,4 @@
+// map-renderer.js
 
 import { state, saveState } from './state.js';
 import { MAP_DATA, BUILDING_TYPES } from './map-data.js';
@@ -49,6 +50,42 @@ function hasSufficientIntel(requirement) {
         return getIntelForFaction(requirement.faction) >= requirement.level;
     }
     return true; // Fail open
+}
+
+/**
+ * Converts a value in a range to a color on a gradient.
+ * @param {number} value - The input value.
+ * @param {number} min - The minimum of the input range.
+ * @param {number} max - The maximum of the input range.
+ * @param {string[]} colors - An array of hex color strings for the gradient.
+ * @returns {string} The calculated hex color.
+ */
+function valueToColor(value, min, max, colors) {
+    const ratio = Math.max(0, Math.min(1, (value - min) / (max - min)));
+    const colorIndex = Math.floor(ratio * (colors.length - 1));
+    const lowerColor = colors[colorIndex];
+    const upperColor = colors[Math.min(colors.length - 1, colorIndex + 1)];
+    const segmentRatio = (ratio * (colors.length - 1)) - colorIndex;
+
+    const hexToRgb = (hex) => ({
+        r: parseInt(hex.slice(1, 3), 16),
+        g: parseInt(hex.slice(3, 5), 16),
+        b: parseInt(hex.slice(5, 7), 16),
+    });
+
+    const rgbToHex = (r, g, b) => `#${[r, g, b].map(x => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+    }).join('')}`;
+
+    const c1 = hexToRgb(lowerColor);
+    const c2 = hexToRgb(upperColor);
+
+    const r = Math.round(c1.r + (c2.r - c1.r) * segmentRatio);
+    const g = Math.round(c1.g + (c2.g - c1.g) * segmentRatio);
+    const b = Math.round(c1.b + (c2.b - c1.b) * segmentRatio);
+
+    return rgbToHex(r, g, b);
 }
 
 
@@ -283,10 +320,13 @@ export function renderPois() {
     interactiveLayer.querySelectorAll('.poi-marker').forEach(el => el.remove());
 
     const poiSource = map.isEditMode ? map.editSessionData.pois : (MAP_DATA[map.activeMapId]?.pointsOfInterest || []);
+    const modesThatFilter = ['political'];
 
     let allPois = poiSource.filter(poi => {
         if (map.isEditMode) return true;
-        if (map.activeMapMode === 'political' && !poi.factionId) return false;
+        if(modesThatFilter.includes(map.activeMapMode)) {
+            if (map.activeMapMode === 'political' && !poi.factionId) return false;
+        }
         return hasSufficientIntel(poi.intelReq);
     });
 
@@ -366,6 +406,24 @@ export function renderPois() {
                         marker.style.boxShadow = 'none';
                     }
                     break;
+                case 'age_of_antiquity':
+                    marker.classList.add('age-of-antiquity-view');
+                    const age = poi.age_of_antiquity || 1;
+                    const ageSize = 16 + age * 1.5;
+                    marker.style.width = `${ageSize}px`;
+                    marker.style.height = `${ageSize}px`;
+                    marker.style.backgroundColor = valueToColor(age, 1, 10, ['#a8d8ea', '#f9f871']); // light blue to yellow
+                    iconWrapper.innerHTML = `📜`;
+                    break;
+                 case 'crime_rate':
+                    marker.classList.add('crime-rate-view');
+                    const crime = poi.crime_rate || 1;
+                    const crimeSize = 16 + crime * 1.5;
+                    marker.style.width = `${crimeSize}px`;
+                    marker.style.height = `${crimeSize}px`;
+                    marker.style.backgroundColor = valueToColor(crime, 1, 10, ['#4575b4', '#fee090', '#d73027']); // blue (low) to red (high)
+                    iconWrapper.innerHTML = `⚖️`;
+                    break;
                 case 'standard':
                 default:
                     iconWrapper.innerHTML = BUILDING_TYPES[poi.type]?.icon || '❓';
@@ -429,7 +487,8 @@ function getLandmassKey(mapId) {
 
     if (mapInfo.group.includes('Mushroom Kingdom') || mapInfo.group.includes('Islands')) return 'mushroom_kingdom_full';
     if (mapInfo.group.includes('The Midlands')) return 'midlands_full';
-    if (mapInfo.group.includes('Other Dimensions')) return 'the_internet';
+    if (mapInfo.group.includes('Other Dimensions')) return 'internet_full';
+    if (mapInfo.group.includes('Middle-earth')) return 'middle_earth_full';
     
     return null;
 }
@@ -455,6 +514,7 @@ function renderTraditionItems(traditionKeys) {
 export function showTraditionsPopup(poi) {
     const mapId = map.activeMapId;
     const landmassKey = getLandmassKey(mapId);
+    const landmassName = MAP_DATA[landmassKey]?.name || MAP_DATA[mapId].name;
     
     let title = '';
     let summaryHTML = '';
@@ -469,7 +529,7 @@ export function showTraditionsPopup(poi) {
             const lawLink = `<a href="#" class="law-link" data-law-key="${factionId}">${governingCode.name}</a>`;
             summaryHTML = `<p>This location is controlled by <strong>${LORE_DATA.factions[factionId].name}</strong> and is governed by <strong>"${lawLink}"</strong>: <em>${governingCode.description}</em></p>`;
         } else {
-             summaryHTML = `<p>This location is unaligned and follows the general traditions of <strong>${MAP_DATA[mapId].name}</strong>.</p>`;
+             summaryHTML = `<p>This location is unaligned and follows the general traditions of <strong>${landmassName}</strong>.</p>`;
         }
         
         const regionalKeys = LEGAL_DATA.regional_traditions[landmassKey] || [];
@@ -730,14 +790,14 @@ export function renderMapModeLegend() {
              legendHTML = `
                 <div class="map-mode-legend">
                     <h4>Economic View</h4>
-                    <p>The size and number indicate relative economic importance.</p>
+                    <p>Locations are represented as squares. Their size and the number inside indicate relative economic importance, from 1 (low) to 10 (high).</p>
                 </div>`;
             break;
         case 'military':
              legendHTML = `
                 <div class="map-mode-legend">
                     <h4>Military View</h4>
-                    <p>The size and number indicate relative strategic strength.</p>
+                    <p>Locations are represented as diamonds. Their size and the number inside indicate relative strategic strength, from 1 (low) to 10 (high).</p>
                 </div>`;
             break;
         case 'tactical':
@@ -764,7 +824,7 @@ export function renderMapModeLegend() {
              legendHTML = `
                 <div class="map-mode-legend">
                     <h4>Population View</h4>
-                    <p>Color and size indicate population density, from sparse (blue) to dense (red).</p>
+                    <p>Color and size indicate population density. Blue is sparse, yellow is moderate, and red is dense.</p>
                 </div>`;
             break;
         case 'laws':
@@ -772,6 +832,20 @@ export function renderMapModeLegend() {
                 <div class="map-mode-legend">
                     <h4>Traditions & Customs</h4>
                     <p>POIs are colored by their ruling faction. Those with unique local customs glow. Click any POI or the map background to view its customs.</p>
+                </div>`;
+            break;
+        case 'age_of_antiquity':
+            legendHTML = `
+                <div class="map-mode-legend">
+                    <h4>Age of Antiquity</h4>
+                    <p>Locations are sized and colored by their historical age, from recent (blue) to ancient (yellow).</p>
+                </div>`;
+            break;
+        case 'crime_rate':
+            legendHTML = `
+                <div class="map-mode-legend">
+                    <h4>Crime Rate</h4>
+                    <p>Locations are sized and colored by their estimated crime rate, from low/lawful (blue) to high/lawless (red).</p>
                 </div>`;
             break;
         default:

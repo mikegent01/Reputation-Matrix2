@@ -409,31 +409,47 @@ export const WIDESPREAD_FACTIONS = {
             }
         }
     },
-    internet_federation: {
-        name: "The Internet Federation",
-        description: "The primary governing body of The Internet dimension, focused on maintaining order, protocols, and the flow of data.",
-        logo: 'icon_magic.png',
-        relations: { 
-            allies: ['regal_empire'],
-            enemies: ['cosmic_jesters', 'freelancer_underworld']
-        },
-        power_level: 8,
-        category: "Interdimensional Threats",
-        region: "The Internet",
-        leader: "Admin Zero",
-    },
     middle_earth_kingdoms: {
         name: "Middle-Earth Kingdoms",
-        description: "A coalition of ancient kingdoms of Elves, Dwarves, and Men from a distant land, valuing honor, tradition, and craftsmanship.",
+        description: "A coalition of ancient kingdoms of Elves, Dwarves, and Men from a distant land to the east of the Midlands, valuing honor, tradition, and craftsmanship.",
         logo: 'icon_focus.png',
         relations: { 
             allies: ['rakasha_clans', 'knights_of_the_gilded_lily'],
-            enemies: ['regal_empire', 'iron_legion', 'onyx_hand']
+            enemies: ['regal_empire', 'iron_legion', 'onyx_hand', 'koopa_troop']
         },
         power_level: 7,
         category: "Regional Powers",
-        region: "Far West",
-        leader: "High King Thranduil",
+        region: "Middle-earth",
+        leader: "king_thorin",
+        notable_people: [
+            { name: "King Thorin", role: "Warrior King", description: "The stoic ruler of the united kingdoms, known for his wisdom and ancestral war-axe." },
+        ],
+        waluigi_tip: "WAH! So much honor! So boring! The Elves think they're better than everyone, and the Dwarves just want shiny rocks. Tell the Dwarves the Elves found a bigger gem. Instant chaos!",
+        internal_politics: {
+            ruling_faction: "king_thorin_power",
+            sub_factions: {
+                king_thorin_power: {
+                    name: "King Thorin's Royal Power",
+                    description: "The central authority of the human kingdoms, led by King Thorin himself. They focus on military strength and maintaining ancient alliances.",
+                    influence: 31,
+                },
+                elven_clans: {
+                    name: "Elven Clans",
+                    description: "Ancient, reclusive Elven clans who are masters of archery and magic. They seek to preserve the fading magic of their forests.",
+                    influence: 21,
+                },
+                dwarven_holds: {
+                    name: "Dwarven Holds",
+                    description: "The stoic and industrious Dwarves of the mountain holds. They are master smiths who forge legendary weapons and armor.",
+                    influence: 19,
+                },
+                human_tribes: {
+                    name: "Human Tribes",
+                    description: "Scattered, independent human tribes who are fiercely protective of their lands and suspicious of centralized power.",
+                    influence: 12,
+                }
+            }
+        }
     },
     unaligned: {
         name: "Unaligned & Independent",

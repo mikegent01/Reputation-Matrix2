@@ -437,7 +437,7 @@ const midlandsData = {
         }
     ],
     fogOfWar: [
- 
+  
     ]
 };
 

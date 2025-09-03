@@ -14,7 +14,9 @@ export const ironwoodData = {
             political_influence: 7,
             economic_value: 3,
             military_strength: 10,
-            population: 8000
+            population: 8000,
+            age_of_antiquity: 5,
+            crime_rate: 1
         },
         {
             id: 'poi_iw_ironwood_forest',
@@ -28,7 +30,9 @@ export const ironwoodData = {
             political_influence: 2,
             economic_value: 8,
             military_strength: 4,
-            population: 100
+            population: 100,
+            age_of_antiquity: 10,
+            crime_rate: 7
         },
         {
             id: 'poi_iw_logging_camp',
@@ -42,7 +46,9 @@ export const ironwoodData = {
             political_influence: 3,
             economic_value: 9,
             military_strength: 5,
-            population: 1500
+            population: 1500,
+            age_of_antiquity: 3,
+            crime_rate: 4
         },
         {
             id: 'poi_iw_rakasha_hunting_grounds',
@@ -56,7 +62,9 @@ export const ironwoodData = {
             political_influence: 4,
             economic_value: 2,
             military_strength: 6,
-            population: 300
+            population: 300,
+            age_of_antiquity: 10,
+            crime_rate: 5
         },
         {
             id: 'poi_iw_isle_of_burbary',
@@ -70,7 +78,9 @@ export const ironwoodData = {
             political_influence: 3,
             economic_value: 1,
             military_strength: 8,
-            population: 1000
+            population: 1000,
+            age_of_antiquity: 6,
+            crime_rate: 1
         },
         {
             id: 'poi_iw_abandoned_mine',
@@ -84,7 +94,9 @@ export const ironwoodData = {
             political_influence: 1,
             economic_value: 3,
             military_strength: 3,
-            population: 0
+            population: 0,
+            age_of_antiquity: 7,
+            crime_rate: 8
         },
         {
             id: 'poi_iw_river_outpost',
@@ -98,7 +110,9 @@ export const ironwoodData = {
             political_influence: 2,
             economic_value: 4,
             military_strength: 7,
-            population: 200
+            population: 200,
+            age_of_antiquity: 4,
+            crime_rate: 2
         },
         {
             id: 'poi_iw_ancient_spirit_tree',
@@ -112,7 +126,9 @@ export const ironwoodData = {
             political_influence: 5,
             economic_value: 3,
             military_strength: 4,
-            population: 10
+            population: 10,
+            age_of_antiquity: 10,
+            crime_rate: 1
         },
         {
             id: 'poi_iw_poachers_camp',
@@ -126,7 +142,9 @@ export const ironwoodData = {
             political_influence: 1,
             economic_value: 5,
             military_strength: 3,
-            population: 50
+            population: 50,
+            age_of_antiquity: 1,
+            crime_rate: 10
         },
         {
             id: 'poi_iw_monastery_of_silence',
@@ -140,7 +158,9 @@ export const ironwoodData = {
             political_influence: 2,
             economic_value: 1,
             military_strength: 2,
-            population: 30
+            population: 30,
+            age_of_antiquity: 8,
+            crime_rate: 1
         },
         // #160
         {
@@ -155,7 +175,9 @@ export const ironwoodData = {
             political_influence: 1,
             economic_value: 1,
             military_strength: 1,
-            population: 0
+            population: 0,
+            age_of_antiquity: 1,
+            crime_rate: 10
         }
     ],
     fogOfWar: []

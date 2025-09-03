@@ -8,7 +8,8 @@ export const surfaceWebPois = [
         type: 'capital_city', name: "The Oracle's Spire (Google)",
         description: "A gleaming, impossibly tall spire that serves as the central index of all knowledge on the Surface Web. Its archivists and algorithms can answer any question, for a price.",
         factionId: 'cybernetic_collectives', intelReq: { faction: 'internet_federation', level: 10 },
-        political_influence: 9, economic_value: 9, military_strength: 7, population: 5000
+        political_influence: 9, economic_value: 9, military_strength: 7, population: 5000,
+        age_of_antiquity: 1, crime_rate: 2
     },
     {
         id: 'poi_inet_social_forum',
@@ -16,7 +17,8 @@ export const surfaceWebPois = [
         type: 'major_city', name: "The Great Social Forum (Facebook)",
         description: "A chaotic, sprawling city of interconnected platforms where billions of users share their thoughts, news, and pictures of their meals. A hotbed of political debate and misinformation.",
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 5 },
-        political_influence: 8, economic_value: 8, military_strength: 3, population: 10000
+        political_influence: 8, economic_value: 8, military_strength: 3, population: 10000,
+        age_of_antiquity: 1, crime_rate: 4
     },
     {
         id: 'poi_inet_anonymity_cauldron',
@@ -24,7 +26,8 @@ export const surfaceWebPois = [
         type: 'lair', name: "The Anonymity Cauldron (4chan)",
         description: "A dark, seething pit of unfiltered thought and raw chaos. A place of dangerous ideas and powerful secrets, where users are anonymous and consequences are unpredictable. Its location is unstable, having recently drifted.",
         factionId: 'cosmic_jesters', intelReq: { faction: 'cosmic_jesters', level: 50 },
-        political_influence: 4, economic_value: 3, military_strength: 5, population: 1000
+        political_influence: 4, economic_value: 3, military_strength: 5, population: 1000,
+        age_of_antiquity: 1, crime_rate: 8
     },
     {
         id: 'poi_inet_knowledge_garden',
@@ -34,7 +37,8 @@ export const surfaceWebPois = [
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 5 },
         political_influence: 7, economic_value: 6, military_strength: 2, population: 2000,
         library_summary: "A vast, serene garden where every plant and stone is inscribed with a piece of user-submitted information. It is constantly tended by a legion of volunteer editors who protect its neutrality. Its data-terminals provide access to a wide range of public domain texts.",
-        libraryStockKey: 'internet'
+        libraryStockKey: 'internet',
+        age_of_antiquity: 1, crime_rate: 3
     },
     {
         id: 'poi_inet_streaming_sea',
@@ -42,7 +46,8 @@ export const surfaceWebPois = [
         type: 'landmark', name: "The Streaming Sea (YouTube/Twitch)",
         description: "A district of floating platforms and holographic stages where performers broadcast their lives, games, and talents to massive audiences.",
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 10 },
-        political_influence: 6, economic_value: 8, military_strength: 2, population: 4000
+        political_influence: 6, economic_value: 8, military_strength: 2, population: 4000,
+        age_of_antiquity: 1, crime_rate: 5
     },
     {
         id: 'poi_inet_federation_precinct',
@@ -50,7 +55,8 @@ export const surfaceWebPois = [
         type: 'barracks', name: "Federation Precinct 7",
         description: "A major garrison for the Internet Federation's security forces. From here, they dispatch patrols to quell flame wars and delete illegal content.",
         factionId: 'internet_federation', intelReq: { faction: 'internet_federation', level: 15 },
-        political_influence: 6, economic_value: 3, military_strength: 8, population: 1200
+        political_influence: 6, economic_value: 3, military_strength: 8, population: 1200,
+        age_of_antiquity: 1, crime_rate: 2
     },
     {
         id: 'poi_inet_adblocker_bastion',
@@ -58,7 +64,8 @@ export const surfaceWebPois = [
         type: 'outpost', name: "Ad-Blocker Bastion",
         description: "A hidden fortress maintained by Hacktivist cells, dedicated to disrupting the constant stream of advertisements that plague the Surface Web.",
         factionId: 'hacktivist_collectives', intelReq: { faction: 'hacktivist_collectives', level: 35 },
-        political_influence: 3, economic_value: 2, military_strength: 5, population: 100
+        political_influence: 3, economic_value: 2, military_strength: 5, population: 100,
+        age_of_antiquity: 1, crime_rate: 4
     },
     {
         id: 'poi_inet_cookie_cache',
@@ -66,7 +73,8 @@ export const surfaceWebPois = [
         type: 'cave_entrance', name: "The Cookie Cache Caverns",
         description: "A vast network of caves where user data and tracking cookies are stored. A tempting target for data miners and identity thieves.",
         factionId: 'data_merchant_guilds', intelReq: { faction: 'data_merchant_guilds', level: 25 },
-        political_influence: 4, economic_value: 9, military_strength: 3, population: 200
+        political_influence: 4, economic_value: 9, military_strength: 3, population: 200,
+        age_of_antiquity: 1, crime_rate: 5
     },
     {
         id: 'poi_inet_antivirus_citadel',
@@ -74,7 +82,8 @@ export const surfaceWebPois = [
         type: 'fortress', name: "The Anti-Virus Citadel",
         description: "The headquarters of the Federation's anti-malware division. A gleaming fortress that constantly scans the web for threats and develops new digital weapons.",
         factionId: 'internet_federation', intelReq: { faction: 'internet_federation', level: 30 },
-        political_influence: 5, economic_value: 3, military_strength: 9, population: 800
+        political_influence: 5, economic_value: 3, military_strength: 9, population: 800,
+        age_of_antiquity: 1, crime_rate: 1
     },
     {
         id: 'poi_inet_daily_feed_spire',
@@ -82,7 +91,8 @@ export const surfaceWebPois = [
         type: 'watchtower', name: "The Daily Feed Spire (News Aggregator)",
         description: "A tower that constantly broadcasts the latest headlines and breaking news from across the web. A key source of information, and a primary target for propaganda campaigns.",
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 5 },
-        political_influence: 7, economic_value: 5, military_strength: 3, population: 100
+        political_influence: 7, economic_value: 5, military_strength: 3, population: 100,
+        age_of_antiquity: 1, crime_rate: 6
     },
     {
         id: 'poi_inet_domain_spire',
@@ -90,7 +100,8 @@ export const surfaceWebPois = [
         type: 'ley_line', name: "Domain Spire",
         description: "One of several spires that form the 'Domain Name System'. These spires direct data traffic, making them critical infrastructure. Control a spire, and you can redirect a significant portion of the web.",
         factionId: 'internet_federation', intelReq: { faction: 'internet_federation', level: 40 },
-        political_influence: 6, economic_value: 4, military_strength: 8, population: 200
+        political_influence: 6, economic_value: 4, military_strength: 8, population: 200,
+        age_of_antiquity: 1, crime_rate: 2
     },
     {
         id: 'poi_inet_isp_tollbridge',
@@ -98,7 +109,8 @@ export const surfaceWebPois = [
         type: 'bridge', name: "ISP Toll-Bridge",
         description: "A heavily fortified data bridge controlled by a monopolistic Internet Service Provider. All traffic must pass through and pay a 'toll', throttling speeds for those who don't subscribe to their premium plans.",
         factionId: 'data_merchant_guilds', intelReq: { faction: 'data_merchant_guilds', level: 20 },
-        political_influence: 5, economic_value: 9, military_strength: 6, population: 400
+        political_influence: 5, economic_value: 9, military_strength: 6, population: 400,
+        age_of_antiquity: 1, crime_rate: 3
     },
     {
         id: 'poi_inet_git_fortress',
@@ -106,7 +118,8 @@ export const surfaceWebPois = [
         type: 'fortress', name: "The Git Fortress (GitHub)",
         description: "A massive, orderly fortress where the source code for countless projects is stored and versioned. Its integrity is paramount to the entire digital ecosystem, making it a high-value strategic target.",
         factionId: 'internet_federation', intelReq: { faction: 'internet_federation', level: 25 },
-        political_influence: 7, economic_value: 8, military_strength: 8, population: 2000
+        political_influence: 7, economic_value: 8, military_strength: 8, population: 2000,
+        age_of_antiquity: 1, crime_rate: 2
     },
     {
         id: 'poi_inet_reddit_agora',
@@ -114,7 +127,8 @@ export const surfaceWebPois = [
         type: 'market', name: "The Agora of Memes (Reddit)",
         description: "A chaotic, sprawling collection of forums dedicated to every topic imaginable. It is the birthplace of new ideas and viral content, but is also prone to mob mentality and factional infighting.",
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 5 },
-        political_influence: 6, economic_value: 7, military_strength: 2, population: 3000
+        political_influence: 6, economic_value: 7, military_strength: 2, population: 3000,
+        age_of_antiquity: 1, crime_rate: 5
     },
     {
         id: 'poi_inet_imgurian_archives',
@@ -124,7 +138,8 @@ export const surfaceWebPois = [
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 10 },
         political_influence: 5, economic_value: 6, military_strength: 2, population: 500,
         library_summary: "A vast, visual archive that serves as the primary host for the images and GIFs that fuel the meme economy. While not a traditional library, its cultural significance is immense, containing a single, bizarre text on 'The Art of the WAH'.",
-        libraryStockKey: 'imgurian_archives'
+        libraryStockKey: 'imgurian_archives',
+        age_of_antiquity: 1, crime_rate: 6
     },
     {
         id: 'poi_inet_duck_pond',
@@ -132,7 +147,8 @@ export const surfaceWebPois = [
         type: 'shrine', name: "The Duck Pond (DuckDuckGo)",
         description: "A quiet, serene search engine that promises not to track its users. It is a haven for privacy-seekers and a constant thorn in the side of the data-hungry Merchant Guilds.",
         factionId: 'hacktivist_collectives', intelReq: { faction: 'hacktivist_collectives', level: 30 },
-        political_influence: 4, economic_value: 3, military_strength: 4, population: 100
+        political_influence: 4, economic_value: 3, military_strength: 4, population: 100,
+        age_of_antiquity: 1, crime_rate: 3
     },
     {
         id: 'poi_inet_bing_atoll',
@@ -140,7 +156,8 @@ export const surfaceWebPois = [
         type: 'ruins', name: "The Bing Atoll",
         description: "A sparsely populated search engine, constantly trying to reinvent itself to compete with the Oracle's Spire. It is known for its beautiful, high-resolution background images.",
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 5 },
-        political_influence: 2, economic_value: 3, military_strength: 2, population: 200
+        political_influence: 2, economic_value: 3, military_strength: 2, population: 200,
+        age_of_antiquity: 1, crime_rate: 4
     },
     {
         id: 'poi_inet_dropbox_caverns',
@@ -148,7 +165,8 @@ export const surfaceWebPois = [
         type: 'mine', name: "The Dropbox Caverns",
         description: "A vast network of crystalline caves where personal and corporate files are stored in the cloud. Heavily guarded by the Data Merchant Guilds against digital spelunkers.",
         factionId: 'data_merchant_guilds', intelReq: { faction: 'data_merchant_guilds', level: 20 },
-        political_influence: 4, economic_value: 8, military_strength: 5, population: 300
+        political_influence: 4, economic_value: 8, military_strength: 5, population: 300,
+        age_of_antiquity: 1, crime_rate: 3
     },
     {
         id: 'poi_inet_linkedin_spire',
@@ -156,7 +174,8 @@ export const surfaceWebPois = [
         type: 'major_city', name: "The Professional Spire (LinkedIn)",
         description: "A sterile, corporate city where users network for career opportunities. The social interactions are polite, but the political maneuvering for promotions is ruthless.",
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 15 },
-        political_influence: 5, economic_value: 6, military_strength: 3, population: 4000
+        political_influence: 5, economic_value: 6, military_strength: 3, population: 4000,
+        age_of_antiquity: 1, crime_rate: 3
     },
     {
         id: 'poi_inet_pinterest_boardlands',
@@ -164,7 +183,8 @@ export const surfaceWebPois = [
         type: 'landmark', name: "The Pinterest Boardlands",
         description: "A visually stunning landscape of inspiration boards, where users collect images of recipes, crafts, and home decor. A surprisingly influential hub for cultural trends.",
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 5 },
-        political_influence: 4, economic_value: 5, military_strength: 1, population: 1500
+        political_influence: 4, economic_value: 5, military_strength: 1, population: 1500,
+        age_of_antiquity: 1, crime_rate: 5
     },
     {
         id: 'poi_inet_khan_academy',
@@ -172,7 +192,8 @@ export const surfaceWebPois = [
         type: 'academy', name: "The Khan Academy",
         description: "A free university open to all, offering knowledge on any subject. It is a beacon of enlightenment in the often-chaotic web, fiercely protected by its users.",
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 5 },
-        political_influence: 6, economic_value: 3, military_strength: 3, population: 2500
+        political_influence: 6, economic_value: 3, military_strength: 3, population: 2500,
+        age_of_antiquity: 1, crime_rate: 3
     },
     {
         id: 'poi_inet_netflix_citadel',
@@ -180,7 +201,8 @@ export const surfaceWebPois = [
         type: 'fortress', name: "The Streaming Citadel (Netflix)",
         description: "A massive, walled citadel that houses a vast library of films and television shows. Its recommendation algorithms are said to be a form of powerful, addictive magic.",
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 10 },
-        political_influence: 7, economic_value: 9, military_strength: 5, population: 3000
+        political_influence: 7, economic_value: 9, military_strength: 5, population: 3000,
+        age_of_antiquity: 1, crime_rate: 3
     },
     {
         id: 'poi_inet_ebay_bazaar',
@@ -188,7 +210,8 @@ export const surfaceWebPois = [
         type: 'market', name: "The Auction Bazaars (eBay)",
         description: "A chaotic bazaar where anything can be bought or sold via a frantic auction system. Run by the Freelancer Underworld, it's a place for rare finds and shady deals.",
         factionId: 'freelancer_underworld', intelReq: { faction: 'freelancer_underworld', level: 20 },
-        political_influence: 4, economic_value: 8, military_strength: 3, population: 2000
+        political_influence: 4, economic_value: 8, military_strength: 3, population: 2000,
+        age_of_antiquity: 1, crime_rate: 4
     },
     {
         id: 'poi_inet_dns_root_nexus',
@@ -196,7 +219,8 @@ export const surfaceWebPois = [
         type: 'ley_line', name: "DNS Root Server Nexus",
         description: "One of the thirteen core servers of the Domain Name System. It is the absolute bedrock of The Internet's infrastructure. Its destruction would plunge a seventh of the web into chaos.",
         factionId: 'internet_federation', intelReq: { faction: 'internet_federation', level: 80 },
-        political_influence: 8, economic_value: 8, military_strength: 10, population: 100
+        political_influence: 8, economic_value: 8, military_strength: 10, population: 100,
+        age_of_antiquity: 1, crime_rate: 1
     },
     {
         id: 'poi_inet_payment_gateway',
@@ -204,7 +228,8 @@ export const surfaceWebPois = [
         type: 'fortress', name: "The Payment Gateway Fortress (PayPal/Stripe)",
         description: "A heavily fortified digital bank that processes the majority of transactions on the web. It is under constant assault from hackers.",
         factionId: 'data_merchant_guilds', intelReq: { faction: 'data_merchant_guilds', level: 35 },
-        political_influence: 6, economic_value: 10, military_strength: 8, population: 500
+        political_influence: 6, economic_value: 10, military_strength: 8, population: 500,
+        age_of_antiquity: 1, crime_rate: 1
     },
     {
         id: 'poi_inet_viral_volcano',
@@ -212,7 +237,8 @@ export const surfaceWebPois = [
         type: 'volcano', name: "The Viral Video Volcano",
         description: "A digital volcano that erupts with new, highly shareable video content every few hours. Content creators flock here hoping to catch the next big trend before it goes mainstream.",
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 15 },
-        political_influence: 5, economic_value: 8, military_strength: 2, population: 500
+        political_influence: 5, economic_value: 8, military_strength: 2, population: 500,
+        age_of_antiquity: 1, crime_rate: 6
     },
     {
         id: 'poi_inet_regal_embassy',
@@ -225,7 +251,8 @@ export const surfaceWebPois = [
         political_influence: 6,
         economic_value: 4,
         military_strength: 7,
-        population: 100
+        population: 100,
+        age_of_antiquity: 1, crime_rate: 2
     },
     {
         id: 'poi_inet_mushroom_embassy',
@@ -238,6 +265,7 @@ export const surfaceWebPois = [
         political_influence: 4,
         economic_value: 3,
         military_strength: 3,
-        population: 80
+        population: 80,
+        age_of_antiquity: 1, crime_rate: 5
     }
 ];

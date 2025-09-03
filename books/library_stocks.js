@@ -8,6 +8,9 @@ import { LIBRARY_OF_ZERO_STOCK } from './library_of_zero_stock.js';
 import { LOST_SOCKS_STOCK } from './lost_socks_stock.js';
 import { PROVINCIAL_ARCHIVES_STOCK } from './provincial_archives_stock.js';
 import { UNSEEN_LIBRARY_STOCK } from './unseen_library_stock.js';
+import { MIDDLE_EARTH_LIBRARY_STOCK } from './middle_earth_library_stock.js';
+import { UMBAR_LIBRARY_STOCK } from './umbar_library_stock.js';
+import { GONDOR_LIBRARY_STOCK } from './gondor_library_stock.js';
 
 export const LIBRARY_STOCKS = {
     midlands: MIDLANDS_LIBRARY_STOCK,
@@ -20,4 +23,7 @@ export const LIBRARY_STOCKS = {
     lost_socks: LOST_SOCKS_STOCK,
     provincial_archives: PROVINCIAL_ARCHIVES_STOCK,
     unseen_library: UNSEEN_LIBRARY_STOCK,
+    middle_earth: MIDDLE_EARTH_LIBRARY_STOCK,
+    umbar_archives: UMBAR_LIBRARY_STOCK,
+    gondor_archives: GONDOR_LIBRARY_STOCK,
 };

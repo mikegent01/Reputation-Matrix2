@@ -14,7 +14,9 @@ export const dryCountyData = {
             political_influence: 4,
             economic_value: 5,
             military_strength: 2,
-            population: 1200
+            population: 1200,
+            age_of_antiquity: 5,
+            crime_rate: 7
         },
         {
             id: 'poi_dc_finks_office',
@@ -28,7 +30,9 @@ export const dryCountyData = {
             political_influence: 7,
             economic_value: 3,
             military_strength: 1,
-            population: 10
+            population: 10,
+            age_of_antiquity: 1,
+            crime_rate: 10
         },
         {
             id: 'poi_dc_whispering_canyon',
@@ -42,7 +46,9 @@ export const dryCountyData = {
             political_influence: 1,
             economic_value: 1,
             military_strength: 2,
-            population: 0
+            population: 0,
+            age_of_antiquity: 8,
+            crime_rate: 5
         },
         {
             id: 'poi_dc_nihilist_commune',
@@ -56,7 +62,9 @@ export const dryCountyData = {
             political_influence: 3,
             economic_value: 1,
             military_strength: 3,
-            population: 50
+            population: 50,
+            age_of_antiquity: 2,
+            crime_rate: 8
         },
         {
             id: 'poi_dc_random_bridge',
@@ -70,7 +78,9 @@ export const dryCountyData = {
             political_influence: 1,
             economic_value: 2,
             military_strength: 1,
-            population: 0
+            population: 0,
+            age_of_antiquity: 1,
+            crime_rate: 10
         },
         {
             id: 'poi_dc_impossible_arch',
@@ -84,7 +94,9 @@ export const dryCountyData = {
             political_influence: 1,
             economic_value: 1,
             military_strength: 1,
-            population: 0
+            population: 0,
+            age_of_antiquity: 10,
+            crime_rate: 1
         },
         {
             id: 'poi_dc_unmine',
@@ -98,7 +110,9 @@ export const dryCountyData = {
             political_influence: 1,
             economic_value: 6,
             military_strength: 2,
-            population: 20
+            population: 20,
+            age_of_antiquity: 10,
+            crime_rate: 4
         },
         {
             id: 'poi_dc_sheriffs_office',
@@ -112,7 +126,9 @@ export const dryCountyData = {
             political_influence: 5,
             economic_value: 4,
             military_strength: 3,
-            population: 500
+            population: 500,
+            age_of_antiquity: 4,
+            crime_rate: 1
         },
         {
             id: 'poi_dc_clock_that_runs_backwards',
@@ -126,7 +142,9 @@ export const dryCountyData = {
             political_influence: 1,
             economic_value: 1,
             military_strength: 1,
-            population: 0
+            population: 0,
+            age_of_antiquity: 7,
+            crime_rate: 2
         },
         {
             id: 'poi_dc_oathbound_outpost',
@@ -140,7 +158,9 @@ export const dryCountyData = {
             political_influence: 3,
             economic_value: 1,
             military_strength: 5,
-            population: 40
+            population: 40,
+            age_of_antiquity: 2,
+            crime_rate: 1
         },
         // #162
         {
@@ -157,7 +177,9 @@ export const dryCountyData = {
             military_strength: 1,
             population: 1,
             library_summary: "Welcome to the Bureau of Lost Socks, the cosmic repository for every sock that has ever gone missing. Our infinite, maddening archive is tended by a polite gnome who can help you find *a* sock, but never, ever its matching pair. The library's single, user-submitted tome is a treatise on memetic theory, which may or may not be related.",
-            libraryStockKey: 'lost_socks'
+            libraryStockKey: 'lost_socks',
+            age_of_antiquity: 10,
+            crime_rate: 1
         }
     ]
 };

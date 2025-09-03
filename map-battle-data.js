@@ -4,6 +4,8 @@ import { BASE_BATTLE_DATA } from './map-battle-data-base.js';
 import { MUSHROOM_KINGDOM_TROOPS } from './map-battle-data-mk.js';
 import { MIDLANDS_TROOPS } from './map-battle-data-midlands.js';
 import { WIDESPREAD_TROOPS } from './map-battle-data-widespread.js';
+import { MIDDLE_EARTH_TROOPS } from './map-battle-data-middle-earth.js';
+import { INTERNET_TROOPS } from './map-battle-data-internet.js';
 
 export const BATTLE_MAP_DATA = {
     // Front lines and the Vigilance journey are defined in the base file.
@@ -16,5 +18,7 @@ export const BATTLE_MAP_DATA = {
         ...MUSHROOM_KINGDOM_TROOPS,
         ...MIDLANDS_TROOPS,
         ...WIDESPREAD_TROOPS,
+        ...MIDDLE_EARTH_TROOPS,
+        ...INTERNET_TROOPS,
     ]
 };

@@ -16,6 +16,8 @@ export function renderTabs() {
         ? ['The Midlands'] 
         : currentPage.includes('internet-maps.html')
         ? ['Other Dimensions']
+        : currentPage.includes('middle-earth-maps.html')
+        ? ['Middle-earth']
         : ['Mushroom Kingdom Regions', 'Islands & Outer Realms'];
 
     const groupedMaps = Object.values(MAP_DATA).reduce((acc, map) => {
@@ -47,6 +49,7 @@ export function renderTabs() {
     
     const modeSelector = document.createElement('div');
     modeSelector.id = 'map-mode-selector';
+    
     modeSelector.innerHTML = `
         <span>Mode:</span>
         <button class="mode-btn ${map.activeMapMode === 'standard' ? 'active' : ''}" data-mode="standard">Standard</button>
@@ -56,6 +59,8 @@ export function renderTabs() {
         <button class="mode-btn ${map.activeMapMode === 'tactical' ? 'active' : ''}" data-mode="tactical">Tactical</button>
         <button class="mode-btn ${map.activeMapMode === 'population' ? 'active' : ''}" data-mode="population">Population</button>
         <button class="mode-btn ${map.activeMapMode === 'laws' ? 'active' : ''}" data-mode="laws">Laws & Traditions</button>
+        <button class="mode-btn ${map.activeMapMode === 'age_of_antiquity' ? 'active' : ''}" data-mode="age_of_antiquity">Age of Antiquity</button>
+        <button class="mode-btn ${map.activeMapMode === 'crime_rate' ? 'active' : ''}" data-mode="crime_rate">Crime Rate</button>
     `;
     mapControls.appendChild(modeSelector);
 }

@@ -8,7 +8,8 @@ export const appleIslandPois = [
         type: 'castle', name: "The Infinite Loop Citadel (Apple HQ)",
         description: "A perfectly circular, seamless fortress of glass and steel. It is the heart of a vast, closed ecosystem of products. A place of minimalist design, absolute control, and immense wealth.",
         factionId: 'unaligned', intelReq: { faction: 'data_merchant_guilds', level: 30 },
-        political_influence: 9, economic_value: 10, military_strength: 8, population: 8000
+        political_influence: 9, economic_value: 10, military_strength: 8, population: 8000,
+        age_of_antiquity: 1, crime_rate: 1
     },
     {
         id: 'poi_inet_walled_garden',
@@ -16,7 +17,8 @@ export const appleIslandPois = [
         type: 'forest', name: "The Walled Garden",
         description: "The beautiful but strictly controlled user-space of Apple Island. The user experience is flawless, but unauthorized modifications are ruthlessly purged by 'Genius' security programs.",
         factionId: 'unaligned', intelReq: { faction: 'data_merchant_guilds', level: 25 },
-        political_influence: 6, economic_value: 7, military_strength: 6, population: 5000
+        political_influence: 6, economic_value: 7, military_strength: 6, population: 5000,
+        age_of_antiquity: 1, crime_rate: 2
     },
     {
         id: 'poi_inet_temple_of_genius',
@@ -24,7 +26,8 @@ export const appleIslandPois = [
         type: 'temple', name: "The Temple of Genius (Apple Store)",
         description: "Gleaming temples of white and glass where acolytes in blue shirts dispense technological salvation to devoted followers. A place of worship for the cult of the brand.",
         factionId: 'goodstyle_artisans', intelReq: { faction: 'goodstyle_artisans', level: 15 },
-        political_influence: 7, economic_value: 8, military_strength: 3, population: 1000
+        political_influence: 7, economic_value: 8, military_strength: 3, population: 1000,
+        age_of_antiquity: 1, crime_rate: 4
     },
     {
         id: 'poi_inet_foxconn_pits',
@@ -32,7 +35,8 @@ export const appleIslandPois = [
         type: 'mine', name: "The Assembler Pits (Foxconn)",
         description: "The grim, industrial underbelly of Apple Island. A vast network of factories where digital constructs work tirelessly to assemble the sleek devices sold in the temples above.",
         factionId: 'unaligned', intelReq: { faction: 'the_unchained', level: 45 },
-        political_influence: 3, economic_value: 9, military_strength: 5, population: 12000
+        political_influence: 3, economic_value: 9, military_strength: 5, population: 12000,
+        age_of_antiquity: 1, crime_rate: 3
     },
     {
         id: 'poi_inet_dongle_docks',
@@ -40,6 +44,7 @@ export const appleIslandPois = [
         type: 'port', name: "The Dongle Docks",
         description: "A port where proprietary hardware adapters are manufactured and shipped. Access to the island's ecosystem is impossible without first paying tribute at these docks.",
         factionId: 'unaligned', intelReq: { faction: 'data_merchant_guilds', level: 20 },
-        political_influence: 4, economic_value: 8, military_strength: 5, population: 800
+        political_influence: 4, economic_value: 8, military_strength: 5, population: 800,
+        age_of_antiquity: 1, crime_rate: 4
     },
 ];

@@ -1,4 +1,3 @@
-
 // map-data/arid-coast-pois.js
 
 export const aridCoastData = {
@@ -15,7 +14,9 @@ export const aridCoastData = {
             political_influence: 1,
             economic_value: 4,
             military_strength: 1,
-            population: 50
+            population: 50,
+            age_of_antiquity: 9,
+            crime_rate: 6
         },
         {
             id: 'poi_ac_smugglers_cove',
@@ -29,7 +30,9 @@ export const aridCoastData = {
             political_influence: 3,
             economic_value: 8,
             military_strength: 4,
-            population: 150
+            population: 150,
+            age_of_antiquity: 3,
+            crime_rate: 9
         },
         {
             id: 'poi_ac_salt_flats',
@@ -43,7 +46,9 @@ export const aridCoastData = {
             political_influence: 1,
             economic_value: 2,
             military_strength: 1,
-            population: 20
+            population: 20,
+            age_of_antiquity: 10,
+            crime_rate: 8
         },
         {
             id: 'poi_ac_lighthouse_ruin',
@@ -57,7 +62,9 @@ export const aridCoastData = {
             political_influence: 1,
             economic_value: 2,
             military_strength: 2,
-            population: 0
+            population: 0,
+            age_of_antiquity: 8,
+            crime_rate: 4
         },
         {
             id: 'poi_ac_koopa_watchpost',
@@ -71,7 +78,9 @@ export const aridCoastData = {
             political_influence: 3,
             economic_value: 1,
             military_strength: 5,
-            population: 80
+            population: 80,
+            age_of_antiquity: 2,
+            crime_rate: 2
         },
         {
             id: 'poi_ac_glass_canyon',
@@ -85,7 +94,9 @@ export const aridCoastData = {
             political_influence: 1,
             economic_value: 6,
             military_strength: 2,
-            population: 0
+            population: 0,
+            age_of_antiquity: 9,
+            crime_rate: 5
         },
         {
             id: 'poi_ac_hermit_kiln',
@@ -99,7 +110,9 @@ export const aridCoastData = {
             political_influence: 2,
             economic_value: 5,
             military_strength: 1,
-            population: 1
+            population: 1,
+            age_of_antiquity: 3,
+            crime_rate: 1
         },
         {
             id: 'poi_ac_pillar_rock',
@@ -113,7 +126,9 @@ export const aridCoastData = {
             political_influence: 1,
             economic_value: 1,
             military_strength: 1,
-            population: 0
+            population: 0,
+            age_of_antiquity: 10,
+            crime_rate: 3
         },
         {
             id: 'poi_ac_sandship_yard',
@@ -127,7 +142,9 @@ export const aridCoastData = {
             political_influence: 2,
             economic_value: 7,
             military_strength: 3,
-            population: 250
+            population: 250,
+            age_of_antiquity: 2,
+            crime_rate: 9
         },
         {
             id: 'poi_ac_mirage_temple',
@@ -141,7 +158,9 @@ export const aridCoastData = {
             political_influence: 2,
             economic_value: 3,
             military_strength: 1,
-            population: 0
+            population: 0,
+            age_of_antiquity: 9,
+            crime_rate: 1
         }
     ],
     fogOfWar: []

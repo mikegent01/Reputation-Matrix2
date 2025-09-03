@@ -21,12 +21,72 @@ When adding new points of interest to the map data files, please adhere to the f
 3.  **Clarity and Conciseness:** Descriptions should be evocative but not overly long. A few sentences are usually sufficient to convey the essence of a location.
 4.  **Data Completeness:** Ensure all required fields are filled out. This includes coordinates (`x`, `y`), `type`, `name`, `factionId`, `intelReq`, and the values for the map modes: `political_influence`, `economic_value`, and `military_strength`.
 5.  **Placement:** Place POIs logically within their designated region. Avoid overcrowding areas. The best way to get accurate coordinates is to use the in-app **Edit Map** feature (available in Debug Mode) and then use the **Generate Code** function to get the correct format and values.
+6.  **POI Count:** The number of POIs should be appropriate for the size of the region to ensure it feels populated and interesting. Use the following as a guideline:
+    *   **Small Area (e.g., a single city, a small island):** Aim for 20-30 POIs.
+    *   **Medium Area (e.g., a province, a large forest):** Aim for 40-60 POIs.
+    *   **Large Area (e.g., a kingdom, a vast desert):** Aim for 75-100+ POIs.
+7.  **Fog of War:** The `points` string provided in the prompt defines the region's fog of war polygon. This polygon serves two purposes:
+    *   **Boundary Reference:** Use these coordinates as a strict boundary. All POIs you create for the region **must** be placed inside this polygon.
+    *   **Data Entry:** This `points` string **must** be included in the `fogOfWar` array within the new map data file you create (e.g., in `map-data/middle-earth/Gondor.js`). This allows the map system to render the fog correctly.
 
-### World Connectivity & Embassies
+### Adding Laws & Customs
 
-To make the world feel more interconnected and politically dynamic, embassies and diplomatic outposts are key points of interest. When adding an embassy, please consider the following:
+Laws and customs enrich the world by defining how different societies function. To add a new tradition or associate one with a POI, edit `legal_data.js`.
 
-1.  **Reciprocity:** If Faction A has an embassy in Faction B's capital, Faction B should likely have one in Faction A's capital. This demonstrates a formal diplomatic relationship.
-2.  **Location:** Place embassies in logical locations, typically within the capital city or a major port of the host nation. They should be accessible but distinct.
-3.  **Description:** The description should reflect the culture clash between the two factions. For example, a stern Imperial embassy in the whimsical Mushroom Kingdom should be described as imposing and out-of-place. A Mushroom Kingdom embassy in the digital realm of The Internet might be a quirky, mushroom-shaped data-construct.
-4.  **Purpose:** Embassies are more than just landmarks. They are hubs for quests related to diplomacy, espionage, political intrigue, and cross-cultural interaction. Keep this in mind when writing the description.
+*   **To add a new tradition:** Add it to the `traditions` object under the appropriate category (e.g., `martial`, `social`). Give it a unique `id`, `name`, `icon`, `description`, and list the `followers` (faction keys) who primarily adhere to it.
+*   **To add a region's baseline traditions:** In the `regional_traditions` object, add an entry where the key is the landmass ID (e.g., `middle_earth_full`) and the value is an array of tradition IDs. These traditions will apply to any unaligned POI in that region.
+*   **To add a POI-specific custom:** In the `poi_traditions` object, add an entry with the POI's full `id` as the key. The value should be an object with a `summary` and an array of `traditions` (IDs from the master list).
+
+Example of a POI-specific custom in `legal_data.js`:
+```javascript
+'poi_lw_crossroads_inn': {
+    summary: 'The Crossroads Inn operates under a strict, ancient code of neutrality enforced by its belligerent innkeeper.',
+    traditions: ['neutral_ground', 'storytelling_pact']
+}
+```
+
+### Adding Libraries
+
+Libraries are key locations for discovering new information and books.
+
+1.  **Create a POI:** Create a POI with the `type: 'library'`.
+2.  **Add Library Data:** In the POI's data object, add two new keys:
+    *   `library_summary`: A brief, in-character description of the library and its collection.
+    *   `libraryStockKey`: A unique key (e.g., `'royal_archives'`) that will be used to link to the book list.
+3.  **Create a Book List:**
+    *   In the `books/` directory, create a new file (e.g., `royal_archives_stock.js`).
+    *   In this file, export a constant array of strings, where each string is the exact title of a book from `books/book_descriptions.js`.
+4.  **Register the Stock:**
+    *   Open `books/library_stocks.js`.
+    *   Import your new stock file.
+    *   Add a new key-value pair to the `LIBRARY_STOCKS` object, where the key is the `libraryStockKey` you defined in the POI, and the value is the imported array of book titles.
+
+Example of a library POI:
+```javascript
+{
+    id: 'poi_mc_royal_archives',
+    type: 'library',
+    name: "The Royal Archives",
+    description: "...",
+    library_summary: "The official repository of the Mushroom Kingdom's history...",
+    libraryStockKey: 'mushroom_kingdom'
+}
+```
+Example of a stock file (`books/mushroom_library_stock.js`):
+```javascript
+export const MUSHROOM_KINGDOM_LIBRARY_STOCK = [
+    "Mushroom Kingdom History, Vol. III",
+    "A History of the Star Sprites",
+    // ... more book titles
+];
+```
+Example of registering in `books/library_stocks.js`:
+```javascript
+import { MUSHROOM_KINGDOM_LIBRARY_STOCK } from './mushroom_library_stock.js';
+// ... other imports
+
+export const LIBRARY_STOCKS = {
+    mushroom_kingdom: MUSHROOM_KINGDOM_LIBRARY_STOCK,
+    // ... other libraries
+};
+```

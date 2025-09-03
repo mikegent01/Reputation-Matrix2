@@ -8,7 +8,8 @@ export const borderPois = [
         type: 'fortress', name: "The Great Firewall Gate",
         description: "A colossal, shimmering barrier of pure data that serves as the main entry point from the physical realm into The Internet. All data packets are inspected here by Federation sentinels.",
         factionId: 'internet_federation', intelReq: { faction: 'internet_federation', level: 10 },
-        political_influence: 7, economic_value: 5, military_strength: 9, population: 500
+        political_influence: 7, economic_value: 5, military_strength: 9, population: 500,
+        age_of_antiquity: 1, crime_rate: 1
     },
     {
         id: 'poi_inet_regal_charter',
@@ -16,7 +17,8 @@ export const borderPois = [
         type: 'outpost', name: "Regal Empire Digital Charter Office",
         description: "An embassy of the Regal Empire, existing as a pocket of Imperial law in the digital world. They manage 'visas' for Imperial citizens and monitor data traffic for seditious content.",
         factionId: 'regal_empire', intelReq: { faction: 'regal_empire', level: 30 },
-        political_influence: 5, economic_value: 3, military_strength: 6, population: 150
+        political_influence: 5, economic_value: 3, military_strength: 6, population: 150,
+        age_of_antiquity: 1, crime_rate: 3
     },
     {
         id: 'poi_inet_glitch_chasm',
@@ -24,7 +26,8 @@ export const borderPois = [
         type: 'landmark', name: "The Glitch Chasm",
         description: "A deep, crackling chasm where corrupted data falls into an abyss of nothingness. The chasm serves as a natural, impassable border.",
         factionId: 'unaligned', intelReq: { faction: 'cosmic_jesters', level: 15 },
-        political_influence: 1, economic_value: 1, military_strength: 1, population: 0
+        political_influence: 1, economic_value: 1, military_strength: 1, population: 0,
+        age_of_antiquity: 1, crime_rate: 10
     },
     {
         id: 'poi_inet_last_server',
@@ -32,7 +35,8 @@ export const borderPois = [
         type: 'ruins', name: "The Last Physical Server",
         description: "The rusted, monolithic remains of a server from the 'old world'. It is a pilgrimage site for digital historians and a source of rare, archaic hardware for scavengers.",
         factionId: 'unaligned', intelReq: { faction: 'ratchet_raiders', level: 25 },
-        political_influence: 2, economic_value: 4, military_strength: 1, population: 10
+        political_influence: 2, economic_value: 4, military_strength: 1, population: 10,
+        age_of_antiquity: 1, crime_rate: 9
     },
     {
         id: 'poi_inet_packet_inspection',
@@ -40,6 +44,7 @@ export const borderPois = [
         type: 'watchtower', name: "Data Packet Inspection Point",
         description: "A Federation checkpoint where data packets are scanned for malware and illegal information before being allowed deeper into the Surface Web.",
         factionId: 'internet_federation', intelReq: { faction: 'internet_federation', level: 15 },
-        political_influence: 4, economic_value: 4, military_strength: 7, population: 100
+        political_influence: 4, economic_value: 4, military_strength: 7, population: 100,
+        age_of_antiquity: 1, crime_rate: 2
     },
 ];

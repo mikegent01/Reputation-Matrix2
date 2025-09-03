@@ -1,4 +1,5 @@
 
+
 import { state, loadState } from './state.js';
 import { playSound } from './common.js';
 import { BOOK_DESCRIPTIONS } from './books/book_descriptions.js';
@@ -120,8 +121,8 @@ const LIBRARIES = [
     { name: "Provincial Archives - Yal Belanor, Midlands", stockKey: 'provincial_archives' },
     { name: "The Knowledge Garden (Wikipedia) - The Internet", stockKey: 'internet' },
     { name: "The Fan-Fiction Scriptorium - Deep Web, The Internet", stockKey: 'fanfic_scriptorium' },
-    { name: "The Library of Zero - The Internet", stockKey: 'library_of_zero' },
     { name: "The Imgurian Archives - The Internet", stockKey: 'imgurian_archives' },
+    { name: "The Library of Zero - The Internet", stockKey: 'library_of_zero' },
     { name: "The Bureau of Lost Socks - Dry County, Midlands", stockKey: 'lost_socks' }
 ];
 

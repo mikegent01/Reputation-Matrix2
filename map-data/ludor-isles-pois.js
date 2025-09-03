@@ -15,7 +15,9 @@ export const ludorIslesData = {
             political_influence: 6,
             economic_value: 9,
             military_strength: 5,
-            population: 3000
+            population: 3000,
+            age_of_antiquity: 4,
+            crime_rate: 10
         },
         // #92
         {
@@ -30,7 +32,9 @@ export const ludorIslesData = {
             political_influence: 1,
             economic_value: 4,
             military_strength: 6,
-            population: 20
+            population: 20,
+            age_of_antiquity: 10,
+            crime_rate: 8
         },
         // #93
         {
@@ -45,7 +49,9 @@ export const ludorIslesData = {
             political_influence: 2,
             economic_value: 5,
             military_strength: 3,
-            population: 0
+            population: 0,
+            age_of_antiquity: 9,
+            crime_rate: 3
         },
         // #94
         {
@@ -60,7 +66,9 @@ export const ludorIslesData = {
             political_influence: 4,
             economic_value: 3,
             military_strength: 7,
-            population: 300
+            population: 300,
+            age_of_antiquity: 1,
+            crime_rate: 9
         },
         // #95
         {
@@ -75,7 +83,9 @@ export const ludorIslesData = {
             political_influence: 0,
             economic_value: 2,
             military_strength: 4,
-            population: 0
+            population: 0,
+            age_of_antiquity: 10,
+            crime_rate: 7
         },
         // #96
         {
@@ -90,7 +100,9 @@ export const ludorIslesData = {
             political_influence: 2,
             economic_value: 1,
             military_strength: 2,
-            population: 1
+            population: 1,
+            age_of_antiquity: 10,
+            crime_rate: 1
         },
         // #97
         {
@@ -105,7 +117,9 @@ export const ludorIslesData = {
             political_influence: 1,
             economic_value: 6,
             military_strength: 2,
-            population: 0
+            population: 0,
+            age_of_antiquity: 8,
+            crime_rate: 5
         },
         // #98
         {
@@ -120,7 +134,9 @@ export const ludorIslesData = {
             political_influence: 3,
             economic_value: 5,
             military_strength: 3,
-            population: 30
+            population: 30,
+            age_of_antiquity: 9,
+            crime_rate: 2
         },
         // #99
         {
@@ -135,7 +151,9 @@ export const ludorIslesData = {
             political_influence: 4,
             economic_value: 2,
             military_strength: 8,
-            population: 800
+            population: 800,
+            age_of_antiquity: 1,
+            crime_rate: 2
         },
         // #100
         {
@@ -150,7 +168,9 @@ export const ludorIslesData = {
             political_influence: 1,
             economic_value: 2,
             military_strength: 10,
-            population: 1
+            population: 1,
+            age_of_antiquity: 10,
+            crime_rate: 6
         }
     ],
     fogOfWar: []

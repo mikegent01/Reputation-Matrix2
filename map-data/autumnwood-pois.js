@@ -14,7 +14,9 @@ export const autumnwoodData = {
             political_influence: 9,
             economic_value: 6,
             military_strength: 8,
-            population: 2500
+            population: 2500,
+            age_of_antiquity: 8,
+            crime_rate: 2
         },
         {
             id: 'poi_aw_golden_grove',
@@ -28,7 +30,9 @@ export const autumnwoodData = {
             political_influence: 2,
             economic_value: 5,
             military_strength: 4,
-            population: 0
+            population: 0,
+            age_of_antiquity: 10,
+            crime_rate: 3
         },
         {
             id: 'poi_aw_conservator_archive',
@@ -44,7 +48,9 @@ export const autumnwoodData = {
             military_strength: 6,
             population: 100,
             library_summary: "This is not a public library, but a magically-sealed vault containing the Mages' Guild's most dangerous and forbidden texts. The books here are considered weapons, detailing demonic pacts, soul-trapping, and catastrophic spells. Access is forbidden to all but the highest-ranking Conservators.",
-            libraryStockKey: 'conservator_archive'
+            libraryStockKey: 'conservator_archive',
+            age_of_antiquity: 8,
+            crime_rate: 1
         },
         {
             id: 'poi_aw_innovator_workshop',
@@ -58,7 +64,9 @@ export const autumnwoodData = {
             political_influence: 5,
             economic_value: 5,
             military_strength: 6,
-            population: 80
+            population: 80,
+            age_of_antiquity: 2,
+            crime_rate: 5
         },
         {
             id: 'poi_aw_fey_crossing',
@@ -72,7 +80,9 @@ export const autumnwoodData = {
             political_influence: 2,
             economic_value: 3,
             military_strength: 3,
-            population: 0
+            population: 0,
+            age_of_antiquity: 10,
+            crime_rate: 4
         },
         {
             id: 'poi_aw_silent_pool',
@@ -86,7 +96,9 @@ export const autumnwoodData = {
             political_influence: 3,
             economic_value: 2,
             military_strength: 1,
-            population: 0
+            population: 0,
+            age_of_antiquity: 10,
+            crime_rate: 1
         },
         {
             id: 'poi_aw_amber_river',
@@ -100,7 +112,9 @@ export const autumnwoodData = {
             political_influence: 1,
             economic_value: 7,
             military_strength: 2,
-            population: 0
+            population: 0,
+            age_of_antiquity: 10,
+            crime_rate: 3
         },
         {
             id: 'poi_aw_witchs_hovel',
@@ -114,7 +128,9 @@ export const autumnwoodData = {
             political_influence: 2,
             economic_value: 4,
             military_strength: 3,
-            population: 1
+            population: 1,
+            age_of_antiquity: 4,
+            crime_rate: 6
         },
         {
             id: 'poi_aw_sunken_temple',
@@ -128,7 +144,9 @@ export const autumnwoodData = {
             political_influence: 2,
             economic_value: 5,
             military_strength: 3,
-            population: 0
+            population: 0,
+            age_of_antiquity: 9,
+            crime_rate: 2
         },
         {
             id: 'poi_aw_silver_flame_outpost',
@@ -142,7 +160,9 @@ export const autumnwoodData = {
             political_influence: 3,
             economic_value: 1,
             military_strength: 6,
-            population: 60
+            population: 60,
+            age_of_antiquity: 3,
+            crime_rate: 1
         },
         // #161
         {
@@ -157,7 +177,9 @@ export const autumnwoodData = {
             political_influence: 4,
             economic_value: 5,
             military_strength: 3,
-            population: 5
+            population: 5,
+            age_of_antiquity: 10,
+            crime_rate: 2
         }
     ]
 };

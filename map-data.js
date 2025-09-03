@@ -38,6 +38,10 @@ import { lowerHillsData } from './map-data/lower-hills-pois.js';
 import { yalCentralData } from './map-data/yal-central-pois.js';
 import { northernLandsData } from './map-data/northern-lands-pois.js';
 import { internetData } from './map-data/internet-pois.js';
+import { middleEarthData } from './map-data/middle-earth-pois.js';
+import { haradwaithData } from './map-data/middle-earth/Haradwaith.js';
+import { umbarData } from './map-data/middle-earth/Umbar.js';
+import { gondorData } from './map-data/middle-earth/Gondor.js';
 
 
 // Re-export BUILDING_TYPES so other modules can access it from this central file
@@ -160,7 +164,7 @@ export const MAP_DATA = {
     },
     bandits_way: {
         id: 'bandits_way',
-        name: 'Bandit\'s Way',
+        name: 'Bandits Way',
         imageSrc: 'mushroom_kingdom.jpg',
         order: 8,
         group: 'Mushroom Kingdom Regions',
@@ -190,7 +194,7 @@ export const MAP_DATA = {
     },
     boos_woods: {
         id: 'boos_woods',
-        name: 'Boo\'s Woods',
+        name: 'Boos Woods',
         imageSrc: 'mushroom_kingdom.jpg',
         order: 11,
         group: 'Mushroom Kingdom Regions',
@@ -260,7 +264,7 @@ export const MAP_DATA = {
     },
     yoshi_dk_islands: {
         id: 'yoshi_dk_islands',
-        name: 'Yoshi & DK\'s Islands',
+        name: 'Yoshi & DKs Islands',
         imageSrc: 'mushroom_kingdom.jpg',
         order: 5,
         group: 'Islands & Outer Realms',
@@ -500,14 +504,102 @@ export const MAP_DATA = {
         fogOfWar: chramalotKingdomData.fogOfWar || [],
         poiSourceFile: 'map-data/chramalot-kingdom-pois.js'
     },
-    the_internet: {
-        id: 'the_internet',
-        name: 'The Internet',
+    middle_earth_full: {
+        id: 'middle_earth_full',
+        name: 'Middle-earth (Full)',
+        imageSrc: 'mide.webp',
+        order: 1,
+        group: 'Middle-earth',
+        pointsOfInterest: [
+            ...middleEarthData.pointsOfInterest,
+            ...umbarData.pointsOfInterest,
+            ...gondorData.pointsOfInterest
+        ],
+        fogOfWar: [
+            ...middleEarthData.fogOfWar,
+            ...(umbarData.fogOfWar || []),
+            ...(gondorData.fogOfWar || [])
+        ],
+        poiSourceFile: 'map-data/middle-earth-pois.js'
+    },
+    forlindon: {
+        id: 'forlindon',
+        name: 'Forlindon',
+        imageSrc: 'mide.webp',
+        order: 2,
+        group: 'Middle-earth',
+        pointsOfInterest: middleEarthData.pointsOfInterest.filter(p => p.subRegion === 'forlindon'),
+        fogOfWar: [],
+        poiSourceFile: 'map-data/middle-earth/Forlindon.js'
+    },
+    eriador: {
+        id: 'eriador',
+        name: 'Eriador',
+        imageSrc: 'mide.webp',
+        order: 3,
+        group: 'Middle-earth',
+        pointsOfInterest: middleEarthData.pointsOfInterest.filter(p => p.subRegion === 'eriador'),
+        fogOfWar: [],
+        poiSourceFile: 'map-data/middle-earth/Eriador.js'
+    },
+    haradwaith: {
+        id: 'haradwaith',
+        name: 'Haradwaith',
+        imageSrc: 'mide.webp',
+        order: 4,
+        group: 'Middle-earth',
+        pointsOfInterest: haradwaithData.pointsOfInterest,
+        fogOfWar: haradwaithData.fogOfWar,
+        poiSourceFile: 'map-data/middle-earth/Haradwaith.js'
+    },
+    umbar: {
+        id: 'umbar',
+        name: 'Umbar',
+        imageSrc: 'mide.webp',
+        order: 5,
+        group: 'Middle-earth',
+        pointsOfInterest: umbarData.pointsOfInterest,
+        fogOfWar: umbarData.fogOfWar,
+        poiSourceFile: 'map-data/middle-earth/Umbar.js'
+    },
+    gondor: {
+        id: 'gondor',
+        name: 'Gondor',
+        imageSrc: 'mide.webp',
+        order: 6,
+        group: 'Middle-earth',
+        pointsOfInterest: gondorData.pointsOfInterest,
+        fogOfWar: gondorData.fogOfWar,
+        poiSourceFile: 'map-data/middle-earth/Gondor.js'
+    },
+    internet_full: {
+        id: 'internet_full',
+        name: 'The Internet (Full)',
         imageSrc: 'intermap.jpg',
         order: 1,
         group: 'Other Dimensions',
         pointsOfInterest: internetData.pointsOfInterest,
         fogOfWar: internetData.fogOfWar || [],
+        poiSourceFile: 'map-data/internet-pois.js'
+    },
+     internet_surface: {
+        id: 'internet_surface',
+        name: 'The Surface Web',
+        imageSrc: 'intermap.jpg',
+        order: 2,
+        group: 'Other Dimensions',
+        pointsOfInterest: internetData.pointsOfInterest.filter(p => !p.subRegion || p.subRegion !== 'deep_web'),
+        fogOfWar: [],
+        poiSourceFile: 'map-data/internet-pois.js'
+    },
+    internet_deep: {
+        id: 'internet_deep',
+        name: 'The Deep Web',
+        imageSrc: 'intermap.jpg',
+        order: 3,
+        group: 'Other Dimensions',
+        pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'deep_web'),
+        fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
     }
 };

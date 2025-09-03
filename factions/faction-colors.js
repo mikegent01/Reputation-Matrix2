@@ -42,4 +42,11 @@ export const FACTION_COLORS = {
     'rakasha_clans': 'var(--faction-rakasha_clans)',
     'koopa_troop': 'var(--faction-koopa_troop)',
     'rebel_clans': 'var(--faction-rebel_clans)',
+    
+    // New
+    'middle_earth_kingdoms': 'var(--faction-middle_earth_kingdoms)',
+    'internet_federation': 'var(--faction-internet_federation)',
+    'hacktivist_collectives': 'var(--faction-hacktivist_collectives)',
+    'data_merchant_guilds': 'var(--faction-data_merchant_guilds)',
+    'cybernetic_collectives': 'var(--faction-cybernetic_collectives)',
 };

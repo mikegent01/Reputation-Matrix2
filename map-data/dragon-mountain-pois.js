@@ -14,7 +14,9 @@ export const dragonMountainData = {
             political_influence: 1,
             economic_value: 3,
             military_strength: 2,
-            population: 0
+            population: 0,
+            age_of_antiquity: 1,
+            crime_rate: 5
         },
         {
             id: 'poi_dm_fort_tiberius',
@@ -28,7 +30,9 @@ export const dragonMountainData = {
             political_influence: 3,
             economic_value: 2,
             military_strength: 3,
-            population: 0
+            population: 0,
+            age_of_antiquity: 4,
+            crime_rate: 3
         },
         {
             id: 'poi_dm_wyrms_scar',
@@ -42,7 +46,9 @@ export const dragonMountainData = {
             political_influence: 1,
             economic_value: 2,
             military_strength: 5,
-            population: 0
+            population: 0,
+            age_of_antiquity: 1,
+            crime_rate: 8
         },
         {
             id: 'poi_dm_ashfall_village',
@@ -56,7 +62,9 @@ export const dragonMountainData = {
             political_influence: 1,
             economic_value: 1,
             military_strength: 1,
-            population: 0
+            population: 0,
+            age_of_antiquity: 4,
+            crime_rate: 2
         },
         {
             id: 'poi_dm_elders_eyrie',
@@ -70,7 +78,9 @@ export const dragonMountainData = {
             political_influence: 2,
             economic_value: 5,
             military_strength: 9,
-            population: 1
+            population: 1,
+            age_of_antiquity: 10,
+            crime_rate: 1
         },
         {
             id: 'poi_dm_orc_scavengers',
@@ -84,7 +94,9 @@ export const dragonMountainData = {
             political_influence: 2,
             economic_value: 4,
             military_strength: 6,
-            population: 250
+            population: 250,
+            age_of_antiquity: 1,
+            crime_rate: 9
         },
         {
             id: 'poi_dm_obsidian_fields',
@@ -98,7 +110,9 @@ export const dragonMountainData = {
             political_influence: 0,
             economic_value: 6,
             military_strength: 1,
-            population: 0
+            population: 0,
+            age_of_antiquity: 1,
+            crime_rate: 4
         },
         {
             id: 'poi_dm_dwarven_mine',
@@ -112,7 +126,9 @@ export const dragonMountainData = {
             political_influence: 2,
             economic_value: 7,
             military_strength: 2,
-            population: 0
+            population: 0,
+            age_of_antiquity: 7,
+            crime_rate: 3
         },
         {
             id: 'poi_dm_dragon_cult',
@@ -126,7 +142,9 @@ export const dragonMountainData = {
             political_influence: 3,
             economic_value: 1,
             military_strength: 4,
-            population: 40
+            population: 40,
+            age_of_antiquity: 1,
+            crime_rate: 6
         },
         {
             id: 'poi_dm_last_stand',
@@ -140,7 +158,9 @@ export const dragonMountainData = {
             political_influence: 1,
             economic_value: 1,
             military_strength: 2,
-            population: 0
+            population: 0,
+            age_of_antiquity: 1,
+            crime_rate: 1
         },
         // #157
         {
@@ -155,7 +175,9 @@ export const dragonMountainData = {
             political_influence: 2,
             economic_value: 5,
             military_strength: 3,
-            population: 5
+            population: 5,
+            age_of_antiquity: 1,
+            crime_rate: 8
         },
         {
             id: 'poi_dm_rakasha_shrine',
@@ -169,7 +191,9 @@ export const dragonMountainData = {
             political_influence: 3,
             economic_value: 1,
             military_strength: 2,
-            population: 5
+            population: 5,
+            age_of_antiquity: 6,
+            crime_rate: 1
         }
     ]
 };

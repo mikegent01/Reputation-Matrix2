@@ -1,3 +1,4 @@
+
 import { state, loadState, saveState } from './state.js';
 import * as ui from './map-ui.js';
 import * as renderer from './map-renderer.js';
@@ -60,7 +61,9 @@ function init() {
     if (pathname.includes('midlands-maps.html')) {
         activeMapId = 'midlands_full';
     } else if (pathname.includes('internet-maps.html')) {
-        activeMapId = 'the_internet';
+        activeMapId = 'internet_full';
+    } else if (pathname.includes('middle-earth-maps.html')) {
+        activeMapId = 'middle_earth_full';
     } else {
         activeMapId = 'mushroom_kingdom_full';
     }
@@ -168,6 +171,6 @@ function setupEventListeners() {
 
 // Run the application
 const currentPage = window.location.pathname.split('/').pop();
-if (['mushroom-kingdom-maps.html', 'midlands-maps.html', 'internet-maps.html'].includes(currentPage)) {
+if (['mushroom-kingdom-maps.html', 'midlands-maps.html', 'internet-maps.html', 'middle-earth-maps.html'].includes(currentPage)) {
     init();
 }
