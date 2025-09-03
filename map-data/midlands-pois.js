@@ -392,7 +392,52 @@ const midlandsData = {
             economic_value: 2,
             military_strength: 3,
             population: 500
+        },
+        {
+            id: 'poi_mid_mk_embassy',
+            x: 91.5,
+            y: 7.0,
+            type: 'landmark',
+            name: "Mushroom Kingdom Embassy",
+            description: "A cheerful, toadstool-shaped building that stands in stark contrast to the severe Imperial architecture. It serves as the Mushroom Regency's diplomatic mission, promoting trade and seeking allies in the chaotic Midlands.",
+            factionId: 'mushroom_regency',
+            intelReq: 20,
+            political_influence: 5,
+            economic_value: 4,
+            military_strength: 3,
+            population: 50
+        },
+        {
+            id: 'poi_mid_midearth_embassy',
+            x: 89.5,
+            y: 7.0,
+            type: 'landmark',
+            name: "Middle-Earth Embassy",
+            description: "An embassy of stone and ancient wood, representing the far-western kingdoms of Middle-Earth. Its diplomats are known for their wisdom, patience, and deep distrust of industrial magitek.",
+            factionId: 'middle_earth_kingdoms',
+            intelReq: 50,
+            political_influence: 4,
+            economic_value: 3,
+            military_strength: 4,
+            population: 40
+        },
+        {
+            id: 'poi_mid_internet_embassy',
+            x: 92.0,
+            y: 10.0,
+            type: 'landmark',
+            name: "The Internet Embassy",
+            description: "A strange, shimmering building that seems to flicker at the edge of vision. It is the diplomatic node for The Internet Federation, a place of data-brokers and digital envoys from another dimension.",
+            factionId: 'internet_federation',
+            intelReq: 50,
+            political_influence: 6,
+            economic_value: 6,
+            military_strength: 5,
+            population: 30
         }
+    ],
+    fogOfWar: [
+ 
     ]
 };
 

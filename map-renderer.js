@@ -1,3 +1,4 @@
+
 import { state, saveState } from './state.js';
 import { MAP_DATA, BUILDING_TYPES } from './map-data.js';
 import { LEGAL_DATA } from './legal_data.js';
@@ -778,4 +779,43 @@ export function renderMapModeLegend() {
             break;
     }
     detailPanel.innerHTML = legendHTML;
+}
+
+export function renderDrawingPreview(points) {
+    const svg = document.getElementById('map-drawing-svg');
+    if (!svg) return;
+
+    // Clear previous preview
+    svg.innerHTML = '';
+
+    if (points.length === 0) return;
+
+    // Draw the polyline for the current shape
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+    const pointsString = points.map(p => `${p.x},${p.y}`).join(' ');
+    line.setAttribute('points', pointsString);
+    line.classList.add('draw-line');
+    svg.appendChild(line);
+
+    // Draw points (circles) for each vertex
+    points.forEach(p => {
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', p.x);
+        circle.setAttribute('cy', p.y);
+        circle.setAttribute('r', 0.5); // Small radius, since viewbox is 100x100
+        circle.classList.add('draw-point');
+        svg.appendChild(circle);
+    });
+
+    // If there are at least two points, draw a dashed line to close the loop
+    if (points.length > 1) {
+        const closingLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        closingLine.setAttribute('x1', points[points.length - 1].x);
+        closingLine.setAttribute('y1', points[points.length - 1].y);
+        closingLine.setAttribute('x2', points[0].x);
+        closingLine.setAttribute('y2', points[0].y);
+        closingLine.classList.add('draw-line');
+        closingLine.style.strokeDasharray = '1,1';
+        svg.appendChild(closingLine);
+    }
 }

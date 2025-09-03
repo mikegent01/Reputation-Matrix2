@@ -409,6 +409,32 @@ export const WIDESPREAD_FACTIONS = {
             }
         }
     },
+    internet_federation: {
+        name: "The Internet Federation",
+        description: "The primary governing body of The Internet dimension, focused on maintaining order, protocols, and the flow of data.",
+        logo: 'icon_magic.png',
+        relations: { 
+            allies: ['regal_empire'],
+            enemies: ['cosmic_jesters', 'freelancer_underworld']
+        },
+        power_level: 8,
+        category: "Interdimensional Threats",
+        region: "The Internet",
+        leader: "Admin Zero",
+    },
+    middle_earth_kingdoms: {
+        name: "Middle-Earth Kingdoms",
+        description: "A coalition of ancient kingdoms of Elves, Dwarves, and Men from a distant land, valuing honor, tradition, and craftsmanship.",
+        logo: 'icon_focus.png',
+        relations: { 
+            allies: ['rakasha_clans', 'knights_of_the_gilded_lily'],
+            enemies: ['regal_empire', 'iron_legion', 'onyx_hand']
+        },
+        power_level: 7,
+        category: "Regional Powers",
+        region: "Far West",
+        leader: "High King Thranduil",
+    },
     unaligned: {
         name: "Unaligned & Independent",
         description: "Represents various independent settlements, neutral parties, and areas not under the control of a major faction. Their motivations are diverse, ranging from self-preservation to a desire for true neutrality amidst the world's conflicts.",
@@ -424,20 +450,20 @@ export const WIDESPREAD_FACTIONS = {
     },
     tea_leaf_syndicate: {
         name: "The Tea Leaf Syndicate",
-        description: "A once-sophisticated criminal organization that masqueraded as a legitimate tea import company. After a disastrous confrontation aboard the Vigilance, their leadership (Green T, Earl Grey, Chai) has been captured or is on the run, and their trafficking operations have been exposed. Their power is effectively broken.",
+        description: "A sophisticated criminal organization masquerading as a legitimate tea import company. They control the flow of 'special blend' narcotics and enforce their contracts with quiet, brutal efficiency.",
         logo: 'icon_focus.png',
         relations: { 
             allies: ['freelancer_underworld'], 
             enemies: ['mushroom_regency', 'diamond_city_investigators', 'peach_loyalists']
         },
-        power_level: 1,
+        power_level: 4,
         category: "Underworld & Fringe",
         region: "Widespread (Mushroom Kingdom)",
-        leader: "Green T (Disgraced)",
+        leader: "green_t",
         notable_people: [
-            { name: "Green T", role: "Leader", status: "Detained by party", description: "The mysterious and well-dressed leader of the Syndicate." },
-            { name: "Earl Grey", role: "Enforcer", status: "Detained by party", description: "A stoic and powerful toad who wields a heavy axe and shield." },
-            { name: "Chai", role: "Diplomat", status: "Detained by party", description: "A smooth-talking toad who handles negotiations." }
+            { name: "Green T", role: "Leader", description: "The mysterious and well-dressed leader of the Syndicate." },
+            { name: "Earl Grey", role: "Enforcer", description: "A stoic and powerful toad who wields a heavy axe and shield." },
+            { name: "Chai", role: "Diplomat", description: "A smooth-talking toad who handles negotiations." }
         ]
     },
     beanbean_kingdom: {

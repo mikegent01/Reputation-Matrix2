@@ -21,3 +21,12 @@ When adding new points of interest to the map data files, please adhere to the f
 3.  **Clarity and Conciseness:** Descriptions should be evocative but not overly long. A few sentences are usually sufficient to convey the essence of a location.
 4.  **Data Completeness:** Ensure all required fields are filled out. This includes coordinates (`x`, `y`), `type`, `name`, `factionId`, `intelReq`, and the values for the map modes: `political_influence`, `economic_value`, and `military_strength`.
 5.  **Placement:** Place POIs logically within their designated region. Avoid overcrowding areas. The best way to get accurate coordinates is to use the in-app **Edit Map** feature (available in Debug Mode) and then use the **Generate Code** function to get the correct format and values.
+
+### World Connectivity & Embassies
+
+To make the world feel more interconnected and politically dynamic, embassies and diplomatic outposts are key points of interest. When adding an embassy, please consider the following:
+
+1.  **Reciprocity:** If Faction A has an embassy in Faction B's capital, Faction B should likely have one in Faction A's capital. This demonstrates a formal diplomatic relationship.
+2.  **Location:** Place embassies in logical locations, typically within the capital city or a major port of the host nation. They should be accessible but distinct.
+3.  **Description:** The description should reflect the culture clash between the two factions. For example, a stern Imperial embassy in the whimsical Mushroom Kingdom should be described as imposing and out-of-place. A Mushroom Kingdom embassy in the digital realm of The Internet might be a quirky, mushroom-shaped data-construct.
+4.  **Purpose:** Embassies are more than just landmarks. They are hubs for quests related to diplomacy, espionage, political intrigue, and cross-cultural interaction. Keep this in mind when writing the description.

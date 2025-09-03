@@ -157,6 +157,34 @@ export const mushroomCityData = {
             population: 150,
             library_summary: "The official repository of the Mushroom Kingdom's history, containing millennia of royal decrees, historical accounts, and genealogical records. Access is restricted, but its public terminals provide a wealth of sanitized information.",
             libraryStockKey: 'mushroom_kingdom'
+        },
+        {
+            id: 'poi_mc_regal_embassy',
+            x: 61.0,
+            y: 7.0,
+            type: 'landmark',
+            name: "Regal Empire Embassy",
+            description: "A stern, imposing building of black marble and gold trim that stands in stark contrast to the whimsical local architecture. It serves as the Regal Empire's official diplomatic presence, a place of rigid protocol and ever-watchful eyes.",
+            factionId: 'regal_empire',
+            intelReq: 30,
+            political_influence: 7,
+            economic_value: 3,
+            military_strength: 5,
+            population: 150
+        },
+        {
+            id: 'poi_mc_internet_embassy',
+            x: 64.5,
+            y: 10.0,
+            type: 'landmark',
+            name: "The Internet Embassy Node",
+            description: "A strange, shimmering structure that seems to flicker at the edge of vision. It's the physical data-node for The Internet Federation's diplomatic corps, broadcasting a weak, localized data signal that allows for communication with the digital realm.",
+            factionId: 'internet_federation',
+            intelReq: 50,
+            political_influence: 5,
+            economic_value: 5,
+            military_strength: 4,
+            population: 20
         }
     ],
     fogOfWar: []

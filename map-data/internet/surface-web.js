@@ -214,4 +214,30 @@ export const surfaceWebPois = [
         factionId: 'unaligned', intelReq: { faction: 'internet_federation', level: 15 },
         political_influence: 5, economic_value: 8, military_strength: 2, population: 500
     },
+    {
+        id: 'poi_inet_regal_embassy',
+        x: 11.0, y: 34.0,
+        type: 'landmark',
+        name: "Regal Empire Digital Embassy",
+        description: "A rigidly structured data-fortress that serves as the Empire's official diplomatic node. It broadcasts a constant stream of Imperial law and order into the chaotic web, a bastion of digital bureaucracy protected by powerful anti-malware Aegis programs.",
+        factionId: 'regal_empire',
+        intelReq: { faction: 'internet_federation', level: 40 },
+        political_influence: 6,
+        economic_value: 4,
+        military_strength: 7,
+        population: 100
+    },
+    {
+        id: 'poi_inet_mushroom_embassy',
+        x: 12.5, y: 37.0,
+        type: 'landmark',
+        name: "Mushroom Regency Embassy Spore-Node",
+        description: "A bizarre but cheerful data-construct shaped like a giant mushroom. It serves as the Regency's diplomatic server, spreading spores of goodwill and attempting to forge alliances in the strange new world of The Internet.",
+        factionId: 'mushroom_regency',
+        intelReq: { faction: 'internet_federation', level: 35 },
+        political_influence: 4,
+        economic_value: 3,
+        military_strength: 3,
+        population: 80
+    }
 ];

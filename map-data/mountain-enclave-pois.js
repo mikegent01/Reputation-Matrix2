@@ -30,11 +30,12 @@ export const mountainEnclaveData = {
             military_strength: 2,
             population: 50
         },
-        // NOTE: Rogueport and Dragon's Maw Citadel were swapped as requested.
+        // DEV NOTE: The coordinates for Rogueport and Dragon's Maw Citadel have been swapped as per user request. Do not swap them back.
+        // Rogueport is now north, Dragon's Maw is south.
         {
             id: 'poi_me_rogueport',
-            x: 25.00,
-            y: 44.00,
+            x: 29.00,
+            y: 24.00,
             type: 'port',
             name: "Rogueport",
             description: "A wretched hive of scum and villainy. This bustling port town is the unofficial capital of the Freelancer Underworld in the eastern Mushroom Kingdom. It's a place of rickety docks, shady taverns, and back-alley deals, where information is the most valuable currency.",
@@ -47,8 +48,8 @@ export const mountainEnclaveData = {
         },
         {
             id: 'poi_me_dracoburg',
-            x: 29.00,
-            y: 24.00,
+            x: 25.00,
+            y: 44.00,
             type: 'village',
             name: "Dragon's Maw Citadel",
             description: "A village built into the cliffs and caverns of the mountainside, known for its unique draconic architecture and the tamed Rexes that serve as mounts. It's a neutral trading hub, but has come under increasing pressure from the Iron Crown Brigade, who see it as a strategic prize.",

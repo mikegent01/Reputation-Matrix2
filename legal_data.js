@@ -12,6 +12,9 @@ export const LEGAL_DATA = {
             { id: 'neutral_ground', name: 'Neutral Ground', icon: '⚖️', description: 'Certain locations (often taverns or ancient sites) are declared neutral territory where all factions must lay down their arms and grudges. Violating this truce brings universal condemnation.', followers: ['freelancer_underworld', 'unaligned'] },
             { id: 'gift_giving', name: 'Elaborate Gift-Giving', icon: '🎁', description: 'Political and personal relationships are maintained through a complex system of symbolic gift-giving. The value and meaning of a gift can convey respect, insult, or a declaration of intent.', followers: ['regal_empire', 'onyx_hand', 'goodstyle_artisans'] },
             { id: 'storytelling_pact', name: 'The Storytelling Pact', icon: '📜', description: 'A person\'s story is their most valuable possession. In certain inns and campfires, anyone who declares the Storytelling Pact may speak their truth without interruption or violence, even their deepest secrets.', followers: ['freelancer_underworld', 'the_unchained', 'rebel_clans'] },
+            { id: 'feudal_oaths', name: 'Feudal Oaths', icon: '📜', description: 'Oaths of fealty from a subordinate to a lord are considered magically and spiritually binding. Breaking such an oath is the highest form of treason and results in universal scorn and often, a swift execution.', followers: ['regal_empire', 'iron_legion', 'knights_of_the_gilded_lily'] },
+            { id: 'regal_codes', name: 'Regal Codes', icon: '🏛️', description: 'A complex web of Imperial bureaucracy and social etiquette. Navigating the proper channels and showing correct deference is often more important than the letter of the law itself. Procedure is paramount.', followers: ['regal_empire'] },
+            { id: 'liberation_pact', name: 'The Liberation Pact', icon: '🕊️', description: 'A recent but powerful social contract, particularly within the Mushroom Regency. It states that any escaped slave seeking sanctuary must be granted it, and that aiding in their liberation is a noble act. This is a direct ideological challenge to Imperial and slaver factions.', followers: ['mushroom_regency', 'liberated_toads', 'the_unchained'] },
         ],
         arcane: [
             { id: 'arcane_neutrality', name: 'Arcane Neutrality', icon: '🔮', description: 'The pursuit of knowledge is paramount. Magic-users are expected to remain neutral in mundane political affairs, with their only loyalty being to the advancement and preservation of the arcane arts.', followers: ['mages_guild'] },
@@ -21,11 +24,17 @@ export const LEGAL_DATA = {
         underworld: [
             { id: 'thieves_honor', name: 'Thieves\' Honor', icon: '🎭', description: 'A loose code of conduct that prevents the criminal underworld from collapsing into total chaos. It generally involves not stealing from other thieves and not bringing official attention (the \'heat\') to shared territories.', followers: ['freelancer_underworld', 'ratchet_raiders', 'crimson_fleet'] },
             { id: 'black_market_etiquette', name: 'Black Market Etiquette', icon: '🤫', description: 'In black markets, anonymity is paramount. One does not ask for names or histories. The deal is the only thing that matters. Haggling is expected, but welshing on a deal is a death sentence.', followers: ['freelancer_underworld', 'wario_land', 'toad_gang'] },
+            { id: 'unspoken_contract', name: 'The Unspoken Contract', icon: '📜', description: 'Among information brokers, a favor is a binding debt, and trust is the only currency that matters. Written contracts are for amateurs; true professionals operate on a web of mutual understanding and the threat of mutual destruction.', followers: ['freelancer_underworld'] },
+            { id: 'tinkers_accord', name: 'The Tinker\'s Accord', icon: '🛠️', description: 'An unwritten rule among goblin mechanics. You don\'t touch another tinker\'s "work-in-progress" without permission. Tools can be borrowed, but must be returned in better condition. The best scrap from a salvage site goes to the one who caused the explosion.', followers: ['ratchet_raiders'] },
+        ],
+        internet: [
+            { id: 'information_freedom', name: 'Information Freedom', icon: '🌐', description: 'A core belief that all data should be free and accessible to all. Adherents actively work to break down firewalls, decrypt censored data, and expose the secrets of powerful corporations and governments.', followers: ['hacktivist_collectives'] },
+            { id: 'anonymity_code', name: 'The Anonymity Code', icon: '👤', description: 'In many circles of the web, a user\'s real-world identity is irrelevant and actively discouraged from being shared. An individual is judged solely by their digital actions and contributions. To \'doxx\' someone (reveal their identity) is the ultimate crime.', followers: ['cosmic_jesters', 'hacktivist_collectives'] },
         ]
     },
     regional_traditions: {
-        mushroom_kingdom_full: ['hospitality', 'gift_giving', 'necromantic_taboo'],
-        midlands_full: ['feudal_oaths', 'trial_by_combat', 'ancestral_weapons'],
+        mushroom_kingdom_full: ['hospitality', 'gift_giving', 'necromantic_taboo', 'liberation_pact'],
+        midlands_full: ['feudal_oaths', 'trial_by_combat', 'ancestral_weapons', 'regal_codes'],
         the_internet: ['information_freedom', 'anonymity_code', 'thieves_honor']
     },
     poi_traditions: {
