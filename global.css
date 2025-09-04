@@ -62,6 +62,24 @@
     --faction-data_merchant_guilds: #F5DEB3;
     --faction-cybernetic_collectives: #E0E0E0;
 
+    /* -- Warhammer Faction Colors -- */
+    --faction-wh-the_empire: #c81d25; /* Imperial Red */
+    --faction-wh-dwarfs: #0077b6; /* Dwarf Blue */
+    --faction-wh-greenskins: #2d6a4f; /* Orc Green */
+    --faction-wh-vampire_counts: #800f2f; /* Vampire Crimson */
+    --faction-wh-chaos: #a47c48; /* Chaos Brass */
+    --faction-wh-skaven: #70e000; /* Warpstone Green */
+    --faction-wh-high_elves: #ade8f4; /* High Elf Sky Blue */
+    --faction-wh-dark_elves: #5a189a; /* Dark Elf Purple */
+    --faction-wh-lizardmen: #48bfe3; /* Lizardmen Turquoise */
+    --faction-wh-tomb_kings: #f0ead2; /* Tomb King Bone */
+    --faction-wh-araby: #ffd60a; /* Araby Gold */
+    --faction-wh-bretonnia: #00509d; /* Bretonnian Blue */
+    --faction-wh-chaos_dwarfs: #b21e35; /* Chaos Dwarf Red */
+    --faction-wh-grand_cathay: #52b788; /* Cathay Jade */
+    --faction-wh-hobgoblins: #8d6e63; /* Hobgoblin Brown */
+
+
     --font-primary: 'Roboto Mono', monospace;
     --font-display: 'Orbitron', sans-serif;
 }

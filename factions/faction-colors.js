@@ -58,4 +58,21 @@ export const FACTION_COLORS = {
     'hacktivist_collectives': 'var(--faction-hacktivist_collectives)',
     'data_merchant_guilds': 'var(--faction-data_merchant_guilds)',
     'cybernetic_collectives': 'var(--faction-cybernetic_collectives)',
+
+    // Warhammer
+    'the_empire': 'var(--faction-wh-the_empire)',
+    'kingdoms_of_the_dwarves_wh': 'var(--faction-wh-dwarfs)',
+    'greenskins': 'var(--faction-wh-greenskins)',
+    'vampire_counts': 'var(--faction-wh-vampire_counts)',
+    'warriors_of_chaos': 'var(--faction-wh-chaos)',
+    'skaven': 'var(--faction-wh-skaven)',
+    'high_elves': 'var(--faction-wh-high_elves)',
+    'dark_elves': 'var(--faction-wh-dark_elves)',
+    'lizardmen': 'var(--faction-wh-lizardmen)',
+    'tomb_kings': 'var(--faction-wh-tomb_kings)',
+    'araby': 'var(--faction-wh-araby)',
+    'bretonnia': 'var(--faction-wh-bretonnia)',
+    'chaos_dwarfs': 'var(--faction-wh-chaos_dwarfs)',
+    'grand_cathay': 'var(--faction-wh-grand_cathay)',
+    'hobgoblin_khanates': 'var(--faction-wh-hobgoblins)',
 };
