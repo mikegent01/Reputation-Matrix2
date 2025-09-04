@@ -1,5 +1,4 @@
 
-
 import { state, loadState } from './state.js';
 import { playSound } from './common.js';
 import { BOOK_DESCRIPTIONS } from './books/book_descriptions.js';
@@ -46,6 +45,8 @@ import { BOOK_DATA as rootkitGrimoire } from './books/rootkit_grimoire.js';
 import { BOOK_DATA as navigatingDatastream } from './books/navigating_datastream.js';
 import { BOOK_DATA as studyInMemetics } from './books/study_in_memetics.js';
 import { BOOK_DATA as ironLegionManual } from './books/iron_legion_manual.js';
+import { BOOK_DATA as warhammerHistories } from './books/warhammer_histories.js';
+import { BOOK_DATA as codexPunchline } from './books/codex_punchline.js';
 
 
 const libraryCollectionsContainer = document.getElementById('library-collections-container');
@@ -111,6 +112,8 @@ const bookDataMap = {
     "Navigating the Datastream": navigatingDatastream,
     "A Study in Memetics": studyInMemetics,
     "Iron Legion Field Manual": ironLegionManual,
+    "The Liber Maleficus: A Study of the Ruinous Powers": warhammerHistories,
+    "Codex: The Punchline": codexPunchline,
 };
 
 const LIBRARIES = [
@@ -168,6 +171,8 @@ function getBookCoverUrl(bookTitle) {
         "Navigating the Datastream": 'book_cover_datastream.png',
         "A Study in Memetics": 'book_cover_memetics.png',
         "Iron Legion Field Manual": 'book_cover_iron_legion.png',
+        "The Liber Maleficus: A Study of the Ruinous Powers": 'book_cover_chaos.png',
+        "Codex: The Punchline": 'book_cover_jester.png',
     };
     return covers[bookTitle] || 'book_cover_history.png'; // Fallback
 }

@@ -1,3 +1,4 @@
+
 import { state, loadState } from './state.js';
 import { LORE_DATA } from './lore.js';
 // Import book data from separate files
@@ -42,6 +43,9 @@ import { BOOK_DATA as navigatingDatastream } from './books/navigating_datastream
 import { BOOK_DATA as studyInMemetics } from './books/study_in_memetics.js';
 import { BOOK_DATA as ironLegionManual } from './books/iron_legion_manual.js';
 import { BOOK_DATA as greatLibraries } from './books/great_libraries.js';
+import { BOOK_DATA as warhammerHistories } from './books/warhammer_histories.js';
+import { BOOK_DATA as codexPunchline } from './books/codex_punchline.js';
+
 
 import { BOOK_DESCRIPTIONS } from './books/book_descriptions.js';
 
@@ -107,6 +111,8 @@ const bookDataMap = {
     "A Study in Memetics": studyInMemetics,
     "Iron Legion Field Manual": ironLegionManual,
     "A Guide to the Great Libraries": greatLibraries,
+    "The Liber Maleficus: A Study of the Ruinous Powers": warhammerHistories,
+    "Codex: The Punchline": codexPunchline,
 };
 
 function getBookCoverUrl(bookTitle) {
@@ -115,6 +121,8 @@ function getBookCoverUrl(bookTitle) {
     if (bookTitle.includes("Alchemy")) return 'book_cover_alchemy.png';
     if (bookTitle.includes("Tactics")) return 'book_cover_tactics.png';
     if (bookTitle.includes("Libraries")) return 'book_cover_library.png';
+    if (bookTitle.includes("Liber Maleficus")) return 'book_cover_chaos.png';
+    if (bookTitle.includes("Punchline")) return 'book_cover_jester.png';
     return 'book_cover_history.png'; // default/fallback
 }
 

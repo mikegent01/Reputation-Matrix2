@@ -1,3 +1,4 @@
+
 export const BOOK_DESCRIPTIONS = {
     "Princess Peach's Diary": {
         summary: "A small, leather-bound diary with a faded gold clasp. The elegant script within contains Princess Peach's final, increasingly paranoid thoughts in the days leading up to her death, hinting at a betrayal from within the castle and a strange, 'unfamiliar' evil.",
@@ -274,5 +275,11 @@ export const BOOK_DESCRIPTIONS = {
         reading_time: "Approx. 4 hours (requires sanity checks)",
         pages: 666,
         effect: "Grants deep, dangerous knowledge of the Warriors of Chaos, their gods, and their daemonic servants. May provide insight into their weaknesses, but at a terrible cost to the reader's mind."
+    },
+    "Codex: The Punchline": {
+        summary: "The official-unofficial legal text of the Cosmic Jester's cult. Bound in mismatched fabrics, it contains a series of nonsensical 'laws' that treat reality as a cosmic joke waiting for a punchline.",
+        reading_time: "Approx. 5 minutes (or an eternity, depending on the current temporal conditions)",
+        pages: 5,
+        effect: "Grants insight into the illogical reasoning of the Cosmic Jesters. Reading it may cause minor, temporary reality warping."
     }
 };

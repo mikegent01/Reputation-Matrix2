@@ -1,3 +1,4 @@
+
 // laws-data-mystical.js
 
 export const MYSTICAL_CODES = {
@@ -128,7 +129,7 @@ export const MYSTICAL_CODES = {
         ]
     },
     cosmic_jesters: {
-        name: "The Punchline",
+        name: "Codex: The Punchline",
         logo: "faction_jester.png",
         description: "There are no laws, only suggestions, and they change hourly. The only consistent rule is that whatever is funniest and most chaotic is the 'correct' course of action.",
         supporters: ['ratchet_raiders'],
@@ -136,14 +137,29 @@ export const MYSTICAL_CODES = {
         political: [
             {
                 name: "The Rule of Random",
-                policy: "Legislative Process",
-                spectrum: [
-                    { name: "Whim of the Fool", description: "The High Fool makes decisions based on whatever seems funniest at the moment." },
-                    { name: "The Cosmic Dice", description: "All decisions are made by rolling a set of multi-colored, oddly-shaped dice." }
-                ],
-                current: 1,
-                trend: 0,
+                icon: "🏛️",
                 description: "All decisions are made by rolling dice with pictures on them instead of numbers. The outcome is considered the will of the Cosmic Jester."
+            }
+        ],
+        social: [
+             {
+                name: "The Law of WAH!",
+                icon: "🗣️",
+                description: "Greetings, farewells, and declarations of war must all be accompanied by a triumphant 'WAH!'. Failure to do so is not a crime, but it is deeply unfashionable. Style is the only true social contract."
+            }
+        ],
+        economic: [
+            {
+                name: "The Currency of Confusion",
+                icon: "💰",
+                description: "Official currency is not recognized. All trade is conducted via barter, ideally where both parties are unsure what they actually traded. Mismatched socks are a highly stable commodity."
+            }
+        ],
+        penal: [
+             {
+                name: "Trial by Pratfall",
+                icon: "⚖️",
+                description: "There are no crimes, only bad performances. 'Criminals' are sentenced to perform a public, embarrassing pratfall. The severity is determined by the laughter of the crowd."
             }
         ]
     }
