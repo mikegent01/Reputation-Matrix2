@@ -268,5 +268,11 @@ export const BOOK_DESCRIPTIONS = {
         reading_time: "Approx. 2.5 hours",
         pages: 320,
         effect: "Provides tactical advantages when dealing with the forces of Mordor and insight into the military history of Gondor and the Elves."
+    },
+    "The Liber Maleficus: A Study of the Ruinous Powers": {
+        summary: "A forbidden tome, bound in human skin, detailing the nature of the Chaos Gods and their influence on the mortal world. To read it is to risk madness and the attention of Witch Hunters.",
+        reading_time: "Approx. 4 hours (requires sanity checks)",
+        pages: 666,
+        effect: "Grants deep, dangerous knowledge of the Warriors of Chaos, their gods, and their daemonic servants. May provide insight into their weaknesses, but at a terrible cost to the reader's mind."
     }
 };

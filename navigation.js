@@ -22,7 +22,7 @@ async function initializeSidebar() {
 
         // Hide the navigation button for the current page
         const currentPage = window.location.pathname.split('/').pop();
-        const mapPages = ['maps.html', 'mushroom-kingdom-maps.html', 'midlands-maps.html', 'internet-maps.html', 'middle-earth-maps.html'];
+        const mapPages = ['maps.html', 'mushroom-kingdom-maps.html', 'midlands-maps.html', 'internet-maps.html', 'middle-earth-maps.html', 'warhammer-maps.html'];
         const navLinks = sidebar.querySelectorAll('.nav-button');
 
         navLinks.forEach(link => {

@@ -50,6 +50,7 @@ export const state = {
             fawfuls_furious_freaks: 50, iron_fists: 85, moonfang_pack: 70,
             liberated_toads: 90, diamond_city_investigators: 70, goodstyle_artisans: 30,
             unaligned: 100,
+            // Middle-earth
             kingdom_of_gondor: 60, kingdom_of_rohan: 50, lothlorien: 40,
             elves_of_lindon: 45, kingdoms_of_the_dwarves: 55, isengard: 70, mordor: 75
         },
@@ -63,6 +64,7 @@ export const state = {
             fawfuls_furious_freaks: 20, iron_fists: 60, moonfang_pack: 70,
             liberated_toads: 95, diamond_city_investigators: 40, goodstyle_artisans: 50,
             unaligned: 100,
+            // Middle-earth
             kingdom_of_gondor: 75, kingdom_of_rohan: 70, lothlorien: 60,
             elves_of_lindon: 65, kingdoms_of_the_dwarves: 60, isengard: 30, mordor: 35
         },
@@ -71,6 +73,7 @@ export const state = {
             rakasha_clans: 40, rebel_clans: 30, moonfang_pack: 35,
             liberated_toads: 45,
             unaligned: 100,
+            // Middle-earth
             kingdom_of_gondor: 50, kingdom_of_rohan: 45, lothlorien: 20,
             elves_of_lindon: 25, kingdoms_of_the_dwarves: 60, isengard: 65, mordor: 70
         },
@@ -79,6 +82,7 @@ export const state = {
             regal_empire: 65, iron_legion: 60, rebel_clans: 50,
             onyx_hand: 40, moonfang_pack: 45, crimson_fleet: 40,
             unaligned: 100,
+            // Middle-earth
             kingdom_of_gondor: 50, kingdom_of_rohan: 45, lothlorien: 20,
             elves_of_lindon: 25, kingdoms_of_the_dwarves: 60, isengard: 65, mordor: 70
         },

@@ -1,4 +1,3 @@
-
 import { state, loadState, saveState } from './state.js';
 import * as ui from './map-ui.js';
 import * as renderer from './map-renderer.js';
@@ -58,7 +57,9 @@ export function hideMapModal() {
 // --- INITIALIZATION ---
 function init() {
     const pathname = window.location.pathname;
-    if (pathname.includes('midlands-maps.html')) {
+    if (pathname.includes('warhammer-maps.html')) {
+        activeMapId = 'warhammer_full';
+    } else if (pathname.includes('midlands-maps.html')) {
         activeMapId = 'midlands_full';
     } else if (pathname.includes('internet-maps.html')) {
         activeMapId = 'internet_full';
@@ -171,6 +172,6 @@ function setupEventListeners() {
 
 // Run the application
 const currentPage = window.location.pathname.split('/').pop();
-if (['mushroom-kingdom-maps.html', 'midlands-maps.html', 'internet-maps.html', 'middle-earth-maps.html'].includes(currentPage)) {
+if (['mushroom-kingdom-maps.html', 'midlands-maps.html', 'internet-maps.html', 'middle-earth-maps.html', 'warhammer-maps.html'].includes(currentPage)) {
     init();
 }

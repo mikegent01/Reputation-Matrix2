@@ -44,6 +44,7 @@ import { umbarData } from './map-data/middle-earth/Umbar.js';
 import { gondorData } from './map-data/middle-earth/Gondor.js';
 import { rhovanionData } from './map-data/middle-earth/Rhovanion.js';
 import { mordorData } from './map-data/middle-earth/Mordor.js';
+import { warhammerData } from './map-data/warhammer-pois.js';
 
 
 // Re-export BUILDING_TYPES so other modules can access it from this central file
@@ -608,24 +609,267 @@ export const MAP_DATA = {
         fogOfWar: internetData.fogOfWar || [],
         poiSourceFile: 'map-data/internet-pois.js'
     },
-     internet_surface: {
-        id: 'internet_surface',
-        name: 'The Surface Web',
+    internet_border: {
+        id: 'internet_border',
+        name: 'The Border',
         imageSrc: 'intermap.jpg',
         order: 2,
         group: 'Other Dimensions',
-        pointsOfInterest: internetData.pointsOfInterest.filter(p => !p.subRegion || p.subRegion !== 'deep_web'),
+        pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'border'),
         fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
     },
-    internet_deep: {
-        id: 'internet_deep',
-        name: 'The Deep Web',
+    internet_surface_web: {
+        id: 'internet_surface_web',
+        name: 'The Surface Web',
         imageSrc: 'intermap.jpg',
         order: 3,
+        group: 'Other Dimensions',
+        pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'surface_web'),
+        fogOfWar: [],
+        poiSourceFile: 'map-data/internet-pois.js'
+    },
+    internet_sea_of_archives: {
+        id: 'internet_sea_of_archives',
+        name: 'Sea of Archives',
+        imageSrc: 'intermap.jpg',
+        order: 4,
+        group: 'Other Dimensions',
+        pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'sea_of_archives'),
+        fogOfWar: [],
+        poiSourceFile: 'map-data/internet-pois.js'
+    },
+    internet_big_tech: {
+        id: 'internet_big_tech',
+        name: 'Big Tech Region',
+        imageSrc: 'intermap.jpg',
+        order: 5,
+        group: 'Other Dimensions',
+        pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'big_tech'),
+        fogOfWar: [],
+        poiSourceFile: 'map-data/internet-pois.js'
+    },
+    internet_apple_island: {
+        id: 'internet_apple_island',
+        name: 'Apple Island',
+        imageSrc: 'intermap.jpg',
+        order: 6,
+        group: 'Other Dimensions',
+        pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'apple_island'),
+        fogOfWar: [],
+        poiSourceFile: 'map-data/internet-pois.js'
+    },
+    internet_intel_corp: {
+        id: 'internet_intel_corp',
+        name: 'Intel Corp. Zone',
+        imageSrc: 'intermap.jpg',
+        order: 7,
+        group: 'Other Dimensions',
+        pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'intel_corp'),
+        fogOfWar: [],
+        poiSourceFile: 'map-data/internet-pois.js'
+    },
+    internet_deviant_web: {
+        id: 'internet_deviant_web',
+        name: 'The Deviant Web',
+        imageSrc: 'intermap.jpg',
+        order: 8,
+        group: 'Other Dimensions',
+        pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'deviant_web'),
+        fogOfWar: [],
+        poiSourceFile: 'map-data/internet-pois.js'
+    },
+    internet_criminal_web: {
+        id: 'internet_criminal_web',
+        name: 'The Criminal Web',
+        imageSrc: 'intermap.jpg',
+        order: 9,
+        group: 'Other Dimensions',
+        pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'criminal_web'),
+        fogOfWar: [],
+        poiSourceFile: 'map-data/internet-pois.js'
+    },
+    internet_deep_web: {
+        id: 'internet_deep_web',
+        name: 'The Deep Web',
+        imageSrc: 'intermap.jpg',
+        order: 10,
         group: 'Other Dimensions',
         pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'deep_web'),
         fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
+    },
+    internet_capitol: {
+        id: 'internet_capitol',
+        name: 'The Capitol',
+        imageSrc: 'intermap.jpg',
+        order: 11,
+        group: 'Other Dimensions',
+        pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'capitol'),
+        fogOfWar: [],
+        poiSourceFile: 'map-data/internet-pois.js'
+    },
+    internet_wastefill: {
+        id: 'internet_wastefill',
+        name: 'Great Southern Wastefill',
+        imageSrc: 'intermap.jpg',
+        order: 12,
+        group: 'Other Dimensions',
+        pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'wastefill'),
+        fogOfWar: [],
+        poiSourceFile: 'map-data/internet-pois.js'
+    },
+    warhammer_full: {
+        id: 'warhammer_full',
+        name: 'The Old World (Full)',
+        imageSrc: 'wa.jpg',
+        order: 1,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest,
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_empire: {
+        id: 'warhammer_empire',
+        name: 'The Empire',
+        imageSrc: 'wa.jpg',
+        order: 2,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'the_empire'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_worlds_edge: {
+        id: 'warhammer_worlds_edge',
+        name: 'Worlds Edge Mtns.',
+        imageSrc: 'wa.jpg',
+        order: 3,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'worlds_edge'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_sylvania: {
+        id: 'warhammer_sylvania',
+        name: 'Sylvania',
+        imageSrc: 'wa.jpg',
+        order: 4,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'sylvania'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_badlands: {
+        id: 'warhammer_badlands',
+        name: 'The Badlands',
+        imageSrc: 'wa.jpg',
+        order: 5,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'badlands'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_ulthuan: {
+        id: 'warhammer_ulthuan',
+        name: 'Ulthuan',
+        imageSrc: 'wa.jpg',
+        order: 6,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'ulthuan'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_naggaroth: {
+        id: 'warhammer_naggaroth',
+        name: 'Naggaroth',
+        imageSrc: 'wa.jpg',
+        order: 7,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'naggaroth'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_lustria: {
+        id: 'warhammer_lustria',
+        name: 'Lustria',
+        imageSrc: 'wa.jpg',
+        order: 8,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'lustria'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_land_of_the_dead: {
+        id: 'warhammer_land_of_the_dead',
+        name: 'Land of the Dead',
+        imageSrc: 'wa.jpg',
+        order: 9,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'land_of_the_dead'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_araby: {
+        id: 'warhammer_araby',
+        name: 'Araby',
+        imageSrc: 'wa.jpg',
+        order: 10,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'araby'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_southlands: {
+        id: 'warhammer_southlands',
+        name: 'The Southlands',
+        imageSrc: 'wa.jpg',
+        order: 11,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'southlands'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_bretonnia: {
+        id: 'warhammer_bretonnia',
+        name: 'Bretonnia',
+        imageSrc: 'wa.jpg',
+        order: 12,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'bretonnia'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_darklands: {
+        id: 'warhammer_darklands',
+        name: 'The Darklands',
+        imageSrc: 'wa.jpg',
+        order: 13,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'darklands'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_ancient_giant_land: {
+        id: 'warhammer_ancient_giant_land',
+        name: 'Ancient Giant Land',
+        imageSrc: 'wa.jpg',
+        order: 14,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'ancient_giant_land'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_grand_cathay: {
+        id: 'warhammer_grand_cathay',
+        name: 'Grand Cathay',
+        imageSrc: 'wa.jpg',
+        order: 15,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'grand_cathay'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_eastern_steppes: {
+        id: 'warhammer_eastern_steppes',
+        name: 'Eastern Steppes',
+        imageSrc: 'wa.jpg',
+        order: 16,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'eastern_steppes'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    warhammer_great_bastion: {
+        id: 'warhammer_great_bastion',
+        name: 'The Great Bastion',
+        imageSrc: 'wa.jpg',
+        order: 17,
+        group: 'The Fated Place',
+        pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'great_bastion'),
+        poiSourceFile: 'map-data/warhammer-pois.js'
     }
 };

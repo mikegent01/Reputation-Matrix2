@@ -10,6 +10,7 @@ import { WIDESPREAD_FACTIONS } from './factions/widespread.js';
 import { WILDERLANDS_FACTIONS } from './factions/wilderlands.js';
 import { MIDDLE_EARTH_FACTIONS } from './factions/middle-earth.js';
 import { INTERNET_FACTIONS } from './factions/internet.js';
+import { WARHAMMER_FACTIONS } from './factions/warhammer.js';
 
 
 import { AUXILIARY_PARTY, RUMORS } from './party-and-events.js';
@@ -35,6 +36,7 @@ const combinedFactions = {
     ...WILDERLANDS_FACTIONS,
     ...MIDDLE_EARTH_FACTIONS,
     ...INTERNET_FACTIONS,
+    ...WARHAMMER_FACTIONS,
 };
 
 export const LORE_DATA = {

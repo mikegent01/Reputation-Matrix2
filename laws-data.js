@@ -5,12 +5,14 @@ import { UNDERWORLD_CODES } from './laws-data-underworld.js';
 import { MYSTICAL_CODES } from './laws-data-mystical.js';
 import { MIDDLE_EARTH_CODES } from './laws-data-middle-earth.js';
 import { INTERNET_CODES } from './laws-data-internet.js';
+import { WARHAMMER_CODES } from './laws-data-warhammer.js';
 
 export const LAW_DATA = {
     ...DEMOCRATIC_CODES,
     ...MILITARISTIC_CODES,
     ...MIDDLE_EARTH_CODES,
-    ...INTERNET_CODES
+    ...INTERNET_CODES,
+    ...WARHAMMER_CODES,
 };
 
 export const UNRECOGNIZED_CODES = {

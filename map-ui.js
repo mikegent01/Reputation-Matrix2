@@ -12,13 +12,19 @@ export function renderTabs() {
     mapControls.innerHTML = ''; // Clear everything inside
 
     const currentPage = window.location.pathname.split('/').pop();
-    const relevantGroups = currentPage.includes('midlands') 
-        ? ['The Midlands'] 
-        : currentPage.includes('internet-maps.html')
-        ? ['Other Dimensions']
-        : currentPage.includes('middle-earth-maps.html')
-        ? ['Middle-earth']
-        : ['Mushroom Kingdom Regions', 'Islands & Outer Realms'];
+    let relevantGroups;
+
+    if (currentPage === 'midlands-maps.html') {
+        relevantGroups = ['The Midlands'];
+    } else if (currentPage === 'internet-maps.html') {
+        relevantGroups = ['Other Dimensions'];
+    } else if (currentPage === 'middle-earth-maps.html') {
+        relevantGroups = ['Middle-earth'];
+    } else if (currentPage === 'warhammer-maps.html') {
+        relevantGroups = ['The Fated Place'];
+    } else { // This will catch mushroom-kingdom-maps.html and any other defaults
+        relevantGroups = ['Mushroom Kingdom Regions', 'Islands & Outer Realms'];
+    }
 
     const groupedMaps = Object.values(MAP_DATA).reduce((acc, map) => {
         const group = map.group || 'Other Regions';

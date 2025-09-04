@@ -87,5 +87,27 @@ export const REQUESTS = {
         assigneeKey: 'full_party',
         status: "available",
         locationId: 'poi_me_dol_amroth'
+    },
+    'request_wh_averheim_bounty': {
+        id: 'request_wh_averheim_bounty',
+        title: "Request: Beastmen Scourge",
+        type: 'request',
+        category: 'Requests',
+        objective: "The Elector Count of Averland, based in Averheim, has posted a bounty on a Beastman Warherd that has been terrorizing the surrounding farmlands. Proof of the Beastlord's demise is required.",
+        assignee: "Full Party",
+        assigneeKey: 'full_party',
+        status: "available",
+        locationId: 'poi_wh_averheim'
+    },
+    'request_wh_lustria_artifact': {
+        id: 'request_wh_lustria_artifact',
+        title: "Request: The Sun-Stone of Chotec",
+        type: 'request',
+        category: 'Requests',
+        objective: "A Skink Priest at the Temple of the Eclipse is seeking brave adventurers to retrieve the 'Sun-Stone of Chotec' from a nearby, newly discovered Old One ruin, which is now infested with feral Skinks and territorial Stegadons.",
+        assignee: "Full Party",
+        assigneeKey: 'full_party',
+        status: "available",
+        locationId: 'poi_wh_temple_of_the_eclipse'
     }
 };

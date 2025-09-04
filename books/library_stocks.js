@@ -13,6 +13,7 @@ import { UMBAR_LIBRARY_STOCK } from './umbar_library_stock.js';
 import { GONDOR_LIBRARY_STOCK } from './gondor_library_stock.js';
 import { RHOVANION_LIBRARY_STOCK } from './rhovanion_library_stock.js';
 import { MORDOR_LIBRARY_STOCK } from './mordor_library_stock.js';
+import { WARHAMMER_EMPIRE_LIBRARY_STOCK } from './warhammer_library_stock.js';
 
 export const LIBRARY_STOCKS = {
     midlands: MIDLANDS_LIBRARY_STOCK,
@@ -30,4 +31,5 @@ export const LIBRARY_STOCKS = {
     gondor_archives: GONDOR_LIBRARY_STOCK,
     rhovanion_archives: RHOVANION_LIBRARY_STOCK,
     mordor_archives: MORDOR_LIBRARY_STOCK,
+    warhammer_empire: WARHAMMER_EMPIRE_LIBRARY_STOCK,
 };
