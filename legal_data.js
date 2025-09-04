@@ -1,4 +1,5 @@
 // legal_data.js
+import { KIVOTOS_TRADITIONS } from './traditions-data-kivotos.js';
 
 export const LEGAL_DATA = {
     traditions: {
@@ -20,6 +21,7 @@ export const LEGAL_DATA = {
             { id: 'veneration_of_the_west', name: 'Veneration of the West', icon: '⭐', description: 'A deep cultural and spiritual reverence for the Valar and the Undying Lands in the uttermost West. This is not an organized religion, but a pervasive sense of hope and respect for a higher, unfallen order.', followers: ['kingdom_of_gondor', 'elves_of_lindon'] },
             { id: 'doom_of_mandos', name: 'The Doom of Mandos', icon: '⚖️', description: 'A cultural sense of fatalism and inescapable destiny, particularly among the Elves. It is the belief that great deeds are often fated to end in sorrow, and that the consequences of ancient crimes echo through generations.', followers: ['elves_of_lindon', 'lothlorien'] },
             { id: 'the_long_defeat', name: 'The Long Defeat', icon: '😔', description: 'A deep-seated cultural melancholy, the belief that the world is in a slow, inevitable decline from a past golden age. Victories are seen as temporary respites, not turning points.', followers: ['kingdom_of_gondor', 'elves_of_lindon', 'kingdoms_of_the_dwarves'] },
+            ...KIVOTOS_TRADITIONS,
         ],
         arcane: [
             { id: 'arcane_neutrality', name: 'Arcane Neutrality', icon: '🔮', description: 'The pursuit of knowledge is paramount. Magic-users are expected to remain neutral in mundane political affairs, with their only loyalty being to the advancement and preservation of the arcane arts.', followers: ['mages_guild'] },
@@ -42,7 +44,8 @@ export const LEGAL_DATA = {
         mushroom_kingdom_full: ['hospitality', 'gift_giving', 'necromantic_taboo', 'liberation_pact'],
         midlands_full: ['feudal_oaths', 'trial_by_combat', 'ancestral_weapons', 'regal_codes'],
         middle_earth_full: ['hospitality', 'oath_binding', 'gift_giving', 'duty_and_vigilance', 'the_long_defeat', 'doom_of_mandos'],
-        internet_full: ['information_freedom', 'anonymity_code', 'law_of_the_flame_war']
+        internet_full: ['information_freedom', 'anonymity_code', 'law_of_the_flame_war'],
+        kivotos_full: ['sensei_authority', 'halo_sanctity', 'academy_rivalry', 'rampant_gun_use']
     },
     poi_traditions: {
         'poi_lw_crossroads_inn': {

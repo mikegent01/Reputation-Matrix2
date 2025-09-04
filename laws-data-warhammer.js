@@ -10,7 +10,7 @@ export const WARHAMMER_CODES = {
         political: [
             {
                 name: "The Electoral System",
-                policy: "Governance Policy",
+                icon: "🏛️",
                 spectrum: [
                     { name: "Feudal Allegiance", description: "The Elector Counts rule their provinces with significant autonomy." },
                     { name: "Imperial Decree", description: "The Emperor's authority is absolute, overriding the will of the Counts." }
@@ -22,7 +22,7 @@ export const WARHAMMER_CODES = {
         penal: [
             {
                 name: "The Witch Hammer",
-                policy: "Heresy Law",
+                icon: "⚖️",
                 spectrum: [
                     { name: "Trial by Peer", description: "Accusations of heresy are tried by local magistrates." },
                     { name: "The Purge", description: "Witch Hunters are granted authority to bypass local laws to hunt and execute heretics and mutants." }
@@ -41,7 +41,7 @@ export const WARHAMMER_CODES = {
         penal: [
             {
                 name: "The Reckoning",
-                policy: "Penal System Policy",
+                icon: "⚖️",
                 spectrum: [
                     { name: "Blood Gold", description: "A weregild (blood price) can be paid to settle a grudge between clans." },
                     { name: "War of Vengeance", description: "A sufficiently great grudge can only be settled by a full-scale war." }
@@ -53,13 +53,54 @@ export const WARHAMMER_CODES = {
         economic: [
             {
                 name: "The Guilds' Word",
-                policy: "Contract Law",
+                icon: "💰",
                 spectrum: [
                     { name: "A Beard-Oath", description: "A Dwarf's sworn oath is his bond." },
                     { name: "Runic Contracts", description: "Major contracts are inscribed on stone tablets with runes, making them magically binding." }
                 ],
                 current: 1, trend: 0,
                 description: "A Dwarf's word is his bond, and a written contract is as unyielding as the mountain stone. To break a deal with the Dwarfs is to earn a new entry in the Book of Grudges."
+            }
+        ]
+    }
+};
+
+export const WARHAMMER_UNRECOGNIZED = {
+    greenskins: {
+        name: "Da Rulez of WAAAGH!",
+        logo: "factions/greenskins.png",
+        description: "The simple, brutal code of the Greenskins. There is only one law: the biggest and strongest is the boss. All disputes are settled with violence.",
+        supporters: [],
+        opponents: ['the_empire', 'kingdoms_of_the_dwarves_wh'],
+        political: [
+            {
+                name: "Might Makes Right",
+                icon: "⚔️",
+                spectrum: [
+                    { name: "Big Boss", description: "The strongest Orc rules a tribe." },
+                    { name: "WARBOSS!", description: "The biggest and strongest Orc unites the tribes into a WAAAGH!" }
+                ],
+                current: 1, trend: 0,
+                description: "The biggest Orc is the boss. To become boss, you have to beat the old boss in a fight. This leads to a stable and effective system of governance."
+            }
+        ]
+    },
+    vampire_counts: {
+        name: "The Von Carstein Edicts",
+        logo: "factions/vampire_counts.png",
+        description: "The laws of the Vampire Counts are the whims of their immortal, aristocratic masters. Mortals are treated as chattel, and the only law that matters is the will of the ruling vampire.",
+        supporters: [],
+        opponents: ['the_empire', 'tomb_kings'],
+        social: [
+            {
+                name: "The Blood Tithe",
+                icon: "❤️‍🩹",
+                spectrum: [
+                    { name: "The Cattle's Due", description: "Mortals exist to serve and feed their masters." },
+                    { name: "The Dark Kiss", description: "Favored mortals may be granted the 'gift' of vampirism, becoming part of the nobility." }
+                ],
+                current: 0, trend: 0,
+                description: "The mortal population of Sylvania is considered little more than livestock. They exist to serve, to fight, and to feed the vampire nobility. It is a grim and terrifying existence."
             }
         ]
     }

@@ -65,6 +65,8 @@ function init() {
         activeMapId = 'internet_full';
     } else if (pathname.includes('middle-earth-maps.html')) {
         activeMapId = 'middle_earth_full';
+    } else if (pathname.includes('kivotos-maps.html')) {
+        activeMapId = 'kivotos_full';
     } else {
         activeMapId = 'mushroom_kingdom_full';
     }
@@ -172,6 +174,6 @@ function setupEventListeners() {
 
 // Run the application
 const currentPage = window.location.pathname.split('/').pop();
-if (['mushroom-kingdom-maps.html', 'midlands-maps.html', 'internet-maps.html', 'middle-earth-maps.html', 'warhammer-maps.html'].includes(currentPage)) {
+if (['mushroom-kingdom-maps.html', 'midlands-maps.html', 'internet-maps.html', 'middle-earth-maps.html', 'warhammer-maps.html', 'kivotos-maps.html'].includes(currentPage)) {
     init();
 }

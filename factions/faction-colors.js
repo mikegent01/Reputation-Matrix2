@@ -75,4 +75,13 @@ export const FACTION_COLORS = {
     'chaos_dwarfs': 'var(--faction-wh-chaos_dwarfs)',
     'grand_cathay': 'var(--faction-wh-grand_cathay)',
     'hobgoblin_khanates': 'var(--faction-wh-hobgoblins)',
+
+    // Kivotos
+    'general_student_union': 'var(--faction-kivotos_gsu)',
+    'millennium_science_school': 'var(--faction-kivotos_millennium)',
+    'trinity_general_school': 'var(--faction-kivotos_trinity)',
+    'gehenna_academy': 'var(--faction-kivotos_gehenna)',
+    'shanhaijing_senior_secondary_school': 'var(--faction-kivotos_shanhaijing)',
+    'abydos_high_school': 'var(--faction-kivotos_abydos)',
+    'red_winter_federal_academy': 'var(--faction-kivotos_red_winter)',
 };

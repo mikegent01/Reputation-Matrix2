@@ -5,7 +5,8 @@ import { UNDERWORLD_CODES } from './laws-data-underworld.js';
 import { MYSTICAL_CODES } from './laws-data-mystical.js';
 import { MIDDLE_EARTH_CODES } from './laws-data-middle-earth.js';
 import { INTERNET_CODES } from './laws-data-internet.js';
-import { WARHAMMER_CODES } from './laws-data-warhammer.js';
+import { WARHAMMER_CODES, WARHAMMER_UNRECOGNIZED } from './laws-data-warhammer.js';
+import { KIVOTOS_CODES, KIVOTOS_UNRECOGNIZED } from './laws-data-kivotos.js';
 
 export const LAW_DATA = {
     ...DEMOCRATIC_CODES,
@@ -13,11 +14,14 @@ export const LAW_DATA = {
     ...MIDDLE_EARTH_CODES,
     ...INTERNET_CODES,
     ...WARHAMMER_CODES,
+    ...KIVOTOS_CODES,
 };
 
 export const UNRECOGNIZED_CODES = {
     ...UNDERWORLD_CODES,
-    ...MYSTICAL_CODES
+    ...MYSTICAL_CODES,
+    ...WARHAMMER_UNRECOGNIZED,
+    ...KIVOTOS_UNRECOGNIZED,
 };
 
 // New export for easy lookup

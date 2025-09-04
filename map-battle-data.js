@@ -7,6 +7,7 @@ import { WIDESPREAD_TROOPS } from './map-battle-data-widespread.js';
 import { MIDDLE_EARTH_TROOPS } from './map-battle-data-middle-earth.js';
 import { INTERNET_TROOPS } from './map-battle-data-internet.js';
 import { WARHAMMER_TROOPS } from './map-battle-data-warhammer.js';
+import { KIVOTOS_TROOPS } from './map-battle-data-kivotos.js';
 
 export const BATTLE_MAP_DATA = {
     // Front lines and the Vigilance journey are defined in the base file.
@@ -22,5 +23,6 @@ export const BATTLE_MAP_DATA = {
         ...MIDDLE_EARTH_TROOPS,
         ...INTERNET_TROOPS,
         ...WARHAMMER_TROOPS,
+        ...KIVOTOS_TROOPS,
     ]
 };

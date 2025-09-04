@@ -1,29 +1,21 @@
-#codex-container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.tradition-category-section {
-    margin-bottom: 16px;
-}
-
-.tradition-category-title {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
+.page-subtitle {
+    text-align: center;
     color: var(--text-secondary);
+    margin-top: -16px;
     margin-bottom: 24px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border-color);
+    font-style: italic;
+    max-width: 70ch;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.traditions-grid {
+#species-grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 24px;
 }
 
-.tradition-card {
+.species-card {
     background-color: var(--sidebar-bg);
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -32,27 +24,27 @@
     flex-direction: column;
 }
 
-.tradition-card-header {
+.species-header {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
     padding-bottom: 12px;
     margin-bottom: 16px;
     border-bottom: 1px solid var(--border-color);
 }
 
-.tradition-icon {
-    font-size: 2rem;
+.species-icon {
+    font-size: 3rem;
+    line-height: 1;
 }
 
-.tradition-card-header h3 {
+.species-header h3 {
     font-family: var(--font-display);
-    color: var(--text-color);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin: 0;
 }
 
-.tradition-description {
+.species-description {
     font-size: 0.95rem;
     color: var(--text-secondary);
     line-height: 1.6;
@@ -60,11 +52,11 @@
     flex-grow: 1;
 }
 
-.tradition-followers {
+.species-factions {
     margin-top: auto;
 }
 
-.tradition-followers h4 {
+.species-factions h4 {
     font-family: var(--font-display);
     color: var(--text-secondary);
     font-size: 0.9rem;
@@ -73,7 +65,7 @@
     padding-top: 12px;
 }
 
-.followers-list {
+.faction-tags-list {
     list-style: none;
     padding: 0;
     display: flex;
@@ -81,7 +73,7 @@
     gap: 8px;
 }
 
-.follower-tag {
+.faction-tag {
     background-color: var(--main-bg);
     padding: 4px 10px;
     border-radius: 15px;
@@ -93,18 +85,7 @@
     gap: 6px;
 }
 
-.follower-tag img {
+.faction-tag img {
     width: 16px;
     height: 16px;
-}
-
-.page-subtitle {
-    text-align: center;
-    color: var(--text-secondary);
-    margin-top: -16px;
-    margin-bottom: 24px;
-    font-style: italic;
-    max-width: 80ch;
-    margin-left: auto;
-    margin-right: auto;
 }

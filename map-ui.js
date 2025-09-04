@@ -20,6 +20,8 @@ export function renderTabs() {
         relevantGroups = ['Other Dimensions'];
     } else if (currentPage === 'middle-earth-maps.html') {
         relevantGroups = ['Middle-earth'];
+    } else if (currentPage === 'kivotos-maps.html') {
+        relevantGroups = ['Kivotos'];
     } else if (currentPage === 'warhammer-maps.html') {
         relevantGroups = ['The Fated Place'];
     } else { // This will catch mushroom-kingdom-maps.html and any other defaults

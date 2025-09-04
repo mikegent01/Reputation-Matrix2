@@ -78,6 +78,15 @@
     --faction-wh-chaos_dwarfs: #b21e35; /* Chaos Dwarf Red */
     --faction-wh-grand_cathay: #52b788; /* Cathay Jade */
     --faction-wh-hobgoblins: #8d6e63; /* Hobgoblin Brown */
+    
+    /* -- Kivotos Faction Colors -- */
+    --faction-kivotos_gsu: #4a86e8; /* GSU Blue */
+    --faction-kivotos_millennium: #674ea7; /* Millennium Purple */
+    --faction-kivotos_trinity: #f1c232; /* Trinity Gold */
+    --faction-kivotos_gehenna: #cc0000; /* Gehenna Red */
+    --faction-kivotos_shanhaijing: #93c47d; /* Shanhaijing Jade */
+    --faction-kivotos_abydos: #e69138; /* Abydos Sand */
+    --faction-kivotos_red_winter: #a61c00; /* Red Winter Crimson */
 
 
     --font-primary: 'Roboto Mono', monospace;

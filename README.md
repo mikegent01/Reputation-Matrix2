@@ -100,3 +100,7 @@ export const LIBRARY_STOCKS = {
     // ... other libraries
 };
 ```
+
+## New Region: Kivotos
+
+The groundwork for the new Kivotos region has been laid. This academic city-state, located west of Middle-earth, is now integrated into the terminal's data structure. Factions, map files, and navigation have been prepared, but as requested, no Points of Interest have been created yet, leaving the map a blank canvas for future development.

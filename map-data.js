@@ -46,6 +46,17 @@ import { rhovanionData } from './map-data/middle-earth/Rhovanion.js';
 import { mordorData } from './map-data/middle-earth/Mordor.js';
 import { warhammerData } from './map-data/warhammer-pois.js';
 
+import { kivotosData as kivotosMainData } from './map-data/kivotos-pois.js';
+import { kivotosData as kivotosCentralData } from './map-data/kivotos/Kivotos.js';
+import { grandLatinData } from './map-data/kivotos/GrandLatin.js';
+import { austelarassiaData } from './map-data/kivotos/Austelarassia.js';
+import { silbaarstadtData } from './map-data/kivotos/Silbaarstadt.js';
+import { alhaoungData } from './map-data/kivotos/AL_haoung.js';
+import { northernAureanPoleData } from './map-data/kivotos/NorthernAureanPole.js';
+import { newCairoData } from './map-data/kivotos/NewCairo.js';
+import { newAmericaData } from './map-data/kivotos/NewAmerica.js';
+import { southernAureanPoleData } from './map-data/kivotos/SouthernAureanPole.js';
+
 
 // Re-export BUILDING_TYPES so other modules can access it from this central file
 export { BUILDING_TYPES };
@@ -598,6 +609,116 @@ export const MAP_DATA = {
         pointsOfInterest: mordorData.pointsOfInterest,
         fogOfWar: mordorData.fogOfWar,
         poiSourceFile: 'map-data/middle-earth/Mordor.js'
+    },
+    kivotos_full: {
+        id: 'kivotos_full',
+        name: 'Kivotos (Full)',
+        imageSrc: 'archive.png',
+        order: 1,
+        group: 'Kivotos',
+        pointsOfInterest: kivotosMainData.pointsOfInterest,
+        fogOfWar: [
+            ...(kivotosCentralData.fogOfWar || []),
+            ...(grandLatinData.fogOfWar || []),
+            ...(austelarassiaData.fogOfWar || []),
+            ...(silbaarstadtData.fogOfWar || []),
+            ...(alhaoungData.fogOfWar || []),
+            ...(northernAureanPoleData.fogOfWar || []),
+            ...(newCairoData.fogOfWar || []),
+            ...(newAmericaData.fogOfWar || []),
+            ...(southernAureanPoleData.fogOfWar || []),
+        ],
+        poiSourceFile: null
+    },
+    kivotos_central: {
+        id: 'kivotos_central',
+        name: 'Kivotos Central',
+        imageSrc: 'archive.png',
+        order: 2,
+        group: 'Kivotos',
+        pointsOfInterest: kivotosCentralData.pointsOfInterest,
+        fogOfWar: kivotosCentralData.fogOfWar,
+        poiSourceFile: 'map-data/kivotos/Kivotos.js'
+    },
+    grand_latin: {
+        id: 'grand_latin',
+        name: 'Grand Latin',
+        imageSrc: 'archive.png',
+        order: 3,
+        group: 'Kivotos',
+        pointsOfInterest: grandLatinData.pointsOfInterest,
+        fogOfWar: grandLatinData.fogOfWar,
+        poiSourceFile: 'map-data/kivotos/GrandLatin.js'
+    },
+    austelarassia: {
+        id: 'austelarassia',
+        name: 'Austelarassia',
+        imageSrc: 'archive.png',
+        order: 4,
+        group: 'Kivotos',
+        pointsOfInterest: austelarassiaData.pointsOfInterest,
+        fogOfWar: austelarassiaData.fogOfWar,
+        poiSourceFile: 'map-data/kivotos/Austelarassia.js'
+    },
+    silbaarstadt: {
+        id: 'silbaarstadt',
+        name: 'Silbaarstadt',
+        imageSrc: 'archive.png',
+        order: 5,
+        group: 'Kivotos',
+        pointsOfInterest: silbaarstadtData.pointsOfInterest,
+        fogOfWar: silbaarstadtData.fogOfWar,
+        poiSourceFile: 'map-data/kivotos/Silbaarstadt.js'
+    },
+    al_haoung: {
+        id: 'al_haoung',
+        name: 'AL-haoung',
+        imageSrc: 'archive.png',
+        order: 6,
+        group: 'Kivotos',
+        pointsOfInterest: alhaoungData.pointsOfInterest,
+        fogOfWar: alhaoungData.fogOfWar,
+        poiSourceFile: 'map-data/kivotos/AL_haoung.js'
+    },
+    northern_aurean_pole: {
+        id: 'northern_aurean_pole',
+        name: 'Northern Aurean Pole',
+        imageSrc: 'archive.png',
+        order: 7,
+        group: 'Kivotos',
+        pointsOfInterest: northernAureanPoleData.pointsOfInterest,
+        fogOfWar: northernAureanPoleData.fogOfWar,
+        poiSourceFile: 'map-data/kivotos/NorthernAureanPole.js'
+    },
+    new_cairo: {
+        id: 'new_cairo',
+        name: 'New Cairo',
+        imageSrc: 'archive.png',
+        order: 8,
+        group: 'Kivotos',
+        pointsOfInterest: newCairoData.pointsOfInterest,
+        fogOfWar: newCairoData.fogOfWar,
+        poiSourceFile: 'map-data/kivotos/NewCairo.js'
+    },
+    new_america: {
+        id: 'new_america',
+        name: 'New America',
+        imageSrc: 'archive.png',
+        order: 9,
+        group: 'Kivotos',
+        pointsOfInterest: newAmericaData.pointsOfInterest,
+        fogOfWar: newAmericaData.fogOfWar,
+        poiSourceFile: 'map-data/kivotos/NewAmerica.js'
+    },
+    southern_aurean_pole: {
+        id: 'southern_aurean_pole',
+        name: 'Southern Aurean Pole',
+        imageSrc: 'archive.png',
+        order: 10,
+        group: 'Kivotos',
+        pointsOfInterest: southernAureanPoleData.pointsOfInterest,
+        fogOfWar: southernAureanPoleData.fogOfWar,
+        poiSourceFile: 'map-data/kivotos/SouthernAureanPole.js'
     },
     internet_full: {
         id: 'internet_full',
