@@ -60,4 +60,17 @@ export const BUILDING_TYPES = {
     prison: { name: 'Prison', icon: '⛓️' },
     academy: { name: 'Academy', icon: '🎓' },
     observatory: { name: 'Observatory', icon: '🔭' },
+    
+    // Space Types
+    space_station: { name: 'Space Station', icon: '🛰️' },
+    asteroid_field: { name: 'Asteroid Field', icon: '☄️' },
+    nebula: { name: 'Nebula', icon: '🌌' },
+    black_hole: { name: 'Black Hole', icon: '⚫' },
+    wormhole: { name: 'Wormhole', icon: '🌀' },
+    comet: { name: 'Comet Cluster', icon: '💫' },
+    generation_ship: { name: 'Generation Ship', icon: '🚀' },
+    listening_post: { name: 'Listening Post', icon: '📡' },
+    cosmic_anomaly: { name: 'Cosmic Anomaly', icon: '❓' },
+    crystal_entity: { name: 'Crystalline Entity', icon: '💎' },
+    star_nursery: { name: 'Star Nursery', icon: '✨' },
 };

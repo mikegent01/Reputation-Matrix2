@@ -446,3 +446,9 @@
     display: block;
     margin-bottom: 4px;
 }
+
+/* --- Map Selection Gallery Item --- */
+/* Added to ensure gallery items are clearly clickable after changing them from <a> to <div> tags */
+.gallery-item {
+    cursor: pointer;
+}

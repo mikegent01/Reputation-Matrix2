@@ -88,6 +88,10 @@
     --faction-kivotos_abydos: #e69138; /* Abydos Sand */
     --faction-kivotos_red_winter: #a61c00; /* Red Winter Crimson */
 
+    /* -- The Doughnut Hole Faction Colors -- */
+    --faction-custodians_of_causality: #00BFFF; /* Deep Sky Blue */
+    --faction-void_drifters: #483D8B; /* Dark Slate Blue */
+    --faction-starlight_weavers: #FFD700; /* Gold */
 
     --font-primary: 'Roboto Mono', monospace;
     --font-display: 'Orbitron', sans-serif;

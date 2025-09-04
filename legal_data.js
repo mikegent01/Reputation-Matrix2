@@ -38,6 +38,12 @@ export const LEGAL_DATA = {
             { id: 'information_freedom', name: 'Information Freedom', icon: '🌐', description: 'A core belief that all data should be free and accessible to all. Adherents actively work to break down firewalls, decrypt censored data, and expose the secrets of powerful corporations and governments.', followers: ['hacktivist_collectives'] },
             { id: 'anonymity_code', name: 'The Anonymity Code', icon: '👤', description: 'In many online spaces, a user\'s real-world identity is irrelevant and actively discouraged from being shared. An individual is judged solely by their digital actions. To \'doxx\' someone (reveal their identity) is the ultimate crime.', followers: ['cosmic_jesters', 'hacktivist_collectives'] },
             { id: 'law_of_the_flame_war', name: 'Law of the Flame War', icon: '🔥', description: 'An unwritten set of rules for online arguments. Victory is not achieved through facts, but through the most cutting insult, the wittiest reply, or by successfully derailing the original topic. Good faith is considered a weakness.', followers: ['cosmic_jesters', 'freelancer_underworld'] }
+        ],
+        cosmic: [
+            { id: 'causality_enforcement', name: 'Causality Enforcement', icon: '⏱️', description: 'The Prime Directive for the Custodians. Any paradox, temporal anomaly, or violation of established physical law must be corrected, contained, or erased. There are no exceptions.', followers: ['custodians_of_causality'] },
+            { id: 'law_of_the_void', name: 'The Law of the Void', icon: '🛰️', description: 'An unwritten law among Void Drifters based on salvage rights. "What you find, you keep. What you can defend, is yours." Disputes are often settled by one-on-one ship combat or competitive scavenging runs.', followers: ['void_drifters', 'ratchet_raiders'] },
+            { id: 'non_interference', name: 'The Non-Interference Weave', icon: '🌌', description: 'The core tenet of the Starlight Weavers. They create and observe, but do not directly interfere in the conflicts of "solid" beings. Their actions are subtle, shaping the cosmos on a scale beyond mortal comprehension.', followers: ['starlight_weavers'] },
+            { id: 'cosmic_absurdity', name: 'The Cosmic Absurdity', icon: '🤪', description: 'A core belief of Jester cultists that the universe is fundamentally a joke. Therefore, the most illogical, nonsensical, and chaotic action is always the correct one. Following rules is the ultimate heresy.', followers: ['cosmic_jesters'] }
         ]
     },
     regional_traditions: {
@@ -45,7 +51,8 @@ export const LEGAL_DATA = {
         midlands_full: ['feudal_oaths', 'trial_by_combat', 'ancestral_weapons', 'regal_codes'],
         middle_earth_full: ['hospitality', 'oath_binding', 'gift_giving', 'duty_and_vigilance', 'the_long_defeat', 'doom_of_mandos'],
         internet_full: ['information_freedom', 'anonymity_code', 'law_of_the_flame_war'],
-        kivotos_full: ['sensei_authority', 'halo_sanctity', 'academy_rivalry', 'rampant_gun_use']
+        kivotos_full: ['sensei_authority', 'halo_sanctity', 'academy_rivalry', 'rampant_gun_use'],
+        doughnut_hole_full: ['law_of_the_void', 'cosmic_absurdity'],
     },
     poi_traditions: {
         'poi_lw_crossroads_inn': {

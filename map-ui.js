@@ -17,13 +17,15 @@ export function renderTabs() {
     if (currentPage === 'midlands-maps.html') {
         relevantGroups = ['The Midlands'];
     } else if (currentPage === 'internet-maps.html') {
-        relevantGroups = ['Other Dimensions'];
+        relevantGroups = ['The Internet'];
     } else if (currentPage === 'middle-earth-maps.html') {
         relevantGroups = ['Middle-earth'];
     } else if (currentPage === 'kivotos-maps.html') {
         relevantGroups = ['Kivotos'];
     } else if (currentPage === 'warhammer-maps.html') {
         relevantGroups = ['The Fated Place'];
+    } else if (currentPage === 'doughnut-hole-maps.html') {
+        relevantGroups = ['The Doughnut Hole'];
     } else { // This will catch mushroom-kingdom-maps.html and any other defaults
         relevantGroups = ['Mushroom Kingdom Regions', 'Islands & Outer Realms'];
     }

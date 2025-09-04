@@ -12,6 +12,7 @@ import { MIDDLE_EARTH_FACTIONS } from './factions/middle-earth.js';
 import { INTERNET_FACTIONS } from './factions/internet.js';
 import { WARHAMMER_FACTIONS } from './factions/warhammer.js';
 import { KIVOTOS_FACTIONS } from './factions/kivotos.js';
+import { SPACE_FACTIONS } from './factions/space.js';
 
 
 import { AUXILIARY_PARTY, RUMORS } from './party-and-events.js';
@@ -39,6 +40,7 @@ const combinedFactions = {
     ...INTERNET_FACTIONS,
     ...WARHAMMER_FACTIONS,
     ...KIVOTOS_FACTIONS,
+    ...SPACE_FACTIONS,
 };
 
 export const LORE_DATA = {

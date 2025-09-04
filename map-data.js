@@ -21,6 +21,7 @@ import { neoBowserCityData } from './map-data/neo-bowser-city-pois.js';
 import { iceIceOutpostData } from './map-data/ice-ice-outpost-pois.js';
 import { chramalotKingdomData } from './map-data/chramalot-kingdom-pois.js';
 import { piantaSeaData } from './map-data/pianta-sea-pois.js';
+import { yaleShoresData } from './map-data/yale-shores-pois.js';
 import midlandsData from './map-data/midlands-pois.js';
 import { yalBelanorData } from './map-data/yal-belanor-pois.js';
 import { vemilliaData } from './map-data/vemillia-pois.js';
@@ -33,7 +34,6 @@ import { ludorIslesData } from './map-data/ludor-isles-pois.js';
 import { theghduralData } from './map-data/theghdural-pois.js';
 import { jungleOfThornsData } from './map-data/jungle-of-thorns-pois.js';
 import { baldoraPlainsData } from './map-data/baldora-plains-pois.js';
-import { yaleShoresData } from './map-data/yale-shores-pois.js';
 import { lowerHillsData } from './map-data/lower-hills-pois.js';
 import { yalCentralData } from './map-data/yal-central-pois.js';
 import { northernLandsData } from './map-data/northern-lands-pois.js';
@@ -56,6 +56,12 @@ import { northernAureanPoleData } from './map-data/kivotos/NorthernAureanPole.js
 import { newCairoData } from './map-data/kivotos/NewCairo.js';
 import { newAmericaData } from './map-data/kivotos/NewAmerica.js';
 import { southernAureanPoleData } from './map-data/kivotos/SouthernAureanPole.js';
+import { doughnutHoleData } from './map-data/doughnut-hole.js';
+import { jestersPlaygroundPois } from './map-data/doughnut-hole/jesters_playground.js';
+import { causalityChainPois } from './map-data/doughnut-hole/causality_chain.js';
+import { driftersDebrisFieldPois } from './map-data/doughnut-hole/drifters_debris_field.js';
+import { weaversTapestryPois } from './map-data/doughnut-hole/weavers_tapestry.js';
+import { outerAnomalyPois } from './map-data/doughnut-hole/outer_anomaly.js';
 
 
 // Re-export BUILDING_TYPES so other modules can access it from this central file
@@ -725,7 +731,7 @@ export const MAP_DATA = {
         name: 'The Internet (Full)',
         imageSrc: 'intermap.jpg',
         order: 1,
-        group: 'Other Dimensions',
+        group: 'The Internet',
         pointsOfInterest: internetData.pointsOfInterest,
         fogOfWar: internetData.fogOfWar || [],
         poiSourceFile: 'map-data/internet-pois.js'
@@ -735,7 +741,7 @@ export const MAP_DATA = {
         name: 'The Border',
         imageSrc: 'intermap.jpg',
         order: 2,
-        group: 'Other Dimensions',
+        group: 'The Internet',
         pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'border'),
         fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
@@ -745,7 +751,7 @@ export const MAP_DATA = {
         name: 'The Surface Web',
         imageSrc: 'intermap.jpg',
         order: 3,
-        group: 'Other Dimensions',
+        group: 'The Internet',
         pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'surface_web'),
         fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
@@ -755,7 +761,7 @@ export const MAP_DATA = {
         name: 'Sea of Archives',
         imageSrc: 'intermap.jpg',
         order: 4,
-        group: 'Other Dimensions',
+        group: 'The Internet',
         pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'sea_of_archives'),
         fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
@@ -765,7 +771,7 @@ export const MAP_DATA = {
         name: 'Big Tech Region',
         imageSrc: 'intermap.jpg',
         order: 5,
-        group: 'Other Dimensions',
+        group: 'The Internet',
         pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'big_tech'),
         fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
@@ -775,7 +781,7 @@ export const MAP_DATA = {
         name: 'Apple Island',
         imageSrc: 'intermap.jpg',
         order: 6,
-        group: 'Other Dimensions',
+        group: 'The Internet',
         pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'apple_island'),
         fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
@@ -785,7 +791,7 @@ export const MAP_DATA = {
         name: 'Intel Corp. Zone',
         imageSrc: 'intermap.jpg',
         order: 7,
-        group: 'Other Dimensions',
+        group: 'The Internet',
         pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'intel_corp'),
         fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
@@ -795,7 +801,7 @@ export const MAP_DATA = {
         name: 'The Deviant Web',
         imageSrc: 'intermap.jpg',
         order: 8,
-        group: 'Other Dimensions',
+        group: 'The Internet',
         pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'deviant_web'),
         fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
@@ -805,7 +811,7 @@ export const MAP_DATA = {
         name: 'The Criminal Web',
         imageSrc: 'intermap.jpg',
         order: 9,
-        group: 'Other Dimensions',
+        group: 'The Internet',
         pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'criminal_web'),
         fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
@@ -815,7 +821,7 @@ export const MAP_DATA = {
         name: 'The Deep Web',
         imageSrc: 'intermap.jpg',
         order: 10,
-        group: 'Other Dimensions',
+        group: 'The Internet',
         pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'deep_web'),
         fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
@@ -825,7 +831,7 @@ export const MAP_DATA = {
         name: 'The Capitol',
         imageSrc: 'intermap.jpg',
         order: 11,
-        group: 'Other Dimensions',
+        group: 'The Internet',
         pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'capitol'),
         fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
@@ -835,7 +841,7 @@ export const MAP_DATA = {
         name: 'Great Southern Wastefill',
         imageSrc: 'intermap.jpg',
         order: 12,
-        group: 'Other Dimensions',
+        group: 'The Internet',
         pointsOfInterest: internetData.pointsOfInterest.filter(p => p.subRegion === 'wastefill'),
         fogOfWar: [],
         poiSourceFile: 'map-data/internet-pois.js'
@@ -992,5 +998,60 @@ export const MAP_DATA = {
         group: 'The Fated Place',
         pointsOfInterest: warhammerData.pointsOfInterest.filter(p => p.subRegion === 'great_bastion'),
         poiSourceFile: 'map-data/warhammer-pois.js'
+    },
+    doughnut_hole_full: {
+        id: 'doughnut_hole_full',
+        name: 'The Doughnut Hole (Full)',
+        imageSrc: 'qaevyh08hsx51.webp',
+        order: 1,
+        group: 'The Doughnut Hole',
+        pointsOfInterest: doughnutHoleData.pointsOfInterest,
+        fogOfWar: doughnutHoleData.fogOfWar || [],
+        poiSourceFile: 'map-data/doughnut-hole.js'
+    },
+    jesters_playground: {
+        id: 'jesters_playground',
+        name: "The Jester's Playground",
+        imageSrc: 'qaevyh08hsx51.webp',
+        order: 2,
+        group: 'The Doughnut Hole',
+        pointsOfInterest: jestersPlaygroundPois,
+        poiSourceFile: 'map-data/doughnut-hole/jesters_playground.js'
+    },
+    causality_chain: {
+        id: 'causality_chain',
+        name: "The Causality Chain",
+        imageSrc: 'qaevyh08hsx51.webp',
+        order: 3,
+        group: 'The Doughnut Hole',
+        pointsOfInterest: causalityChainPois,
+        poiSourceFile: 'map-data/doughnut-hole/causality_chain.js'
+    },
+    drifters_debris_field: {
+        id: 'drifters_debris_field',
+        name: "Drifter's Debris Field",
+        imageSrc: 'qaevyh08hsx51.webp',
+        order: 4,
+        group: 'The Doughnut Hole',
+        pointsOfInterest: driftersDebrisFieldPois,
+        poiSourceFile: 'map-data/doughnut-hole/drifters_debris_field.js'
+    },
+    weavers_tapestry: {
+        id: 'weavers_tapestry',
+        name: "The Weaver's Tapestry",
+        imageSrc: 'qaevyh08hsx51.webp',
+        order: 5,
+        group: 'The Doughnut Hole',
+        pointsOfInterest: weaversTapestryPois,
+        poiSourceFile: 'map-data/doughnut-hole/weavers_tapestry.js'
+    },
+    outer_anomaly: {
+        id: 'outer_anomaly',
+        name: "The Outer Anomaly",
+        imageSrc: 'qaevyh08hsx51.webp',
+        order: 6,
+        group: 'The Doughnut Hole',
+        pointsOfInterest: outerAnomalyPois,
+        poiSourceFile: 'map-data/doughnut-hole/outer_anomaly.js'
     }
 };

@@ -7,6 +7,7 @@ import { MIDDLE_EARTH_CODES } from './laws-data-middle-earth.js';
 import { INTERNET_CODES } from './laws-data-internet.js';
 import { WARHAMMER_CODES, WARHAMMER_UNRECOGNIZED } from './laws-data-warhammer.js';
 import { KIVOTOS_CODES, KIVOTOS_UNRECOGNIZED } from './laws-data-kivotos.js';
+import { SPACE_CODES } from './laws-data-space.js';
 
 export const LAW_DATA = {
     ...DEMOCRATIC_CODES,
@@ -15,6 +16,7 @@ export const LAW_DATA = {
     ...INTERNET_CODES,
     ...WARHAMMER_CODES,
     ...KIVOTOS_CODES,
+    ...SPACE_CODES,
 };
 
 export const UNRECOGNIZED_CODES = {

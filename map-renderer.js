@@ -1,4 +1,3 @@
-
 import { state } from './state.js';
 import { MAP_DATA, BUILDING_TYPES } from './map-data.js';
 import { LORE_DATA } from './lore.js';
@@ -88,6 +87,10 @@ function valueToColor(value, min, max, colors) {
 export function renderMap(mapId) {
     map.setActiveMapId(mapId);
     const mapData = MAP_DATA[mapId];
+    if (!mapData) {
+        console.error(`Map data not found for ID: ${mapId}`);
+        return;
+    }
 
     displayArea.innerHTML = '';
     displayArea.classList.toggle('edit-mode', map.isEditMode);
@@ -469,14 +472,19 @@ function getPopulationColor(population) {
 function getLandmassKey(mapId) {
     const mapInfo = MAP_DATA[mapId];
     if (!mapInfo || !mapInfo.group) return null;
+    const group = mapInfo.group;
 
-    if (mapInfo.group.includes('Mushroom Kingdom') || mapInfo.group.includes('Islands')) return 'mushroom_kingdom_full';
-    if (mapInfo.group.includes('The Midlands')) return 'midlands_full';
-    if (mapInfo.group.includes('Other Dimensions')) return 'internet_full';
-    if (mapInfo.group.includes('Middle-earth')) return 'middle_earth_full';
+    if (group.includes('Mushroom Kingdom') || group.includes('Islands')) return 'mushroom_kingdom_full';
+    if (group.includes('The Midlands')) return 'midlands_full';
+    if (group.includes('The Internet')) return 'internet_full';
+    if (group.includes('Middle-earth')) return 'middle_earth_full';
+    if (group.includes('The Fated Place')) return 'warhammer_full';
+    if (group.includes('Kivotos')) return 'kivotos_full';
+    if (group.includes('The Doughnut Hole')) return 'doughnut_hole_full';
     
     return null;
 }
+
 
 function renderTraditionItems(traditionKeys) {
     if (!traditionKeys || traditionKeys.length === 0) return '';
@@ -499,8 +507,11 @@ function renderTraditionItems(traditionKeys) {
 export function showTraditionsPopup(poi) {
     const mapId = map.activeMapId;
     const landmassKey = getLandmassKey(mapId);
-    const landmassName = MAP_DATA[landmassKey]?.name || MAP_DATA[mapId].name;
     
+    // Use the landmassKey to look up the group name, ensuring we always get the general region name
+    // instead of a sub-region name or the '(Full)' name.
+    const regionDisplayName = MAP_DATA[landmassKey]?.group || MAP_DATA[landmassKey]?.name || MAP_DATA[mapId]?.group || MAP_DATA[mapId]?.name;
+
     let title = '';
     let summaryHTML = '';
     let traditionsHTML = '';
@@ -509,12 +520,17 @@ export function showTraditionsPopup(poi) {
         title = `Laws & Customs of ${poi.name}`;
         const factionId = poi.factionId || 'unaligned';
         const governingCode = ALL_LEGAL_CODES[factionId];
+        const faction = LORE_DATA.factions[factionId];
         
         if (governingCode) {
             const lawLink = `<a href="#" class="law-link" data-law-key="${factionId}">${governingCode.name}</a>`;
-            summaryHTML = `<p>This location is controlled by <strong>${LORE_DATA.factions[factionId].name}</strong> and is governed by <strong>"${lawLink}"</strong>: <em>${governingCode.description}</em></p>`;
+            summaryHTML = `<p>This location is controlled by <strong>${faction.name}</strong> and is governed by <strong>"${lawLink}"</strong>: <em>${governingCode.description}</em></p>`;
         } else {
-             summaryHTML = `<p>This location is unaligned and follows the general traditions of <strong>${landmassName}</strong>.</p>`;
+            const introText = (factionId === 'unaligned' || !faction) 
+                ? 'This location is unaligned and' 
+                : `This location is controlled by <strong>${faction.name}</strong>, which has no formal codified laws, and`;
+             
+            summaryHTML = `<p>${introText} follows the general traditions of <strong>${regionDisplayName}</strong>.</p>`;
         }
         
         const regionalKeys = LEGAL_DATA.regional_traditions[landmassKey] || [];
@@ -530,7 +546,7 @@ export function showTraditionsPopup(poi) {
         }
 
     } else {
-        title = `General Traditions of ${MAP_DATA[mapId].name}`;
+        title = `General Traditions of ${regionDisplayName}`;
         summaryHTML = `<p>These are the overarching traditions that govern unaligned territories in this region.</p>`;
         const regionalKeys = LEGAL_DATA.regional_traditions[landmassKey] || [];
         traditionsHTML += renderTraditionItems(regionalKeys);

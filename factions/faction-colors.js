@@ -84,4 +84,9 @@ export const FACTION_COLORS = {
     'shanhaijing_senior_secondary_school': 'var(--faction-kivotos_shanhaijing)',
     'abydos_high_school': 'var(--faction-kivotos_abydos)',
     'red_winter_federal_academy': 'var(--faction-kivotos_red_winter)',
+    
+    // The Doughnut Hole
+    'custodians_of_causality': 'var(--faction-custodians_of_causality)',
+    'void_drifters': 'var(--faction-void_drifters)',
+    'starlight_weavers': 'var(--faction-starlight_weavers)',
 };
