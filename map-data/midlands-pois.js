@@ -414,7 +414,7 @@ const midlandsData = {
             type: 'landmark',
             name: "Middle-Earth Embassy",
             description: "An embassy of stone and ancient wood, representing the far-western kingdoms of Middle-Earth. Its diplomats are known for their wisdom, patience, and deep distrust of industrial magitek.",
-            factionId: 'middle_earth_kingdoms',
+            factionId: 'kingdom_of_gondor',
             intelReq: 50,
             political_influence: 4,
             economic_value: 3,

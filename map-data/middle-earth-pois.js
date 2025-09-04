@@ -4,6 +4,7 @@ import { eriadorData } from './middle-earth/Eriador.js';
 import { haradwaithData } from './middle-earth/Haradwaith.js';
 import { umbarData } from './middle-earth/Umbar.js';
 import { gondorData } from './middle-earth/Gondor.js';
+import { rhovanionData } from './middle-earth/Rhovanion.js';
 
 export const middleEarthData = {
     pointsOfInterest: [
@@ -12,6 +13,7 @@ export const middleEarthData = {
         ...haradwaithData.pointsOfInterest,
         ...umbarData.pointsOfInterest,
         ...gondorData.pointsOfInterest,
+        ...rhovanionData.pointsOfInterest,
     ],
     fogOfWar: [
         ...(forlindonData.fogOfWar || []),
@@ -19,5 +21,6 @@ export const middleEarthData = {
         ...(haradwaithData.fogOfWar || []),
         ...(umbarData.fogOfWar || []),
         ...(gondorData.fogOfWar || []),
+        ...(rhovanionData.fogOfWar || []),
     ]
 };

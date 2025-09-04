@@ -257,5 +257,77 @@ export const MIDDLE_EARTH_TROOPS = [
             organization: 90,
             intelReq: { faction: 'kingdom_of_gondor', level: 25 }
         }
+    },
+    {
+        id: 'me_troop_15',
+        mapId: 'middle_earth_full',
+        x: 58.0,
+        y: 44.0,
+        factionId: 'mordor',
+        name: "Dol Guldur Garrison",
+        unitType: 'garrison',
+        strength: "Orcs of the Necromancer",
+        details: {
+            status: "Occupying",
+            objective: "Hold the fortress of Dol Guldur and spread its corrupting influence throughout southern Mirkwood.",
+            supply_level: 80,
+            morale: 85,
+            organization: 70,
+            intelReq: { faction: 'lothlorien', level: 40 }
+        }
+    },
+    {
+        id: 'me_troop_16',
+        mapId: 'middle_earth_full',
+        x: 60.0,
+        y: 18.0,
+        factionId: 'lothlorien',
+        name: "Host of the Elvenking",
+        unitType: 'main_force',
+        strength: "Wood-elf Spearmen & Archers",
+        details: {
+            status: "Guarding",
+            objective: "Protect the realm of the Woodland King from the spiders and Orcs of Mirkwood.",
+            supply_level: 90,
+            morale: 90,
+            organization: 85,
+            intelReq: { faction: 'lothlorien', level: 30 }
+        }
+    },
+    {
+        id: 'me_troop_17',
+        mapId: 'middle_earth_full',
+        x: 75.0,
+        y: 18.0,
+        factionId: 'kingdoms_of_the_dwarves',
+        name: "Garrison of the Iron Hills",
+        unitType: 'garrison',
+        strength: "Dwarf Warriors of Dáin",
+        details: {
+            status: "Defending",
+            objective: "Guard the Iron Hills and the eastern approaches to Erebor from any threat emerging from the east.",
+            supply_level: 95,
+            morale: 90,
+            organization: 90,
+            intelReq: { faction: 'kingdoms_of_the_dwarves', level: 30 }
+        }
+    },
+    {
+        id: 'me_troop_18',
+        mapId: 'middle_earth_full',
+        x: 69.0,
+        y: 22.0,
+        factionId: 'unaligned',
+        name: "City Guard of Dale",
+        unitType: 'garrison',
+        strength: "Men of Dale",
+        details: {
+            status: "Guarding",
+            objective: "Protect the rebuilt city of Dale from Orcs and other dangers of the Wild.",
+            supply_level: 85,
+            morale: 80,
+            organization: 75,
+            intelReq: { faction: 'unaligned', level: 15 }
+        }
     }
 ];

@@ -11,6 +11,8 @@ import { UNSEEN_LIBRARY_STOCK } from './unseen_library_stock.js';
 import { MIDDLE_EARTH_LIBRARY_STOCK } from './middle_earth_library_stock.js';
 import { UMBAR_LIBRARY_STOCK } from './umbar_library_stock.js';
 import { GONDOR_LIBRARY_STOCK } from './gondor_library_stock.js';
+import { RHOVANION_LIBRARY_STOCK } from './rhovanion_library_stock.js';
+import { MORDOR_LIBRARY_STOCK } from './mordor_library_stock.js';
 
 export const LIBRARY_STOCKS = {
     midlands: MIDLANDS_LIBRARY_STOCK,
@@ -26,4 +28,6 @@ export const LIBRARY_STOCKS = {
     middle_earth: MIDDLE_EARTH_LIBRARY_STOCK,
     umbar_archives: UMBAR_LIBRARY_STOCK,
     gondor_archives: GONDOR_LIBRARY_STOCK,
+    rhovanion_archives: RHOVANION_LIBRARY_STOCK,
+    mordor_archives: MORDOR_LIBRARY_STOCK,
 };

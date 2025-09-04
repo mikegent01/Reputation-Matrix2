@@ -54,5 +54,38 @@ export const REQUESTS = {
         assigneeKey: 'full_party',
         status: "available",
         locationId: 'poi_yb_wayfinders_lodge'
+    },
+    'request_me_bree_escort': {
+        id: 'request_me_bree_escort',
+        title: "Request: Escort to Rivendell",
+        type: 'request',
+        category: 'Requests',
+        objective: "Barliman Butterbur, the innkeeper of The Prancing Pony in Bree, is looking for a sturdy escort for a young Hobbit who needs to deliver a package of rare pipe-weed to Elrond in Rivendell. The road is dangerous and beset by Orcs.",
+        assignee: "Full Party",
+        assigneeKey: 'full_party',
+        status: "available",
+        locationId: 'poi_me_bree'
+    },
+    'request_me_erebor_gems': {
+        id: 'request_me_erebor_gems',
+        title: "Request: Rare Gems Needed",
+        type: 'request',
+        category: 'Requests',
+        objective: "The master jewel-smith of Erebor is offering a king's ransom in gold for a flawless 'Star of the Mountains' gem, found only in the deepest, most dangerous caverns of the Misty Mountains, currently infested with Goblins.",
+        assignee: "Full Party",
+        assigneeKey: 'full_party',
+        status: "available",
+        locationId: 'poi_me_erebor'
+    },
+    'request_me_dol_amroth_bounty': {
+        id: 'request_me_dol_amroth_bounty',
+        title: "Request: Corsair Hunt",
+        type: 'request',
+        category: 'Requests',
+        objective: "The Prince of Dol Amroth has placed a bounty on the heads of a notorious Corsair captain and his crew, who have been raiding the coasts of Belfalas. Proof of their defeat is required.",
+        assignee: "Full Party",
+        assigneeKey: 'full_party',
+        status: "available",
+        locationId: 'poi_me_dol_amroth'
     }
 };

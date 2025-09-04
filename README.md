@@ -28,24 +28,34 @@ When adding new points of interest to the map data files, please adhere to the f
 7.  **Fog of War:** The `points` string provided in the prompt defines the region's fog of war polygon. This polygon serves two purposes:
     *   **Boundary Reference:** Use these coordinates as a strict boundary. All POIs you create for the region **must** be placed inside this polygon.
     *   **Data Entry:** This `points` string **must** be included in the `fogOfWar` array within the new map data file you create (e.g., in `map-data/middle-earth/Gondor.js`). This allows the map system to render the fog correctly.
+8.  **Requests:** To keep the world feeling alive and interactive, aim to add at least one location-based "Request" quest (in `quests/quests-requests.js`) for every 50 POIs created in a region. This provides players with clear, discoverable objectives as they explore new areas.
 
 ### Adding Laws & Customs
 
-Laws and customs enrich the world by defining how different societies function. To add a new tradition or associate one with a POI, edit `legal_data.js`.
+Laws and customs enrich the world by defining how different societies function. There are two main types: codified **Laws** that are formally enforced by a ruling body, and unwritten **Traditions** that are socially enforced customs.
+
+#### Traditions & Customs
+
+To add a new tradition or associate one with a POI, edit `legal_data.js`.
 
 *   **To add a new tradition:** Add it to the `traditions` object under the appropriate category (e.g., `martial`, `social`). Give it a unique `id`, `name`, `icon`, `description`, and list the `followers` (faction keys) who primarily adhere to it.
-*   **To add a region's baseline traditions:** In the `regional_traditions` object, add an entry where the key is the landmass ID (e.g., `middle_earth_full`) and the value is an array of tradition IDs. These traditions will apply to any unaligned POI in that region.
+
+*   **To add a region's baseline traditions:** In the `regional_traditions` object, add an entry where the key is the landmass ID (e.g., `middle_earth_full`) and the value is an array of tradition IDs. These traditions will apply to any unaligned POI in that region. For example:
+    ```javascript
+    regional_traditions: {
+        // ... other regions
+        middle_earth_full: ['hospitality', 'oath_binding', 'gift_giving', 'duty_and_vigilance', 'the_long_defeat', 'doom_of_mandos']
+    }
+    ```
 *   **To add a POI-specific custom:** In the `poi_traditions` object, add an entry with the POI's full `id` as the key. The value should be an object with a `summary` and an array of `traditions` (IDs from the master list).
+    ```javascript
+    'poi_lw_crossroads_inn': {
+        summary: 'The Crossroads Inn operates under a strict, ancient code of neutrality enforced by its belligerent innkeeper.',
+        traditions: ['neutral_ground', 'storytelling_pact']
+    }
+    ```
 
-Example of a POI-specific custom in `legal_data.js`:
-```javascript
-'poi_lw_crossroads_inn': {
-    summary: 'The Crossroads Inn operates under a strict, ancient code of neutrality enforced by its belligerent innkeeper.',
-    traditions: ['neutral_ground', 'storytelling_pact']
-}
-```
-
-### Adding Libraries
+### Adding Libraries 
 
 Libraries are key locations for discovering new information and books.
 

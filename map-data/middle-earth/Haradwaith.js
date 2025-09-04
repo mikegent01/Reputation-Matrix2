@@ -25,7 +25,7 @@ export const haradwaithData = {
             id: 'poi_me_nomad_camp_1',
             x: 75.33, y: 80.11, type: 'village', subRegion: 'haradwaith', name: "Camp of the Serpent Clan",
             description: "A large, mobile encampment of a powerful Haradrim tribe, known for their skill in desert warfare and their serpent banners.",
-            factionId: 'unaligned', intelReq: 25, political_influence: 4, economic_value: 3, military_strength: 5, population: 800, age_of_antiquity: 4, magical_resonance: 2, crime_rate: 6,
+            factionId: 'mordor', intelReq: 25, political_influence: 4, economic_value: 3, military_strength: 5, population: 800, age_of_antiquity: 4, magical_resonance: 2, crime_rate: 6,
         },
         {
             id: 'poi_me_black_serpent_shrine',
@@ -64,7 +64,6 @@ export const haradwaithData = {
             description: "A chain of active volcanoes that spew black ash into the sky, creating a perpetual twilight in the surrounding lands. Orcs and other dark creatures are said to dwell here.",
             factionId: 'mordor', intelReq: 40, political_influence: 1, economic_value: 2, military_strength: 6, population: 100, age_of_antiquity: 10, magical_resonance: 6, crime_rate: 9,
         },
-        // More POIs to reach ~50 total
         { id: 'poi_me_harad_oasis1', x: 67.89, y: 88.04, type: 'oasis', subRegion: 'haradwaith', name: "Oasis of the Singing Sands", description: "An oasis where the winds create a constant, low humming sound. A vital source of water for desert caravans.", factionId: 'unaligned', intelReq: 20, political_influence: 2, economic_value: 5, military_strength: 1, population: 30, age_of_antiquity: 9, magical_resonance: 4, crime_rate: 4 },
         { id: 'poi_me_harad_salt_flats', x: 74.02, y: 70.81, type: 'landmark', subRegion: 'haradwaith', name: "The Glistening Salt Flats", description: "A vast, blindingly white salt flat, the remnant of an ancient sea. Nothing grows here, but the salt is a valuable trade good.", factionId: 'unaligned', intelReq: 15, political_influence: 1, economic_value: 6, military_strength: 1, population: 0, age_of_antiquity: 10, magical_resonance: 1, crime_rate: 3 },
         { id: 'poi_me_harad_serpent_pass', x: 75.89, y: 70.07, type: 'mountain_pass', subRegion: 'haradwaith', name: "Serpent's Pass", description: "A treacherous pass through the southern mountains, known for its population of giant snakes and as a favored ambush spot for Haradrim raiders.", factionId: 'mordor', intelReq: 30, political_influence: 2, economic_value: 2, military_strength: 5, population: 0, age_of_antiquity: 8, magical_resonance: 2, crime_rate: 8 },
@@ -101,7 +100,5 @@ export const haradwaithData = {
         { id: 'poi_me_harad_hidden_spring', x: 92.93, y: 78.43, type: 'oasis', subRegion: 'haradwaith', name: "Hidden Spring of Azrubel", description: "A secret spring known only to a few desert tribes, its waters are said to have healing properties.", factionId: 'unaligned', intelReq: 40, political_influence: 2, economic_value: 5, military_strength: 2, population: 10, age_of_antiquity: 9, magical_resonance: 6, crime_rate: 3 },
         { id: 'poi_me_harad_spice_route_oasis', x: 60.00, y: 88.00, type: 'oasis', subRegion: 'haradwaith', name: "Oasis of the Crimson Spice", description: "A vital oasis along the southern spice routes, known for its unique red-leafed palms. Control of this oasis means control of a lucrative trade artery.", factionId: 'freelancer_underworld', intelReq: 30, political_influence: 4, economic_value: 7, military_strength: 3, population: 100, age_of_antiquity: 6, magical_resonance: 3, crime_rate: 8 },
     ],
-    fogOfWar: [
-
-    ]
+    fogOfWar: []
 };

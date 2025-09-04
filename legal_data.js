@@ -9,7 +9,7 @@ export const LEGAL_DATA = {
             { id: 'duty_and_vigilance', name: 'Duty and Vigilance', icon: '🛡️', description: 'A deeply ingrained cultural imperative to stand guard against ancient evils. This duty often outweighs personal desires or even feudal obligations, compelling warriors to serve on lonely watchtowers and in forgotten lands.', followers: ['kingdom_of_gondor', 'elves_of_lindon', 'silver_flame'] },
         ],
         social: [
-            { id: 'hospitality', name: 'Sacred Right of Hospitality', icon: '🤝', description: 'Offering food and shelter to a traveler is a sacred duty. Harming a guest under one\'s roof is a grave taboo, as is a guest harming their host.', followers: ['mushroom_regency', 'rakasha_clans', 'beanbean_kingdom', 'yoshi_clans', 'kingdom_of_gondor', 'elves_of_lindon', 'kingdom_of_rohan'] },
+            { id: 'hospitality', name: 'Sacred Right of Hospitality', icon: '🤝', description: 'Offering food and shelter to a traveler is a sacred duty. Harming a guest under one\'s roof is a grave taboo, as is a guest harming their host. This protection is absolute, even if the guest is an enemy.', followers: ['mushroom_regency', 'rakasha_clans', 'beanbean_kingdom', 'yoshi_clans', 'kingdom_of_gondor', 'elves_of_lindon', 'kingdom_of_rohan'] },
             { id: 'neutral_ground', name: 'Neutral Ground', icon: '⚖️', description: 'Certain locations (often taverns or ancient sites) are declared neutral territory where all factions must lay down their arms and grudges. Violating this truce brings universal condemnation.', followers: ['freelancer_underworld', 'unaligned'] },
             { id: 'gift_giving', name: 'Elaborate Gift-Giving', icon: '🎁', description: 'Political and personal relationships are maintained through a complex system of symbolic gift-giving. The value and meaning of a gift can convey respect, insult, or a declaration of intent.', followers: ['regal_empire', 'onyx_hand', 'goodstyle_artisans', 'elves_of_lindon', 'kingdoms_of_the_dwarves'] },
             { id: 'storytelling_pact', name: 'The Storytelling Pact', icon: '📜', description: 'A person\'s story is their most valuable possession. In certain inns and campfires, anyone who declares the Storytelling Pact may speak their truth without interruption or violence, even their deepest secrets.', followers: ['freelancer_underworld', 'the_unchained', 'rebel_clans'] },
@@ -18,6 +18,8 @@ export const LEGAL_DATA = {
             { id: 'liberation_pact', name: 'The Liberation Pact', icon: '🕊️', description: 'A recent but powerful social contract, particularly within the Mushroom Regency. It states that any escaped slave seeking sanctuary must be granted it, and that aiding in their liberation is a noble act. This is a direct ideological challenge to Imperial and slaver factions.', followers: ['mushroom_regency', 'liberated_toads', 'the_unchained'] },
             { id: 'oath_binding', name: 'The Binding of an Oath', icon: '✋', description: 'An oath is a sacred, often magically-binding promise. An oathbreaker is considered the most dishonorable of beings and may suffer a fate worse than death, sometimes becoming a spirit bound to the world until their oath is fulfilled.', followers: ['kingdoms_of_the_dwarves', 'kingdom_of_gondor', 'elves_of_lindon'] },
             { id: 'veneration_of_the_west', name: 'Veneration of the West', icon: '⭐', description: 'A deep cultural and spiritual reverence for the Valar and the Undying Lands in the uttermost West. This is not an organized religion, but a pervasive sense of hope and respect for a higher, unfallen order.', followers: ['kingdom_of_gondor', 'elves_of_lindon'] },
+            { id: 'doom_of_mandos', name: 'The Doom of Mandos', icon: '⚖️', description: 'A cultural sense of fatalism and inescapable destiny, particularly among the Elves. It is the belief that great deeds are often fated to end in sorrow, and that the consequences of ancient crimes echo through generations.', followers: ['elves_of_lindon', 'lothlorien'] },
+            { id: 'the_long_defeat', name: 'The Long Defeat', icon: '😔', description: 'A deep-seated cultural melancholy, the belief that the world is in a slow, inevitable decline from a past golden age. Victories are seen as temporary respites, not turning points.', followers: ['kingdom_of_gondor', 'elves_of_lindon', 'kingdoms_of_the_dwarves'] },
         ],
         arcane: [
             { id: 'arcane_neutrality', name: 'Arcane Neutrality', icon: '🔮', description: 'The pursuit of knowledge is paramount. Magic-users are expected to remain neutral in mundane political affairs, with their only loyalty being to the advancement and preservation of the arcane arts.', followers: ['mages_guild'] },
@@ -32,14 +34,15 @@ export const LEGAL_DATA = {
         ],
         internet: [
             { id: 'information_freedom', name: 'Information Freedom', icon: '🌐', description: 'A core belief that all data should be free and accessible to all. Adherents actively work to break down firewalls, decrypt censored data, and expose the secrets of powerful corporations and governments.', followers: ['hacktivist_collectives'] },
-            { id: 'anonymity_code', name: 'The Anonymity Code', icon: '👤', description: 'In many circles of the web, a user\'s real-world identity is irrelevant and actively discouraged from being shared. An individual is judged solely by their digital actions and contributions. To \'doxx\' someone (reveal their identity) is the ultimate crime.', followers: ['cosmic_jesters', 'hacktivist_collectives'] },
+            { id: 'anonymity_code', name: 'The Anonymity Code', icon: '👤', description: 'In many online spaces, a user\'s real-world identity is irrelevant and actively discouraged from being shared. An individual is judged solely by their digital actions. To \'doxx\' someone (reveal their identity) is the ultimate crime.', followers: ['cosmic_jesters', 'hacktivist_collectives'] },
+            { id: 'law_of_the_flame_war', name: 'Law of the Flame War', icon: '🔥', description: 'An unwritten set of rules for online arguments. Victory is not achieved through facts, but through the most cutting insult, the wittiest reply, or by successfully derailing the original topic. Good faith is considered a weakness.', followers: ['cosmic_jesters', 'freelancer_underworld'] }
         ]
     },
     regional_traditions: {
         mushroom_kingdom_full: ['hospitality', 'gift_giving', 'necromantic_taboo', 'liberation_pact'],
         midlands_full: ['feudal_oaths', 'trial_by_combat', 'ancestral_weapons', 'regal_codes'],
-        middle_earth_full: ['hospitality', 'oath_binding', 'gift_giving', 'duty_and_vigilance', 'ancestral_weapons', 'veneration_of_the_west'],
-        internet_full: ['information_freedom', 'anonymity_code', 'thieves_honor']
+        middle_earth_full: ['hospitality', 'oath_binding', 'gift_giving', 'duty_and_vigilance', 'the_long_defeat', 'doom_of_mandos'],
+        internet_full: ['information_freedom', 'anonymity_code', 'law_of_the_flame_war']
     },
     poi_traditions: {
         'poi_lw_crossroads_inn': {

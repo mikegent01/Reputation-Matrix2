@@ -42,6 +42,8 @@ import { middleEarthData } from './map-data/middle-earth-pois.js';
 import { haradwaithData } from './map-data/middle-earth/Haradwaith.js';
 import { umbarData } from './map-data/middle-earth/Umbar.js';
 import { gondorData } from './map-data/middle-earth/Gondor.js';
+import { rhovanionData } from './map-data/middle-earth/Rhovanion.js';
+import { mordorData } from './map-data/middle-earth/Mordor.js';
 
 
 // Re-export BUILDING_TYPES so other modules can access it from this central file
@@ -513,12 +515,16 @@ export const MAP_DATA = {
         pointsOfInterest: [
             ...middleEarthData.pointsOfInterest,
             ...umbarData.pointsOfInterest,
-            ...gondorData.pointsOfInterest
+            ...gondorData.pointsOfInterest,
+            ...rhovanionData.pointsOfInterest,
+            ...mordorData.pointsOfInterest,
         ],
         fogOfWar: [
             ...middleEarthData.fogOfWar,
             ...(umbarData.fogOfWar || []),
-            ...(gondorData.fogOfWar || [])
+            ...(gondorData.fogOfWar || []),
+            ...(rhovanionData.fogOfWar || []),
+            ...(mordorData.fogOfWar || []),
         ],
         poiSourceFile: 'map-data/middle-earth-pois.js'
     },
@@ -571,6 +577,26 @@ export const MAP_DATA = {
         pointsOfInterest: gondorData.pointsOfInterest,
         fogOfWar: gondorData.fogOfWar,
         poiSourceFile: 'map-data/middle-earth/Gondor.js'
+    },
+    rhovanion: {
+        id: 'rhovanion',
+        name: 'Rhovanion',
+        imageSrc: 'mide.webp',
+        order: 7,
+        group: 'Middle-earth',
+        pointsOfInterest: rhovanionData.pointsOfInterest,
+        fogOfWar: rhovanionData.fogOfWar,
+        poiSourceFile: 'map-data/middle-earth/Rhovanion.js'
+    },
+    mordor: {
+        id: 'mordor',
+        name: 'The Land of Mordor',
+        imageSrc: 'mide.webp',
+        order: 8,
+        group: 'Middle-earth',
+        pointsOfInterest: mordorData.pointsOfInterest,
+        fogOfWar: mordorData.fogOfWar,
+        poiSourceFile: 'map-data/middle-earth/Mordor.js'
     },
     internet_full: {
         id: 'internet_full',

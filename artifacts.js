@@ -217,7 +217,7 @@ const REGIONAL_ANALYSIS_DATA = [
     {
         name: "Middle Earth",
         progress: "0/4 Factions",
-        intel_req: { faction: 'middle_earth_kingdoms', level: 20 },
+        intel_req: { faction: 'kingdom_of_gondor', level: 20 },
         details: {
             politicalSystem: "Ancient Kingdom with Shattered Borders",
             currentSituation: "The legacy of magic and wars defines Middle Earth, where ancient alliances are tested.",
@@ -227,12 +227,12 @@ const REGIONAL_ANALYSIS_DATA = [
             population: "592.0M"
         },
         factions: [
-            { name: "King Thorin's Royal Power", influence: "31%", rumor: { text: "King Thorin's lineage is bound to a petal that strengthens his resolve and grants him ancestral battle wisdom.", source: "Dwarven Runesmith's Tale", intel_req: { faction: 'dwarven_holds', level: 45 } } },
-            { name: "Elven Clans", influence: "21%", rumor: { text: "Elven Clans nurture their petal to preserve the fading magic of their ancient forests and enhance their archery skills.", source: "Faerun Elven Emissary", intel_req: { faction: 'ancient_keepers', level: 40 } } },
-            { name: "Dwarven Holds", influence: "19%", rumor: { text: "Dwarven Holds use their petal's heat to forge legendary weapons and armor, impervious to dragon fire.", source: "Iron Legion Weapons Analysis", intel_req: { faction: 'iron_legion', level: 40 } } },
-            { name: "Human Tribes", influence: "12%", rumor: { text: "Scattered Human Tribes believe their petal fragments offer protection against the dark creatures roaming their lands.", source: "Rebel Clans' Elder", intel_req: { faction: 'rebel_clans', level: 40 } } }
+            { name: "King Thorin's Royal Power", influence: "31%", rumor: { text: "King Thorin's lineage is bound to a petal that strengthens his resolve and grants him ancestral battle wisdom.", source: "Dwarven Runesmith's Tale", intel_req: { faction: 'kingdoms_of_the_dwarves', level: 45 } } },
+            { name: "Elven Clans", influence: "21%", rumor: { text: "Elven Clans nurture their petal to preserve the fading magic of their ancient forests and enhance their archery skills.", source: "Faerun Elven Emissary", intel_req: { faction: 'elves_of_lindon', level: 40 } } },
+            { name: "Dwarven Holds", influence: "19%", rumor: { text: "Dwarven Holds use their petal's heat to forge legendary weapons and armor, impervious to dragon fire.", source: "Iron Legion Weapons Analysis", intel_req: { faction: 'kingdoms_of_the_dwarves', level: 40 } } },
+            { name: "Human Tribes", influence: "12%", rumor: { text: "Scattered Human Tribes believe their petal fragments offer protection against the dark creatures roaming their lands.", source: "Rebel Clans' Elder", intel_req: { faction: 'kingdom_of_gondor', level: 40 } } }
         ],
-        overallRumor: { text: "Legends claim King Thorin wields a Fire Flower petal, a relic of ancient power that aids him in his quest to unite the fractured kingdoms of Middle Earth.", intel_req: { faction: 'middle_earth_kingdoms', level: 65 } }
+        overallRumor: { text: "Legends claim King Thorin wields a Fire Flower petal, a relic of ancient power that aids him in his quest to unite the fractured kingdoms of Middle Earth.", intel_req: { faction: 'kingdoms_of_the_dwarves', level: 65 } }
     },
     {
         name: "Pokemon Regions",
@@ -291,7 +291,7 @@ const REGIONAL_ANALYSIS_DATA = [
             { name: "High Magus Elion's Circle", influence: "42%", rumor: { text: "Elion's inner circle uses their shared petal to amplify their spellcasting, creating city-wide illusions and wards.", source: "Aurean Techno-Mage Analysis", intel_req: { faction: 'aurea_oligarchy', level: 50 } } },
             { name: "Mage Council", influence: "16%", rumor: { text: "The Mage Council debates the ethical use of their petal, fearing its power could unravel the Weave of Magic itself.", source: "Mages' Guild Internal Memo", intel_req: { faction: 'mages_guild', level: 40 } } },
             { name: "Warrior Clans", influence: "13%", rumor: { text: "Warrior Clans embed petal shards in their ancestral weapons, making them blaze with magical fire in combat.", source: "Koopa Troop Weaponsmith's Journal", intel_req: { faction: 'koopa_troop', level: 40 } } },
-            { name: "Elven Tribes (Ancient Keepers)", influence: "10%", rumor: { text: "Ancient Elven Tribes guard a fading petal, believing it connects them to the primal magic of Faerun's heart.", source: "Middle-Earth Elven Clan Leader", intel_req: { faction: 'elven_clans', level: 45 } } }
+            { name: "Elven Tribes (Ancient Keepers)", influence: "10%", rumor: { text: "Ancient Elven Tribes guard a fading petal, believing it connects them to the primal magic of Faerun's heart.", source: "Middle-Earth Elven Clan Leader", intel_req: { faction: 'elves_of_lindon', level: 45 } } }
         ],
         overallRumor: { text: "High Magus Elion reportedly channels the essence of a Fire Flower petal to fuel his grand spells and maintain his mystical utopia.", intel_req: { faction: 'faerun_theocracy', level: 65 } }
     },
@@ -331,7 +331,7 @@ const REGIONAL_ANALYSIS_DATA = [
             { name: "Tribal Confederacy (Chief Redwood's Council)", influence: "38%", rumor: { text: "Chief Redwood's council uses their petal to commune with ancient forest spirits, seeking guidance and protection.", source: "Rakasha Spirit-Walker's Vision", intel_req: { faction: 'rakasha_clans', level: 45 } } },
             { name: "Forest Tribes (Pathfinders)", influence: "22%", rumor: { text: "Pathfinder tribes use petal slivers to navigate impossibly dense jungles and sense hidden dangers.", source: "Wayfinders' Guild Expedition Log", intel_req: { faction: 'wayfinders_guild', level: 35 } } },
             { name: "Wild Guardians (Beastmasters)", influence: "16%", rumor: { text: "Beastmasters carry petal charms that allow them to form unusually strong bonds with the wild creatures of the forest.", source: "Zootopian Biologist's Field Notes", intel_req: { faction: 'zootopia_republic', level: 35 } } },
-            { name: "Nature Shamans", influence: "15%", rumor: { text: "Nature Shamans weave their petal's energy into rituals that heal blighted lands and promote vibrant growth.", source: "Faerun Elven Healer's Account", intel_req: { faction: 'ancient_keepers', level: 40 } } }
+            { name: "Nature Shamans", influence: "15%", rumor: { text: "Nature Shamans weave their petal's energy into rituals that heal blighted lands and promote vibrant growth.", source: "Faerun Elven Healer's Account", intel_req: { faction: 'elves_of_lindon', level: 40 } } }
         ],
         overallRumor: { text: "Chief Redwood is said to commune with a Fire Flower petal that is one with the forest, drawing strength from it to protect his people and their lands.", intel_req: { faction: 'forest_tribes', level: 55 } }
     },

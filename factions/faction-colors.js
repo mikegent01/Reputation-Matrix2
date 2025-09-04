@@ -43,8 +43,17 @@ export const FACTION_COLORS = {
     'koopa_troop': 'var(--faction-koopa_troop)',
     'rebel_clans': 'var(--faction-rebel_clans)',
     
-    // New
+    // Middle-earth
+    'kingdom_of_gondor': 'var(--major-powers-color)',
+    'kingdom_of_rohan': 'var(--regional-powers-color)',
+    'lothlorien': 'var(--mystical-ancient-color)',
+    'elves_of_lindon': 'var(--mystical-ancient-color)',
+    'kingdoms_of_the_dwarves': 'var(--regional-powers-color)',
+    'isengard': 'var(--underworld-fringe-color)',
+    'mordor': 'var(--negative-color)',
     'middle_earth_kingdoms': 'var(--faction-middle_earth_kingdoms)',
+
+    // Internet
     'internet_federation': 'var(--faction-internet_federation)',
     'hacktivist_collectives': 'var(--faction-hacktivist_collectives)',
     'data_merchant_guilds': 'var(--faction-data_merchant_guilds)',

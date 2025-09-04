@@ -1,3 +1,5 @@
+
+
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
 import { FOCUS_TREES } from './focus-tree.js';
@@ -21,6 +23,14 @@ function generateGenericIntel() {
     intel['onyx_hand'] = 10;
     intel['moonfang_pack'] = 10;
     intel['unaligned'] = 100;
+    // Middle-earth Baseline Intel
+    intel['kingdom_of_gondor'] = 25;
+    intel['kingdom_of_rohan'] = 20;
+    intel['lothlorien'] = 15;
+    intel['elves_of_lindon'] = 15;
+    intel['kingdoms_of_the_dwarves'] = 20;
+    intel['isengard'] = 15;
+    intel['mordor'] = 15;
     
     return intel;
 }
@@ -39,7 +49,9 @@ export const state = {
             wario_land: 55, mushroom_regency: 45, peach_loyalists: 40,
             fawfuls_furious_freaks: 50, iron_fists: 85, moonfang_pack: 70,
             liberated_toads: 90, diamond_city_investigators: 70, goodstyle_artisans: 30,
-            unaligned: 100
+            unaligned: 100,
+            kingdom_of_gondor: 60, kingdom_of_rohan: 50, lothlorien: 40,
+            elves_of_lindon: 45, kingdoms_of_the_dwarves: 55, isengard: 70, mordor: 75
         },
         markop: {
             regal_empire: 70, iron_legion: 65, freelancer_underworld: 20,
@@ -50,19 +62,25 @@ export const state = {
             wario_land: 15, mushroom_regency: 60, peach_loyalists: 55,
             fawfuls_furious_freaks: 20, iron_fists: 60, moonfang_pack: 70,
             liberated_toads: 95, diamond_city_investigators: 40, goodstyle_artisans: 50,
-            unaligned: 100
+            unaligned: 100,
+            kingdom_of_gondor: 75, kingdom_of_rohan: 70, lothlorien: 60,
+            elves_of_lindon: 65, kingdoms_of_the_dwarves: 60, isengard: 30, mordor: 35
         },
         humpik: {
             koopa_troop: 95, toad_gang: 60, regal_empire: 25, iron_legion: 30,
             rakasha_clans: 40, rebel_clans: 30, moonfang_pack: 35,
             liberated_toads: 45,
-            unaligned: 100
+            unaligned: 100,
+            kingdom_of_gondor: 50, kingdom_of_rohan: 45, lothlorien: 20,
+            elves_of_lindon: 25, kingdoms_of_the_dwarves: 60, isengard: 65, mordor: 70
         },
         bowser: {
             koopa_troop: 100, mushroom_regency: 75, peach_loyalists: 70,
             regal_empire: 65, iron_legion: 60, rebel_clans: 50,
             onyx_hand: 40, moonfang_pack: 45, crimson_fleet: 40,
-            unaligned: 100
+            unaligned: 100,
+            kingdom_of_gondor: 50, kingdom_of_rohan: 45, lothlorien: 20,
+            elves_of_lindon: 25, kingdoms_of_the_dwarves: 60, isengard: 65, mordor: 70
         },
         generic: generateGenericIntel(),
     },

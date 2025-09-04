@@ -3,60 +3,45 @@
 export const mordorData = {
     pointsOfInterest: [
         {
-            id: 'poi_me_black_gate',
-            x: 62.0, y: 65.0,
-            type: 'fortress', subRegion: 'mordor', name: "The Black Gate (Morannon)",
-            description: "The main entrance to Mordor, a massive gate of iron and stone set between two dark, jagged mountain ranges. It is guarded by legions of Orcs and the fearsome Towers of the Teeth.",
-            factionId: 'unaligned', intelReq: 30, political_influence: 7, economic_value: 2, military_strength: 10, population: 10000,
-            age_of_antiquity: 9, magical_resonance: 8, crime_rate: 10
-        },
-        {
             id: 'poi_me_barad_dur',
-            x: 70.0, y: 75.0,
-            type: 'fortress', subRegion: 'mordor', name: "Barad-dûr, The Dark Tower",
-            description: "The fortress of Sauron, a tower of adamant and iron, crowned with the Great Eye. A place of absolute evil and immense power, from which the Dark Lord watches and commands his armies.",
-            factionId: 'unaligned', intelReq: 80, political_influence: 10, economic_value: 5, military_strength: 10, population: 50000,
-            age_of_antiquity: 9, magical_resonance: 10, crime_rate: 10
+            x: 85.00, y: 55.00, type: 'fortress', subRegion: 'mordor', name: "Barad-dûr, the Dark Tower",
+            description: "The great fortress of the Dark Lord Sauron. A place of shadow and fear, its foundations are laid in cruelty and its tower rises to pierce the heavens, crowned by the ever-watchful Lidless Eye.",
+            factionId: 'mordor', intelReq: 70, political_influence: 10, economic_value: 8, military_strength: 10, population: 100000,
         },
         {
             id: 'poi_me_mount_doom',
-            x: 67.0, y: 77.0,
-            type: 'volcano', subRegion: 'mordor', name: "Mount Doom (Orodruin)",
-            description: "A great, smoking volcano whose fires are the source of Sauron's power. Within its heart, in the Sammath Naur, the One Ring was forged, and only there can it be destroyed.",
-            factionId: 'unaligned', intelReq: 40, political_influence: 5, economic_value: 6, military_strength: 7, population: 0,
-            age_of_antiquity: 10, magical_resonance: 10, crime_rate: 10
-        },
-        {
-            id: 'poi_me_minas_morgul',
-            x: 60.5, y: 78.0,
-            type: 'castle', subRegion: 'mordor', name: "Minas Morgul, The Dead City",
-            description: "The former Gondorian fortress of Minas Ithil, now a dead city that glows with a sickly, pale light. It is the stronghold of the Nazgûl, a place of terror and black sorcery.",
-            factionId: 'unaligned', intelReq: 50, political_influence: 8, economic_value: 3, military_strength: 9, population: 5000,
-            age_of_antiquity: 9, magical_resonance: 9, crime_rate: 10
-        },
-        {
-            id: 'poi_me_cirith_ungol',
-            x: 62.0, y: 77.5,
-            type: 'watchtower', subRegion: 'mordor', name: "The Tower of Cirith Ungol",
-            description: "A tall, evil-looking tower that guards a high pass into Mordor. A place of great vigilance, manned by a quarrelsome garrison of Orcs.",
-            factionId: 'unaligned', intelReq: 45, political_influence: 4, economic_value: 1, military_strength: 8, population: 300,
-            age_of_antiquity: 9, magical_resonance: 7, crime_rate: 10
-        },
-        {
-            id: 'poi_me_shelobs_lair',
-            x: 61.5, y: 78.5,
-            type: 'lair', subRegion: 'mordor', name: "Shelob's Lair (Torech Ungol)",
-            description: "A network of foul, dark tunnels that serve as the lair of Shelob, the last child of Ungoliant, a monstrous spider of ancient evil. A place of absolute darkness and terror.",
-            factionId: 'unaligned', intelReq: 60, political_influence: 2, economic_value: 2, military_strength: 9, population: 1,
-            age_of_antiquity: 10, magical_resonance: 8, crime_rate: 10
+            x: 75.00, y: 60.00, type: 'volcano', subRegion: 'mordor', name: "Mount Doom (Orodruin)",
+            description: "The fiery mountain where the One Ring was forged. Its fires burn with a dark and ancient power, and its slopes are choked with ash and fumes. It is the heart of Sauron's power in Mordor.",
+            factionId: 'mordor', intelReq: 60, political_influence: 8, economic_value: 7, military_strength: 9, population: 0,
         },
         {
             id: 'poi_me_gorgoroth',
-            x: 68.0, y: 70.0,
-            type: 'landmark', subRegion: 'mordor', name: "The Plateau of Gorgoroth",
-            description: "A vast, barren plateau of ash and slag, the industrial heartland of Mordor. It is a land of forges, armories, and slave pits, where Sauron's great armies are supplied.",
-            factionId: 'unaligned', intelReq: 35, political_influence: 5, economic_value: 8, military_strength: 7, population: 200000,
-            age_of_antiquity: 9, magical_resonance: 7, crime_rate: 10
+            x: 78.00, y: 62.00, type: 'landmark', subRegion: 'mordor', name: "The Plateau of Gorgoroth",
+            description: "A vast, arid plateau of ash and slag in the heart of Mordor. It is a land of torment, dotted with Orc-barracks, slave-pits, and the great forges that arm Sauron's legions.",
+            factionId: 'mordor', intelReq: 40, political_influence: 5, economic_value: 6, military_strength: 8, population: 50000,
+        },
+        {
+            id: 'poi_me_slave_pits',
+            x: 72.00, y: 58.00, type: 'mine', subRegion: 'mordor', name: "The Great Slave-Pits",
+            description: "Vast open-pit mines and quarries where countless slaves from conquered lands toil under the lash of Orc overseers, extracting the resources needed for Mordor's war machine.",
+            factionId: 'mordor', intelReq: 45, political_influence: 3, economic_value: 9, military_strength: 6, population: 20000,
+        },
+        {
+            id: 'poi_me_mordor_armouries',
+            x: 80.00, y: 54.00, type: 'workshop', subRegion: 'mordor', name: "The Great Armouries",
+            description: "A sprawling complex of forges and workshops near Barad-dûr where the weapons and armour for Sauron's armies are mass-produced in the hellish fires of Mount Doom.",
+            factionId: 'mordor', intelReq: 50, political_influence: 4, economic_value: 8, military_strength: 7, population: 15000,
+        },
+        {
+            id: 'poi_me_dark_library',
+            x: 84.50, y: 54.50, type: 'library', subRegion: 'mordor', name: "The Dark Library of Barad-dûr",
+            description: "A repository of forbidden and corrupted knowledge within the Dark Tower. Sauron has collected ancient texts of power, domination, and deceit from all corners of the world to fuel his dark designs.",
+            factionId: 'mordor', intelReq: 85, political_influence: 7, economic_value: 5, military_strength: 6, population: 100,
+            library_summary: "The Dark Library of Barad-dûr contains forbidden lore on power, control, and ancient evils, collected by Sauron to study his enemies and perfect his own tyranny.",
+            libraryStockKey: 'mordor_archives',
         }
+    ],
+    fogOfWar: [
+
     ]
 };

@@ -8,6 +8,8 @@ import { MIDLANDS_FACTIONS } from './factions/midlands.js';
 import { MUSHROOM_KINGDOM_FACTIONS } from './factions/mushroom-kingdom.js';
 import { WIDESPREAD_FACTIONS } from './factions/widespread.js';
 import { WILDERLANDS_FACTIONS } from './factions/wilderlands.js';
+import { MIDDLE_EARTH_FACTIONS } from './factions/middle-earth.js';
+import { INTERNET_FACTIONS } from './factions/internet.js';
 
 
 import { AUXILIARY_PARTY, RUMORS } from './party-and-events.js';
@@ -31,6 +33,8 @@ const combinedFactions = {
     ...MUSHROOM_KINGDOM_FACTIONS,
     ...WIDESPREAD_FACTIONS,
     ...WILDERLANDS_FACTIONS,
+    ...MIDDLE_EARTH_FACTIONS,
+    ...INTERNET_FACTIONS,
 };
 
 export const LORE_DATA = {
