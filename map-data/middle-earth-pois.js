@@ -1,12 +1,12 @@
 // map-data/middle-earth-pois.js
-import { forlindonData } from './Forlindon.js';
-import { eriadorData } from './Eriador.js';
-import { haradwaithData } from './Haradwaith.js';
-import { umbarData } from './Umbar.js';
-import { gondorData } from './Gondor.js';
-import { rhovanionData } from './Rhovanion.js';
-import { mordorData } from './Mordor.js';
-import { minhiriathData } from './Minhiriath.js';
+import { forlindonData } from './middle-earth/Forlindon.js';
+import { eriadorData } from './middle-earth/Eriador.js';
+import { haradwaithData } from './middle-earth/Haradwaith.js';
+import { umbarData } from './middle-earth/Umbar.js';
+import { gondorData } from './middle-earth/Gondor.js';
+import { rhovanionData } from './middle-earth/Rhovanion.js';
+import { mordorData } from './middle-earth/Mordor.js';
+import { minhiriathData } from './middle-earth/Minhiriath.js';
 
 
 export const middleEarthData = {

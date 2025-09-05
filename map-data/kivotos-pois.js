@@ -1,13 +1,13 @@
 // map-data/kivotos-pois.js
-import { kivotosPois } from './Kivotos.js';
-import { grandLatinPois } from './GrandLatin.js';
-import { austelarassiaPois } from './Austelarassia.js';
-import { silbaarstadtPois } from './Silbaarstadt.js';
-import { alhaoungPois } from './AL_haoung.js';
-import { northernAureanPolePois } from './NorthernAureanPole.js';
-import { newCairoPois } from './NewCairo.js';
-import { newAmericaPois } from './NewAmerica.js';
-import { southernAureanPolePois } from './SouthernAureanPole.js';
+import { kivotosPois } from './kivotos/Kivotos.js';
+import { grandLatinPois } from './kivotos/GrandLatin.js';
+import { austelarassiaPois } from './kivotos/Austelarassia.js';
+import { silbaarstadtPois } from './kivotos/Silbaarstadt.js';
+import { alhaoungPois } from './kivotos/AL_haoung.js';
+import { northernAureanPolePois } from './kivotos/NorthernAureanPole.js';
+import { newCairoPois } from './kivotos/NewCairo.js';
+import { newAmericaPois } from './kivotos/NewAmerica.js';
+import { southernAureanPolePois } from './kivotos/SouthernAureanPole.js';
 
 
 export const kivotosData = {
