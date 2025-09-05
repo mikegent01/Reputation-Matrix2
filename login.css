@@ -243,12 +243,16 @@
     align-items: center;
     justify-content: center;
     animation: fadeIn 0.5s ease-out;
+    cursor: pointer;
 }
 
 .intro-content {
     text-align: center;
     max-width: 80ch;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .intro-logo {
@@ -264,18 +268,22 @@
     text-align: left;
     white-space: pre-wrap;
     line-height: 1.8;
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    border-radius: 8px;
+    min-height: 100px;
+    width: 100%;
 }
 
-#intro-text .cursor {
-    display: inline-block;
-    background-color: var(--positive-color);
-    width: 10px;
-    height: 1.2rem;
-    margin-left: 4px;
-    animation: blink-caret 0.75s step-end infinite;
+#click-prompt {
+    margin-top: 24px;
+    font-family: var(--font-display);
+    color: var(--neutral-color);
+    animation: blink-caret 1.5s step-end infinite;
 }
 
 @keyframes blink-caret {
-  from, to { background-color: transparent }
-  50% { background-color: var(--positive-color); }
+  from, to { opacity: 1; }
+  50% { opacity: 0.5; }
 }

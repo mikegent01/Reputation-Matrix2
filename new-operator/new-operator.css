@@ -26,6 +26,16 @@
     color: var(--accent-hover);
 }
 
+/* --- Page Layout Override --- */
+#sidebar {
+    display: none;
+}
+
+#main-content {
+    margin-left: 0;
+}
+
+
 /* --- Wizard Layout --- */
 #creator-wizard {
     background: var(--sidebar-bg);

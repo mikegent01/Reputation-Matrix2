@@ -1,5 +1,6 @@
 import { LORE_DATA } from './lore.js';
-import { WALUIGI_INTRO_TEXT } from './new-operator/new-operator-data.js';
+import { WALUIGI_INTRO_TEXT, WALUIGI_REGION_TIPS } from './new-operator/new-operator-data.js';
+import { playSound } from './common.js';
 
 // --- Element Cache ---
 const startupScreen = document.getElementById('startup-screen');
@@ -18,8 +19,15 @@ const skipBtn = document.getElementById('skip-intro-btn');
 
 const introOverlay = document.getElementById('intro-sequence-overlay');
 const introTextElement = document.getElementById('intro-text');
+const clickPrompt = document.getElementById('click-prompt');
 
 const MAIN_CHARACTERS = ['archie', 'markop', 'humpik', 'bowser'];
+
+// --- Intro Sequence State ---
+let fullMonologue = [];
+let monologueIndex = -1;
+let typingInterval;
+
 
 // --- Functions ---
 
@@ -64,36 +72,66 @@ function setupLoginScreen() {
     if (skipBtn) skipBtn.addEventListener('click', () => selectProfile('generic'));
 }
 
-function typeWriterOnClick(element, textLines, onComplete) {
-    element.innerHTML = '';
-    const cursor = document.createElement('span');
-    cursor.className = 'cursor';
-    element.appendChild(cursor);
-
-    let lineIndex = 0;
+function buildFullMonologue() {
+    fullMonologue = [];
+    fullMonologue.push(...WALUIGI_INTRO_TEXT);
+    fullMonologue.push('---');
+    fullMonologue.push("First, you need to know the lay of the land. It's a real mess out there! WAH-HA-HA! Let me tell you about the big places...");
     
-    const showNextLine = () => {
-        if (lineIndex < textLines.length) {
-            const line = textLines[lineIndex];
-            const lineEl = document.createElement('span');
-            lineEl.textContent = line;
-            element.insertBefore(lineEl, cursor);
-            element.insertBefore(document.createElement('br'), cursor);
-            lineIndex++;
+    const regions = [
+        'Mushroom Kingdom', 'The Midlands', 'The Internet', 'Middle-earth', 
+        'The Fated Place', 'Kivotos', 'The Doughnut Hole'
+    ];
+    
+    regions.forEach(regionName => {
+        fullMonologue.push('---');
+        fullMonologue.push(`Next up is... ${regionName}!`);
+        fullMonologue.push(WALUIGI_REGION_TIPS[regionName]);
+    });
+    
+    fullMonologue.push('---');
+    fullMonologue.push("Enough talk! Let's see what pathetic excuse for an operator you can come up with! Don't disappoint me!");
+}
+
+function playNextMonologueLine() {
+    if (typingInterval) { // If a line is still typing, finish it instantly
+        clearInterval(typingInterval);
+        introTextElement.textContent = fullMonologue[monologueIndex];
+        clickPrompt.classList.remove('hidden');
+        typingInterval = null;
+        return;
+    }
+
+    monologueIndex++;
+
+    if (monologueIndex >= fullMonologue.length) {
+        introOverlay.removeEventListener('click', playNextMonologueLine);
+        window.location.href = 'new-operator/new-operator.html';
+        return;
+    }
+
+    playSound('click.mp3', 0.4);
+    const line = fullMonologue[monologueIndex];
+    introTextElement.textContent = '';
+    clickPrompt.classList.add('hidden');
+
+    if (line === '---') {
+        introTextElement.innerHTML = '<hr>';
+        clickPrompt.classList.remove('hidden');
+        return;
+    }
+
+    let charIndex = 0;
+    typingInterval = setInterval(() => {
+        if (charIndex < line.length) {
+            introTextElement.textContent += line.charAt(charIndex);
+            charIndex++;
         } else {
-            // All lines are shown, remove listener and trigger completion
-            overlay.removeEventListener('click', showNextLine);
-            if (onComplete) {
-                onComplete();
-            }
+            clearInterval(typingInterval);
+            typingInterval = null;
+            clickPrompt.classList.remove('hidden');
         }
-    };
-
-    const overlay = document.getElementById('intro-sequence-overlay');
-    overlay.addEventListener('click', showNextLine);
-    
-    // Show the first line immediately
-    showNextLine();
+    }, 25); // Typing speed
 }
 
 
@@ -104,12 +142,11 @@ function startIntroSequence() {
     }
 
     if (introOverlay && introTextElement) {
+        buildFullMonologue();
+        monologueIndex = -1;
         introOverlay.classList.remove('hidden');
-        typeWriterOnClick(introTextElement, WALUIGI_INTRO_TEXT, () => {
-            setTimeout(() => {
-                window.location.href = 'new-operator/new-operator.html';
-            }, 1000); // Pause at the end before redirecting
-        });
+        introOverlay.addEventListener('click', playNextMonologueLine);
+        playNextMonologueLine(); // Start the first line
     }
 }
 

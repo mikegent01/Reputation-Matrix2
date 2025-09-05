@@ -1,3 +1,4 @@
+
 import { LORE_DATA } from '../lore.js';
 import { playSound } from '../common.js';
 import { WALUIGI_REGION_TIPS, RACES, RACE_QUESTS, FACTIONS, REGION_STARTING_ITEMS } from './new-operator-data.js';
@@ -33,7 +34,7 @@ const SKILL_LIST = [
     { id: 'intimidation', name: 'Intimidation', attr: 'CHA' },
 ];
 
-let skillPoints = 4; // Player gets 4 free points, 6 are predetermined
+let skillPoints = 4;
 
 // --- DOM ELEMENTS ---
 const commentaryText = document.getElementById('waluigi-commentary-text');
@@ -55,7 +56,6 @@ const characterSheetContainer = document.getElementById('character-sheet');
 const skillAllocator = document.getElementById('skill-allocator');
 const skillPointsValue = document.getElementById('points-value');
 
-
 function init() {
     renderStepContent(currentStep);
     updateNavigation();
@@ -71,7 +71,7 @@ function renderStepContent(step) {
 
     switch (step) {
         case 1: renderRegionSelector(); break;
-        case 2: renderRaceSelector(newOperator.region); break;
+        case 2: renderRaceSelector(); break;
         case 3: renderQuestAssignment(); break;
         case 4: renderFactionStep(); break;
         case 5: renderSkillStep(); break;
@@ -88,46 +88,48 @@ function getMapForRegion(regionName) {
         'The Internet': 'internet_full',
         'Kivotos': 'kivotos_full',
         'The Doughnut Hole': 'doughnut_hole_full',
+        'Other Worlds': null
     };
-
     const key = Object.keys(regionMap).find(k => regionName.includes(k.split(' (')[0]));
     const mapId = regionMap[key];
     if (mapId && MAP_DATA[mapId]) return `../${MAP_DATA[mapId].imageSrc}`;
-
-    // Fallback for more specific regions
-    for (const mapKey in MAP_DATA) {
-        if (MAP_DATA[mapKey].name.includes(regionName.split(' (')[0])) return `../${MAP_DATA[mapKey].imageSrc}`;
-    }
     return '../maps/map_placeholder.png';
 }
 
-
 function renderRegionSelector() {
     const regions = [
-        { name: "Mushroom Kingdom", map: getMapForRegion("Mushroom Kingdom") },
-        { name: "The Midlands", map: getMapForRegion("The Midlands") },
-        { name: "The Internet", map: getMapForRegion("The Internet") },
-        { name: "Middle-earth", map: getMapForRegion("Middle-earth") },
-        { name: "The Fated Place", map: getMapForRegion("The Fated Place") },
-        { name: "Kivotos", map: getMapForRegion("Kivotos") },
-        { name: "The Doughnut Hole", map: getMapForRegion("The Doughnut Hole") },
-    ];
+        { name: "Mushroom Kingdom" },
+        { name: "The Midlands" },
+        { name: "The Internet" },
+        { name: "Middle-earth" },
+        { name: "The Fated Place" },
+        { name: "Kivotos" },
+        { name: "The Doughnut Hole" },
+        { name: "Other Worlds" },
+    ].map(region => ({...region, map: getMapForRegion(region.name)}));
+
     regionSelectionGrid.innerHTML = regions.map(region => `
-        <div class="region-card" data-region="${region.name}" data-map="${region.map}">
+        <div class="region-card ${newOperator.region === region.name ? 'selected' : ''}" data-region="${region.name}" data-map="${region.map}">
             <img src="${region.map}" alt="${region.name} map">
             <span>${region.name}</span>
         </div>
     `).join('');
 }
 
-
-function renderRaceSelector(selectedRegion) {
-    const filteredRaces = RACES.filter(race => race.region === 'Universal' || race.region === selectedRegion);
-    operatorRaceSelect.innerHTML = filteredRaces.map(race => `<option value="${race.name}">${race.name}</option>`).join('');
-    operatorRaceSelect.insertAdjacentHTML('afterbegin', '<option value="" selected disabled>Select a Race...</option>');
+function renderRaceSelector() {
+    const filteredRaces = RACES.filter(race => race.region === 'Universal' || race.region === newOperator.region);
+    operatorRaceSelect.innerHTML = filteredRaces.map(race => `<option value="${race.name}" ${newOperator.race === race.name ? 'selected' : ''}>${race.name}</option>`).join('');
+    operatorRaceSelect.insertAdjacentHTML('afterbegin', '<option value="" disabled>Select a Race...</option>');
+    if (!newOperator.race) {
+        operatorRaceSelect.value = "";
+    }
+    operatorRaceCustomInput.style.display = newOperator.race === 'Custom' ? 'block' : 'none';
+    operatorRaceCustomInput.value = newOperator.customRace;
 }
 
+
 function renderQuestAssignment() {
+    updateOperatorState(2); // Ensure race is captured before rendering quests
     const raceData = RACES.find(r => r.name === newOperator.race);
     if (!raceData) return;
 
@@ -135,12 +137,11 @@ function renderQuestAssignment() {
     
     questAssignmentDisplay.innerHTML = newOperator.quests.map(id => {
         const quest = RACE_QUESTS[id];
+        if (!quest) return `<div class="quest-option"><p class="negative">Error: Quest data for ID '${id}' is missing!</p></div>`;
         return `
             <div class="quest-option">
-                <label>
-                    <h5>${quest.title}</h5>
-                    <p>${quest.description}</p>
-                </label>
+                <h5>${quest.title}</h5>
+                <p>${quest.description}</p>
             </div>
         `;
     }).join('') || '<p>No specific directives assigned. You are a free agent of chaos! WAH!</p>';
@@ -165,7 +166,6 @@ function renderFactionStep() {
     operatorFactionSelect.dispatchEvent(new Event('change'));
 }
 
-
 function renderSkillStep() {
     const raceBonuses = RACES.find(r => r.name === newOperator.race)?.skillBonuses || {};
     const factionBonuses = FACTIONS[newOperator.faction]?.skillBonuses || {};
@@ -186,7 +186,6 @@ function renderSkillStep() {
     });
     skillPoints = 4 - spentPoints;
 
-
     skillAllocator.innerHTML = SKILL_LIST.map(skill => `
         <div class="skill-row" data-skill-id="${skill.id}">
             <span class="skill-name ${newOperator.baseSkills[skill.id] > 0 ? 'bonus' : ''}">${skill.name} (${skill.attr})</span>
@@ -202,12 +201,11 @@ function renderSkillStep() {
 }
 
 function renderCharacterSheet() {
-    const race = newOperator.race === 'Custom' ? newOperator.customRace : newOperator.race;
+    const raceName = newOperator.race === 'Custom' ? newOperator.customRace : newOperator.race;
     const raceData = RACES.find(r => r.name === newOperator.race);
     const abilityText = raceData ? raceData.ability : "None.";
     const faction = LORE_DATA.factions[newOperator.faction] || { name: 'Unaligned' };
     
-    // --- Attribute Calculation ---
     const calculatedStats = { ...raceData.baseStats };
     const keyAttrLower = raceData.keyAttribute.toLowerCase();
     if (calculatedStats[keyAttrLower]) {
@@ -257,7 +255,7 @@ function renderCharacterSheet() {
         </div>
         <div class="sheet-header-vitals">
             <div class="sheet-header-item"><span>Operator Name</span><p>${newOperator.name || 'Nameless Loser'}</p></div>
-            <div class="sheet-header-item"><span>Race</span><p>${race || 'Unknown'}</p></div>
+            <div class="sheet-header-item"><span>Race</span><p>${raceName || 'Unknown'}</p></div>
             <div class="sheet-header-item"><span>Affiliation</span><p>${faction.name}</p></div>
         </div>`;
     
@@ -280,13 +278,11 @@ function renderCharacterSheet() {
     document.getElementById('sheet-equipment-list').innerHTML = equipmentHTML || '<li>Nothing but your wits!</li>';
     document.getElementById('sheet-quests-list').innerHTML = questsHTML || '<li>None - A True Slacker!</li>';
 
-
     document.getElementById('upload-token-btn').addEventListener('click', () => {
         document.getElementById('token-upload-input').click();
     });
     document.getElementById('token-upload-input').addEventListener('change', handleTokenUpload);
 }
-
 
 // --- LOGIC & NAVIGATION ---
 
@@ -297,13 +293,13 @@ function updateWaluigiCommentary(text) {
 function changeStep(direction) {
     if (direction > 0 && !validateStep(currentStep)) return;
 
+    updateOperatorState(currentStep);
     const nextStep = currentStep + direction;
     if (nextStep > 0 && nextStep <= totalSteps) {
         playSound('click.mp3');
-        updateOperatorState();
         currentStep = nextStep;
         updateWaluigiCommentary(`WAH! Step ${currentStep}! Keep going!`);
-        if(currentStep === totalSteps) {
+        if (currentStep === totalSteps) {
             updateWaluigiCommentary(`WAH-HA-HA! You're finished! Admire my brilliant work!`);
         }
         renderStepContent(currentStep);
@@ -320,11 +316,12 @@ function validateStep(step) {
             }
             break;
         case 2:
-            if (!operatorNameInput.value || !operatorRaceSelect.value) {
+            updateOperatorState(2);
+            if (!newOperator.name || !newOperator.race) {
                 alert("WAH! A nameless, raceless nobody? I don't think so! Fill it out!");
                 return false;
             }
-            if (operatorRaceSelect.value === 'Custom' && !operatorRaceCustomInput.value) {
+            if (newOperator.race === 'Custom' && !newOperator.customRace) {
                 alert("WAH! If you pick 'Custom', you have to actually write something!");
                 return false;
             }
@@ -351,12 +348,18 @@ function updateNavigation() {
     stepIndicator.textContent = `Step ${currentStep} of ${totalSteps}`;
 }
 
-function updateOperatorState() {
-    newOperator.name = operatorNameInput.value;
-    newOperator.race = operatorRaceSelect.value;
-    newOperator.customRace = operatorRaceCustomInput.value;
-    newOperator.reason = operatorReasonTextarea.value;
-    newOperator.faction = operatorFactionSelect.value;
+function updateOperatorState(step) {
+    switch(step) {
+        case 2:
+            newOperator.name = operatorNameInput.value;
+            newOperator.race = operatorRaceSelect.value;
+            newOperator.customRace = operatorRaceCustomInput.value;
+            newOperator.reason = operatorReasonTextarea.value;
+            break;
+        case 4:
+            newOperator.faction = operatorFactionSelect.value;
+            break;
+    }
 }
 
 function updateSkill(skillId, change) {
@@ -389,7 +392,7 @@ function handleTokenUpload(event) {
         reader.onload = (e) => {
             newOperator.tokenUrl = e.target.result;
             const imgElement = document.getElementById('sheet-token-img');
-            if(imgElement.tagName === 'DIV') { // Is placeholder
+            if(imgElement.tagName === 'DIV') {
                 const newImg = document.createElement('img');
                 newImg.id = 'sheet-token-img';
                 newImg.className = 'sheet-token-img';
@@ -422,8 +425,6 @@ function setupEventListeners() {
             regionPreviewImage.src = newOperator.regionMap;
             regionPreviewImage.style.display = 'block';
             updateWaluigiCommentary(WALUIGI_REGION_TIPS[newOperator.region] || "WAH! I have no strong opinions on this place. It must be boring!");
-            
-            renderRaceSelector(newOperator.region);
         }
     });
 
@@ -433,13 +434,12 @@ function setupEventListeners() {
         const raceData = RACES.find(r => r.name === newOperator.race);
         if (raceData) {
             updateWaluigiCommentary(raceData.waluigiCommentary || `<strong>Ability: ${raceData.ability}</strong><br><br><em>Standing: ${raceData.standing}</em>`);
-            newOperator.faction = raceData.faction || 'unaligned';
         }
     });
 
     operatorFactionSelect.addEventListener('change', () => {
-        newOperator.faction = operatorFactionSelect.value;
-        const faction = LORE_DATA.factions[newOperator.faction];
+        const selectedFaction = operatorFactionSelect.value;
+        const faction = LORE_DATA.factions[selectedFaction];
         if (faction && faction.waluigi_tip) {
             factionTipBox.innerHTML = `<img src="../logo.png" alt="Waluigi Logo"><div><h6>Waluigi's Cunning Plan for the ${faction.name}</h6><p>${faction.waluigi_tip}</p></div>`;
             factionTipBox.style.display = 'flex';
