@@ -1,3 +1,4 @@
+
 // This file contains all of Humpik's personal quests.
 export const HUMPIK_QUESTS = {
     'humpik_honor_quest': {
@@ -70,15 +71,14 @@ export const HUMPIK_QUESTS = {
         title: "A Rival's Respect",
         type: 'personal',
         category: 'Personal - Humpik',
-        objective: "During a battle, Humpik clashes with Embercap, a particularly tough and resilient Toad soldier from the Peach Loyalists. Impressed by his courage, Humpik seeks him out for a non-lethal sparring match to test his mettle.",
+        objective: "During a battle, Humpik clashed with Embercap, a particularly tough and resilient Toad soldier from the Peach Loyalists. Impressed by his courage, Humpik seeks him out for a non-lethal sparring match to test his mettle.",
         assignee: "Humpik",
         assigneeKey: 'humpik',
-        status: "available",
-        motivation: "Humpik respects strength and courage, regardless of the uniform. He sees a fellow warrior in Embercap and wishes to test his skills against him in a battle of pure strength, free from the politics of the war.",
+        status: "failed",
+        motivation: "Humpik respects strength and courage, regardless of the uniform. He sees a fellow warrior in Embercap and wishes to test his skills against him in a battle of pure strength, free from the politics of the war. Unfortunately, with Embercap's presumed death at the Gala, this honorable duel is no longer possible.",
         steps: [
-            { id: 'step1', title: "The Challenge", status: 'active', description: "Find Embercap and issue a challenge for a duel of honor during a lull in the fighting, with the condition that it is a non-lethal match to first blood." },
-            { id: 'step2', title: "The Duel", status: 'locked', description: "Meet Embercap at the agreed-upon location and engage in a one-on-one sparring match." },
-            { id: 'step3', title: "A Moment of Understanding", status: 'locked', description: "Regardless of the outcome, the duel fosters a grudging respect between the two warriors, potentially opening a new, unofficial line of communication between the Koopa remnants and the Loyalists." }
+            { id: 'step1', title: "The Challenge", status: 'completed', description: "Humpik had resolved to challenge the brave toad soldier to a duel of honor." },
+            { id: 'step2', title: "A Hero's End", status: 'failed', description: "Embercap was reported as killed in action during the infiltration of Fawful's Gala. The opportunity for a sparring match has been lost." }
         ]
     },
     'humpik_training_day': {

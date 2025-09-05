@@ -32,7 +32,7 @@ export const CHARACTERS_3 = {
         name: "Jade Grit",
         role: "Party Guest",
         status: "Deceased",
-        description: "A stoic and resilient toad who was attending Fawful's party. She was tragically killed when Embercap fell on her during his escape attempt."
+        description: "A stoic and resilient toad who was attending Fawful's party. She was tragically killed when Embercap fell on her during a chaotic event at the gala."
     },
     'violet_hush': {
         name: "Violet Hush",
@@ -43,9 +43,9 @@ export const CHARACTERS_3 = {
     // --- PEACH LOYALIST RECRUITS ---
     'embercap': {
         name: "Embercap",
-        role: "Toad Soldier, Peach Loyalists",
-        status: "Deceased",
-        description: "A steadfast soldier in Toadette's army. After infiltrating Fawful's Gala, he bravely but foolishly challenged the divine 'God Toad'. He was slain instantly, his quest for justice ending in a tragic, final blaze of glory."
+        role: "Rogue Loyalist Operative",
+        status: "Presumed Deceased",
+        description: "A steadfast soldier in Toadette's army. After confronting the God Toad, he was slain, only to be brought back by a mysterious temporal event. Now presumed dead by his allies, he has embarked on a rogue mission to hunt down the 'three-eyed freak' (Archie) and seize control of the castle himself. He escaped Fawful's Gala with the aid of a mysterious toad named Steve and his manticore."
     },
     'mistveil': {
         name: "Mistveil",
@@ -140,5 +140,12 @@ export const CHARACTERS_3 = {
         role: "Mushroom Skulls Vindicator",
         status: "Alive",
         description: "A toad with a tragic past seeking vengeance against Archie Miser. Believing Archie betrayed him in an airship explosion, he was saved by the 'God Toad' and has since joined the Mushroom Skulls gang."
+    },
+    // --- NEW CHARACTERS ---
+    'steve': {
+        name: "Steve the Manticore Rider",
+        role: "Mysterious Toad",
+        status: "Active",
+        description: "A mysterious, calm toad who appeared at Fawful's Gala. He possesses a manticore and aided in Embercap's escape, seemingly unfazed by the divine powers at play. His motives and allegiances are completely unknown."
     }
 };

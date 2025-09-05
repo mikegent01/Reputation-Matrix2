@@ -1,4 +1,5 @@
 
+
 // This file contains all of Archie's personal quests.
 export const ARCHIE_QUESTS = {
     'archie_god_toad_hunt': {
@@ -10,7 +11,7 @@ export const ARCHIE_QUESTS = {
         assignee: "Archie",
         assigneeKey: 'archie',
         status: "active",
-        motivation: "This isn't just about power; it's about confronting the past. Archie's betrayal set these events in motion, and he feels a twisted responsibility. He seeks an audience not to apologize, but to understand the being he unleashed and perhaps find a reflection of his own chaotic nature in a divine form.",
+        motivation: "This has escalated beyond a personal matter. The God Toad's ability to manipulate time itself, witnessed at Fawful's Gala, proves he is not just a god, but a cosmic-level threat to causality. Archie, fascinated and terrified, seeks an audience to understand the nature of this temporal power and to see if it can be controlled, stolen, or must be destroyed.",
         steps: [
             { id: 'step1', title: "Locate the God", status: 'completed', description: "Intelligence gathered during the Gala infiltration has confirmed the God Toad's current location: he is a 'guest of honor' at Fawful's occupied castle." },
             { id: 'step2', title: "Infiltrate the Madhouse", status: 'active', description: "The castle is a fortress of madness, besieged by Loyalists and defended by Fawful's bizarre minions. Archie must find a way inside to get to his true target." },

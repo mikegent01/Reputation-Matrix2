@@ -3,17 +3,17 @@ const NEWS_ARTICLES = {
     headline: [
         {
             id: 'headline_2',
-            title: "GALA OF GHOSTS! Castle Infiltration Ends in Tragedy, Divine Being Slays Loyalist Hero!",
+            title: "GALA OF GHOSTS! Castle Infiltration Ends in Bizarre Temporal Event, Loyalist Hero Presumed Dead!",
             image: 'newspaper_fawful_gala.png',
             image_alt: "A chaotic scene within a grand hall. A small, toad-like figure bravely faces a towering, god-like entity while other figures flee in terror.",
-            date: "OCTOBER 26, YEAR 42",
+            date: "OCTOBER 27, YEAR 42",
             author: "By W.A.H. Media Collective",
             content: `
-Fawful's 'Grand Gala' at the occupied Peach's Castle descended into chaos last night, culminating in the tragic death of a Peach Loyalist hero. Eyewitnesses from the joint Koopa-Loyalist infiltration team report that Captain Toadette's trusted soldier, **Embercap**, was slain by a powerful, reality-bending entity now referred to only as the 'God Toad'.
+Fawful's 'Grand Gala' at the occupied Peach's Castle has become the epicenter of reality-bending chaos. Reports from the joint Koopa-Loyalist infiltration team, now confirmed by multiple sources, indicate that the powerful entity known as the 'God Toad' possesses the ability to manipulate time itself.
 
-After a surreal journey through the castle's shifting corridors, Embercap bravely confronted the divine being. His heroic charge was met with overwhelming power, ending in his instantaneous death. The God Toad's motives remain unknown, though it was reportedly attempting to recruit followers from within the castle.
+During a confrontation, the Loyalist hero **Embercap** was reportedly slain instantly by the divine being. However, eyewitnesses describe a bizarre temporal flux immediately following the event, with reality seemingly 'rewinding'. In the ensuing confusion, Embercap vanished. While most military sources have listed him as **Killed in Action**, his body was not recovered, and whispers of a miraculous, Manticore-assisted escape persist. The official stance is that he is presumed deceased.
 
-In a shocking subplot, the heroic facade of the Liberated Toads has been shattered. The toad **Ryan**, previously seen as a quiet scholar, has been revealed as a 'warden' involved in a widespread toad trafficking operation. This revelation has sent shockwaves through the small community of survivors. Meanwhile, the hero **Dan** continues his mysterious training with the Rakasha clans, last seen at an Orc war camp in the Wilderlands, delving deeper into the savage politics of the region. The full ramifications of these events are still unfolding.
+This event solidifies the God Toad as a major, unpredictable threat capable of altering history on a whim. Meanwhile, the shocking revelation of the toad **Ryan's** involvement in a trafficking ring continues to send shockwaves, and the hero **Dan** remains with the Rakasha, his training shrouded in mystery.
             `,
             type: 'headline'
         }

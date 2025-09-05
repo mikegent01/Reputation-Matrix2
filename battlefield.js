@@ -1,3 +1,4 @@
+
 const BATTLEFIELD_STATE = {
     mushroom_kingdom: {
         title: "Mushroom Kingdom Civil War (Toad Town Front)",
@@ -24,7 +25,7 @@ const BATTLEFIELD_STATE = {
                 orders: "Hold Bowser accountable for the chaos that claimed the Princess. View the Regency as an illegitimate obstacle.",
                 color: "var(--faction-peach_loyalists)",
                 icon: "faction_peach_loyalists.png",
-                units: ["Embercap (Soldier)", "Mistveil (Scout)", "Dewdrop (Medic)"]
+                units: ["Mistveil (Scout)", "Dewdrop (Medic)"]
             },
             koopa: {
                 name: "Koopa Troop Remnants",
@@ -46,6 +47,7 @@ const BATTLEFIELD_STATE = {
             }
         },
         log: [
+            { time: "22:15", entry: "Gala infiltration ends in chaos. Reports indicate temporal distortion from the 'God Toad'. Loyalist soldier Embercap listed as KIA after a heroic but foolish charge." },
             { time: "14:30", entry: "Loyalist forces under Captain Toadette intensify their siege on the outskirts of Toad Town." },
             { time: "13:00", entry: "Koopa remnants led by Kamek were spotted scavenging a recent battlefield for supplies." },
             { time: "11:15", entry: "Regency Guard successfully repelled a Toad Gang raid on a refugee supply convoy." },
