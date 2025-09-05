@@ -55,6 +55,28 @@ To add a new tradition or associate one with a POI, edit `legal_data.js`.
     }
     ```
 
+#### Codified Laws
+
+To give a faction a formal legal code that appears in the "Laws & Customs" pop-up on the map, follow these steps. We'll use the Cosmic Jesters and their "Codex: The Punchline" as an example.
+
+1.  **Create/Update a Law Data File:** In the `laws-data` directory, find a thematic file (e.g., `laws-data-mystical.js`) or create a new one.
+2.  **Define the Codex:** Inside this file, add an object for your faction. This object should contain the `name` of the codex, its `description`, and the laws broken down by category (`political`, `social`, `economic`, `penal`). Each law is an object with a `name`, `icon`, and `description`.
+
+    *Example from `laws-data-mystical.js`:*
+    ```javascript
+    cosmic_jesters: {
+        name: "Codex: The Punchline",
+        description: "There are no laws, only suggestions, and they change hourly...",
+        political: [{
+            name: "The Rule of Random",
+            icon: "🏛️",
+            description: "All decisions are made by rolling dice..."
+        }],
+        // ... other categories
+    }
+    ```
+3.  **Register the Codex:** Open `laws-data.js` and ensure your new law data file is imported and included in the `ALL_LEGAL_CODES` export. This makes the system aware of your new laws.
+
 ### Adding Libraries 
 
 Libraries are key locations for discovering new information and books.
@@ -101,6 +123,35 @@ export const LIBRARY_STOCKS = {
 };
 ```
 
-## New Region: Kivotos
+## Adding Books
 
-The groundwork for the new Kivotos region has been laid. This academic city-state, located west of Middle-earth, is now integrated into the terminal's data structure. Factions, map files, and navigation have been prepared, but as requested, no Points of Interest have been created yet, leaving the map a blank canvas for future development.
+Adding a new readable book to the game world involves several steps to ensure it appears correctly in both the party's inventory and public libraries. We will use "Codex: The Punchline" as an example.
+
+1.  **Create the Content File:** In the `books/` directory, create a new file (e.g., `codex_punchline.js`). This file should export a `BOOK_DATA` constant containing the book's `title` and an array of strings for its `pages`.
+
+    ```javascript
+    // books/codex_punchline.js
+    export const BOOK_DATA = {
+        title: "Codex: The Punchline",
+        pages: [ `Foreword:\n\nThese are not rules...`, `Political Law: The Rule of Random...` ]
+    };
+    ```
+2.  **Add Book Description:** Open `books/book_descriptions.js`. Add a new entry to the `BOOK_DESCRIPTIONS` object. The key should be the exact title of the book. This data is used for the cover view when a player inspects the book.
+
+    ```javascript
+    "Codex: The Punchline": {
+        summary: "The official-unofficial legal text of the Cosmic Jester's cult...",
+        reading_time: "Approx. 5 minutes...",
+        pages: 5,
+        effect: "Grants insight into the illogical reasoning of the Cosmic Jesters..."
+    }
+    ```
+3.  **Register in `bookshelf.js` (Party Inventory):**
+    *   Import your new content file: `import { BOOK_DATA as codexPunchline } from './books/codex_punchline.js';`
+    *   Add an entry to the `bookDataMap` object, mapping the book's title to the imported data: `"Codex: The Punchline": codexPunchline,`
+    *   Assign a cover image in the `getBookCoverUrl` function: `if (bookTitle.includes("Punchline")) return 'book_cover_jester.png';`
+
+4.  **Register in `library.js` (Public Terminal):**
+    *   Repeat the same steps as for `bookshelf.js`: import the content file, add it to `bookDataMap`, and assign a cover in `getBookCoverUrl`. This ensures the book is accessible from both interfaces.
+
+5.  **(Optional) Add to Library Stock:** If the book can be found in a specific library, open the relevant stock file (e.g., `books/cosmic_library_stock.js`) and add the book's exact title to the exported array. Ensure this stock is registered in `books/library_stocks.js`.

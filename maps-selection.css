@@ -100,10 +100,57 @@
     color: var(--text-secondary);
     opacity: 0;
     transition: opacity 0.3s ease 0.2s; /* Delay opacity transition */
+    margin-bottom: 16px; /* Add margin to separate from new stats */
 }
 
 .gallery-item:hover .gallery-item-info p {
     opacity: 1;
+}
+
+.gallery-item-stats {
+    opacity: 0;
+    transition: opacity 0.3s ease 0.3s; /* Delay even more */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(125, 133, 144, 0.3);
+}
+
+.gallery-item:hover .gallery-item-stats {
+    opacity: 1;
+}
+
+.stat-item {
+    font-size: 0.9rem;
+}
+
+.stat-item.requests {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.stat-item .stat-label {
+    color: var(--text-secondary);
+}
+
+.stat-item .stat-value {
+    font-family: var(--font-display);
+    color: var(--neutral-color);
+    font-weight: bold;
+}
+
+.stat-item.requests .stat-value {
+    font-size: 1.5rem;
+}
+
+.stat-item.species .stat-value {
+    color: var(--text-color);
+    font-weight: normal;
+    display: block; /* Make it wrap nicely */
+    margin-top: 4px;
 }
 
 @media (max-width: 768px) {

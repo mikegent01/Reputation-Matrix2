@@ -1,5 +1,6 @@
-// This file contains all location-based "Request" quests.
-export const REQUESTS = {
+// This file aggregates all location-based "Request" quests.
+
+const EXISTING_REQUESTS = {
     'request_oakhaven_pests': {
         id: 'request_oakhaven_pests',
         title: "Request: Pest Control",
@@ -110,4 +111,19 @@ export const REQUESTS = {
         status: "available",
         locationId: 'poi_wh_temple_of_the_eclipse'
     }
+};
+
+import { KIVOTOS_REQUESTS } from './requests-kivotos.js';
+import { MIDDLE_EARTH_REQUESTS } from './requests-middle-earth.js';
+import { DOUGHNUT_HOLE_REQUESTS } from './requests-doughnut-hole.js';
+import { WARHAMMER_REQUESTS } from './requests-warhammer.js';
+import { INTERNET_REQUESTS } from './requests-internet.js';
+
+export const REQUESTS = {
+    ...EXISTING_REQUESTS,
+    ...KIVOTOS_REQUESTS,
+    ...MIDDLE_EARTH_REQUESTS,
+    ...DOUGHNUT_HOLE_REQUESTS,
+    ...WARHAMMER_REQUESTS,
+    ...INTERNET_REQUESTS,
 };
