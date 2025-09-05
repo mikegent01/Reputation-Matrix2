@@ -1,4 +1,5 @@
 import { LORE_DATA } from './lore.js';
+import { WALUIGI_INTRO_TEXT } from './new-operator/new-operator-data.js';
 
 // --- Element Cache ---
 const startupScreen = document.getElementById('startup-screen');
@@ -14,6 +15,9 @@ const loginScreen = document.getElementById('character-login-screen');
 const grid = document.getElementById('character-select-grid');
 const genericBtn = document.getElementById('generic-login-btn');
 const skipBtn = document.getElementById('skip-intro-btn');
+
+const introOverlay = document.getElementById('intro-sequence-overlay');
+const introTextElement = document.getElementById('intro-text');
 
 const MAIN_CHARACTERS = ['archie', 'markop', 'humpik', 'bowser'];
 
@@ -59,6 +63,56 @@ function setupLoginScreen() {
     if (genericBtn) genericBtn.addEventListener('click', () => selectProfile('generic'));
     if (skipBtn) skipBtn.addEventListener('click', () => selectProfile('generic'));
 }
+
+function typeWriterOnClick(element, textLines, onComplete) {
+    element.innerHTML = '';
+    const cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    element.appendChild(cursor);
+
+    let lineIndex = 0;
+    
+    const showNextLine = () => {
+        if (lineIndex < textLines.length) {
+            const line = textLines[lineIndex];
+            const lineEl = document.createElement('span');
+            lineEl.textContent = line;
+            element.insertBefore(lineEl, cursor);
+            element.insertBefore(document.createElement('br'), cursor);
+            lineIndex++;
+        } else {
+            // All lines are shown, remove listener and trigger completion
+            overlay.removeEventListener('click', showNextLine);
+            if (onComplete) {
+                onComplete();
+            }
+        }
+    };
+
+    const overlay = document.getElementById('intro-sequence-overlay');
+    overlay.addEventListener('click', showNextLine);
+    
+    // Show the first line immediately
+    showNextLine();
+}
+
+
+function startIntroSequence() {
+    if (startupScreen) {
+        startupScreen.style.opacity = '0';
+        setTimeout(() => startupScreen.style.display = 'none', 500);
+    }
+
+    if (introOverlay && introTextElement) {
+        introOverlay.classList.remove('hidden');
+        typeWriterOnClick(introTextElement, WALUIGI_INTRO_TEXT, () => {
+            setTimeout(() => {
+                window.location.href = 'new-operator/new-operator.html';
+            }, 1000); // Pause at the end before redirecting
+        });
+    }
+}
+
 
 function setupPlayGameButton() {
     if (!playGameBtn || !playGameTimer) return;
@@ -138,9 +192,7 @@ function main() {
         enterAppBtn.addEventListener('click', showLoginOrApp);
         
         if (newOperatorBtn) {
-            newOperatorBtn.addEventListener('click', () => {
-                window.location.href = 'new-operator/new-operator.html';
-            });
+            newOperatorBtn.addEventListener('click', startIntroSequence);
         }
         
         soundtrackBtn.addEventListener('click', () => {

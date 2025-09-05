@@ -6,7 +6,14 @@ async function initializeSidebar() {
     }
 
     try {
-        const response = await fetch('/navigation.html');
+        const navScriptElement = document.querySelector('script[src*="navigation.js"]');
+        if (!navScriptElement) {
+            throw new Error("Could not find navigation.js script tag to determine base path.");
+        }
+        const scriptSrc = navScriptElement.src;
+        const navHtmlUrl = new URL('navigation.html', scriptSrc);
+
+        const response = await fetch(navHtmlUrl.href);
         if (!response.ok) {
             throw new Error(`Failed to fetch navigation: ${response.statusText}`);
         }

@@ -1,5 +1,21 @@
 // This file contains Waluigi's unique commentary and all data for the New Operator creation flow.
 
+export const WALUIGI_INTRO_TEXT = [
+    "INITIATING NEW OPERATOR PROTOCOL...",
+    "ACCESSING... VIGILANCE_TERMINAL_WAH_EDITION_v4.2...",
+    "SUCCESS!",
+    "---",
+    "WAH! So, you're the new blood, huh? Listen up! You've stumbled into the middle of my magnificent, chaotic world, and you're flying on my glorious airship, the 'Vigilance'!",
+    "This world is a mess! The Mushroom Kingdom is having a civil war because their princess kicked the bucket. The big, shiny Regal Empire is trying to 'fix' everything with their boring 'order'.",
+    "And everyone else? Vampires, werewolves, wizards, pirates... they're all fighting for their pathetic little piece of the pie.",
+    "But ME, the great Waluigi, I see the big picture! This chaos? It's a masterpiece! And you're my newest paintbrush.",
+    "So, tell me who you are. Don't be boring, or I'll replace you with a more interesting-looking rock!",
+    "LET'S-A-GO! WAH-HA-HA!",
+    "---",
+    "LOADING CHARACTER CREATION MODULE..."
+];
+
+
 export const WALUIGI_REGION_TIPS = {
     // Mushroom Kingdom Regions
     'Mushroom Kingdom': "WAH! The main mushroom place! Full of boring Toads and a broken government. Perfect for a little chaos!",
