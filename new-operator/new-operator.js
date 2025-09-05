@@ -144,26 +144,76 @@ function updateWaluigiCommentaryForRace(raceName) {
     }
 }
 
+function renderQuestDisplay(quests) {
+    state.quests = quests;
+    questDisplay.innerHTML = quests.map(quest => `
+        <div class="quest-option">
+            <h5>${quest.title}</h5>
+            <p>${quest.objective}</p>
+        </div>
+    `).join('');
+}
+
+function renderQuestSelection(quests) {
+    let questHTML = `
+        <p class="step-subtitle">You have ${quests.length} potential directives based on your background. Choose your two primary objectives.</p>
+        <div id="quest-selection-list">
+    `;
+    quests.forEach(quest => {
+        questHTML += `
+            <div class="quest-selection-item">
+                <input type="checkbox" id="quest-${quest.title.replace(/\s+/g, '')}" name="quest-selection" value="${quest.title}">
+                <label for="quest-${quest.title.replace(/\s+/g, '')}">
+                    <strong>${quest.title}</strong>
+                    <span>${quest.objective}</span>
+                </label>
+            </div>
+        `;
+    });
+    questHTML += `</div>`;
+    questDisplay.innerHTML = questHTML;
+
+    const checkboxes = questDisplay.querySelectorAll('input[name="quest-selection"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const selected = questDisplay.querySelectorAll('input[name="quest-selection"]:checked');
+            if (selected.length >= 2) {
+                checkboxes.forEach(cb => {
+                    if (!cb.checked) {
+                        cb.disabled = true;
+                    }
+                });
+                state.quests = Array.from(selected).map(s => quests.find(q => q.title === s.value));
+                nextBtn.disabled = false;
+            } else {
+                checkboxes.forEach(cb => cb.disabled = false);
+                state.quests = [];
+                nextBtn.disabled = true;
+            }
+        });
+    });
+}
+
+
 function assignQuests() {
-    state.quests = [];
-    const baseQuests = ['op_quest_quarters', 'op_quest_gravity'];
+    const baseQuests = [];
     
     const selectedRace = RACES.find(r => r.name === state.race);
     if (selectedRace && selectedRace.availableQuests) {
         baseQuests.push(...selectedRace.availableQuests);
     }
     
-    // Ensure no duplicates and get full quest data
-    state.quests = [...new Set(baseQuests)]
+    const potentialQuests = [...new Set(baseQuests)]
         .map(id => RACE_QUESTS[id] || NEW_OPERATOR_QUESTS[id])
-        .filter(Boolean); // Filter out any nulls if ID is not found
+        .filter(Boolean);
 
-    questDisplay.innerHTML = state.quests.map(quest => `
-        <div class="quest-option">
-            <h5>${quest.title}</h5>
-            <p>${quest.objective}</p>
-        </div>
-    `).join('');
+    if (potentialQuests.length > 3) {
+        nextBtn.disabled = true;
+        renderQuestSelection(potentialQuests);
+    } else {
+        nextBtn.disabled = false;
+        renderQuestDisplay(potentialQuests);
+    }
 }
 
 
@@ -218,8 +268,6 @@ function setupEventListeners() {
         } else {
             // Finalize logic
             alert("WAH-nderful! Your profile is complete. Now get to work!");
-            // Here you would typically save the full 'state' object to a server or local storage
-            // For now, it's just in memory on the final page.
         }
     });
 
@@ -251,15 +299,15 @@ function setupEventListeners() {
         state.race = raceName;
         operatorRaceCustomInput.style.display = raceName === 'Custom' ? 'block' : 'none';
         
-        // Handle forced factions
         const selectedRaceData = RACES.find(r => r.name === raceName);
-        if (selectedRaceData && selectedRaceData.forcedFaction) {
-            factionSelect.value = selectedRaceData.forcedFaction;
+        if (selectedRaceData && selectedRaceData.faction) {
+            factionSelect.value = selectedRaceData.faction;
             factionSelect.disabled = true;
-            // Manually trigger change event for faction to update its state and UI
             factionSelect.dispatchEvent(new Event('change'));
         } else {
+            factionSelect.value = 'unaligned';
             factionSelect.disabled = false;
+            factionSelect.dispatchEvent(new Event('change'));
         }
 
         updateWaluigiCommentaryForRace(raceName);
@@ -307,19 +355,25 @@ function updateRaceDetails(raceName) {
         return;
     }
 
-    let bonusesHTML = '';
+    let itemsHTML = '';
     if (race.startingItems && race.startingItems.length > 0) {
-        bonusesHTML = `
-            <h5>Racial Bonus: Starting Items</h5>
+        itemsHTML = `
+            <h5>Starting Items</h5>
             <ul>${race.startingItems.map(item => `<li><strong>${item.name}:</strong> ${item.effect}</li>`).join('')}</ul>
         `;
-    } else if (race.skillBonuses && Object.keys(race.skillBonuses).length > 0) {
-        bonusesHTML = `
+    }
+
+    let skillsHTML = '';
+    if (race.skillBonuses && Object.keys(race.skillBonuses).length > 0) {
+        skillsHTML = `
             <h5>Skill Bonuses</h5>
             <ul>${Object.entries(race.skillBonuses).map(([skill, value]) => `<li>${skill.charAt(0).toUpperCase() + skill.slice(1)}: <strong>+${value}</strong></li>`).join('')}</ul>
         `;
-    } else {
-        bonusesHTML = '<h5>Bonuses</h5><p>No specific bonuses.</p>';
+    }
+
+    let bonusesHTML = itemsHTML + skillsHTML;
+    if (!bonusesHTML) {
+        bonusesHTML = '<h5>Bonuses</h5><p>No specific racial bonuses.</p>';
     }
 
     raceDetailsBox.innerHTML = `
@@ -329,6 +383,7 @@ function updateRaceDetails(raceName) {
         ${bonusesHTML}
     `;
 }
+
 
 function updateFactionDetails(factionKey) {
     if (!factionDetailsBox) return;
