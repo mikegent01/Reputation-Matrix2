@@ -1,4 +1,3 @@
-
 import { playSound } from '../common.js';
 import { LORE_DATA } from '../lore.js';
 import { NEW_OPERATOR_QUESTS } from './new-operator-quests.js';
@@ -248,10 +247,23 @@ function setupEventListeners() {
     operatorNameInput.addEventListener('change', e => state.name = e.target.value);
     operatorReasonTextarea.addEventListener('change', e => state.reason = e.target.value);
     operatorRaceSelect.addEventListener('change', e => {
-        state.race = e.target.value;
-        operatorRaceCustomInput.style.display = state.race === 'Custom' ? 'block' : 'none';
-        updateWaluigiCommentaryForRace(state.race);
-        updateRaceDetails(state.race);
+        const raceName = e.target.value;
+        state.race = raceName;
+        operatorRaceCustomInput.style.display = raceName === 'Custom' ? 'block' : 'none';
+        
+        // Handle forced factions
+        const selectedRaceData = RACES.find(r => r.name === raceName);
+        if (selectedRaceData && selectedRaceData.forcedFaction) {
+            factionSelect.value = selectedRaceData.forcedFaction;
+            factionSelect.disabled = true;
+            // Manually trigger change event for faction to update its state and UI
+            factionSelect.dispatchEvent(new Event('change'));
+        } else {
+            factionSelect.disabled = false;
+        }
+
+        updateWaluigiCommentaryForRace(raceName);
+        updateRaceDetails(raceName);
     });
     operatorRaceCustomInput.addEventListener('change', e => state.customRace = e.target.value);
     
@@ -295,36 +307,53 @@ function updateRaceDetails(raceName) {
         return;
     }
 
-    const skillBonusesHTML = Object.entries(race.skillBonuses).length > 0
-        ? `<ul>${Object.entries(race.skillBonuses).map(([skill, value]) => `<li>${skill.charAt(0).toUpperCase() + skill.slice(1)}: <strong>+${value}</strong></li>`).join('')}</ul>`
-        : '<p>No specific skill bonuses.</p>';
+    let bonusesHTML = '';
+    if (race.startingItems && race.startingItems.length > 0) {
+        bonusesHTML = `
+            <h5>Racial Bonus: Starting Items</h5>
+            <ul>${race.startingItems.map(item => `<li><strong>${item.name}:</strong> ${item.effect}</li>`).join('')}</ul>
+        `;
+    } else if (race.skillBonuses && Object.keys(race.skillBonuses).length > 0) {
+        bonusesHTML = `
+            <h5>Skill Bonuses</h5>
+            <ul>${Object.entries(race.skillBonuses).map(([skill, value]) => `<li>${skill.charAt(0).toUpperCase() + skill.slice(1)}: <strong>+${value}</strong></li>`).join('')}</ul>
+        `;
+    } else {
+        bonusesHTML = '<h5>Bonuses</h5><p>No specific bonuses.</p>';
+    }
 
     raceDetailsBox.innerHTML = `
         <h5>Race Details: ${race.name}</h5>
         <p><strong class="ability-name">Ability:</strong> ${race.ability}</p>
         <p><strong>Standing:</strong> ${race.standing}</p>
-        <h5>Skill Bonuses</h5>
-        ${skillBonusesHTML}
+        ${bonusesHTML}
     `;
 }
 
 function updateFactionDetails(factionKey) {
     if (!factionDetailsBox) return;
     const faction = FACTIONS[factionKey];
-    if (!faction || !faction.skillBonuses) {
+    if (!faction) {
         factionDetailsBox.innerHTML = '';
         return;
     }
     
-    const skillBonuses = { ...faction.skillBonuses };
-    const skillBonusesHTML = Object.entries(skillBonuses).length > 0
-        ? `<ul>${Object.entries(skillBonuses).map(([skill, value]) => `<li>${skill.charAt(0).toUpperCase() + skill.slice(1)}: <strong>+${value}</strong></li>`).join('')}</ul>`
-        : '<p>No specific skill bonuses.</p>';
+    let bonusesHTML = '';
+    if (faction.startingItems && faction.startingItems.length > 0) {
+        bonusesHTML = `
+            <h5>Faction Bonus: Starting Items</h5>
+            <ul>${faction.startingItems.map(item => `<li><strong>${item.name}:</strong> ${item.effect}</li>`).join('')}</ul>
+        `;
+    } else if (faction.skillBonuses && Object.keys(faction.skillBonuses).length > 0) {
+        bonusesHTML = `
+            <h5>Faction Skill Bonuses</h5>
+            <ul>${Object.entries(faction.skillBonuses).map(([skill, value]) => `<li>${skill.charAt(0).toUpperCase() + skill.slice(1)}: <strong>+${value}</strong></li>`).join('')}</ul>
+        `;
+    } else {
+        bonusesHTML = ''; // No header if no bonuses
+    }
 
-    factionDetailsBox.innerHTML = `
-        <h5>Faction Skill Bonuses</h5>
-        ${skillBonusesHTML}
-    `;
+    factionDetailsBox.innerHTML = bonusesHTML;
 }
 
 function initializeSkills() {
@@ -334,8 +363,8 @@ function initializeSkills() {
 
     state.skillBonuses = {};
     skillList.forEach(skill => {
-        const raceBonus = race.skillBonuses[skill] || 0;
-        const factionBonus = faction.skillBonuses[skill] || 0;
+        const raceBonus = race?.skillBonuses?.[skill] || 0;
+        const factionBonus = faction?.skillBonuses?.[skill] || 0;
         state.skillBonuses[skill] = raceBonus + factionBonus;
         state.skills[skill] = state.skillBonuses[skill]; // Start with bonus points
     });
@@ -384,6 +413,7 @@ function initializeSkills() {
 
 function generateCharacterSheet() {
     const race = RACES.find(r => r.name === state.race);
+    const faction = FACTIONS[state.faction];
     state.baseStats = race ? { ...race.baseStats } : {};
     
     // Vitals
@@ -420,10 +450,17 @@ function generateCharacterSheet() {
     // Equipment
     const regionItems = REGION_STARTING_ITEMS[state.region] || [];
     const raceItems = race?.startingItems || [];
+    const factionItems = faction?.startingItems || [];
+    const allItems = [...regionItems, ...raceItems, ...factionItems];
+
     const equipmentList = document.getElementById('sheet-equipment-list');
-    equipmentList.innerHTML = [...regionItems, ...raceItems].map(item => `
-        <li><strong>${item.name}:</strong> ${item.effect}</li>
-    `).join('');
+    if (allItems.length > 0) {
+        equipmentList.innerHTML = allItems.map(item => `
+            <li><strong>${item.name}:</strong> ${item.effect}</li>
+        `).join('');
+    } else {
+        equipmentList.innerHTML = `<li>No special starting equipment.</li>`;
+    }
 
 
     // Quests
