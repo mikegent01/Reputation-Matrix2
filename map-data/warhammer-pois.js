@@ -1,20 +1,20 @@
 // map-data/warhammer-pois.js
-import { theEmpirePois } from './warhammer/the_empire.js';
-import { worldsEdgeMountainsPois } from './warhammer/worlds_edge_mountains.js';
-import { sylvaniaPois } from './warhammer/sylvania.js';
-import { badlandsPois } from './warhammer/badlands.js';
-import { ulthuanPois } from './warhammer/ulthuan.js';
-import { naggarothPois } from './warhammer/naggaroth.js';
-import { lustriaPois } from './warhammer/lustria.js';
-import { landOfTheDeadPois } from './warhammer/land_of_the_dead.js';
-import { arabyPois } from './warhammer/araby.js';
-import { southlandsPois } from './warhammer/southlands.js';
-import { bretonniaPois } from './warhammer/brettonia.js';
-import { darklandsPois } from './warhammer/darklands.js';
-import { ancientGiantLandPois } from './warhammer/ancient_giant_land.js';
-import { grandCathayPois } from './warhammer/grand_cathay.js';
-import { easternSteppesPois } from './warhammer/eastern_steppes.js';
-import { greatBastionPois } from './warhammer/great_bastion.js';
+import { theEmpirePois } from './the_empire.js';
+import { worldsEdgeMountainsPois } from './worlds_edge_mountains.js';
+import { sylvaniaPois } from './sylvania.js';
+import { badlandsPois } from './badlands.js';
+import { ulthuanPois } from './ulthuan.js';
+import { naggarothPois } from './naggaroth.js';
+import { lustriaPois } from './lustria.js';
+import { landOfTheDeadPois } from './land_of_the_dead.js';
+import { arabyPois } from './araby.js';
+import { southlandsPois } from './southlands.js';
+import { bretonniaPois } from './brettonia.js';
+import { darklandsPois } from './darklands.js';
+import { ancientGiantLandPois } from './ancient_giant_land.js';
+import { grandCathayPois } from './grand_cathay.js';
+import { easternSteppesPois } from './eastern_steppes.js';
+import { greatBastionPois } from './great_bastion.js';
 
 
 export const warhammerData = {

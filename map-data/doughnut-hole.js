@@ -1,9 +1,9 @@
 // map-data/doughnut-hole.js
-import { jestersPlaygroundPois } from './doughnut-hole/jesters_playground.js';
-import { causalityChainPois } from './doughnut-hole/causality_chain.js';
-import { driftersDebrisFieldPois } from './doughnut-hole/drifters_debris_field.js';
-import { weaversTapestryPois } from './doughnut-hole/weavers_tapestry.js';
-import { outerAnomalyPois } from './doughnut-hole/outer_anomaly.js';
+import { jestersPlaygroundPois } from './jesters_playground.js';
+import { causalityChainPois } from './causality_chain.js';
+import { driftersDebrisFieldPois } from './drifters_debris_field.js';
+import { weaversTapestryPois } from './weavers_tapestry.js';
+import { outerAnomalyPois } from './outer_anomaly.js';
 
 
 export const doughnutHoleData = {
