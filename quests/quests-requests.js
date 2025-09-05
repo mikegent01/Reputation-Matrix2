@@ -117,7 +117,7 @@ import { KIVOTOS_REQUESTS } from './requests-kivotos.js';
 import { MIDDLE_EARTH_REQUESTS } from './requests-middle-earth.js';
 import { DOUGHNUT_HOLE_REQUESTS } from './requests-doughnut-hole.js';
 import { WARHAMMER_REQUESTS } from './requests-warhammer.js';
-import { INTERNET_REQUESTS } from './requests-internet.js';
+import { INTERNET_REQUESTS } from './quests-internet.js';
 
 export const REQUESTS = {
     ...EXISTING_REQUESTS,

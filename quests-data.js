@@ -9,9 +9,6 @@ import { TOADS_QUESTS } from './quests/quests-toads.js';
 import { WORLD_QUESTS } from './quests/quests-world.js';
 import { GUILDS_QUESTS } from './quests/quests-guilds.js';
 import { REQUESTS } from './quests/quests-requests.js';
-import { NEW_MK_QUESTS } from './quests/quests-mushroom-kingdom-new.js';
-import { NEW_MIDLANDS_QUESTS } from './quests/quests-midlands-new.js';
-import { INTERNET_QUESTS } from './quests/quests-internet.js';
 import { KIVOTOS_QUESTS } from './quests/quests-kivotos.js';
 
 
@@ -26,8 +23,5 @@ export const QUEST_DATA = {
     ...WORLD_QUESTS,
     ...GUILDS_QUESTS,
     ...REQUESTS,
-    ...NEW_MK_QUESTS,
-    ...NEW_MIDLANDS_QUESTS,
-    ...INTERNET_QUESTS,
     ...KIVOTOS_QUESTS,
 };
