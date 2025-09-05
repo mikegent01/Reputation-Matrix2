@@ -84,7 +84,6 @@ function buildFullMonologue() {
     ];
     
     regions.forEach(regionName => {
-        fullMonologue.push('---');
         fullMonologue.push(`Next up is... ${regionName}!`);
         fullMonologue.push(WALUIGI_REGION_TIPS[regionName]);
     });

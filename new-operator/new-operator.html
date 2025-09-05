@@ -36,6 +36,7 @@
                                 <h4>Region Map</h4>
                                 <div id="region-preview-placeholder">Select a region to see the map.</div>
                                 <img id="region-preview-image" src="" alt="Selected Region Map" style="display: none;">
+                                <div id="region-details-box" class="details-box"></div>
                             </div>
                         </div>
                     </div>
@@ -44,19 +45,24 @@
                     <div class="wizard-step" data-step="2">
                         <h3 class="step-title">Step 2: Operator Dossier - Vitals</h3>
                         <p class="step-subtitle">Alright, spill it! Who are you, and why are you on MY glorious airship? Make it interesting!</p>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="operator-name">Operator Name:</label>
-                                <input type="text" id="operator-name" placeholder="e.g., 'Captain WAH-some'">
+                        <div id="background-step-layout">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="operator-name">Operator Name:</label>
+                                    <input type="text" id="operator-name" placeholder="e.g., 'Captain WAH-some'">
+                                </div>
+                                 <div class="form-group">
+                                    <label for="operator-race">Race:</label>
+                                    <select id="operator-race"></select>
+                                    <input type="text" id="operator-race-custom" placeholder="Enter custom race" style="display: none; margin-top: 8px;">
+                                </div>
+                                 <div class="form-group full-width">
+                                    <label for="operator-reason">Backstory / Reason for being on the Vigilance:</label>
+                                    <textarea id="operator-reason" placeholder="e.g., 'Was looking for treasure and took a wrong turn at Albuquerque.'"></textarea>
+                                </div>
                             </div>
-                             <div class="form-group">
-                                <label for="operator-race">Race:</label>
-                                <select id="operator-race"></select>
-                                <input type="text" id="operator-race-custom" placeholder="Enter custom race" style="display: none; margin-top: 8px;">
-                            </div>
-                             <div class="form-group full-width">
-                                <label for="operator-reason">Backstory / Reason for being on the Vigilance:</label>
-                                <textarea id="operator-reason" placeholder="e.g., 'Was looking for treasure and took a wrong turn at Albuquerque.'"></textarea>
+                            <div id="race-details-box" class="details-box">
+                                <!-- Race details will be injected here -->
                             </div>
                         </div>
                     </div>
@@ -78,6 +84,9 @@
                                 <select id="operator-faction">
                                     <option value="unaligned">Unaligned / Independent</option>
                                 </select>
+                            </div>
+                             <div id="faction-details-box" class="details-box">
+                                <!-- Faction details will be injected here -->
                             </div>
                             <div id="faction-tip-box" class="waluigi-faction-tip" style="display: none;"></div>
                         </div>

@@ -1,13 +1,25 @@
 
-import { LORE_DATA } from '../lore.js';
 import { playSound } from '../common.js';
-import { WALUIGI_REGION_TIPS, RACES, RACE_QUESTS, FACTIONS, REGION_STARTING_ITEMS } from './new-operator-data.js';
-import { MAP_DATA } from '../map-data.js';
+import { LORE_DATA } from '../lore.js';
+import { NEW_OPERATOR_QUESTS } from './new-operator-quests.js';
+import { RACES, FACTIONS, WALUIGI_REGION_TIPS, RACE_QUESTS, REGION_STARTING_ITEMS } from './new-operator-data.js';
 
-// --- STATE ---
 let currentStep = 1;
 const totalSteps = 6;
-const newOperator = {
+let selectedRegion = null;
+
+const REGION_IMAGE_MAP = {
+    'Mushroom Kingdom': '../mushroom_kingdom.jpg',
+    'The Midlands': '../fullmap.png',
+    'The Internet': '../intermap.jpg',
+    'Middle-earth': '../mide.webp',
+    'The Fated Place': '../wa.jpg',
+    'Kivotos': '../archive.png',
+    'The Doughnut Hole': '../qaevyh08hsx51.webp',
+    'Other Worlds': '../logo.png'
+};
+
+const state = {
     name: '',
     race: '',
     customRace: '',
@@ -15,446 +27,412 @@ const newOperator = {
     region: '',
     faction: 'unaligned',
     quests: [],
-    regionMap: '',
     skills: {},
-    baseSkills: {},
-    tokenUrl: '',
-    attributes: {},
+    baseStats: {},
+    skillBonuses: {},
+    tokenImage: null
 };
 
-const SKILL_LIST = [
-    { id: 'athletics', name: 'Athletics', attr: 'STR' },
-    { id: 'acrobatics', name: 'Acrobatics', attr: 'DEX' },
-    { id: 'stealth', name: 'Stealth', attr: 'DEX' },
-    { id: 'investigation', name: 'Investigation', attr: 'INT' },
-    { id: 'technology', name: 'Technology', attr: 'INT' },
-    { id: 'survival', name: 'Survival', attr: 'WIS' },
-    { id: 'perception', name: 'Perception', attr: 'WIS' },
-    { id: 'persuasion', name: 'Persuasion', attr: 'CHA' },
-    { id: 'intimidation', name: 'Intimidation', attr: 'CHA' },
-];
-
-let skillPoints = 4;
-
-// --- DOM ELEMENTS ---
+// --- DOM ELEMENT CACHE ---
+const wizard = document.getElementById('creator-wizard');
 const commentaryText = document.getElementById('waluigi-commentary-text');
-const wizardSteps = document.querySelectorAll('.wizard-step');
+const regionGrid = document.getElementById('region-selection-grid');
+const regionPreviewImage = document.getElementById('region-preview-image');
+const regionPreviewPlaceholder = document.getElementById('region-preview-placeholder');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const stepIndicator = document.getElementById('step-indicator');
-const regionSelectionGrid = document.getElementById('region-selection-grid');
-const regionPreviewPlaceholder = document.getElementById('region-preview-placeholder');
-const regionPreviewImage = document.getElementById('region-preview-image');
 const operatorNameInput = document.getElementById('operator-name');
 const operatorRaceSelect = document.getElementById('operator-race');
 const operatorRaceCustomInput = document.getElementById('operator-race-custom');
 const operatorReasonTextarea = document.getElementById('operator-reason');
-const questAssignmentDisplay = document.getElementById('quest-assignment-display');
-const operatorFactionSelect = document.getElementById('operator-faction');
+const questDisplay = document.getElementById('quest-assignment-display');
+const factionSelect = document.getElementById('operator-faction');
 const factionTipBox = document.getElementById('faction-tip-box');
-const characterSheetContainer = document.getElementById('character-sheet');
 const skillAllocator = document.getElementById('skill-allocator');
-const skillPointsValue = document.getElementById('points-value');
+const pointsValue = document.getElementById('points-value');
+const characterSheet = document.getElementById('character-sheet');
+const regionDetailsBox = document.getElementById('region-details-box');
+const raceDetailsBox = document.getElementById('race-details-box');
+const factionDetailsBox = document.getElementById('faction-details-box');
+const tokenUploadBtn = document.getElementById('upload-token-btn');
+const tokenUploadInput = document.getElementById('token-upload-input');
+const sheetTokenImg = document.getElementById('sheet-token-img');
 
+
+// --- INITIALIZATION ---
 function init() {
-    renderStepContent(currentStep);
-    updateNavigation();
+    populateRegions();
+    populateFactions();
     setupEventListeners();
+    goToStep(1); // Start at step 1
 }
 
 // --- RENDER FUNCTIONS ---
 
-function renderStepContent(step) {
-    wizardSteps.forEach(s => {
-        s.classList.toggle('active', parseInt(s.dataset.step, 10) === step);
-    });
-
-    switch (step) {
-        case 1: renderRegionSelector(); break;
-        case 2: renderRaceSelector(); break;
-        case 3: renderQuestAssignment(); break;
-        case 4: renderFactionStep(); break;
-        case 5: renderSkillStep(); break;
-        case 6: renderCharacterSheet(); break;
-    }
-}
-
-function getMapForRegion(regionName) {
-    const regionMap = {
-        'Mushroom Kingdom': 'mushroom_kingdom_full',
-        'The Midlands': 'midlands_full',
-        'Middle-earth': 'middle_earth_full',
-        'The Fated Place': 'warhammer_full',
-        'The Internet': 'internet_full',
-        'Kivotos': 'kivotos_full',
-        'The Doughnut Hole': 'doughnut_hole_full',
-        'Other Worlds': null
-    };
-    const key = Object.keys(regionMap).find(k => regionName.includes(k.split(' (')[0]));
-    const mapId = regionMap[key];
-    if (mapId && MAP_DATA[mapId]) return `../${MAP_DATA[mapId].imageSrc}`;
-    return '../maps/map_placeholder.png';
-}
-
-function renderRegionSelector() {
-    const regions = [
-        { name: "Mushroom Kingdom" },
-        { name: "The Midlands" },
-        { name: "The Internet" },
-        { name: "Middle-earth" },
-        { name: "The Fated Place" },
-        { name: "Kivotos" },
-        { name: "The Doughnut Hole" },
-        { name: "Other Worlds" },
-    ].map(region => ({...region, map: getMapForRegion(region.name)}));
-
-    regionSelectionGrid.innerHTML = regions.map(region => `
-        <div class="region-card ${newOperator.region === region.name ? 'selected' : ''}" data-region="${region.name}" data-map="${region.map}">
-            <img src="${region.map}" alt="${region.name} map">
-            <span>${region.name}</span>
-        </div>
-    `).join('');
-}
-
-function renderRaceSelector() {
-    const filteredRaces = RACES.filter(race => race.region === 'Universal' || race.region === newOperator.region);
-    operatorRaceSelect.innerHTML = filteredRaces.map(race => `<option value="${race.name}" ${newOperator.race === race.name ? 'selected' : ''}>${race.name}</option>`).join('');
-    operatorRaceSelect.insertAdjacentHTML('afterbegin', '<option value="" disabled>Select a Race...</option>');
-    if (!newOperator.race) {
-        operatorRaceSelect.value = "";
-    }
-    operatorRaceCustomInput.style.display = newOperator.race === 'Custom' ? 'block' : 'none';
-    operatorRaceCustomInput.value = newOperator.customRace;
-}
-
-
-function renderQuestAssignment() {
-    updateOperatorState(2); // Ensure race is captured before rendering quests
-    const raceData = RACES.find(r => r.name === newOperator.race);
-    if (!raceData) return;
-
-    newOperator.quests = raceData.availableQuests || [];
-    
-    questAssignmentDisplay.innerHTML = newOperator.quests.map(id => {
-        const quest = RACE_QUESTS[id];
-        if (!quest) return `<div class="quest-option"><p class="negative">Error: Quest data for ID '${id}' is missing!</p></div>`;
+function populateRegions() {
+    const regions = Object.keys(WALUIGI_REGION_TIPS);
+    regionGrid.innerHTML = regions.map(region => {
+        const imageUrl = REGION_IMAGE_MAP[region] || '../logo.png';
         return `
-            <div class="quest-option">
-                <h5>${quest.title}</h5>
-                <p>${quest.description}</p>
+            <div class="region-card" data-region-name="${region}">
+                <img src="${imageUrl}" alt="${region} map thumbnail">
+                <span>${region}</span>
             </div>
         `;
-    }).join('') || '<p>No specific directives assigned. You are a free agent of chaos! WAH!</p>';
+    }).join('');
 }
 
-function renderFactionStep() {
-    const factions = Object.entries(LORE_DATA.factions)
+function updateRegionPreview(regionName) {
+    const imageUrl = REGION_IMAGE_MAP[regionName] || '../logo.png';
+    
+    regionPreviewImage.src = imageUrl;
+    regionPreviewImage.style.display = 'block';
+    regionPreviewPlaceholder.style.display = 'none';
+
+    // Update Waluigi's commentary
+    commentaryText.textContent = WALUIGI_REGION_TIPS[regionName] || "WAH! I have no strong opinions on this place. It must be very boring.";
+    
+    // Update region details box with starting items
+    const items = REGION_STARTING_ITEMS[regionName] || [];
+    if (items.length > 0) {
+        const itemsHTML = items.map(item => `<li><strong>${item.name}:</strong> ${item.effect}</li>`).join('');
+        regionDetailsBox.innerHTML = `
+            <h5>Region Bonus: Starting Items</h5>
+            <ul>${itemsHTML}</ul>
+        `;
+    } else {
+        regionDetailsBox.innerHTML = '';
+    }
+}
+
+function populateRaces(regionName) {
+    operatorRaceSelect.innerHTML = '';
+    const racesForRegion = RACES.filter(r => r.region === regionName || r.region === 'Universal');
+    racesForRegion.forEach(race => {
+        const option = document.createElement('option');
+        option.value = race.name;
+        option.textContent = race.name;
+        operatorRaceSelect.appendChild(option);
+    });
+     // Add Custom option at the end
+    const customOption = document.createElement('option');
+    customOption.value = 'Custom';
+    customOption.textContent = '--- Custom Race ---';
+    operatorRaceSelect.appendChild(customOption);
+    
+    // Trigger change to update state and details for the default selection
+    operatorRaceSelect.dispatchEvent(new Event('change'));
+}
+
+function populateFactions() {
+    const sortedFactions = Object.entries(LORE_DATA.factions)
         .sort(([, a], [, b]) => a.name.localeCompare(b.name));
-    let optionsHTML = '<option value="unaligned">Unaligned / Independent</option>';
-    optionsHTML += factions.map(([key, faction]) => `<option value="${key}">${faction.name}</option>`).join('');
-    operatorFactionSelect.innerHTML = optionsHTML;
-
-    const raceData = RACES.find(r => r.name === newOperator.race);
-    if (raceData && raceData.faction) {
-        operatorFactionSelect.value = raceData.faction;
-        operatorFactionSelect.disabled = true;
-    } else {
-        operatorFactionSelect.value = newOperator.faction;
-        operatorFactionSelect.disabled = false;
-    }
     
-    operatorFactionSelect.dispatchEvent(new Event('change'));
+    sortedFactions.forEach(([key, faction]) => {
+        if (key === 'unaligned') return;
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = faction.name;
+        factionSelect.appendChild(option);
+    });
 }
 
-function renderSkillStep() {
-    const raceBonuses = RACES.find(r => r.name === newOperator.race)?.skillBonuses || {};
-    const factionBonuses = FACTIONS[newOperator.faction]?.skillBonuses || {};
-    
-    newOperator.baseSkills = {};
-    SKILL_LIST.forEach(skill => {
-        const raceBonus = raceBonuses[skill.id] || 0;
-        const factionBonus = factionBonuses[skill.id] || 0;
-        newOperator.baseSkills[skill.id] = raceBonus + factionBonus;
-        if (!newOperator.skills[skill.id] || newOperator.skills[skill.id] < newOperator.baseSkills[skill.id]) {
-            newOperator.skills[skill.id] = newOperator.baseSkills[skill.id];
-        }
-    });
-    
-    let spentPoints = 0;
-    SKILL_LIST.forEach(skill => {
-        spentPoints += (newOperator.skills[skill.id] - newOperator.baseSkills[skill.id]);
-    });
-    skillPoints = 4 - spentPoints;
+function updateWaluigiCommentaryForRace(raceName) {
+    const race = RACES.find(r => r.name === raceName);
+    if (race && race.waluigiCommentary) {
+        commentaryText.textContent = race.waluigiCommentary;
+    }
+}
 
-    skillAllocator.innerHTML = SKILL_LIST.map(skill => `
-        <div class="skill-row" data-skill-id="${skill.id}">
-            <span class="skill-name ${newOperator.baseSkills[skill.id] > 0 ? 'bonus' : ''}">${skill.name} (${skill.attr})</span>
-            <div class="skill-controls">
-                <button class="skill-btn minus" data-skill="${skill.id}">-</button>
-                <span class="skill-value" id="skill-value-${skill.id}">0</span>
-                <button class="skill-btn plus" data-skill="${skill.id}">+</button>
-            </div>
+function assignQuests() {
+    state.quests = [];
+    const baseQuests = ['op_quest_quarters', 'op_quest_gravity'];
+    
+    const selectedRace = RACES.find(r => r.name === state.race);
+    if (selectedRace && selectedRace.availableQuests) {
+        baseQuests.push(...selectedRace.availableQuests);
+    }
+    
+    // Ensure no duplicates and get full quest data
+    state.quests = [...new Set(baseQuests)]
+        .map(id => RACE_QUESTS[id] || NEW_OPERATOR_QUESTS[id])
+        .filter(Boolean); // Filter out any nulls if ID is not found
+
+    questDisplay.innerHTML = state.quests.map(quest => `
+        <div class="quest-option">
+            <h5>${quest.title}</h5>
+            <p>${quest.objective}</p>
         </div>
     `).join('');
-
-    updateSkillDisplay();
 }
 
-function renderCharacterSheet() {
-    const raceName = newOperator.race === 'Custom' ? newOperator.customRace : newOperator.race;
-    const raceData = RACES.find(r => r.name === newOperator.race);
-    const abilityText = raceData ? raceData.ability : "None.";
-    const faction = LORE_DATA.factions[newOperator.faction] || { name: 'Unaligned' };
+
+// --- WIZARD NAVIGATION ---
+
+function goToStep(stepNumber) {
+    currentStep = stepNumber;
     
-    const calculatedStats = { ...raceData.baseStats };
-    const keyAttrLower = raceData.keyAttribute.toLowerCase();
-    if (calculatedStats[keyAttrLower]) {
-        calculatedStats[keyAttrLower] += 2;
-    }
-    newOperator.attributes = calculatedStats;
+    // Hide all steps
+    wizard.querySelectorAll('.wizard-step').forEach(step => step.classList.remove('active'));
+    // Show the current step
+    wizard.querySelector(`.wizard-step[data-step="${currentStep}"]`).classList.add('active');
 
-    const attributesHTML = Object.entries(calculatedStats).map(([key, value]) => {
-        const modifier = Math.floor((value - 10) / 2);
-        const sign = modifier >= 0 ? '+' : '';
-        return `
-            <div class="sheet-attribute-box">
-                <h5>${key.toUpperCase()}</h5>
-                <span class="attr-score">${value}</span>
-                <span class="attr-modifier">${sign}${modifier}</span>
-            </div>
-        `;
-    }).join('');
-
-    const questsHTML = newOperator.quests.map(id => {
-        const quest = RACE_QUESTS[id];
-        return `<li><strong>${quest.title}:</strong> ${quest.description}</li>`;
-    }).join('');
-
-    const skillsHTML = SKILL_LIST.map(skill => `
-        <div class="sheet-skill-item">
-            <span class="sheet-skill-name">${skill.name}</span>
-            <span class="sheet-skill-value">+${newOperator.skills[skill.id] || 0}</span>
-        </div>
-    `).join('');
-
-    const tokenHTML = newOperator.tokenUrl 
-        ? `<img id="sheet-token-img" src="${newOperator.tokenUrl}" alt="Operator Token" class="sheet-token-img">`
-        : `<div id="sheet-token-img" class="sheet-token-img placeholder">?</div>`;
-
-    const regionItems = REGION_STARTING_ITEMS[newOperator.region] || [];
-    const raceItems = raceData?.startingItems || [];
-    const equipmentHTML = [...regionItems, ...raceItems].map(item => 
-        `<li><strong>${item.name}:</strong> ${item.effect}</li>`
-    ).join('');
-
-    characterSheetContainer.querySelector('.sheet-header').innerHTML = `
-         <div class="sheet-token-container">
-            ${tokenHTML}
-            <button id="upload-token-btn" class="wizard-btn upload-token-btn">Upload Token</button>
-            <input type="file" id="token-upload-input" accept="image/*" style="display: none;">
-        </div>
-        <div class="sheet-header-vitals">
-            <div class="sheet-header-item"><span>Operator Name</span><p>${newOperator.name || 'Nameless Loser'}</p></div>
-            <div class="sheet-header-item"><span>Race</span><p>${raceName || 'Unknown'}</p></div>
-            <div class="sheet-header-item"><span>Affiliation</span><p>${faction.name}</p></div>
-        </div>`;
-    
-    characterSheetContainer.querySelector('.sheet-main-grid').innerHTML = `
-        <div class="sheet-attributes">
-            <h4>Attributes</h4>
-            <div class="sheet-attributes-grid">${attributesHTML}</div>
-        </div>
-        <div class="sheet-skills">
-            <h4>Skills</h4>
-            <div class="sheet-skills-list">${skillsHTML}</div>
-        </div>
-        <div class="sheet-abilities full-width">
-            <h4>Racial Trait</h4>
-            <p>${abilityText}</p>
-            <h4>Backstory</h4>
-            <p>${newOperator.reason || 'No good reason.'}</p>
-        </div>`;
-
-    document.getElementById('sheet-equipment-list').innerHTML = equipmentHTML || '<li>Nothing but your wits!</li>';
-    document.getElementById('sheet-quests-list').innerHTML = questsHTML || '<li>None - A True Slacker!</li>';
-
-    document.getElementById('upload-token-btn').addEventListener('click', () => {
-        document.getElementById('token-upload-input').click();
-    });
-    document.getElementById('token-upload-input').addEventListener('change', handleTokenUpload);
-}
-
-// --- LOGIC & NAVIGATION ---
-
-function updateWaluigiCommentary(text) {
-    commentaryText.innerHTML = text;
-}
-
-function changeStep(direction) {
-    if (direction > 0 && !validateStep(currentStep)) return;
-
-    updateOperatorState(currentStep);
-    const nextStep = currentStep + direction;
-    if (nextStep > 0 && nextStep <= totalSteps) {
-        playSound('click.mp3');
-        currentStep = nextStep;
-        updateWaluigiCommentary(`WAH! Step ${currentStep}! Keep going!`);
-        if (currentStep === totalSteps) {
-            updateWaluigiCommentary(`WAH-HA-HA! You're finished! Admire my brilliant work!`);
-        }
-        renderStepContent(currentStep);
-        updateNavigation();
-    }
-}
-
-function validateStep(step) {
-    switch(step) {
-        case 1:
-            if (!newOperator.region) {
-                alert("WAH! You have to pick a region, you lazy bum!");
-                return false;
-            }
-            break;
-        case 2:
-            updateOperatorState(2);
-            if (!newOperator.name || !newOperator.race) {
-                alert("WAH! A nameless, raceless nobody? I don't think so! Fill it out!");
-                return false;
-            }
-            if (newOperator.race === 'Custom' && !newOperator.customRace) {
-                alert("WAH! If you pick 'Custom', you have to actually write something!");
-                return false;
-            }
-            break;
-        case 5:
-             if (skillPoints > 0) {
-                alert(`WAH! You still have ${skillPoints} skill points to spend! Don't be a slacker!`);
-                return false;
-            }
-            break;
-    }
-    return true;
-}
-
-function updateNavigation() {
-    prevBtn.disabled = currentStep === 1;
-    if (currentStep === totalSteps) {
-        nextBtn.textContent = 'Finish';
-        nextBtn.disabled = true;
-    } else {
-        nextBtn.textContent = 'Next';
-        nextBtn.disabled = false;
-    }
+    // Update indicator
     stepIndicator.textContent = `Step ${currentStep} of ${totalSteps}`;
-}
 
-function updateOperatorState(step) {
-    switch(step) {
+    // Update button states
+    prevBtn.disabled = currentStep === 1;
+    nextBtn.textContent = currentStep === totalSteps ? 'Finalize Profile' : 'Next';
+    nextBtn.disabled = false;
+
+    // Step-specific logic
+    switch(currentStep) {
+        case 1:
+            nextBtn.disabled = !selectedRegion;
+            break;
         case 2:
-            newOperator.name = operatorNameInput.value;
-            newOperator.race = operatorRaceSelect.value;
-            newOperator.customRace = operatorRaceCustomInput.value;
-            newOperator.reason = operatorReasonTextarea.value;
+            updateRaceDetails(operatorRaceSelect.value);
+            break;
+        case 3:
+            assignQuests();
             break;
         case 4:
-            newOperator.faction = operatorFactionSelect.value;
+            updateFactionDetails(factionSelect.value);
+            break;
+        case 5:
+            initializeSkills();
+            break;
+        case 6:
+            generateCharacterSheet();
             break;
     }
 }
 
-function updateSkill(skillId, change) {
-    const currentScore = newOperator.skills[skillId] || 0;
-    const baseScore = newOperator.baseSkills[skillId] || 0;
-
-    if (change > 0 && skillPoints > 0 && (currentScore - baseScore) < 5) {
-        skillPoints--;
-        newOperator.skills[skillId]++;
-        playSound('confirm.mp3', 0.4);
-    } else if (change < 0 && currentScore > baseScore) {
-        skillPoints++;
-        newOperator.skills[skillId]--;
-        playSound('click.mp3', 0.4);
-    }
-    updateSkillDisplay();
-}
-
-function updateSkillDisplay() {
-    skillPointsValue.textContent = skillPoints;
-    SKILL_LIST.forEach(skill => {
-        document.getElementById(`skill-value-${skill.id}`).textContent = newOperator.skills[skill.id];
-    });
-}
-
-function handleTokenUpload(event) {
-    const file = event.target.files[0];
-    if (file && file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            newOperator.tokenUrl = e.target.result;
-            const imgElement = document.getElementById('sheet-token-img');
-            if(imgElement.tagName === 'DIV') {
-                const newImg = document.createElement('img');
-                newImg.id = 'sheet-token-img';
-                newImg.className = 'sheet-token-img';
-                newImg.src = newOperator.tokenUrl;
-                newImg.alt = "Operator Token";
-                imgElement.replaceWith(newImg);
-            } else {
-                imgElement.src = newOperator.tokenUrl;
-            }
-        };
-        reader.readAsDataURL(file);
-    }
-}
-
-// --- EVENT LISTENERS ---
 
 function setupEventListeners() {
-    prevBtn.addEventListener('click', () => changeStep(-1));
-    nextBtn.addEventListener('click', () => changeStep(1));
+    // --- Navigation ---
+    prevBtn.addEventListener('click', () => goToStep(currentStep - 1));
+    nextBtn.addEventListener('click', () => {
+        if (currentStep < totalSteps) {
+            goToStep(currentStep + 1);
+        } else {
+            // Finalize logic
+            alert("WAH-nderful! Your profile is complete. Now get to work!");
+            // Here you would typically save the full 'state' object to a server or local storage
+            // For now, it's just in memory on the final page.
+        }
+    });
 
-    regionSelectionGrid.addEventListener('click', e => {
+    // --- Step 1: Region ---
+    regionGrid.addEventListener('click', e => {
         const card = e.target.closest('.region-card');
         if (card) {
-            playSound('confirm.mp3', 0.5);
-            document.querySelectorAll('.region-card').forEach(c => c.classList.remove('selected'));
+            playSound('click.mp3');
+            const regionName = card.dataset.regionName;
+            selectedRegion = regionName;
+            state.region = regionName;
+
+            // Update UI
+            regionGrid.querySelectorAll('.region-card').forEach(c => c.classList.remove('selected'));
             card.classList.add('selected');
-            newOperator.region = card.dataset.region;
-            newOperator.regionMap = card.dataset.map;
-            regionPreviewPlaceholder.style.display = 'none';
-            regionPreviewImage.src = newOperator.regionMap;
-            regionPreviewImage.style.display = 'block';
-            updateWaluigiCommentary(WALUIGI_REGION_TIPS[newOperator.region] || "WAH! I have no strong opinions on this place. It must be boring!");
+            updateRegionPreview(regionName);
+            populateRaces(regionName);
+
+            // Enable next button
+            nextBtn.disabled = false;
         }
     });
-
-    operatorRaceSelect.addEventListener('change', () => {
-        newOperator.race = operatorRaceSelect.value;
-        operatorRaceCustomInput.style.display = newOperator.race === 'Custom' ? 'block' : 'none';
-        const raceData = RACES.find(r => r.name === newOperator.race);
-        if (raceData) {
-            updateWaluigiCommentary(raceData.waluigiCommentary || `<strong>Ability: ${raceData.ability}</strong><br><br><em>Standing: ${raceData.standing}</em>`);
-        }
+    
+    // --- Step 2: Vitals ---
+    operatorNameInput.addEventListener('change', e => state.name = e.target.value);
+    operatorReasonTextarea.addEventListener('change', e => state.reason = e.target.value);
+    operatorRaceSelect.addEventListener('change', e => {
+        state.race = e.target.value;
+        operatorRaceCustomInput.style.display = state.race === 'Custom' ? 'block' : 'none';
+        updateWaluigiCommentaryForRace(state.race);
+        updateRaceDetails(state.race);
     });
-
-    operatorFactionSelect.addEventListener('change', () => {
-        const selectedFaction = operatorFactionSelect.value;
-        const faction = LORE_DATA.factions[selectedFaction];
-        if (faction && faction.waluigi_tip) {
-            factionTipBox.innerHTML = `<img src="../logo.png" alt="Waluigi Logo"><div><h6>Waluigi's Cunning Plan for the ${faction.name}</h6><p>${faction.waluigi_tip}</p></div>`;
+    operatorRaceCustomInput.addEventListener('change', e => state.customRace = e.target.value);
+    
+    // --- Step 4: Faction ---
+    factionSelect.addEventListener('change', e => {
+        state.faction = e.target.value;
+        const factionData = LORE_DATA.factions[state.faction];
+        if (factionData && factionData.waluigi_tip) {
+            factionTipBox.innerHTML = `<img src="../logo.png" alt="Waluigi Logo"><div><h6>Waluigi's Cunning Plan</h6><p>${factionData.waluigi_tip}</p></div>`;
             factionTipBox.style.display = 'flex';
         } else {
             factionTipBox.style.display = 'none';
         }
+        updateFactionDetails(state.faction);
     });
-    
-    skillAllocator.addEventListener('click', e => {
-        const button = e.target.closest('.skill-btn');
-        if (!button) return;
-        const skillId = button.dataset.skill;
-        const change = button.classList.contains('plus') ? 1 : -1;
-        updateSkill(skillId, change);
+
+    // --- Step 6: Token Upload ---
+    tokenUploadBtn.addEventListener('click', () => tokenUploadInput.click());
+    tokenUploadInput.addEventListener('change', e => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                state.tokenImage = event.target.result;
+                const img = document.createElement('img');
+                img.src = state.tokenImage;
+                sheetTokenImg.innerHTML = '';
+                sheetTokenImg.appendChild(img);
+                sheetTokenImg.classList.remove('placeholder');
+            };
+            reader.readAsDataURL(file);
+        }
     });
 }
 
+function updateRaceDetails(raceName) {
+    if (!raceDetailsBox) return;
+    const race = RACES.find(r => r.name === raceName);
+    if (!race) {
+        raceDetailsBox.innerHTML = '';
+        return;
+    }
+
+    const skillBonusesHTML = Object.entries(race.skillBonuses).length > 0
+        ? `<ul>${Object.entries(race.skillBonuses).map(([skill, value]) => `<li>${skill.charAt(0).toUpperCase() + skill.slice(1)}: <strong>+${value}</strong></li>`).join('')}</ul>`
+        : '<p>No specific skill bonuses.</p>';
+
+    raceDetailsBox.innerHTML = `
+        <h5>Race Details: ${race.name}</h5>
+        <p><strong class="ability-name">Ability:</strong> ${race.ability}</p>
+        <p><strong>Standing:</strong> ${race.standing}</p>
+        <h5>Skill Bonuses</h5>
+        ${skillBonusesHTML}
+    `;
+}
+
+function updateFactionDetails(factionKey) {
+    if (!factionDetailsBox) return;
+    const faction = FACTIONS[factionKey];
+    if (!faction || !faction.skillBonuses) {
+        factionDetailsBox.innerHTML = '';
+        return;
+    }
+    
+    const skillBonuses = { ...faction.skillBonuses };
+    const skillBonusesHTML = Object.entries(skillBonuses).length > 0
+        ? `<ul>${Object.entries(skillBonuses).map(([skill, value]) => `<li>${skill.charAt(0).toUpperCase() + skill.slice(1)}: <strong>+${value}</strong></li>`).join('')}</ul>`
+        : '<p>No specific skill bonuses.</p>';
+
+    factionDetailsBox.innerHTML = `
+        <h5>Faction Skill Bonuses</h5>
+        ${skillBonusesHTML}
+    `;
+}
+
+function initializeSkills() {
+    const skillList = ["athletics", "acrobatics", "stealth", "technology", "investigation", "perception", "survival", "persuasion", "intimidation", "performance"];
+    const race = RACES.find(r => r.name === state.race);
+    const faction = FACTIONS[state.faction];
+
+    state.skillBonuses = {};
+    skillList.forEach(skill => {
+        const raceBonus = race.skillBonuses[skill] || 0;
+        const factionBonus = faction.skillBonuses[skill] || 0;
+        state.skillBonuses[skill] = raceBonus + factionBonus;
+        state.skills[skill] = state.skillBonuses[skill]; // Start with bonus points
+    });
+
+    let spentPoints = 0;
+    pointsValue.textContent = 4;
+
+    skillAllocator.innerHTML = skillList.map(skill => {
+        const bonus = state.skillBonuses[skill];
+        return `
+            <div class="skill-row">
+                <span class="skill-name ${bonus > 0 ? 'bonus' : ''}">${skill.charAt(0).toUpperCase() + skill.slice(1)}</span>
+                <div class="skill-controls">
+                    <button class="skill-btn" data-skill="${skill}" data-op="-1">-</button>
+                    <span class="skill-value" id="skill-value-${skill}">${bonus}</span>
+                    <button class="skill-btn" data-skill="${skill}" data-op="1">+</button>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    skillAllocator.addEventListener('click', e => {
+        const btn = e.target.closest('.skill-btn');
+        if (btn) {
+            const skill = btn.dataset.skill;
+            const op = parseInt(btn.dataset.op);
+            const valueSpan = document.getElementById(`skill-value-${skill}`);
+            
+            const baseValue = state.skillBonuses[skill];
+            const currentValue = state.skills[skill] || baseValue; // Ensure it's a number
+            const allocatedPoints = currentValue - baseValue;
+
+            if (op === 1 && spentPoints < 4) {
+                state.skills[skill] = currentValue + 1;
+                spentPoints++;
+            } else if (op === -1 && allocatedPoints > 0) {
+                state.skills[skill] = currentValue - 1;
+                spentPoints--;
+            }
+            
+            valueSpan.textContent = state.skills[skill];
+            pointsValue.textContent = 4 - spentPoints;
+        }
+    });
+}
+
+function generateCharacterSheet() {
+    const race = RACES.find(r => r.name === state.race);
+    state.baseStats = race ? { ...race.baseStats } : {};
+    
+    // Vitals
+    document.getElementById('sheet-name').textContent = state.name || "Nameless Loser";
+    document.getElementById('sheet-race').textContent = state.race === 'Custom' ? state.customRace : state.race;
+    const factionName = LORE_DATA.factions[state.faction]?.name || "Unaligned";
+    document.getElementById('sheet-faction').textContent = factionName;
+
+    // Attributes
+    const attributesGrid = document.querySelector('.sheet-attributes-grid');
+    attributesGrid.innerHTML = Object.entries(state.baseStats).map(([attr, score]) => {
+        const modifier = Math.floor((score - 10) / 2);
+        return `
+            <div class="sheet-attribute-box">
+                <h5>${attr.toUpperCase()}</h5>
+                <span class="attr-score">${score}</span>
+                <span class="attr-modifier">${modifier >= 0 ? '+' : ''}${modifier}</span>
+            </div>`;
+    }).join('');
+
+    // Skills
+    const skillsList = document.querySelector('.sheet-skills-list');
+    skillsList.innerHTML = Object.entries(state.skills).map(([skill, value]) => `
+        <div class="sheet-skill-item">
+            <span>${skill.charAt(0).toUpperCase() + skill.slice(1)}</span>
+            <span class="sheet-skill-value">${value}</span>
+        </div>
+    `).join('');
+
+    // Ability & Backstory
+    document.getElementById('sheet-ability').textContent = race?.ability || "None.";
+    document.getElementById('sheet-reason').textContent = state.reason || "No good reason.";
+
+    // Equipment
+    const regionItems = REGION_STARTING_ITEMS[state.region] || [];
+    const raceItems = race?.startingItems || [];
+    const equipmentList = document.getElementById('sheet-equipment-list');
+    equipmentList.innerHTML = [...regionItems, ...raceItems].map(item => `
+        <li><strong>${item.name}:</strong> ${item.effect}</li>
+    `).join('');
+
+
+    // Quests
+    const questsList = document.getElementById('sheet-quests-list');
+    questsList.innerHTML = state.quests.map(quest => `
+        <li><strong>${quest.title}:</strong> ${quest.objective}</li>
+    `).join('');
+}
+
+
+// Initialize the app
 init();

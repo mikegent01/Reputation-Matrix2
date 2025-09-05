@@ -26,16 +26,6 @@
     color: var(--accent-hover);
 }
 
-/* --- Page Layout Override --- */
-#sidebar {
-    display: none;
-}
-
-#main-content {
-    margin-left: 0;
-}
-
-
 /* --- Wizard Layout --- */
 #creator-wizard {
     background: var(--sidebar-bg);
@@ -181,6 +171,12 @@
 
 
 /* --- Step 2: Background --- */
+#background-step-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: flex-start;
+}
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -482,6 +478,59 @@
     display: block;
 }
 
+/* --- Details Boxes --- */
+.details-box {
+    background-color: var(--main-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    height: fit-content;
+}
+
+.details-box h5 {
+    font-family: var(--font-display);
+    color: var(--neutral-color);
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.details-box p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.details-box ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+.details-box li {
+    background-color: var(--sidebar-bg);
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    color: var(--text-secondary);
+}
+
+.details-box li strong {
+    color: var(--positive-color);
+}
+
+.details-box .ability-name {
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+#region-details-box {
+    margin-top: 16px;
+    padding-top: 16px;
+    text-align: left;
+    border-top: 1px solid var(--border-color);
+}
+
 
 @media (max-width: 900px) {
     .sheet-header {
@@ -491,7 +540,7 @@
     .sheet-header-vitals {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
-    #skills-step-layout, .sheet-main-grid {
+    #skills-step-layout, .sheet-main-grid, #background-step-layout {
         grid-template-columns: 1fr;
     }
 }
@@ -507,4 +556,13 @@
     .sheet-attributes-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* --- Page-Specific Layout Overrides --- */
+#sidebar {
+    display: none;
+}
+
+#main-content {
+    margin-left: 0;
 }
