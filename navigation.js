@@ -6,7 +6,7 @@ async function initializeSidebar() {
     }
 
     try {
-        const response = await fetch('navigation.html');
+        const response = await fetch('/navigation.html');
         if (!response.ok) {
             throw new Error(`Failed to fetch navigation: ${response.statusText}`);
         }

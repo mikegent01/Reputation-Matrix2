@@ -253,5 +253,37 @@ export const WORLD_QUESTS = {
             { id: 'step1', title: "The Ultimatum", status: 'active', description: "The Iron Legion commander has presented a formal, non-negotiable demand. They have given the party 24 hours to comply before they consider the Vigilance and its crew a hostile entity.", options: ["Comply and hand over Green T and Lario.", "Refuse and prepare for a fight.", "Attempt to negotiate or find a loophole."] },
             { id: 'step2', title: "Consequences", status: 'locked', description: "Face the political and military consequences of the party's decision." }
         ]
+    },
+    'vigilance_fuel_source': {
+        id: 'vigilance_fuel_source',
+        title: "Vigilance: A Thirsty Engine",
+        type: 'side',
+        category: 'World Quests',
+        objective: "The Vigilance's power core, now powered by X.O.'s staff, is unstable and consumes its arcane fuel source at an alarming rate. Find a more reliable, long-term power source before the ship is left stranded.",
+        assignee: "Full Party",
+        assigneeKey: 'full_party',
+        status: "available",
+        start_condition: "Complete the 'The Staff of Chaos' main quest.",
+        steps: [
+            { id: 'step1', title: "Consult an Expert", status: 'active', description: "Find an expert in arcane engineering, such as a Mages' Guild Innovator or a Ratchet Raider Mekboy, to analyze the core's power consumption.", options: ["Seek help from Janna Brightspark.", "Strike a deal with Lario.", "Attempt to reverse-engineer it yourself."] },
+            { id: 'step2', title: "Acquire Components", status: 'locked', description: "Gather the necessary components for the chosen power solution, such as refined mana crystals, a goblin-made power converter, or components to tap into a natural ley-line." },
+            { id: 'step3', title: "Install the Upgrade", status: 'locked', description: "Install the new power source, a delicate and dangerous procedure that could have unforeseen consequences if it fails." }
+        ]
+    },
+    'vigilance_rat_infestation': {
+        id: 'vigilance_rat_infestation',
+        title: "Vigilance: A Rat Problem",
+        type: 'side',
+        category: 'World Quests',
+        objective: "The galley is infested with unusually large and aggressive rats that have been stealing food and chewing through wiring. The ship's chef is offering a reward for their complete extermination.",
+        assignee: "Full Party",
+        assigneeKey: 'full_party',
+        status: "available",
+        start_condition: "Speak to the ship's chef after several days have passed on the Vigilance.",
+        steps: [
+            { id: 'step1', title: "Track the Rats", status: 'active', description: "Follow the trail of chewed wires and stolen cheese to locate the rat's nest in the lower ventilation shafts." },
+            { id: 'step2', title: "Confront the Rat King", status: 'locked', description: "Discover that the infestation is led by a surprisingly intelligent and massive 'Rat King' that seems to have been mutated by the ship's energy leaks." },
+            { id: 'step3', title: "Claim the Bounty", status: 'locked', description: "Eliminate the Rat King and its brood and return to the chef for your reward." }
+        ]
     }
 };

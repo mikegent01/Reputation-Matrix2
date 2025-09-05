@@ -3,6 +3,7 @@ import { LORE_DATA } from './lore.js';
 // --- Element Cache ---
 const startupScreen = document.getElementById('startup-screen');
 const enterAppBtn = document.getElementById('enter-app-btn');
+const newOperatorBtn = document.getElementById('new-operator-btn');
 const soundtrackBtn = document.getElementById('soundtrack-btn');
 const soundtrackModal = document.getElementById('soundtrack-modal');
 const playGameBtn = document.getElementById('play-game-btn');
@@ -135,6 +136,12 @@ function main() {
     // Setup startup screen event listeners
     if (startupScreen && enterAppBtn) {
         enterAppBtn.addEventListener('click', showLoginOrApp);
+        
+        if (newOperatorBtn) {
+            newOperatorBtn.addEventListener('click', () => {
+                window.location.href = 'new-operator/new-operator.html';
+            });
+        }
         
         soundtrackBtn.addEventListener('click', () => {
             if (soundtrackModal) soundtrackModal.style.display = 'flex';
