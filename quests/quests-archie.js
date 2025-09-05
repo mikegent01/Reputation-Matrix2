@@ -1,3 +1,4 @@
+
 // This file contains all of Archie's personal quests.
 export const ARCHIE_QUESTS = {
     'archie_god_toad_hunt': {
@@ -8,13 +9,12 @@ export const ARCHIE_QUESTS = {
         objective: "Months ago, Archie betrayed a powerful toad who held a single, potent Star Fragment. That toad has since used its power to shatter it into nine pieces, distribute them to his followers, and ascend to godhood. Archie must now confront the chaotic god he helped create.",
         assignee: "Archie",
         assigneeKey: 'archie',
-        status: "available",
+        status: "active",
         motivation: "This isn't just about power; it's about confronting the past. Archie's betrayal set these events in motion, and he feels a twisted responsibility. He seeks an audience not to apologize, but to understand the being he unleashed and perhaps find a reflection of his own chaotic nature in a divine form.",
         steps: [
-            { id: 'step1', title: "Seek Whispers of the Divine", status: 'active', description: "The God Toad has vanished. The first step is to find where to even begin looking. The Cosmic Jesters, with their connection to universal absurdity, might have heard something.", options: ["Interrogate a Jester cultist.", "Scry for chaotic energy signatures.", "Follow Waluigi's trail of nonsense."] },
-            { id: 'step2', title: "The Misleading Trail", status: 'locked', description: "Initial clues point towards a convergence of arcane energies in the remote mountains of the Midlands, a place where reality is thin." },
-            { id: 'step3', title: "A Faded Footprint", status: 'locked', description: "After a long and fruitless search, a passing Rakasha Huntmaster mentions seeing strange fungal patterns and warped wildlife... not in the Midlands, but on the fringes of the Mushroom Kingdom." },
-            { id: 'step4', title: "The True Sanctuary", status: 'locked', description: "The God Toad is hiding in plain sight, its chaotic energy masked by the inherent weirdness of the Mushroom Kingdom. The final step is to pinpoint its location and request an audience." }
+            { id: 'step1', title: "Locate the God", status: 'completed', description: "Intelligence gathered during the Gala infiltration has confirmed the God Toad's current location: he is a 'guest of honor' at Fawful's occupied castle." },
+            { id: 'step2', title: "Infiltrate the Madhouse", status: 'active', description: "The castle is a fortress of madness, besieged by Loyalists and defended by Fawful's bizarre minions. Archie must find a way inside to get to his true target." },
+            { id: 'step3', title: "Request an Audience", status: 'locked', description: "Confront the God Toad and request an audience. Given the being's power, a direct assault is likely suicide." }
         ]
     },
     'archie_jesters_masterpiece': {

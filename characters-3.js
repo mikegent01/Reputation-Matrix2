@@ -1,3 +1,4 @@
+
 // This file contains new character data to expand the roster.
 
 export const CHARACTERS_3 = {
@@ -43,8 +44,8 @@ export const CHARACTERS_3 = {
     'embercap': {
         name: "Embercap",
         role: "Toad Soldier, Peach Loyalists",
-        status: "Banished",
-        description: "A steadfast soldier in Toadette's army. After an infiltration mission went wrong, he was caught by a witch and banished to another realm."
+        status: "Deceased",
+        description: "A steadfast soldier in Toadette's army. After infiltrating Fawful's Gala, he bravely but foolishly challenged the divine 'God Toad'. He was slain instantly, his quest for justice ending in a tragic, final blaze of glory."
     },
     'mistveil': {
         name: "Mistveil",

@@ -1,8 +1,9 @@
+
 export const AUXILIARY_PARTY = {
     dan: {
         name: "Dan",
         weapon: "Longsword & Magic",
-        status: "Recovering",
+        status: "Recovering. Now wields a Rakasha Shield and wears Boots of Speed.",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -34,6 +35,7 @@ export const AUXILIARY_PARTY = {
         name: "Ryan",
         weapon: "Spellcaster",
         status: "Alive, recovering",
+        description: "A quiet, studious toad with a natural but untrained affinity for magic. SHOCKING REVELATION: Ryan has been revealed to be a 'warden' involved in a widespread toad trafficking ring, a betrayal that has shattered the trust of the Liberated Toads.",
         level: 1,
         xp: 0,
         xp_to_next: 100,

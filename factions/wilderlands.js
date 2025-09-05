@@ -1,9 +1,10 @@
+
 // This file contains faction data for powers primarily based in the Wilderlands and Darklands.
 
 export const WILDERLANDS_FACTIONS = {
     rakasha_clans: {
         name: "Rakasha Clans",
-        description: "Tribal beast-folk who value honor, strength, and the natural world.",
+        description: "Tribal beast-folk who value honor, strength, and the natural world. The Spirit-Walker shamans have recently taken on a 'missionary' role, attempting to guide other 'savage' races like Orcs toward a more balanced existence, often by renting out their territory for 'war training' that doubles as cultural exchange.",
         logo: 'faction_rakasha.png',
         relations: { 
             allies: ['moonfang_pack', 'liberated_toads'], 

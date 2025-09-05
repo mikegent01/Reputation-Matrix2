@@ -1,7 +1,26 @@
+
 const NEWS_ARTICLES = {
     headline: [
         {
-            id: 'headline_1',
+            id: 'headline_2',
+            title: "GALA OF GHOSTS! Castle Infiltration Ends in Tragedy, Divine Being Slays Loyalist Hero!",
+            image: 'newspaper_fawful_gala.png',
+            image_alt: "A chaotic scene within a grand hall. A small, toad-like figure bravely faces a towering, god-like entity while other figures flee in terror.",
+            date: "OCTOBER 26, YEAR 42",
+            author: "By W.A.H. Media Collective",
+            content: `
+Fawful's 'Grand Gala' at the occupied Peach's Castle descended into chaos last night, culminating in the tragic death of a Peach Loyalist hero. Eyewitnesses from the joint Koopa-Loyalist infiltration team report that Captain Toadette's trusted soldier, **Embercap**, was slain by a powerful, reality-bending entity now referred to only as the 'God Toad'.
+
+After a surreal journey through the castle's shifting corridors, Embercap bravely confronted the divine being. His heroic charge was met with overwhelming power, ending in his instantaneous death. The God Toad's motives remain unknown, though it was reportedly attempting to recruit followers from within the castle.
+
+In a shocking subplot, the heroic facade of the Liberated Toads has been shattered. The toad **Ryan**, previously seen as a quiet scholar, has been revealed as a 'warden' involved in a widespread toad trafficking operation. This revelation has sent shockwaves through the small community of survivors. Meanwhile, the hero **Dan** continues his mysterious training with the Rakasha clans, last seen at an Orc war camp in the Wilderlands, delving deeper into the savage politics of the region. The full ramifications of these events are still unfolding.
+            `,
+            type: 'headline'
+        }
+    ],
+    side_story: [
+        {
+            id: 'side_1',
             title: "Archie, The Toad, And The Sorceress: Vigilance Recaptured!",
             image: 'newspaper_xo_defeat.png',
             image_alt: "Chaos in the command center: a powerful female mage looks stunned, her magical staff now held by a small, determined toad-like creature. A centaur and a three-eyed rogue look on.",
@@ -14,10 +33,8 @@ Sources close to the incident describe a desperate struggle within the _Vigilanc
 
 The recapturing of the _Vigilance_ is a significant blow to X.O.'s mysterious agenda and a major victory for those seeking to restore order, or at least a different kind of chaos. However, questions remain: What were X.O.'s ultimate goals? Where has she vanished to? And what does this unexpected heroism from a mere amphibian mean for the future of the Vigilance? More importantly, who is paying for all this damage? Our sources indicate Waluigi, the renowned Evil Genius, is already filing an insurance claim.
             `,
-            type: 'headline'
-        }
-    ],
-    side_story: [
+            type: 'side_story'
+        },
         {
             id: 'side_2',
             title: "Princess Peach Dead: Mushroom Kingdom Plunges into Crisis",

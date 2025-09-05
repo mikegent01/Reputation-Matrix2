@@ -1,3 +1,4 @@
+
 import { state, saveState, loadState, initFocusTreeState } from './state.js';
 import { FOCUS_TREES } from './focus-tree.js';
 import { LORE_DATA } from './lore.js';
@@ -53,8 +54,8 @@ function renderAuxiliaryParty() {
 
         const xpPercentage = (member.xp / member.xp_to_next) * 100;
 
-        const statusClass = member.status?.includes("Injured") || member.status?.includes("Kidnapped") || member.status?.includes("Captured") ? 'negative' : 'positive';
-        const statusTextClass = member.status?.includes("Injured") || member.status?.includes("Kidnapped") || member.status?.includes("Captured") ? 'negative' : 'status-ok';
+        const statusClass = member.status?.includes("Injured") || member.status?.includes("Kidnapped") || member.status?.includes("Captured") || member.status?.includes("Duplicitous") ? 'negative' : 'positive';
+        const statusTextClass = member.status?.includes("Injured") || member.status?.includes("Kidnapped") || member.status?.includes("Captured") || member.status?.includes("Duplicitous") ? 'negative' : 'status-ok';
 
         if(statusClass === 'negative'){
             card.classList.add('negative');

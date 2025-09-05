@@ -1,3 +1,4 @@
+
 // This file contains all side quests related to the Liberated Toads.
 export const TOADS_QUESTS = {
     // --- DAN'S QUESTS ---
@@ -49,6 +50,22 @@ export const TOADS_QUESTS = {
             { id: 'step1', title: "Find the Tomb", status: 'active', description: "Research ancient legends in the Vigilance's library or through contacts in the Freelancer Underworld to find the location of the Tomb of the Azure Knight, a warrior who perfectly blended swordplay and magic." },
             { id: 'step2', title: "Pass the Trials", status: 'locked', description: "The tomb is protected by trials that test both martial prowess and magical intellect. Dan must overcome them to prove his worth." },
             { id: 'step3', title: "Claim the Legacy", status: 'locked', description: "Claim the Azure Knight's enchanted blade, which allows the wielder to channel spells through their weapon strikes." }
+        ]
+    },
+    'dan_orc_trial': {
+        id: 'dan_orc_trial',
+        title: "The Orc's Trial",
+        type: 'side',
+        category: 'Personal - Dan',
+        objective: "After being bitten by a strange creature at the Orc war camp, Dan feels an unusual connection to the tribe. He must investigate the bite and the strange 'trial' the Orcs now speak of.",
+        assignee: "Dan",
+        assigneeKey: 'full_party',
+        status: "available",
+        motivation: "The bite left a strange mark, both physically and spiritually. Dan feels a pull towards the Orc camp, a need to understand what happened and why the normally hostile Orcs now watch him with a mix of suspicion and respect. Is this a curse, or an opportunity?",
+        steps: [
+            { id: 'step1', title: "Investigate the Bite", status: 'active', description: "Consult with Chief Thornpaw or other knowledgeable healers to identify the creature that bit Dan and the nature of its venom or magic." },
+            { id: 'step2', title: "The Warboss's Summons", status: 'locked', description: "The Orc Warboss has taken notice of Dan's mercy and survival. He summons Dan to undergo a trial to earn the tribe's respect." },
+            { id: 'step3', title: "Survive the Pit", status: 'locked', description: "Face the Orc's champion in their fighting pit. The goal is not necessarily to win, but to prove his courage and strength." }
         ]
     },
 

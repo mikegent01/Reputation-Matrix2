@@ -1,5 +1,6 @@
 
 
+
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
 import { FOCUS_TREES } from './focus-tree.js';
@@ -260,8 +261,13 @@ function processInitialXP() {
     // XP for uncovering the bomb plot
     grantXP('eager', 75, "Discovered the Iron Legion's bomb plot.");
     
-    // Miscellaneous XP
-    grantXP('dan', 25, "Accepted tutelage from the Rakasha shamans.");
+    // XP for recent events
+    grantXP('dan', 75, "Showed mercy to an Orc attacker, proving his character.");
+
+    // Status updates from recent events
+    if (state.auxiliary_party_state['ryan']) {
+        state.auxiliary_party_state['ryan'].status = "Duplicitous";
+    }
 }
 
 export function initFocusTreeState() {

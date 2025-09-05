@@ -1,3 +1,4 @@
+
 // This file contains all main story quests for the campaign.
 export const MAIN_QUESTS = {
     'syrup_staff_heist': {
@@ -48,7 +49,7 @@ export const MAIN_QUESTS = {
         steps: [
             { id: 'step1', title: "Infiltrate Peach's Castle", status: 'completed', description: "A recon team of Koopa and Paratroopas teamed up with Toadette's forces (Embercap and Mistveil) and successfully infiltrated the castle during Fawful's Grand Gala." },
             { id: 'step2', title: "Gather Clues from the Gala", status: 'completed', description: "The recon team gathered significant intelligence. They witnessed Fawful's monologue about using prisoners and 'fury tentacles' to power the ship, and noted the presence of the 'Evil Toad God.' Most critically, they made contact with Chief Thornpaw of the Rakasha, who revealed a secret past with the Princess and the existence of a secret hatch in her chambers." },
-            { id: 'step3', title: "Investigate the Secret Hatch", status: 'active', description: "The recon team is back on the Vigilance with Chief Thornpaw's explosive lead. The next step is to plan a second, more dangerous infiltration into Fawful's fortress to access Princess Peach's private chambers and locate this hidden hatch. What secrets does it protect?" },
+            { id: 'step3', title: "Find the Secret Hatch", status: 'active', description: "The recon team is back on the Vigilance with Chief Thornpaw's explosive lead. The next step is to plan a second, more dangerous infiltration into Fawful's fortress to access Princess Peach's private chambers and locate this hidden hatch. What secrets does it protect?" },
             { id: 'step4', title: "Confront the Truth", status: 'locked', description: "Once the secrets of the hatch are revealed, confront the true culprit or circumstances behind the Princess's death." }
         ]
     },
