@@ -1,10 +1,10 @@
-
 export const CHARACTERS_1 = {
     waluigi: { name: "Waluigi", description: "Narcissistic evil genius and master hacker, currently scheming to take over the 'Vigilance'." },
     markop: { name: "Markop Judi", isParty: true, description: "A Centaur Paladin, reluctantly roped into Waluigi's schemes. Now trying to stop him." },
     archie: { name: "Archie Miser", isParty: true, description: "A three-eyed bandit with a chaotic history, currently a fugitive on the run." },
     humpik: { name: "Humpik", isParty: true, description: "A friend and ally of Bowser, preparing for a rescue/intervention mission." },
     bowser: { name: "Bowser", isParty: true, description: "A rival warlord, now a captive on the 'Vigilance'. Also pursuing the ship in his own vessel." },
+    remi: { name: "FNG Remi", isParty: true, description: "The newest operator on the Vigilance. Their past is a mystery, their future uncertain. Their stated reason for being here: 'I put one foot in front of the other and next thing I know, something happened.'" },
     xo: { name: "X.O.", description: "A powerful magic user who betrayed the party. After her defeat, she was last seen dying inside a giant worm, cryptically stating 'my jokes never land' before disappearing. Her true fate is unknown." },
     sans: { name: "Sans", description: "A mysterious figure operating from the Underground, detecting reality-bending static and sending cryptic warnings." },
     wario: { name: "Wario", role: "Leader of Wario Land (Recently Discovered)", description: "Waluigi's former partner. After a period of being presumed dead and operating as a ghost, he was comically discovered hiding inside a barrel aboard the Vigilance. His plans are now in disarray, but his greed remains as potent as ever." },

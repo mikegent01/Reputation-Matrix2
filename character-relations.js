@@ -5,6 +5,7 @@ export const CHARACTER_RELATIONS = {
         'markop': { type: 'ally', text: "Archie on Markop: A stuffy, self-righteous shield. But he's a reliable shield, and sometimes, you need one of those. He's taking forever with the kid. If you want something done, you have to nudge the 'honorable' ones in the right direction." },
         'humpik': { type: 'ally', text: "Archie on Humpik: Simple. Predictable. Useful for hitting things. Points in the right direction and he goes." },
         'bowser': { type: 'ally', text: "Archie on Bowser: He can yell all he wants. I'm the one who gets things done, even if it's messy. He's just another would-be king, but his desire to smash the Empire is useful. A temporary, powerful convenience." },
+        'remi': { type: 'ally', text: "Archie on Remi: Fresh meat. A blank slate. Could be a useful tool, or just another boring body. We'll see if they can keep up." },
         'dan': { type: 'ally', text: "Archie on Dan: The kid's got guts, I'll give him that. But all that 'hope' stuff is gonna get him killed. Or worse, make him boring. He's Markop's project, but a little push in a more... *interesting* direction couldn't hurt. For his own good, of course." },
         'toad_lee': { type: 'ally', text: "Archie on Toad Lee: Big axe, bigger frown. He's useful for hitting things, but don't expect any sparkling conversation." },
         'eager': { type: 'ally', text: "Archie on Eager: Skittish little guy. All that jumping around with his whip is... amusing. For a minute." },
@@ -33,6 +34,7 @@ export const CHARACTER_RELATIONS = {
         'archie': { type: 'ally', text: "Markop on Archie: A force of pure chaos. His methods are reprehensible, but his actions sometimes lead to a greater good. A soul to be guided, if possible. His recent 'interest' in Dan's training is... concerning. I must ensure the boy's path remains his own." },
         'humpik': { type: 'ally', text: "Markop on Humpik: His loyalty is commendable, though his ally is questionable. A strong arm in a just fight." },
         'bowser': { type: 'enemy', text: "Markop on Bowser: A tyrant and a warlord. His goals are antithetical to justice and order. An alliance of desperation, not trust." },
+        'remi': { type: 'ally', text: "Markop on Remi: Another soul caught in this chaos. I'll have to keep an eye on them, make sure Archie doesn't lead them down the wrong path too." },
         'dan': { type: 'ally', text: "Markop on Dan: A student with a purer heart than I ever had. He is a reflection of the good we fight for, and I must not fail him." },
         'toad_lee': { type: 'ally', text: "Markop on Toad Lee: A steadfast warrior. His dedication to protecting the others is admirable. He is the rock upon which their safety is built." },
         'eager': { type: 'ally', text: "Markop on Eager: His speed is an asset, but he must learn to master his fear. Courage is not the absence of fear, but acting in spite of it." },
@@ -55,6 +57,7 @@ export const CHARACTER_RELATIONS = {
         'bowser': { type: 'ally', text: "Humpik on Bowser: King Bowser is my friend. We fight together now. It is good." },
         'archie': { type: 'ally', text: "Humpik on Archie: The little guy is crazy! But he makes big explosions! Good to have in a scrap." },
         'markop': { type: 'ally', text: "Humpik on Markop: The horse-man is too serious. But he fights good. I respect that. He and the little guy argue a lot now. About the other little guy. Weird." },
+        'remi': { type: 'ally', text: "Humpik on Remi: New guy. Looks small. Hope he can fight." },
         'waluigi': { type: 'ally', text: "Humpik on Waluigi: The skinny purple man... he grew wings! And saved me! He is strange, but he is a friend. A good friend. I owe him." },
         'iron_thorn': { type: 'enemy', text: "Humpik on Iron Thorn: Metal man hurt my friend! I hit him with my axe! If I see him again, I will hit him harder!" },
         'dan': { type: 'ally', text: "Humpik on Dan: He's a little guy, but he's tough! Like a tiny Bowser! Gwahahaha!" },
@@ -70,7 +73,14 @@ export const CHARACTER_RELATIONS = {
         'archie': { type: 'ally', text: "Bowser on Archie: He's useful, but his chaos nearly cost us everything! I thought he had this under control. He's on thin ice." },
         'markop': { type: 'ally', text: "Bowser on Markop: The horse-man has honor, which is a weakness. But he's a strong fighter. He keeps the little guys in line, so he's useful for now." },
         'humpik': { type: 'ally', text: "Bowser on Humpik: My most loyal soldier! He is the strength of the Koopa Troop made manifest! GWAHAHAHA!" },
+        'remi': { type: 'ally', text: "Bowser on Remi: Another minion. As long as they follow orders, I don't care who they are." },
         'waluigi': { type: 'neutral', text: "Bowser on Waluigi: The purple string bean? He's a schemer. Useful for now, but not to be trusted. He got Humpik out, so... credit where it's due." }
+    },
+    'remi': {
+        'archie': { type: 'ally', text: "Remi on Archie: He's loud. And seems to like things that go 'boom'. I've been told to stay out of his way." },
+        'markop': { type: 'ally', text: "Remi on Markop: The big horse-guy. Seems serious. He told me to keep my head down and do my job. Seems like good advice." },
+        'humpik': { type: 'ally', text: "Remi on Humpik: Even bigger than the horse-guy. Also loud. Seems friendly enough, I think?" },
+        'bowser': { type: 'ally', text: "Remi on Bowser: That's the big turtle king, right? I'm supposed to be on his side now? This is all very confusing." }
     },
     'waluigi': {
         'archie': { type: 'ally', text: "Waluigi on Archie: WAH! A true artist of chaos! He understands the beauty of a well-placed explosion! A worthy apprentice!" },

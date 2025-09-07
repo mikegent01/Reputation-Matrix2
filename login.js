@@ -21,7 +21,7 @@ const introOverlay = document.getElementById('intro-sequence-overlay');
 const introTextElement = document.getElementById('intro-text');
 const clickPrompt = document.getElementById('click-prompt');
 
-const MAIN_CHARACTERS = ['archie', 'markop', 'humpik', 'bowser'];
+const MAIN_CHARACTERS = ['archie', 'markop', 'humpik', 'bowser', 'remi'];
 
 // --- Intro Sequence State ---
 let fullMonologue = [];

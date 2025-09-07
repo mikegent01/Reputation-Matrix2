@@ -1,6 +1,3 @@
-
-
-
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
 import { FOCUS_TREES } from './focus-tree.js';
@@ -87,15 +84,25 @@ export const state = {
             kingdom_of_gondor: 50, kingdom_of_rohan: 45, lothlorien: 20,
             elves_of_lindon: 25, kingdoms_of_the_dwarves: 60, isengard: 65, mordor: 70
         },
+        remi: {
+            default: 0,
+            regal_empire: 20,
+            iron_legion: 15,
+            freelancer_underworld: 10,
+            mushroom_regency: 15,
+            koopa_troop: 10,
+            unaligned: 100,
+        },
         generic: generateGenericIntel(),
     },
-    party: ['archie', 'markop', 'humpik', 'bowser'],
+    party: ['archie', 'markop', 'humpik', 'bowser', 'remi'],
     activeRumors: [], 
     players: {
         archie: { name: 'Archie Miser', reputation: {}, notoriety: {} },
         markop: { name: 'Markop Judi', reputation: {}, notoriety: {} },
         humpik: { name: 'Humpik', reputation: {}, notoriety: {} },
-        bowser: { name: 'Bowser', reputation: {}, notoriety: {} }
+        bowser: { name: 'Bowser', reputation: {}, notoriety: {} },
+        remi: { name: 'FNG Remi', reputation: {}, notoriety: {} }
     },
     auxiliary_party_state: {},
     finalReputations: {}, 
@@ -108,6 +115,7 @@ export const state = {
         markop: { name: "Markop's Pack", items: [] },
         humpik: { name: "Humpik's Haul", items: [] },
         bowser: { name: "Bowser's Treasury", items: ["Princess Peach's Diary"] },
+        remi: { name: "Remi's Pack", items: ["Expired Coupon for Angel 24", "A single, very durable school ID card", "Practical Traveling Clothes", "A half-eaten sandwich"] },
         shared: { 
             name: "Party Items", 
             items: [
