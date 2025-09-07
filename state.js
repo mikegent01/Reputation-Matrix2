@@ -1,3 +1,4 @@
+
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
 import { FOCUS_TREES } from './focus-tree.js';
@@ -142,6 +143,21 @@ export const state = {
 function initReputation() {
     const factionKeys = Object.keys(LORE_DATA.factions);
     const characterKeys = Object.keys(LORE_DATA.characters);
+
+    // --- FIX FOR OUTDATED SAVES ---
+    // This part ensures that if a new character is added to the main party,
+    // old save states are updated correctly.
+    const CANONICAL_PARTY = ['archie', 'markop', 'humpik', 'bowser', 'remi'];
+    state.party = [...CANONICAL_PARTY];
+    // --- END FIX ---
+
+    // Ensure state.players object is complete based on the (now correct) party list
+    state.party.forEach(playerKey => {
+        if (!state.players[playerKey]) {
+            const playerInfo = LORE_DATA.characters[playerKey] || { name: 'Unknown Operator' };
+            state.players[playerKey] = { name: playerInfo.name, reputation: {}, notoriety: {} };
+        }
+    });
 
     for (const charKey in state.players) {
         if (!state.players[charKey].reputation) {
