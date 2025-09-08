@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vigilance Terminal | Midlands Demographics</title>
+    <title>Vigilance Terminal | WAHbook</title>
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="components.css">
     <link rel="stylesheet" href="assembly.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="tablet-frame">
@@ -17,10 +16,46 @@
         <div id="app">
              <aside id="sidebar"></aside>
             <main id="main-content">
-                 <h2 class="page-title">Midlands Provincial Demographics</h2>
-                 <p class="page-subtitle">An overview of the population, economy, and key characteristics of the provinces within the Regal Empire.</p>
-                 <div id="demographics-grid">
-                    <!-- Province cards will be injected here by JS -->
+                 <h2 class="page-title">WAHbook</h2>
+                 <div id="wahbook-tabs-container">
+                    <button class="tab-btn active" data-tab="feed">Feed</button>
+                    <button class="tab-btn" data-tab="events">Events</button>
+                    <button class="tab-btn" data-tab="followed">Followed</button>
+                    <button class="tab-btn" data-tab="trending">Trending</button>
+                    <button class="tab-btn" data-tab="media">Media</button>
+                 </div>
+                 <div id="wahbook-content">
+                    <div id="feed-content" class="tab-content active">
+                        <!-- Main feed will be injected by JS -->
+                    </div>
+                    <div id="events-content" class="tab-content">
+                        <p class="page-subtitle">Major incidents and gatherings shaking the Doughnut World. Catch up on the latest gossip and fallout.</p>
+                        <div id="event-controls">
+                            <span>Sort By:</span>
+                            <button class="control-btn active" data-sort="newest">Newest First</button>
+                            <button class="control-btn" data-sort="oldest">Oldest First</button>
+                        </div>
+                        <div id="events-feed-container">
+                            <!-- Events will be injected here by JS -->
+                        </div>
+                    </div>
+                    <div id="followed-content" class="tab-content">
+                         <div id="followed-feed-container" class="wahbook-feed-container">
+                            <!-- Followed feed will be injected by JS -->
+                        </div>
+                    </div>
+                    <div id="trending-content" class="tab-content">
+                         <p class="page-subtitle">The hottest and most controversial posts across the network, ranked by engagement. WAH's going on!</p>
+                         <div id="trending-feed-container" class="wahbook-feed-container">
+                            <!-- Trending feed will be injected by JS -->
+                        </div>
+                    </div>
+                    <div id="media-content" class="tab-content">
+                         <p class="page-subtitle">A feed for the visually-minded. See all posts with images and official press releases from media outlets.</p>
+                         <div id="media-feed-container" class="wahbook-feed-container">
+                            <!-- Media feed will be injected by JS -->
+                        </div>
+                    </div>
                  </div>
             </main>
         </div>

@@ -26,34 +26,93 @@ const WALLET_DATA = {
 const EXCHANGE_RATES = {
     // Base unit is Gold (G)
     midland_ducat: { to_gold: 1 / 3.7, name: "Midland Ducats", icon: "icon_midland_ducat.png" }, // Approx 0.27
-    mushroom_coin: { to_gold: 0.2, name: "Mushroom Kingdom Coins", icon: "icon_mushroom_coin.png" },
+    mushroom_coin: { to_gold: 0.1, name: "Mushroom Kingdom Coins", icon: "icon_mushroom_coin.png" },
     gold: { to_gold: 1, name: "Gold", icon: "icon_gold.png" },
     silver: { to_gold: 0.1, name: "Silver", icon: "icon_silver.png" },
     bronze: { to_gold: 0.01, name: "Bronze", icon: "icon_bronze.png" },
     legion_scrip: { to_gold: 0.8, name: "Iron Legion Scrip", icon: "faction_iron_legion.png"},
     blood_vial: { to_gold: 1.5, name: "Onyx Blood Vial", icon: "faction_onyx_hand.png"},
-    spirit_bead: { to_gold: 1.2, name: "Rakasha Spirit Bead", icon: "faction_rakasha.png"}
+    spirit_bead: { to_gold: 1.2, name: "Rakasha Spirit Bead", icon: "faction_rakasha.png"},
+    banana_bunch: { to_gold: 0.5, name: "Banana Bunch", icon: "icon_dk_banana.png" },
+    kremling_koin: { to_gold: 2.25, name: "Kremling Koin", icon: "icon_kremling_koin.png" }
 };
 
 function renderExchangeRates() {
+    const optionsHTML = Object.entries(EXCHANGE_RATES).map(([key, data]) => 
+        `<option value="${key}">${data.name}</option>`
+    ).join('');
+
     return `
         <div class="currency-card">
-            <h3>Primary Exchange Rates</h3>
-            <div class="exchange-rate-display">
-                <div class="currency-info">
-                    <img src="${EXCHANGE_RATES.gold.icon}" alt="Gold Piece">
-                    <p>1 Gold Piece</p>
+            <h3>Currency Converter</h3>
+            <div id="exchange-rate-converter">
+                <div class="converter-row">
+                    <input type="number" id="convert-from-amount" value="1" min="0">
+                    <select id="convert-from-currency">
+                        ${optionsHTML}
+                    </select>
                 </div>
-                <div class="exchange-arrows">&rlarr;</div>
-                <div class="currency-info">
-                    <img src="${EXCHANGE_RATES.midland_ducat.icon}" alt="Midland Ducat">
-                    <p>3.7 Midland Ducats</p>
+                <div class="converter-equals">=</div>
+                <div class="converter-row">
+                    <span id="convert-to-amount">?</span>
+                    <select id="convert-to-currency">
+                        ${optionsHTML}
+                    </select>
                 </div>
             </div>
-            <p class="exchange-rate-value">OFFICIAL RATE SET BY MIDLANDS CENTRAL BANK</p>
         </div>
     `;
 }
+
+function calculateExchange() {
+    const fromAmount = parseFloat(document.getElementById('convert-from-amount').value);
+    const fromCurrencyKey = document.getElementById('convert-from-currency').value;
+    const toCurrencyKey = document.getElementById('convert-to-currency').value;
+    const toAmountSpan = document.getElementById('convert-to-amount');
+
+    if (isNaN(fromAmount) || !fromCurrencyKey || !toCurrencyKey) {
+        toAmountSpan.textContent = '?';
+        return;
+    }
+
+    const fromRate = EXCHANGE_RATES[fromCurrencyKey].to_gold;
+    const toRate = EXCHANGE_RATES[toCurrencyKey].to_gold;
+
+    const amountInGold = fromAmount * fromRate;
+    const result = amountInGold / toRate;
+    
+    // Format to a reasonable number of decimal places
+    let formattedResult;
+    if (result < 1) {
+        formattedResult = result.toFixed(4);
+    } else if (result < 100) {
+        formattedResult = result.toFixed(2);
+    } else {
+        formattedResult = result.toLocaleString(undefined, { maximumFractionDigits: 0 });
+    }
+
+    toAmountSpan.textContent = formattedResult;
+}
+
+function setupExchangeRateCalculator() {
+    const fromAmountInput = document.getElementById('convert-from-amount');
+    const fromCurrencySelect = document.getElementById('convert-from-currency');
+    const toCurrencySelect = document.getElementById('convert-to-currency');
+
+    if (!fromAmountInput) return; // Guard against running on wrong page
+
+    // Set defaults
+    fromCurrencySelect.value = 'gold';
+    toCurrencySelect.value = 'midland_ducat';
+
+    fromAmountInput.addEventListener('input', calculateExchange);
+    fromCurrencySelect.addEventListener('change', calculateExchange);
+    toCurrencySelect.addEventListener('change', calculateExchange);
+
+    // Initial calculation
+    calculateExchange();
+}
+
 
 function renderLocalCurrencies() {
      const gold_to_silver = 1 / EXCHANGE_RATES.silver.to_gold;
@@ -63,9 +122,10 @@ function renderLocalCurrencies() {
          <div class="currency-card">
             <h3>Local & Lesser Currencies</h3>
             <ul class="local-currency-list">
-                <li>1 <strong>Gold</strong> = 5 <strong>Mushroom Kingdom Coins</strong></li>
+                <li>1 <strong>Gold</strong> = ${1 / EXCHANGE_RATES.mushroom_coin.to_gold} <strong>Mushroom Kingdom Coins</strong></li>
                 <li>1 <strong>Gold</strong> = ${gold_to_silver} <strong>Silver</strong></li>
                 <li>1 <strong>Silver</strong> = ${silver_to_bronze} <strong>Bronze</strong></li>
+                <li>1 <strong>Kremling Koin</strong> = ${EXCHANGE_RATES.kremling_koin.to_gold / EXCHANGE_RATES.banana_bunch.to_gold} <strong>Banana Bunches</strong></li>
                 <li>1 <strong>Onyx Blood Vial</strong> = ${EXCHANGE_RATES.blood_vial.to_gold} <strong>Gold</strong></li>
                 <li>1 <strong>Rakasha Spirit Bead</strong> = ${EXCHANGE_RATES.spirit_bead.to_gold} <strong>Gold</strong></li>
                 <li>1 <strong>Iron Legion Scrip</strong> = ${EXCHANGE_RATES.legion_scrip.to_gold} <strong>Gold</strong></li>
@@ -77,12 +137,16 @@ function renderLocalCurrencies() {
 function renderPartyWallets() {
     let walletsHTML = '<div class="currency-grid">';
 
-    for (const charKey in WALLET_DATA) {
+    const walletOrder = ['archie', 'markop', 'humpik', 'bowser'];
+
+    walletOrder.forEach(charKey => {
         const character = WALLET_DATA[charKey];
+        if (!character) return;
+
         let totalValueInGold = 0;
         let currencyLinesHTML = '';
 
-        const currencyOrder = ['midland_ducat', 'mushroom_coin', 'gold', 'silver', 'bronze', 'legion_scrip', 'blood_vial', 'spirit_bead'];
+        const currencyOrder = ['midland_ducat', 'mushroom_coin', 'gold', 'silver', 'bronze', 'legion_scrip', 'blood_vial', 'spirit_bead', 'banana_bunch', 'kremling_koin'];
 
         currencyOrder.forEach(currencyKey => {
             if (character[currencyKey]) {
@@ -115,7 +179,7 @@ function renderPartyWallets() {
                 </div>
             </div>
         `;
-    }
+    });
 
     walletsHTML += '</div>';
     return walletsHTML;
@@ -136,6 +200,7 @@ function init() {
     `;
     
     container.innerHTML = fullHTML;
+    setupExchangeRateCalculator();
 }
 
 init();

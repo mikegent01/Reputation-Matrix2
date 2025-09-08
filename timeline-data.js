@@ -1,4 +1,3 @@
-
 export const HISTORICAL_TIMELINE = [
     { type: 'era_header', title: 'The Distant Past' },
     { date: "c. 8000 BF", title: "The First Hum", description: "A cosmic event of unknown origin echoes across reality. This is later interpreted by many cultures as the birth of magic.", icon: "icon_magic.png", category: "Cosmic" },
@@ -50,6 +49,9 @@ export const HISTORICAL_TIMELINE = [
     { date: "1040 IE (1040 BF), Day 12", title: "Syndicate Showdown", description: "Green T of the Tea Leaf Syndicate reveals a giant form and crushes an Iron Legion soldier. His enforcer, Earl Grey, is poisoned by Roger's dagger and explodes, scattering items everywhere. The Syndicate's power base on the ship is shattered.", icon: "icon_focus.png", category: "Recent Event" },
     { date: "1040 IE (1040 BF), Day 12", title: "The Barrel Secret Revealed", description: "The Iron Legion reveals to Humpik that the 150+ trafficked toads are not in a single cargo hold, but hidden individually in barrels throughout the ship, accessible via a secret compartment opened by a Mini-Mushroom.", icon: "faction_liberated_toads.png", category: "Recent Event" },
     { date: "1040 IE (1040 BF), Day 12", title: "A Legion's Ruse", description: "An internal conflict within the Iron Legion boarding party is revealed to be a feint. The distraction allowed other Legion agents to sneak past the party and pursue their own hidden objectives aboard the Vigilance.", icon: "faction_iron_legion.png", category: "Recent Event" },
+    { type: 'era_header', title: 'Day 13: Diplomatic Disaster' },
+    { date: "1040 IE (1040 BF), Day 13", title: "The Democratic Summit Disaster", description: "Lanky Kong's bizarre behavior at the Democratic Summit causes a major diplomatic incident, economic instability for the Mushroom Kingdom, and a deep fracture within the DK Crew.", icon: "icon_focus.png", category: "Political" },
+    { date: "1040 IE (1040 BF), Day 13", title: "Tense Negotiations", description: "Following the summit disaster, Donkey Kong schedules a conference call with King K. Rool, suggesting a potential shift in the long-standing enmity between the two factions.", icon: "icon_pirate.png", category: "Political" },
     { type: 'era_header', title: 'The Prophesied Era: After Fabian (AF)' },
     { date: "1 AF", title: "The Arrival of Fabian", description: "The prophesied king, Fabian, returns to the Midlands. His arrival is not one of conquest, but of quiet influence, causing a paradigm shift in the region's political and supernatural landscape.", icon: "icon_reputation.png", category: "Prophecy" },
     { date: "50 AF", title: "The Mushroom Reconciliation", description: "Inspired by the peace in the Midlands, a new generation of leaders in the Mushroom Kingdom finally ends the civil war. The kingdom is re-established as a federal monarchy, with significant autonomy granted to its various regions and peoples.", icon: "faction_mushroom_regency.png", category: "Political" },

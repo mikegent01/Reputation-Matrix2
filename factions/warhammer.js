@@ -118,7 +118,11 @@ export const WARHAMMER_FACTIONS = {
             allies: ['the_empire', 'high_elves'],
             enemies: ['greenskins', 'warriors_of_chaos', 'vampire_counts', 'dark_elves', 'tomb_kings']
         },
-        power_level: 8, category: "Major Powers", region: "The Fated Place (Bretonnia)"
+        power_level: 8, category: "Major Powers", region: "The Fated Place (Bretonnia)",
+        leader: "king_louen_leoncoeur",
+        notable_people: [
+            { name: "King Louen Leoncoeur", role: "King", description: "The noble and chivalrous king of Bretonnia." }
+        ]
     },
     chaos_dwarfs: {
         name: "Chaos Dwarfs",

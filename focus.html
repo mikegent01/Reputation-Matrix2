@@ -38,13 +38,12 @@
                     <div id="focus-info-column" class="focus-column">
                         <h4>System Control</h4>
                         <div class="focus-info-panel">
+                            <div id="archie-intel-feed-container">
+                                <!-- Intel feed will be injected here by JS -->
+                            </div>
                             <div id="info-day-counter" class="info-box">
                                 <h5>Current Day</h5>
                                 <p class="day-number">1</p>
-                            </div>
-                            <div class="info-box">
-                               <button id="advance-day-btn">Advance Day</button>
-                               <button id="reset-focus-btn">Reset All Progress</button>
                             </div>
                             <div id="info-log" class="info-box">
                                 <h5>Event Log</h5>
@@ -61,6 +60,12 @@
         </div>
     </div>
     <div id="focus-tooltip" class="focus-tooltip"></div>
+    <div id="focus-completion-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div id="focus-completion-content"></div>
+        </div>
+    </div>
     <script type="module" src="common.js"></script>
     <script type="module" src="navigation.js"></script>
     <script type="module" src="focus.js"></script>

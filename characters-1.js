@@ -7,7 +7,7 @@ export const CHARACTERS_1 = {
     remi: { name: "FNG Remi", isParty: true, description: "The newest operator on the Vigilance. Their past is a mystery, their future uncertain. Their stated reason for being here: 'I put one foot in front of the other and next thing I know, something happened.'" },
     xo: { name: "X.O.", description: "A powerful magic user who betrayed the party. After her defeat, she was last seen dying inside a giant worm, cryptically stating 'my jokes never land' before disappearing. Her true fate is unknown." },
     sans: { name: "Sans", description: "A mysterious figure operating from the Underground, detecting reality-bending static and sending cryptic warnings." },
-    wario: { name: "Wario", role: "Leader of Wario Land (Recently Discovered)", description: "Waluigi's former partner. After a period of being presumed dead and operating as a ghost, he was comically discovered hiding inside a barrel aboard the Vigilance. His plans are now in disarray, but his greed remains as potent as ever." },
+    wario: { name: "Mr. Wario", role: "Secret Leader of Wario Land", description: "The mysterious mastermind pulling the strings of Wario's old empire. His identity is a closely guarded secret, but he shares Wario's insatiable greed and ruthlessness." },
     bigt: { name: "Big T", description: "Tyrannical leader of the Toad Gang. After his mysterious disappearance, he briefly reappeared in the Vigilance's power room before being assassinated by a sniper." },
     lario: { name: "Lario", role: "Public Leader of Wario Land", description: "Wario's brother and a skilled, if greedy, mechanic. He serves as the public face of Wario Land, taking orders from his ghostly brother while managing the day-to-day operations of their avaricious enterprise." },
     the_unchained: { name: "The Unchained", description: "A decentralized movement of rebels and freed slaves dedicated to dismantling oppressive systems. They have no formal leadership but rally around symbols of freedom." },
@@ -34,7 +34,7 @@ export const CHARACTERS_1 = {
     lord_vexar_steelclad: {
         name: "Lord Vexar Steelclad",
         role: "Grand Forgemaster of the Iron Legion",
-        description: "The supreme leader of the Iron Legion, a hulking Goomba with a reinforced shell and a voice like grinding gears. Elected for life, he rules from the Iron Citadel, viewing all lands beyond the Empire's borders as chaos waiting to be forged into order."
+        description: "A hulking Goomba with a reinforced shell and a voice like grinding gears. Elected for life, he rules from the Iron Citadel, viewing all lands beyond the Empire's borders as chaos waiting to be forged into order."
     },
     forgeheart: {
         name: "Forgeheart",

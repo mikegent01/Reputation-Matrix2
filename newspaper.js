@@ -1,8 +1,25 @@
-
 const NEWS_ARTICLES = {
     headline: [
         {
-            id: 'headline_2',
+            id: 'headline_1',
+            title: "Ape-palling Behavior! Lanky Kong's Summit Shenanigans Cause Diplomatic and Economic Crisis!",
+            image: 'dk_crew.png',
+            image_alt: "A formal diplomatic stage in chaos. A long-armed ape can be seen flying through the air like a deflating balloon while dignitaries flee in terror.",
+            date: "OCTOBER 28, YEAR 42",
+            author: "By The Daily Paradox Political Desk",
+            content: `
+The much-anticipated Democratic Summit ended in chaos and financial panic yesterday, not because of a political disagreement, but due to the "completely disgraceful" conduct of Lanky Kong, a representative of the DK Crew. During a photo opportunity with a high-profile president, Lanky Kong reportedly grabbed the dignitary, inflated himself to five times his normal size, and flew around the room "like the world's scariest whoopy cushion."
+
+The incident sent the dignitary fleeing in terror and caused a severe diplomatic fallout for the DK Crew's leader, Donkey Kong. The political turmoil was matched by economic panic, as the Mushroom Kingdom's gold coin standard went into a two-hour freefall. Sources claim only a last-minute favor from Chancellor Toadsworth prevented a complete market collapse. The "Kremling Koin" is now trading at 4.5 times the value of the DK Crew's "Banana Bunch" currency.
+
+The incident has created a deep schism within the normally tight-knit Kong family. Diddy Kong is reportedly motioning for Lanky's expulsion from the crew, a move supported by Candy Kong, once Lanky's staunchest advocate. Donkey Kong is said to be furious and has tasked his brother Chunky Kong with mediating the crisis. When reached for comment, Lanky Kong reportedly made a series of baffling jokes, indicating he does not grasp the severity of the situation.
+            `,
+            type: 'headline'
+        }
+    ],
+    side_story: [
+        {
+            id: 'side_fawful_gala',
             title: "GALA OF GHOSTS! Castle Infiltration Ends in Bizarre Temporal Event, Loyalist Hero Presumed Dead!",
             image: 'newspaper_fawful_gala.png',
             image_alt: "A chaotic scene within a grand hall. A small, toad-like figure bravely faces a towering, god-like entity while other figures flee in terror.",
@@ -12,13 +29,9 @@ const NEWS_ARTICLES = {
 Fawful's 'Grand Gala' at the occupied Peach's Castle has become the epicenter of reality-bending chaos. Reports from the joint Koopa-Loyalist infiltration team, now confirmed by multiple sources, indicate that the powerful entity known as the 'God Toad' possesses the ability to manipulate time itself.
 
 During a confrontation, the Loyalist hero **Embercap** was reportedly slain instantly by the divine being. However, eyewitnesses describe a bizarre temporal flux immediately following the event, with reality seemingly 'rewinding'. In the ensuing confusion, Embercap vanished. While most military sources have listed him as **Killed in Action**, his body was not recovered, and whispers of a miraculous, Manticore-assisted escape persist. The official stance is that he is presumed deceased.
-
-This event solidifies the God Toad as a major, unpredictable threat capable of altering history on a whim. Meanwhile, the shocking revelation of the toad **Ryan's** involvement in a trafficking ring continues to send shockwaves, and the hero **Dan** remains with the Rakasha, his training shrouded in mystery.
             `,
-            type: 'headline'
-        }
-    ],
-    side_story: [
+            type: 'side_story'
+        },
         {
             id: 'side_1',
             title: "Archie, The Toad, And The Sorceress: Vigilance Recaptured!",
@@ -48,116 +61,6 @@ In a tragic and shocking development, Princess Peach, beloved ruler of the Mushr
 While the precise circumstances of her death remain unclear amidst conflicting reports, many within the Protectorate point fingers squarely at Bowser. His relentless campaigns and constant destabilization of the region are widely seen as having created the powder keg that ultimately led to the civil war and the Princess's demise.
 
 The Mushroom Kingdom is now in disarray, with a fractured Regency Council struggling to maintain order. This catastrophic loss marks a grim new chapter for the once-peaceful kingdom, leaving a power vacuum that many fear will only invite further conflict. Our thoughts and prayers are with the Kingdom's lawyers and accountants during this difficult time.
-            `,
-            type: 'side_story'
-        },
-        {
-            id: 'side_3',
-            title: "Archie Acquitted: Mages' Guild Outraged!",
-            image: 'newspaper_mage_justice.png',
-            image_alt: "A heavy, ornate judge's gavel lies on a stack of ancient, leather-bound law books, with a faint, glowing arcane rune carved into its head.",
-            date: "SEPTEMBER 18, YEAR 42",
-            author: "Legal Correspondent",
-            content: `
-In a verdict that has sent shockwaves through the arcane community, the infamous three-eyed rogue, Archie Miser, has been formally acquitted of a mage-killing charge by a tribunal convened by the shadowy Onyx Hand. The decision has been met with fury by the Mages' Guild, who had vigorously pursued charges against Miser.
-
-Guild spokesmages decried the verdict as a "travesty of justice" and a "blatant manipulation" by the Onyx Hand, hinting at deeper, more sinister motives behind the vampire covens' involvement. Archie Miser, whose whereabouts remain largely unknown, has not commented on the verdict, but his newfound freedom is sure to exacerbate tensions between the powerful Guild and the ancient, influential Hand. Legal experts predict a significant increase in demand for legal services specializing in supernatural jurisprudence.
-            `,
-            type: 'side_story'
-        },
-        {
-            id: 'side_4',
-            title: "Iron Fists Busted: Smuggling Ring Crushed!",
-            image: 'newspaper_iron_fists_bust.png',
-            image_alt: "A smashed wooden crate with the Iron Fists logo stenciled on the side, glowing vials and contraband artifacts spilled onto cobblestones.",
-            date: "SEPTEMBER 25, YEAR 42",
-            author: "Underworld Beat",
-            content: `
-A major smuggling operation controlled by the ruthless Iron Fists gang has been dramatically dismantled, leaving their illicit network in disarray. Sources within the underworld point to the same loose band of adventurers, including the notorious Archie Miser and Markop Judi, as responsible for the high-impact raid.
-
-The bust reportedly resulted in significant losses for the Iron Fists, with valuable contraband seized and distribution channels disrupted. While law enforcement agencies have remained tight-lipped, the criminal underworld is abuzz with theories about who commissioned the hit. The Iron Fists have reportedly placed a hefty bounty on the heads of those responsible, promising swift and brutal retribution. This disruption is expected to cause a temporary spike in the street price of glowing vials and mysterious artifacts.
-            `,
-            type: 'side_story'
-        },
-        {
-            id: 'side_5',
-            title: "Centaur Saves Goblin: Unlikely Alliance Forged?",
-            image: 'newspaper_airship.png',
-            image_alt: "A majestic, sleek, sleek, magitek airship disappearing into dark, swirling storm clouds.",
-            date: "OCTOBER 24, YEAR 42",
-            author: "By The Watcher",
-            content: `
-In a bizarre twist amidst the recent Orc uprising on the _Vigilance_, the Centaur Paladin, Markop Judi, was observed intervening to save the life of Lario, a prominent Goblin mechanic and workshop owner. Judi, whose own reputation has been tarnished by association with unsavory elements, reportedly warned Lario of an impending Orcish sneak attack, allowing the Goblin to escape certain capture or worse.
-
-This unlikely act of chivalry between a disciplined Paladin and a pragmatic Goblin has raised eyebrows. Is it a sign of a burgeoning alliance, or simply a momentary lapse in hostilities during a shared crisis? Lario, known for his questionable business practices, has remained silent, but the incident has sparked whispers across the airwaves. Local bookmakers are already taking bets on how long this fragile truce will last.
-            `,
-            type: 'side_story'
-        },
-        {
-            id: 'side_6',
-            title: "Dragon Slain! Heroes Achieve Legendary Feat",
-            image: 'newspaper_dragon_defeat.png',
-            image_alt: "A massive, dead dragon lies slumped against a mountain peak. Two small, heroic figures stand victoriously in the foreground.",
-            date: "SEPTEMBER 10, YEAR 42",
-            author: "Epic Chronicle Team",
-            content: `
-The northern mountains, long plagued by the terrifying dragon Ignis, are now safe. Reports confirm that a group of intrepid adventurers, including Archie Miser and Markop Judi, successfully hunted down and slew the fearsome beast in a climactic battle.
-
-This legendary feat has been met with widespread celebration by the Iron Legion, who view the dragon's eradication as a strategic victory. However, the Mages' Guild has expressed strong condemnation, stating that the uncontrolled use of power in such a volatile manner sets a dangerous precedent and disrespects arcane traditions. Regardless of magical ethics, the heroes' names are now sung in taverns, and Ignis's hoard is reportedly up for grabs.
-            `,
-            type: 'side_story'
-        },
-        {
-            id: 'side_7',
-            title: "Shadow War Rages: Vampires and Werewolves Clash",
-            image: 'newspaper_shadow_war.png',
-            image_alt: "A shadowy city street at night, where the silhouettes of a snarling werewolf clashes with the elegant, caped silhouette of a vampire. Gothic architecture looms in the background.",
-            date: "OCTOBER 15, YEAR 42",
-            author: "Occult Affairs Desk",
-            content: `
-The ancient, clandestine conflict between the Onyx Hand (vampires) and the Moonfang Pack (werewolves) in the city's underbelly has erupted into open skirmishes. Reports suggest that a certain chaotic element, perhaps the same adventurers recently involved in the _Vigilance_ incident, are inadvertently, or perhaps deliberately, fanning the flames of this shadow war.
-
-Clandestine sources confirm multiple bloody encounters across the city's gothic districts, with both factions suffering significant losses. The Order of the Silver Flame, staunch enemies of both supernatural groups, has condemned the escalation, warning of widespread collateral damage to the mortal populace. The streets are becoming increasingly dangerous after dark, and Waluigi Enterprises is offering a special discount on reinforced doors and silver-plated fangs.
-            `,
-            type: 'side_story'
-        },
-        {
-            id: 'side_8',
-            title: "Wario's Ghost Escapes! Barrel Trouble on the Vigilance",
-            image: 'logo.png', // Using Waluigi's logo for Wario related news for thematic consistency
-            image_alt: "Waluigi's stylized purple L logo.",
-            date: "OCTOBER 22, YEAR 42",
-            author: "Paranormal Investigator",
-            content: `
-Panic briefly erupted in Cargo Bay 3 of the _Vigilance_ yesterday when the spectral form of Wario, formerly Waluigi's partner and now a notorious ghost, reportedly made a daring escape. Eyewitnesses claim Wario, still clinging to a barrel, phased through the bulkhead, disappearing into the chaotic dimensional currents surrounding the airship.
-
-It is rumored that Wario, ever the opportunist, is now seeking to reassemble his infamous Goldgrubber Gang, known for their insatiable greed and penchant for shiny objects. This development adds another unpredictable element to the already volatile situation surrounding the _Vigilance_. Waluigi, when reached for comment, merely cackled and muttered something about "loose ends" and "property damage liability."
-            `,
-            type: 'side_story'
-        },
-        {
-            id: 'side_9',
-            title: "Bowser's Alliance: Warlord Joins Party, Troops Mobilize",
-            image: 'humpik.png', // Placeholder, using Humpik image if available. Otherwise, no image for this one, as I don't have a specific Bowser one.
-            image_alt: "The imposing figure of Humpik.",
-            date: "OCTOBER 23, YEAR 42",
-            author: "Military Analyst",
-            content: `
-In a move that has stunned political observers, the fearsome warlord Bowser, recently a captive on the _Vigilance_, has reportedly formed an alliance with the very party that secured the airship. This alliance was short-lived, as Bowser has now departed to deal with the fallout from Princess Peach's death, but his Koopa Troop remains a powerful, independent force. The ramifications of this temporary alliance are still unfolding.
-            `,
-            type: 'side_story'
-        },
-        {
-            id: 'side_10',
-            title: "Big T's Legacy: Whereabouts Unknown, Sword Recovered",
-            image: 'faction_toad_gang.png',
-            image_alt: "A graffiti-style, angry-eyed mushroom skull, possibly with a crown askew.",
-            date: "OCTOBER 24, YEAR 42",
-            author: "Underground Reporter",
-            content: `
-The mysterious disappearance of Big T, the tyrannical leader of the Toad Gang, from the _Vigilance_ continues to baffle authorities. While his body remains unaccounted for, his signature sword was reportedly recovered during investigations. This strange development has fueled rampant speculation of his potential revival.
-
-Whispers among the Toad Gang's various factions suggest a power struggle for control in Big T's absence. Some loyalists believe he will return to reclaim his throne, while the more radical Mushroom Skulls see his defeat as an opportunity to seize power and escalate the 'Toadification' campaign. The Freelancer Underworld, ever opportunistic, is already betting on who will emerge victorious from the ensuing chaos. The only certainty is uncertainty, and a very valuable sword that Waluigi has probably already pawned.
             `,
             type: 'side_story'
         }
@@ -338,7 +241,7 @@ function renderNewspaper() {
     if (sideStoriesContainer) {
         sideStoriesContainer.innerHTML = ''; // Clear previous
         const shuffledSideStories = shuffleArray([...NEWS_ARTICLES.side_story]);
-        const numberOfSideStories = Math.min(shuffledSideStories.length, 4); 
+        const numberOfSideStories = Math.min(shuffledSideStories.length, 3); 
         for (let i = 0; i < numberOfSideStories; i++) {
             renderSideStory(shuffledSideStories[i], sideStoriesContainer);
         }

@@ -13,6 +13,7 @@ import { REQUESTS } from './quests/quests-requests.js';
 import { NEW_MK_QUESTS } from './quests/quests-mushroom-kingdom-new.js';
 import { NEW_MIDLANDS_QUESTS } from './quests/quests-midlands-new.js';
 import { KIVOTOS_QUESTS } from './quests/quests-kivotos.js';
+import { DK_QUESTS } from './quests/quests-dk.js';
 
 
 export const QUEST_DATA = {
@@ -30,4 +31,5 @@ export const QUEST_DATA = {
     ...NEW_MK_QUESTS,
     ...NEW_MIDLANDS_QUESTS,
     ...KIVOTOS_QUESTS,
+    ...DK_QUESTS,
 };

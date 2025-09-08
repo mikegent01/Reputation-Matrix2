@@ -1,4 +1,3 @@
-
 import { state, saveState, loadState, initFocusTreeState } from './state.js';
 import { FOCUS_TREES } from './focus-tree.js';
 import { LORE_DATA } from './lore.js';
@@ -11,9 +10,10 @@ const treeContent = document.getElementById('focus-tree-content');
 const tooltip = document.getElementById('focus-tooltip');
 const dayCounter = document.querySelector('#info-day-counter .day-number');
 const logList = document.getElementById('log-list');
-const resetFocusBtn = document.getElementById('reset-focus-btn');
-const advanceDayBtn = document.getElementById('advance-day-btn');
 
+const completionModal = document.getElementById('focus-completion-modal');
+const completionModalContent = document.getElementById('focus-completion-content');
+const completionModalClose = completionModal?.querySelector('.modal-close');
 
 // Load state immediately to ensure all data is available for rendering.
 loadState();
@@ -243,6 +243,26 @@ function renderInfoPanel() {
         li.innerHTML = `<strong>${entry.who}:</strong> ${entry.what}`;
         logList.appendChild(li);
     });
+
+    // Archie Intel Feed
+    const intelContainer = document.getElementById('archie-intel-feed-container');
+    if (intelContainer) {
+        intelContainer.innerHTML = `
+            <div class="info-box">
+                <h5>Intel Feed - SECURE CHANNEL</h5>
+                <div class="intel-feed-message">
+                    <div class="intel-feed-header">
+                        <span class="sender">FROM: The Broker</span>
+                        <span class="timestamp">Just Now</span>
+                    </div>
+                    <div class="intel-feed-body">
+                        Subject: Your 'Assets'<br><br>
+                        A friendly tip, Miser. My sources indicate your little <strong>Toad projects</strong> are nearing the end of their current development cycle. Whatever you have them working on, you should expect results soon. Don't say I never do you any favors.
+                    </div>
+                </div>
+            </div>
+        `;
+    }
 }
 
 
@@ -269,18 +289,28 @@ function startFocus(toadKey, nodeId) {
     renderAll();
 }
 
-function resetFocusTree() {
-    if (confirm("Are you sure you want to reset all focus tree progress? This action cannot be undone.")) {
-        initFocusTreeState();
-        addToLog('System', 'Focus tree progress has been reset.');
-        saveState();
-        renderAll();
+function showFocusCompletionPopup(focus, node) {
+    if (!completionModal || !completionModalContent) return;
+
+    const toadName = LORE_DATA.auxiliary_party[focus.toadKey].name;
+    let effectText = 'This may have unlocked new options or triggered events.';
+    if (node.effects && node.effects.log) {
+        effectText = node.effects.log;
+    } else if (node.effects && node.effects.unlocksAbility) {
+        effectText = `A new ability has been unlocked: ${node.effects.unlocksAbility}`;
     }
+
+    completionModalContent.innerHTML = `
+        <h3>Focus Complete!</h3>
+        <p><strong>${toadName}</strong> has completed the focus:</p>
+        <h4>${node.title}</h4>
+        <p><em>${effectText}</em></p>
+    `;
+    completionModal.style.display = 'flex';
 }
 
-function advanceDay() {
-    playSound('confirm.mp3');
 
+function advanceDay() {
     state.focusTreeState.day++;
     addToLog('System', `Day ${state.focusTreeState.day} begins.`);
 
@@ -302,6 +332,9 @@ function advanceDay() {
             // Mark as unlocked
             state.focusTreeState.unlocked[focus.toadKey].push(focus.nodeId);
             addToLog(LORE_DATA.auxiliary_party[focus.toadKey].name, `Completed focus: "${node.title}".`);
+
+            // Show popup
+            showFocusCompletionPopup(focus, node);
 
             // Apply effects
             if (node.effects) {
@@ -400,9 +433,23 @@ function setupEventListeners() {
         }
     });
 
-    resetFocusBtn.addEventListener('click', resetFocusTree);
-    advanceDayBtn.addEventListener('click', advanceDay);
-    
+    if (completionModal) {
+        const closeModal = () => {
+            completionModal.style.display = 'none';
+            // Check if there are more popups to show
+            if (state.focusTreeState.completionQueue && state.focusTreeState.completionQueue.length > 0) {
+                const next = state.focusTreeState.completionQueue.shift();
+                showFocusCompletionPopup(next.focus, next.node);
+                saveState();
+            }
+        };
+        completionModalClose?.addEventListener('click', closeModal);
+        completionModal.addEventListener('click', (e) => {
+            if (e.target === completionModal) {
+                closeModal();
+            }
+        });
+    }
 }
 
 

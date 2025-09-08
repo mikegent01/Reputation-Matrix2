@@ -16,7 +16,6 @@ const PROJECT_PAGES = [
     'bookshelf.html',
     'artifacts.html',
     'currency.html',
-    'newspaper.html',
     'fawfuls-party.html',
     'battlefield.html',
     'status.html',

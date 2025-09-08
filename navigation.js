@@ -1,3 +1,29 @@
+import { state, loadState } from './state.js';
+import { WAHBOOK_POSTS } from './assembly-data.js';
+
+function checkForNewPosts() {
+    loadState();
+    const notificationDot = document.getElementById('wahbook-notification');
+    if (!notificationDot) return;
+
+    if (state.loggedInUser === 'generic' || !state.userState.following || state.userState.following.length === 0) {
+        notificationDot.style.display = 'none';
+        return;
+    }
+
+    const followedPosts = WAHBOOK_POSTS.filter(p => state.userState.following.includes(p.characterKey));
+    const seenIds = new Set(state.userState.seenPostIds);
+
+    const hasNewPosts = followedPosts.some(p => !seenIds.has(p.id));
+
+    if (hasNewPosts) {
+        notificationDot.style.display = 'inline-block';
+    } else {
+        notificationDot.style.display = 'none';
+    }
+}
+
+
 async function initializeSidebar() {
     const sidebar = document.getElementById('sidebar');
     if (!sidebar) {
@@ -42,6 +68,9 @@ async function initializeSidebar() {
                 link.style.display = 'none';
             }
         });
+
+        // After sidebar is rendered, check for notifications
+        checkForNewPosts();
 
     } catch (error) {
         console.error('Failed to load sidebar navigation:', error);

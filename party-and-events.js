@@ -1,5 +1,3 @@
-
-
 export const AUXILIARY_PARTY = {
     dan: {
         name: "Dan",
@@ -315,5 +313,17 @@ export const RUMORS = [
         description: "An internal conflict within the Iron Legion boarding party was revealed to be a ruse, a successful feint to distract the party while other agents snuck past to pursue their own objectives.",
         targets: ['iron_legion'],
         effects: { freelancer_underworld: 5, rebel_clans: 5, regal_empire: 5 }
+    },
+    {
+        id: 'lankys_disgrace_at_summit',
+        title: "Lanky's Disgrace at the Summit",
+        description: "Lanky Kong's bizarre behavior at the Democratic Summit caused a major diplomatic incident, briefly crashed the Mushroom Kingdom's currency, and has created a deep rift within the DK Crew.",
+        targets: ['donkey_kong', 'lanky_kong'],
+        effects: { 
+            dk_crew: -25,
+            mushroom_regency: -20, 
+            regal_empire: -15, 
+            cosmic_jesters: 10
+        }
     }
 ];

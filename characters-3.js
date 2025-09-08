@@ -1,5 +1,3 @@
-
-
 // This file contains new character data to expand the roster.
 
 export const CHARACTERS_3 = {
@@ -115,6 +113,11 @@ export const CHARACTERS_3 = {
         role: "Warrior King",
         description: "The stoic and powerful warrior-king of the united kingdoms of Middle Earth. He wields an ancestral war-axe and is known for his deep wisdom and even deeper distrust of outsiders."
     },
+    'king_louen_leoncoeur': {
+        name: "King Louen Leoncoeur",
+        role: "King of Bretonnia",
+        description: "The noble and chivalrous king of Bretonnia, known for his martial prowess and his unwavering dedication to the Lady of the Lake. He is a respected figure on the world stage, though some see his kingdom's ideals as outdated."
+    },
     // --- AIRSHIP BATTLE CHARACTERS ---
     'iron_thorn': {
         name: "Iron Thorn",
@@ -150,5 +153,26 @@ export const CHARACTERS_3 = {
         role: "Mysterious Toad",
         status: "Active",
         description: "A mysterious, calm toad who appeared at Fawful's Gala. He possesses a manticore and aided in Embercap's escape, seemingly unfazed by the divine powers at play. His motives and allegiances are completely unknown."
+    },
+    // --- DK CREW EXPANSION ---
+    'lanky_kong': {
+        name: "Lanky Kong",
+        role: "Disgraced Member of the DK Crew",
+        description: "A goofy, long-armed member of the DK crew, known for his eccentric behavior and handstands. His recent conduct at the Democratic Summit has put him in hot water with the rest of the crew."
+    },
+    'diddy_kong': {
+        name: "Diddy Kong",
+        role: "Heir Apparent of the DK Crew",
+        description: "Donkey Kong's energetic and loyal nephew. He is a capable adventurer but is growing frustrated with Lanky's irresponsible behavior and is pushing for his expulsion."
+    },
+    'candy_kong': {
+        name: "Candy Kong",
+        role: "Key Advocate of the DK Crew",
+        description: "A key member of the DK crew and Donkey Kong's partner. Once Lanky's strongest supporter, his disgraceful actions at the summit have left her appalled and unwilling to defend him any longer."
+    },
+    'chunky_kong': {
+        name: "Chunky Kong",
+        role: "Mediator of the DK Crew",
+        description: "The strong, gentle giant of the Kong family. Despite his immense power, he is often timid, but he is fiercely loyal and has been asked by DK to mediate the current family crisis."
     }
 };

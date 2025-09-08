@@ -1,4 +1,5 @@
 
+
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
 import { FOCUS_TREES } from './focus-tree.js';
@@ -137,6 +138,10 @@ export const state = {
             mushroom_kingdom: [],
             midlands: [],
         }
+    },
+    userState: {
+        following: [],
+        seenPostIds: [],
     }
 };
 
@@ -487,6 +492,12 @@ export function loadState() {
             state.mapState.userFogs[mapId] = [];
         }
     }
+
+    // Ensure userState exists for follow system
+    if (!state.userState) {
+        state.userState = { following: [], seenPostIds: [] };
+    }
+
 
     // Update loggedInUser from localStorage again, in case it changed in another tab
     state.loggedInUser = localStorage.getItem('vigilanceTerminalUser') || 'generic';
