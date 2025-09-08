@@ -1,4 +1,5 @@
 
+
 // This file contains all side quests related to the Liberated Toads.
 export const TOADS_QUESTS = {
     // --- DAN'S QUESTS ---
@@ -355,7 +356,7 @@ export const TOADS_QUESTS = {
         status: "active",
         start_condition: "Triggered after Black T reveals the toad trafficking operation.",
         steps: [
-            { id: 'step1', title: "Secure the Cargo Hold", status: 'active', description: "The trafficked toads are located in a hidden, secure cargo hold on the Vigilance. The party must find a way to access it and deal with any remaining guards or automated defenses." },
+            { id: 'step1', title: "Secure the Cargo", status: 'active', description: "The trafficked toads are located in hidden, secure cargo holds on the Vigilance. Humpik has learned from the Iron Legion that they are hidden in barrels, accessible via mini-mushrooms. The party must now find a way to access the barrels and deal with any remaining guards or automated defenses." },
             { id: 'step2', title: "The People's Council", status: 'locked', description: "Dan must hold a council with the other Liberated Toads. What should they do? Free them and take them in? Turn them over to the Regency? The decision will have major consequences for their small community." },
             { id: 'step3', title: "A New Burden", status: 'locked', description: "Carry out the council's decision, dealing with the logistical and political fallout of suddenly having 150 new mouths to feed or a new, volatile political situation to manage." }
         ]

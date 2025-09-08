@@ -31,7 +31,7 @@ export const BASE_BATTLE_DATA = {
         mapId: 'midlands_full',
         path: "M 41,46 C 45,50 60,20 81.28,4.29",
         totalDays: 14,
-        currentDay: 7,
+        currentDay: 13,
         get daysRemaining() {
             return this.totalDays - this.currentDay;
         }

@@ -31,5 +31,19 @@ export const REMI_QUESTS = {
             { id: 'step2', title: "Eavesdrop", status: 'locked', description: "Get close enough to the meeting to overhear their plans without being detected." },
             { id: 'step3', title: "Report to Waluigi", status: 'locked', description: "Return to the Vigilance and report your findings directly to Waluigi." }
         ]
+    },
+    'remi_warios_offer': {
+        id: 'remi_warios_offer',
+        title: "A WAH-nderful Offer",
+        type: 'personal',
+        category: 'Personal - FNG Remi',
+        objective: "Impressed by your survival instincts after the bomb incident, Wario has offered you a place in his crew, promising a powerful, custom firearm as a signing bonus. Decide whether to accept his offer and join his greedy enterprise or refuse and make a powerful enemy.",
+        assignee: "Remi",
+        assigneeKey: 'remi',
+        status: "available",
+        motivation: "Wario sees you as a valuable, chaotic asset. Accepting could provide you with powerful gear and resources, but would align you with a notoriously treacherous figure. Refusing could paint a target on your back.",
+        steps: [
+            { id: 'step1', title: "Consider the Offer", status: 'active', description: "Wario has made his offer. The choice is yours.", options: ["Accept Wario's deal.", "Refuse Wario's deal.", "Try to play both sides."] }
+        ]
     }
 };

@@ -2,6 +2,7 @@
 import { state, saveState, loadState, initFocusTreeState } from './state.js';
 import { FOCUS_TREES } from './focus-tree.js';
 import { LORE_DATA } from './lore.js';
+import { playSound } from './common.js';
 
 const rosterList = document.getElementById('toad-roster-list');
 const treeHeader = document.getElementById('focus-tree-header');
@@ -11,6 +12,7 @@ const tooltip = document.getElementById('focus-tooltip');
 const dayCounter = document.querySelector('#info-day-counter .day-number');
 const logList = document.getElementById('log-list');
 const resetFocusBtn = document.getElementById('reset-focus-btn');
+const advanceDayBtn = document.getElementById('advance-day-btn');
 
 
 // Load state immediately to ensure all data is available for rendering.
@@ -276,6 +278,59 @@ function resetFocusTree() {
     }
 }
 
+function advanceDay() {
+    playSound('confirm.mp3');
+
+    state.focusTreeState.day++;
+    addToLog('System', `Day ${state.focusTreeState.day} begins.`);
+
+    const completedFocuses = [];
+
+    // Use a mutable copy for iteration
+    const activeFocusesCopy = [...state.focusTreeState.activeFocuses];
+    activeFocusesCopy.forEach(focus => {
+        focus.remainingDays--;
+        if (focus.remainingDays <= 0) {
+            completedFocuses.push(focus);
+        }
+    });
+
+    // Process completed focuses
+    completedFocuses.forEach(focus => {
+        const node = findFocusNode(focus.toadKey, focus.nodeId);
+        if (node) {
+            // Mark as unlocked
+            state.focusTreeState.unlocked[focus.toadKey].push(focus.nodeId);
+            addToLog(LORE_DATA.auxiliary_party[focus.toadKey].name, `Completed focus: "${node.title}".`);
+
+            // Apply effects
+            if (node.effects) {
+                if (node.effects.influence) {
+                    Object.entries(node.effects.influence).forEach(([toadKey, value]) => {
+                        state.focusTreeState.influences[toadKey] = (state.focusTreeState.influences[toadKey] || 0) + value;
+                        addToLog('System', `${LORE_DATA.auxiliary_party[toadKey].name}'s influence increased by ${value}.`);
+                    });
+                }
+                if (node.effects.log) {
+                    addToLog('System', node.effects.log);
+                }
+                // Placeholder for other effects
+                if (node.effects.unlocksAbility) addToLog('System', `New ability unlocked: ${node.effects.unlocksAbility}`);
+                if (node.effects.storyEvent) addToLog('System', `Story event triggered: ${node.effects.storyEvent}`);
+                if (node.effects.factionRep) addToLog('System', 'Faction reputation has changed.');
+                if (node.effects.groupMorale) addToLog('System', 'Group morale has changed.');
+            }
+        }
+    });
+
+    // Remove completed focuses from the original active list
+    state.focusTreeState.activeFocuses = state.focusTreeState.activeFocuses.filter(
+        focus => !completedFocuses.some(comp => comp.nodeId === focus.nodeId && comp.toadKey === focus.toadKey)
+    );
+
+    saveState();
+    renderAll();
+}
 
 // --- HELPERS ---
 function findFocusNode(toadKey, nodeId) {
@@ -346,6 +401,7 @@ function setupEventListeners() {
     });
 
     resetFocusBtn.addEventListener('click', resetFocusTree);
+    advanceDayBtn.addEventListener('click', advanceDay);
     
 }
 

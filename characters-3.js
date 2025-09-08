@@ -1,4 +1,5 @@
 
+
 // This file contains new character data to expand the roster.
 
 export const CHARACTERS_3 = {
@@ -63,19 +64,19 @@ export const CHARACTERS_3 = {
         name: "Green T",
         role: "Leader, The Tea Leaf Syndicate",
         status: "Detained by party",
-        description: "The mysterious and well-dressed leader of the Syndicate. His motives are unknown, but he commands loyalty through fear and reward."
+        description: "The mysterious and well-dressed leader of the Syndicate. His motives are unknown, but he commands loyalty through fear and reward. He has revealed the ability to grow to immense size."
     },
     'earl_grey': {
         name: "Earl Grey",
         role: "Enforcer, The Tea Leaf Syndicate",
-        status: "Detained by party",
-        description: "A stoic and powerful toad who wields a heavy axe and shield. He is Green T's loyal bodyguard and one of the only survivors of Archie's infamous fireball."
+        status: "Deceased (Exploded after being poisoned by Roger's dagger)",
+        description: "A stoic and powerful toad who wielded a heavy axe and shield. He was Green T's loyal bodyguard and one of the only survivors of Archie's infamous fireball."
     },
     'chai': {
         name: "Chai",
         role: "Diplomat, The Tea Leaf Syndicate",
         status: "Detained by party",
-        description: "A smooth-talking toad who handles the Syndicate's negotiations and information gathering. He also survived the 'Tea Party Incident' and now harbors a deep distrust of the party."
+        description: "A smooth-talking toad who handles the Syndicate's negotiations and information gathering. He also survived the 'Tea Party Incident' and now harbors a deep distrust of the party, a fact he conceals behind a veneer of cooperation."
     },
 
     // --- NEW FACTION LEADERS ---
@@ -118,6 +119,7 @@ export const CHARACTERS_3 = {
     'iron_thorn': {
         name: "Iron Thorn",
         role: "Iron Legion Enforcer",
+        status: "Deceased (Killed by Archie)",
         description: "A powerful and ruthless enforcer for the Iron Legion. He boarded the Vigilance during the standoff and was notable for his aggressive tactics."
     },
     'black_t': {
@@ -133,7 +135,8 @@ export const CHARACTERS_3 = {
     'herbal_t': {
         name: "Herbal T",
         role: "Unknown",
-        description: "A toad discovered by Ryan inside a crate on the Vigilance. Her identity and purpose are a complete mystery."
+        status: "Active",
+        description: "A toad discovered by Ryan inside a crate on the Vigilance. She claimed to be with FNG Remi, a lie to cover her own mysterious purpose."
     },
     'bryan': {
         name: "Bryan",

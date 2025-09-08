@@ -1,9 +1,10 @@
 
+
 export const AUXILIARY_PARTY = {
     dan: {
         name: "Dan",
         weapon: "Longsword & Magic",
-        status: "Recovering. Now wields a Rakasha Shield and wears Boots of Speed.",
+        status: "Injured. Now wields a Rakasha Shield and wears Boots of Speed.",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -14,7 +15,7 @@ export const AUXILIARY_PARTY = {
         name: "Toad Lee",
         description: "A hardy toad warrior who fights with a surprisingly large axe.",
         weapon: "Axe",
-        status: "Recovering",
+        status: "Active",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -24,7 +25,7 @@ export const AUXILIARY_PARTY = {
     eager: {
         name: "Eager",
         weapon: "Whip",
-        status: "Recovering",
+        status: "Frozen Solid (Presumed Deceased)",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -34,7 +35,7 @@ export const AUXILIARY_PARTY = {
     ryan: {
         name: "Ryan",
         weapon: "Spellcaster",
-        status: "Alive, recovering",
+        status: "Duplicitous",
         description: "A quiet, studious toad with a natural but untrained affinity for magic. SHOCKING REVELATION: Ryan has been revealed to be a 'warden' involved in a widespread toad trafficking ring, a betrayal that has shattered the trust of the Liberated Toads.",
         level: 1,
         xp: 0,
@@ -45,7 +46,7 @@ export const AUXILIARY_PARTY = {
     roger: {
         name: "Roger",
         weapon: "Gun",
-        status: "Recovering",
+        status: "Active",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -55,7 +56,7 @@ export const AUXILIARY_PARTY = {
     bones: {
         name: "Bones",
         weapon: "Grotesque",
-        status: "Alive",
+        status: "Active",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -251,5 +252,68 @@ export const RUMORS = [
             peach_loyalists: 10, 
             koopa_troop: 5
         }
+    },
+    {
+        id: 'wario_bomb_plot',
+        title: "Wario's Bomb Plot",
+        description: "Wario gave FNG Remi a box containing a bomb. Bowser exposed the plot, but the box still exploded, injuring Remi. Wario has since offered her a place in his crew.",
+        targets: ['remi', 'wario', 'bowser'],
+        effects: { wario_land: -20, koopa_troop: 5, regal_empire: 5 }
+    },
+    {
+        id: 'eager_disarmed',
+        title: "Deception and Disarmament",
+        description: "The Iron Legion tricked Remi into believing Eager was a threat. Eager dropped his whip, which was immediately seized by Earl Grey of the Tea Leaf Syndicate before his demise.",
+        targets: ['remi', 'eager'],
+        effects: { iron_legion: -10, tea_leaf_syndicate: -15, liberated_toads: -10 }
+    },
+    {
+        id: 'waluigi_friendly_fire',
+        title: "Waluigi's Friendly Fire",
+        description: "During the brawl, Waluigi cast a powerful ice spell that accidentally froze the toad Eager solid and injured FNG Remi.",
+        targets: ['waluigi', 'remi', 'eager'],
+        effects: { liberated_toads: -25, cosmic_jesters: 10 }
+    },
+    {
+        id: 'green_t_rampage',
+        title: "Green T's Rampage",
+        description: "Green T, leader of the Tea Leaf Syndicate, revealed a power to grow to immense size. He used this ability to crush an Iron Legion soldier.",
+        targets: ['tea_leaf_syndicate', 'iron_legion'],
+        effects: { iron_legion: -20, regal_empire: -10, freelancer_underworld: 10 }
+    },
+    {
+        id: 'earl_grey_explosion',
+        title: "An Explosive End",
+        description: "The Tea Leaf Syndicate enforcer, Earl Grey, was poisoned by the toad Roger's dagger. This caused him to grow to a massive size before exploding violently.",
+        targets: ['roger', 'earl_grey'],
+        effects: { tea_leaf_syndicate: -25, liberated_toads: 5 }
+    },
+    {
+        id: 'archie_ice_knife',
+        title: "Archie's Misfire",
+        description: "Archie's attempt to use a powerful ice knife backfired, exploding in his hand and injuring himself, Bowser, FNG Remi, and Dan the Toad.",
+        targets: ['archie', 'remi', 'bowser', 'dan'],
+        effects: { koopa_troop: -5, liberated_toads: -10 }
+    },
+    {
+        id: 'iron_thorn_killed',
+        title: "A Crushing Blow",
+        description: "Archie Miser brutally killed the Iron Legion enforcer, Iron Thorn, during the brawl on the Vigilance.",
+        targets: ['archie', 'iron_legion'],
+        effects: { iron_legion: -25, regal_empire: -10, freelancer_underworld: 5 }
+    },
+    {
+        id: 'barrel_compartment_reveal',
+        title: "The Barrel Secret",
+        description: "The Iron Legion revealed to Humpik that the trafficked toads are hidden in secret compartments within the ship's barrels, using a mini-mushroom as a key.",
+        targets: ['humpik', 'liberated_toads'],
+        effects: { iron_legion: 5, liberated_toads: 10, the_unchained: 5 }
+    },
+    {
+        id: 'iron_legion_ruse',
+        title: "The Legion's Ruse",
+        description: "An internal conflict within the Iron Legion boarding party was revealed to be a ruse, a successful feint to distract the party while other agents snuck past to pursue their own objectives.",
+        targets: ['iron_legion'],
+        effects: { freelancer_underworld: 5, rebel_clans: 5, regal_empire: 5 }
     }
 ];
