@@ -5,8 +5,14 @@ export const RUMOR_CHATTER_DATA = [
     // --- LANKY'S DISGRACE AT THE SUMMIT ---
     {
         id: 'dk_crisis_news', order: 130, characterKey: 'wah_media_collective', timestamp: '15 hours ago',
-        content: `**Ape-palling Behavior! Summit Shenanigans Cause Diplomatic and Economic Crisis!**...`,
-        image: 'dk_crew.png', image_alt: "...", likes: 1240,
+        content: `**Ape-palling Behavior! Summit Shenanigans Cause Diplomatic and Economic Crisis!**
+
+The much-anticipated Democratic Summit ended in chaos and financial panic yesterday, not because of a political disagreement, but due to the "completely disgraceful" conduct of Lanky Kong, a representative of the DK Crew. During a photo opportunity with a high-profile president, Lanky Kong reportedly grabbed the dignitary, inflated himself to five times his normal size, and flew around the room "like the world's scariest whoopy cushion."
+
+The incident sent the dignitary fleeing in terror and caused a severe diplomatic fallout for the DK Crew's leader, Donkey Kong. The political turmoil was matched by economic panic, as the Mushroom Kingdom's gold coin standard went into a two-hour freefall. Sources claim only a last-minute favor from Chancellor Toadsworth prevented a complete market collapse. The "Kremling Koin" is now trading at 4.5 times the value of the DK Crew's "Banana Bunch" currency.
+
+The incident has created a deep schism within the normally tight-knit Kong family. Diddy Kong is reportedly motioning for Lanky's expulsion from the crew, a move supported by Candy Kong, once Lanky's staunchest advocate. Donkey Kong is said to be furious and has tasked his brother Chunky Kong with mediating the crisis. When reached for comment, Lanky Kong reportedly made a series of baffling jokes, indicating he does not grasp the severity of the situation.`,
+        image: 'dk_crew.png', image_alt: "A formal diplomatic stage in chaos. A long-armed ape can be seen flying through the air like a deflating balloon while dignitaries flee in terror.", likes: 1240,
         comments: [ { characterKey: 'diddy_kong', text: "It's not 'shenanigans', it's a disgrace. He needs to be held accountable." }, { characterKey: 'king_k_rool', text: "A masterclass in self-destruction. My compliments to the ape. #KremlingKoin" }, { characterKey: 'lario', text: "See, this is why you need professional, goblin-made inflation devices. Amateurs." } ],
         rumorId: 'lankys_disgrace_at_summit'
     },

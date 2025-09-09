@@ -32,6 +32,11 @@ const createPostModal = document.getElementById('create-post-modal');
 const newPostTextarea = document.getElementById('new-post-textarea');
 const submitPostBtn = document.getElementById('submit-post-btn');
 
+// Share Modal
+const shareModal = document.getElementById('share-modal');
+const shareCodeTextarea = document.getElementById('share-code-textarea');
+const copyShareBtn = document.getElementById('copy-share-btn');
+
 
 let currentEventSort = 'newest';
 
@@ -152,13 +157,13 @@ function renderFeedPost(post, options = {}) {
     const imageHTML = post.image ? `<img src="${post.image}" alt="${post.image_alt}" class="post-image">` : '';
     const trendingBadgeHTML = options.showTrendingScore ? `<div class="trending-badge" title="Trending Score: ${options.trendingScore}">🔥</div>` : '';
 
-    const loggedInUser = getCharacterData(state.loggedInUser);
-    const replyInputHTML = `
+    const loggedInUser = state.loggedInUser ? getCharacterData(state.loggedInUser) : null;
+    const replyInputHTML = loggedInUser ? `
         <div class="reply-input-container">
             <img src="${loggedInUser.portrait}" alt="Your profile picture" class="reply-pfp">
             <input type="text" class="reply-input" placeholder="Write a comment...">
         </div>
-    `;
+    ` : '';
 
     return `
         <div class="feed-post" id="post-${post.id}">
@@ -443,22 +448,34 @@ function renderMediaFeed() {
 }
 
 function handleShare(button) {
-    const post = button.closest('.feed-post');
-    if (!post) return;
+    const postElement = button.closest('.feed-post');
+    if (!postElement || !shareModal) return;
 
-    const postId = post.id;
-    const url = `${window.location.origin}${window.location.pathname}#${postId}`;
+    const postId = postElement.id.replace('post-', '');
     
-    navigator.clipboard.writeText(url).then(() => {
-        const tooltip = document.createElement('div');
-        tooltip.className = 'share-tooltip';
-        tooltip.textContent = 'Copied!';
-        button.appendChild(tooltip);
-        setTimeout(() => tooltip.remove(), 2000);
-    }).catch(err => {
-        console.error('Failed to copy: ', err);
+    // Generate both formats
+    const embedUrl = `${window.location.origin}${window.location.pathname}?embed=${postId}`;
+    const iframeCode = `<iframe src="${embedUrl}" width="550" height="450" style="border:1px solid #ccc; border-radius: 8px;" title="WAHbook Post" loading="lazy"></iframe>`;
+    
+    const pageUrl = window.location.href.split('?')[0].split('#')[0];
+    const directLink = `${pageUrl}#post-${postId}`;
+    
+    // Store content in data attributes for easy access
+    shareModal.dataset.iframe = iframeCode;
+    shareModal.dataset.link = directLink;
+
+    // Set default view to 'iframe'
+    shareCodeTextarea.value = iframeCode;
+    const tabs = shareModal.querySelectorAll('.share-tab-btn');
+    tabs.forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.format === 'iframe');
     });
+
+    copyShareBtn.textContent = 'Copy Code';
+    copyShareBtn.classList.remove('copied');
+    shareModal.style.display = 'flex';
 }
+
 
 function scrollToPostFromHash() {
     if (window.location.hash) {
@@ -772,6 +789,40 @@ function setupEventListeners() {
     createPostModal.addEventListener('click', e => { if (e.target === createPostModal) createPostModal.style.display = 'none'; });
     submitPostBtn.addEventListener('click', handleNewPost);
 
+    if (shareModal) {
+        // Close button
+        shareModal.querySelector('.modal-close').addEventListener('click', () => shareModal.style.display = 'none');
+        shareModal.addEventListener('click', e => { if (e.target === shareModal) shareModal.style.display = 'none'; });
+
+        // Tab switching
+        const tabs = shareModal.querySelectorAll('.share-tab-btn');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                if (tab.classList.contains('active')) return;
+                playSound('click.mp3');
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const format = tab.dataset.format;
+                shareCodeTextarea.value = shareModal.dataset[format];
+                copyShareBtn.textContent = 'Copy Code';
+                copyShareBtn.classList.remove('copied');
+            });
+        });
+        
+        // Copy button with auto-copy
+        copyShareBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(shareCodeTextarea.value).then(() => {
+                copyShareBtn.textContent = 'Copied!';
+                copyShareBtn.classList.add('copied');
+                playSound('confirm.mp3');
+            }).catch(err => {
+                console.error('Failed to copy code: ', err);
+                copyShareBtn.textContent = 'Error!';
+            });
+        });
+    }
+
     // Reply input listener
     document.body.addEventListener('keypress', e => {
         if (e.key === 'Enter' && e.target.classList.contains('reply-input')) {
@@ -811,7 +862,30 @@ function simulateLikes() {
 }
 
 
-function init() {
+async function init() {
+    const params = new URLSearchParams(window.location.search);
+    const embedPostId = params.get('embed');
+
+    if (embedPostId) {
+        document.body.classList.add('embed-mode');
+        const mainContent = document.getElementById('main-content');
+        const postData = WAHBOOK_POSTS.find(p => p.id === embedPostId);
+        
+        if (postData && mainContent) {
+            mainContent.innerHTML = `<div id="wahbook-content"><div class="wahbook-feed-container">${renderFeedPost(postData)}</div></div>`;
+            
+            // Remove interactive elements from the embedded post
+            const postElement = mainContent.querySelector('.feed-post');
+            if (postElement) {
+                postElement.querySelector('.post-interactions')?.remove();
+                postElement.querySelector('.reply-input-container')?.remove();
+            }
+        } else if (mainContent) {
+            mainContent.innerHTML = `<p class="page-subtitle">Post not found.</p>`;
+        }
+        return; // Stop further initialization for embed view
+    }
+
     loadState();
     if (!feedContainer || !eventsContainer) return;
     
