@@ -248,7 +248,7 @@ export const WIDESPREAD_FACTIONS = {
     },
     wario_land: {
         name: "Wario Land",
-        description: "Wario's personal kingdom of greed, built on plunder and the scent of garlic. Secretly led by the ghost of Wario, they are obsessed with accumulating wealth by any means necessary.",
+        description: "Wario's personal kingdom of greed, built on plunder and the scent of garlic. After Wario's supposed 'death', it is now secretly led by the mysterious figure known as 'Mr. Wario', whose methods are even more ruthless.",
         logo: 'wario.png',
         relations: { 
             allies: ['freelancer_underworld'], 
@@ -259,7 +259,7 @@ export const WIDESPREAD_FACTIONS = {
         category: "Underworld & Fringe",
         region: "Diamond City (Greed Pits)",
         notable_people: [
-            { name: "Wario", role: "Secret Leader", description: "The ghostly mastermind pulling the strings, driven by insatiable greed." },
+            { name: "Mr. Wario", role: "Secret Leader", description: "The mysterious mastermind pulling the strings, whose identity is a closely guarded secret. He shares Wario's insatiable greed." },
             { name: "Lario", role: "Public Leader", description: "Wario's brother, the public face of the gang and a skilled, if cowardly, mechanic." }
         ],
         waluigi_tip: "WAH! My old partner... He only cares about money. Wave a big enough bag of coins and he'll do anything. Or better yet, tell him someone else has a bigger bag of coins. His jealousy will do the rest!",
@@ -267,11 +267,11 @@ export const WIDESPREAD_FACTIONS = {
             ruling_faction: "wario_ghost",
             sub_factions: {
                 wario_ghost: {
-                    name: "Wario's Ghostly Ambition",
-                    description: "The secret leadership of Wario himself, who pulls the strings from the ethereal plane. His motives are pure, insatiable greed.",
+                    name: "Mr. Wario's Ambition",
+                    description: "The secret leadership of 'Mr. Wario', who pulls the strings from the shadows. His motives are pure, insatiable greed.",
                     influence: 50,
                     reputation_modifiers: { archie: 10, markop: -10, humpik: 0, bowser: -10 },
-                    key_figures: [{ name: "Wario", role: "Ghostly Mastermind", description: "The true leader, obsessed with treasure." }]
+                    key_figures: [{ name: "Mr. Wario", role: "Mysterious Mastermind", description: "The true leader, obsessed with treasure." }]
                 },
                 lario_workshop: {
                     name: "Lario's Workshop",
@@ -328,7 +328,7 @@ export const WIDESPREAD_FACTIONS = {
                     description: "The muscle of the Iron Fists. They are loyal to whoever pays them the most and lets them break the most heads.",
                     opinion: "They fight good. Especially the paladin and the big turtle guy. We'd love a chance to test our metal against theirs.",
                     influence: 20,
-                    reputation_modifiers: { archie: 5, markop: 5, humpik: 5, bowser: 10 }
+                    reputation_modifiers: { archie: 5, markop: 5, humpik: 5, bowser: 5 }
                 }
             }
         }
@@ -409,48 +409,6 @@ export const WIDESPREAD_FACTIONS = {
             }
         }
     },
-    middle_earth_kingdoms: {
-        name: "Middle-Earth Kingdoms",
-        description: "A coalition of ancient kingdoms of Elves, Dwarves, and Men from a distant land to the east of the Midlands, valuing honor, tradition, and craftsmanship.",
-        logo: 'icon_focus.png',
-        relations: { 
-            allies: ['rakasha_clans', 'knights_of_the_gilded_lily'],
-            enemies: ['regal_empire', 'iron_legion', 'onyx_hand', 'koopa_troop']
-        },
-        power_level: 7,
-        category: "Regional Powers",
-        region: "Middle-earth",
-        leader: "king_thorin",
-        notable_people: [
-            { name: "King Thorin", role: "Warrior King", description: "The stoic ruler of the united kingdoms, known for his wisdom and ancestral war-axe." },
-        ],
-        waluigi_tip: "WAH! So much honor! So boring! The Elves think they're better than everyone, and the Dwarves just want shiny rocks. Tell the Dwarves the Elves found a bigger gem. Instant chaos!",
-        internal_politics: {
-            ruling_faction: "king_thorin_power",
-            sub_factions: {
-                king_thorin_power: {
-                    name: "King Thorin's Royal Power",
-                    description: "The central authority of the human kingdoms, led by King Thorin himself. They focus on military strength and maintaining ancient alliances.",
-                    influence: 31,
-                },
-                elven_clans: {
-                    name: "Elven Clans",
-                    description: "Ancient, reclusive Elven clans who are masters of archery and magic. They seek to preserve the fading magic of their forests.",
-                    influence: 21,
-                },
-                dwarven_holds: {
-                    name: "Dwarven Holds",
-                    description: "The stoic and industrious Dwarves of the mountain holds. They are master smiths who forge legendary weapons and armor.",
-                    influence: 19,
-                },
-                human_tribes: {
-                    name: "Human Tribes",
-                    description: "Scattered, independent human tribes who are fiercely protective of their lands and suspicious of centralized power.",
-                    influence: 12,
-                }
-            }
-        }
-    },
     unaligned: {
         name: "Unaligned & Independent",
         description: "Represents various independent settlements, neutral parties, and areas not under the control of a major faction. Their motivations are diverse, ranging from self-preservation to a desire for true neutrality amidst the world's conflicts.",
@@ -510,16 +468,49 @@ export const WIDESPREAD_FACTIONS = {
     },
     dk_crew: {
         name: "The DK Crew",
-        description: "Donkey Kong and his family of laid-back but powerful apes. They protect their island home and their massive banana hoard with surprising ferocity.",
+        description: "Donkey Kong and his family of laid-back but powerful apes. They protect their island home and their massive banana hoard, but have recently been fractured by internal strife following Lanky Kong's disgraceful behavior at a diplomatic summit.",
         logo: 'icon_focus.png',
         relations: { 
-            allies: ['mushroom_regency'], 
+            allies: [], 
             enemies: ['kremling_krew', 'koopa_troop']
         },
         power_level: 6,
         category: "Regional Powers",
         region: "Yoshi & DK's Islands",
         leader: "donkey_kong",
+        notable_people: [
+            { name: "Donkey Kong", role: "Leader", description: "The powerful but easy-going leader of the Kong family, currently trying to manage a major internal crisis." },
+            { name: "Lanky Kong", role: "Disgraced Member", description: "A goofy, long-armed Kong whose irresponsible actions at the Democratic Summit caused a diplomatic and economic crisis, isolating him from the rest of the crew." },
+            { name: "Diddy Kong", role: "Heir Apparent", description: "DK's energetic nephew, who is furious with Lanky's behavior and is actively pushing for his expulsion from the crew." },
+            { name: "Candy Kong", role: "Key Advocate", description: "Formerly Lanky's biggest supporter, she is now appalled by his conduct and supports Diddy's motion to have him removed." },
+            { name: "Chunky Kong", role: "Mediator", description: "The gentle giant of the family, asked by DK to try and talk some sense into Lanky before the situation becomes irreparable." },
+            { name: "Cranky Kong", role: "Grumpy Elder", description: "The original Donkey Kong, now a crotchety old ape who offers cynical advice and complains about how things were better 'back in his day'." }
+        ],
+        internal_politics: {
+            ruling_faction: "donkey_kongs_leadership",
+            sub_factions: {
+                donkey_kongs_leadership: {
+                    name: "Donkey Kong's Leadership",
+                    description: "Donkey Kong is trying to keep his family and his diplomatic relations from falling apart. He is furious with Lanky but is hesitant to take the final step of expelling him, hoping Chunky can mediate.",
+                    influence: 40
+                },
+                diddys_hardliners: {
+                    name: "Diddy's Hardliners",
+                    description: "Led by Diddy Kong and supported by a disillusioned Candy Kong, this faction believes Lanky is an unforgivable liability. They are actively gathering support to have him formally expelled.",
+                    influence: 35
+                },
+                lankys_shenanigans: {
+                    name: "Lanky's Isolation",
+                    description: "Lanky Kong seems unrepentant, treating the entire international incident as a joke. He is currently isolated from the rest of the crew, with only Chunky willing to speak to him.",
+                    influence: 5
+                },
+                chunkys_mediation: {
+                    name: "Chunky's Mediation",
+                    description: "Chunky Kong is caught in the middle. He is loyal to DK and has a soft spot for Lanky, and is attempting to broker some kind of peace before the crew fractures permanently.",
+                    influence: 20
+                }
+            }
+        }
     },
     yoshi_clans: {
         name: "The Yoshi Clans",

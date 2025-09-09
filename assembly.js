@@ -9,6 +9,7 @@ import { WAHBOOK_EVENTS } from './assembly-events-data.js';
 import { playSound } from './common.js';
 import { state, saveState, loadState } from './state.js';
 import { NPC_RESPONSES } from './npc-responses.js';
+import { GUILD_DATA, CHARTER_DATA } from './guilds-data.js';
 
 const tabsContainer = document.getElementById('wahbook-tabs-container');
 const contentContainer = document.getElementById('wahbook-content');
@@ -18,7 +19,7 @@ const eventsContainer = document.getElementById('events-content');
 const intelContainer = document.getElementById('intel-content');
 const followedContainer = document.getElementById('followed-content');
 const trendingContainer = document.getElementById('trending-content');
-const mediaContainer = document.getElementById('media-content');
+const groupsContainer = document.getElementById('groups-content');
 
 const eventControls = document.getElementById('event-controls');
 
@@ -39,6 +40,7 @@ const copyShareBtn = document.getElementById('copy-share-btn');
 
 
 let currentEventSort = 'newest';
+let activeGroupFilter = 'all';
 
 function getPortrait(characterKey) {
     const knownPortraits = {
@@ -96,7 +98,8 @@ function getCharacterData(characterKey) {
         'wah_media_collective': { name: "WAH Media Collective", portrait: getPortrait('wah_media_collective'), faction: { name: "The Daily Paradox", logo: 'icon_newspaper.png' } },
         'freelancer_spy_1': { name: "Anonymous Broker", portrait: getPortrait('freelancer_spy_1'), faction: { name: "Freelancer Underworld" } },
         'regal_empire_delegate': { name: "Imperial Delegate", portrait: getPortrait('regal_empire_delegate'), faction: { name: "The Regal Empire" } },
-        'generic_toad': { name: "Worried Toad", portrait: getPortrait('generic_toad'), faction: { name: "Mushroom Kingdom Civilian" } }
+        'generic_toad': { name: "Worried Toad", portrait: getPortrait('generic_toad'), faction: { name: "Mushroom Kingdom Civilian" } },
+        'rebel_clans_scout': { name: "Rebel Scout", portrait: 'faction_rebel_clans.png', faction: { name: "The Rebel Clans" } }
     };
 
     if (specialCases[characterKey]) {
@@ -422,7 +425,11 @@ function renderTrendingFeed() {
     const container = document.getElementById('trending-feed-container');
     if (!container) return;
 
-    const scoredPosts = WAHBOOK_POSTS.map(post => {
+    const recentPosts = WAHBOOK_POSTS.filter(p => 
+        !p.timestamp.includes('month') && !p.timestamp.includes('year')
+    );
+
+    const scoredPosts = recentPosts.map(post => {
         const score = (post.likes || 0) + ((post.comments?.length || 0) * 2);
         return { ...post, trendingScore: score };
     })
@@ -432,20 +439,36 @@ function renderTrendingFeed() {
     container.innerHTML = scoredPosts.map(p => renderFeedPost(p, { showTrendingScore: true, trendingScore: p.trendingScore })).join('');
 }
 
-function renderMediaFeed() {
-    const container = document.getElementById('media-feed-container');
+function renderGroupsFeed() {
+    const container = document.getElementById('groups-content');
     if (!container) return;
 
-    const mediaPosts = WAHBOOK_POSTS.filter(p => p.image || p.characterKey === 'wah_media_collective')
-                                    .sort((a, b) => (b.order || 0) - (a.order || 0));
-    
-    if (mediaPosts.length === 0) {
-        container.innerHTML = `<p class="page-subtitle">No media posts found.</p>`;
-        return;
-    }
+    const filterBar = container.querySelector('#groups-filter-bar');
+    const feedContainer = container.querySelector('#groups-feed-container');
 
-    container.innerHTML = mediaPosts.map(p => renderFeedPost(p)).join('');
+    const groupPosts = WAHBOOK_POSTS.filter(p => p.groupId);
+    const uniqueGroupIds = ['all', ...new Set(groupPosts.map(p => p.groupId))];
+    
+    const allGuildsAndCharters = { ...GUILD_DATA, ...CHARTER_DATA };
+
+    filterBar.innerHTML = uniqueGroupIds.map(groupId => {
+        const name = (groupId === 'all') ? 'All Groups' : (allGuildsAndCharters[groupId]?.name.replace(/#\d+\s/, '') || groupId);
+        return `<button class="control-btn ${activeGroupFilter === groupId ? 'active' : ''}" data-group-id="${groupId}">${name}</button>`;
+    }).join('');
+
+    const filteredPosts = (activeGroupFilter === 'all')
+        ? groupPosts
+        : groupPosts.filter(p => p.groupId === activeGroupFilter);
+
+    filteredPosts.sort((a, b) => (b.order || 0) - (a.order || 0));
+
+    if (filteredPosts.length === 0) {
+        feedContainer.innerHTML = `<p class="page-subtitle">No posts found for this group.</p>`;
+    } else {
+        feedContainer.innerHTML = filteredPosts.map(p => renderFeedPost(p)).join('');
+    }
 }
+
 
 function handleShare(button) {
     const postElement = button.closest('.feed-post');
@@ -718,7 +741,7 @@ function setupEventListeners() {
             switch(tabName) {
                 case 'followed': renderFollowedFeed(); break;
                 case 'trending': renderTrendingFeed(); break;
-                case 'media': renderMediaFeed(); break;
+                case 'groups': renderGroupsFeed(); break;
             }
         }
         
@@ -780,6 +803,19 @@ function setupEventListeners() {
             }
         }
     });
+    
+    const groupsContent = document.getElementById('groups-content');
+    if (groupsContent) {
+        const filterBar = groupsContent.querySelector('#groups-filter-bar');
+        filterBar.addEventListener('click', e => {
+            const btn = e.target.closest('.control-btn');
+            if (btn) {
+                playSound('click.mp3');
+                activeGroupFilter = btn.dataset.groupId;
+                renderGroupsFeed();
+            }
+        });
+    }
 
     // Modal close listeners
     dossierModalClose?.addEventListener('click', () => dossierModal.style.display = 'none');

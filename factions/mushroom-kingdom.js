@@ -118,7 +118,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
     },
     mushroom_regency: {
         name: "Mushroom Regency",
-        description: "The official but fractured government of the Mushroom Kingdom, struggling to maintain order in a kingdom fractured by over a century of civil war that began after the death of Princess Peach.",
+        description: "The official but fractured government of the Mushroom Kingdom, struggling to maintain order amidst a civil war that has simmered for over a century. The conflict escalated dramatically into its current, chaotic final phase following the death of Princess Peach 45 years ago.",
         logo: 'faction_mushroom_regency.png',
         relations: { 
             allies: ['liberated_toads', 'goodstyle_artisans'], 
@@ -201,6 +201,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
             sub_factions: {
                 dan: {
                     name: "Dan, The Hero",
+                    status: "Injured",
                     description: "His incredible bravery in the face of X.O. has made him the de facto leader and hero of the group. He is learning magic from the Rakasha.",
                     influence: 40,
                     events: {
@@ -210,6 +211,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                 },
                 toad_lee: {
                     name: "Toad Lee, The First",
+                    status: "Active",
                     description: "The first toad to join the party and a powerful warrior. He acts as the group's enforcer and protector.",
                     influence: 25,
                     events: {
@@ -219,6 +221,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                 },
                 eager: {
                     name: "Eager, The Swift",
+                    status: "Frozen Solid (Presumed Deceased)",
                     description: "A nimble and quick-witted toad who prefers to keep his distance, using his whip to control the battlefield.",
                     influence: 10,
                     events: {
@@ -228,6 +231,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                 },
                 roger: {
                     name: "Roger, The Pragmatist",
+                    status: "Active",
                     description: "A practical toad who sees the world for what it is. He found a gun and has become a crack shot.",
                     influence: 10,
                     events: {
@@ -237,7 +241,8 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                 },
                 ryan: {
                     name: "Ryan, The Studious",
-                    description: "A quiet toad with a natural, if untrained, affinity for magic. He watches Dan's training with intense focus.",
+                    status: "Duplicitous",
+                    description: "A quiet toad with a natural, if untrained, affinity for magic. SHOCKING REVELATION: Ryan has been revealed to be a 'warden' involved in a widespread toad trafficking ring, a betrayal that has shattered the trust of the Liberated Toads.",
                     influence: 10,
                     events: {
                         peach_death: "Her magic was said to be protective, a light in the darkness. For that light to be extinguished... it's a great loss for the world."
@@ -246,6 +251,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                 },
                 bones: {
                     name: "Bones, The Hardened",
+                    status: "Active",
                     description: "A tough, grotesque toad who has seen the worst of the world and survived. He is resilient and cynical.",
                     influence: 5,
                     events: {
@@ -255,6 +261,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                 },
                 wallys_toad: {
                     name: "Wally's Toad (De-programmed)",
+                    status: "Detained (Iron Legion)",
                     description: "A Waluigi loyalist who infiltrated the group. He was captured by the Iron Legion, who removed a strange seed from his head, turning him back into a normal, confused toad. His discovery has sown seeds of distrust among the toads.",
                     influence: 0,
                     events: {

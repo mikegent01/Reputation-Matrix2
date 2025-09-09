@@ -180,5 +180,26 @@ export const CHARACTERS_3 = {
         name: "Grizelda Geargrind",
         role: "Scrap Baroness, Ratchet Raiders",
         description: "A shrewd and pragmatic goblin who controls a significant portion of the scrap trade. She values profit and stability above all else, and sees the party's chaos as both a nuisance and a business opportunity."
+    },
+    // --- NEW GUILD LEADERS ---
+    'high_cartographer_elara': {
+        name: "High Cartographer Elara",
+        role: "Leader, The Wayfinders' Guild",
+        description: "The enigmatic and highly respected leader of the Wayfinders' Guild. Elara is said to have charted more of the unknown world than any other living person."
+    },
+    'commander_valerius': {
+        name: "Commander Valerius 'The Gilded'",
+        role: "Commander, The Gilded Gryphon Mercenary Company",
+        description: "The pragmatic and disciplined commander of the Gilded Gryphons. A former Iron Legion officer, he values contracts and coin above all, and runs his company with ruthless efficiency."
+    },
+    'azure_prime': {
+        name: "The Azure Prime",
+        role: "Guildmaster, Azure Blade Bounty Hunters' Guild",
+        description: "The stoic and anonymous leader of the Azure Blade guild. Their identity is a closely guarded secret, known only to the guild's highest-ranking members. They enforce the Guild's code with absolute impartiality."
+    },
+    'battle_mage_kovar': {
+        name: "Battle-Mage Kovar",
+        role: "Commander of the Aegis Magi, Mages' Guild",
+        description: "The hardened and battle-scarred leader of the Mages' Guild's military wing. Kovar is a master of destructive and defensive magic, viewing arcane power primarily as a weapon to be wielded in the Guild's defense. He has little patience for politics or research."
     }
 };

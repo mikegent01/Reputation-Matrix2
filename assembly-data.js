@@ -2,6 +2,152 @@ import { WAHBOOK_INTEL_POSTS } from './assembly-intel-data.js';
 
 export const WAHBOOK_POSTS = [
     {
+        id: 'cranky_post_1',
+        order: 140,
+        characterKey: 'cranky_kong',
+        timestamp: '15 minutes ago',
+        content: `Back in my day, we didn't have 'diplomatic incidents'. We had coconut guns. Solved problems a lot faster. This whole summit was a waste of good bananas. And Lanky... don't get me started on that good-for-nothing slacker!`,
+        likes: 350,
+        comments: [
+            { characterKey: 'donkey_kong', text: "He's still family, Cranky." },
+            { characterKey: 'diddy_kong', text: "Cranky's right, DK. Family or not, he's a liability." }
+        ],
+        rumorId: 'lankys_disgrace_at_summit'
+    },
+    {
+        id: 'leoncoeur_post_1',
+        order: 139,
+        characterKey: 'king_louen_leoncoeur',
+        timestamp: '45 minutes ago',
+        content: `I must confess, the recent 'summit' was a disheartening display. To see diplomacy devolve into such buffoonery is a sad day for all civilized realms. Where is the honor? Where is the chivalry? It seems in short supply in these lands.`,
+        likes: 410,
+        comments: [
+            { characterKey: 'captain_toadette', text: "Honor is found on the battlefield, not in a talking shop with apes and monsters." },
+            { characterKey: 'ambassador_callista', text: "A most unfortunate incident, your Majesty. I assure you it is not representative of all diplomatic efforts in this region." }
+        ],
+        rumorId: 'lankys_disgrace_at_summit'
+    },
+    {
+        id: 'kamek_post_1',
+        order: 138,
+        characterKey: 'kamek',
+        timestamp: '2 hours ago',
+        content: `The pieces are moving on the board. While the lesser factions squabble over castles and politics, the true game is being played in the shadows. The King's will shall be done. A storm is gathering...`,
+        likes: 275,
+        comments: [
+            { characterKey: 'bowser', text: "Excellent work, Kamek. Keep me updated. And make sure the storm has lots of lightning!" },
+            { characterKey: 'the_broker', text: "Storms are good for business. They create opportunities." }
+        ]
+    },
+     {
+        id: 'toadette_post_2',
+        order: 137,
+        characterKey: 'captain_toadette',
+        timestamp: '5 hours ago',
+        content: `The Regency falters! Fawful's madness defiles our sacred castle! Only the Peach Loyalists have the strength and the will to restore justice! Do not be swayed by the weak-willed words of politicians! Take up arms! For the Princess!`,
+        likes: 388,
+        comments: [
+            { characterKey: 'mistveil', text: "For the Princess!" },
+            { characterKey: 'chancellor_toadsworth', text: "Captain Toadette, your zealotry is creating more division, not less! We must be united!" }
+        ]
+    },
+    {
+        id: 'waluigi_post_2',
+        order: 136,
+        characterKey: 'waluigi',
+        timestamp: 'Just now',
+        content: `WAH! Some people call it 'chaos'. I call it 'art'! The world is my canvas, and my paintbrush is a well-thrown Bob-omb! All you boring people with your 'plans' and 'order'... you just don't appreciate true genius!`,
+        likes: 999,
+        comments: [
+            { characterKey: 'giggling_pete', text: "A masterpiece of a metaphor! The Jester applauds your stylish entropy!" }
+        ]
+    },
+    {
+        id: 'steelstorm_post_2',
+        order: 135,
+        characterKey: 'colonel_vera_steelstorm',
+        timestamp: '1 hour ago',
+        content: `Victory is not achieved through tradition; it is achieved through efficiency. While the Old Guard debates protocol, the War-Forged act. Results are the only metric that matters on the battlefield. Adapt or be broken.`,
+        likes: 388,
+        comments: [
+            { characterKey: 'general_marcus_ironhand', text: "Discipline IS efficiency, Colonel. Do not mistake reckless action for progress. The Hammer Code has guided us for a thousand years for a reason." }
+        ]
+    },
+    {
+        id: 'dan_post_freedom',
+        order: 134,
+        characterKey: 'dan',
+        timestamp: '3 hours ago',
+        content: `Every day of freedom feels like a gift. Learning the ways of the Rakasha is difficult, but Chief Thornpaw is a patient teacher. I will become strong enough to protect my friends and ensure no toad has to suffer like we did.`,
+        likes: 621,
+        comments: [
+            { characterKey: 'toad_lee', text: "And you will have my axe to guard your back. Always." }
+        ]
+    },
+    {
+        id: 'bowser_post_recruiting',
+        order: 133,
+        characterKey: 'bowser',
+        timestamp: '8 hours ago',
+        content: `The Koopa Troop is scattered, but not broken! Soon, I will reunite my armies under one glorious banner! We will crush the tin-can soldiers of the Legion and the mushroom-headed fools of the Regency! The world will tremble before the might of King Bowser once more! GWAHAHAHA!`,
+        likes: 815,
+        comments: [
+            { characterKey: 'kamek', text: "An inspiring proclamation, your Viciousness! The remnants await your command." },
+            { characterKey: 'generic_toad', text: "Oh no, not again..." }
+        ]
+    },
+    {
+        id: 'guild_post_gryphon_1',
+        order: 132,
+        characterKey: 'commander_valerius',
+        timestamp: '1 day ago',
+        content: `**OPEN CONTRACT:** The Gilded Gryphon Mercenary Company is now accepting applications for caravan guard duty on the Great Imperial Road. High pay, high risk. Must provide your own standard-issue sidearm and have a clean service record. Amateurs need not apply. Payment upon completion.`,
+        likes: 412,
+        comments: [
+            { characterKey: 'donkey_kong', text: "Good pay? Does that mean bananas? DK needs to know." },
+            { characterKey: 'lario', text: "High pay? I'll bring my own tools. And a bigger bag for my cut. WAH-ha-ha... wait." }
+        ],
+        groupId: 'gilded_gryphon'
+    },
+    {
+        id: 'guild_post_wayfinders_1',
+        order: 131,
+        characterKey: 'high_cartographer_elara',
+        timestamp: '2 days ago',
+        content: `A notice from the High Cartographer: An expedition is being planned to chart the shifting coastlines of the Triple Moon World. Experienced navigators and warriors are encouraged to apply at the Horizon Spire. High risk, high reward.`,
+        likes: 350,
+        comments: [
+            { characterKey: 'captain_zipwire', text: "Shifting coastlines? Sounds dangerous! And profitable! Where do I sign up?"}
+        ],
+        groupId: 'wayfinders_guild'
+    },
+    {
+        id: 'guild_post_aegis_1',
+        order: 125,
+        characterKey: 'battle_mage_kovar',
+        timestamp: '3 days ago',
+        content: `A reminder to all sanctioned practitioners: The Autumnwood Accords are not suggestions. All research into reality-bending or chronomantic magic is strictly forbidden without a permit from the Conclave. The Aegis Magi will enforce this with extreme prejudice. Do not test us.`,
+        likes: 630,
+        comments: [
+            { characterKey: 'janna_brightspark', text: "Fear of progress is what holds this Guild back. How can we learn if we do not experiment?" },
+            { characterKey: 'archmage_theron', text: "A necessary and prudent warning, Battle-Mage. Order must be maintained." }
+        ],
+        groupId: 'aegis_magi'
+    },
+    {
+        id: 'guild_post_azure_1',
+        order: 110,
+        characterKey: 'azure_prime',
+        timestamp: '1 week ago',
+        content: `**BOUNTY POSTED:** A charter has been issued for the capture of the pirate 'Cutlass' Kael, last seen operating near the Ludor Isles. Wanted for piracy, smuggling, and tax evasion. Dead or alive. Contact your local chapterhouse for details.`,
+        likes: 780,
+        comments: [
+            { characterKey: 'captain_syrup', text: "Kael? He's small fry. But his ship has some nice cannons..." },
+            { characterKey: 'the_broker', text: "His last known location can be provided... for a price." }
+        ],
+        groupId: 'azure_blade_bounty_hunters'
+    },
+    {
         id: 'summit_pre_1',
         order: 21,
         characterKey: 'captain_toad',

@@ -1,4 +1,5 @@
 
+
 export const AUXILIARY_PARTY = {
     dan: {
         name: "Dan",
@@ -68,8 +69,8 @@ export const RUMORS = [
     {
         id: 'peach_death_fallout',
         title: "The Princess is Dead",
-        time_ago: "5 Years Ago",
-        description: "Princess Peach was killed during the Mushroom Kingdom Civil War. While the exact circumstances are unclear, many blame Bowser's relentless aggression for creating the instability that led to the conflict.",
+        time_ago: "45 Years Ago",
+        description: "Princess Peach was killed, sparking a long and brutal civil war in the Mushroom Kingdom. While the exact circumstances are unclear, many blame Bowser's relentless aggression for creating the initial instability.",
         targets: ['bowser'],
         effects: {
             mushroom_regency: -50,
@@ -83,7 +84,7 @@ export const RUMORS = [
         title: "Dragon Slaying",
         time_ago: "Approx. 2 Months Ago",
         description: "A month ago, the party slew a dragon, earning praise from the Iron Legion and scorn from the Mages' Guild.",
-        targets: ['party'],
+        targets: ['archie', 'markop', 'humpik', 'bowser'],
         effects: { iron_legion: 10, mages_guild: -15 }
     },
      {
@@ -99,7 +100,7 @@ export const RUMORS = [
         title: "X.O.'s Defeat",
         time_ago: "Approx. 4 Weeks Ago",
         description: "The party, with the help of a liberated toad slave, defeated the rogue mage X.O. and secured the 'Vigilance'.",
-        targets: ['party', 'dan'],
+        targets: ['archie', 'markop', 'humpik', 'bowser', 'dan'],
         effects: { regal_empire: 5, mages_guild: 5, the_unchained: 10, mushroom_regency: 5, liberated_toads: 25 }
     },
     {
@@ -121,7 +122,7 @@ export const RUMORS = [
         title: "The Syrup Schism",
         time_ago: "Approx. 4 Weeks Ago",
         description: "The pirate Captain Syrup was freed from captivity under the goblin Lario. After a confrontation, she has become a hostile third party, creating chaos within the Ratchet Raiders and putting her at odds with Waluigi and the party.",
-        targets: ['party', 'waluigi'],
+        targets: ['archie', 'markop', 'humpik', 'bowser', 'waluigi'],
         effects: {
             ratchet_raiders: -25,
             freelancer_underworld: 10,
@@ -142,7 +143,7 @@ export const RUMORS = [
         title: "Iron Fists' Imperial Contract?",
         time_ago: "Approx. 3 Weeks Ago",
         description: "A captured Iron Legion bomber revealed a shocking secret before his demise: the Iron Fists gang may be operating as a secret arm of the Regal Empire, creating chaos for the Empire to solve.",
-        targets: ['party'],
+        targets: ['archie', 'markop', 'humpik', 'bowser'],
         effects: { iron_fists: -5, regal_empire: -5, freelancer_underworld: 10 }
     },
     {

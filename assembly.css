@@ -825,3 +825,24 @@ body.embed-mode .feed-post {
     border: 1px solid var(--dark-wah-border);
     margin: 0;
 }
+
+/* --- GROUPS TAB --- */
+#groups-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--dark-wah-border);
+}
+
+#groups-filter-bar .control-btn.active {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background-color: rgba(138, 43, 226, 0.1);
+}
+
+#groups-content .wahbook-feed-container {
+    margin-top: 16px;
+}

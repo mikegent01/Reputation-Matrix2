@@ -28,6 +28,7 @@ function getCharacterData(characterKey) {
         'freelancer_spy_1': { name: "Anonymous Broker", portrait: 'faction_freelancer.png', role: 'Information Broker', bio: 'Deals in secrets.' },
         'regal_empire_delegate': { name: "Imperial Delegate", portrait: 'faction_regal_empire.png', role: 'Diplomat', bio: 'Represents the Regal Empire.' },
         'generic_toad': { name: "Worried Toad", portrait: 'toads/toad.png', role: 'Civilian', bio: 'Just trying to get by.' },
+        'rebel_clans_scout': { name: "Rebel Scout", portrait: 'faction_rebel_clans.png', role: 'Scout', bio: 'A scout for the Rebel Clans, operating in hostile territory.' }
     };
     if(specialCases[characterKey]) return specialCases[characterKey];
 

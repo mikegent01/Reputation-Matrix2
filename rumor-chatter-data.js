@@ -32,9 +32,11 @@ The incident has created a deep schism within the normally tight-knit Kong famil
 
     // --- THE PRINCESS IS DEAD ---
     {
-        id: 'peach_death_news', order: 116, characterKey: 'wah_media_collective', timestamp: 'Archival Post (5 years ago)',
-        content: `**Princess Peach Dead: Mushroom Kingdom Plunges into Crisis**...`,
-        image: 'falling_figures.png', image_alt: "...", likes: 2430,
+        id: 'peach_death_news', order: 116, characterKey: 'wah_media_collective', timestamp: 'Archival Post (45 years ago)',
+        content: `**Princess Peach Assassinated: Kingdom Plunges into Generational Civil War** 
+
+Reports from the Mushroom Kingdom confirm the tragic death of Princess Peach. The assassination, which occurred 45 years ago, was the catalyst that plunged the kingdom into the brutal, century-long civil war that continues to this day. While Bowser's historical aggression is often cited as a destabilizing factor, the true culprits and circumstances of her death remain a fiercely debated and central mystery to the ongoing conflict.`,
+        image: 'falling_figures.png', image_alt: "Three figures falling through a colorful, striped sky, one a sorcerer, another cloaked in wolf fur, and a small mushroom-shaped figure. Symbolizes chaos and peril.", likes: 2430,
         comments: [ { characterKey: 'captain_toadette', text: "We will have justice for our Princess. This is not over." }, { characterKey: 'kamek', text: "A convenient narrative. Perhaps the Regency should look closer to home for the source of their 'instability'." }, { characterKey: 'bowser', text: "I was framed!" } ],
         rumorId: 'peach_death_fallout'
     },
@@ -114,7 +116,7 @@ The incident has created a deep schism within the normally tight-knit Kong famil
     { id: 'intel_shadow_war_4', order: 58, characterKey: 'rebel_clans_scout', timestamp: 'Ongoing', content: `My village was caught between them. The werewolves by night, the vampires by... also by night. We lost everything. Someone, please make it stop.`, likes: 600, comments: [], rumorId: 'shadow_war' },
     { id: 'intel_shadow_war_5', order: 57, characterKey: 'bowser', timestamp: 'Ongoing', content: `My new allies, the Moonfang Pack, are crushing the vampire scum! GWAHAHAHA! It's always good to have ferocious friends who hate the same people you do!`, likes: 550, comments: [], rumorId: 'shadow_war' },
 
-    // --- DAN'S TRAINING (Expanded) ---
+    // --- DAN'S TRAINING (Markop post replaced) ---
     { id: 'intel_dan_training_1', order: 56, characterKey: 'dan', timestamp: 'Ongoing', content: `Chief Thornpaw's lessons are difficult. The magic doesn't feel like a weapon... it feels like listening. To the earth, to the wind. It's strange. But I feel... stronger.`, likes: 380, comments: [], rumorId: 'dan_training' },
     { id: 'intel_dan_training_3', order: 55, characterKey: 'chief_thornpaw', timestamp: 'Ongoing', content: `The little toad listens. The spirits of the world are speaking to him. He must now learn to understand their language.`, likes: 210, comments: [], rumorId: 'dan_training' },
     { id: 'intel_dan_training_4', order: 54, characterKey: 'captain_toad', timestamp: 'Ongoing', content: `Hearing good things about that 'Hero Toad', Dan. The Regency could use more individuals with his kind of courage. And his kind of power.`, likes: 310, comments: [], rumorId: 'dan_training' },
@@ -141,4 +143,28 @@ The incident has created a deep schism within the normally tight-knit Kong famil
     { id: 'intel_rebel_sympathies_3', order: 39, characterKey: 'free_name_sarah', timestamp: 'Ongoing', content: `They are not ideologues. They are mercenaries and chaos agents. But their actions create cracks in the Empire's walls. And through those cracks, the light of freedom can shine.`, likes: 450, comments: [], rumorId: 'rebel_sympathies' },
     { id: 'intel_rebel_sympathies_4', order: 38, characterKey: 'regal_empire_delegate', timestamp: 'Ongoing', content: `The criminals aboard the Vigilance have been confirmed to be in league with seditious rebel elements. They are no longer just pirates; they are state-sponsored terrorists and will be dealt with as such.`, likes: 220, comments: [], rumorId: 'rebel_sympathies' },
     { id: 'intel_rebel_sympathies_5', order: 37, characterKey: 'bowser', timestamp: 'Ongoing', content: `These rebels think they are my friends? GWAHAHA! They are temporary tools. Their hatred of the Empire is useful. Nothing more. When I am done, they will bend the knee like everyone else!`, likes: 620, comments: [], rumorId: 'rebel_sympathies' },
+
+    // --- CORE CRISIS (Archie post replaced) ---
+    {
+        id: 'intel_core_crisis_1', order: 98, characterKey: 'waluigi',
+        timestamp: '4 weeks ago',
+        content: `So, the big turtle's pet rock threw a wrench in my plans. Literally. An axe. Into the engine core. Magnificent! Impractical, but magnificent! 10/10 for style, 1/10 for 'not crashing'. WAH!`,
+        likes: 130, comments: [], rumorId: 'core_crisis'
+    },
+
+    // --- X.O.'S DEFEAT (Archie post replaced) ---
+    {
+        id: 'intel_xo_defeat_1', order: 97, characterKey: 'wah_media_collective',
+        timestamp: '4 weeks ago',
+        content: `**VIGILANCE RECAPTURED!** Reports confirm the rogue mage X.O. has been defeated. Sources cite a three-eyed rogue, a centaur paladin, and a surprisingly heroic toad as instrumental in the takeover. The powerful airship is now in the hands of this new, unpredictable faction.`,
+        likes: 850, comments: [], rumorId: 'xo_defeat'
+    },
+    
+    // --- THE BARREL SECRET (Markop post replaced) ---
+    {
+        id: 'intel_barrel_secret_1', order: 71, characterKey: 'humpik',
+        timestamp: '1 week ago',
+        content: `The metal-men told me a secret. The little toad-friends are not in a big room. They are in barrels. Small mushrooms are the key. This is a strange and cowardly way to hide prisoners. We will get them out.`,
+        likes: 310, comments: [], rumorId: 'barrel_compartment_reveal'
+    }
 ];
