@@ -15,7 +15,8 @@ export const MIDLANDS_FACTIONS = {
         leader: "emperor_elagabalus",
         notable_people: [
             { name: "Emperor Elagabalus", role: "Supreme Ruler", description: "The divine ruler of the Empire, believed to be immortal and all-knowing." },
-            { name: "High Artificer Construct", role: "Magitek Leader", description: "A powerful artificial being that leads the Magitek Ascension faction." }
+            { name: "High Artificer Construct", role: "Magitek Leader", description: "A powerful artificial being that leads the Magitek Ascension faction." },
+            { name: "Artificer Prime Kael", role: "Head of Magitek Research", description: "A brilliant but ruthless scientist pushing the boundaries of magitek." }
         ],
         waluigi_tip: "WAH! The Empire is full of stuffed shirts! The 'Magitek Ascension' nerds secretly love chaos, and the 'Silent Service' spies can be bought. Use their own secrets against them! It's what I would do!",
         internal_politics: {

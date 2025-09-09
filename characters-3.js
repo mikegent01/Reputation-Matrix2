@@ -174,5 +174,11 @@ export const CHARACTERS_3 = {
         name: "Chunky Kong",
         role: "Mediator of the DK Crew",
         description: "The strong, gentle giant of the Kong family. Despite his immense power, he is often timid, but he is fiercely loyal and has been asked by DK to mediate the current family crisis."
+    },
+    // --- FIX FOR UNKNOWN USER ---
+    'grizelda_geargrind': {
+        name: "Grizelda Geargrind",
+        role: "Scrap Baroness, Ratchet Raiders",
+        description: "A shrewd and pragmatic goblin who controls a significant portion of the scrap trade. She values profit and stability above all else, and sees the party's chaos as both a nuisance and a business opportunity."
     }
 };

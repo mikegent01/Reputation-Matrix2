@@ -1,8 +1,14 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import { LORE_DATA } from './lore.js';
 import { WAHBOOK_POSTS } from './assembly-data.js';
 import { WAHBOOK_EVENTS } from './assembly-events-data.js';
 import { playSound } from './common.js';
 import { state, saveState, loadState } from './state.js';
+import { NPC_RESPONSES } from './npc-responses.js';
 
 const tabsContainer = document.getElementById('wahbook-tabs-container');
 const contentContainer = document.getElementById('wahbook-content');
@@ -20,6 +26,11 @@ const eventControls = document.getElementById('event-controls');
 const dossierModal = document.getElementById('dossier-modal');
 const dossierModalBody = document.getElementById('dossier-modal-body');
 const dossierModalClose = document.querySelector('.dossier-modal-close');
+
+// Create Post Modal
+const createPostModal = document.getElementById('create-post-modal');
+const newPostTextarea = document.getElementById('new-post-textarea');
+const submitPostBtn = document.getElementById('submit-post-btn');
 
 
 let currentEventSort = 'newest';
@@ -141,6 +152,14 @@ function renderFeedPost(post, options = {}) {
     const imageHTML = post.image ? `<img src="${post.image}" alt="${post.image_alt}" class="post-image">` : '';
     const trendingBadgeHTML = options.showTrendingScore ? `<div class="trending-badge" title="Trending Score: ${options.trendingScore}">🔥</div>` : '';
 
+    const loggedInUser = getCharacterData(state.loggedInUser);
+    const replyInputHTML = `
+        <div class="reply-input-container">
+            <img src="${loggedInUser.portrait}" alt="Your profile picture" class="reply-pfp">
+            <input type="text" class="reply-input" placeholder="Write a comment...">
+        </div>
+    `;
+
     return `
         <div class="feed-post" id="post-${post.id}">
             ${trendingBadgeHTML}
@@ -158,11 +177,14 @@ function renderFeedPost(post, options = {}) {
             <p class="post-content">${post.content}</p>
             ${imageHTML}
             <div class="post-interactions">
-                <div class="interaction-btn" data-likes="${post.likes}"><span class="interaction-btn-icon">👍</span> Like (${post.likes})</div>
-                <div class="interaction-btn"><span class="interaction-btn-icon">💬</span> Comment (${(post.comments || []).length})</div>
+                <div class="interaction-btn like-btn" data-likes="${post.likes}"><span class="interaction-btn-icon">👍</span> Like (${post.likes})</div>
+                <div class="interaction-btn comment-btn"><span class="interaction-btn-icon">💬</span> Comment (${(post.comments || []).length})</div>
                 <div class="interaction-btn share-btn"><span class="interaction-btn-icon">↪️</span> Share</div>
             </div>
-            ${commentsHTML ? `<div class="post-comments">${commentsHTML}</div>` : ''}
+            <div class="post-comments-section">
+                <div class="post-comments">${commentsHTML}</div>
+                ${replyInputHTML}
+            </div>
         </div>
     `;
 }
@@ -454,6 +476,210 @@ function scrollToPostFromHash() {
     }
 }
 
+// --- NEW POSTING & INTERACTION LOGIC ---
+
+function getPostTone(text) {
+    const lowerText = text.toLowerCase();
+    const positiveWords = ['good', 'great', 'love', 'magnificent', 'hope', 'happy', 'agree', 'support', 'victory'];
+    const negativeWords = ['hate', 'bad', 'disgrace', 'damn', 'curse', 'lame', 'boring', 'weak', 'pathetic', 'fail', 'fuck'];
+    const inquisitiveWords = ['why', 'how', 'what', 'who', '?', 'question', 'theory'];
+
+    if (negativeWords.some(word => lowerText.includes(word))) return 'negative';
+    if (positiveWords.some(word => lowerText.includes(word))) return 'positive';
+    if (inquisitiveWords.some(word => lowerText.includes(word))) return 'inquisitive';
+    return 'neutral';
+}
+
+/**
+ * Creates special, high-priority keywords based on post content.
+ * e.g., "fuck you bowser" -> creates "curse_bowser" keyword.
+ */
+function generateSpecialKeywords(text) {
+    const lowerText = text.toLowerCase();
+    const keywords = [];
+    const curseWords = ['fuck', 'damn', 'hell', 'crap', 'bastard', 'curse'];
+    const characterNames = {
+        'bowser': 'bowser', 'waluigi': 'waluigi', 'kamek': 'kamek',
+        'lario': 'lario', 'toadette': 'toadette', 'fawful': 'fawful',
+    };
+
+    const hasCurse = curseWords.some(word => lowerText.includes(word));
+
+    if (hasCurse) {
+        for (const name in characterNames) {
+            if (lowerText.includes(name)) {
+                keywords.push(`curse_${characterNames[name]}`);
+            }
+        }
+    }
+    
+    return keywords;
+}
+
+/**
+ * Finds the best NPC response, prioritizing longer, more specific keywords.
+ */
+function findNpcResponse(sourceText, sourceAuthorKey, targetPost, threadHistory, responseType) {
+    const lowerText = sourceText.toLowerCase();
+    const sourceTone = getPostTone(sourceText);
+    const respondingNpcs = new Set(threadHistory.map(c => c.characterKey));
+
+    let bestMatches = [];
+    let bestMatchLength = 0;
+
+    for (const response of NPC_RESPONSES) {
+        if (response.type !== responseType) continue;
+        if (respondingNpcs.has(response.characterKey)) continue;
+        if (response.characterKey === sourceAuthorKey || response.characterKey === targetPost.characterKey) continue;
+
+        const trigger = response.trigger;
+        if (trigger.reply_to_author && !trigger.reply_to_author.includes(sourceAuthorKey)) continue;
+        if (trigger.tone && trigger.tone !== sourceTone) continue;
+
+        for (const kw of trigger.keywords) {
+            if (lowerText.includes(kw)) {
+                if (kw.length > bestMatchLength) {
+                    bestMatches = [response];
+                    bestMatchLength = kw.length;
+                } else if (kw.length === bestMatchLength) {
+                    bestMatches.push(response);
+                }
+            }
+        }
+    }
+
+    if (bestMatches.length > 0) {
+        return bestMatches[Math.floor(Math.random() * bestMatches.length)];
+    }
+    return null;
+}
+
+function triggerNpcInteraction(targetPost, initialText = null, initialAuthor = null) {
+    let conversationChain = [];
+    let lastCommentText = initialText || targetPost.content;
+    let lastCommentAuthor = initialAuthor || targetPost.characterKey;
+    const MAX_DEPTH = 3;
+
+    const specialKeywords = (initialText) ? generateSpecialKeywords(initialText) : [];
+    
+    for (let depth = 0; depth < MAX_DEPTH; depth++) {
+        const responseType = (depth === 0) ? 'initial' : 'reply';
+        
+        // For the first interaction, combine original text with special keywords for better matching.
+        // For subsequent replies, just use the text of the last comment in the chain.
+        const textToSearch = (depth === 0) ? `${lastCommentText} ${specialKeywords.join(' ')}` : lastCommentText;
+        const response = findNpcResponse(textToSearch, lastCommentAuthor, targetPost, conversationChain, responseType);
+        
+        if (response && Math.random() < 0.65) { // 65% chance to continue the chain
+            const newComment = {
+                characterKey: response.characterKey,
+                text: response.response
+            };
+            conversationChain.push(newComment);
+            lastCommentText = newComment.text;
+            lastCommentAuthor = newComment.characterKey;
+        } else {
+            break; // End of chain
+        }
+    }
+
+    conversationChain.forEach((comment, index) => {
+        setTimeout(() => {
+            if (!targetPost.comments) targetPost.comments = [];
+            targetPost.comments.push(comment);
+
+            const postElement = document.getElementById(`post-${targetPost.id}`);
+            if (postElement) {
+                const commenter = getCharacterData(comment.characterKey);
+                const commentsContainer = postElement.querySelector('.post-comments');
+                if (commentsContainer) {
+                    const newCommentElement = document.createElement('div');
+                    newCommentElement.className = 'comment';
+                    newCommentElement.innerHTML = `
+                        <a href="profile.html?user=${comment.characterKey}" class="profile-link">
+                            <img src="${commenter.portrait}" alt="${commenter.name}" class="comment-pfp">
+                        </a>
+                        <div class="comment-body">
+                            <a href="profile.html?user=${comment.characterKey}" class="profile-link comment-author">${commenter.name}</a>
+                            <span class="comment-text">${comment.text}</span>
+                        </div>
+                    `;
+                    commentsContainer.appendChild(newCommentElement);
+                    newCommentElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+                
+                const commentBtn = postElement.querySelector('.comment-btn');
+                if(commentBtn) commentBtn.innerHTML = `<span class="interaction-btn-icon">💬</span> Comment (${targetPost.comments.length})`;
+            }
+        }, (index * 6000) + (Math.random() * 4000)); // Stagger replies
+    });
+}
+
+
+function handleNewPost() {
+    const text = newPostTextarea.value.trim();
+    if (!text) return;
+
+    const highestOrder = Math.max(...WAHBOOK_POSTS.map(p => p.order || 0));
+    const newPost = {
+        id: `player_post_${Date.now()}`,
+        order: highestOrder + 1,
+        characterKey: state.loggedInUser,
+        timestamp: 'Just now',
+        content: text,
+        likes: 0,
+        comments: []
+    };
+
+    WAHBOOK_POSTS.unshift(newPost);
+    
+    // Insert the new post at the top of the feed instead of re-rendering everything
+    const feed = feedContainer.querySelector('.wahbook-feed-container');
+    const createPostBox = feed.querySelector('.create-post-container');
+    feed.insertAdjacentHTML('afterbegin', renderFeedPost(newPost));
+    if (createPostBox) feed.prepend(createPostBox); // Move create box back to top
+
+    const newPostElement = document.getElementById(`post-${newPost.id}`);
+    if (newPostElement) {
+        newPostElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    createPostModal.style.display = 'none';
+    newPostTextarea.value = '';
+
+    triggerNpcInteraction(newPost, text, state.loggedInUser);
+}
+
+function handleNewReply(inputElement) {
+    const text = inputElement.value.trim();
+    if (!text) return;
+    
+    const postElement = inputElement.closest('.feed-post');
+    const postId = postElement.id.replace('post-', '');
+    const post = WAHBOOK_POSTS.find(p => p.id === postId);
+
+    if (post) {
+        const newComment = { characterKey: state.loggedInUser, text: text };
+        if (!post.comments) post.comments = [];
+        post.comments.push(newComment);
+
+        const commenter = getCharacterData(newComment.characterKey);
+        postElement.querySelector('.post-comments')?.insertAdjacentHTML('beforeend', `
+            <div class="comment">
+                <a href="profile.html?user=${newComment.characterKey}" class="profile-link"><img src="${commenter.portrait}" alt="${commenter.name}" class="comment-pfp"></a>
+                <div class="comment-body"><a href="profile.html?user=${newComment.characterKey}" class="profile-link comment-author">${commenter.name}</a><span class="comment-text">${newComment.text}</span></div>
+            </div>
+        `);
+        inputElement.value = '';
+        
+        const commentBtn = postElement.querySelector('.comment-btn');
+        commentBtn.innerHTML = `<span class="interaction-btn-icon">💬</span> Comment (${post.comments.length})`;
+
+        triggerNpcInteraction(post, text, state.loggedInUser);
+    }
+}
+
+
 function setupEventListeners() {
     tabsContainer.addEventListener('click', (e) => {
         const tab = e.target.closest('.tab-btn');
@@ -470,7 +696,6 @@ function setupEventListeners() {
         const activeContent = document.getElementById(`${tabName}-content`);
         activeContent.classList.add('active');
 
-        // Render content on demand
         const feedContainer = activeContent.querySelector('.wahbook-feed-container');
         if (feedContainer && feedContainer.childElementCount === 0) {
             switch(tabName) {
@@ -487,8 +712,8 @@ function setupEventListeners() {
     });
 
     document.body.addEventListener('click', e => {
-        const likeBtn = e.target.closest('.interaction-btn');
-        if (likeBtn && likeBtn.textContent.includes('Like')) {
+        const likeBtn = e.target.closest('.like-btn');
+        if (likeBtn) {
             playSound('click.mp3', 0.5);
             likeBtn.classList.toggle('liked');
             let likes = parseInt(likeBtn.dataset.likes, 10);
@@ -498,9 +723,7 @@ function setupEventListeners() {
         }
         
         const shareBtn = e.target.closest('.share-btn');
-        if (shareBtn) {
-            handleShare(shareBtn);
-        }
+        if (shareBtn) handleShare(shareBtn);
 
         const eventHeader = e.target.closest('.event-main-header');
         if (eventHeader) {
@@ -522,12 +745,37 @@ function setupEventListeners() {
             sortBtn.classList.add('active');
             renderEventsFeed();
         }
+
+        const createPostInput = e.target.closest('.create-post-input');
+        if (createPostInput) {
+            playSound('click.mp3');
+            createPostModal.style.display = 'flex';
+            newPostTextarea.focus();
+        }
+
+        const commentBtn = e.target.closest('.comment-btn');
+        if (commentBtn) {
+            const post = commentBtn.closest('.feed-post');
+            const replyContainer = post.querySelector('.reply-input-container');
+            if (replyContainer.style.display !== 'flex') {
+                replyContainer.style.display = 'flex';
+                replyContainer.querySelector('.reply-input').focus();
+            }
+        }
     });
 
+    // Modal close listeners
     dossierModalClose?.addEventListener('click', () => dossierModal.style.display = 'none');
-    dossierModal?.addEventListener('click', (e) => {
-        if (e.target === dossierModal) {
-            dossierModal.style.display = 'none';
+    dossierModal?.addEventListener('click', (e) => { if (e.target === dossierModal) dossierModal.style.display = 'none'; });
+    
+    createPostModal.querySelector('.modal-close').addEventListener('click', () => createPostModal.style.display = 'none');
+    createPostModal.addEventListener('click', e => { if (e.target === createPostModal) createPostModal.style.display = 'none'; });
+    submitPostBtn.addEventListener('click', handleNewPost);
+
+    // Reply input listener
+    document.body.addEventListener('keypress', e => {
+        if (e.key === 'Enter' && e.target.classList.contains('reply-input')) {
+            handleNewReply(e.target);
         }
     });
 }
@@ -541,17 +789,39 @@ function updateSeenPosts() {
     saveState();
 }
 
+function simulateLikes() {
+    setInterval(() => {
+        const visiblePosts = document.querySelectorAll('.feed-post');
+        if (visiblePosts.length === 0) return;
+
+        const randomPostElement = visiblePosts[Math.floor(Math.random() * visiblePosts.length)];
+        const postId = randomPostElement.id.replace('post-', '');
+        const postData = WAHBOOK_POSTS.find(p => p.id === postId);
+
+        if (postData) {
+            if(postData.likes === undefined) postData.likes = 0;
+            postData.likes++;
+            const likeBtn = randomPostElement.querySelector('.like-btn');
+            if (likeBtn && !likeBtn.classList.contains('liked')) { // Don't update if the player has manually liked/unliked
+                likeBtn.dataset.likes = postData.likes;
+                likeBtn.innerHTML = `<span class="interaction-btn-icon">👍</span> Like (${postData.likes})`;
+            }
+        }
+    }, 8000 + Math.random() * 6000); // Random interval between 8-14 seconds
+}
+
+
 function init() {
-    loadState(); // Ensure state is loaded before any rendering.
+    loadState();
     if (!feedContainer || !eventsContainer) return;
     
     renderMainFeed();
     renderEventsFeed();
-    renderIntelFeed(); // Pre-render intel so it's ready on tab click
+    renderIntelFeed();
     setupEventListeners();
     updateSeenPosts();
+    simulateLikes();
     
-    // Handle hash on page load
     setTimeout(() => {
         if (window.location.hash === '#intel') {
             const intelTab = document.querySelector('.tab-btn[data-tab="intel"]');
