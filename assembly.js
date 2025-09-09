@@ -9,7 +9,6 @@ import { WAHBOOK_EVENTS } from './assembly-events-data.js';
 import { playSound } from './common.js';
 import { state, saveState, loadState } from './state.js';
 import { NPC_RESPONSES } from './npc-responses.js';
-import { PROFILE_THEMES } from './profile-themes.js';
 
 const tabsContainer = document.getElementById('wahbook-tabs-container');
 const contentContainer = document.getElementById('wahbook-content');
@@ -444,12 +443,11 @@ function renderMediaFeed() {
 }
 
 function handleShare(button) {
-    const postElement = button.closest('.feed-post');
-    if (!postElement) return;
+    const post = button.closest('.feed-post');
+    if (!post) return;
 
-    const postId = postElement.id.replace('post-', '');
-    // Use a query parameter for a unique URL that scrapers can read
-    const url = `${window.location.origin}${window.location.pathname}?post=${postId}`;
+    const postId = post.id;
+    const url = `${window.location.origin}${window.location.pathname}#${postId}`;
     
     navigator.clipboard.writeText(url).then(() => {
         const tooltip = document.createElement('div');
@@ -462,17 +460,21 @@ function handleShare(button) {
     });
 }
 
-
-function scrollToPost(postId) {
-    const elementId = `post-${postId}`;
-    const element = document.getElementById(elementId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        element.style.boxShadow = '0 0 20px var(--neutral-color)';
-        setTimeout(() => element.style.boxShadow = '', 3000);
+function scrollToPostFromHash() {
+    if (window.location.hash) {
+        try {
+            const element = document.querySelector(window.location.hash);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                element.style.boxShadow = '0 0 20px var(--neutral-color)';
+                setTimeout(() => element.style.boxShadow = '', 2000);
+            }
+        } catch (e) {
+            // Invalid selector from hash, do nothing
+            console.warn("Invalid hash for scrolling:", window.location.hash);
+        }
     }
 }
-
 
 // --- NEW POSTING & INTERACTION LOGIC ---
 
@@ -808,45 +810,8 @@ function simulateLikes() {
     }, 8000 + Math.random() * 6000); // Random interval between 8-14 seconds
 }
 
-function handleDirectPostLink() {
-    const params = new URLSearchParams(window.location.search);
-    const postId = params.get('post');
-    if (!postId) return;
-
-    const post = WAHBOOK_POSTS.find(p => p.id === postId);
-    if (!post) return;
-
-    const author = getCharacterData(post.characterKey);
-    const theme = PROFILE_THEMES[post.characterKey] || PROFILE_THEMES.default;
-    const url = `${window.location.origin}${window.location.pathname}?post=${postId}`;
-
-    document.title = `WAHbook: Post by ${author.name}`;
-    
-    const metaTags = [
-        { property: 'og:title', content: author.name },
-        { property: 'og:description', content: post.content },
-        { property: 'og:type', content: 'article' },
-        { property: 'og:url', content: url },
-        { name: 'theme-color', content: theme.accentColor },
-    ];
-
-    if (post.image) {
-        const imageUrl = new URL(post.image, window.location.href).href;
-        metaTags.push({ property: 'og:image', content: imageUrl });
-    }
-
-    metaTags.forEach(tagData => {
-        const meta = document.createElement('meta');
-        for (const key in tagData) {
-            meta.setAttribute(key, tagData[key]);
-        }
-        document.head.appendChild(meta);
-    });
-}
-
 
 function init() {
-    handleDirectPostLink();
     loadState();
     if (!feedContainer || !eventsContainer) return;
     
@@ -858,17 +823,11 @@ function init() {
     simulateLikes();
     
     setTimeout(() => {
-        const params = new URLSearchParams(window.location.search);
-        const postId = params.get('post');
-        if (postId) {
-            scrollToPost(postId);
-        } else if (window.location.hash) {
-             const hashPostId = window.location.hash.replace('#post-', '');
-             scrollToPost(hashPostId);
-             if (hashPostId === 'intel') {
-                 const intelTab = document.querySelector('.tab-btn[data-tab="intel"]');
-                if(intelTab) intelTab.click();
-             }
+        if (window.location.hash === '#intel') {
+            const intelTab = document.querySelector('.tab-btn[data-tab="intel"]');
+            if(intelTab) intelTab.click();
+        } else {
+            scrollToPostFromHash();
         }
     }, 100);
 }

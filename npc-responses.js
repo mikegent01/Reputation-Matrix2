@@ -1,4 +1,3 @@
-// This file contains the data for keyword-based NPC responses on WAHbook.
 
 export const NPC_RESPONSES = [
     // --- GENERIC INITIAL KEYWORDS ---
@@ -12,7 +11,7 @@ export const NPC_RESPONSES = [
     },
     {
         trigger: { keywords: ['fight', 'attack', 'battle', 'war'], tone: 'neutral' },
-        type: 'initial', characterKey: 'humpik', response: "A fight? GWAHAHAHA! Good! Humpik is always ready for a good fight!", tone: 'excited'
+        type: 'initial', characterKey: 'alpha_bloodmaw', response: "War. The only true test. The only honest state of being. Let the hunt begin.", tone: 'aggressive'
     },
     {
         trigger: { keywords: ['magic', 'spell', 'arcane'], tone: 'inquisitive' },
@@ -85,6 +84,46 @@ export const NPC_RESPONSES = [
     {
         trigger: { keywords: ['stupid', 'idiot', 'dumb'], tone: 'negative' },
         type: 'initial', characterKey: 'diddy_kong', response: "Are you being serious right now? Think before you post.", tone: 'angry'
+    },
+    {
+        trigger: { keywords: ['question', 'wondering', 'curious'], tone: 'inquisitive' },
+        type: 'initial', characterKey: 'janna_brightspark', response: "A question! Excellent! Inquiry is the first step toward discovery. What mystery are we unraveling today?", tone: 'inquisitive'
+    },
+    {
+        trigger: { keywords: ['problem', 'issue', 'trouble'], tone: 'neutral' },
+        type: 'initial', characterKey: 'colonel_vera_steelstorm', response: "A problem is simply a tactical challenge. Define the objective, assess your resources, and execute the solution. Do not deviate.", tone: 'formal'
+    },
+    {
+        trigger: { keywords: ['explore', 'journey', 'adventure'], tone: 'positive' },
+        type: 'initial', characterKey: 'captain_toadette', response: "An adventure! I've got my pack ready! Are there treasures to be found? Let's go!", tone: 'excited'
+    },
+    {
+        trigger: { keywords: ['story', 'tale', 'legend'], tone: 'neutral' },
+        type: 'initial', characterKey: 'chief_thornpaw', response: "A story is the wind carrying the wisdom of our ancestors. Speak, and let us listen to the echoes of the past.", tone: 'positive'
+    },
+    {
+        trigger: { keywords: ['peace', 'quiet', 'calm'], tone: 'positive' },
+        type: 'initial', characterKey: 'dan', response: "Peace is what we're all fighting for, isn't it? A world where we don't have to be afraid.", tone: 'positive'
+    },
+    {
+        trigger: { keywords: ['danger', 'threat', 'warning'], tone: 'negative' },
+        type: 'initial', characterKey: 'bones', response: "Danger? Keep your head down and your knife sharp. Only thing that matters is seeing the next sunrise.", tone: 'neutral'
+    },
+    {
+        trigger: { keywords: ['build', 'create', 'construct'], tone: 'positive' },
+        type: 'initial', characterKey: 'artificer_prime_kael', response: "The act of creation is a sacred one. To build is to impose order upon the chaos of raw material. A worthy endeavor.", tone: 'formal'
+    },
+    {
+        trigger: { keywords: ['destroy', 'break', 'ruin'], tone: 'negative' },
+        type: 'initial', characterKey: 'bowser', response: "GWAHAHA! Breaking things is my specialty! If something's in my way, I smash it! It's a simple and effective policy!", tone: 'aggressive'
+    },
+    {
+        trigger: { keywords: ['win', 'victory', 'success'], tone: 'positive' },
+        type: 'initial', characterKey: 'waluigi', response: "Victory! But did you win with style? With flair? It doesn't count unless your enemies are weeping at your magnificent triumph! WAH!", tone: 'excited'
+    },
+    {
+        trigger: { keywords: ['idea', 'suggestion', 'plan'], tone: 'neutral' },
+        type: 'initial', characterKey: 'kamek', response: "An idea, you say? The devil is in the details. Explain your strategy.", tone: 'inquisitive'
     },
 
     // --- FACTION KEYWORDS ---
@@ -256,12 +295,12 @@ export const NPC_RESPONSES = [
         type: 'reply', characterKey: 'kamek', response: "A prudent strategy, your Viciousness. However, we must be wary of overextending our forces.", tone: 'formal'
     },
     {
-        trigger: { keywords: ['pathetic', 'weak', 'fool'], reply_to_author: ['bowser'], tone: 'aggressive' },
-        type: 'reply', characterKey: 'humpik', response: "The King speaks the truth! GWAHAHA!", tone: 'agreement'
-    },
-    {
         trigger: { keywords: ['king', 'my army'], reply_to_author: ['bowser'], tone: 'aggressive' },
         type: 'reply', characterKey: 'captain_toadette', response: "Tyrant! Your 'army' will be crushed by the righteous fury of the Loyalists!", tone: 'angry'
+    },
+    {
+        trigger: { keywords: ['power', 'strength'], reply_to_author: ['bowser'], tone: 'aggressive' },
+        type: 'reply', characterKey: 'king_k_rool', response: "Brute strength is for fools! A true king uses cunning and brilliant strategy to achieve his goals!", tone: 'disagreement'
     },
 
     // --- Replies to Waluigi ---
@@ -286,6 +325,10 @@ export const NPC_RESPONSES = [
     {
         trigger: { keywords: ['empire', 'justice'], reply_to_author: ['colonel_vera_steelstorm', 'general_marcus_ironhand'], tone: 'formal' },
         type: 'reply', characterKey: 'ambassador_callista', response: "Well said, commander. The diplomatic corps will translate your military victories into lasting Imperial peace.", tone: 'agreement'
+    },
+    {
+        trigger: { keywords: ['help', 'hope'], reply_to_author: ['dan'], tone: 'positive' },
+        type: 'reply', characterKey: 'general_marcus_ironhand', response: "Hope is not a strategy, son. Victory is achieved through superior firepower and unwavering discipline.", tone: 'disagreement'
     },
 
     // --- Replies to Fawful ---
@@ -330,8 +373,8 @@ export const NPC_RESPONSES = [
         type: 'reply', characterKey: 'captain_syrup', response: "You owe me, Lario. Don't think I've forgotten.", tone: 'angry'
     },
     {
-        trigger: { keywords: ['fight', 'battle'], reply_to_author: ['humpik'], tone: 'excited' },
-        type: 'reply', characterKey: 'alpha_bloodmaw', response: "The Dwarf speaks the truth. A good fight cleanses the soul.", tone: 'agreement'
+        trigger: { keywords: ['fight', 'battle'], reply_to_author: ['alpha_bloodmaw'], tone: 'aggressive' },
+        type: 'reply', characterKey: 'colonel_vera_steelstorm', response: "Control your bloodlust. A soldier fights with purpose, not for the thrill of the kill.", tone: 'disagreement'
     },
     {
         trigger: { keywords: ['honor', 'duty'], reply_to_author: ['colonel_vera_steelstorm'], tone: 'formal' },
@@ -374,10 +417,6 @@ export const NPC_RESPONSES = [
         type: 'reply', characterKey: 'free_name_sarah', response: "Well said. Hope is the fuel of any revolution.", tone: 'agreement'
     },
     {
-        trigger: { keywords: ['fight', 'battle'], reply_to_author: ['alpha_bloodmaw'], tone: 'aggressive' },
-        type: 'reply', characterKey: 'humpik', response: "The angry dog wants to fight? Good! Humpik will fight with him!", tone: 'agreement'
-    },
-    {
         trigger: { keywords: ['magic', 'spell'], reply_to_author: ['archmage_theron'], tone: 'formal' },
         type: 'reply', characterKey: 'janna_brightspark', response: "Fear of progress is what holds the Guild back, Theron. We could be reshaping reality, and you're worried about following rules from a thousand years ago.", tone: 'disagreement'
     },
@@ -414,10 +453,6 @@ export const NPC_RESPONSES = [
         type: 'reply', characterKey: 'waluigi', response: "WAH! Magic! Can you make me a cape that billows even when there's no wind? That would be very stylish!", tone: 'question'
     },
     {
-        trigger: { keywords: ['honor', 'duty'], reply_to_author: ['colonel_vera_steelstorm'], tone: 'formal' },
-        type: 'reply', characterKey: 'humpik', response: "The metal woman speaks words of a true warrior. Humpik respects this.", tone: 'agreement'
-    },
-    {
         trigger: { keywords: ['vampire'], reply_to_author: ['lord_crimson'], tone: 'sarcastic' },
         type: 'reply', characterKey: 'high_inquisitor_vale', response: "Your shadows cannot hide you from the purifying light of the Flame, creature.", tone: 'aggressive'
     },
@@ -432,5 +467,17 @@ export const NPC_RESPONSES = [
     {
         trigger: { keywords: ['power'], reply_to_author: ['bowser'], tone: 'aggressive' },
         type: 'reply', characterKey: 'fawful', response: "Your power is the bumbling of a beefy fool! My power has FURY! And complex carbohydrates!", tone: 'disagreement'
+    },
+    {
+        trigger: { keywords: ['chaos', 'prank'], reply_to_author: ['giggling_pete'], tone: 'excited' },
+        type: 'reply', characterKey: 'high_inquisitor_vale', response: "The ravings of a madman. Chaos is a disease, and the Silver Flame is the cure.", tone: 'aggressive'
+    },
+    {
+        trigger: { keywords: ['money', 'coin'], reply_to_author: ['lario'], tone: 'inquisitive' },
+        type: 'reply', characterKey: 'the_broker', response: "Your grasp of economics is... simplistic. True wealth is not in coin, but in controlling the flow of it.", tone: 'sarcastic'
+    },
+    {
+        trigger: { keywords: ['protect him'], reply_to_author: ['toad_lee'], tone: 'agreement' },
+        type: 'reply', characterKey: 'dan', response: "I appreciate it, Toad Lee, but you don't have to do that. We protect each other.", tone: 'clarification'
     }
 ];
