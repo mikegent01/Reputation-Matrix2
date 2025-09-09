@@ -9,7 +9,6 @@ import { WAHBOOK_EVENTS } from './assembly-events-data.js';
 import { playSound } from './common.js';
 import { state, saveState, loadState } from './state.js';
 import { NPC_RESPONSES } from './npc-responses.js';
-import { PROFILE_THEMES } from './profile-themes.js';
 
 const tabsContainer = document.getElementById('wahbook-tabs-container');
 const contentContainer = document.getElementById('wahbook-content');
@@ -32,6 +31,11 @@ const dossierModalClose = document.querySelector('.dossier-modal-close');
 const createPostModal = document.getElementById('create-post-modal');
 const newPostTextarea = document.getElementById('new-post-textarea');
 const submitPostBtn = document.getElementById('submit-post-btn');
+
+// Share Modal
+const shareModal = document.getElementById('share-modal');
+const shareCodeTextarea = document.getElementById('share-code-textarea');
+const copyShareBtn = document.getElementById('copy-share-btn');
 
 
 let currentEventSort = 'newest';
@@ -153,13 +157,13 @@ function renderFeedPost(post, options = {}) {
     const imageHTML = post.image ? `<img src="${post.image}" alt="${post.image_alt}" class="post-image">` : '';
     const trendingBadgeHTML = options.showTrendingScore ? `<div class="trending-badge" title="Trending Score: ${options.trendingScore}">🔥</div>` : '';
 
-    const loggedInUser = getCharacterData(state.loggedInUser);
-    const replyInputHTML = `
+    const loggedInUser = state.loggedInUser ? getCharacterData(state.loggedInUser) : null;
+    const replyInputHTML = loggedInUser ? `
         <div class="reply-input-container">
             <img src="${loggedInUser.portrait}" alt="Your profile picture" class="reply-pfp">
             <input type="text" class="reply-input" placeholder="Write a comment...">
         </div>
-    `;
+    ` : '';
 
     return `
         <div class="feed-post" id="post-${post.id}">
@@ -445,34 +449,49 @@ function renderMediaFeed() {
 
 function handleShare(button) {
     const postElement = button.closest('.feed-post');
-    if (!postElement) return;
+    if (!postElement || !shareModal) return;
 
     const postId = postElement.id.replace('post-', '');
-    // Use a query parameter for a unique URL that scrapers can read
-    const url = `${window.location.origin}${window.location.pathname}?post=${postId}`;
     
-    navigator.clipboard.writeText(url).then(() => {
-        const tooltip = document.createElement('div');
-        tooltip.className = 'share-tooltip';
-        tooltip.textContent = 'Copied!';
-        button.appendChild(tooltip);
-        setTimeout(() => tooltip.remove(), 2000);
-    }).catch(err => {
-        console.error('Failed to copy: ', err);
+    // Generate both formats
+    const embedUrl = `${window.location.origin}${window.location.pathname}?embed=${postId}`;
+    const iframeCode = `<iframe src="${embedUrl}" width="550" height="450" style="border:1px solid #ccc; border-radius: 8px;" title="WAHbook Post" loading="lazy"></iframe>`;
+    
+    const pageUrl = window.location.href.split('?')[0].split('#')[0];
+    const directLink = `${pageUrl}#post-${postId}`;
+    
+    // Store content in data attributes for easy access
+    shareModal.dataset.iframe = iframeCode;
+    shareModal.dataset.link = directLink;
+
+    // Set default view to 'iframe'
+    shareCodeTextarea.value = iframeCode;
+    const tabs = shareModal.querySelectorAll('.share-tab-btn');
+    tabs.forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.format === 'iframe');
     });
+
+    copyShareBtn.textContent = 'Copy Code';
+    copyShareBtn.classList.remove('copied');
+    shareModal.style.display = 'flex';
 }
 
 
-function scrollToPost(postId) {
-    const elementId = `post-${postId}`;
-    const element = document.getElementById(elementId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        element.style.boxShadow = '0 0 20px var(--neutral-color)';
-        setTimeout(() => element.style.boxShadow = '', 3000);
+function scrollToPostFromHash() {
+    if (window.location.hash) {
+        try {
+            const element = document.querySelector(window.location.hash);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                element.style.boxShadow = '0 0 20px var(--neutral-color)';
+                setTimeout(() => element.style.boxShadow = '', 2000);
+            }
+        } catch (e) {
+            // Invalid selector from hash, do nothing
+            console.warn("Invalid hash for scrolling:", window.location.hash);
+        }
     }
 }
-
 
 // --- NEW POSTING & INTERACTION LOGIC ---
 
@@ -770,6 +789,40 @@ function setupEventListeners() {
     createPostModal.addEventListener('click', e => { if (e.target === createPostModal) createPostModal.style.display = 'none'; });
     submitPostBtn.addEventListener('click', handleNewPost);
 
+    if (shareModal) {
+        // Close button
+        shareModal.querySelector('.modal-close').addEventListener('click', () => shareModal.style.display = 'none');
+        shareModal.addEventListener('click', e => { if (e.target === shareModal) shareModal.style.display = 'none'; });
+
+        // Tab switching
+        const tabs = shareModal.querySelectorAll('.share-tab-btn');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                if (tab.classList.contains('active')) return;
+                playSound('click.mp3');
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const format = tab.dataset.format;
+                shareCodeTextarea.value = shareModal.dataset[format];
+                copyShareBtn.textContent = 'Copy Code';
+                copyShareBtn.classList.remove('copied');
+            });
+        });
+        
+        // Copy button with auto-copy
+        copyShareBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(shareCodeTextarea.value).then(() => {
+                copyShareBtn.textContent = 'Copied!';
+                copyShareBtn.classList.add('copied');
+                playSound('confirm.mp3');
+            }).catch(err => {
+                console.error('Failed to copy code: ', err);
+                copyShareBtn.textContent = 'Error!';
+            });
+        });
+    }
+
     // Reply input listener
     document.body.addEventListener('keypress', e => {
         if (e.key === 'Enter' && e.target.classList.contains('reply-input')) {
@@ -808,45 +861,31 @@ function simulateLikes() {
     }, 8000 + Math.random() * 6000); // Random interval between 8-14 seconds
 }
 
-function handleDirectPostLink() {
+
+async function init() {
     const params = new URLSearchParams(window.location.search);
-    const postId = params.get('post');
-    if (!postId) return;
+    const embedPostId = params.get('embed');
 
-    const post = WAHBOOK_POSTS.find(p => p.id === postId);
-    if (!post) return;
-
-    const author = getCharacterData(post.characterKey);
-    const theme = PROFILE_THEMES[post.characterKey] || PROFILE_THEMES.default;
-    const url = `${window.location.origin}${window.location.pathname}?post=${postId}`;
-
-    document.title = `WAHbook: Post by ${author.name}`;
-    
-    const metaTags = [
-        { property: 'og:title', content: author.name },
-        { property: 'og:description', content: post.content },
-        { property: 'og:type', content: 'article' },
-        { property: 'og:url', content: url },
-        { name: 'theme-color', content: theme.accentColor },
-    ];
-
-    if (post.image) {
-        const imageUrl = new URL(post.image, window.location.href).href;
-        metaTags.push({ property: 'og:image', content: imageUrl });
+    if (embedPostId) {
+        document.body.classList.add('embed-mode');
+        const mainContent = document.getElementById('main-content');
+        const postData = WAHBOOK_POSTS.find(p => p.id === embedPostId);
+        
+        if (postData && mainContent) {
+            mainContent.innerHTML = `<div id="wahbook-content"><div class="wahbook-feed-container">${renderFeedPost(postData)}</div></div>`;
+            
+            // Remove interactive elements from the embedded post
+            const postElement = mainContent.querySelector('.feed-post');
+            if (postElement) {
+                postElement.querySelector('.post-interactions')?.remove();
+                postElement.querySelector('.reply-input-container')?.remove();
+            }
+        } else if (mainContent) {
+            mainContent.innerHTML = `<p class="page-subtitle">Post not found.</p>`;
+        }
+        return; // Stop further initialization for embed view
     }
 
-    metaTags.forEach(tagData => {
-        const meta = document.createElement('meta');
-        for (const key in tagData) {
-            meta.setAttribute(key, tagData[key]);
-        }
-        document.head.appendChild(meta);
-    });
-}
-
-
-function init() {
-    handleDirectPostLink();
     loadState();
     if (!feedContainer || !eventsContainer) return;
     
@@ -858,17 +897,11 @@ function init() {
     simulateLikes();
     
     setTimeout(() => {
-        const params = new URLSearchParams(window.location.search);
-        const postId = params.get('post');
-        if (postId) {
-            scrollToPost(postId);
-        } else if (window.location.hash) {
-             const hashPostId = window.location.hash.replace('#post-', '');
-             scrollToPost(hashPostId);
-             if (hashPostId === 'intel') {
-                 const intelTab = document.querySelector('.tab-btn[data-tab="intel"]');
-                if(intelTab) intelTab.click();
-             }
+        if (window.location.hash === '#intel') {
+            const intelTab = document.querySelector('.tab-btn[data-tab="intel"]');
+            if(intelTab) intelTab.click();
+        } else {
+            scrollToPostFromHash();
         }
     }, 100);
 }
