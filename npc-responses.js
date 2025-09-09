@@ -1,10 +1,3 @@
-code
-JavaScript
-download
-content_copy
-expand_less
-
-// This file contains the data for keyword-based NPC responses on WAHbook.
 
 export const NPC_RESPONSES = [
     // --- GENERIC INITIAL KEYWORDS ---
