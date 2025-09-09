@@ -9,11 +9,18 @@ const contentContainer = document.getElementById('wahbook-content');
 
 const feedContainer = document.getElementById('feed-content');
 const eventsContainer = document.getElementById('events-content');
+const intelContainer = document.getElementById('intel-content');
 const followedContainer = document.getElementById('followed-content');
 const trendingContainer = document.getElementById('trending-content');
 const mediaContainer = document.getElementById('media-content');
 
 const eventControls = document.getElementById('event-controls');
+
+// Intel Modal
+const dossierModal = document.getElementById('dossier-modal');
+const dossierModalBody = document.getElementById('dossier-modal-body');
+const dossierModalClose = document.querySelector('.dossier-modal-close');
+
 
 let currentEventSort = 'newest';
 
@@ -43,6 +50,25 @@ function getPortrait(characterKey) {
             return fac.logo;
         }
     }
+
+    return 'portraits/unknown.png';
+}
+
+function getPortraitForEntity(key) {
+    const char = LORE_DATA.characters[key];
+    const faction = LORE_DATA.factions[key];
+    const aux = LORE_DATA.auxiliary_party[key];
+
+    if (char) return `portraits/${key}.png`;
+    if (faction) return faction.logo;
+    if (aux) return `toads/${key}.png`; // Assuming all aux are toads for now
+    
+    // Special cases not in main data files
+    const specialPortraits = {
+        'waluigi': 'portraits/waluigi.png',
+        'wah_media_collective': 'icon_newspaper.png'
+    };
+    if (specialPortraits[key]) return specialPortraits[key];
 
     return 'portraits/unknown.png';
 }
@@ -219,6 +245,131 @@ function renderEventsFeed() {
     container.innerHTML = sortedEvents.map(renderEvent).join('');
 }
 
+function renderIntelFeed() {
+    const container = document.getElementById('intel-board-grid');
+    if (!container) return;
+
+    const allRumors = LORE_DATA.rumors || [];
+    const activeRumorIds = state.activeRumors || [];
+    
+    const rumorData = allRumors
+        .filter(rumor => activeRumorIds.includes(rumor.id))
+        .map(rumor => {
+            const relatedPostCount = WAHBOOK_POSTS.filter(p => p.rumorId === rumor.id).length;
+            
+            const allTargets = new Set();
+            rumor.targets.forEach(t => {
+                if (t === 'party') {
+                    state.party.forEach(p => allTargets.add(p));
+                } else {
+                    allTargets.add(t);
+                }
+            });
+            
+            const affectedPfps = Array.from(allTargets).slice(0, 4).map(key => 
+                `<img src="${getPortraitForEntity(key)}" class="dossier-pfp" title="${LORE_DATA.characters[key]?.name || LORE_DATA.factions[key]?.name || 'Unknown'}">`
+            ).join('');
+
+            return `
+                <div class="dossier-card" data-rumor-id="${rumor.id}">
+                    <h3>${rumor.title}</h3>
+                    <p>${rumor.description.substring(0, 120)}...</p>
+                    <div class="dossier-footer">
+                        <div class="dossier-pfp-container">${affectedPfps}</div>
+                        <span class="chatter-count">💬 ${relatedPostCount} Chatter reports</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    
+    container.innerHTML = rumorData || `<p class="page-subtitle" style="grid-column: 1 / -1;">No active intelligence reports found.</p>`;
+}
+
+
+function openDossierModal(rumorId) {
+    const rumor = LORE_DATA.rumors.find(r => r.id === rumorId);
+    if (!rumor) return;
+    
+    const intelPosts = WAHBOOK_POSTS.filter(p => p.rumorId === rumorId)
+        .sort((a, b) => (b.order || 0) - (a.order || 0));
+
+    const allTargets = new Set();
+    rumor.targets.forEach(t => {
+        if (t === 'party') {
+            state.party.forEach(p => allTargets.add(p));
+        } else {
+            allTargets.add(t);
+        }
+    });
+
+    const affectedPartiesHTML = Array.from(allTargets).map(targetKey => {
+        const targetData = getCharacterData(targetKey);
+        if (!targetData.name || targetData.name === 'Unknown User') {
+            const factionData = LORE_DATA.factions[targetKey];
+            if (factionData) {
+                targetData.name = factionData.name;
+                targetData.portrait = factionData.logo;
+            } else {
+                 return ''; // Skip if we can't identify the target
+            }
+        }
+
+        const repChangesHTML = Object.entries(rumor.effects).map(([factionKey, repChange]) => {
+            const factionData = LORE_DATA.factions[factionKey];
+            if (!factionData) return '';
+
+            const repClass = repChange > 0 ? 'positive' : 'negative';
+            const sign = repChange > 0 ? '+' : '';
+            
+            return `
+                <li class="rep-change-item">
+                    <div class="faction-info">
+                        <img src="${factionData.logo}" alt="${factionData.name}">
+                        <span>${factionData.name}</span>
+                    </div>
+                    <span class="rep-change-value ${repClass}">${sign}${repChange} Rep</span>
+                </li>
+            `;
+        }).join('');
+
+        return `
+            <div class="affected-character-card">
+                <h4><img src="${targetData.portrait}" alt="${targetData.name}"> ${targetData.name}</h4>
+                <ul class="rep-change-list">
+                    ${repChangesHTML}
+                </ul>
+            </div>
+        `;
+    }).join('');
+
+
+    const chatterHTML = intelPosts.length > 0
+        ? intelPosts.map(post => renderFeedPost(post)).join('')
+        : `<p class="page-subtitle">No network chatter detected for this rumor.</p>`;
+    
+    dossierModalBody.innerHTML = `
+        <div class="dossier-header">
+            <h2>${rumor.title}</h2>
+            <p>Timeline: ${rumor.time_ago || 'Ongoing'}</p>
+        </div>
+        <p>${rumor.description}</p>
+        <div class="dossier-analysis-grid">
+            <div class="dossier-affected-parties">
+                <h4>Affected Parties & Reputation Impact</h4>
+                <div class="affected-list">
+                    ${affectedPartiesHTML}
+                </div>
+            </div>
+            <div class="dossier-network-feed">
+                <h4>Related Network Chatter</h4>
+                ${chatterHTML}
+            </div>
+        </div>
+    `;
+
+    dossierModal.style.display = 'flex';
+}
+
 function renderFollowedFeed() {
     const container = document.getElementById('followed-feed-container');
     if (!container) return;
@@ -320,12 +471,18 @@ function setupEventListeners() {
         activeContent.classList.add('active');
 
         // Render content on demand
-        if (activeContent.childElementCount === 0 || (activeContent.firstElementChild && activeContent.firstElementChild.classList.contains('wahbook-feed-container') && activeContent.firstElementChild.childElementCount === 0)) {
+        const feedContainer = activeContent.querySelector('.wahbook-feed-container');
+        if (feedContainer && feedContainer.childElementCount === 0) {
             switch(tabName) {
                 case 'followed': renderFollowedFeed(); break;
                 case 'trending': renderTrendingFeed(); break;
                 case 'media': renderMediaFeed(); break;
             }
+        }
+        
+        const intelBoard = document.getElementById('intel-board-grid');
+        if(tabName === 'intel' && intelBoard.childElementCount === 0) {
+            renderIntelFeed();
         }
     });
 
@@ -350,6 +507,12 @@ function setupEventListeners() {
             playSound('click.mp3');
             eventHeader.parentElement.classList.toggle('expanded');
         }
+        
+        const dossierCard = e.target.closest('.dossier-card');
+        if (dossierCard) {
+            playSound('confirm.mp3', 0.6);
+            openDossierModal(dossierCard.dataset.rumorId);
+        }
 
         const sortBtn = e.target.closest('#event-controls .control-btn');
         if (sortBtn && !sortBtn.classList.contains('active')) {
@@ -358,6 +521,13 @@ function setupEventListeners() {
             document.querySelectorAll('#event-controls .control-btn').forEach(btn => btn.classList.remove('active'));
             sortBtn.classList.add('active');
             renderEventsFeed();
+        }
+    });
+
+    dossierModalClose?.addEventListener('click', () => dossierModal.style.display = 'none');
+    dossierModal?.addEventListener('click', (e) => {
+        if (e.target === dossierModal) {
+            dossierModal.style.display = 'none';
         }
     });
 }
@@ -372,13 +542,24 @@ function updateSeenPosts() {
 }
 
 function init() {
+    loadState(); // Ensure state is loaded before any rendering.
     if (!feedContainer || !eventsContainer) return;
+    
     renderMainFeed();
     renderEventsFeed();
+    renderIntelFeed(); // Pre-render intel so it's ready on tab click
     setupEventListeners();
     updateSeenPosts();
-    // Use a timeout to ensure all content is on the page before scrolling
-    setTimeout(scrollToPostFromHash, 100);
+    
+    // Handle hash on page load
+    setTimeout(() => {
+        if (window.location.hash === '#intel') {
+            const intelTab = document.querySelector('.tab-btn[data-tab="intel"]');
+            if(intelTab) intelTab.click();
+        } else {
+            scrollToPostFromHash();
+        }
+    }, 100);
 }
 
 init();

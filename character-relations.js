@@ -3,7 +3,7 @@ export const CHARACTER_RELATIONS = {
     // --- PARTY MEMBER OPINIONS ---
     'archie': {
         'markop': { type: 'ally', text: "Archie on Markop: A stuffy, self-righteous shield. But he's a reliable shield, and sometimes, you need one of those. He's taking forever with the kid. If you want something done, you have to nudge the 'honorable' ones in the right direction." },
-        'humpik': { type: 'ally', text: "Archie on Humpik: Simple. Predictable. Useful for hitting things. Points in the right direction and he goes." },
+        'humpik': { type: 'ally', text: "Archie on Humpik: The Dwarf is simple. Predictable. Useful for hitting things. Points in the right direction and he goes." },
         'bowser': { type: 'ally', text: "Archie on Bowser: He can yell all he wants. I'm the one who gets things done, even if it's messy. He's just another would-be king, but his desire to smash the Empire is useful. A temporary, powerful convenience." },
         'remi': { type: 'ally', text: "Archie on Remi: Fresh meat. A blank slate. Could be a useful tool, or just another boring body. We'll see if they can keep up." },
         'dan': { type: 'ally', text: "Archie on Dan: The kid's got guts, I'll give him that. But all that 'hope' stuff is gonna get him killed. Or worse, make him boring. He's Markop's project, but a little push in a more... *interesting* direction couldn't hurt. For his own good, of course." },
@@ -32,7 +32,7 @@ export const CHARACTER_RELATIONS = {
     },
     'markop': {
         'archie': { type: 'ally', text: "Markop on Archie: A force of pure chaos. His methods are reprehensible, but his actions sometimes lead to a greater good. A soul to be guided, if possible. His recent 'interest' in Dan's training is... concerning. I must ensure the boy's path remains his own." },
-        'humpik': { type: 'ally', text: "Markop on Humpik: His loyalty is commendable, though his ally is questionable. A strong arm in a just fight." },
+        'humpik': { type: 'ally', text: "Markop on Humpik: His loyalty is commendable, though his king is questionable. A strong arm in a just fight. A true friend." },
         'bowser': { type: 'enemy', text: "Markop on Bowser: A tyrant and a warlord. His goals are antithetical to justice and order. An alliance of desperation, not trust." },
         'remi': { type: 'ally', text: "Markop on Remi: Another soul caught in this chaos. I'll have to keep an eye on them, make sure Archie doesn't lead them down the wrong path too." },
         'dan': { type: 'ally', text: "Markop on Dan: A student with a purer heart than I ever had. He is a reflection of the good we fight for, and I must not fail him." },
@@ -60,11 +60,11 @@ export const CHARACTER_RELATIONS = {
         'remi': { type: 'ally', text: "Humpik on Remi: New guy. Looks small. Hope he can fight." },
         'waluigi': { type: 'ally', text: "Humpik on Waluigi: The skinny purple man... he grew wings! And saved me! He is strange, but he is a friend. A good friend. I owe him." },
         'iron_thorn': { type: 'enemy', text: "Humpik on Iron Thorn: Metal man hurt my friend! I hit him with my axe! If I see him again, I will hit him harder!" },
-        'dan': { type: 'ally', text: "Humpik on Dan: He's a little guy, but he's tough! Like a tiny Bowser! Gwahahaha!" },
+        'dan': { type: 'ally', text: "Humpik on Dan: He's a little guy, but he's tough! Like a tiny, brave rock! Gwahahaha!" },
         'toad_lee': { type: 'ally', text: "Humpik on Toad Lee: He has a big axe! He fights good! GWAHAHA!" },
         'eager': { type: 'ally', text: "Humpik on Eager: He's fast! Hard to hit! Good!" },
         'roger': { type: 'ally', text: "Humpik on Roger: He has a boom-stick! Loud! Good for fighting!" },
-        'ryan': { type: 'ally', text: "Humpik on Ryan: He does the sparkly stuff. Like Kamek. Weird, but can be strong." },
+        'ryan': { type: 'ally', text: "Humpik on Ryan: He does the sparkly stuff. Weird, but can be strong." },
         'bones': { type: 'ally', text: "Humpik on Bones: He looks like he's been in a lot of fights. He's a tough little guy." },
         'wallys_toad': { type: 'enemy', text: "Humpik on Wally's Toad: Sneaky little toad! He was a spy! Spies are not strong! They get smashed!" },
         'black_t': { type: 'neutral', text: "Humpik on Black T: Small toad in black. Talked about toad selling. He was hiding. Strange."}
@@ -72,7 +72,7 @@ export const CHARACTER_RELATIONS = {
     'bowser': {
         'archie': { type: 'ally', text: "Bowser on Archie: He's useful, but his chaos nearly cost us everything! I thought he had this under control. He's on thin ice." },
         'markop': { type: 'ally', text: "Bowser on Markop: The horse-man has honor, which is a weakness. But he's a strong fighter. He keeps the little guys in line, so he's useful for now." },
-        'humpik': { type: 'ally', text: "Bowser on Humpik: My most loyal soldier! He is the strength of the Koopa Troop made manifest! GWAHAHAHA!" },
+        'humpik': { type: 'ally', text: "Bowser on Humpik: My most loyal ally! He has the strength of a mountain and the loyalty of a true friend! GWAHAHAHA!" },
         'remi': { type: 'ally', text: "Bowser on Remi: Another minion. As long as they follow orders, I don't care who they are." },
         'waluigi': { type: 'neutral', text: "Bowser on Waluigi: The purple string bean? He's a schemer. Useful for now, but not to be trusted. He got Humpik out, so... credit where it's due." }
     },
@@ -101,11 +101,11 @@ export const CHARACTER_RELATIONS = {
     'lario': {
         'markop': { type: 'ally', text: "Lario on Markop: He saved me! The big horse-guy, he actually saved me! Maybe not all heroes are schmucks after all. I owe him one." },
         'waluigi': { type: 'enemy', text: "Lario on Waluigi: He left me! Said I was too FAT! Can you believe the nerve of that skinny purple cheat? When I get my hands on him..." },
-        'humpik': { type: 'ally', text: "Lario on Humpik: The big Koopa threw an axe for me! An axe! That's a goblin's love language! He's alright in my book." }
+        'humpik': { type: 'ally', text: "Lario on Humpik: The big Dwarf threw an axe for me! An axe! That's a goblin's love language! He's alright in my book." }
     },
     'captain_toadette': {
         'bowser': { type: 'enemy', text: "Toadette on Bowser: The beast is responsible for the Princess's death. This temporary truce is a bitter pill, a necessary evil to uncover the truth and punish the true villains." },
-        'humpik': { type: 'enemy', text: "Toadette on Humpik: One of Bowser's elite butchers. His hands are stained with the blood of my people. He will answer for his crimes." }
+        'humpik': { type: 'enemy', text: "Toadette on Humpik: A savage from a strange land, allied with a monster. His hands are stained with the blood of my people. He will answer for his crimes." }
     },
     'kamek': {
         'archie': { type: 'ally', text: "Kamek on Archie: A chaotic, unpredictable variable. Lord Bowser's alliance with him is a high-risk gambit. I am watching him very, very closely." },

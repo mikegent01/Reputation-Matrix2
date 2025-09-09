@@ -4,21 +4,21 @@ export const FACTION_ASSESSMENTS = {
     regal_empire: {
         archie: `The Empire views Archie as a high-priority anarchist and a significant threat. His central role in the 'Vigilance' hijacking and flagrant disregard for Imperial law mark him as a public enemy. While some internal factions see his chaos as useful data, the overwhelming official stance is one of extreme hostility.`,
         markop: `Markop is seen as a tragic failure and an embarrassment. As a former paladin, his association with known criminals reflects poorly on the institutions he once served. He is considered a person of interest, a symbol of the chaos threatening the Imperial peace.`,
-        humpik: `As Bowser's key ally and battlefield commander, Humpik is considered part of a hostile foreign military. His presence on the 'Vigilance' is a direct breach of Imperial security, and he is tracked as a key operative of an enemy warlord.`,
+        humpik: `A dangerous anomaly. A Dwarf in service to a beast-king is a violation of the natural order and an insult to the established hierarchies. The Empire views him as a particularly savage and unpredictable mercenary, a tool of a hostile foreign power.`,
         bowser: `Bowser is a long-standing threat to Imperial interests and a rival monarch. His capture and subsequent alliance with the party are viewed with extreme suspicion. He has high notoriety as a significant and hostile foreign power.`,
         remi: `An unknown variable. As a new member of an anarchist crew on a stolen Imperial warship, they are automatically classified as a hostile entity of low priority.`
     },
     iron_legion: {
         archie: `The party's presence is a catalyst for disaster. They have detained Legion members and are responsible for the death of at least one soldier. They are now considered a high-priority hostile force, and their chaotic methods are a direct threat to Legion objectives.`,
         markop: `His failure to control his companions has led to the death of a Legionnaire. He is an accomplice to murder and a traitor to the concept of order. The Legion views him with utter contempt.`,
-        humpik: `Humpik is recognized as a powerful warrior allied with a rival, but his blunt refusal of an honorable duel for the staff is seen by Legion traditionalists as a sign of Koopa barbarism and lack of true martial honor.`,
+        humpik: `The Legion respects Dwarven strength and honor, but Humpik's alliance with a monstrous monarch is a deep dishonor in their eyes. The traditionalists view him with contempt as a clanless oathbreaker. Younger, more pragmatic officers are merely curious about his combat prowess.`,
         bowser: `The Iron Legion views Bowser as a rival military commander. They respect his strength and the power he commands but see him as an obstacle to Imperial expansion. He is a well-documented and recognized military threat.`,
         remi: `Another mercenary. Insignificant until they prove otherwise on the battlefield. Their association with known hostiles makes them a target by default.`
     },
     freelancer_underworld: {
         archie: `Archie is a chaotic force in the underworld. The established Syndicates see him as a liability who brings unwanted official attention. Conversely, independent operators and information brokers appreciate the lucrative chaos he creates, making him a notorious but divisive figure.`,
         markop: `Markop's moral code makes him an untrustworthy and unpredictable element in the criminal underworld. Most freelancers avoid him, assuming he's either a snitch or a mark. His notoriety is low, as he's not considered a serious player.`,
-        humpik: `Known only as Bowser's primary enforcer, Humpik has little personal standing here. He is seen as a powerful warrior who acts in concert with his ally, but has no independent reputation in the network.`,
+        humpik: `Known only as Bowser's primary enforcer, Humpik has little personal standing here. He is seen as powerful, reliable muscle, a valuable asset for any employer, but his unwavering loyalty makes him impossible to hire away.`,
         bowser: `Bowser is too 'loud' for the subtle games of the Freelancer Underworld. He is viewed as a client or a target, not a colleague. His methods are too overt, and his goals (conquest) don't align with their pursuit of profit.`,
         remi: `A fresh face. Could be a potential client, a mark, or a competitor. We're watching to see which.`
     },
@@ -53,14 +53,14 @@ export const FACTION_ASSESSMENTS = {
     rakasha_clans: {
         archie: `The shamans of the Spirit-Walkers see Archie's chaotic energy as a blight upon the natural world. While some younger warriors respect his power, the leadership views him as an unstable and destructive force, a walking natural disaster.`,
         markop: `Markop is held in high esteem. His quest for redemption is considered honorable, and his decision to place Dan the Toad under their tutelage was a masterstroke of diplomacy. The Spirit-Walkers see him as a true friend and ally.`,
-        humpik: `The Rakasha respect Humpik's strength and loyalty to his ally, Bowser, as it mirrors their own clan values. The Beast-Riders in particular see him as a strong warrior worthy of respect.`,
+        humpik: `The Rakasha respect Humpik's strength and loyalty to his king, as it mirrors their own clan values. The Beast-Riders in particular see him as a strong warrior worthy of respect.`,
         bowser: `The clans are wary of Bowser. They see him as an invader and a king who seeks to tame the wilderness, not live in harmony with it. His goals are fundamentally opposed to their way of life.`,
         remi: `A human mercenary allied with the chaotic ones. They are viewed with suspicion until their actions prove their character.`
     },
     cosmic_jesters: {
         archie: `Archie is a prophet. A divine instrument. His every destructive, chaotic, and illogical act is seen as a prayer to the Cosmic Jester. He is idolized by the cult, and his high notoriety is a mark of supreme holiness in their eyes. They follow his exploits with religious fervor.`,
         markop: `The cult finds Markop dreadfully boring. He tries to create order from chaos, which they see as an insult to their god. He is the straight man in the universe's greatest joke, and they barely notice him.`,
-        humpik: `Humpik is a simple, predictable variable. The Jesters find his unwavering loyalty to his allies amusing in its simplicity, like a child's toy that only does one thing. He is not important to them.`,
+        humpik: `Humpik is a simple, predictable variable. The Jesters find his unwavering loyalty to his king amusing in its simplicity, like a child's toy that only does one thing. He is not important to them.`,
         bowser: `Bowser's predictable schemes of conquest are the antithesis of the Jester's delightful madness. He is seen as a hack comedian telling the same joke over and over. They have no interest in his boring, logical goals.`,
         remi: `A new variable! How exciting! Their potential for chaos is yet unknown, which makes them fascinating.`
     },
@@ -81,42 +81,42 @@ export const FACTION_ASSESSMENTS = {
     oathbound_judges: {
         archie: `Archie's criminal record is extensive and well-documented. The Truthbearer faction sees him as a career lawbreaker who is long overdue for judgment. The Arbiters of Intent, however, note that his crimes often lead to a greater good, making his case a fascinating legal and ethical paradox.`,
         markop: `As a former paladin, Markop is held to a higher standard. His willing association with criminals is a grave offense in the eyes of the Judges. They see him as an officer of the law who has betrayed his oath, a crime they take very seriously.`,
-        humpik: `Humpik is judged by the actions of his ally, Bowser. As he knowingly and willingly aids a lawless warlord in his campaigns, he is considered a co-conspirator in all of Bowser's crimes.`,
+        humpik: `Humpik is judged by the actions of his king, Bowser. As he knowingly and willingly aids a lawless warlord in his campaigns, he is considered a co-conspirator in all of Bowser's crimes.`,
         bowser: `The Judges view Bowser as the leader of an illegitimate state and a rogue entity operating outside of cosmic law. His entire campaign is a violation of established treaties and natural order, and they are building a case against him.`,
         remi: `A new file has been opened. As an associate of known criminals, their actions will be recorded and weighed. For now, their slate is clean, but their company is not.`
     },
     ratchet_raiders: {
         archie: `Archie is their patron saint. He blows up the newest, fanciest Imperial technology, leaving a trail of high-quality, valuable scrap for them to salvage. The Boomers love his style, and the Scrap Barons love the profits he generates. He is a celebrated hero.`,
         markop: `The Raiders think Markop is a killjoy. He's the type to lecture them about safety regulations and proper maintenance. They avoid him, as his orderly nature clashes with their love of chaotic engineering.`,
-        humpik: `Humpik's association with Bowser's war machines makes him interesting. They see him as a potential client or a source of unique scrap from the Koopa Troop's strange contraptions.`,
+        humpik: `A Dwarf! They respect a good craftsman, but his traditionalist ways are at odds with their slap-dash, explosive engineering. They're curious about his axe, but wary of his lectures on 'proper forging techniques'.`,
         bowser: `The Raiders are fascinated by the Koopa Troop's war machines. They see Bowser as a brilliant, if eccentric, Mekaniak who has created a unique brand of clunky but effective technology. They respect his ingenuity.`,
         remi: `Another warm body. Can they fix a busted engine or just get in the way? Time will tell.`
     },
     koopa_troop: {
         archie: `A useful but dangerous tool. Bowser's Elite and the Kamek Cabal are wary of his instability, fearing he could turn on them. The common soldiers, however, think his explosions are cool and are happy to have him on their side.`,
         markop: `Markop's position is precarious. He is not one of them, and his history as a paladin makes the Kamek Cabal deeply suspicious. He is tolerated only because the King trusts him, but he is watched constantly.`,
-        humpik: `Humpik is the embodiment of loyalty and strength, revered by the entire Troop. He is seen as Bowser's right hand and a peer on the battlefield, a model warrior that all other troop members should aspire to be. His reputation is spotless.`,
+        humpik: `Humpik is the embodiment of loyalty and strength, revered by the entire Troop. His status as an outlander Dwarf only adds to his legend. He is seen as Bowser's unbreakable shield and a model warrior that all troop members should aspire to be.`,
         bowser: `He is the King. His reputation is absolute. The Troop's loyalty is unwavering, and his word is law. Every soldier would follow him to the end.`,
         remi: `A new hire for the King's allies. They will be treated as one of our own, until they prove otherwise.`
     },
     rebel_clans: {
         archie: `To the New Wave Rebels, Archie is a hero whose attacks on the Empire are legendary. The traditional Old Clans, however, are suspicious of his extreme methods and his association with a monarch like Bowser, making him a divisive figure.`,
         markop: `Markop's defiance of his Imperial past resonates with the rebels. They see him as someone who has seen the truth of Imperial oppression and now fights against it, making him a powerful symbol for their cause.`,
-        humpik: `The clans see Humpik as an agent of a foreign monarch. They are fighting to be free of kings and emperors, so they view him and his ally with deep suspicion, as potential future oppressors.`,
+        humpik: `The clans see Humpik as an agent of a foreign monarch. They are fighting to be free of kings and emperors, so they view him and his king with deep suspicion, as potential future oppressors.`,
         bowser: `Bowser's offer of alliance is seen as a deal with a devil. While the New Wave is desperate enough to consider it, the Old Clans see him as just another tyrant trying to replace the Emperor. They do not trust him or his ambitions.`,
         remi: `A human fighting the Empire is a potential friend. But their association with Bowser is a concern. They are an unknown.`
     },
     crimson_fleet: {
         archie: `Archie has the spirit of a true pirate: he's chaotic, defies authority, and leaves destruction in his wake. The Free Captains love his style. The party's continued possession of a powerful arcane staff makes their ship a high-value target.`,
         markop: `The Fleet is deeply suspicious of Markop. A man of the law, even a fallen one, is not to be trusted on a pirate vessel. They see him as a liability, likely to turn on them the moment it suits his moral code.`,
-        humpik: `The pirates respect Humpik as a loyal ally to a powerful leader (Bowser). He is seen as strong, reliable muscle, an essential part of any good crew.`,
+        humpik: `The pirates respect Humpik as a loyal ally to a powerful king (Bowser). He is seen as strong, reliable muscle, an essential part of any good crew.`,
         bowser: `The Pirate Lords see Bowser as a kindred spirit: a king of his own domain who answers to no one. They respect his power, his fleet, and his open defiance of the Empire, viewing him as a powerful potential ally on the high seas.`,
         remi: `Another hand on deck. Can they hoist a sail or are they just dead weight? Their worth will be measured in the treasure they help acquire.`
     },
     wario_land: {
         archie: `Archie is bad for business... unless he's breaking someone else's business, then he's great! He's a chaotic investment. Lario avoids him, but Wario sees potential for profit in his wake.`,
         markop: `A potential mark. His 'honor' means he's probably carrying a fat coin purse he's not willing to defend with dirty tricks. An easy target if he's ever alone.`,
-        humpik: `Big, dumb muscle. Probably costs a fortune in food. Not a cost-effective asset.`,
+        humpik: `A Dwarf. Probably has gold. Good at breaking things, which can be useful for 'asset acquisition'. A potential hire, if the price is right.`,
         bowser: `A competitor. He wants to conquer, we want to own. His methods are too destructive, which is bad for property values. Wario respects his ambition but dislikes his methods.`,
         remi: `Insignificant. Unless they have coin. Do they have coin?`
     },
@@ -130,14 +130,14 @@ export const FACTION_ASSESSMENTS = {
     peach_loyalists: {
         archie: `An accomplice to Bowser, the monster who created the chaos that killed our Princess. He is an enemy to be crushed.`,
         markop: `He consorts with our mortal enemy, Bowser. Any good he does for Dan the Toad is negated by this unforgivable alliance. He is a traitor to the cause of justice.`,
-        humpik: `One of Bowser's allies. He is a butcher and a villain, and will be shown no mercy when we restore the true Queen.`,
+        humpik: `One of Bowser's allies. A savage mercenary from a strange land who will be shown no mercy when we restore the true Queen.`,
         bowser: `The beasts of the Koopa Troop have shown an unexpected sliver of honor by aiding in the rescue of our soldiers. While Bowser remains the ultimate enemy, this truce is a necessary evil to uncover the truth of the Princess's death. They are not to be trusted, but for now, they are not to be shot on sight.`,
         remi: `Another soldier in the army of villains. They will be judged with the rest.`
     },
     fawfuls_furious_freaks: {
         archie: `A fool of chaos! His explosions are like a sandwich of noise that lacks the mustard of true evil genius! He is a distracting gnat to be swatted if he buzzes too near my magnificent castle!`,
         markop: `The horse-man has righteousness that is STALE! Like bread left in the sun! He is a predictable bore who will be vacuumed up with all the other dust bunnies of justice!`,
-        humpik: `BEEF! He is a mountain of beefiness with a brain of a tiny, scared pebble! His loyalty to his friends is a weakness I shall exploit with glee!`,
+        humpik: `BEEF! He is a mountain of beefiness with a brain of a tiny, scared pebble! His loyalty to his king is a weakness I shall exploit with glee!`,
         bowser: `The turtle king is a failure! A king of failure! His troops are now my troops! His plans are now my footnotes! I will succeed where his turtleyness was a flailing buffoon! I HAVE FURY!`,
         remi: `A new minion for the fools! A minion of a minion! They have the insignificance of a forgotten bread crumb!`
     },

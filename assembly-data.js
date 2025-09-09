@@ -1,3 +1,4 @@
+import { WAHBOOK_INTEL_POSTS } from './assembly-intel-data.js';
 
 export const WAHBOOK_POSTS = [
     {
@@ -41,13 +42,14 @@ The incident sent the Mushroom Kingdom's currency into a two-hour freefall, with
             { characterKey: 'diddy_kong', text: "It's not 'shenanigans', it's a disgrace. He needs to be held accountable." },
             { characterKey: 'king_k_rool', text: "A masterclass in self-destruction. My compliments to the ape. #KremlingKoin" },
             { characterKey: 'lario', text: "See, this is why you need professional, goblin-made inflation devices. Amateurs." }
-        ]
+        ],
+        rumorId: 'lankys_disgrace_at_summit'
     },
      {
         id: 'fawful_gala_news',
         order: 20,
         characterKey: 'wah_media_collective',
-        timestamp: '1 day ago',
+        timestamp: '2 weeks ago',
         content: `**GALA OF GHOSTS! Castle Infiltration Ends in Bizarre Temporal Event!**
 
 Reports from the joint Koopa-Loyalist infiltration team confirm that the powerful entity known as the 'God Toad' possesses the ability to manipulate time itself.
@@ -59,8 +61,9 @@ During a confrontation, the Loyalist hero **Embercap** was reportedly slain, onl
         comments: [
             { characterKey: 'fawful', text: "My gala had fury! And a success of such magnitude! The bugs who infiltrated were merely footnotes to my genius!" },
             { characterKey: 'giggling_pete', text: "The temporal distortion was a hilarious punchline! 10/10, would unravel causality again!" },
-            { characterKey: 'archie', text: "Time travel? Now THAT'S interesting. Need to get a sample of that."}
-        ]
+            { characterKey: 'janna_brightspark', text: "Time manipulation on this scale... fascinating! The Innovators must study this phenomenon."}
+        ],
+        rumorId: 'koopa_loyalist_truce'
     },
     {
         id: 'peach_death_news',
@@ -79,13 +82,14 @@ While precise circumstances remain unclear, many within the Protectorate blame B
             { characterKey: 'captain_toadette', text: "We will have justice for our Princess. This is not over." },
             { characterKey: 'kamek', text: "A convenient narrative. Perhaps the Regency should look closer to home for the source of their 'instability'." },
             { characterKey: 'bowser', text: "I was framed!" }
-        ]
+        ],
+        rumorId: 'peach_death_fallout'
     },
     {
         id: 'xo_defeat_news',
         order: 2,
         characterKey: 'wah_media_collective',
-        timestamp: '5 days ago',
+        timestamp: '4 weeks ago',
         content: `**Archie, The Toad, And The Sorceress: Vigilance Recaptured!**
 
 In a stunning turn of events, the notorious airship _Vigilance_, recently seized by the rogue sorceress X.O., has been dramatically recaptured! Reports from inside the floating fortress confirm a chaotic confrontation involving the enigmatic rogue, Archie Miser, the stoic Centaur Paladin, Markop Judi, and surprisingly, a courageous toad identified as Dan.
@@ -98,7 +102,8 @@ Sources claim the diminutive toad, Dan, played a pivotal role, disarming the sor
             { characterKey: 'lario', text: "And I helped! Don't forget Lario!" },
             { characterKey: 'colonel_vera_steelstorm', text: "An unregistered combat action involving a stolen Imperial warship. Duly noted." },
             { characterKey: 'dan', text: "I just did what anyone would have done."}
-        ]
+        ],
+        rumorId: 'xo_defeat'
     },
     {
         id: 'diddy_post_1',
@@ -111,7 +116,8 @@ Sources claim the diminutive toad, Dan, played a pivotal role, disarming the sor
             { characterKey: 'candy_kong', text: "I'm with you, Diddy. I've defended him for the last time. This is unacceptable." },
             { characterKey: 'lanky_kong', text: "Lighten up, little buddy! It was funny! You should have seen their faces! 😂" },
             { characterKey: 'cranky_kong', text: "Back in my day, we settled these things with a barrel-throwing contest. Kids these days and their 'motions'..."}
-        ]
+        ],
+        rumorId: 'lankys_disgrace_at_summit'
     },
     {
         id: 'dk_post_1',
@@ -124,7 +130,8 @@ Sources claim the diminutive toad, Dan, played a pivotal role, disarming the sor
             { characterKey: 'captain_toad', text: "Appreciate the official statement, DK. We're trying to calm the markets on our end." },
             { characterKey: 'king_k_rool', text: "'Consequences'? Like sending him to bed without a banana? Pathetic." },
             { characterKey: 'diddy_kong', text: "There better be."}
-        ]
+        ],
+        rumorId: 'lankys_disgrace_at_summit'
     },
     {
         id: 'krool_post_1',
@@ -136,7 +143,8 @@ Sources claim the diminutive toad, Dan, played a pivotal role, disarming the sor
         comments: [
             { characterKey: 'donkey_kong', text: "🦍" },
             { characterKey: 'wario', text: "Hmm, this Kremling Koin... tell me more. Is it shiny?"}
-        ]
+        ],
+        rumorId: 'lankys_disgrace_at_summit'
     },
      {
         id: 'lanky_post_1',
@@ -149,7 +157,8 @@ Sources claim the diminutive toad, Dan, played a pivotal role, disarming the sor
             { characterKey: 'diddy_kong', text: "You think this is a JOKE?! I'm coming to find you." },
             { characterKey: 'chunky_kong', text: "Lanky, please call me." },
             { characterKey: 'waluigi', text: "A true masterpiece of chaos! WAH-nderful!"}
-        ]
+        ],
+        rumorId: 'lankys_disgrace_at_summit'
     },
     {
         id: 'candy_post_1',
@@ -160,7 +169,8 @@ Sources claim the diminutive toad, Dan, played a pivotal role, disarming the sor
         likes: 630,
         comments: [
             { characterKey: 'diddy_kong', text: "Exactly. It's over."}
-        ]
+        ],
+        rumorId: 'lankys_disgrace_at_summit'
     },
     {
         id: 'chunky_post_1',
@@ -169,7 +179,8 @@ Sources claim the diminutive toad, Dan, played a pivotal role, disarming the sor
         timestamp: '7 hours ago',
         content: "It's sad to see family fighting like this. Can't we all just sit down and talk it over? Please.",
         likes: 350,
-        comments: []
+        comments: [],
+        rumorId: 'lankys_disgrace_at_summit'
     },
     {
         id: 'penny_post_1',
@@ -178,7 +189,8 @@ Sources claim the diminutive toad, Dan, played a pivotal role, disarming the sor
         timestamp: '8 hours ago',
         content: "Fascinating market dynamics today. The 'Banana Bunch' experienced a catastrophic, sentiment-driven collapse following the... 'Lanky Kong incident'. Kremling Koin is up 450%. For those asking for financial advice: diversify your portfolio. And maybe buy some Kremling Koins.",
         likes: 215,
-        comments: []
+        comments: [],
+        rumorId: 'lankys_disgrace_at_summit'
     },
     {
         id: 'captain_toad_post_1',
@@ -189,7 +201,8 @@ Sources claim the diminutive toad, Dan, played a pivotal role, disarming the sor
         likes: 422,
         comments: [
             { characterKey: 'chancellor_toadsworth', text: "A regrettable incident, Captain. Do what you can. The Regency must appear stable."}
-        ]
+        ],
+        rumorId: 'lankys_disgrace_at_summit'
     },
     {
         id: 'summit_reaction_1',
@@ -198,20 +211,21 @@ Sources claim the diminutive toad, Dan, played a pivotal role, disarming the sor
         timestamp: '10 hours ago',
         content: "WAH HAH HAH! I haven't seen a diplomatic incident that beautiful since I replaced the treaty ink with disappearing ink! That long-armed fool is a true artist of chaos! A genius! Almost as good as ME!",
         likes: 42,
-        comments: []
+        comments: [],
+        rumorId: 'lankys_disgrace_at_summit'
     },
     {
         id: 'bowser_post_1',
         order: 15,
         characterKey: 'bowser',
-        timestamp: '11 hours ago',
+        timestamp: '4 weeks ago',
         content: "GWAHAHAHA! These 'allies' of mine are... amusing. The three-eyed one has a knack for explosions, and the horse-man is surprisingly tough. The ship is a bit cramped, but it'll do. First order of business: find Kamek and the rest of my army. Then, we remind everyone who the REAL king is!",
         likes: 680,
         comments: [
-            { characterKey: 'humpik', text: "GWAHAHA! YES, BOSS! WE SMASH 'EM GOOD!" },
             { characterKey: 'kamek', text: "A wise course of action, Your Viciousness. The troops await your command." },
             { characterKey: 'captain_toadette', text: "You will answer for your crimes, beast."}
-        ]
+        ],
+        rumorId: 'bowser_capture'
     },
     {
         id: 'summit_reaction_2',
@@ -220,7 +234,8 @@ Sources claim the diminutive toad, Dan, played a pivotal role, disarming the sor
         timestamp: '11 hours ago',
         content: "Such dishonorable conduct has no place at a summit of noble leaders. The chivalric code demands decorum and respect. Truly a sad day for diplomacy.",
         likes: 178,
-        comments: []
+        comments: [],
+        rumorId: 'lankys_disgrace_at_summit'
     },
     {
         id: 'summit_reaction_3',
@@ -229,56 +244,61 @@ Sources claim the diminutive toad, Dan, played a pivotal role, disarming the sor
         timestamp: '12 hours ago',
         content: "Chaos is a ladder. And an inflated Kong just kicked that ladder over and set it on fire. Profitable, but messy. The markets are a goldmine for anyone who knows how to play them right now.",
         likes: 99,
-        comments: []
+        comments: [],
+        rumorId: 'lankys_disgrace_at_summit'
     },
     {
         id: 'steelstorm_post_1',
         order: 10,
         characterKey: 'colonel_vera_steelstorm',
-        timestamp: '2 days ago',
+        timestamp: '1 week ago',
         content: "Imperial Law is not a suggestion. The individuals known as Green T and Lario are wanted for trial. The crew of the Vigilance has 24 standard hours to comply with Imperial Edict 77B-4. Order will be maintained.",
         likes: 152,
         comments: [
             { characterKey: 'general_marcus_ironhand', text: "A lawful and necessary proclamation, Colonel. The Old Guard stands with you. There will be no deviation from the Hammer Code." },
             { characterKey: 'lario', text: "24 hours? I can strip an airship for parts in 6! You guys are slow. Also, do you pay for compliance? Asking for a friend." },
-            { characterKey: 'markop', text: "There may be a diplomatic solution to this, Colonel. Let us not be hasty."}
-        ]
+            { characterKey: 'ambassador_callista', text: "Colonel, perhaps a more... diplomatic approach would be prudent. This could escalate into an unfortunate international incident."}
+        ],
+        rumorId: 'iron_legion_ruse'
     },
     {
         id: 'dan_post_1',
         order: 9,
         characterKey: 'dan',
-        timestamp: '3 days ago',
+        timestamp: '1 week ago',
         content: "It's hard to find the right words. We thought we were building a family, a safe place. To learn that one of our own, Ryan, was involved in trafficking... it's a wound that I don't know how to heal. How can we trust again? We must. We have to.",
         likes: 258,
         comments: [
             { characterKey: 'toad_lee', text: "We don't need to trust anyone else. We have each other. I'll protect you, Dan. I'll protect all of us. With my axe." },
             { characterKey: 'chief_thornpaw', text: "A wound of trust must be cleansed like any other, little one. The pack is strongest when it is united. Do not let the poison of one betrayal weaken the whole." },
-        ]
+        ],
+        rumorId: 'barrel_compartment_reveal'
     },
     {
         id: 'waluigi_post_1',
         order: 8,
         characterKey: 'waluigi',
-        timestamp: '3 days ago',
+        timestamp: '1 week ago',
         content: "Some call it 'friendly fire'. I call it 'stylish crowd control'. WAH! The little frozen toad will thaw out eventually. Probably. He should be grateful he was part of my magnificent performance!",
         likes: 42,
         comments: [
             { characterKey: 'lario', text: "You left me to die, you purple cheat! And you froze one of the little guys! You're a menace!" },
             { characterKey: 'giggling_pete', text: "Magnificent! Freezing the small one was an unexpected punchline! The Jester applauds your commitment to beautiful, pointless chaos!" },
-        ]
+        ],
+        rumorId: 'waluigi_friendly_fire'
     },
     {
         id: 'lario_post_1',
         order: 7,
         characterKey: 'lario',
-        timestamp: '4 days ago',
+        timestamp: '1 month ago',
         content: "This mysterious new client, 'Mr. Wario', pays well, but his demands are ridiculous! 'Needs more garlic!' 'Make it shinier!' Who does this guy think he is? At least his coin is good. Best not to ask questions.",
         likes: 88,
         comments: [
             { characterKey: 'captain_syrup', text: "You still owe me for that ship, you greasy little wrench-turner. I'll take payment in the form of your workshop." },
             { characterKey: 'detective_penny', text: "Interesting. A new, wealthy client? I'll be keeping an eye on your workshop, Lario. For 'business' purposes, of course." },
-        ]
+        ],
+        rumorId: 'wario_escape'
     },
     {
         id: 'toadette_crusade_post',
@@ -343,6 +363,8 @@ Following its catastrophic collapse, the DK Crew's 'Banana Bunch' currency has s
             { characterKey: 'king_k_rool', text: "Fake news! The Koin is strong! Buy! Buy! Buy!" },
             { characterKey: 'donkey_kong', text: "Thanks for the help, Queen Bean." },
             { characterKey: 'queen_bean', text: "Anything for our allies! Laughter and stable economies for all!"}
-        ]
-    }
+        ],
+        rumorId: 'lankys_disgrace_at_summit'
+    },
+    ...WAHBOOK_INTEL_POSTS
 ];

@@ -20,6 +20,7 @@
                  <div id="wahbook-tabs-container">
                     <button class="tab-btn active" data-tab="feed">Feed</button>
                     <button class="tab-btn" data-tab="events">Events</button>
+                    <button class="tab-btn" data-tab="intel">Active Rumors & Intel</button>
                     <button class="tab-btn" data-tab="followed">Followed</button>
                     <button class="tab-btn" data-tab="trending">Trending</button>
                     <button class="tab-btn" data-tab="media">Media</button>
@@ -37,6 +38,12 @@
                         </div>
                         <div id="events-feed-container">
                             <!-- Events will be injected here by JS -->
+                        </div>
+                    </div>
+                    <div id="intel-content" class="tab-content">
+                        <p class="page-subtitle">A collection of chatter, reports, and raw intelligence gathered from across the network regarding ongoing events and rumors. Click a dossier for details.</p>
+                        <div id="intel-board-grid">
+                            <!-- Intel dossiers will be injected here -->
                         </div>
                     </div>
                     <div id="followed-content" class="tab-content">
@@ -60,6 +67,16 @@
             </main>
         </div>
     </div>
+
+    <div id="dossier-modal" class="modal" style="display: none;">
+        <div class="modal-content dossier-modal-content">
+            <button class="modal-close dossier-modal-close">&times;</button>
+            <div id="dossier-modal-body">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </div>
+    
     <script type="module" src="common.js"></script>
     <script type="module" src="navigation.js"></script>
     <script type="module" src="assembly.js"></script>
