@@ -2,6 +2,18 @@ import { WAHBOOK_INTEL_POSTS } from './assembly-intel-data.js';
 
 export const WAHBOOK_POSTS = [
     {
+        id: 'archie_post_ride',
+        order: 141,
+        characterKey: 'archie',
+        timestamp: 'Just now',
+        content: `Hello everyone, quite the bumpy ride wasn't it? How is everyone holding up?`,
+        likes: 155,
+        comments: [
+            { characterKey: 'markop', text: "We endure. That is what we do." },
+            { characterKey: 'lario', text: "Holding up?! I'm holding a wrench and a grudge! That purple cheat left me for dead!" }
+        ]
+    },
+    {
         id: 'cranky_post_1',
         order: 140,
         characterKey: 'cranky_kong',
@@ -81,7 +93,8 @@ export const WAHBOOK_POSTS = [
         content: `Every day of freedom feels like a gift. Learning the ways of the Rakasha is difficult, but Chief Thornpaw is a patient teacher. I will become strong enough to protect my friends and ensure no toad has to suffer like we did.`,
         likes: 621,
         comments: [
-            { characterKey: 'toad_lee', text: "And you will have my axe to guard your back. Always." }
+            { characterKey: 'toad_lee', text: "And you will have my axe to guard your back. Always." },
+            { characterKey: 'archie', text: "That's the spirit! Go forth and become a symbol of freedom for all the enslaved toads out there." }
         ]
     },
     {
