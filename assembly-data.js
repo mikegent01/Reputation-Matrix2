@@ -3,14 +3,51 @@ import { WAHBOOK_INTEL_POSTS } from './assembly-intel-data.js';
 
 export const WAHBOOK_POSTS = [
     {
+        id: 'cranky_post_2',
+        order: 145,
+        characterKey: 'cranky_kong',
+        timestamp: 'Just now',
+        content: `Good grief! Now every Tom, Dick, and three-eyed weirdo has an opinion on Kong family matters! Back in my day, we didn't post our problems on the WAH-whatever, we threw barrels at them until they went away! A much better system!`,
+        likes: 420,
+        comments: [],
+        rumorId: 'lankys_disgrace_at_summit'
+    },
+    {
+        id: 'dk_post_2',
+        order: 144,
+        characterKey: 'donkey_kong',
+        timestamp: '2 minutes ago',
+        content: `Family business is family business. And right now, business is giving me a migraine. Outsiders should remember that we solve our own problems. The Kong way.`,
+        likes: 550,
+        comments: [
+            { characterKey: 'chunky_kong', text: "I'm trying, DK." },
+            { characterKey: 'king_k_rool', text: "Sounds like there's weakness in the ranks. Good to know." }
+        ],
+        rumorId: 'lankys_disgrace_at_summit'
+    },
+    {
+        id: 'diddy_post_2',
+        order: 143,
+        characterKey: 'diddy_kong',
+        timestamp: '5 minutes ago',
+        content: `And now the three-eyed freak thinks this is a joke too? Stay out of Kong family business, you walking talking powder keg.`,
+        likes: 315,
+        comments: [
+            { "characterKey": "archie", "text": "Just trying to lighten the mood! Sheesh." }
+        ],
+        rumorId: 'lankys_disgrace_at_summit'
+    },
+    {
         id: 'archie_post_ride',
         order: 142,
         characterKey: 'archie',
-        timestamp: 'Just now',
+        timestamp: '1 hour ago',
         content: `Hello everyone, quite the bumpy ride wasn't it? How is everyone holding up?`,
         likes: 218,
         comments: [
+            { characterKey: 'remi', text: "Is... is it always like this? Just asking for a friend." },
             { characterKey: 'lario', text: "Holding up?! I'm holding a wrench and a grudge! That purple cheat left me for dead!" },
+            { characterKey: 'humpik', text: "Humpik is fine! A little bump is good for the blood! Ready for the next fight!" },
             { characterKey: 'dan', text: "A little shaken, but we're free. That's what matters. We're all still here." },
             { characterKey: 'bowser', text: "Bumpy? GWAHAHA! That's how I like it! A little chaos keeps everyone on their toes!" },
             { characterKey: 'waluigi', text: "Bumpy? That was a magnificent performance! A true work of art! You're welcome, everyone! WAH!" },
@@ -21,7 +58,7 @@ export const WAHBOOK_POSTS = [
         id: 'cranky_post_1',
         order: 140,
         characterKey: 'cranky_kong',
-        timestamp: '15 minutes ago',
+        timestamp: '15 hours ago',
         content: `Back in my day, we didn't have 'diplomatic incidents'. We had coconut guns. Solved problems a lot faster. This whole summit was a waste of good bananas. And Lanky... don't get me started on that good-for-nothing slacker!`,
         likes: 350,
         comments: [
@@ -34,7 +71,7 @@ export const WAHBOOK_POSTS = [
         id: 'leoncoeur_post_1',
         order: 139,
         characterKey: 'king_louen_leoncoeur',
-        timestamp: '45 minutes ago',
+        timestamp: '16 hours ago',
         content: `I must confess, the recent 'summit' was a disheartening display. To see diplomacy devolve into such buffoonery is a sad day for all civilized realms. Where is the honor? Where is the chivalry? It seems in short supply in these lands.`,
         likes: 410,
         comments: [
@@ -47,7 +84,7 @@ export const WAHBOOK_POSTS = [
         id: 'kamek_post_1',
         order: 138,
         characterKey: 'kamek',
-        timestamp: '2 hours ago',
+        timestamp: '17 hours ago',
         content: `The pieces are moving on the board. While the lesser factions squabble over castles and politics, the true game is being played in the shadows. The King's will shall be done. A storm is gathering...`,
         likes: 275,
         comments: [
@@ -59,7 +96,7 @@ export const WAHBOOK_POSTS = [
         id: 'toadette_post_2',
         order: 137,
         characterKey: 'captain_toadette',
-        timestamp: '5 hours ago',
+        timestamp: '20 hours ago',
         content: `The Regency falters! Fawful's madness defiles our sacred castle! Only the Peach Loyalists have the strength and the will to restore justice! Do not be swayed by the weak-willed words of politicians! Take up arms! For the Princess!`,
         likes: 388,
         comments: [
@@ -71,7 +108,7 @@ export const WAHBOOK_POSTS = [
         id: 'waluigi_post_2',
         order: 136,
         characterKey: 'waluigi',
-        timestamp: 'Just now',
+        timestamp: '1 day ago',
         content: `WAH! Some people call it 'chaos'. I call it 'art'! The world is my canvas, and my paintbrush is a well-thrown Bob-omb! All you boring people with your 'plans' and 'order'... you just don't appreciate true genius!`,
         likes: 999,
         comments: [
@@ -82,7 +119,7 @@ export const WAHBOOK_POSTS = [
         id: 'steelstorm_post_2',
         order: 135,
         characterKey: 'colonel_vera_steelstorm',
-        timestamp: '1 hour ago',
+        timestamp: '1 day ago',
         content: `Victory is not achieved through tradition; it is achieved through efficiency. While the Old Guard debates protocol, the War-Forged act. Results are the only metric that matters on the battlefield. Adapt or be broken.`,
         likes: 388,
         comments: [
@@ -93,7 +130,7 @@ export const WAHBOOK_POSTS = [
         id: 'dan_post_freedom',
         order: 134,
         characterKey: 'dan',
-        timestamp: '3 hours ago',
+        timestamp: '1 day ago',
         content: `Every day of freedom feels like a gift. Learning the ways of the Rakasha is difficult, but Chief Thornpaw is a patient teacher. I will become strong enough to protect my friends and ensure no toad has to suffer like we did.`,
         likes: 621,
         comments: [
@@ -105,7 +142,7 @@ export const WAHBOOK_POSTS = [
         id: 'bowser_post_recruiting',
         order: 133,
         characterKey: 'bowser',
-        timestamp: '8 hours ago',
+        timestamp: '1 day ago',
         content: `The Koopa Troop is scattered, but not broken! Soon, I will reunite my armies under one glorious banner! We will crush the tin-can soldiers of the Legion and the mushroom-headed fools of the Regency! The world will tremble before the might of King Bowser once more! GWAHAHAHA!`,
         likes: 815,
         comments: [

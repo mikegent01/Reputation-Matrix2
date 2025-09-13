@@ -1,3 +1,4 @@
+
 // This file contains all WAHbook posts that are directly related to an active rumor.
 // It is imported by assembly-intel-data.js to be included in the main feed.
 
@@ -17,14 +18,14 @@ The incident has created a deep schism within the normally tight-knit Kong famil
         rumorId: 'lankys_disgrace_at_summit'
     },
     {
-        id: 'diddy_post_1', order: 129, characterKey: 'diddy_kong', timestamp: '1 hour ago',
+        id: 'diddy_post_1', order: 129, characterKey: 'diddy_kong', timestamp: '14 hours ago',
         content: "UNBELIEVABLE. You don't just embarrass the family, you don't just embarrass the CREW, you cause an international incident and think it's a JOKE?! We're done. I'm officially motioning for expulsion. This isn't a game.",
-        likes: 489, comments: [ { characterKey: 'candy_kong', text: "I'm with you, Diddy. I've defended him for the last time. This is unacceptable." }, { characterKey: 'lanky_kong', text: "Lighten up, little buddy! It was funny! You should have seen their faces! 😂" }, { characterKey: 'cranky_kong', text: "Back in my day, we settled these things with a barrel-throwing contest. Kids these days and their 'motions'..."} ],
+        likes: 489, comments: [ { characterKey: 'candy_kong', text: "I'm with you, Diddy. I've defended him for the last time. This is unacceptable." }, { characterKey: 'lanky_kong', text: "Lighten up, little buddy! It was funny! You should have seen their faces! 😂" }, { characterKey: 'cranky_kong', text: "Back in my day, we settled these things with a barrel-throwing contest. Kids these days and their 'motions'..."}, { "characterKey": "archie", "text": "C'mon, it was pretty funny." } ],
         rumorId: 'lankys_disgrace_at_summit'
     },
     // ... (other Lanky posts remain the same) ...
     {
-        id: 'summit_reaction_bowser', order: 117, characterKey: 'bowser', timestamp: '1 hour ago',
+        id: 'summit_reaction_bowser', order: 117, characterKey: 'bowser', timestamp: '1 day ago',
         content: `GWAHAHAHA! Donkey Kong can't even control his own family! How does he expect to control an island? This is what happens when you lack true, decisive leadership. Pathetic!`,
         likes: 730, comments: [ { characterKey: 'donkey_kong', text: "You want to talk about family problems? How many times have your own kids turned against you?" }, { characterKey: 'kamek', text: "Ahem, a temporary and magically-induced misunderstanding, your Viciousness." } ],
         rumorId: 'lankys_disgrace_at_summit'
