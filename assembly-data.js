@@ -1,16 +1,20 @@
+
 import { WAHBOOK_INTEL_POSTS } from './assembly-intel-data.js';
 
 export const WAHBOOK_POSTS = [
     {
         id: 'archie_post_ride',
-        order: 141,
+        order: 142,
         characterKey: 'archie',
         timestamp: 'Just now',
         content: `Hello everyone, quite the bumpy ride wasn't it? How is everyone holding up?`,
-        likes: 155,
+        likes: 218,
         comments: [
-            { characterKey: 'markop', text: "We endure. That is what we do." },
-            { characterKey: 'lario', text: "Holding up?! I'm holding a wrench and a grudge! That purple cheat left me for dead!" }
+            { characterKey: 'lario', text: "Holding up?! I'm holding a wrench and a grudge! That purple cheat left me for dead!" },
+            { characterKey: 'dan', text: "A little shaken, but we're free. That's what matters. We're all still here." },
+            { characterKey: 'bowser', text: "Bumpy? GWAHAHA! That's how I like it! A little chaos keeps everyone on their toes!" },
+            { characterKey: 'waluigi', text: "Bumpy? That was a magnificent performance! A true work of art! You're welcome, everyone! WAH!" },
+            { characterKey: 'fawful', text: "YOUR BUMPY RIDE IS A MERE PUDDLE OF DISCOMFORT NEXT TO THE OCEAN OF MY FURY! I HAVE BUMPINESS!" }
         ]
     },
     {
