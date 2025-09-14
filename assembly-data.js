@@ -95,7 +95,6 @@ export const WAHBOOK_POSTS = [
         content: `And now the three-eyed freak thinks this is a joke too? Stay out of Kong family business, you walking talking powder keg.`,
         likes: 315,
         comments: [
-            { "characterKey": "archie", "text": "Just trying to lighten the mood! Sheesh." }
         ],
         rumorId: 'lankys_disgrace_at_summit'
     },
@@ -107,7 +106,6 @@ export const WAHBOOK_POSTS = [
         content: `Hello everyone, quite the bumpy ride wasn't it? How is everyone holding up?`,
         likes: 218,
         comments: [
-            { characterKey: 'remi', text: "Is... is it always like this? Just asking for a friend." },
             { characterKey: 'lario', text: "Holding up?! I'm holding a wrench and a grudge! That purple cheat left me for dead!" },
             { characterKey: 'dan', text: "A little shaken, but we're free. That's what matters. We're all still here." },
             { characterKey: 'bowser', text: "Bumpy? GWAHAHA! That's how I like it! A little chaos keeps everyone on their toes!" },
