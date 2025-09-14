@@ -62,6 +62,17 @@ import { causalityChainPois } from './map-data/doughnut-hole/causality_chain.js'
 import { driftersDebrisFieldPois } from './map-data/doughnut-hole/drifters_debris_field.js';
 import { weaversTapestryPois } from './map-data/doughnut-hole/weavers_tapestry.js';
 import { outerAnomalyPois } from './map-data/doughnut-hole/outer_anomaly.js';
+import { pokemonData } from './map-data/pokemon-pois.js';
+import { unovaPois } from './map-data/pokemon/unova.js';
+import { oorePois } from './map-data/pokemon/oore.js';
+import { hoennPois } from './map-data/pokemon/hoenn.js';
+import { kalosPois } from './map-data/pokemon/kalos.js';
+import { johtoPois } from './map-data/pokemon/johto.js';
+import { kantoPois } from './map-data/pokemon/kanto.js';
+import { paldeaPois } from './map-data/pokemon/paldea.js';
+import { fiorePois } from './map-data/pokemon/fiore.js';
+import { almiaPois } from './map-data/pokemon/almia.js';
+import { mountainSavanaPois } from './map-data/pokemon/mountain_savana.js';
 
 
 // Re-export BUILDING_TYPES so other modules can access it from this central file
@@ -1053,5 +1064,80 @@ export const MAP_DATA = {
         group: 'The Doughnut Hole',
         pointsOfInterest: outerAnomalyPois,
         poiSourceFile: 'map-data/doughnut-hole/outer_anomaly.js'
+    },
+    pokemon_full: {
+        id: 'pokemon_full',
+        name: 'Pokémon Regions (Full)',
+        imageSrc: 'pokemon.png',
+        order: 1,
+        group: 'Pokémon Regions',
+        pointsOfInterest: pokemonData.pointsOfInterest,
+        fogOfWar: [], 
+        poiSourceFile: null
+    },
+    unova: {
+        id: 'unova',
+        name: 'Unova Region',
+        imageSrc: 'pokemon.png',
+        order: 2,
+        group: 'Pokémon Regions',
+        pointsOfInterest: unovaPois,
+        fogOfWar: [],
+        poiSourceFile: 'map-data/pokemon/unova.js'
+    },
+    oore: {
+        id: 'oore',
+        name: 'Oore Region',
+        imageSrc: 'pokemon.png',
+        order: 3,
+        group: 'Pokémon Regions',
+        pointsOfInterest: oorePois,
+        fogOfWar: [],
+        poiSourceFile: 'map-data/pokemon/oore.js'
+    },
+    kalos_johto_kanto_paldea: {
+        id: 'kalos_johto_kanto_paldea',
+        name: 'Kalos, Johto, Kanto, & Paldea',
+        imageSrc: 'pokemon.png',
+        order: 4,
+        group: 'Pokémon Regions',
+        pointsOfInterest: [
+            ...kalosPois,
+            ...johtoPois,
+            ...kantoPois,
+            ...paldeaPois
+        ],
+        fogOfWar: [],
+        poiSourceFile: null
+    },
+    hoenn: {
+        id: 'hoenn',
+        name: 'Hoenn Region',
+        imageSrc: 'pokemon.png',
+        order: 5,
+        group: 'Pokémon Regions',
+        pointsOfInterest: hoennPois,
+        fogOfWar: [],
+        poiSourceFile: 'map-data/pokemon/hoenn.js'
+    },
+    fiore_almia: {
+        id: 'fiore_almia',
+        name: 'Fiore & Almia',
+        imageSrc: 'pokemon.png',
+        order: 6,
+        group: 'Pokémon Regions',
+        pointsOfInterest: [ ...fiorePois, ...almiaPois ],
+        fogOfWar: [],
+        poiSourceFile: null
+    },
+    mountain_savana: {
+        id: 'mountain_savana',
+        name: 'Mountain Savana',
+        imageSrc: 'pokemon.png',
+        order: 7,
+        group: 'Pokémon Regions',
+        pointsOfInterest: mountainSavanaPois,
+        fogOfWar: [],
+        poiSourceFile: 'map-data/pokemon/mountain_savana.js'
     }
 };

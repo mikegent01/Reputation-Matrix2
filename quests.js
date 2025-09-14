@@ -35,6 +35,7 @@ let filterStates = allAssignees.reduce((acc, assignee) => {
 
 let statusFilterStates = {
     active: 'off',
+    ongoing: 'off',
     available: 'off',
     pending: 'off',
     completed: 'off',
@@ -149,12 +150,12 @@ function renderQuests() {
     }
     
     // 4. Sort quests within each category
-    const statusOrder = { 'active': 1, 'pending': 2, 'available': 3, 'hidden': 4, 'completed': 5, 'failed': 6 };
-    const typeOrder = { 'main': 1, 'personal': 2, 'side': 3, 'request': 4, 'mystery': 5 };
+    const statusOrder = { 'active': 1, 'ongoing': 1, 'pending': 2, 'available': 3, 'hidden': 4, 'completed': 5, 'failed': 6 };
+    const typeOrder = { 'main': 1, 'personal': 2, 'side': 3, 'request': 4, 'mystery': 5, 'npc_plot': 6 };
 
     const sortFn = (a, b) => {
         if (currentSort === 'status') {
-            return statusOrder[a.status] - statusOrder[b.status];
+            return (statusOrder[a.status] || 99) - (statusOrder[b.status] || 99);
         }
         if (currentSort === 'type') {
             return (typeOrder[a.type] || 99) - (typeOrder[b.type] || 99);
@@ -232,6 +233,15 @@ function renderCategory(title, quests, cssClass = '') {
     `;
 }
 
+function formatQuestType(type) {
+    if (!type) return '';
+    if (type === 'npc_plot') {
+        return 'NPC Plot';
+    }
+    // Capitalize first letter of other types
+    return type.charAt(0).toUpperCase() + type.slice(1);
+}
+
 function renderQuestCard(quest) {
     const contextHTML = quest.pending_condition ? `
         <div class="quest-context pending">
@@ -266,12 +276,14 @@ function renderQuestCard(quest) {
         }
     }
 
+    const formattedType = formatQuestType(quest.type);
+
     return `
         <div class="quest-card status-${quest.status}" id="${quest.id}">
             <div class="quest-header">
                 <div class="quest-title-section">
                     <h4 class="quest-title">${quest.title}</h4>
-                    <p class="quest-type">${quest.type}</p>
+                    <p class="quest-type">${formattedType}</p>
                     <p class="quest-assignee">Assignee: ${quest.assignee}</p>
                     ${locationHTML}
                 </div>

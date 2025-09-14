@@ -349,9 +349,9 @@ export function renderPois() {
             iconWrapper.style.fontSize = '10px';
         } else {
              marker.style.opacity = '1';
-             marker.style.width = '32px';
-             marker.style.height = '32px';
-             iconWrapper.style.fontSize = '18px';
+             marker.style.width = '20px';
+             marker.style.height = '20px';
+             iconWrapper.style.fontSize = '12px';
             switch (map.activeMapMode) {
                 case 'political':
                     marker.classList.add('political-view');

@@ -118,6 +118,7 @@ import { MIDDLE_EARTH_REQUESTS } from './requests-middle-earth.js';
 import { DOUGHNUT_HOLE_REQUESTS } from './requests-doughnut-hole.js';
 import { WARHAMMER_REQUESTS } from './requests-warhammer.js';
 import { INTERNET_REQUESTS } from './quests-internet.js';
+import { POKEMON_REQUESTS } from './requests-pokemon.js';
 
 export const REQUESTS = {
     ...EXISTING_REQUESTS,
@@ -126,4 +127,5 @@ export const REQUESTS = {
     ...DOUGHNUT_HOLE_REQUESTS,
     ...WARHAMMER_REQUESTS,
     ...INTERNET_REQUESTS,
+    ...POKEMON_REQUESTS,
 };

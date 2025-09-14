@@ -143,6 +143,7 @@
 }
 
 .quest-card.status-active { border-left: 4px solid var(--neutral-color); }
+.quest-card.status-ongoing { border-left: 4px solid var(--mystical-ancient-color); }
 .quest-card.status-pending { border-left: 4px solid #1f6feb; }
 .quest-card.status-available { border-left: 4px solid var(--text-secondary); }
 .quest-card.status-completed { border-left: 4px solid var(--positive-color); }
@@ -199,6 +200,7 @@
     margin-left: 16px;
 }
 .quest-card.status-active .quest-status { background-color: rgba(240, 185, 11, 0.1); color: var(--neutral-color); }
+.quest-card.status-ongoing .quest-status { background-color: rgba(163, 113, 247, 0.1); color: var(--mystical-ancient-color); }
 .quest-card.status-pending .quest-status { background-color: rgba(31, 111, 235, 0.1); color: #1f6feb; }
 .quest-card.status-available .quest-status { background-color: rgba(139, 148, 158, 0.1); color: var(--text-secondary); }
 .quest-card.status-completed .quest-status { background-color: rgba(35, 134, 54, 0.1); color: var(--positive-color); }

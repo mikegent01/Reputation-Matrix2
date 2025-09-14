@@ -12,8 +12,10 @@ export function renderTabs() {
     mapControls.innerHTML = ''; // Clear everything inside
 
     const currentPage = window.location.pathname.split('/').pop();
+    
     let relevantGroups;
 
+    // Correctly structured if/else if/else chain
     if (currentPage === 'midlands-maps.html') {
         relevantGroups = ['The Midlands'];
     } else if (currentPage === 'internet-maps.html') {
@@ -26,7 +28,9 @@ export function renderTabs() {
         relevantGroups = ['The Fated Place'];
     } else if (currentPage === 'doughnut-hole-maps.html') {
         relevantGroups = ['The Doughnut Hole'];
-    } else { // This will catch mushroom-kingdom-maps.html and any other defaults
+    } else if (currentPage === 'pokemon-maps.html') {
+        relevantGroups = ['Pokémon Regions'];
+    } else { // Default, for mushroom-kingdom-maps.html
         relevantGroups = ['Mushroom Kingdom Regions', 'Islands & Outer Realms'];
     }
 
@@ -57,6 +61,7 @@ export function renderTabs() {
         mapControls.appendChild(tabsDiv);
     });
     
+    // The mode selector is common to all map pages and should be rendered after the specific tabs.
     const modeSelector = document.createElement('div');
     modeSelector.id = 'map-mode-selector';
     
@@ -81,7 +86,7 @@ export function setupTabEventListeners() {
 
     mapControlsContainer.addEventListener('click', e => {
         const tabButton = e.target.closest('.map-tab-btn');
-        if (tabButton) {
+        if (tabButton && tabButton.dataset.mapId) {
             playSound('click.mp3');
             const mapId = tabButton.dataset.mapId;
             

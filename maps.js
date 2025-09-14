@@ -69,6 +69,8 @@ function init() {
         activeMapId = 'kivotos_full';
     } else if (pathname.includes('doughnut-hole-maps.html')) {
         activeMapId = 'doughnut_hole_full';
+    } else if (pathname.includes('pokemon-maps.html')) {
+        activeMapId = 'pokemon_full';
     } else {
         activeMapId = 'mushroom_kingdom_full';
     }
@@ -176,6 +178,6 @@ function setupEventListeners() {
 
 // Run the application
 const currentPage = window.location.pathname.split('/').pop();
-if (['mushroom-kingdom-maps.html', 'midlands-maps.html', 'internet-maps.html', 'middle-earth-maps.html', 'warhammer-maps.html', 'kivotos-maps.html', 'doughnut-hole-maps.html'].includes(currentPage)) {
+if (['mushroom-kingdom-maps.html', 'midlands-maps.html', 'internet-maps.html', 'middle-earth-maps.html', 'warhammer-maps.html', 'kivotos-maps.html', 'doughnut-hole-maps.html', 'pokemon-maps.html'].includes(currentPage)) {
     init();
 }

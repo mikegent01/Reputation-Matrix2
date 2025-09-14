@@ -1,3 +1,5 @@
+
+
 // factions/faction-colors.js
 
 // This file maps each faction ID to its corresponding specific color CSS variable.
@@ -89,4 +91,16 @@ export const FACTION_COLORS = {
     'custodians_of_causality': 'var(--faction-custodians_of_causality)',
     'void_drifters': 'var(--faction-void_drifters)',
     'starlight_weavers': 'var(--faction-starlight_weavers)',
+
+    // Pokémon Factions
+    'pokemon_league': 'var(--faction-pokemon-league)',
+    'team_plasma': 'var(--faction-pokemon-plasma)',
+    'trainer_guild': 'var(--faction-pokemon-trainer)',
+    'team_aqua': 'var(--faction-pokemon-aqua)',
+    'team_magma': 'var(--faction-pokemon-magma)',
+    'team_flare': 'var(--faction-pokemon-flare)',
+    'team_rocket': 'var(--faction-pokemon-rocket)',
+    'team_star': 'var(--faction-pokemon-star)',
+    'ranger_union': 'var(--faction-pokemon-ranger)',
+    'go_rock_squad': 'var(--faction-pokemon-gorock)',
 };

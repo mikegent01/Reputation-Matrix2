@@ -93,6 +93,19 @@
     --faction-void_drifters: #483D8B; /* Dark Slate Blue */
     --faction-starlight_weavers: #FFD700; /* Gold */
 
+    /* -- Pokémon Faction Colors -- */
+    --faction-pokemon-league: #3b4cca; /* Classic Pokémon Blue */
+    --faction-pokemon-plasma: #7b8b8c; /* Team Plasma Grey/Light Blue */
+    --faction-pokemon-trainer: #ff0000; /* Classic Trainer Red */
+    --faction-pokemon-aqua: #0077b6; /* Team Aqua Blue */
+    --faction-pokemon-magma: #b21e35; /* Team Magma Red */
+    --faction-pokemon-flare: #fd7e14; /* Team Flare Orange */
+    --faction-pokemon-rocket: #212529; /* Team Rocket Black */
+    --faction-pokemon-star: #e94a89; /* Team Star Pink */
+    --faction-pokemon-ranger: #4CAF50; /* Ranger Green */
+    --faction-pokemon-gorock: #795548; /* Go-Rock Brown */
+
+
     --font-primary: 'Roboto Mono', monospace;
     --font-display: 'Orbitron', sans-serif;
 }

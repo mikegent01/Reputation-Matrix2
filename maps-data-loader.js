@@ -10,7 +10,8 @@ const WORLD_SPECIES = {
     doughnut_hole: ['Cosmic Entities', 'Void Scavengers', 'Starlight Beings', 'Paradoxes'],
     internet: ['Digital Avatars', 'AI', 'Data-Golems', 'Viruses', 'Memes'],
     middle_earth: ['Men', 'Elves', 'Dwarves', 'Hobbits', 'Orcs', 'Uruk-hai'],
-    kivotos: ['Students (with Halos)', 'Robots', 'Delinquents', 'Mysterious Beings']
+    kivotos: ['Students (with Halos)', 'Robots', 'Delinquents', 'Mysterious Beings'],
+    pokemon: ['Humans', 'Pokémon (Various)', 'Delinquents', 'Champs']
 };
 
 const MAP_GROUP_TO_WORLD = {
@@ -21,7 +22,8 @@ const MAP_GROUP_TO_WORLD = {
     'The Doughnut Hole': 'doughnut_hole',
     'The Internet': 'internet',
     'Middle-earth': 'middle_earth',
-    'Kivotos': 'kivotos'
+    'Kivotos': 'kivotos',
+    'Pokémon Regions': 'pokemon'
 };
 
 function getQuestCounts() {

@@ -6,6 +6,25 @@ To ensure readability and maintainability, this project follows a modular struct
 
 A key example of this philosophy is the handling of game data. Instead of large, monolithic data files, information is broken down into smaller, thematic modules. For instance, the detailed legal codes for different faction archetypes (`laws-data-militaristic.js`, `laws-data-democratic.js`, etc.) are kept in separate files and aggregated by a central `laws-data.js` file. This keeps each file focused on a single concept, improving organization and making it easier to add or modify data without affecting unrelated systems.
 
+## Adding New Map Pages
+
+To maintain application stability and a consistent user experience, all new tactical map pages **must** adhere to the standardized map grouping system. Creating custom, one-off UI or filtering logic for a single map page can conflict with the global data loaders for POIs and tactical units, causing them to fail to render.
+
+The system works as follows:
+-   The `map-ui.js` file is responsible for rendering the map selection tabs.
+-   It detects which HTML page the user is on (e.g., `mushroom-kingdom-maps.html`, `midlands-maps.html`).
+-   Based on the page, it identifies a `group` name (e.g., 'Mushroom Kingdom Regions').
+-   It then finds all map entries in `map-data.js` that have a matching `group` property.
+-   Finally, it renders a tab button for each of these maps.
+
+To add a new map page correctly:
+1.  **Create the HTML File:** Build your new map page (e.g., `new-world-maps.html`), using an existing one as a template.
+2.  **Define a Map Group:** In `map-data.js`, create your new map data objects. Crucially, assign a consistent `group` property to all maps that should appear on your new page (e.g., `group: 'New World Regions'`).
+3.  **Update the UI Logic:** In `map-ui.js`, add an `else if` condition to the `renderTabs` function to recognize your new HTML file and associate it with the `group` name you defined in `map-data.js`.
+4.  **Add to Gallery:** In `maps.html`, add a new `.gallery-item` div that links to your new map page.
+
+By following this structure, any new map page will automatically inherit the correct UI, functionality, and data-loading capabilities of the existing system.
+
 ## Advancing the In-Game Day
 
 Simulating the passage of one in-game day requires updating several interconnected systems. This guide provides a step-by-step process to ensure all changes are cohesive and reflected across the application.
@@ -113,6 +132,17 @@ If an event would logically change how two characters feel about each other, ref
 -   **File:** `character-relations.js`
 -   **Action:** Find the character object and update the `text` field for their opinion of another character. For example, if Archie recklessly endangers Dan, Markop's opinion of Archie (`markop.archie.text`) should be updated to reflect his disapproval.
 
+### 8. Update NPC Plots & World Events
+
+Quests with the type `npc_plot` are not tasks for the party to complete, but are ongoing stories in the world driven by non-player characters (NPCs). In the quest log, they are clearly marked with the status **"Ongoing"** to differentiate them from active player quests. These plots make the world feel alive and reactive to the party's actions or inaction.
+
+When a day advances, consider if these plots have progressed. This can happen in two ways:
+
+1.  **Player Influence:** Did the party do something to help or hinder one of the NPCs involved? If so, update the quest steps to reflect the consequences. For example, if the party provided crucial information to Diddy Kong, you might complete his current step and move the plot forward.
+2.  **Inaction:** If the party ignores the situation, the NPCs will act on their own. After a few in-game days, the plot should advance based on the most likely outcome. For example, if Chunky Kong is left to mediate the DK Crew's dispute without interference, he might succeed or fail on his own.
+
+Advancing an `npc_plot` should almost always generate a new WAHbook post from the involved characters. This informs the party of the latest developments and makes the world feel dynamic, showing them that the world moves on even without their direct involvement.
+
 By following these steps, you ensure that the passage of time is meaningful and consistently reflected across all parts of the application.
 
 ## Contributing Map Data
@@ -186,15 +216,15 @@ To give a faction a formal legal code that appears in the "Laws & Customs" pop-u
     ```
 3.  **Register the Codex:** Open `laws-data.js` and ensure your new law data file is imported and included in the `ALL_LEGAL_CODES` export. This makes the system aware of your new laws.
 
-### Adding Libraries 
+### Adding Libraries
 
-Libraries are key locations for discovering new information and books.
+Libraries are key locations for discovering new information and books. To add a new one:
 
-1.  **Create a POI:** Create a POI with the `type: 'library'`.
-2.  **Add Library Data:** In the POI's data object, add two new keys:
+1.  **Create the POI:** In the appropriate POI data file, create a POI with `type: 'library'`.
+2.  **Add Library Data to POI:** In the new POI's data object, add two keys:
     *   `library_summary`: A brief, in-character description of the library and its collection.
     *   `libraryStockKey`: A unique key (e.g., `'royal_archives'`) that will be used to link to the book list.
-3.  **Create a Book List:**
+3.  **Create the Book Stock File:**
     *   In the `books/` directory, create a new file (e.g., `royal_archives_stock.js`).
     *   In this file, export a constant array of strings, where each string is the exact title of a book from `books/book_descriptions.js`.
 4.  **Register the Stock:**
@@ -202,65 +232,20 @@ Libraries are key locations for discovering new information and books.
     *   Import your new stock file.
     *   Add a new key-value pair to the `LIBRARY_STOCKS` object, where the key is the `libraryStockKey` you defined in the POI, and the value is the imported array of book titles.
 
-Example of a library POI:
-```javascript
-{
-    id: 'poi_mc_royal_archives',
-    type: 'library',
-    name: "The Royal Archives",
-    description: "...",
-    library_summary: "The official repository of the Mushroom Kingdom's history...",
-    libraryStockKey: 'mushroom_kingdom'
-}
-```
-Example of a stock file (`books/mushroom_library_stock.js`):
-```javascript
-export const MUSHROOM_KINGDOM_LIBRARY_STOCK = [
-    "Mushroom Kingdom History, Vol. III",
-    "A History of the Star Sprites",
-    // ... more book titles
-];
-```
-Example of registering in `books/library_stocks.js`:
-```javascript
-import { MUSHROOM_KINGDOM_LIBRARY_STOCK } from './mushroom_library_stock.js';
-// ... other imports
+### Adding Books
 
-export const LIBRARY_STOCKS = {
-    mushroom_kingdom: MUSHROOM_KINGDOM_LIBRARY_STOCK,
-    // ... other libraries
-};
-```
+Adding a new readable book to the game world involves several steps to ensure it appears correctly in both the party's inventory and public libraries.
 
-## Adding Books
+1.  **Create the Content File:** In the `books/` directory, create a new file (e.g., `new_book.js`). This file should export a `BOOK_DATA` constant containing the book's `title` and an array of strings for its `pages`. Each string represents a page or a pair of pages.
 
-Adding a new readable book to the game world involves several steps to ensure it appears correctly in both the party's inventory and public libraries. We will use "Codex: The Punchline" as an example.
+2.  **Add Book Description:** Open `books/book_descriptions.js`. Add a new entry to the `BOOK_DESCRIPTIONS` object. The key must be the exact title of the book. This data is used for the cover view when a player inspects the book, providing a summary, reading time, and in-game effect.
 
-1.  **Create the Content File:** In the `books/` directory, create a new file (e.g., `codex_punchline.js`). This file should export a `BOOK_DATA` constant containing the book's `title` and an array of strings for its `pages`.
-
-    ```javascript
-    // books/codex_punchline.js
-    export const BOOK_DATA = {
-        title: "Codex: The Punchline",
-        pages: [ `Foreword:\n\nThese are not rules...`, `Political Law: The Rule of Random...` ]
-    };
-    ```
-2.  **Add Book Description:** Open `books/book_descriptions.js`. Add a new entry to the `BOOK_DESCRIPTIONS` object. The key should be the exact title of the book. This data is used for the cover view when a player inspects the book.
-
-    ```javascript
-    "Codex: The Punchline": {
-        summary: "The official-unofficial legal text of the Cosmic Jester's cult...",
-        reading_time: "Approx. 5 minutes...",
-        pages: 5,
-        effect: "Grants insight into the illogical reasoning of the Cosmic Jesters..."
-    }
-    ```
 3.  **Register in `bookshelf.js` (Party Inventory):**
-    *   Import your new content file: `import { BOOK_DATA as codexPunchline } from './books/codex_punchline.js';`
-    *   Add an entry to the `bookDataMap` object, mapping the book's title to the imported data: `"Codex: The Punchline": codexPunchline,`
-    *   Assign a cover image in the `getBookCoverUrl` function: `if (bookTitle.includes("Punchline")) return 'book_cover_jester.png';`
+    *   Import your new content file: `import { BOOK_DATA as newBook } from './books/new_book.js';`
+    *   Add an entry to the `bookDataMap` object, mapping the book's title to the imported data: `"My New Book": newBook,`
+    *   Assign a cover image in the `getBookCoverUrl` function by adding a new condition, e.g., `if (bookTitle.includes("My New")) return 'book_cover_custom.png';`
 
 4.  **Register in `library.js` (Public Terminal):**
-    *   Repeat the same steps as for `bookshelf.js`: import the content file, add it to `bookDataMap`, and assign a cover in `getBookCoverUrl`. This ensures the book is accessible from both interfaces.
+    *   Repeat the same registration steps as for `bookshelf.js`: import the content file, add it to `bookDataMap`, and assign a cover in `getBookCoverUrl`. This ensures the book is accessible from both interfaces.
 
-5.  **(Optional) Add to Library Stock:** If the book can be found in a specific library, open the relevant stock file (e.g., `books/cosmic_library_stock.js`) and add the book's exact title to the exported array. Ensure this stock is registered in `books/library_stocks.js`.
+5.  **Add to Inventory/Stock:** To make the book appear in the world, either add its title to a character's `items` array in `state.js` or to a library's stock file as described in the section above.
