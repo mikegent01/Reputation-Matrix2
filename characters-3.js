@@ -42,9 +42,9 @@ export const CHARACTERS_3 = {
     // --- PEACH LOYALIST RECRUITS ---
     'embercap': {
         name: "Embercap",
-        role: "Rogue Loyalist Operative",
-        status: "Presumed Deceased",
-        description: "A steadfast soldier in Toadette's army. After confronting the God Toad, he was slain, only to be brought back by a mysterious temporal event. Now presumed dead by his allies, he has embarked on a rogue mission to hunt down the 'three-eyed freak' (Archie) and seize control of the castle himself. He escaped Fawful's Gala with the aid of a mysterious toad named Steve and his manticore."
+        role: "Field Commander, Peach Loyalists",
+        status: "Active",
+        description: "Captain Toadette's most steadfast and loyal soldier. After uncovering a conspiracy in Toad Town, he initially disagreed with Toadette's ruthless new strategy of displacing civilian populations. However, convinced of its military necessity, he has fully recommitted himself to her cause and is now a key figure in the plan to besiege Peach's Castle by turning Toad Town into a forward operating base."
     },
     'mistveil': {
         name: "Mistveil",
@@ -201,5 +201,18 @@ export const CHARACTERS_3 = {
         name: "Battle-Mage Kovar",
         role: "Commander of the Aegis Magi, Mages' Guild",
         description: "The hardened and battle-scarred leader of the Mages' Guild's military wing. Kovar is a master of destructive and defensive magic, viewing arcane power primarily as a weapon to be wielded in the Guild's defense. He has little patience for politics or research."
+    },
+    // --- NEW CHARACTERS FROM TOAD TOWN INCIDENT ---
+    'iggy_koopa': {
+        name: "Iggy Koopa",
+        role: "Koopaling",
+        status: "Active",
+        description: "One of Bowser's unpredictable and manic children. Recently captured in Toad Town, he was quickly rescued after a chaotic series of events involving multiple factions. He seems to enjoy sowing discord and creating bizarre contraptions."
+    },
+    'bowser_loyalist_toad': {
+        name: "Pinstripe",
+        role: "Bowser Loyalist Infiltrator",
+        status: "Active",
+        description: "A Toad who maintains a facade of being a helpful citizen but is secretly a Bowser loyalist. He aided Chief Thornpaw in Toad Town with the goal of freeing Iggy to gain favor with the Koopa King. His true allegiance was revealed, but he was allowed to leave."
     }
 };

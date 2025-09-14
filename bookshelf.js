@@ -45,6 +45,7 @@ import { BOOK_DATA as ironLegionManual } from './books/iron_legion_manual.js';
 import { BOOK_DATA as greatLibraries } from './books/great_libraries.js';
 import { BOOK_DATA as warhammerHistories } from './books/warhammer_histories.js';
 import { BOOK_DATA as codexPunchline } from './books/codex_punchline.js';
+import { BOOK_DATA as mayorsLedger } from './books/mayors_ledger.js';
 
 
 import { BOOK_DESCRIPTIONS } from './books/book_descriptions.js';
@@ -113,6 +114,7 @@ const bookDataMap = {
     "A Guide to the Great Libraries": greatLibraries,
     "The Liber Maleficus: A Study of the Ruinous Powers": warhammerHistories,
     "Codex: The Punchline": codexPunchline,
+    "Mayor's Ledger & Spellbook": mayorsLedger,
 };
 
 function getBookCoverUrl(bookTitle) {
@@ -123,6 +125,7 @@ function getBookCoverUrl(bookTitle) {
     if (bookTitle.includes("Libraries")) return 'book_cover_library.png';
     if (bookTitle.includes("Liber Maleficus")) return 'book_cover_chaos.png';
     if (bookTitle.includes("Punchline")) return 'book_cover_jester.png';
+    if (bookTitle.includes("Ledger")) return 'book_cover_conspiracy.png';
     return 'book_cover_history.png'; // default/fallback
 }
 

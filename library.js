@@ -47,6 +47,7 @@ import { BOOK_DATA as studyInMemetics } from './books/study_in_memetics.js';
 import { BOOK_DATA as ironLegionManual } from './books/iron_legion_manual.js';
 import { BOOK_DATA as warhammerHistories } from './books/warhammer_histories.js';
 import { BOOK_DATA as codexPunchline } from './books/codex_punchline.js';
+import { BOOK_DATA as mayorsLedger } from './books/mayors_ledger.js';
 
 
 const libraryCollectionsContainer = document.getElementById('library-collections-container');
@@ -114,6 +115,7 @@ const bookDataMap = {
     "Iron Legion Field Manual": ironLegionManual,
     "The Liber Maleficus: A Study of the Ruinous Powers": warhammerHistories,
     "Codex: The Punchline": codexPunchline,
+    "Mayor's Ledger & Spellbook": mayorsLedger,
 };
 
 const LIBRARIES = [
@@ -173,6 +175,7 @@ function getBookCoverUrl(bookTitle) {
         "Iron Legion Field Manual": 'book_cover_iron_legion.png',
         "The Liber Maleficus: A Study of the Ruinous Powers": 'book_cover_chaos.png',
         "Codex: The Punchline": 'book_cover_jester.png',
+        "Mayor's Ledger & Spellbook": 'book_cover_conspiracy.png',
     };
     return covers[bookTitle] || 'book_cover_history.png'; // Fallback
 }

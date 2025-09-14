@@ -105,7 +105,8 @@ export const CHARACTER_RELATIONS = {
     },
     'captain_toadette': {
         'bowser': { type: 'enemy', text: "Toadette on Bowser: The beast is responsible for the Princess's death. This temporary truce is a bitter pill, a necessary evil to uncover the truth and punish the true villains." },
-        'humpik': { type: 'enemy', text: "Toadette on Humpik: A savage from a strange land, allied with a monster. His hands are stained with the blood of my people. He will answer for his crimes." }
+        'humpik': { type: 'enemy', text: "Toadette on Humpik: A savage from a strange land, allied with a monster. His hands are stained with the blood of my people. He will answer for his crimes." },
+        'embercap': { type: 'ally', text: "Toadette on Embercap: He questioned my new strategy, but his loyalty is absolute. He has seen the necessity of our path and remains my most reliable soldier. His resolve is now as strong as my own." }
     },
     'kamek': {
         'archie': { type: 'ally', text: "Kamek on Archie: A chaotic, unpredictable variable. Lord Bowser's alliance with him is a high-risk gambit. I am watching him very, very closely." },
@@ -127,6 +128,11 @@ export const CHARACTER_RELATIONS = {
         'evil_toad_god': { type: 'ally', text: "Bryan on The God Toad: It saved me from the fire. Gave me purpose. Showed me the path. All praise to the Ascended One!" }
     },
     'chief_thornpaw': {
-        'peach_loyalists': { type: 'neutral', text: "Thornpaw on Peach Loyalists: The Princess... was a friend. These little ones fight for her memory. Their cause is just, even if their methods are loud. I gave them a clue. Let's see if they are wise enough to use it." }
+        'peach_loyalists': { type: 'neutral', text: "Thornpaw on Peach Loyalists: The Princess... was a friend. These little ones fight for her memory. Their cause is just, even if their methods are loud. I gave them a clue. Let's see if they are wise enough to use it." },
+        'bowser_loyalist_toad': { type: 'enemy', text: "Thornpaw on 'Pinstripe': He played the part of a friend well, but his loyalty was to the turtle king. He used my trust to free his master's spawn. A cunning, but dishonorable, creature." }
+    },
+    'embercap': {
+        'captain_toadette': { type: 'ally', text: "Embercap on Toadette: Her plan is... harsh. But the world is harsh. I questioned her, but she is right. This is the only way to win, to get justice for the Princess. My loyalty is to the cause, and she is its leader." },
+        'iggy_koopa': { type: 'enemy', text: "Embercap on Iggy Koopa: I had him. My blade couldn't cut through... a failure. The little monster escaped in the chaos." }
     }
 };

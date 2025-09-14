@@ -281,5 +281,11 @@ export const BOOK_DESCRIPTIONS = {
         reading_time: "Approx. 5 minutes (or an eternity, depending on the current temporal conditions)",
         pages: 5,
         effect: "Grants insight into the illogical reasoning of the Cosmic Jesters. Reading it may cause minor, temporary reality warping."
+    },
+    "Mayor's Ledger & Spellbook": {
+        summary: "The official ledger of the recently deceased mayor of Toad Town. The last few pages seem to have been used as a spellbook, containing a dark ritual of domination and a cryptic note signed 'V'.",
+        reading_time: "Approx. 10 minutes",
+        pages: 4,
+        effect: "Provides hard evidence of the Onyx Hand and Mages' Guild conspiracy to take over Toad Town through magical puppetry."
     }
 };

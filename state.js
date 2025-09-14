@@ -124,7 +124,8 @@ export const state = {
                 "Mushroom Kingdom History, Vol. III", 
                 "A Field Guide to Fungal Alchemy", 
                 "Koopa Troop Tactics",
-                "A Guide to the Great Libraries"
+                "A Guide to the Great Libraries",
+                "Mayor's Ledger & Spellbook"
             ] 
         }
     },
@@ -209,7 +210,26 @@ function initReputation() {
         }
     }
 
-    state.activeRumors = LORE_DATA.rumors.map(r => r.id);
+    state.activeRumors = [
+        'peach_death_fallout',
+        'dragon_slaying',
+        'iron_fists_raid',
+        'xo_defeat',
+        'core_crisis',
+        'syrup_schism',
+        'archie_acquittal',
+        'iron_fists_conspiracy',
+        'koopa_loyalist_truce',
+        'barrel_compartment_reveal',
+        'lankys_disgrace_at_summit',
+        'chaos_in_toad_town',
+        'shadow_war',
+        'dan_training',
+        'cosmic_static',
+        'paladin_dilemma',
+        'rebel_sympathies',
+        'scrap_trail'
+    ];
 }
 
 function getAbilityForLevel(archetype, level) {

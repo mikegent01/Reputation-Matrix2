@@ -179,6 +179,20 @@ export const RUMORS = [
         }
     },
     {
+        id: 'chaos_in_toad_town',
+        title: "Chaos in Toad Town: Conspiracy & Consolidation",
+        time_ago: "A Few Days Ago",
+        description: "A series of violent events rocked Toad Town. A conspiracy involving the mayor, the Onyx Hand, and Fawful's forces was uncovered by the Loyalist soldier Embercap. In the chaos, Iggy was captured and rescued, and the mayor was assassinated by Onyx Hand agents. This led to a strategic shift for the Loyalists: Captain Toadette now plans to seize towns and expel hostile populations to encircle the castle. After a moment of dissent, Embercap has embraced this ruthless new strategy, solidifying Toadette's command and preventing a schism within the faction.",
+        targets: ['captain_toadette', 'embercap', 'chief_thornpaw'],
+        effects: {
+            peach_loyalists: -20,
+            mushroom_regency: -15,
+            onyx_hand: -10,
+            mages_guild: -10,
+            koopa_troop: 5
+        }
+    },
+    {
         id: 'shadow_war',
         title: "Shadow War Escalation",
         time_ago: "Ongoing",

@@ -1,3 +1,4 @@
+
 // This file contains faction data for powers primarily based in The Midlands.
 
 export const MIDLANDS_FACTIONS = {
@@ -90,7 +91,7 @@ export const MIDLANDS_FACTIONS = {
     },
     onyx_hand: {
         name: "The Onyx Hand",
-        description: "A shadowy network of ancient vampire covens from the Midlands. They operate as a clandestine cabal, weaving intricate webs of political intrigue and subtle manipulation to amass influence. Their philosophy revolves around the 'Eternal Grasp,' the belief that true dominion comes from controlling the strings of society.",
+        description: "A shadowy network of ancient vampire covens from the Midlands. They operate as a clandestine cabal, weaving intricate webs of political intrigue and subtle manipulation to amass influence. Their sister coven, the Crimson Veil, is currently active in the Mushroom Kingdom, where they have orchestrated the assassination of the Toad Town mayor in a bid to install a puppet ruler.",
         logo: 'faction_onyx_hand.png',
         relations: { 
             allies: ['koopa_troop'], 

@@ -1,4 +1,5 @@
 
+
 // This file contains all of Humpik's personal quests.
 export const HUMPIK_QUESTS = {
     'humpik_honor_quest': {
@@ -74,11 +75,11 @@ export const HUMPIK_QUESTS = {
         objective: "During a battle, Humpik clashed with Embercap, a particularly tough and resilient Toad soldier from the Peach Loyalists. Impressed by his courage, Humpik seeks him out for a non-lethal sparring match to test his mettle.",
         assignee: "Humpik",
         assigneeKey: 'humpik',
-        status: "failed",
-        motivation: "Humpik respects strength and courage, regardless of the uniform. He sees a fellow warrior in Embercap and wishes to test his skills against him in a battle of pure strength, free from the politics of the war. Unfortunately, with Embercap's presumed death at the Gala, this honorable duel is no longer possible.",
+        status: "available",
+        motivation: "Humpik respects strength and courage, regardless of the uniform. Embercap was presumed dead but has returned, now fully committed to a more ruthless Loyalist cause. Humpik wants to test his own strength against this hardened warrior, to see if his convictions have made him stronger.",
         steps: [
-            { id: 'step1', title: "The Challenge", status: 'completed', description: "Humpik had resolved to challenge the brave toad soldier to a duel of honor." },
-            { id: 'step2', title: "A Hero's End", status: 'failed', description: "Embercap was reported as killed in action during the infiltration of Fawful's Gala. The opportunity for a sparring match has been lost." }
+            { id: 'step1', title: "Locate the Loyalist Front Line", status: 'active', description: "Embercap is a key commander in the new Loyalist offensive. Humpik must find their forward base to issue a formal challenge." },
+            { id: 'step2', title: "A Duel of Warriors", status: 'locked', description: "Challenge Embercap to a duel of honor, a test of pure strength between two dedicated soldiers on opposite sides of a brutal war." }
         ]
     },
     'humpik_training_day': {

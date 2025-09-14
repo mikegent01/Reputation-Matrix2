@@ -1,11 +1,12 @@
+
 // This file contains the detailed operational data for the Mages' Guild unique system display.
 
 export const MAGES_GUILD_DETAILS = {
     description: "The Mages' Guild's internal politics are a constant struggle between tradition and reckless innovation. This balance of power is tracked in the Great Scrying Orb, which reflects the dominant magical philosophy and the Guild's current clandestine projects.",
     scrying_orb: {
         title: "The Conclave's Scrying Orb",
-        current_focus: "Current Focus: Tracking the chaotic magical signature of Archie Miser and attempting to devise a method of containment.",
-        active_plot: "The Containment Protocol",
+        current_focus: "Current Focus: Analyzing the Onyx Hand's recent political maneuvering in the Mushroom Kingdom. A key spellbook related to their plot has been stolen by a Loyalist soldier, creating a chaotic variable we must account for.",
+        active_plot: "The Toad Town Gambit",
         plot_description: "The Conservator faction is pushing research into binding runes, while the Innovators see Archie as a subject to be studied, not caged."
     },
     influence_distribution: {

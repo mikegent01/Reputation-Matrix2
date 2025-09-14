@@ -3,10 +3,72 @@ import { WAHBOOK_INTEL_POSTS } from './assembly-intel-data.js';
 
 export const WAHBOOK_POSTS = [
     {
+        id: 'toadette_post_3',
+        order: 150,
+        characterKey: 'captain_toadette',
+        timestamp: 'Just now',
+        content: `The Onyx Hand's shadow assassins have done what the Regency was too weak to do. The mayor was corrupt, a rot at the heart of our kingdom. With him gone, we have seized this moment. Toad Town is now under Loyalist control. This is not an occupation; it is a liberation. From here, we will build our base and begin the true war. For the Princess!`,
+        likes: 412,
+        comments: [
+            { characterKey: 'mistveil', text: "For the Princess! Whatever it takes." },
+            { characterKey: 'chancellor_toadsworth', text: "Captain! You are taking advantage of a murder to impose martial law! This is madness!" }
+        ],
+        rumorId: 'chaos_in_toad_town'
+    },
+    {
+        id: 'embercap_post_1',
+        order: 149,
+        characterKey: 'embercap',
+        timestamp: '1 hour ago',
+        content: `I had my doubts. I questioned the path. But I have seen the depths of the betrayal we face. The enemy wears a friendly smile and offers you a potion before trying to steal your king. There is no room for half-measures. Captain Toadette is right. The path to justice is hard, but we will walk it. We will be the ones to end this.`,
+        likes: 355,
+        comments: [
+            { characterKey: 'dewdrop', text: "A hard path, brother, but a necessary one. We will tend to the wounds, you lead the charge." },
+            { characterKey: 'chief_thornpaw', text: "I witnessed your death and your return, young soldier. The path you now walk is heavy with the scent of both steel and sorrow. Tread carefully." }
+        ],
+        rumorId: 'chaos_in_toad_town'
+    },
+    {
+        id: 'toadtown_citizen_post_1',
+        order: 148,
+        characterKey: 'generic_toad',
+        timestamp: '3 hours ago',
+        content: `The mayor is dead... murdered in his own home! Now there are Loyalist soldiers everywhere, talking about 'relocation'. What's happening to our town? I don't feel safe anymore. Who is in charge?`,
+        likes: 620,
+        comments: [
+            { characterKey: 'dan', text: "Stay strong. Communities have to look after each other when leaders fail." }
+        ],
+        rumorId: 'chaos_in_toad_town'
+    },
+    {
+        id: 'kamek_post_toadtown',
+        order: 147,
+        characterKey: 'kamek',
+        timestamp: '5 hours ago',
+        content: `The mushrooms are devouring each other. Fanatics versus bureaucrats, assassins in the shadows... it's a delightful spectacle. Let them bleed each other white. It will only make Lord Bowser's glorious return all the easier. Patience is a virtue.`,
+        likes: 290,
+        comments: [
+            { characterKey: 'bowser', text: "Excellent. Let the appetizers fight amongst themselves." }
+        ],
+        rumorId: 'chaos_in_toad_town'
+    },
+    {
+        id: 'janna_post_spellbook',
+        order: 146,
+        characterKey: 'janna_brightspark',
+        timestamp: '8 hours ago',
+        content: `Fascinating! A spellbook containing a variant of a soul-binding ritual, linked to the Onyx Hand, was recovered from the Toad Town incident. And the caster was a MAGE! The Conservators will be furious, but the data from this political application of advanced puppetry is invaluable! What a time to be alive!`,
+        likes: 188,
+        comments: [
+            { characterKey: 'archmage_theron', text: "Janna, this is not 'data'. This is a grave breach of the Accords and a profound threat to stability. The Aegis Magi have been notified." }
+        ],
+        rumorId: 'chaos_in_toad_town'
+    },
+    {
         id: 'cranky_post_2',
         order: 145,
         characterKey: 'cranky_kong',
-        timestamp: 'Just now',
+        timestamp: '1 day ago',
         content: `Good grief! Now every Tom, Dick, and three-eyed weirdo has an opinion on Kong family matters! Back in my day, we didn't post our problems on the WAH-whatever, we threw barrels at them until they went away! A much better system!`,
         likes: 420,
         comments: [],
@@ -16,7 +78,7 @@ export const WAHBOOK_POSTS = [
         id: 'dk_post_2',
         order: 144,
         characterKey: 'donkey_kong',
-        timestamp: '2 minutes ago',
+        timestamp: '1 day ago',
         content: `Family business is family business. And right now, business is giving me a migraine. Outsiders should remember that we solve our own problems. The Kong way.`,
         likes: 550,
         comments: [
@@ -29,10 +91,11 @@ export const WAHBOOK_POSTS = [
         id: 'diddy_post_2',
         order: 143,
         characterKey: 'diddy_kong',
-        timestamp: '5 minutes ago',
+        timestamp: '1 day ago',
         content: `And now the three-eyed freak thinks this is a joke too? Stay out of Kong family business, you walking talking powder keg.`,
         likes: 315,
         comments: [
+            { "characterKey": "archie", "text": "Just trying to lighten the mood! Sheesh." }
         ],
         rumorId: 'lankys_disgrace_at_summit'
     },
@@ -40,10 +103,11 @@ export const WAHBOOK_POSTS = [
         id: 'archie_post_ride',
         order: 142,
         characterKey: 'archie',
-        timestamp: '1 hour ago',
+        timestamp: '2 days ago',
         content: `Hello everyone, quite the bumpy ride wasn't it? How is everyone holding up?`,
         likes: 218,
         comments: [
+            { characterKey: 'remi', text: "Is... is it always like this? Just asking for a friend." },
             { characterKey: 'lario', text: "Holding up?! I'm holding a wrench and a grudge! That purple cheat left me for dead!" },
             { characterKey: 'dan', text: "A little shaken, but we're free. That's what matters. We're all still here." },
             { characterKey: 'bowser', text: "Bumpy? GWAHAHA! That's how I like it! A little chaos keeps everyone on their toes!" },
@@ -55,7 +119,7 @@ export const WAHBOOK_POSTS = [
         id: 'cranky_post_1',
         order: 140,
         characterKey: 'cranky_kong',
-        timestamp: '15 hours ago',
+        timestamp: '3 days ago',
         content: `Back in my day, we didn't have 'diplomatic incidents'. We had coconut guns. Solved problems a lot faster. This whole summit was a waste of good bananas. And Lanky... don't get me started on that good-for-nothing slacker!`,
         likes: 350,
         comments: [
@@ -68,7 +132,7 @@ export const WAHBOOK_POSTS = [
         id: 'leoncoeur_post_1',
         order: 139,
         characterKey: 'king_louen_leoncoeur',
-        timestamp: '16 hours ago',
+        timestamp: '3 days ago',
         content: `I must confess, the recent 'summit' was a disheartening display. To see diplomacy devolve into such buffoonery is a sad day for all civilized realms. Where is the honor? Where is the chivalry? It seems in short supply in these lands.`,
         likes: 410,
         comments: [
@@ -81,7 +145,7 @@ export const WAHBOOK_POSTS = [
         id: 'kamek_post_1',
         order: 138,
         characterKey: 'kamek',
-        timestamp: '17 hours ago',
+        timestamp: '4 days ago',
         content: `The pieces are moving on the board. While the lesser factions squabble over castles and politics, the true game is being played in the shadows. The King's will shall be done. A storm is gathering...`,
         likes: 275,
         comments: [
@@ -93,7 +157,7 @@ export const WAHBOOK_POSTS = [
         id: 'toadette_post_2',
         order: 137,
         characterKey: 'captain_toadette',
-        timestamp: '20 hours ago',
+        timestamp: '4 days ago',
         content: `The Regency falters! Fawful's madness defiles our sacred castle! Only the Peach Loyalists have the strength and the will to restore justice! Do not be swayed by the weak-willed words of politicians! Take up arms! For the Princess!`,
         likes: 388,
         comments: [
