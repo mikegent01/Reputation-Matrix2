@@ -143,6 +143,7 @@ export const state = {
     userState: {
         following: [],
         seenPostIds: [],
+        waluigiWarningShown: false,
     }
 };
 
@@ -515,7 +516,7 @@ export function loadState() {
 
     // Ensure userState exists for follow system
     if (!state.userState) {
-        state.userState = { following: [], seenPostIds: [] };
+        state.userState = { following: [], seenPostIds: [], waluigiWarningShown: false };
     }
 
 

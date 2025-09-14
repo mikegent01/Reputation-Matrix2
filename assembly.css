@@ -846,3 +846,40 @@ body.embed-mode .feed-post {
 #groups-content .wahbook-feed-container {
     margin-top: 16px;
 }
+
+/* --- Waluigi Warning Modal --- */
+.waluigi-warning-content {
+    max-width: 500px;
+    background-color: var(--sidebar-bg);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-color);
+}
+
+.waluigi-warning-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.waluigi-warning-header img {
+    width: 48px;
+    height: 48px;
+}
+
+.waluigi-warning-header h3 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    text-shadow: 0 0 5px var(--accent-color);
+}
+
+#waluigi-warning-text {
+    font-family: var(--font-primary);
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    font-style: italic;
+}

@@ -38,6 +38,9 @@ const shareModal = document.getElementById('share-modal');
 const shareCodeTextarea = document.getElementById('share-code-textarea');
 const copyShareBtn = document.getElementById('copy-share-btn');
 
+// Waluigi Warning Modal
+const waluigiWarningModal = document.getElementById('waluigi-warning-modal');
+
 
 let currentEventSort = 'newest';
 let activeGroupFilter = 'all';
@@ -719,6 +722,15 @@ function handleNewReply(inputElement) {
     }
 }
 
+function showWaluigiWarning() {
+    if (!waluigiWarningModal) return;
+    playSound('wah.mp3');
+    const textElement = document.getElementById('waluigi-warning-text');
+    if(textElement) {
+        textElement.textContent = "WAH! HEY! YOU! Three-eyes! A little birdy told me you've been playing with magic. Very stylish! But the boring killjoys at the Mages' Guild have rules... something called the 'Autumnwood Accords'. Apparently, unsanctioned magic is a big no-no in their territory. They're watching you. Don't get caught! Or if you do, make it spectacular! WAH-HA-HA!";
+    }
+    waluigiWarningModal.style.display = 'flex';
+}
 
 function setupEventListeners() {
     tabsContainer.addEventListener('click', (e) => {
@@ -859,6 +871,16 @@ function setupEventListeners() {
         });
     }
 
+    if(waluigiWarningModal) {
+        const closeBtn = waluigiWarningModal.querySelector('.modal-close');
+        closeBtn.addEventListener('click', () => waluigiWarningModal.style.display = 'none');
+        waluigiWarningModal.addEventListener('click', (e) => {
+            if(e.target === waluigiWarningModal) {
+                waluigiWarningModal.style.display = 'none';
+            }
+        });
+    }
+
     // Reply input listener
     document.body.addEventListener('keypress', e => {
         if (e.key === 'Enter' && e.target.classList.contains('reply-input')) {
@@ -924,6 +946,14 @@ async function init() {
 
     loadState();
     if (!feedContainer || !eventsContainer) return;
+
+    if (state.loggedInUser === 'archie' && !state.userState.waluigiWarningShown) {
+        setTimeout(() => {
+            showWaluigiWarning();
+            state.userState.waluigiWarningShown = true;
+            saveState();
+        }, 1500);
+    }
     
     renderMainFeed();
     renderEventsFeed();
