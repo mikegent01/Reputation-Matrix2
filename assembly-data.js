@@ -246,7 +246,6 @@ export const WAHBOOK_POSTS = [
         timestamp: '1 day ago',
         content: `The reports of my death were greatly exaggerated. I have seen the enemy's heart. There is no room for mercy. No more half-measures. Captain Toadette's path is the only path to justice. We will have our victory, or we will have our vengeance.`,
         likes: 690,
-        comments: [ { characterKey: 'humpik', text: 'The little mushroom man is alive! GWAHAHA! He is tough! Humpik is glad!' }, { characterKey: 'captain_toadette', text: 'Welcome back, Commander. We have work to do.' } ],
         rumorId: 'chaos_in_toad_town'
     },
     {
@@ -259,7 +258,6 @@ export const WAHBOOK_POSTS = [
 They were going on about "stories of the third eye" which, okay, flattering. But the weird part? One of them kept muttering about wanting "Toad Soup." Seriously. On a spaceship. Weirdos.`,
         likes: 184,
         comments: [
-            { characterKey: 'humpik', text: "They hurt little three-eyes?! On our ship?! HUMPIK WILL FIND THEM AND SMASH THEM!" },
             { characterKey: 'toad_lee', text: "Toad Soup? We will not allow any harm to come to our people. Stay vigilant, brothers." },
             { characterKey: 'general_marcus_ironhand', text: "The Iron LEGION does not employ 'goons.' Our soldiers are disciplined warriors. If this incident occurred, it was not by my command or the action of my men. Perhaps you are confusing us with common street thugs." },
             { characterKey: 'boss_knuckles', text: "You mean the Iron FISTS, you three-eyed freak. And that wasn't a story, it was a down payment. Next time, we're collecting more than just stories. The bounty on your head is still active." },
