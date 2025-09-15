@@ -288,7 +288,7 @@ function renderVigilance(container, svg) {
     const pathElForLength = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     pathElForLength.setAttribute('d', journey.path);
     const pathLength = pathElForLength.getTotalLength();
-    const progress = journey.currentDay / journey.totalDays;
+    const progress = Math.min(journey.currentDay / journey.totalDays, 1);
     const currentPoint = pathElForLength.getPointAtLength(pathLength * progress);
 
     const marker = document.createElement('div');
@@ -300,7 +300,13 @@ function renderVigilance(container, svg) {
     
     const label = document.createElement('div');
     label.className = 'vigilance-label';
-    label.textContent = `${journey.daysRemaining} days to Capital`;
+    
+    if (journey.status && (journey.status.includes('Arrived') || journey.daysRemaining <= 0)) {
+        label.textContent = journey.status;
+    } else {
+        label.textContent = `${journey.daysRemaining} days to Capital`;
+    }
+    
     marker.appendChild(label);
     
     container.appendChild(marker);
@@ -721,6 +727,8 @@ export function renderTacticalDetailPanel(itemId, itemType) {
         `;
     } else if (itemType === 'vigilance') {
         const journey = BATTLE_MAP_DATA.vigilance_journey;
+        const statusText = journey.status || 'En route to Imperial Capital';
+        const timeRemainingText = journey.daysRemaining > 0 ? `${journey.daysRemaining} days` : 'Arrived';
         html = `
             <div class="tactical-detail-panel">
                 <h3>The 'Vigilance'</h3>
@@ -729,9 +737,9 @@ export function renderTacticalDetailPanel(itemId, itemType) {
                     Unaligned (Party Controlled)
                 </p>
                 <div class="tactical-info">
-                    <p><strong>Status:</strong> En route to Imperial Capital</p>
+                    <p><strong>Status:</strong> ${statusText}</p>
                     <p><strong>Journey Progress:</strong> Day ${journey.currentDay} of ${journey.totalDays}</p>
-                    <p><strong>Time Remaining:</strong> ${journey.daysRemaining} days</p>
+                    <p><strong>Time Remaining:</strong> ${timeRemainingText}</p>
                 </div>
                 <div class="tactical-objective">
                     <h5>Mission</h5>

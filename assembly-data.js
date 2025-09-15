@@ -1,7 +1,79 @@
 
+
 import { WAHBOOK_INTEL_POSTS } from './assembly-intel-data.js';
 
 export const WAHBOOK_POSTS = [
+    {
+        id: 'waluigi_toad_focus_update',
+        order: 161,
+        characterKey: 'waluigi',
+        timestamp: 'Just Now',
+        content: `WAH! HEY, THREE-EYES (@Archie)!
+
+Those little mushroom-minions of yours have been busy! That one, Dan, is trying to be a 'leader' now. The big-axe one, Toad Lee, is teaching them all how to stand in a line. The money-grubbing one, Roger, is counting all their moldy bread. And the spooky one, Bones, is teaching them... poker? WAH-tever!
+
+They're getting organized. This could be useful for my magnificent plans! Or it could be very, very boring. Keep an eye on them.`,
+        likes: 123,
+        comments: [
+            { characterKey: 'archie', text: "Don't worry, I've got it under control. 'Organized' is just a fancy word for 'predictable'." },
+            { characterKey: 'dan', text: "We're not minions! We're a community!" }
+        ]
+    },
+    {
+        id: 'standoff_at_capital_news',
+        order: 160,
+        characterKey: 'wah_media_collective',
+        timestamp: 'Just Now',
+        content: `**STANDOFF IN THE SKIES! Regal Empire Forces Board Rogue Airship 'Vigilance' Over Capital! High-Profile Arrests Made!**
+
+A tense standoff concluded today as the rogue airship 'Vigilance' was boarded by Regal Empire forces, identified as elite Crown Intelligence agents. The operation, which took place in the skies directly over the Imperial Capital, resulted in the capture of the notorious smuggler 'Mr. Wario' and the surprising surrender of the anarchist Archie Miser. 
+
+Eyewitness reports from the ship are chaotic, detailing a fierce firefight, the brief appearance of the pirate Captain Syrup, and a struggle over the airship's powerful, artifact-based power source. The 'Vigilance' has since landed at the capital's military spaceport and is currently under heavy guard. The fate of its renegade crew remains uncertain.`,
+        image: 'newspaper_airship.png',
+        image_alt: "The Vigilance airship surrounded by smaller Imperial vessels.",
+        likes: 1854,
+        comments: [
+            { characterKey: 'generic_toad', text: "Finally! Maybe now we can have some peace and quiet!" },
+            { characterKey: 'the_broker', text: "Several high-value assets just went off the board. This will have... interesting effects on the market." }
+        ],
+        rumorId: 'standoff_at_the_capital'
+    },
+    {
+        id: 'steelstorm_standoff_post',
+        order: 159,
+        characterKey: 'colonel_vera_steelstorm',
+        timestamp: '2 hours ago',
+        content: "A successful joint operation between Crown Intelligence and the Iron Legion has neutralized a significant threat over the capital. Key assets were secured, and several high-value targets, including the anarchist Archie Miser and the smuggler 'Mr. Wario', are in custody. Order will be maintained.",
+        likes: 562,
+        comments: [
+            { characterKey: 'general_marcus_ironhand', text: "A victory for the Empire. Let chaos reign no more." }
+        ],
+        rumorId: 'standoff_at_the_capital'
+    },
+    {
+        id: 'waluigi_iron_binding_post',
+        order: 158,
+        characterKey: 'waluigi',
+        timestamp: '4 hours ago',
+        content: "WAH! These Iron Legion goons! No style! They slap some rusty magic on my ship's power source and call it 'tactics'? It's a cheap parlor trick! It's like putting a bumper sticker on a masterpiece! An insult to my genius!",
+        likes: 210,
+        comments: [
+            { characterKey: 'lario', text: "Hey! I could have fixed it better! And for a reasonable price!" }
+        ],
+        rumorId: 'standoff_at_the_capital'
+    },
+    {
+        id: 'syrup_standoff_post',
+        order: 157,
+        characterKey: 'captain_syrup',
+        timestamp: '6 hours ago',
+        content: "Got my hands on the famous staff for a moment. All that fuss for a glorified glowstick that doesn't even work! And then those tin soldiers slap their ugly binding on it. Amateurs. The real prize was the chaos anyway.",
+        likes: 315,
+        comments: [
+            { characterKey: 'first_mate_jones', text: "We'll find a better prize, Captain. We always do." }
+        ],
+        rumorId: 'standoff_at_the_capital'
+    },
     {
         id: 'toadette_post_3',
         order: 150,

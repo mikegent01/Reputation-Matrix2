@@ -1,23 +1,20 @@
-
 // This file contains all main story quests for the campaign.
 export const MAIN_QUESTS = {
-    'syrup_staff_heist': {
-        id: 'syrup_staff_heist',
-        title: "The Staff of Chaos",
+    'retrieve_the_staff': {
+        id: 'retrieve_the_staff',
+        title: "The Brandished Staff",
         type: 'main',
         category: 'Main Story',
-        objective: "Thwart Captain Syrup’s attempt to seize X.O.’s staff, a powerful arcane artifact, amid the unfolding chaos of the Mushroom Kingdom Civil War. The staff holds residual magic that could tip the balance of power if it falls into the wrong hands.",
+        objective: "During the chaos of the Imperial boarding, Iron Legion forces managed to seize X.O.'s staff. After a brief struggle involving Captain Syrup, the Legion applied a magical 'Iron Binding' seal to the artifact before it was reinstalled into the Vigilance's power core. The ship is operational but crippled, and the Legion now has a potential backdoor into its systems. The party must find a way to break the seal.",
         assignee: "Full Party",
         assigneeKey: 'full_party',
-        status: "completed",
-        start_condition: "This quest began after the party took control of the Vigilance.",
+        status: "active",
+        motivation: "The ship is limping along on half power, and the Iron Binding is an unknown piece of magitek that could allow the Legion to control or disable the Vigilance remotely. It's a massive security risk that must be neutralized to ensure the party's autonomy and safety.",
         steps: [
-            { id: 'step1', title: "Ally with Lario", status: 'completed', description: "The party supported Lario’s coup, securing the Regal Airship and establishing him as captain, granting them a mobile base to navigate the civil war." },
-            { id: 'step2', title: "Recover X.O.’s Staff", status: 'completed', description: "During the stormy descent, the Sword Toad successfully snatched the staff mid-air, preventing its loss and making it a focal point of the quest." },
-            { id: 'step3', title: "Confront Captain Syrup", status: 'completed', description: "The party found themselves in a tense standoff with Captain Syrup. The confrontation was interrupted by multiple outside forces, including the Iron Legion." },
-            { id: 'step4', title: "Repower the Vigilance", status: 'completed', description: "Overriding the wishes of Dan the Toad, Archie ordered the staff to be integrated with the ship's power core. The Vigilance is now operational again, but the staff is a constant target for factions like the Crimson Fleet and Iron Legion." }
-        ],
-        finalDecision: { description: "The ship is powered, but at the cost of Dan's trust. The staff's immense power now acts as a beacon, drawing unwanted attention." }
+            { id: 'step1', title: "Assess the Seal", status: 'completed', description: "The staff is back in the core, but it's been tampered with. Waluigi and Markop's Rakasha stone have identified the modification as an 'Iron Binding' seal, which chokes the staff's power output to 50%." },
+            { id: 'step2', title: "Find a Counter-Measure", status: 'active', description: "The binding is a fusion of magic and technology. The party must find an expert who can break it. Potential candidates include a Mages' Guild 'Innovator', a high-level Ratchet Raider Mekboy, or a Rakasha shaman who understands this 'fancy little trick'." },
+            { id: 'step3', title: "Purge the Seal", status: 'locked', description: "Apply the counter-measure and purge the Iron Legion's seal from the staff, restoring full power and security to the Vigilance." }
+        ]
     },
     'artifacts_of_balance': {
         id: 'artifacts_of_balance',
@@ -38,18 +35,18 @@ export const MAIN_QUESTS = {
     },
     'who_killed_peach': {
         id: 'who_killed_peach',
-        title: "Who Killed Princess Peach?",
+        title: "The Princess's Lasting Shadow",
         type: 'main',
         category: 'Main Story',
-        objective: "The death of Princess Peach plunged the kingdom into chaos. With Bowser gone, the Koopa Troop and Peach Loyalists have formed a fragile truce to investigate the true circumstances of her demise by infiltrating Fawful's Gala.",
+        objective: "The infiltration of Fawful's Gala revealed a key lead—a secret hatch in the Princess's chambers—but also fractured the Koopa-Loyalist alliance. Captain Toadette has abandoned the direct assault in favor of a brutal war of attrition, and her once-noble commander, Embercap, has embraced this ruthless new cause. The party must now navigate this treacherous political landscape to find a way back into the castle and uncover the truth of Peach's death.",
         assignee: "Koopa Troop & Peach Loyalists",
         assigneeKey: 'full_party',
         status: "active",
         start_condition: "A fragile truce was brokered between Kamek and Captain Toadette.",
         steps: [
-            { id: 'step1', title: "Infiltrate Peach's Castle", status: 'completed', description: "A recon team of Koopa and Paratroopas teamed up with Toadette's forces (Embercap and Mistveil) and successfully infiltrated the castle during Fawful's Grand Gala." },
-            { id: 'step2', title: "Survive the Gala", status: 'completed', description: "The infiltration gathered intelligence but ended in chaos. The team witnessed the 'God Toad', a being with temporal power, who seemingly killed and then revived the Loyalist soldier Embercap. In the confusion, Embercap escaped with the aid of a mysterious manticore rider, and is no longer presumed dead. The key lead remains: Chief Thornpaw of the Rakasha revealed a secret hatch in the Princess's chambers." },
-            { id: 'step3', title: "Find the Secret Hatch", status: 'active', description: "The joint operation is in jeopardy. Captain Toadette has shifted her strategy, now focusing on capturing Toad Town rather than a direct assault on Fawful's castle. This has created a schism with Embercap. The party must navigate this new political landscape to find a way back into the castle and locate the hidden hatch." },
+            { id: 'step1', title: "Infiltrate the Madhouse", status: 'completed', description: "A joint Koopa-Loyalist team successfully infiltrated Fawful's Grand Gala at the occupied castle." },
+            { id: 'step2', title: "Survive the Gala", status: 'completed', description: "The mission yielded a crucial lead from Chief Thornpaw about a secret hatch but ended in chaos. The Loyalist soldier Embercap was presumed dead, only to miraculously return, his ideals hardened by the experience. The fragile truce is now on the brink of collapse." },
+            { id: 'step3', title: "A Fractured Alliance", status: 'active', description: "The path back to the castle is blocked. Captain Toadette is focused on her new war for Toad Town, and Embercap, the only one who knows the hatch's general location, is now a ruthless commander. The party must find a way to re-secure his cooperation or find an alternative route into Fawful's fortress." },
             { id: 'step4', title: "Confront the Truth", status: 'locked', description: "Once the secrets of the hatch are revealed, confront the true culprit or circumstances behind the Princess's death." }
         ]
     },

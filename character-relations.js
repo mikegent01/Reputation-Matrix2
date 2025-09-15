@@ -31,7 +31,7 @@ export const CHARACTER_RELATIONS = {
         'bryan': { type: 'enemy', text: "Archie on Bryan: Another ghost from the past. He thinks I left him for dead? Please. In my line of work, people get left. He should have been faster. Now he's just another problem to solve." }
     },
     'markop': {
-        'archie': { type: 'ally', text: "Markop on Archie: A force of pure chaos. His methods are reprehensible, but his actions sometimes lead to a greater good. A soul to be guided, if possible. His recent 'interest' in Dan's training is... concerning. I must ensure the boy's path remains his own." },
+        'archie': { type: 'ally', text: "Markop on Archie: He surrendered. After all that chaos, he simply gave up to save his own skin. I cannot claim to understand him, but I can no longer call him a reliable ally. His path is his own." },
         'humpik': { type: 'ally', text: "Markop on Humpik: His loyalty is commendable, though his king is questionable. A strong arm in a just fight. A true friend." },
         'bowser': { type: 'enemy', text: "Markop on Bowser: A tyrant and a warlord. His goals are antithetical to justice and order. An alliance of desperation, not trust." },
         'remi': { type: 'ally', text: "Markop on Remi: Another soul caught in this chaos. I'll have to keep an eye on them, make sure Archie doesn't lead them down the wrong path too." },
@@ -70,7 +70,7 @@ export const CHARACTER_RELATIONS = {
         'black_t': { type: 'neutral', text: "Humpik on Black T: Small toad in black. Talked about toad selling. He was hiding. Strange."}
     },
     'bowser': {
-        'archie': { type: 'ally', text: "Bowser on Archie: He's useful, but his chaos nearly cost us everything! I thought he had this under control. He's on thin ice." },
+        'archie': { type: 'ally', text: "Bowser on Archie: This three-eyed menace is more trouble than he's worth! His chaotic schemes almost got us all captured or killed. He's on thin ice." },
         'markop': { type: 'ally', text: "Bowser on Markop: The horse-man has honor, which is a weakness. But he's a strong fighter. He keeps the little guys in line, so he's useful for now." },
         'humpik': { type: 'ally', text: "Bowser on Humpik: My most loyal ally! He has the strength of a mountain and the loyalty of a true friend! GWAHAHAHA!" },
         'remi': { type: 'ally', text: "Bowser on Remi: Another minion. As long as they follow orders, I don't care who they are." },
@@ -90,6 +90,11 @@ export const CHARACTER_RELATIONS = {
         'lario': { type: 'enemy', text: "Waluigi on Lario: My brilliant plan to save Humpik didn't have room for... extra baggage. He should be grateful I didn't drop him on purpose! WAH!" }
     },
     // --- NON-PARTY OPINIONS ---
+    'lario': {
+        'markop': { type: 'ally', text: "Lario on Markop: The big horse-guy, he saved me! Maybe not all heroes are schmucks after all. I owe him one." },
+        'waluigi': { type: 'enemy', text: "Lario on Waluigi: He left me! Said I was too FAT! Can you believe the nerve of that skinny purple cheat? When I get my hands on him..." },
+        'humpik': { type: 'ally', text: "Lario on Humpik: The big Dwarf threw an axe for me! An axe! That's a goblin's love language! He's alright in my book." }
+    },
     'dan': {
         'archie': { type: 'ally', text: "Dan on Archie: He's... a lot. He freed us, and I can't forget that. But his methods are terrifying. He's like a wildfire you hope is pointed at the enemy." },
         'markop': { type: 'ally', text: "Dan on Markop: He's my teacher. He's shown me what it means to be strong and honorable. I want to be like him." }
@@ -97,11 +102,6 @@ export const CHARACTER_RELATIONS = {
     'toad_lee': {
         'dan': { type: 'ally', text: "Toad Lee on Dan: The kid's got spirit. He's learning fast. But he's still just a kid. He needs protecting." },
         'markop': { type: 'ally', text: "Toad Lee on Markop: The centaur is a true commander. He leads from the front. I'd follow him into any fight." }
-    },
-    'lario': {
-        'markop': { type: 'ally', text: "Lario on Markop: He saved me! The big horse-guy, he actually saved me! Maybe not all heroes are schmucks after all. I owe him one." },
-        'waluigi': { type: 'enemy', text: "Lario on Waluigi: He left me! Said I was too FAT! Can you believe the nerve of that skinny purple cheat? When I get my hands on him..." },
-        'humpik': { type: 'ally', text: "Lario on Humpik: The big Dwarf threw an axe for me! An axe! That's a goblin's love language! He's alright in my book." }
     },
     'captain_toadette': {
         'bowser': { type: 'enemy', text: "Toadette on Bowser: The beast is responsible for the Princess's death. This temporary truce is a bitter pill, a necessary evil to uncover the truth and punish the true villains." },

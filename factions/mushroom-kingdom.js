@@ -136,7 +136,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
     },
     peach_loyalists: {
         name: "Peach Loyalists",
-        description: "A fanatical military faction, born from a century of frustration, that has split from the Regency. They believe the official government is too weak to hold Bowser accountable for the chaos that led to Princess Peach's death, and have taken it upon themselves to see 'justice' done through force.",
+        description: "A fanatical military faction that has split from the Regency. Following the events in Toad Town, their strategy has shifted under Captain Toadette to a brutal war of attrition. They now aim to seize key towns, expel hostile populations, and encircle Peach's Castle to turn Toad Town into a forward operating base. After a brief period of disagreement, Captain Toadette's most steadfast commander, Embercap, has accepted the necessity of this ruthless new doctrine.",
         logo: 'faction_peach_loyalists.png',
         relations: { 
             allies: [], 
@@ -148,7 +148,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
         region: "Mushroom Kingdom (Militarized Zones)",
         notable_people: [
             { name: "Captain Toadette", role: "Faction Leader", description: "A fanatical commander who believes the Princess is alive and the Regency is illegitimate." },
-            { name: "Embercap", role: "Toad Soldier", description: "A steadfast soldier with a fiery orange cap, serving as the backbone of the Loyalist infantry." },
+            { name: "Embercap", role: "Field Commander", description: "Captain Toadette's most steadfast and loyal soldier. He is the backbone of the Loyalist infantry and now a key executor of her aggressive new strategy." },
             { name: "Mistveil", role: "Toad Scout", description: "A nimble scout with a lavender cap, specializing in stealth and reconnaissance for the Loyalists." },
             { name: "Dewdrop", role: "Toad Medic", description: "A compassionate medic with an aqua-blue cap, responsible for tending to the wounded in Toadette's army." }
         ],
@@ -221,7 +221,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                 },
                 eager: {
                     name: "Eager, The Swift",
-                    status: "Frozen Solid (Presumed Deceased)",
+                    status: "Detained (Regal Empire)",
                     description: "A nimble and quick-witted toad who prefers to keep his distance, using his whip to control the battlefield.",
                     influence: 10,
                     events: {

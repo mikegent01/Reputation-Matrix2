@@ -229,7 +229,8 @@ function initReputation() {
         'cosmic_static',
         'paladin_dilemma',
         'rebel_sympathies',
-        'scrap_trail'
+        'scrap_trail',
+        'standoff_at_the_capital'
     ];
 }
 
@@ -313,6 +314,12 @@ function processInitialXP() {
     
     // XP for recent events
     grantXP('dan', 75, "Showed mercy to an Orc attacker, proving his character.");
+    grantXP('dan', 50, "Confronted Crown Intelligence agents on the Vigilance.");
+    grantXP('toad_lee', 50, "Confronted Crown Intelligence agents on the Vigilance.");
+    grantXP('bones', 50, "Confronted Crown Intelligence agents on the Vigilance.");
+    grantXP('roger', 50, "Confronted Crown Intelligence agents on the Vigilance.");
+    grantXP('ryan', 50, "Confronted Crown Intelligence agents on the Vigilance.");
+
 
     // Status updates from recent events
     if (state.auxiliary_party_state['ryan']) {
@@ -321,50 +328,54 @@ function processInitialXP() {
 }
 
 export function initFocusTreeState() {
-    const initialActiveFocuses = [];
-    // Automatically start the first focus for each toad
-    Object.keys(LORE_DATA.auxiliary_party).forEach(toadKey => {
-        if (toadKey === 'traitor_toad' || !FOCUS_TREES[toadKey]) return;
-        const tree = FOCUS_TREES[toadKey].tree;
-        if (tree && tree.length > 0) {
-            // Find the first node(s) with no prerequisites
-            const startingNodes = tree.filter(node => node.prerequisites.length === 0);
-            if (startingNodes.length > 0) {
-                // For simplicity, we'll just start the first one found.
-                // A more complex system could handle multiple starting paths.
-                const firstFocus = startingNodes[0];
-                 initialActiveFocuses.push({
-                    toadKey: toadKey,
-                    nodeId: firstFocus.id,
-                    remainingDays: firstFocus.cost - 3, // 3 days have passed now
-                    totalDays: firstFocus.cost
-                });
-            }
-        }
-    });
-
     state.focusTreeState = {
-        buildVersionApplied: "2024-05-18-r1", // Note the date of the last structural change
-        day: 5,
+        buildVersionApplied: "2024-05-18-r1",
+        day: 6, // ADVANCED
         activeToad: "dan",
         groupInfluence: 27,
-        unlocked: {
-            dan: [], toad_lee: [], eager: [],
-            ryan: [], roger: [], bones: [], bryan: [],
+        unlocked: { // UPDATED
+            dan: ['dan_t1_influence'], 
+            toad_lee: ['lee_t1_command'], 
+            eager: ['eager_t1_scout'],
+            ryan: ['ryan_t1_cantrips'], 
+            roger: ['rog_t1_trade'], 
+            bones: ['bones_t1_morale'], 
+            bryan: [],
             group: []
         },
-        activeFocuses: initialActiveFocuses,
-        influences: {
-            dan: 40, toad_lee: 25, eager: 10,
-            ryan: 10, roger: 10, bones: 5, bryan: 0
+        activeFocuses: [ // UPDATED to show new focuses started
+            { toadKey: 'group', nodeId: 'group_t1_repair_airship', remainingDays: 16, totalDays: 20 },
+            { toadKey: 'dan', nodeId: 'dan_t2_rally', remainingDays: 3, totalDays: 3 },
+            { toadKey: 'toad_lee', nodeId: 'lee_t2_fortify', remainingDays: 5, totalDays: 5 },
+            { toadKey: 'eager', nodeId: 'eager_t2_traps', remainingDays: 4, totalDays: 4 },
+            { toadKey: 'ryan', nodeId: 'ryan_t2_research_staff', remainingDays: 8, totalDays: 8 },
+            { toadKey: 'roger', nodeId: 'rog_t2_scavenge', remainingDays: 4, totalDays: 4 },
+            { toadKey: 'bones', nodeId: 'bones_t2_orc_debt', remainingDays: 6, totalDays: 6 },
+        ],
+        influences: { // UPDATED based on completed focuses
+            dan: 55, 
+            toad_lee: 35, 
+            eager: 15,
+            ryan: 15, 
+            roger: 20, 
+            bones: 10, 
+            bryan: 0
         },
-        log: [
-            { who: "System", what: "System online. Focus protocols initiated.", when: new Date().toISOString() },
-            ...initialActiveFocuses.map(f => ({
-                who: LORE_DATA.auxiliary_party[f.toadKey].name,
-                what: `Began initial focus: "${FOCUS_TREES[f.toadKey].tree.find(n => n.id === f.nodeId).title}".`,
-                when: new Date().toISOString()
-            }))
+        log: [ // UPDATED to reflect day 6 events
+            { who: "System", what: "Day 6 begins." },
+            { who: "Dan", what: "Completed focus: \"Hold a Council\"." },
+            { who: "Toad Lee", what: "Completed focus: \"Drill Sergeancy\"." },
+            { who: "Eager", what: "Completed focus: \"Scout the Surroundings\"." },
+            { who: "Roger", what: "Completed focus: \"Establish Barter System\"." },
+            { who: "Ryan", what: "Completed focus: \"Practice Cantrips\"." },
+            { who: "Bones", what: "Completed focus: \"Card Games in the Mess\"." },
+            { who: "Dan", what: "Began focus: \"Inspiring Speech\" [3 days]." },
+            { who: "Toad Lee", what: "Began focus: \"Fortify Position\" [5 days]." },
+            { who: "Eager", what: "Began focus: \"Set Booby Traps\" [4 days]." },
+            { who: "Ryan", what: "Began focus: \"Research X.O.'s Staff\" [8 days]." },
+            { who: "Roger", what: "Began focus: \"Organize Scavenging Parties\" [4 days]." },
+            { who: "Bones", what: "Began focus: \"Contemplate the Orc 'Debt'\" [6 days]." },
+            { who: "System", what: "System online. Focus protocols initiated." },
         ],
         luckyItemCooldowns: {
             dan: 0, toad_lee: 0, eager: 0,

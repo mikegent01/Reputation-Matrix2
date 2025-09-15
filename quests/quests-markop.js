@@ -244,10 +244,10 @@ export const MARKOP_QUESTS = {
         assignee: "Markop",
         assigneeKey: 'markop',
         status: "pending",
-        pending_condition: "Pending Activation: This quest becomes available when Humpik decides to activate his 'Koopa Rescue Mission' quest. Markop must then speak with Humpik to convince him to accept help.",
+        pending_condition: "Pending Activation: This quest becomes available when Humpik decides to activate his 'Dwarven Rescue Mission' quest. Markop must then speak with Humpik to convince him to accept help.",
         steps: [
             { id: 'step1', title: "Learn of Humpik's Plan", status: 'active', description: "Humpik is preparing for a solo mission. Markop must approach him to learn the details of his reckless plan." },
-            { id: 'step2', title: "A Council of War", status: 'locked', description: "Convince the proud Koopa warrior that accepting help is a sign of strength, not weakness. Plan a joint rescue mission that utilizes both of their skills." },
+            { id: 'step2', title: "A Council of War", status: 'locked', description: "Convince the proud Dwarf warrior that accepting help is a sign of strength, not weakness. Plan a joint rescue mission that utilizes both of their skills." },
             { id: 'step3', title: "Execute the Plan", status: 'locked', description: "Infiltrate the Loyalist prison camp and free the captured Koopas together." }
         ]
     }

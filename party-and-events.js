@@ -25,7 +25,7 @@ export const AUXILIARY_PARTY = {
     eager: {
         name: "Eager",
         weapon: "Whip",
-        status: "Frozen Solid (Presumed Deceased)",
+        status: "Kidnapped (Regal Empire)",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -35,8 +35,8 @@ export const AUXILIARY_PARTY = {
     ryan: {
         name: "Ryan",
         weapon: "Spellcaster",
-        status: "Duplicitous",
-        description: "A quiet, studious toad with a natural but untrained affinity for magic. SHOCKING REVELATION: Ryan has been revealed to be a 'warden' involved in a widespread toad trafficking ring, a betrayal that has shattered the trust of the Liberated Toads.",
+        status: "Active",
+        description: "A quiet, studious toad with a natural but untrained affinity for magic. He is intensely curious about arcane matters and spends most of his time studying.",
         level: 1,
         xp: 0,
         xp_to_next: 100,
@@ -190,6 +190,20 @@ export const RUMORS = [
             onyx_hand: -10,
             mages_guild: -10,
             koopa_troop: 5
+        }
+    },
+    {
+        id: 'standoff_at_the_capital',
+        title: "Standoff at the Capital",
+        time_ago: "Today",
+        description: "The Vigilance was boarded by Regal Empire forces over the capital. Key figures like Mr. Wario and Archie were captured. The ship's staff was briefly stolen by Captain Syrup before being sealed with an Iron Legion 'Iron Binding' and reinstalled. The full political fallout is yet to be determined.",
+        targets: ['party'],
+        effects: {
+            regal_empire: -30,
+            iron_legion: -25,
+            crimson_fleet: 5,
+            freelancer_underworld: -10,
+            liberated_toads: -5
         }
     },
     {

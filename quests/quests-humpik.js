@@ -1,13 +1,11 @@
-
-
 // This file contains all of Humpik's personal quests.
 export const HUMPIK_QUESTS = {
     'humpik_honor_quest': {
         id: 'humpik_honor_quest',
-        title: "The Honor of the Shell",
+        title: "An Axe to Grind",
         type: 'personal',
         category: 'Personal - Humpik',
-        objective: "The Iron Legion's elite mock Humpik for his 'barbaric' refusal of a duel, tarnishing the Koopa Troop's name. To restore his and the Koopa Troop's honor, Humpik must seek out a renowned Legion champion and defeat them in a formal, sanctioned duel.",
+        objective: "The Iron Legion's elite mock Humpik as a 'king's pet,' a savage with no true honor. To restore his name and prove the strength of his people, Humpik must seek out a renowned Legion champion and defeat them in a formal, sanctioned duel.",
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "pending",
@@ -16,7 +14,7 @@ export const HUMPIK_QUESTS = {
             { id: 'step1', title: "Identify a Worthy Champion", status: 'active', description: "The most respected duelist among the Legion's progressive 'War-Forged' faction is Colonel Vera Steelstorm. Use underworld contacts or military intelligence to pinpoint her current location on the Midlands front." },
             { id: 'step2', title: "Issue a Formal Challenge", status: 'locked', description: "The Legion follows strict protocols for challenges of honor. Humpik must present a formal, written challenge to Colonel Steelstorm, adhering to their traditions to prove he is not a mere savage.", options: ["Consult with Markop on the proper etiquette.", "Bribe a Freelancer to draft the challenge.", "Just roar really loud and hope for the best."] },
             { id: 'step3', title: "The Gauntlet of Cinders", status: 'locked', description: "Steelstorm agrees to the duel, but only if Humpik can first prove his mettle by surviving the Legion's infamous training ground—a field of deadly traps, automated war machines, and scorching hazards." },
-            { id: 'step4', title: "Duel of Fates", status: 'locked', description: "Face Colonel Vera Steelstorm in a one-on-one, sanctioned duel. The outcome will dramatically shift the Iron Legion's perception of the Koopa Troop and their new allies." }
+            { id: 'step4', title: "Duel of Fates", status: 'locked', description: "Face Colonel Vera Steelstorm in a one-on-one, sanctioned duel. The outcome will dramatically shift the Iron Legion's perception of the Dwarf and his allies." }
         ]
     },
     'humpik_great_feast': {
@@ -28,19 +26,19 @@ export const HUMPIK_QUESTS = {
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "available",
-        motivation: "For Humpik, this is the ultimate challenge. It's a test of strength against a legendary beast, and the reward is not just a trophy, but a feast that will be sung about in the Koopa war chants for generations.",
+        motivation: "For Humpik, this is the ultimate challenge. It's a test of strength against a legendary beast, and the reward is not just a trophy, but a feast that will be sung about in Dwarven halls for generations.",
         steps: [
             { id: 'step1', title: "Find the Lair", status: 'active', description: "Track the Titan-Turtle to its hidden lair deep within the treacherous Whispering Marshes, a place known for its toxic fumes and aggressive flora." },
             { id: 'step2', title: "The Unbreakable Shell", status: 'locked', description: "The Titan-Turtle's shell is immune to all normal attacks. Humpik must find a weak point or an environmental hazard to crack it." },
-            { id: 'step3', title: "The Feast of Champions", status: 'locked', description: "With the beast slain, Humpik must transport the massive carcass back to the Koopa Troop remnants and hold a feast to boost their morale and grant them its power for the next battle." }
+            { id: 'step3', title: "The Feast of Champions", status: 'locked', description: "With the beast slain, Humpik must transport the massive carcass back to his allies and hold a feast to boost their morale and grant them its power for the next battle." }
         ]
     },
     'humpik_proper_waaagh': {
         id: 'humpik_proper_waaagh',
-        title: "A Proper WAAAGH!",
+        title: "A Proper War!",
         type: 'personal',
         category: 'Personal - Humpik',
-        objective: "The Koopa remnants are demoralized. Humpik decides the only cure is a good, old-fashioned, large-scale assault on a well-defended enemy position to remind them of their strength.",
+        objective: "Bowser's remnants are demoralized. Humpik decides the only cure is a good, old-fashioned, large-scale assault on a well-defended enemy position to remind them of their strength.",
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "pending",
@@ -48,7 +46,7 @@ export const HUMPIK_QUESTS = {
         steps: [
             { id: 'step1', title: "Pick a Target", status: 'active', description: "Identify a suitable target for the assault, such as a fortified Peach Loyalist forward base or a major Toad Gang fortress." },
             { id: 'step2', title: "Rally the Troops", status: 'locked', description: "Give a series of loud, inspiring speeches, and lead by example in a few smaller skirmishes to get the Koopa Troop's blood pumping." },
-            { id: 'step3', title: "Unleash the WAAAGH!", status: 'locked', description: "Lead the full-scale assault, focusing on overwhelming force and pure aggression to shatter the enemy's morale and claim victory." }
+            { id: 'step3', title: "Unleash the War!", status: 'locked', description: "Lead the full-scale assault, focusing on overwhelming force and pure aggression to shatter the enemy's morale and claim victory." }
         ]
     },
     'humpik_biggest_axe': {
@@ -87,7 +85,7 @@ export const HUMPIK_QUESTS = {
         title: "Training Day",
         type: 'personal',
         category: 'Personal - Humpik',
-        objective: "Humpik notices the Liberated Toads are brave but undisciplined. He takes it upon himself to teach them the 'Koopa Way' of fighting: head down, charge hard.",
+        objective: "Humpik notices the Liberated Toads are brave but undisciplined. He takes it upon himself to teach them the 'Dwarven Way' of fighting: stand your ground, hit hard.",
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "available",
@@ -136,7 +134,7 @@ export const HUMPIK_QUESTS = {
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "available",
-        motivation: "Humpik sees the diplomat's endless talking as a sign of weakness and disrespect. He believes a direct, physical demonstration of Koopa strength is the best way to speed things up.",
+        motivation: "Humpik sees the diplomat's endless talking as a sign of weakness and disrespect. He believes a direct, physical demonstration of strength is the best way to speed things up.",
         steps: [
             { id: 'step1', title: "The 'Negotiation'", status: 'active', description: "Crash the diplomatic meeting." },
             { id: 'step2', title: "The 'Counter-Offer'", status: 'locked', description: "Smash the negotiating table in half. The diplomat will suddenly become much more agreeable." }
@@ -159,14 +157,14 @@ export const HUMPIK_QUESTS = {
     },
     'humpik_rescue_mission': {
         id: 'humpik_rescue_mission',
-        title: "Koopa Rescue Mission",
+        title: "Dwarven Rescue Mission",
         type: 'personal',
         category: 'Personal - Humpik',
         objective: "Humpik learns a small squad of Koopa Troopas has been captured by the Peach Loyalists. He decides to launch a solo rescue mission to get them back.",
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "available",
-        motivation: "Loyalty. The Koopa Troop leaves no one behind. Humpik feels a personal duty to rescue his captured comrades.",
+        motivation: "Loyalty. Humpik feels a personal duty to rescue his captured comrades-in-arms, regardless of their race.",
         steps: [
             { id: 'step1', title: "Locate the Prison", status: 'active', description: "Find the Loyalist-controlled prison camp where the troopas are being held." },
             { id: 'step2', title: "The Breakout", status: 'locked', description: "Create a massive diversion (likely involving smashing a wall) and free the captured Koopas." }
@@ -237,7 +235,7 @@ export const HUMPIK_QUESTS = {
         title: "Lost Cargo: Gilded Gryphon",
         type: 'personal',
         category: 'Personal - Humpik',
-        objective: "Humpik, seeking to prove the Koopa Troop's reliability, has taken on a contract from the Gilded Gryphon Mercenary Company. He must secure a lost cargo shipment from a bandit-infested canyon.",
+        objective: "Humpik, seeking to prove the reliability of his new allies, has taken on a contract from the Gilded Gryphon Mercenary Company. He must secure a lost cargo shipment from a bandit-infested canyon.",
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "pending",

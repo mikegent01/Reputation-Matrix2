@@ -61,19 +61,19 @@ export const CHARACTERS_3 = {
     'green_t': {
         name: "Green T",
         role: "Leader, The Tea Leaf Syndicate",
-        status: "Detained by party",
+        status: "Detained (Regal Empire)",
         description: "The mysterious and well-dressed leader of the Syndicate. His motives are unknown, but he commands loyalty through fear and reward. He has revealed the ability to grow to immense size."
     },
     'earl_grey': {
         name: "Earl Grey",
         role: "Enforcer, The Tea Leaf Syndicate",
-        status: "Deceased (Exploded after being poisoned by Roger's dagger)",
+        status: "Deceased",
         description: "A stoic and powerful toad who wielded a heavy axe and shield. He was Green T's loyal bodyguard and one of the only survivors of Archie's infamous fireball."
     },
     'chai': {
         name: "Chai",
         role: "Diplomat, The Tea Leaf Syndicate",
-        status: "Detained by party",
+        status: "Deceased",
         description: "A smooth-talking toad who handles the Syndicate's negotiations and information gathering. He also survived the 'Tea Party Incident' and now harbors a deep distrust of the party, a fact he conceals behind a veneer of cooperation."
     },
 

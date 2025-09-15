@@ -1,5 +1,3 @@
-
-
 // This file contains all side quests related to the Liberated Toads.
 export const TOADS_QUESTS = {
     // --- DAN'S QUESTS ---
@@ -127,10 +125,11 @@ export const TOADS_QUESTS = {
         objective: "Eager learns that a merchant caravan belonging to his family, which went missing years ago, was last seen in the treacherous Bandit's Pass. He wants to find the wreckage to recover a family heirloom and find peace.",
         assignee: "Eager",
         assigneeKey: 'full_party',
-        status: "available",
+        status: "pending",
+        pending_condition: "After being frozen and then unfrozen with an ice pick, Eager was kidnapped by the Regal Empire's secret service. His personal quests are on hold until he can be rescued.",
         motivation: "For Eager, this is about closure. He wants to know what happened to his family and recover the last memento he has of his past life before he was enslaved.",
         steps: [
-            { id: 'step1', title: "Find Bandit's Pass", status: 'active', description: "Use old maps and underworld contacts to locate the infamous Bandit's Pass, now controlled by a ruthless gang of rogue mercenaries." },
+            { id: 'step1', title: "Find Bandit's Pass", status: 'locked', description: "Use old maps and underworld contacts to locate the infamous Bandit's Pass, now controlled by a ruthless gang of rogue mercenaries." },
             { id: 'step2', title: "The Ambush Site", status: 'locked', description: "Find the site of the ambush and the wreckage of the caravan, and piece together what happened." },
             { id: 'step3', title: "Recover the Locket", status: 'locked', description: "The heirloom, a simple silver locket, was taken by the bandit chief. Eager must infiltrate their camp and get it back." }
         ]
@@ -143,10 +142,11 @@ export const TOADS_QUESTS = {
         objective: "Believing other enslaved Toads exist, Eager wants to establish a secret 'Toadroad'—a network of hidden caches and coded messages to help others find their way to freedom at Toad's Landing.",
         assignee: "Eager",
         assigneeKey: 'full_party',
-        status: "available",
+        status: "pending",
+        pending_condition: "After being frozen and then unfrozen with an ice pick, Eager was kidnapped by the Regal Empire's secret service. His personal quests are on hold until he can be rescued.",
         start_condition: "Toad's Landing is established and secure.",
         steps: [
-            { id: 'step1', title: "The First Post", status: 'active', description: "Establish the first dead-drop location in a nearby town with a known population of oppressed Toads." },
+            { id: 'step1', title: "The First Post", status: 'locked', description: "Establish the first dead-drop location in a nearby town with a known population of oppressed Toads." },
             { id: 'step2', title: "The Code", status: 'locked', description: "Develop a simple code, based on mushroom types, that can be used to pass messages without being deciphered by overlords." },
             { id: 'step3', title: "The First Escapee", status: 'locked', description: "A message is received! Eager must use the Toadroad to guide the first group of escaping toads safely to Toad's Landing." }
         ]
@@ -159,10 +159,11 @@ export const TOADS_QUESTS = {
         objective: "Eager's past as a circus performer comes back to haunt him when his cruel former Ringmaster shows up in a nearby town, using enslaved creatures for his act. Eager wants to free them.",
         assignee: "Eager",
         assigneeKey: 'full_party',
-        status: "available",
+        status: "pending",
+        pending_condition: "After being frozen and then unfrozen with an ice pick, Eager was kidnapped by the Regal Empire's secret service. His personal quests are on hold until he can be rescued.",
         motivation: "Eager cannot stand to see others suffer as he did. This quest is about confronting his past and using the skills he learned as a performer to become a liberator.",
         steps: [
-            { id: 'step1', title: "Infiltrate the Circus", status: 'available', description: "Use his old skills to get a job at the circus and identify where the enslaved creatures are being kept." },
+            { id: 'step1', title: "Infiltrate the Circus", status: 'locked', description: "Use his old skills to get a job at the circus and identify where the enslaved creatures are being kept." },
             { id: 'step2', title: "The Grand Distraction", status: 'locked', description: "Sabotage the main event with a spectacular, non-lethal performance using his whip, creating a diversion to free the creatures." }
         ]
     },
@@ -313,6 +314,22 @@ export const TOADS_QUESTS = {
     },
     
     // --- GROUP QUESTS ---
+    'toads_rescue_eager': {
+        id: 'toads_rescue_eager',
+        title: "Rescue Eager",
+        type: 'side',
+        category: 'Liberated Toads',
+        objective: "Eager was captured by the Regal Empire's Crown Intelligence during the standoff at the capital. The secret service claims he is in their 'custody', but to his friends, he has been kidnapped. Find a way to free him.",
+        assignee: "Liberated Toads",
+        assigneeKey: 'full_party',
+        status: "active",
+        motivation: "Eager is one of their own. The Liberated Toads cannot abandon one of their family members to the mercy of the Empire's spies. His rescue is their top priority.",
+        steps: [
+            { id: 'step1', title: "Find His Location", status: 'active', description: "The secret service took him when they departed the Vigilance at the capital. The party must use their underworld contacts or other means to discover where he is being held." },
+            { id: 'step2', title: "Plan the Infiltration", status: 'locked', description: "Once his location is known, plan a way to get inside the Imperial facility." },
+            { id: 'step3', title: "Execute the Rescue", status: 'locked', description: "Free Eager from his Imperial captors." }
+        ]
+    },
     'toads_a_place_to_call_home': {
         id: 'toads_a_place_to_call_home',
         title: "A Place to Call Home",
@@ -356,8 +373,8 @@ export const TOADS_QUESTS = {
         status: "active",
         start_condition: "Triggered after Black T reveals the toad trafficking operation.",
         steps: [
-            { id: 'step1', title: "Secure the Cargo", status: 'active', description: "The trafficked toads are located in hidden, secure cargo holds on the Vigilance. Humpik has learned from the Iron Legion that they are hidden in barrels, accessible via mini-mushrooms. The party must now find a way to access the barrels and deal with any remaining guards or automated defenses." },
-            { id: 'step2', title: "The People's Council", status: 'locked', description: "Dan must hold a council with the other Liberated Toads. What should they do? Free them and take them in? Turn them over to the Regency? The decision will have major consequences for their small community." },
+            { id: 'step1', title: "Find the Key", status: 'completed', description: "The trafficked toads are located in hidden, secure cargo holds on the Vigilance. The Iron Legion has revealed they are hidden in barrels, accessible via mini-mushrooms. The party must now find a way to acquire these mushrooms and open the barrels." },
+            { id: 'step2', title: "The People's Council", status: 'active', description: "Dan must hold a council with the other Liberated Toads. What should they do? Free them and take them in? Turn them over to the Regency? The decision will have major consequences for their small community." },
             { id: 'step3', title: "A New Burden", status: 'locked', description: "Carry out the council's decision, dealing with the logistical and political fallout of suddenly having 150 new mouths to feed or a new, volatile political situation to manage." }
         ]
     }
