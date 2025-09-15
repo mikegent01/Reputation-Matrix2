@@ -1,42 +1,24 @@
 
-import { state, saveState, loadState, initFocusTreeState } from './state.js';
-import { FOCUS_TREES } from './focus-tree.js';
+import { state, loadState } from './state.js';
+import { TOAD_TIMELINE } from './focus-tree.js';
 import { LORE_DATA } from './lore.js';
-import { playSound } from './common.js';
 
-const rosterList = document.getElementById('toad-roster-list');
-const treeHeader = document.getElementById('focus-tree-header');
-const treeContainer = document.getElementById('focus-tree-container');
-const treeContent = document.getElementById('focus-tree-content');
-const tooltip = document.getElementById('focus-tooltip');
-const dayCounter = document.querySelector('#info-day-counter .day-number');
-const logList = document.getElementById('log-list');
+const auxiliaryPartyContainer = document.getElementById('auxiliary-party-container');
+const timelineContainer = document.getElementById('toad-timeline-container');
 
-const completionModal = document.getElementById('focus-completion-modal');
-const completionModalContent = document.getElementById('focus-completion-content');
-const completionModalClose = completionModal?.querySelector('.modal-close');
+const CURRENT_DAY = 14;
 
 // Load state immediately to ensure all data is available for rendering.
 loadState();
 
-let activeToadKey = state.focusTreeState.activeToad;
-
 function init() {
-    renderAll();
-    setupEventListeners();
-}
-
-function renderAll() {
     renderAuxiliaryParty();
-    renderToadRoster();
-    renderFocusTree(activeToadKey);
-    renderInfoPanel();
+    renderTimeline();
 }
 
 function renderAuxiliaryParty() {
-    const container = document.getElementById('auxiliary-party-container');
-    if (!container) return;
-    container.innerHTML = `
+    if (!auxiliaryPartyContainer) return;
+    auxiliaryPartyContainer.innerHTML = `
         <h3 class="page-title" style="font-size: 1.5rem; color: var(--text-secondary); margin-bottom: 16px;">
             Liberated Toads: Crew Status
         </h3>
@@ -44,36 +26,25 @@ function renderAuxiliaryParty() {
 
     const grid = document.createElement('div');
     grid.className = 'auxiliary-party-grid';
-    container.appendChild(grid);
+    auxiliaryPartyContainer.appendChild(grid);
     
-    // Now render the content into the created containers
     Object.entries(state.auxiliary_party_state).forEach(([key, member]) => {
-        if (key === 'group') {
-            return; // Skip the 'group' entry, it's for the focus page
-        }
+        if (key === 'group') return;
 
         const card = document.createElement('div');
         card.className = 'aux-member-card';
 
         const xpPercentage = (member.xp / member.xp_to_next) * 100;
 
-        const statusClass = member.status?.includes("Injured") || member.status?.includes("Kidnapped") || member.status?.includes("Captured") || member.status?.includes("Duplicitous") ? 'negative' : 'positive';
-        const statusTextClass = member.status?.includes("Injured") || member.status?.includes("Kidnapped") || member.status?.includes("Captured") || member.status?.includes("Duplicitous") ? 'negative' : 'status-ok';
+        const statusClass = member.status?.includes("Injured") || member.status?.includes("Kidnapped") || member.status?.includes("Detained") || member.status?.includes("Duplicitous") ? 'negative' : 'positive';
+        const statusTextClass = statusClass === 'negative' ? 'negative' : 'status-ok';
 
-        if(statusClass === 'negative'){
-            card.classList.add('negative');
-        } else {
-            card.classList.add('positive');
-        }
+        card.classList.add(statusClass);
 
-        const logHTML = member.log.slice().reverse().map(entry => { // .slice().reverse() to show newest first
-             if (entry.isLevelUp) {
-                return `<li class="log-levelup">${entry.reason}</li>`;
-            }
-            if(entry.isAbility) {
-                return `<li class="log-ability">${entry.reason}</li>`;
-            }
-            return `<li>${entry.reason} <span>[+${entry.xp} XP]</span></li>`;
+        const logHTML = member.log.slice().reverse().map(entry => {
+             if (entry.isLevelUp) return `<li class="log-levelup">${entry.reason}</li>`;
+             if(entry.isAbility) return `<li class="log-ability">${entry.reason}</li>`;
+             return `<li>${entry.reason} <span>[+${entry.xp} XP]</span></li>`;
         }).join('');
 
         const abilitiesHTML = member.abilities.length > 0 ?
@@ -112,353 +83,40 @@ function renderAuxiliaryParty() {
     });
 }
 
+function renderTimeline() {
+    if (!timelineContainer) return;
 
-function renderToadRoster() {
-    rosterList.innerHTML = '';
-    const sortedToads = Object.keys(LORE_DATA.auxiliary_party)
-        .filter(key => key !== 'traitor_toad')
-        .sort((a, b) => (state.focusTreeState.influences[b] || 0) - (state.focusTreeState.influences[a] || 0));
-
-    // Add group to the top of the list
-    if (LORE_DATA.auxiliary_party['group']) {
-        const groupIndex = sortedToads.indexOf('group');
-        if (groupIndex > -1) {
-            sortedToads.splice(groupIndex, 1);
-        }
-        sortedToads.unshift('group');
-    }
-
-    for (const toadKey of sortedToads) {
-        const toadData = LORE_DATA.auxiliary_party[toadKey];
-        const influence = state.focusTreeState.influences[toadKey] || 0;
-        const activeFocus = state.focusTreeState.activeFocuses.find(f => f.toadKey === toadKey);
-
-        const card = document.createElement('li');
-        card.className = 'roster-toad-card';
-        card.dataset.toadKey = toadKey;
-        if (toadKey === activeToadKey) {
-            card.classList.add('active');
-        }
-
-        let focusHTML = '<p class="roster-focus-info">Idle</p>';
-        if (activeFocus) {
-            const focusNode = findFocusNode(toadKey, activeFocus.nodeId);
-            focusHTML = `
-                <p class="roster-focus-info">
-                    Focus: <span class="focus-name">${focusNode.title}</span><br>
-                    (${activeFocus.remainingDays} days remaining)
-                </p>`;
-        }
-
-        card.innerHTML = `
-            <div class="roster-header">
-                <span class="roster-name">${toadData.name}</span>
-                <span class="roster-influence">Influence: <strong>${influence}</strong></span>
-            </div>
-            ${focusHTML}
-        `;
-        rosterList.appendChild(card);
-    }
-}
-
-function renderFocusTree(toadKey) {
-    activeToadKey = toadKey;
-    const focusData = FOCUS_TREES[toadKey];
-    if (!focusData) {
-        treeContent.innerHTML = '<p>No focus tree available.</p>';
-        treeHeader.textContent = 'No Data';
-        return;
-    }
-
-    treeHeader.textContent = `${focusData.name}'s Focus Tree`;
-    treeContent.innerHTML = `<svg id="focus-tree-svg"></svg>`;
-    const svg = document.getElementById('focus-tree-svg');
-
-    focusData.tree.forEach(node => {
-        const nodeEl = document.createElement('div');
-        nodeEl.className = 'focus-node';
-        nodeEl.id = node.id;
-        nodeEl.style.left = `${node.position.x}px`;
-        nodeEl.style.top = `${node.position.y}px`;
-
-        const unlocked = state.focusTreeState.unlocked[toadKey].includes(node.id);
-        const activeFocus = state.focusTreeState.activeFocuses.find(f => f.nodeId === node.id);
-        const prerequisitesMet = node.prerequisites.every(p => state.focusTreeState.unlocked[toadKey].includes(p));
-        
-        if (unlocked) nodeEl.classList.add('completed');
-        else if (activeFocus) nodeEl.classList.add('in-progress');
-        else if (prerequisitesMet) nodeEl.classList.add('available');
-        
-        let progressBarHTML = '';
-        if (activeFocus) {
-            const progress = ((activeFocus.totalDays - activeFocus.remainingDays) / activeFocus.totalDays) * 100;
-            progressBarHTML = `
-                <div class="focus-progress-bar">
-                    <div class="focus-progress-bar-inner" style="width: ${progress}%"></div>
+    timelineContainer.innerHTML = TOAD_TIMELINE.map(dayEntry => {
+        const eventsHTML = dayEntry.events.map(event => {
+            const toadData = LORE_DATA.auxiliary_party[event.toadKey];
+            const statusClass = `status-${event.status.toLowerCase().replace(' ', '-')}`;
+            return `
+                <div class="timeline-event-card">
+                    <div class="event-card-header">
+                        <img src="toads/${event.toadKey}.png" alt="${toadData.name}">
+                        <span class="toad-name">${toadData.name}</span>
+                    </div>
+                    <div class="event-card-body">
+                        <h5 class="focus-title">${event.focus}</h5>
+                        <p class="event-description">${event.description}</p>
+                        <p class="event-status"><strong class="${statusClass}">${event.status}</strong> ${event.details || ''}</p>
+                    </div>
                 </div>
             `;
-        }
-        
-        nodeEl.innerHTML = `
-            <div class="focus-icon"><img src="${node.icon}" alt="${node.title}"></div>
-            <p class="focus-title">${node.title}</p>
-            ${progressBarHTML}
-        `;
-        
-        if (unlocked) {
-            const checkmark = document.createElement('div');
-            checkmark.className = 'focus-checkmark';
-            checkmark.innerHTML = '✔';
-            checkmark.title = 'Completed';
-            nodeEl.appendChild(checkmark);
-        }
+        }).join('');
 
-        treeContent.appendChild(nodeEl);
-        
-        // Draw lines
-        node.prerequisites.forEach(prereqId => {
-            const prereqNode = focusData.tree.find(n => n.id === prereqId);
-            if (prereqNode) {
-                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                line.setAttribute('x1', prereqNode.position.x + 40);
-                line.setAttribute('y1', prereqNode.position.y + 50);
-                line.setAttribute('x2', node.position.x + 40);
-                line.setAttribute('y2', node.position.y);
-                line.classList.add('focus-line');
-                if (state.focusTreeState.unlocked[toadKey].includes(prereqId)) {
-                     line.classList.add('unlocked');
-                }
-                 if (state.focusTreeState.unlocked[toadKey].includes(node.id)) {
-                     line.classList.add('completed');
-                }
-                svg.appendChild(line);
-            }
-        });
-    });
-
-    // Update active state in roster list
-    document.querySelectorAll('.roster-toad-card').forEach(c => {
-        c.classList.toggle('active', c.dataset.toadKey === toadKey);
-    });
-}
-
-function renderInfoPanel() {
-    dayCounter.textContent = state.focusTreeState.day;
-
-    // Log
-    logList.innerHTML = '';
-    state.focusTreeState.log.slice().reverse().forEach(entry => {
-        const li = document.createElement('li');
-        li.innerHTML = `<strong>${entry.who}:</strong> ${entry.what}`;
-        logList.appendChild(li);
-    });
-
-    // Archie Intel Feed
-    const intelContainer = document.getElementById('archie-intel-feed-container');
-    if (intelContainer) {
-        intelContainer.innerHTML = `
-            <div class="info-box">
-                <h5>Intel Feed - SECURE CHANNEL</h5>
-                <div class="intel-feed-message">
-                    <div class="intel-feed-header">
-                        <span class="sender">FROM: The Broker</span>
-                        <span class="timestamp">Just Now</span>
-                    </div>
-                    <div class="intel-feed-body">
-                        Subject: Your 'Assets'<br><br>
-                        A friendly tip, Miser. My sources indicate your little <strong>Toad projects</strong> are nearing the end of their current development cycle. Whatever you have them working on, you should expect results soon. Don't say I never do you any favors.
+        return `
+            <div class="timeline-day-container ${dayEntry.day === CURRENT_DAY ? 'current-day' : ''}">
+                <div class="timeline-day-marker">${dayEntry.day}</div>
+                <div class="timeline-day-content">
+                    <h3>Day ${dayEntry.day}</h3>
+                    <div class="timeline-events-grid">
+                        ${eventsHTML}
                     </div>
                 </div>
             </div>
         `;
-    }
-}
-
-
-function startFocus(toadKey, nodeId) {
-    const node = findFocusNode(toadKey, nodeId);
-    if (!node) return;
-
-    const isOccupied = state.focusTreeState.activeFocuses.some(f => f.toadKey === toadKey);
-    if (isOccupied) {
-        alert(`${LORE_DATA.auxiliary_party[toadKey].name} is already busy with a focus.`);
-        return;
-    }
-
-    state.focusTreeState.activeFocuses.push({
-        toadKey: toadKey,
-        nodeId: nodeId,
-        remainingDays: node.cost,
-        totalDays: node.cost
-    });
-
-    addToLog(LORE_DATA.auxiliary_party[toadKey].name, `Began focus: "${node.title}" [${node.cost} days].`);
-    
-    saveState();
-    renderAll();
-}
-
-function showFocusCompletionPopup(focus, node) {
-    if (!completionModal || !completionModalContent) return;
-
-    const toadName = LORE_DATA.auxiliary_party[focus.toadKey].name;
-    let effectText = 'This may have unlocked new options or triggered events.';
-    if (node.effects && node.effects.log) {
-        effectText = node.effects.log;
-    } else if (node.effects && node.effects.unlocksAbility) {
-        effectText = `A new ability has been unlocked: ${node.effects.unlocksAbility}`;
-    }
-
-    completionModalContent.innerHTML = `
-        <h3>Focus Complete!</h3>
-        <p><strong>${toadName}</strong> has completed the focus:</p>
-        <h4>${node.title}</h4>
-        <p><em>${effectText}</em></p>
-    `;
-    completionModal.style.display = 'flex';
-}
-
-
-function advanceDay() {
-    state.focusTreeState.day++;
-    addToLog('System', `Day ${state.focusTreeState.day} begins.`);
-
-    const completedFocuses = [];
-
-    // Use a mutable copy for iteration
-    const activeFocusesCopy = [...state.focusTreeState.activeFocuses];
-    activeFocusesCopy.forEach(focus => {
-        focus.remainingDays--;
-        if (focus.remainingDays <= 0) {
-            completedFocuses.push(focus);
-        }
-    });
-
-    // Process completed focuses
-    completedFocuses.forEach(focus => {
-        const node = findFocusNode(focus.toadKey, focus.nodeId);
-        if (node) {
-            // Mark as unlocked
-            state.focusTreeState.unlocked[focus.toadKey].push(focus.nodeId);
-            addToLog(LORE_DATA.auxiliary_party[focus.toadKey].name, `Completed focus: "${node.title}".`);
-
-            // Show popup
-            showFocusCompletionPopup(focus, node);
-
-            // Apply effects
-            if (node.effects) {
-                if (node.effects.influence) {
-                    Object.entries(node.effects.influence).forEach(([toadKey, value]) => {
-                        state.focusTreeState.influences[toadKey] = (state.focusTreeState.influences[toadKey] || 0) + value;
-                        addToLog('System', `${LORE_DATA.auxiliary_party[toadKey].name}'s influence increased by ${value}.`);
-                    });
-                }
-                if (node.effects.log) {
-                    addToLog('System', node.effects.log);
-                }
-                // Placeholder for other effects
-                if (node.effects.unlocksAbility) addToLog('System', `New ability unlocked: ${node.effects.unlocksAbility}`);
-                if (node.effects.storyEvent) addToLog('System', `Story event triggered: ${node.effects.storyEvent}`);
-                if (node.effects.factionRep) addToLog('System', 'Faction reputation has changed.');
-                if (node.effects.groupMorale) addToLog('System', 'Group morale has changed.');
-            }
-        }
-    });
-
-    // Remove completed focuses from the original active list
-    state.focusTreeState.activeFocuses = state.focusTreeState.activeFocuses.filter(
-        focus => !completedFocuses.some(comp => comp.nodeId === focus.nodeId && comp.toadKey === focus.toadKey)
-    );
-
-    saveState();
-    renderAll();
-}
-
-// --- HELPERS ---
-function findFocusNode(toadKey, nodeId) {
-    return FOCUS_TREES[toadKey]?.tree.find(n => n.id === nodeId);
-}
-
-function addToLog(who, what) {
-    state.focusTreeState.log.push({ who, what, when: new Date().toISOString() });
-}
-
-// --- EVENT LISTENERS ---
-function setupEventListeners() {
-    rosterList.addEventListener('click', e => {
-        const card = e.target.closest('.roster-toad-card');
-        if (card) {
-            const toadKey = card.dataset.toadKey;
-            renderFocusTree(toadKey);
-        }
-    });
-
-    treeContent.addEventListener('mouseover', e => {
-        const nodeEl = e.target.closest('.focus-node');
-        if (nodeEl) {
-            const node = findFocusNode(activeToadKey, nodeEl.id);
-            if (node) {
-                tooltip.style.visibility = 'visible';
-                tooltip.style.opacity = '1';
-                
-                let prereqHTML = 'Requires: None';
-                if(node.prerequisites.length > 0) {
-                    prereqHTML = 'Requires: ' + node.prerequisites.map(pId => {
-                        const pNode = findFocusNode(activeToadKey, pId);
-                        const isMet = state.focusTreeState.unlocked[activeToadKey].includes(pId);
-                        return `<span style="color: ${isMet ? 'var(--positive-color)' : 'var(--negative-color)'}">${pNode.title}</span>`;
-                    }).join(', ');
-                }
-
-                tooltip.innerHTML = `
-                    <h5>${node.title}</h5>
-                    <p>${node.description}</p>
-                    <p class="cost">${node.cost} Days</p>
-                    <p class="prereqs">${prereqHTML}</p>
-                `;
-            }
-        }
-    });
-    
-    treeContent.addEventListener('mousemove', e => {
-        tooltip.style.left = `${e.clientX + 15}px`;
-        tooltip.style.top = `${e.clientY + 15}px`;
-    });
-
-    treeContent.addEventListener('mouseout', e => {
-        const nodeEl = e.target.closest('.focus-node');
-        if (nodeEl) {
-            tooltip.style.visibility = 'hidden';
-            tooltip.style.opacity = '0';
-        }
-    });
-
-    treeContent.addEventListener('click', e => {
-        const nodeEl = e.target.closest('.focus-node');
-        if (nodeEl && nodeEl.classList.contains('available')) {
-            if (confirm(`Start focus "${findFocusNode(activeToadKey, nodeEl.id).title}"?`)) {
-                startFocus(activeToadKey, nodeEl.id);
-            }
-        }
-    });
-
-    if (completionModal) {
-        const closeModal = () => {
-            completionModal.style.display = 'none';
-            // Check if there are more popups to show
-            if (state.focusTreeState.completionQueue && state.focusTreeState.completionQueue.length > 0) {
-                const next = state.focusTreeState.completionQueue.shift();
-                showFocusCompletionPopup(next.focus, next.node);
-                saveState();
-            }
-        };
-        completionModalClose?.addEventListener('click', closeModal);
-        completionModal.addEventListener('click', (e) => {
-            if (e.target === completionModal) {
-                closeModal();
-            }
-        });
-    }
+    }).join('');
 }
 
 

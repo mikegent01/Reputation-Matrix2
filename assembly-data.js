@@ -3,6 +3,23 @@ import { WAHBOOK_INTEL_POSTS } from './assembly-intel-data.js';
 
 export const WAHBOOK_POSTS = [
     {
+        id: 'archie_jumped_on_ship',
+        order: 162,
+        characterKey: 'archie',
+        timestamp: 'Just now',
+        content: `So, I was just minding my own business, admiring the structural integrity of a ventilation shaft, when I got jumped by a group of Iron Hand... or was it Iron Legion?... goons. Same difference, right? Stuffed shirts with big hammers. 
+
+They were going on about "stories of the third eye" which, okay, flattering. But the weird part? One of them kept muttering about wanting "Toad Soup." Seriously. On a spaceship. Weirdos.`,
+        likes: 184,
+        comments: [
+            { characterKey: 'humpik', text: "They hurt little three-eyes?! On our ship?! HUMPIK WILL FIND THEM AND SMASH THEM!" },
+            { characterKey: 'toad_lee', text: "Toad Soup? We will not allow any harm to come to our people. Stay vigilant, brothers." },
+            { characterKey: 'general_marcus_ironhand', text: "The Iron LEGION does not employ 'goons.' Our soldiers are disciplined warriors. If this incident occurred, it was not by my command or the action of my men. Perhaps you are confusing us with common street thugs." },
+            { characterKey: 'boss_knuckles', text: "You mean the Iron FISTS, you three-eyed freak. And that wasn't a story, it was a down payment. Next time, we're collecting more than just stories. The bounty on your head is still active." },
+            { characterKey: 'dan', text: "Archie, are you okay? That sounds terrifying." }
+        ]
+    },
+    {
         id: 'waluigi_toad_focus_update',
         order: 161,
         characterKey: 'waluigi',
