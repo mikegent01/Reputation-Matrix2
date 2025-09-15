@@ -1,8 +1,6 @@
 
-
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
-import { FOCUS_TREES } from './focus-tree.js';
 import { MAP_DATA } from './map-data.js';
 
 // --- STATE MANAGEMENT ---
