@@ -15,7 +15,6 @@ Those little mushroom-minions of yours have been busy! That one, Dan, is trying 
 They're getting organized. This could be useful for my magnificent plans! Or it could be very, very boring. Keep an eye on them.`,
         likes: 123,
         comments: [
-            { characterKey: 'archie', text: "Don't worry, I've got it under control. 'Organized' is just a fancy word for 'predictable'." },
             { characterKey: 'dan', text: "We're not minions! We're a community!" }
         ]
     },
