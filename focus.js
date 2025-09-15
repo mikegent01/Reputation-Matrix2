@@ -1,3 +1,4 @@
+
 import { state, saveState, loadState, initFocusTreeState } from './state.js';
 import { FOCUS_TREES } from './focus-tree.js';
 import { LORE_DATA } from './lore.js';
@@ -183,8 +184,7 @@ function renderFocusTree(toadKey) {
         const unlocked = state.focusTreeState.unlocked[toadKey].includes(node.id);
         const activeFocus = state.focusTreeState.activeFocuses.find(f => f.nodeId === node.id);
         const prerequisitesMet = node.prerequisites.every(p => state.focusTreeState.unlocked[toadKey].includes(p));
-        const canStart = prerequisitesMet && !unlocked && !activeFocus && !state.focusTreeState.activeFocuses.some(f => f.toadKey === toadKey);
-
+        
         if (unlocked) nodeEl.classList.add('completed');
         else if (activeFocus) nodeEl.classList.add('in-progress');
         else if (prerequisitesMet) nodeEl.classList.add('available');
@@ -204,6 +204,15 @@ function renderFocusTree(toadKey) {
             <p class="focus-title">${node.title}</p>
             ${progressBarHTML}
         `;
+        
+        if (unlocked) {
+            const checkmark = document.createElement('div');
+            checkmark.className = 'focus-checkmark';
+            checkmark.innerHTML = '✔';
+            checkmark.title = 'Completed';
+            nodeEl.appendChild(checkmark);
+        }
+
         treeContent.appendChild(nodeEl);
         
         // Draw lines

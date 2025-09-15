@@ -1,5 +1,4 @@
 
-
 import { WAHBOOK_INTEL_POSTS } from './assembly-intel-data.js';
 
 export const WAHBOOK_POSTS = [
@@ -8,14 +7,18 @@ export const WAHBOOK_POSTS = [
         order: 161,
         characterKey: 'waluigi',
         timestamp: 'Just Now',
-        content: `WAH! HEY, THREE-EYES (@Archie)!
+        content: `WAH! HEY, THREE-EYES (@Archie)! An update on your little mushroom projects!
 
-Those little mushroom-minions of yours have been busy! That one, Dan, is trying to be a 'leader' now. The big-axe one, Toad Lee, is teaching them all how to stand in a line. The money-grubbing one, Roger, is counting all their moldy bread. And the spooky one, Bones, is teaching them... poker? WAH-tever!
+That hero-kid, **Dan**, held a 'council'. So important! He's their little leader now, making them feel all hopeful. The big one, **Toad Lee**, has been teaching them how to hold an axe without chopping their own feet off. Progress!
 
-They're getting organized. This could be useful for my magnificent plans! Or it could be very, very boring. Keep an eye on them.`,
+The quiet one, **Ryan**, is making sparks with his fingers. He calls it 'magic practice'. Cute. The jumpy one, **Eager**, ran around and drew a map of the cargo bay. Probably on a napkin.
+
+The one with the gun, **Roger**, has organized all their junk into neat little piles. He calls it a 'barter system'. At least he's not losing their only wrench. And the ugly one, **Bones**, is teaching them card games. A useful skill! They might learn how to cheat, which is even better!
+
+They're getting organized. This could be useful for my magnificent plans! WAH-HA-HA!`,
         likes: 123,
         comments: [
-            { characterKey: 'dan', text: "We're not minions! We're a community!" }
+            { characterKey: 'dan', text: "We're not projects! We're building a community and a new life for ourselves!" }
         ]
     },
     {

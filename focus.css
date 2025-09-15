@@ -1,3 +1,4 @@
+
 /* --- Focus Page Layout --- */
 #auxiliary-party-container {
     margin-bottom: 32px;
@@ -406,6 +407,25 @@
     height: 100%;
     background-color: var(--neutral-color);
     transition: width 0.5s linear;
+}
+
+.focus-checkmark {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--positive-color);
+    color: var(--main-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    border: 2px solid var(--main-bg);
+    box-shadow: 0 0 8px var(--positive-color);
+    z-index: 1;
 }
 
 .focus-tooltip {
