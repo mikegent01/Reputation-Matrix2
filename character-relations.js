@@ -1,3 +1,4 @@
+
 // This file defines personal opinions between leaders and party members.
 export const CHARACTER_RELATIONS = {
     // --- PARTY MEMBER OPINIONS ---
@@ -77,17 +78,23 @@ export const CHARACTER_RELATIONS = {
         'waluigi': { type: 'neutral', text: "Bowser on Waluigi: The purple string bean? He's a schemer. Useful for now, but not to be trusted. He got Humpik out, so... credit where it's due." }
     },
     'remi': {
-        'archie': { type: 'ally', text: "Remi on Archie: He's loud. And seems to like things that go 'boom'. I've been told to stay out of his way." },
-        'markop': { type: 'ally', text: "Remi on Markop: The big horse-guy. Seems serious. He told me to keep my head down and do my job. Seems like good advice." },
-        'humpik': { type: 'ally', text: "Remi on Humpik: Even bigger than the horse-guy. Also loud. Seems friendly enough, I think?" },
-        'bowser': { type: 'ally', text: "Remi on Bowser: That's the big turtle king, right? I'm supposed to be on his side now? This is all very confusing." }
     },
     'waluigi': {
         'archie': { type: 'ally', text: "Waluigi on Archie: WAH! A true artist of chaos! He understands the beauty of a well-placed explosion! A worthy apprentice!" },
         'markop': { type: 'neutral', text: "Waluigi on Markop: So boring! All 'honor' and 'justice'. He's the straight man in my brilliant comedy!" },
         'humpik': { type: 'ally', text: "Waluigi on Humpik: The big guy needed a hand! An old sinner's hand! It was a magnificent exit, WAH-HA-HA! He owes me one." },
         'bowser': { type: 'neutral', text: "Waluigi on Bowser: Another big, angry brute who wants to rule everything. So unoriginal! But his army is a useful distraction." },
-        'lario': { type: 'enemy', text: "Waluigi on Lario: My brilliant plan to save Humpik didn't have room for... extra baggage. He should be grateful I didn't drop him on purpose! WAH!" }
+        'lario': { type: 'enemy', text: "Waluigi on Lario: My brilliant plan to save Humpik didn't have room for... extra baggage. He should be grateful I didn't drop him on purpose! WAH!" },
+        'lady_toriel': { type: 'ally', text: "Waluigi on Lady Toriel: WAH! She's so polite! It's weird! But she knows everyone. A useful, fluffy tool for my magnificent plans!" }
+    },
+    'wario': {
+        'waluigi': { type: 'ally', text: "Mr. Wario on Waluigi: He is chaos. Unpredictable. This makes him a useful tool and a dangerous liability. For now, the potential profit outweighs the risk. His... style... provides excellent cover for my own, more discreet operations." },
+        'lady_toriel': { type: 'ally', text: "Mr. Wario on Lady Toriel: She has influence and coin. A valuable contact. The dinner was a worthwhile expense to secure access to her province's resources and political capital. A pragmatic and useful partner." },
+        'regal_empire': { type: 'enemy', text: "Mr. Wario on The Regal Empire: Bad for business. Their obsession with 'order' involves too many regulations, taxes, and patrols. Their stability is the stability of a stagnant pond. There's more profit in a hurricane."}
+    },
+    'lady_toriel': {
+        'waluigi': { type: 'neutral', text: "Lady Toriel on Waluigi: A most... spirited individual. His energy is certainly... unique. The dinner was quite an experience." },
+        'wario': { type: 'neutral', text: "Lady Toriel on Mr. Wario: A very direct businessman. He seems to value efficiency and garlic above all else. Our discussion was... productive." }
     },
     // --- NON-PARTY OPINIONS ---
     'lario': {
@@ -96,7 +103,6 @@ export const CHARACTER_RELATIONS = {
         'humpik': { type: 'ally', text: "Lario on Humpik: The big Dwarf threw an axe for me! An axe! That's a goblin's love language! He's alright in my book." }
     },
     'dan': {
-        'archie': { type: 'ally', text: "Dan on Archie: He's... a lot. He freed us, and I can't forget that. But his methods are terrifying. He's like a wildfire you hope is pointed at the enemy." },
         'markop': { type: 'ally', text: "Dan on Markop: He's my teacher. He's shown me what it means to be strong and honorable. I want to be like him." }
     },
     'toad_lee': {
@@ -109,22 +115,18 @@ export const CHARACTER_RELATIONS = {
         'embercap': { type: 'ally', text: "Toadette on Embercap: He questioned my new strategy, but his loyalty is absolute. He has seen the necessity of our path and remains my most reliable soldier. His resolve is now as strong as my own." }
     },
     'kamek': {
-        'archie': { type: 'ally', text: "Kamek on Archie: A chaotic, unpredictable variable. Lord Bowser's alliance with him is a high-risk gambit. I am watching him very, very closely." },
         'markop': { type: 'ally', text: "Kamek on Markop: A former paladin. His honor could be a liability, but his strength is an asset. He is a strange piece on the board." }
     },
     'earl_grey': {
-        'archie': { type: 'enemy', text: "Earl Grey on Archie: The three-eyed fool thinks he's a mastermind. He's just a loud, predictable dog. His fall will be amusing." },
         'chai': { type: 'ally', text: "Earl Grey on Chai: She is clever. She sees the opportunity I have presented. Together, we can turn this situation to our advantage." }
     },
     'chai': {
-        'archie': { type: 'enemy', text: "Chai on Archie: He is a reckless amateur who relies on brute force and luck. He destroyed years of work. His arrogance will be his undoing." },
         'earl_grey': { type: 'ally', text: "Chai on Earl Grey: He is strong, and more cunning than he appears. His plan to betray the three-eyed one is a path back to power. I will play my part." }
     },
     'bones': {
         'chai': { type: 'enemy', text: "Bones on Chai: She's a snake. I saw it in her eyes. Threatened her. She folded like a cheap suit. Weak." }
     },
     'bryan': {
-        'archie': { type: 'enemy', text: "Bryan on Archie: He left me to die. Left all of us. Betrayed us for his own gain. The God Toad saved me, showed me the truth. Now, I will have my vengeance. Archie Miser will know what true betrayal feels like." },
         'evil_toad_god': { type: 'ally', text: "Bryan on The God Toad: It saved me from the fire. Gave me purpose. Showed me the path. All praise to the Ascended One!" }
     },
     'chief_thornpaw': {

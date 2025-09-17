@@ -197,7 +197,7 @@ export const WAHBOOK_POSTS = [
         timestamp: '14 hours ago',
         content: `WAHAHAHA! The Empire captures a few fools and thinks they've won! Captain Syrup grabs the staff and it doesn't even work! And Archie gets caught! So much failure! So much incompetence! It's a beautiful symphony of failure, and I, Waluigi, am the conductor! WAH!`,
         likes: 999,
-        comments: [ { characterKey: 'archie', text: 'It was a tactical surrender!' } ],
+        comments: [],
         rumorId: 'standoff_at_the_capital'
     },
     {
@@ -246,6 +246,7 @@ export const WAHBOOK_POSTS = [
         timestamp: '1 day ago',
         content: `The reports of my death were greatly exaggerated. I have seen the enemy's heart. There is no room for mercy. No more half-measures. Captain Toadette's path is the only path to justice. We will have our victory, or we will have our vengeance.`,
         likes: 690,
+        comments: [ { characterKey: 'captain_toadette', text: 'Welcome back, Commander. We have work to do.' } ],
         rumorId: 'chaos_in_toad_town'
     },
     {
@@ -430,9 +431,7 @@ Eyewitness reports from the ship are chaotic, detailing a fierce firefight, the 
         timestamp: '3 days ago',
         content: `And now the three-eyed freak thinks this is a joke too? Stay out of Kong family business, you walking talking powder keg.`,
         likes: 315,
-        comments: [
-            { "characterKey": "archie", "text": "Just trying to lighten the mood! Sheesh." }
-        ],
+        comments: [],
         rumorId: 'lankys_disgrace_at_summit'
     },
     {
@@ -443,7 +442,6 @@ Eyewitness reports from the ship are chaotic, detailing a fierce firefight, the 
         content: `Hello everyone, quite the bumpy ride wasn't it? How is everyone holding up?`,
         likes: 218,
         comments: [
-            { characterKey: 'remi', text: "Is... is it always like this? Just asking for a friend." },
             { characterKey: 'lario', text: "Holding up?! I'm holding a wrench and a grudge! That purple cheat left me for dead!" },
             { characterKey: 'dan', text: "A little shaken, but we're free. That's what matters. We're all still here." },
             { characterKey: 'bowser', text: "Bumpy? GWAHAHA! That's how I like it! A little chaos keeps everyone on their toes!" },
@@ -531,8 +529,7 @@ Eyewitness reports from the ship are chaotic, detailing a fierce firefight, the 
         content: `Every day of freedom feels like a gift. Learning the ways of the Rakasha is difficult, but Chief Thornpaw is a patient teacher. I will become strong enough to protect my friends and ensure no toad has to suffer like we did.`,
         likes: 621,
         comments: [
-            { characterKey: 'toad_lee', text: "And you will have my axe to guard your back. Always." },
-            { characterKey: 'archie', text: "That's the spirit! Go forth and become a symbol of freedom for all the enslaved toads out there." }
+            { characterKey: 'toad_lee', text: "And you will have my axe to guard your back. Always." }
         ]
     },
     {
@@ -667,7 +664,7 @@ Eyewitness reports from the ship are chaotic, detailing a fierce firefight, the 
         order: 36,
         characterKey: 'captain_toadette',
         timestamp: '2 months ago',
-        content: "The reports from the so-called 'Gala' only strengthen my resolve. The Regency hobnobs with apes while monsters play with time itself. We are the ONLY ones fighting for true justice! For the Princess! Join the Loyalists today and fight for what's right!",
+        content: `The reports from the so-called 'Gala' only strengthen my resolve. The Regency hobnobs with apes while monsters play with time itself. We are the ONLY ones fighting for true justice! For the Princess! Join the Loyalists today and fight for what's right!`,
         likes: 241,
         comments: [
             { characterKey: 'generic_toad', text: "But the pay is better with the Regency Guard..." },

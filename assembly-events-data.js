@@ -1,9 +1,11 @@
+import { DINER_EVENT } from './events/diner-date-event.js';
+import { state } from './state.js';
 
-export const WAHBOOK_EVENTS = [
+const BASE_EVENTS = [
     {
         id: 'democratic_summit',
         title: "The Democratic Summit",
-        order: 1, // Newest event
+        order: 1, // Newer event
         locationId: 'poi_mc_regency_parliament',
         description: "A major diplomatic summit intended to foster cooperation between the various democratic and independent states. The event was marred by an international incident, causing significant political and economic fallout.",
         attendees: [
@@ -39,3 +41,33 @@ export const WAHBOOK_EVENTS = [
         post_ids: ['fawful_post_1']
     }
 ];
+
+let allEvents = [...BASE_EVENTS];
+
+// Conditionally add the Diner event (Day 14+)
+if (state.focusTreeState.day >= 14 || state.debugMode) {
+    allEvents.unshift(DINER_EVENT); // unshift to make it the newest event
+}
+
+// Conditionally add the Iron Hoof Day event (Day 15+)
+if (state.focusTreeState.day >= 15 || state.debugMode) {
+    const { IRON_HOOF_DAY_EVENT } = await import('./events/iron-hoof-day.js');
+    allEvents.unshift(IRON_HOOF_DAY_EVENT);
+}
+
+
+export const WAHBOOK_EVENTS = allEvents;
+
+// Function to dynamically load posts for active events
+export async function loadEventPosts() {
+    let posts = [];
+    if (state.focusTreeState.day >= 14 || state.debugMode) {
+        const { DINER_POSTS } = await import('./events/diner-date-event.js');
+        posts.push(...DINER_POSTS);
+    }
+    if (state.focusTreeState.day >= 15 || state.debugMode) {
+        const { IRON_HOOF_DAY_POSTS } = await import('./events/iron-hoof-day.js');
+        posts.push(...IRON_HOOF_DAY_POSTS);
+    }
+    return posts;
+}

@@ -1,11 +1,11 @@
+
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
 
 import { LORE_DATA } from './lore.js';
-import { WAHBOOK_POSTS } from './assembly-data.js';
-import { WAHBOOK_EVENTS } from './assembly-events-data.js';
 import { playSound } from './common.js';
 import { state, saveState, loadState } from './state.js';
 import { NPC_RESPONSES } from './npc-responses.js';
@@ -45,6 +45,24 @@ const waluigiWarningModal = document.getElementById('waluigi-warning-modal');
 let currentEventSort = 'newest';
 let activeGroupFilter = 'all';
 
+// --- DYNAMIC DATA LOADING ---
+let WAHBOOK_POSTS = [];
+let WAHBOOK_EVENTS = [];
+
+async function loadDynamicData() {
+    const dataModule = await import('./assembly-data.js');
+    WAHBOOK_POSTS = dataModule.WAHBOOK_POSTS;
+    
+    // This now handles both loading the base events and conditionally adding new ones
+    const eventsModule = await import('./assembly-events-data.js');
+    WAHBOOK_EVENTS = eventsModule.WAHBOOK_EVENTS;
+    
+    // This loads posts from any active events
+    const eventPosts = await eventsModule.loadEventPosts();
+    WAHBOOK_POSTS.push(...eventPosts);
+}
+
+
 function getPortrait(characterKey) {
     const knownPortraits = {
         'dan': 'toads/dan.png', 'toad_lee': 'toads/toad_lee.png', 'roger': 'toads/roger.png',
@@ -53,6 +71,7 @@ function getPortrait(characterKey) {
         'giggling_pete': 'faction_jester.png', 'wah_media_collective': 'icon_newspaper.png',
         'freelancer_spy_1': 'faction_freelancer.png', 'regal_empire_delegate': 'faction_regal_empire.png',
         'chai': 'toads/chai.png', 'green_t': 'toads/green_t.png',
+        'lady_toriel': 'portraits/toriel.png'
     };
 
     if (knownPortraits[characterKey]) {
@@ -67,9 +86,13 @@ function getPortrait(characterKey) {
     // Fallback to faction logo
     for (const fKey in LORE_DATA.factions) {
         const fac = LORE_DATA.factions[fKey];
-        if (fac.leader === characterKey || fac.notable_people?.some(p => p.name.toLowerCase().replace(/\s/g, '_') === characterKey)) {
+        if (fac.leader === characterKey || fac.notable_people?.some(p => p.name.toLowerCase().replace(/[\s-]/g, '_') === characterKey)) {
             return fac.logo;
         }
+    }
+
+    if (LORE_DATA.factions[characterKey]) {
+        return LORE_DATA.factions[characterKey].logo;
     }
 
     return 'portraits/unknown.png';
@@ -109,6 +132,11 @@ function getCharacterData(characterKey) {
         return specialCases[characterKey];
     }
 
+    if (LORE_DATA.factions[characterKey]) {
+        const fac = LORE_DATA.factions[characterKey];
+        return { name: fac.name, portrait: getPortrait(characterKey), faction: { name: fac.name, logo: fac.logo } };
+    }
+
     if (LORE_DATA.characters[characterKey]) {
         const char = LORE_DATA.characters[characterKey];
         let faction = null;
@@ -128,7 +156,8 @@ function getCharacterData(characterKey) {
 
     for (const fKey in LORE_DATA.factions) {
         const fac = LORE_DATA.factions[fKey];
-        const notablePerson = fac.notable_people?.find(p => p.name.toLowerCase().replace(/\s/g, '_') === characterKey);
+        // Fix: handle hyphens in names like "Free-Name Sarah" when creating a key
+        const notablePerson = fac.notable_people?.find(p => p.name.toLowerCase().replace(/[\s-]/g, '_') === characterKey);
         if (notablePerson) {
             return {
                 name: notablePerson.name,
@@ -235,11 +264,15 @@ function renderEvent(event) {
         `;
     }).join('');
 
-    const newsPosts = event.news_ids.map(id => WAHBOOK_POSTS.find(p => p.id === id)).filter(Boolean);
-    const regularPosts = event.post_ids.map(id => WAHBOOK_POSTS.find(p => p.id === id)).filter(Boolean);
+    const newsPosts = (event.news_ids || []).map(id => WAHBOOK_POSTS.find(p => p.id === id)).filter(Boolean);
+    const regularPosts = (event.post_ids || []).map(id => WAHBOOK_POSTS.find(p => p.id === id)).filter(Boolean);
+    
+    // Fallback for dynamically added events where posts are linked by eventId
+    const dynamicPosts = WAHBOOK_POSTS.filter(p => p.eventId === event.id && !(event.news_ids || []).includes(p.id));
+    const allPostsForEvent = [...newsPosts, ...regularPosts, ...dynamicPosts];
 
-    const newsHTML = newsPosts.map(p => renderFeedPost(p)).join('');
-    const postsHTML = regularPosts.map(p => renderFeedPost(p)).join('');
+    const newsHTML = newsPosts.length > 0 ? newsPosts.map(p => renderFeedPost(p)).join('') : '';
+    const postsHTML = [...regularPosts, ...dynamicPosts].length > 0 ? [...regularPosts, ...dynamicPosts].map(p => renderFeedPost(p)).join('') : '';
     
     return `
         <div class="event-container" data-event-id="${event.id}">
@@ -924,6 +957,9 @@ async function init() {
     const params = new URLSearchParams(window.location.search);
     const embedPostId = params.get('embed');
 
+    loadState();
+    await loadDynamicData();
+
     if (embedPostId) {
         document.body.classList.add('embed-mode');
         const mainContent = document.getElementById('main-content');
@@ -943,8 +979,7 @@ async function init() {
         }
         return; // Stop further initialization for embed view
     }
-
-    loadState();
+    
     if (!feedContainer || !eventsContainer) return;
 
     if (state.loggedInUser === 'archie' && !state.userState.waluigiWarningShown) {

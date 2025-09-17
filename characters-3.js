@@ -28,9 +28,8 @@ export const CHARACTERS_3 = {
         description: "A playful, energetic toad with a bright amber cap and bells sewn into his boots. He carries a wooden flute and adds a lively, mischievous note to the festivities."
     },
     'jade_grit': {
-        name: "Jade Grit",
-        role: "Party Guest",
         status: "Deceased",
+        role: "Party Guest",
         description: "A stoic and resilient toad who was attending Fawful's party. She was tragically killed when Embercap fell on her during a chaotic event at the gala."
     },
     'violet_hush': {
@@ -78,6 +77,16 @@ export const CHARACTERS_3 = {
     },
 
     // --- NEW FACTION LEADERS ---
+    'lady_toriel': {
+        name: "Lady Toriel",
+        role: "Representative of Lockerwood",
+        description: "A kind-hearted and motherly goat-like woman who represents the independent province of Lockerwood. Despite her gentle demeanor, she is a shrewd diplomat with surprisingly deep connections in the capital's underworld and high society."
+    },
+    'queen_celestia': {
+        name: "Queen Celestia",
+        role: "Sovereign of Equestria",
+        description: "The immortal, autocratic ruler of the pony ethno-state of Equestria. She is a being of immense magical power, capable of raising the sun, and she rules her kingdom with an iron hoof, believing her absolute authority is necessary for true harmony."
+    },
     'queen_bean': {
         name: "Queen Bean",
         role: "Ruler of the Beanbean Kingdom",

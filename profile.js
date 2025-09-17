@@ -18,7 +18,8 @@ const PORTRAIT_MAP = {
     'giggling_pete': 'faction_jester.png', 'wah_media_collective': 'icon_newspaper.png',
     'freelancer_spy_1': 'faction_freelancer.png', 'regal_empire_delegate': 'faction_regal_empire.png',
     'chai': 'toads/chai.png', 'green_t': 'toads/green_t.png',
-    'remi': 'portraits/remi.png'
+    'remi': 'portraits/remi.png',
+    'lady_toriel': 'portraits/toriel.png'
 };
 
 
@@ -31,6 +32,16 @@ function getCharacterData(characterKey) {
         'rebel_clans_scout': { name: "Rebel Scout", portrait: 'faction_rebel_clans.png', role: 'Scout', bio: 'A scout for the Rebel Clans, operating in hostile territory.' }
     };
     if(specialCases[characterKey]) return specialCases[characterKey];
+
+    if (LORE_DATA.factions[characterKey]) {
+        const fac = LORE_DATA.factions[characterKey];
+        return {
+            name: fac.name,
+            portrait: fac.logo,
+            role: fac.category || "Faction",
+            bio: fac.description
+        };
+    }
 
     if (LORE_DATA.characters[characterKey]) {
         const char = LORE_DATA.characters[characterKey];
