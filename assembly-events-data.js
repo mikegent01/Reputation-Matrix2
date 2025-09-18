@@ -1,7 +1,8 @@
+
 import { DINER_EVENT } from './events/diner-date-event.js';
 import { state } from './state.js';
 import { SCHEDULED_POSTS } from './events/scheduled-posts.js';
-import { CURRENT_GAME_DATE } from '../calendar-data.js';
+import { CURRENT_GAME_DATE } from './calendar-data.js';
 
 
 const BASE_EVENTS = [

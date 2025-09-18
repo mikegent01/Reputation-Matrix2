@@ -1,12 +1,6 @@
 
-import { CALENDAR_DATA, MAGICAL_WEATHER_EVENTS } from './calendar-data.js';
+import { CALENDAR_DATA, MAGICAL_WEATHER_EVENTS, CURRENT_GAME_DATE } from './calendar-data.js';
 import { playSound } from './common.js';
-
-const CURRENT_GAME_DATE = {
-    year: 1040,
-    monthIndex: 6, // 0-indexed for Highsun (ordinal 7)
-    day: 13
-};
 
 let displayedDate = {
     year: CURRENT_GAME_DATE.year,
