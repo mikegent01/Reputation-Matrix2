@@ -64,11 +64,15 @@ I’m so sorry to say this, but it’s time for you to wake up, Mario. Wake up t
     {
         id: 'peach_copypasta_archie',
         order: 235,
-        characterKey: 'captain_syrup',
+        characterKey: 'archie',
         timestamp: '6 minutes ago',
-        content: `A 2000-year-old political scheme run by toad supremacists? My hat's off to them. That's a long con. Respect the game.`,
-        likes: 1102,
-        comments: []
+        content: `Whoa Mario really threw Bowser into a volcano? Man this is all news to me. Still, I doubt someone like Bowser would die from being thrown into a volcano though.`,
+        likes: 573,
+        comments: [
+            { characterKey: 'captain_toadette', text: "This has to be more lies! Mario is a hero of the Kingdom! He would never do something so monstrous! This is clearly propaganda meant to slander the good name of the Princess's champion!" },
+            { characterKey: 'detective_penny', text: "Assault, attempted murder... throwing a monarch into a volcano is a significant escalation. This 'Mario' character needs to be brought in for questioning immediately. This isn't heroism; it's a crime scene." },
+            { characterKey: 'bowser', text: "HE DID WHAT?! That lying plumber! He told me we were going to a 'surprise hot tub party'! Wait until I get my claws on him!" }
+        ]
     },
     {
         id: 'peach_copypasta_markop',
