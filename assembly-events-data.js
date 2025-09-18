@@ -1,5 +1,8 @@
 import { DINER_EVENT } from './events/diner-date-event.js';
 import { state } from './state.js';
+import { SCHEDULED_POSTS } from './events/scheduled-posts.js';
+import { CURRENT_GAME_DATE } from '../calendar-data.js';
+
 
 const BASE_EVENTS = [
     {
@@ -45,12 +48,12 @@ const BASE_EVENTS = [
 let allEvents = [...BASE_EVENTS];
 
 // Conditionally add the Diner event (Day 14+)
-if (state.focusTreeState.day >= 14 || state.debugMode) {
+if (CURRENT_GAME_DATE.day >= 14 || state.debugMode) {
     allEvents.unshift(DINER_EVENT); // unshift to make it the newest event
 }
 
 // Conditionally add the Iron Hoof Day event (Day 15+)
-if (state.focusTreeState.day >= 15 || state.debugMode) {
+if (CURRENT_GAME_DATE.day >= 15 || state.debugMode) {
     const { IRON_HOOF_DAY_EVENT } = await import('./events/iron-hoof-day.js');
     allEvents.unshift(IRON_HOOF_DAY_EVENT);
 }
@@ -61,11 +64,21 @@ export const WAHBOOK_EVENTS = allEvents;
 // Function to dynamically load posts for active events
 export async function loadEventPosts() {
     let posts = [];
-    if (state.focusTreeState.day >= 14 || state.debugMode) {
+
+    // --- Time-based scheduled posts ---
+    const today = new Date(CURRENT_GAME_DATE.year, CURRENT_GAME_DATE.monthIndex, CURRENT_GAME_DATE.day);
+    const scheduledPostsToShow = SCHEDULED_POSTS.filter(post => {
+        const postDate = new Date(post.scheduledDate.year, post.scheduledDate.monthIndex, post.scheduledDate.day);
+        return postDate <= today;
+    });
+    posts.push(...scheduledPostsToShow);
+
+    // --- Dynamic event posts ---
+    if (CURRENT_GAME_DATE.day >= 14 || state.debugMode) {
         const { DINER_POSTS } = await import('./events/diner-date-event.js');
         posts.push(...DINER_POSTS);
     }
-    if (state.focusTreeState.day >= 15 || state.debugMode) {
+    if (CURRENT_GAME_DATE.day >= 15 || state.debugMode) {
         const { IRON_HOOF_DAY_POSTS } = await import('./events/iron-hoof-day.js');
         posts.push(...IRON_HOOF_DAY_POSTS);
     }

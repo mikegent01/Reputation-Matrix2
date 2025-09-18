@@ -1,7 +1,9 @@
 
 import { WAHBOOK_INTEL_POSTS } from './assembly-intel-data.js';
+import { VIRAL_POSTS } from './assembly-viral-data.js';
 
 export const WAHBOOK_POSTS = [
+    ...VIRAL_POSTS,
     {
         id: 'detective_penny_vigilance_standoff',
         order: 187,
