@@ -1,4 +1,5 @@
 
+
 import { DINER_EVENT } from './events/diner-date-event.js';
 import { state } from './state.js';
 import { SCHEDULED_POSTS } from './events/scheduled-posts.js';
@@ -46,6 +47,40 @@ const BASE_EVENTS = [
     }
 ];
 
+// --- NEW SCRIPTED EVENTS ---
+
+const VAMPIRE_WAR_EVENT = {
+    id: 'vampire_war',
+    title: "The Vampire War: A Kingdom Bleeds",
+    order: -2, // Newest
+    locationId: 'poi_iw_ironwood_forest',
+    description: "The Onyx Hand's shocking betrayal shatters the Midlands peace, drawing the Empire, Koopa Troop, and Moonfang Pack into a bloody conflict culminating in the Siege of Ironwood Forest.",
+    attendees: [
+        { characterKey: 'lord_crimson', host: true, justification: "Architect of the Onyx Hand's ambitious, and ultimately costly, invasion." },
+        { characterKey: 'general_marcus_ironhand', justification: "Leader of the Imperial forces, forced to conduct a tactical retreat before crushing the invaders." },
+        { characterKey: 'alpha_bloodmaw', justification: "Led the Moonfang Pack's successful counter-offensive in their home territory of Lockerwood." }
+    ],
+    news_ids: ['event_war_onyx_vs_regal', 'event_war_onyx_invasion'],
+    post_ids: ['event_war_regal_retreat', 'event_war_moonfang_victory', 'event_war_regal_encirclement', 'event_war_ironwood_victory', 'event_war_onyx_retreat_post', 'event_war_aftermath_ironhand']
+};
+
+const REGENCY_FALL_EVENT = {
+    id: 'regency_fall',
+    title: "The Fall of the Mushroom Regency",
+    order: -1,
+    locationId: 'poi_mk_castle',
+    description: "Under the combined might of Fawful's fury and Bowser's resurgent army, the century-old Mushroom Regency and the zealous Peach Loyalists collapse, leaving two tyrants to divide the spoils.",
+    attendees: [
+        { characterKey: 'bowser', host: true, justification: "Co-conqueror and new ruler of the Mushroom Kingdom's outer territories." },
+        { characterKey: 'fawful', host: true, justification: "Co-conqueror and new master of Peach's Castle." },
+        { characterKey: 'kamek', justification: "Key strategist for the Koopa Troop's successful campaign." },
+        { characterKey: 'captain_toadette', justification: "**[DEFEATED]** Her Loyalist forces were shattered, ending her crusade." }
+    ],
+    news_ids: ['event_war_regency_collapse', 'event_war_tyrant_treaty_news'],
+    post_ids: ['event_war_onyx_vs_fawful', 'event_war_fawful_responds', 'event_war_koopa_vs_onyx', 'event_war_bowser_victory_mk', 'event_war_bowser_truce', 'event_war_fawful_truce', 'event_war_aftermath_toadsworth', 'event_war_aftermath_toadette', 'event_war_aftermath_toad']
+};
+
+
 let allEvents = [...BASE_EVENTS];
 
 // Conditionally add the Diner event (Day 14+)
@@ -57,6 +92,12 @@ if (CURRENT_GAME_DATE.day >= 14 || state.debugMode) {
 if (CURRENT_GAME_DATE.day >= 15 || state.debugMode) {
     const { IRON_HOOF_DAY_EVENT } = await import('./events/iron-hoof-day.js');
     allEvents.unshift(IRON_HOOF_DAY_EVENT);
+}
+
+// Conditionally add the World War events (Day 16+ or debug mode)
+if (CURRENT_GAME_DATE.day >= 16 || state.debugMode) {
+    allEvents.unshift(REGENCY_FALL_EVENT);
+    allEvents.unshift(VAMPIRE_WAR_EVENT);
 }
 
 
