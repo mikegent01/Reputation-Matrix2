@@ -5,7 +5,7 @@ export const CHARACTER_MECHANICS = {
         id: 'chaos_agent_mechanic',
         title: "Chaos Agent",
         icon: '💥',
-        description: "Archie thrives on chaos. His provocative and unpredictable actions generate 'Infamy'. High Infamy can unlock unique opportunities with chaotic factions (like the Cosmic Jesters) but will also attract significant negative attention from lawful or orderly factions, potentially triggering special negative events or bounty hunters.",
+        description: "Archie Miser is <strong>The Chaos Agent</strong>. A title, a lifestyle, and a tactical liability all in one. His provocative and unpredictable actions generate 'Infamy'. High Infamy unlocks unique opportunities with chaotic factions (like the Cosmic Jesters) but also attracts significant negative attention from lawful or orderly factions, potentially triggering special negative events or bounty hunters.",
         current_level: 1,
         levels: [
             {

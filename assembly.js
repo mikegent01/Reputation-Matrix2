@@ -259,6 +259,7 @@ function renderChaosAgentWidget() {
     return `
         <div class="profile-sidebar-widget special-mechanic-widget">
             <h4>${specialMechanic.icon} ${specialMechanic.title}</h4>
+            <h5 class="mechanic-subtitle">Operator: Archie Miser</h5>
             <div class="infamy-meter" title="${specialMechanic.current_infamy} / ${nextLevelInfo ? nextLevelInfo.infamy_threshold : 'MAX'} Infamy">
                 <div class="infamy-bar" style="width: ${infamyPercentage}%;"></div>
                 <span class="infamy-text">${specialMechanic.current_infamy} Infamy</span>

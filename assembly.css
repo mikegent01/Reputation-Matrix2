@@ -931,6 +931,16 @@ body.embed-mode .feed-post {
     border-bottom: 1px solid var(--border-color);
 }
 
+.mechanic-subtitle {
+    font-family: var(--font-primary);
+    color: var(--text-secondary);
+    text-align: center;
+    font-size: 0.85rem;
+    margin-top: -8px;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
 .special-mechanic-widget {
     border: 1px solid var(--accent-color);
     background-color: rgba(138, 43, 226, 0.05);

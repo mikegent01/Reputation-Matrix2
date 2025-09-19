@@ -6,7 +6,7 @@ export const NEW_MK_QUESTS = {
         title: "Toadette's Loyalty Test",
         type: 'side',
         category: 'Peach Loyalists',
-        objective: "After seizing control of Toad Town, Captain Toadette put her new recruits—Embercap, Mistveil, and a group of liberated toads—through a brutal, unexpected loyalty test involving illusions, faked kidnappings, and a manufactured crisis in the sewers beneath the mayor's house to see if they had the resolve to die for her cause.",
+        objective: "After seizing control of Toad Town, Captain Toadette put her new recruits—Embercap and Mistveil—through a brutal, unexpected loyalty test. The main party was also roped into this mission, which involved illusions, faked kidnappings, and a manufactured crisis in the sewers beneath the mayor's house to see if they all had the resolve to die for her cause.",
         assignee: "Peach Loyalists",
         assigneeKey: 'peach_loyalists',
         status: "completed",

@@ -150,7 +150,7 @@ export const CHARACTER_RELATIONS = {
         'embercap': { type: 'ally', text: "Toadette on Embercap: My most steadfast soldier. He has seen the true face of the enemy and has been forged anew in the fires of conviction. His resolve is absolute, a perfect instrument of my will." },
         'mistveil': { type: 'ally', text: "Toadette on Mistveil: Mistveil is swift and silent, an excellent scout. But his time as 'governor' and his performance in the test show a capacity for ruthlessness he has yet to fully embrace. He has potential." },
         'dewdrop': { type: 'ally', text: "Toadette on Dewdrop: His compassion is a valuable asset for maintaining morale, but I fear his soft heart may be a liability in the battles to come. He must learn that some wounds cannot be healed, only avenged." },
-        'dan': { type: 'neutral', text: "Toadette on Dan & The Liberated Toads: Their hesitation during the test was... disappointing. They have courage, but they lack the conviction to make the ultimate sacrifice. They are not yet true soldiers of the cause. They are a liability until they can be hardened." }
+        'dan': { type: 'neutral', text: "Toadette on Dan & The Liberated Toads: They are a variable. Former slaves, not soldiers. They possess a certain raw courage, but they are untested and undisciplined. Their association with the chaotic three-eyed one makes them a potential liability. They could be a useful asset, but they must be forged in the fires of true loyalty first. I will be watching them." }
     },
     'kamek': {
         'markop': { type: 'ally', text: "Kamek on Markop: A former paladin. His honor could be a liability, but his strength is an asset. He is a strange piece on the board." }
