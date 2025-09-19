@@ -1,4 +1,5 @@
 
+
 // This file defines personal opinions between leaders and party members.
 export const CHARACTER_RELATIONS = {
     // --- PARTY MEMBER OPINIONS ---
@@ -103,16 +104,45 @@ export const CHARACTER_RELATIONS = {
         'humpik': { type: 'ally', text: "Lario on Humpik: The big Dwarf threw an axe for me! An axe! That's a goblin's love language! He's alright in my book." }
     },
     'dan': {
-        'markop': { type: 'ally', text: "Dan on Markop: He's my teacher. He's shown me what it means to be strong and honorable. I want to be like him." }
+        'markop': { type: 'ally', text: "Dan on Markop: He's my teacher. He's shown me what it means to be strong and honorable. I want to be like him." },
+        'archie': { type: 'ally', text: "Dan on Archie: He freed us. I can't ever forget that. He's... chaotic, and a little scary, but I think there's good in him. Somewhere." },
+        'humpik': { type: 'ally', text: "Dan on Humpik: He's loud! But he's also very brave. He fights to protect his friends. I respect that." },
+        'bowser': { type: 'enemy', text: "Dan on Bowser: He's a king who wants to conquer people. After what we've been through, I can't trust anyone who wants to rule over others." },
+        'captain_toadette': { type: 'neutral', text: "Dan on Toadette: She fights for her Princess. I understand that kind of loyalty. But her methods... they scare me." }
     },
     'toad_lee': {
         'dan': { type: 'ally', text: "Toad Lee on Dan: The kid's got spirit. He's learning fast. But he's still just a kid. He needs protecting." },
-        'markop': { type: 'ally', text: "Toad Lee on Markop: The centaur is a true commander. He leads from the front. I'd follow him into any fight." }
+        'markop': { type: 'ally', text: "Toad Lee on Markop: The centaur is a true commander. He leads from the front. I'd follow him into any fight." },
+        'archie': { type: 'ally', text: "Toad Lee on Archie: He's a wild animal. Dangerous. But he's our wild animal. Better to have him on our side than against us." },
+        'humpik': { type: 'ally', text: "Toad Lee on Humpik: He's strong. Simple. We don't talk much, but we understand each other on the battlefield." },
+        'bowser': { type: 'enemy', text: "Toad Lee on Bowser: Another tyrant. I've had enough of tyrants. He is an enemy." }
+    },
+    'eager': {
+        'archie': { type: 'neutral', text: "Eager on Archie: He's... a lot. The explosions are very loud. But he did free us, so... I guess he's okay? From a distance?" },
+        'markop': { type: 'ally', text: "Eager on Markop: He's so calm and strong. He makes me feel safer. I try to be brave like him, but it's hard." }
+    },
+    'roger': {
+        'archie': { type: 'ally', text: "Roger on Archie: The three-eyed one is an asset. Unpredictable, yes, but effective. His actions create opportunities. Good for business." },
+        'markop': { type: 'ally', text: "Roger on Markop: The paladin is a stabilizing influence. Good for morale. Bad for profit margins, probably. A necessary cost." },
+        'bowser': { type: 'neutral', text: "Roger on Bowser: An alliance with him is a pragmatic choice. He has resources we need. Sentiment doesn't factor into survival." }
+    },
+    'ryan': {
+        'archie': { type: 'neutral', text: "Ryan on Archie: His grasp of chaotic, unsanctioned energy is... fascinating. Highly dangerous, but fascinating. A subject worthy of study." },
+        'markop': { type: 'ally', text: "Ryan on Markop: He is a grounding force. His moral compass is strong. A necessary counterweight to the other... variables... in our group." },
+        'dan': { type: 'ally', text: "Ryan on Dan: He has a natural connection to magic that is different from my own. I am curious to see how it develops." }
+    },
+    'bones': {
+        'chai': { type: 'enemy', text: "Bones on Chai: She's a snake. I saw it in her eyes. Threatened her. She folded like a cheap suit. Weak." },
+        'archie': { type: 'ally', text: "Bones on Archie: He breaks things. The world needs more things broken. I like him." },
+        'markop': { type: 'neutral', text: "Bones on Markop: He talks about honor. Honor didn't help me when my face was getting smashed in. But... he's strong. And he protects the others. That's something." },
+        'humpik': { type: 'ally', text: "Bones on Humpik: He's a big, dumb rock. And I mean that as a compliment. You can rely on a rock." }
     },
     'captain_toadette': {
         'bowser': { type: 'enemy', text: "Toadette on Bowser: The beast is responsible for the Princess's death. This temporary truce is a bitter pill, a necessary evil to uncover the truth and punish the true villains." },
         'humpik': { type: 'enemy', text: "Toadette on Humpik: A savage from a strange land, allied with a monster. His hands are stained with the blood of my people. He will answer for his crimes." },
-        'embercap': { type: 'ally', text: "Toadette on Embercap: He questioned my new strategy, but his loyalty is absolute. He has seen the necessity of our path and remains my most reliable soldier. His resolve is now as strong as my own." }
+        'embercap': { type: 'ally', text: "Toadette on Embercap: He questioned my new strategy, but his loyalty is absolute. He has seen the necessity of our path and remains my most reliable soldier. His resolve is now as strong as my own." },
+        'dan': { type: 'neutral', text: "Toadette on Dan: The 'Hero Toad'. His bravery is commendable, but his idealism is naive. He has not seen true war." },
+        'toad_lee': { type: 'neutral', text: "Toadette on Toad Lee: A strong warrior, but loyalty is a question. He follows a fallen paladin, not a true monarch. His strength could be an asset, if it could be properly directed." }
     },
     'kamek': {
         'markop': { type: 'ally', text: "Kamek on Markop: A former paladin. His honor could be a liability, but his strength is an asset. He is a strange piece on the board." }
@@ -122,9 +152,6 @@ export const CHARACTER_RELATIONS = {
     },
     'chai': {
         'earl_grey': { type: 'ally', text: "Chai on Earl Grey: He is strong, and more cunning than he appears. His plan to betray the three-eyed one is a path back to power. I will play my part." }
-    },
-    'bones': {
-        'chai': { type: 'enemy', text: "Bones on Chai: She's a snake. I saw it in her eyes. Threatened her. She folded like a cheap suit. Weak." }
     },
     'bryan': {
         'evil_toad_god': { type: 'ally', text: "Bryan on The God Toad: It saved me from the fire. Gave me purpose. Showed me the path. All praise to the Ascended One!" }

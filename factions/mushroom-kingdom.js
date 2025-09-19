@@ -136,7 +136,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
     },
     peach_loyalists: {
         name: "Peach Loyalists",
-        description: "A fanatical military faction that has split from the Regency. Following the events in Toad Town, their strategy has shifted under Captain Toadette to a brutal war of attrition. They now aim to seize key towns, expel hostile populations, and encircle Peach's Castle to turn Toad Town into a forward operating base. After a brief period of disagreement, Captain Toadette's most steadfast commander, Embercap, has accepted the necessity of this ruthless new doctrine.",
+        description: "A fanatical military faction that has split from the Regency. Following the events in Toad Town, their strategy has shifted under Captain Toadette to a brutal war of attrition. They have seized Toad Town, appointed a provisional government, and are now preparing to besiege Peach's Castle.",
         logo: 'faction_peach_loyalists.png',
         relations: { 
             allies: [], 
@@ -148,11 +148,48 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
         region: "Mushroom Kingdom (Militarized Zones)",
         notable_people: [
             { name: "Captain Toadette", role: "Faction Leader", description: "A fanatical commander who believes the Princess is alive and the Regency is illegitimate." },
-            { name: "Embercap", role: "Field Commander", description: "Captain Toadette's most steadfast and loyal soldier. He is the backbone of the Loyalist infantry and now a key executor of her aggressive new strategy." },
-            { name: "Mistveil", role: "Toad Scout", description: "A nimble scout with a lavender cap, specializing in stealth and reconnaissance for the Loyalists." },
-            { name: "Dewdrop", role: "Toad Medic", description: "A compassionate medic with an aqua-blue cap, responsible for tending to the wounded in Toadette's army." }
+            { name: "Embercap", role: "Field Commander", description: "Captain Toadette's most steadfast and loyal soldier. Presumed dead at Fawful's Gala, he has returned with a hardened resolve, fully embracing her ruthless new strategies." },
+            { name: "Mistveil", role: "Interim Governor of Toad Town", description: "A nimble scout specializing in stealth and reconnaissance. He has been appointed as the provisional governor of occupied Toad Town, tasked with carrying out Toadette's orders." },
+            { name: "Dewdrop", role: "Chief Medic", description: "A compassionate medic with an aqua-blue cap, responsible for tending to the wounded in Toadette's growing army." }
         ],
-        waluigi_tip: "Fanatics are the easiest to fool. Plant some fake 'evidence' of the princess being alive somewhere dangerous, and they'll charge right into a trap. WAH-HA-HA!"
+        waluigi_tip: "Fanatics are the easiest to fool. Plant some fake 'evidence' of the princess being alive somewhere dangerous, and they'll charge right into a trap. WAH-HA-HA!",
+        internal_politics: {
+            ruling_faction: "command_staff",
+            sub_factions: {
+                embercap: {
+                    name: "Commander Embercap",
+                    level: 2,
+                    xp: 50,
+                    xp_to_next: 200,
+                    description: "A resilient warrior whose near-death experience has forged him into a harder, more pragmatic soldier.",
+                    log: [
+                        { xp: 50, reason: "Survived the events at Fawful's Gala and embraced a new, harsher reality." },
+                        { xp: 0, reason: "Leveled up to 2!", isLevelUp: true }
+                    ]
+                },
+                mistveil: {
+                    name: "Scout Mistveil",
+                    level: 1,
+                    xp: 75,
+                    xp_to_next: 100,
+                    description: "A stealthy operative now thrust into a position of authority he may not be prepared for.",
+                    log: [
+                        { xp: 25, reason: "Successfully scouted Fawful's Gala." },
+                        { xp: 50, reason: "Killed a Fawful Cultist in the sewers, securing vital intelligence." }
+                    ]
+                },
+                dewdrop: {
+                    name: "Medic Dewdrop",
+                    level: 1,
+                    xp: 25,
+                    xp_to_next: 100,
+                    description: "The compassionate heart of the Loyalists, working tirelessly to save lives in an increasingly brutal conflict.",
+                    log: [
+                        { xp: 25, reason: "Tended to the wounded after the chaos at Fawful's Gala." }
+                    ]
+                }
+            }
+        }
     },
     fawfuls_furious_freaks: {
         name: "Fawful's Furious Freaks",
@@ -221,7 +258,7 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                 },
                 eager: {
                     name: "Eager, The Swift",
-                    status: "Detained (Regal Empire)",
+                    status: "Active",
                     description: "A nimble and quick-witted toad who prefers to keep his distance, using his whip to control the battlefield.",
                     influence: 10,
                     events: {

@@ -4,6 +4,7 @@ import { DINER_EVENT } from './events/diner-date-event.js';
 import { state } from './state.js';
 import { SCHEDULED_POSTS } from './events/scheduled-posts.js';
 import { CURRENT_GAME_DATE } from './calendar-data.js';
+import { TOADETTE_TEST_EVENT } from './events/toadette-test-event.js';
 
 
 const BASE_EVENTS = [
@@ -85,7 +86,8 @@ let allEvents = [...BASE_EVENTS];
 
 // Conditionally add the Diner event (Day 14+)
 if (CURRENT_GAME_DATE.day >= 14 || state.debugMode) {
-    allEvents.unshift(DINER_EVENT); // unshift to make it the newest event
+    allEvents.unshift(TOADETTE_TEST_EVENT);
+    allEvents.unshift(DINER_EVENT);
 }
 
 // Conditionally add the Iron Hoof Day event (Day 15+)
@@ -119,6 +121,8 @@ export async function loadEventPosts() {
     if (CURRENT_GAME_DATE.day >= 14 || state.debugMode) {
         const { DINER_POSTS } = await import('./events/diner-date-event.js');
         posts.push(...DINER_POSTS);
+        const { TOADETTE_TEST_POSTS } = await import('./events/toadette-test-event.js');
+        posts.push(...TOADETTE_TEST_POSTS);
     }
     if (CURRENT_GAME_DATE.day >= 15 || state.debugMode) {
         const { IRON_HOOF_DAY_POSTS } = await import('./events/iron-hoof-day.js');
