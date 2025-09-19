@@ -38,16 +38,17 @@ export const MAIN_QUESTS = {
         title: "The Princess's Lasting Shadow",
         type: 'main',
         category: 'Main Story',
-        objective: "The infiltration of Fawful's Gala revealed a key lead—a secret hatch in the Princess's chambers—but also fractured the Koopa-Loyalist alliance. Captain Toadette has abandoned the direct assault in favor of a brutal war of attrition, and her once-noble commander, Embercap, has embraced this ruthless new cause. The party must now navigate this treacherous political landscape to find a way back into the castle and uncover the truth of Peach's death.",
-        assignee: "Koopa Troop & Peach Loyalists",
+        objective: "The infiltration of Fawful's Gala revealed a key lead—a secret hatch in the Princess’s chambers—but the alliance fractured. A subsequent 'loyalty test' mission led the team and Loyalist commanders into the sewers beneath Toad Town. They've found a potential route to the castle and a cryptic note, but the way is now blocked, and Toadette has deemed them failures. The team must find another way through the sewers and follow the trail of the conspiracy.",
+        assignee: "Full Party",
         assigneeKey: 'full_party',
         status: "active",
         start_condition: "A fragile truce was brokered between Kamek and Captain Toadette.",
         steps: [
             { id: 'step1', title: "Infiltrate the Madhouse", status: 'completed', description: "A joint Koopa-Loyalist team successfully infiltrated Fawful's Grand Gala at the occupied castle." },
-            { id: 'step2', title: "Survive the Gala", status: 'completed', description: "The mission yielded a crucial lead from Chief Thornpaw about a secret hatch but ended in chaos. The Loyalist soldier Embercap was presumed dead, only to miraculously return, his ideals hardened by the experience. The fragile truce is now on the brink of collapse." },
-            { id: 'step3', title: "A Fractured Alliance", status: 'active', description: "The path back to the castle is blocked. Captain Toadette is focused on her new war for Toad Town, and Embercap, the only one who knows the hatch's general location, is now a ruthless commander. The party must find a way to re-secure his cooperation or find an alternative route into Fawful's fortress." },
-            { id: 'step4', title: "Confront the Truth", status: 'locked', description: "Once the secrets of the hatch are revealed, confront the true culprit or circumstances behind the Princess's death." }
+            { id: 'step2', title: "Survive the Gala", status: 'completed', description: "The mission yielded a crucial lead from Chief Thornpaw about a secret hatch but ended in chaos. The Loyalist soldier Embercap was presumed dead, only to miraculously return, his ideals hardened by the experience." },
+            { id: 'step3', title: "The Loyalty Test", status: 'completed', description: "Following Toadette's orders, the team joined Embercap and Mistveil on a mission into the sewers beneath the mayor's house. The chaotic mission, which involved illusory Iron Legion and Fawful Cultists, was revealed to be a test of loyalty. The team recovered a cryptic (and likely fake) note hinting at a larger conspiracy involving a 'Shadow Bloom Toad' and the 'Regal Airship'." },
+            { id: 'step4', title: "The Blocked Path", status: 'active', description: "The sewer entrance has caved in, trapping the team. With Toadette and her forces gone, the team must now navigate the treacherous sewer system to find an alternate route back to the surface, or deeper towards the castle, while contending with the real dangers that lurk in the depths." },
+            { id: 'step5', title: "Confront the Truth", status: 'locked', description: "Once the secrets of the hatch are revealed, confront the true culprit or circumstances behind the Princess's death." }
         ]
     },
 };

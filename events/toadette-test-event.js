@@ -1,4 +1,3 @@
-
 export const TOADETTE_TEST_POSTS = [
     {
         id: 'wah_media_toadette_takeover',
@@ -71,7 +70,7 @@ export const TOADETTE_TEST_EVENT = {
         { characterKey: 'captain_toadette', host: true, justification: "Orchestrator of the loyalty test and new de facto ruler of Toad Town." },
         { characterKey: 'embercap', justification: "A key participant and subject of the test, who endured a faked kidnapping." },
         { characterKey: 'mistveil', justification: "Appointed as the interim governor of Toad Town before being subjected to the loyalty test." },
-        { characterKey: 'dan', justification: "Participated in the test as an observer and ally to the other tested toads." }
+        { characterKey: 'liberated_toads', justification: "Several members were present and subjected to the loyalty test, which they reportedly failed in Toadette's eyes." }
     ],
     news_ids: ['wah_media_toadette_takeover'],
     post_ids: TOADETTE_TEST_POSTS.filter(p => p.id !== 'wah_media_toadette_takeover').map(p => p.id)

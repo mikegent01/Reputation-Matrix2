@@ -159,23 +159,26 @@ export const MUSHROOM_KINGDOM_FACTIONS = {
                 embercap: {
                     name: "Commander Embercap",
                     level: 2,
-                    xp: 50,
+                    xp: 150,
                     xp_to_next: 200,
                     description: "A resilient warrior whose near-death experience has forged him into a harder, more pragmatic soldier.",
                     log: [
                         { xp: 50, reason: "Survived the events at Fawful's Gala and embraced a new, harsher reality." },
+                        { xp: 100, reason: "Endured Toadette's loyalty test and reaffirmed his commitment to the cause." },
                         { xp: 0, reason: "Leveled up to 2!", isLevelUp: true }
                     ]
                 },
                 mistveil: {
                     name: "Scout Mistveil",
-                    level: 1,
-                    xp: 75,
-                    xp_to_next: 100,
+                    level: 2,
+                    xp: 25,
+                    xp_to_next: 200,
                     description: "A stealthy operative now thrust into a position of authority he may not be prepared for.",
                     log: [
                         { xp: 25, reason: "Successfully scouted Fawful's Gala." },
-                        { xp: 50, reason: "Killed a Fawful Cultist in the sewers, securing vital intelligence." }
+                        { xp: 50, reason: "Killed a Fawful Cultist in the sewers, securing vital intelligence." },
+                        { xp: 50, reason: "Passed Toadette's loyalty test through decisive, ruthless action." },
+                        { xp: 0, reason: "Leveled up to 2!", isLevelUp: true }
                     ]
                 },
                 dewdrop: {

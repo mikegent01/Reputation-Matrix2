@@ -1,5 +1,3 @@
-
-
 // This file defines personal opinions between leaders and party members.
 export const CHARACTER_RELATIONS = {
     // --- PARTY MEMBER OPINIONS ---
@@ -104,45 +102,55 @@ export const CHARACTER_RELATIONS = {
         'humpik': { type: 'ally', text: "Lario on Humpik: The big Dwarf threw an axe for me! An axe! That's a goblin's love language! He's alright in my book." }
     },
     'dan': {
-        'markop': { type: 'ally', text: "Dan on Markop: He's my teacher. He's shown me what it means to be strong and honorable. I want to be like him." },
-        'archie': { type: 'ally', text: "Dan on Archie: He freed us. I can't ever forget that. He's... chaotic, and a little scary, but I think there's good in him. Somewhere." },
-        'humpik': { type: 'ally', text: "Dan on Humpik: He's loud! But he's also very brave. He fights to protect his friends. I respect that." },
-        'bowser': { type: 'enemy', text: "Dan on Bowser: He's a king who wants to conquer people. After what we've been through, I can't trust anyone who wants to rule over others." },
-        'captain_toadette': { type: 'neutral', text: "Dan on Toadette: She fights for her Princess. I understand that kind of loyalty. But her methods... they scare me." }
+        'markop': { type: 'ally', text: "Dan on Markop: He is my teacher and protector. His strength is not just in his arms, but in his heart. I trust him completely." },
+        'archie': { type: 'ally', text: "Dan on Archie: He freed us. I will never forget that. He is dangerous and unpredictable, but I believe there is good in him trying to get out." },
+        'humpik': { type: 'ally', text: "Dan on Humpik: He's loud and a little scary, but he's very brave. He fights to protect his king, and I respect that loyalty." },
+        'bowser': { type: 'enemy', text: "Dan on Bowser: I cannot trust another king who wants to conquer people. After everything we've been through, freedom is all that matters." },
+        'remi': { type: 'ally', text: "Dan on Remi: They seem quiet. I hope they're okay. This is a lot for a newcomer to handle." }
     },
     'toad_lee': {
-        'dan': { type: 'ally', text: "Toad Lee on Dan: The kid's got spirit. He's learning fast. But he's still just a kid. He needs protecting." },
-        'markop': { type: 'ally', text: "Toad Lee on Markop: The centaur is a true commander. He leads from the front. I'd follow him into any fight." },
-        'archie': { type: 'ally', text: "Toad Lee on Archie: He's a wild animal. Dangerous. But he's our wild animal. Better to have him on our side than against us." },
-        'humpik': { type: 'ally', text: "Toad Lee on Humpik: He's strong. Simple. We don't talk much, but we understand each other on the battlefield." },
-        'bowser': { type: 'enemy', text: "Toad Lee on Bowser: Another tyrant. I've had enough of tyrants. He is an enemy." }
+        'markop': { type: 'ally', text: "Toad Lee on Markop: A true commander. He is strong, and he leads from the front. I would follow him into any battle." },
+        'archie': { type: 'ally', text: "Toad Lee on Archie: He is a necessary evil. A wild dog that bites our enemies. Better to have him on our leash than against us." },
+        'humpik': { type: 'ally', text: "Toad Lee on Humpik: He is strong. Simple. We do not need words. We understand each other on the battlefield." },
+        'bowser': { type: 'enemy', text: "Toad Lee on Bowser: Another tyrant. I have had enough of tyrants for one lifetime. He is an enemy of all free toads." },
+        'remi': { type: 'ally', text: "Toad Lee on Remi: Another mouth to feed. Another person to protect. They must prove their strength." }
     },
     'eager': {
-        'archie': { type: 'neutral', text: "Eager on Archie: He's... a lot. The explosions are very loud. But he did free us, so... I guess he's okay? From a distance?" },
-        'markop': { type: 'ally', text: "Eager on Markop: He's so calm and strong. He makes me feel safer. I try to be brave like him, but it's hard." }
+        'markop': { type: 'ally', text: "Eager on Markop: He is so calm and brave. He makes me feel safe. I try to be strong like him, but all the fighting is very scary." },
+        'archie': { type: 'ally', text: "Eager on Archie: Oh, him. He's... a lot. The explosions are very, very loud. But he did free us, so... I guess he's okay? From a safe distance?" },
+        'humpik': { type: 'ally', text: "Eager on Humpik: He's so big! And he yells! But he seems nice... I think? He fights good, which is helpful." },
+        'bowser': { type: 'enemy', text: "Eager on Bowser: A big, scary monster! He wants to conquer everything! I don't like conquerors. I just want a quiet place to live." },
+        'remi': { type: 'ally', text: "Eager on Remi: A new person! Are they nice? I hope they're not loud like Humpik or explodey like Archie." }
     },
     'roger': {
-        'archie': { type: 'ally', text: "Roger on Archie: The three-eyed one is an asset. Unpredictable, yes, but effective. His actions create opportunities. Good for business." },
-        'markop': { type: 'ally', text: "Roger on Markop: The paladin is a stabilizing influence. Good for morale. Bad for profit margins, probably. A necessary cost." },
-        'bowser': { type: 'neutral', text: "Roger on Bowser: An alliance with him is a pragmatic choice. He has resources we need. Sentiment doesn't factor into survival." }
+        'markop': { type: 'ally', text: "Roger on Markop: The paladin is a stabilizing influence. Good for morale. Bad for profit margins, most likely. A necessary cost." },
+        'archie': { type: 'ally', text: "Roger on Archie: An asset. Unpredictable, yes, but effective. His actions create market opportunities. He is a calculated risk that has so far paid dividends." },
+        'humpik': { type: 'ally', text: "Roger on Humpik: A blunt instrument. High damage output, low tactical flexibility. Point him at the enemy's most durable asset and let him work." },
+        'bowser': { type: 'neutral', text: "Roger on Bowser: An alliance with him is a pragmatic choice. He possesses significant resources we lack. Sentiment doesn't factor into survival calculations." },
+        'remi': { type: 'ally', text: "Roger on Remi: A new variable. We will assess their skills and liabilities before allocating further trust." }
     },
     'ryan': {
-        'archie': { type: 'neutral', text: "Ryan on Archie: His grasp of chaotic, unsanctioned energy is... fascinating. Highly dangerous, but fascinating. A subject worthy of study." },
-        'markop': { type: 'ally', text: "Ryan on Markop: He is a grounding force. His moral compass is strong. A necessary counterweight to the other... variables... in our group." },
-        'dan': { type: 'ally', text: "Ryan on Dan: He has a natural connection to magic that is different from my own. I am curious to see how it develops." }
+        'markop': { type: 'ally', text: "Ryan on Markop: He is a grounding force. His moral certainty is... quaint, but a necessary counterweight to the other variables in our group." },
+        'archie': { type: 'ally', text: "Ryan on Archie: His grasp of chaotic, unsanctioned energy is... fascinating. Highly dangerous, but a subject worthy of intense study." },
+        'humpik': { type: 'ally', text: "Ryan on Humpik: A simple tool. Brute force has its applications, though it lacks elegance." },
+        'bowser': { type: 'enemy', text: "Ryan on Bowser: His ambition is predictable. His methods, crude. He is a known quantity, and therefore, easily countered with the right application of knowledge." },
+        'remi': { type: 'ally', text: "Ryan on Remi: An unknown. Their potential and their secrets are yet to be discovered. I will be watching them." }
     },
     'bones': {
         'chai': { type: 'enemy', text: "Bones on Chai: She's a snake. I saw it in her eyes. Threatened her. She folded like a cheap suit. Weak." },
+        'markop': { type: 'ally', text: "Bones on Markop: He talks a lot about honor. Honor didn't help me when my face was getting smashed in. But... he's strong. And he protects the others. That's something." },
         'archie': { type: 'ally', text: "Bones on Archie: He breaks things. The world needs more things broken. I like him." },
-        'markop': { type: 'neutral', text: "Bones on Markop: He talks about honor. Honor didn't help me when my face was getting smashed in. But... he's strong. And he protects the others. That's something." },
-        'humpik': { type: 'ally', text: "Bones on Humpik: He's a big, dumb rock. And I mean that as a compliment. You can rely on a rock." }
+        'humpik': { type: 'ally', text: "Bones on Humpik: He's a big, dumb rock. And I mean that as a compliment. You can rely on a rock." },
+        'bowser': { type: 'enemy', text: "Bones on Bowser: Just another boss. Different name, same story. They all think they own you." },
+        'remi': { type: 'ally', text: "Bones on Remi: Another survivor. The world's full of 'em. Let's see if this one lasts." }
     },
     'captain_toadette': {
         'bowser': { type: 'enemy', text: "Toadette on Bowser: The beast is responsible for the Princess's death. This temporary truce is a bitter pill, a necessary evil to uncover the truth and punish the true villains." },
         'humpik': { type: 'enemy', text: "Toadette on Humpik: A savage from a strange land, allied with a monster. His hands are stained with the blood of my people. He will answer for his crimes." },
-        'embercap': { type: 'ally', text: "Toadette on Embercap: He questioned my new strategy, but his loyalty is absolute. He has seen the necessity of our path and remains my most reliable soldier. His resolve is now as strong as my own." },
-        'dan': { type: 'neutral', text: "Toadette on Dan: The 'Hero Toad'. His bravery is commendable, but his idealism is naive. He has not seen true war." },
-        'toad_lee': { type: 'neutral', text: "Toadette on Toad Lee: A strong warrior, but loyalty is a question. He follows a fallen paladin, not a true monarch. His strength could be an asset, if it could be properly directed." }
+        'embercap': { type: 'ally', text: "Toadette on Embercap: My most steadfast soldier. He has seen the true face of the enemy and has been forged anew in the fires of conviction. His resolve is absolute, a perfect instrument of my will." },
+        'mistveil': { type: 'ally', text: "Toadette on Mistveil: Mistveil is swift and silent, an excellent scout. But his time as 'governor' and his performance in the test show a capacity for ruthlessness he has yet to fully embrace. He has potential." },
+        'dewdrop': { type: 'ally', text: "Toadette on Dewdrop: His compassion is a valuable asset for maintaining morale, but I fear his soft heart may be a liability in the battles to come. He must learn that some wounds cannot be healed, only avenged." },
+        'dan': { type: 'neutral', text: "Toadette on Dan & The Liberated Toads: Their hesitation during the test was... disappointing. They have courage, but they lack the conviction to make the ultimate sacrifice. They are not yet true soldiers of the cause. They are a liability until they can be hardened." }
     },
     'kamek': {
         'markop': { type: 'ally', text: "Kamek on Markop: A former paladin. His honor could be a liability, but his strength is an asset. He is a strange piece on the board." }

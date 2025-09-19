@@ -1,5 +1,3 @@
-
-
 // This file contains all of Humpik's personal quests.
 export const HUMPIK_QUESTS = {
     'humpik_honor_quest': {
@@ -72,7 +70,7 @@ export const HUMPIK_QUESTS = {
         title: "A Rival's Respect",
         type: 'personal',
         category: 'Personal - Humpik',
-        objective: "During a battle, Humpik clashed with Embercap, a particularly tough and resilient Toad soldier from the Peach Loyalists. Impressed by his courage, Humpik seeks him out for a non-lethal sparring match to test his mettle.",
+        objective: "Humpik was impressed by the courage of the Loyalist soldier Embercap. After Embercap's presumed death and miraculous return, Humpik seeks him out for an honorable sparring match to test the mettle of this hardened warrior.",
         assignee: "Humpik",
         assigneeKey: 'humpik',
         status: "available",
