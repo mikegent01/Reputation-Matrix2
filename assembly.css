@@ -21,6 +21,29 @@
     background-color: var(--dark-wah-background);
 }
 
+/* --- Feed Layout --- */
+#feed-content-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+    align-items: flex-start;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+#feed-content-layout .wahbook-feed-container {
+    grid-column: 1 / 2;
+    max-width: 100%;
+    margin: 0;
+}
+
+#feed-sidebar {
+    grid-column: 2 / 3;
+    position: sticky;
+    top: 24px;
+}
+
+
 /* --- Create Post component --- */
 .create-post-container {
     background: var(--dark-wah-card-bg);
@@ -59,8 +82,6 @@
 
 /* --- Main Feed --- */
 .wahbook-feed-container {
-    max-width: 680px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -700,6 +721,16 @@
 
 
 @media (max-width: 900px) {
+    #feed-content-layout {
+        grid-template-columns: 1fr;
+    }
+    #feed-sidebar {
+        position: static;
+        grid-row: 1;
+    }
+    #feed-content-layout .wahbook-feed-container {
+        grid-row: 2;
+    }
     .event-details-grid, .dossier-analysis-grid {
         grid-template-columns: 1fr;
     }
@@ -882,4 +913,103 @@ body.embed-mode .feed-post {
     font-size: 1rem;
     line-height: 1.6;
     font-style: italic;
+}
+
+/* --- Special Mechanic Widget (Copied from profile.css) --- */
+.profile-sidebar-widget {
+    background-color: var(--main-bg);
+    border-radius: 6px;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+}
+.profile-sidebar-widget h4 {
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.special-mechanic-widget {
+    border: 1px solid var(--accent-color);
+    background-color: rgba(138, 43, 226, 0.05);
+}
+
+.special-mechanic-widget h4 {
+    color: var(--accent-color);
+}
+
+.infamy-meter {
+    width: 100%;
+    height: 20px;
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.infamy-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #583380, var(--accent-color));
+    border-radius: 3px;
+    transition: width 0.5s ease-in-out;
+    animation: pulse-purple-bright 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-purple-bright {
+    50% { filter: brightness(1.4); }
+}
+
+.infamy-text {
+    z-index: 1;
+    color: var(--text-color);
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px var(--bg-color);
+}
+
+.infamy-level-title {
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.mechanic-description {
+    font-size: 0.85rem !important;
+    font-style: italic;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 8px;
+    margin-top: 8px;
+}
+
+.infamy-log-details {
+    margin-top: 12px;
+}
+
+.infamy-log-details summary {
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.infamy-log-details ul {
+    margin-top: 8px;
+    padding-left: 16px;
+    list-style: '💥 ';
+    color: var(--dark-wah-text-secondary);
+}
+
+.infamy-log-details li {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+    padding: 0;
+    background: none;
 }

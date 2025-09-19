@@ -1,10 +1,10 @@
-
 import { DINER_EVENT } from './events/diner-date-event.js';
 import { state } from './state.js';
 import { SCHEDULED_POSTS } from './events/scheduled-posts.js';
 import { CURRENT_GAME_DATE } from './calendar-data.js';
 import { TOADETTE_TEST_EVENT } from './events/toadette-test-event.js';
 import { ARCHIE_FIASCO_EVENT } from './events/archie-fiasco-event.js';
+import { DAY14_CHATTER_EVENT } from './events/day14-chatter.js';
 
 
 const BASE_EVENTS = [
@@ -87,6 +87,7 @@ let allEvents = [...BASE_EVENTS];
 // Conditionally add the Diner event (Day 14+)
 if (CURRENT_GAME_DATE.day >= 14 || state.debugMode) {
     allEvents.unshift(ARCHIE_FIASCO_EVENT);
+    allEvents.unshift(DAY14_CHATTER_EVENT);
     allEvents.unshift(TOADETTE_TEST_EVENT);
     allEvents.unshift(DINER_EVENT);
 }
@@ -126,6 +127,8 @@ export async function loadEventPosts() {
         posts.push(...TOADETTE_TEST_POSTS);
         const { ARCHIE_FIASCO_POSTS } = await import('./events/archie-fiasco-event.js');
         posts.push(...ARCHIE_FIASCO_POSTS);
+        const { DAY14_CHATTER_POSTS } = await import('./events/day14-chatter.js');
+        posts.push(...DAY14_CHATTER_POSTS);
     }
     if (CURRENT_GAME_DATE.day >= 15 || state.debugMode) {
         const { IRON_HOOF_DAY_POSTS } = await import('./events/iron-hoof-day.js');

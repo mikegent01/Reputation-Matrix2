@@ -1,4 +1,3 @@
-
 // character-special-systems.js
 
 export const CHARACTER_MECHANICS = {
@@ -28,9 +27,10 @@ export const CHARACTER_MECHANICS = {
                 description: "Becomes a folk hero to rebels and a high-priority target for empires. May trigger special bounty hunter encounters."
             }
         ],
-        current_infamy: 15, // Gained from the Recruitment Fiasco
+        current_infamy: 30, // Gained from the Recruitment Fiasco
         log: [
-            { infamy: 15, reason: "Publicly insulted Captain Toadette and attempted to poach her army." }
+            { infamy: 15, reason: "Publicly insulted Captain Toadette and attempted to poach her army." },
+            { infamy: 15, reason: "Incited a multi-faction flame war, annoying allies and enemies alike." }
         ]
     }
 };

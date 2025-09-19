@@ -10,6 +10,7 @@ import { playSound } from './common.js';
 import { state, saveState, loadState } from './state.js';
 import { NPC_RESPONSES } from './npc-responses.js';
 import { GUILD_DATA, CHARTER_DATA } from './guilds-data.js';
+import { CHARACTER_MECHANICS } from './character-special-systems.js';
 
 const tabsContainer = document.getElementById('wahbook-tabs-container');
 const contentContainer = document.getElementById('wahbook-content');
@@ -242,11 +243,51 @@ function renderCreatePostBox() {
     `;
 }
 
+function renderChaosAgentWidget() {
+    const characterKey = 'archie';
+    const specialMechanic = CHARACTER_MECHANICS[characterKey];
+    if (!specialMechanic) return '';
+
+    const levelInfo = specialMechanic.levels.find(l => l.level === specialMechanic.current_level) || specialMechanic.levels[0];
+    const nextLevelInfo = specialMechanic.levels.find(l => l.level === specialMechanic.current_level + 1);
+    const infamyPercentage = nextLevelInfo ? Math.min(100, (specialMechanic.current_infamy / nextLevelInfo.infamy_threshold) * 100) : 100;
+
+    const infamyLogHTML = specialMechanic.log.slice().reverse().map(entry => 
+        `<li>+${entry.infamy} Infamy: <em>${entry.reason}</em></li>`
+    ).join('');
+
+    return `
+        <div class="profile-sidebar-widget special-mechanic-widget">
+            <h4>${specialMechanic.icon} ${specialMechanic.title}</h4>
+            <div class="infamy-meter" title="${specialMechanic.current_infamy} / ${nextLevelInfo ? nextLevelInfo.infamy_threshold : 'MAX'} Infamy">
+                <div class="infamy-bar" style="width: ${infamyPercentage}%;"></div>
+                <span class="infamy-text">${specialMechanic.current_infamy} Infamy</span>
+            </div>
+            <p class="infamy-level-title">${levelInfo.name}</p>
+            <p class="mechanic-description">${specialMechanic.description}</p>
+            <details class="infamy-log-details">
+                <summary>Infamy Log</summary>
+                <ul>${infamyLogHTML}</ul>
+            </details>
+        </div>
+    `;
+}
+
 function renderMainFeed() {
     const container = document.getElementById('feed-content');
     if (!container) return;
+    
     const sortedPosts = [...WAHBOOK_POSTS].sort((a, b) => (b.order || 0) - (a.order || 0));
-    container.innerHTML = `<div class="wahbook-feed-container">${renderCreatePostBox() + sortedPosts.map(p => renderFeedPost(p)).join('')}</div>`;
+    const postsHTML = renderCreatePostBox() + sortedPosts.map(p => renderFeedPost(p)).join('');
+    
+    container.innerHTML = `
+        <div id="feed-content-layout">
+            <div class="wahbook-feed-container">${postsHTML}</div>
+            <aside id="feed-sidebar">
+                ${renderChaosAgentWidget()}
+            </aside>
+        </div>
+    `;
 }
 
 function renderEvent(event) {
