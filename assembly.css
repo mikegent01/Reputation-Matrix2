@@ -1023,3 +1023,28 @@ body.embed-mode .feed-post {
     padding: 0;
     background: none;
 }
+
+/* --- New Post Badge --- */
+.new-post-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: var(--wah-blue);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 2;
+    animation: pulse-blue 2s infinite;
+}
+
+@keyframes pulse-blue {
+    50% { filter: brightness(1.2); }
+}
+
+.trending-badge {
+    left: auto;
+    right: 12px;
+}

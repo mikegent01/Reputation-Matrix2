@@ -119,6 +119,11 @@ function getPortraitForEntity(key) {
 }
 
 
+function formatCharacterKey(key) {
+    if (!key) return '';
+    return key.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+}
+
 function getCharacterData(characterKey) {
     // Special cases for entities without formal character entries
     const specialCases = {
@@ -168,13 +173,16 @@ function getCharacterData(characterKey) {
         }
     }
 
-    return { name: 'Unknown User', portrait: getPortrait('unknown'), faction: null };
+    return { name: formatCharacterKey(characterKey), portrait: getPortrait('unknown'), faction: null };
 }
 
 function renderFeedPost(post, options = {}) {
     const author = getCharacterData(post.characterKey);
     const factionHTML = author.faction ? `<span class="post-meta">${author.faction.name} · ${post.timestamp}</span>` : `<span class="post-meta">${post.timestamp}</span>`;
     
+    const isNew = state.userState.seenPostIds && !state.userState.seenPostIds.includes(post.id);
+    const newBadgeHTML = isNew ? `<div class="new-post-badge">NEW</div>` : '';
+
     const commentsHTML = (post.comments || []).map(comment => {
         const commenter = getCharacterData(comment.characterKey);
         return `
@@ -203,6 +211,7 @@ function renderFeedPost(post, options = {}) {
 
     return `
         <div class="feed-post" id="post-${post.id}">
+            ${newBadgeHTML}
             ${trendingBadgeHTML}
             <div class="post-header">
                  <a href="profile.html?user=${post.characterKey}" class="profile-link">
