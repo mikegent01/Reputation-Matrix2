@@ -1,4 +1,3 @@
-
 import { LORE_DATA } from './lore.js';
 import { TOAD_ABILITIES } from './abilities.js';
 import { MAP_DATA } from './map-data.js';
@@ -112,7 +111,7 @@ export const state = {
     focusTreeState: {},
     inventories: {
         archie: { name: "Archie's Stash", items: [] },
-        markop: { name: "Markop's Pack", items: [] },
+        markop: { name: "Markop's Pack", items: ["Gray Suit"] }, // NEW item reflecting the dinner attire
         humpik: { name: "Humpik's Haul", items: [] },
         bowser: { name: "Bowser's Treasury", items: ["Princess Peach's Diary"] },
         remi: { name: "Remi's Pack", items: ["Expired Coupon for Angel 24", "A single, very durable school ID card", "Practical Traveling Clothes", "A half-eaten sandwich"] },
@@ -123,7 +122,8 @@ export const state = {
                 "A Field Guide to Fungal Alchemy", 
                 "Koopa Troop Tactics",
                 "A Guide to the Great Libraries",
-                "Mayor's Ledger & Spellbook"
+                "Mayor's Ledger & Spellbook",
+                "Crayon Ring (Fake)" // NEW
             ] 
         }
     },
@@ -228,7 +228,9 @@ function initReputation() {
         'paladin_dilemma',
         'rebel_sympathies',
         'scrap_trail',
-        'standoff_at_the_capital'
+        'standoff_at_the_capital',
+        'capital_diner_shadow_accord', // NEW
+        'grand_market_ring'            // NEW
     ];
 }
 
@@ -316,7 +318,7 @@ function processInitialXP() {
     grantXP('toad_lee', 50, "Confronted Crown Intelligence agents on the Vigilance.");
     grantXP('bones', 50, "Confronted Crown Intelligence agents on the Vigilance.");
     grantXP('roger', 50, "Confronted Crown Intelligence agents on the Vigilance.");
-    grantXP('ryan', 50, "Confronted Crown Intelligence agents on the Vigilance.");
+    grantXP('ryan', 50, "Confronted Crown Intelligence agents on the Vigilance");
 
 
     // Status updates from recent events

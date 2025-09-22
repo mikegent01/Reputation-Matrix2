@@ -1,7 +1,7 @@
 export const DINER_POSTS = [
     {
         id: 'wah_media_diner_exclusive',
-        order: 210,
+        order: 10020, // was 210 — bump to top
         characterKey: 'wah_media_collective',
         timestamp: 'Just Now',
         content: `**EXCLUSIVE: SHADOW ACCORD IN THE CAPITAL!** A mysterious figure calling himself 'Mr. Wario', bearing a striking resemblance to the late treasure hunter, held a private dinner with anarchist superstar Waluigi and diplomat Lady Toriel. Is this Wario returned from the grave under a new guise, or a new player entirely? The Imperial Core is reportedly 'apoplectic'. Full story developing.`,
@@ -11,78 +11,101 @@ export const DINER_POSTS = [
         comments: [
             { characterKey: 'generic_toad', text: "Wait, Wario's back?! But he's calling himself 'Mr. Wario'? Is that supposed to be a disguise? I'm so confused." },
             { characterKey: 'the_broker', text: "The game has changed. Adjust your portfolios accordingly." }
-        ],
-        eventId: 'capital_diner'
+        ]
     },
+
+    // --- NEW POSTS (kept, orders bumped) ---
     {
-        id: 'regal_delegate_diner_reaction',
-        order: 209,
-        characterKey: 'regal_empire_delegate',
-        timestamp: '1 hour ago',
-        content: "Lady Toriel's association with the anarchist Waluigi and this so-called 'Mr. Wario'—a transparent charade if ever there was one—is a grave threat to the stability of the Diet. Her judgment is clearly compromised. We will be calling for a motion to censure her.",
-        likes: 1205,
+        id: 'angel24_time_freeze',
+        order: 10019, // was 209
+        characterKey: 'angel_24',
+        timestamp: 'Just Now',
+        content: `Service guarantee honored. Time suspended for convenience. No injuries reported. All orders fulfilled immediately. Please tip.`,
+        likes: 1022,
         comments: [
-            { characterKey: 'lady_toriel', text: "My judgment is sound, delegate. I serve the interests of my people, not the stagnant traditions of the Imperial Core." }
+            { characterKey: 'freelancer_spy_1', text: "Witness confirmed: bartender froze time at a Capital bar—doors opened, chase concluded. Unprecedented." }
         ],
         eventId: 'capital_diner'
     },
     {
-        id: 'broker_diner_analysis',
-        order: 208,
-        characterKey: 'the_broker',
-        timestamp: '1 hour ago',
-        content: "Market Watch: Wario Land futures are up 300% on news of a Wario-like figure's return. Chaos futures (WAH) are volatile but trending high. Imperial Concordat stability bonds are down. A new player—or an old player with a new hat—has entered the game.",
-        likes: 834,
-        comments: [],
-        eventId: 'capital_diner'
-    },
-    {
-        id: 'ironhand_diner_reaction',
-        order: 207,
-        characterKey: 'general_marcus_ironhand',
-        timestamp: '2 hours ago',
-        content: "A diplomat entertaining anarchists and criminals in flimsy disguises. This is what happens when civilian leadership is allowed to fester. Order must be imposed.",
-        likes: 956,
-        comments: [],
-        eventId: 'capital_diner'
-    },
-    {
-        id: 'waluigi_diner_followup',
-        order: 206,
-        characterKey: 'waluigi',
-        timestamp: '2 hours ago',
-        content: "WAH! The stuffed shirts in the Empire are crying into their boring grey suits! They are scared of STYLE! They are scared of MAGNIFICENCE! And they are confused by my brilliant new associate, Mr. Wario! Good! They should be!",
-        likes: 1432,
+        id: 'green_t_ring_heist',
+        order: 10018, // was 208
+        characterKey: 'wah_media_collective',
+        timestamp: 'Just Now',
+        content: `Grand Market scandal! A Legion noble's heirloom ring was 'liberated' from a horse after a cheese-laced laxative plan went... everywhere. Green T snagged the prize while others gagged. Rumor: he offered Eager's whereabouts in exchange for the real ring.`,
+        likes: 1887,
         comments: [
-            { characterKey: 'giggling_pete', text: "Their tears are the salty seasoning on the feast of chaos! WAH-nderful!" }
+            { characterKey: 'generic_toad', text: "I’m never eating cheese again." },
+            { characterKey: 'donkey_kong', text: "Who hides laxatives in cheese?! That's criminal! ...unless it's for pranks." }
         ],
         eventId: 'capital_diner'
     },
     {
-        id: 'wario_diner_followup',
-        order: 205,
-        characterKey: 'wario',
-        timestamp: '3 hours ago',
-        content: "For the public record: I am Mr. Wario. Any resemblance to the late, garlic-addled treasure hunter is purely coincidental and frankly, insulting. Now, back to business.",
-        likes: 998,
+        id: 'archie_writeman_spotted',
+        order: 10017, // was 207
+        characterKey: 'wah_media_collective',
+        timestamp: '2 minutes ago',
+        content: `An 'Archie Writeman' whispered to a companion, insisted he isn't the infamous three-eyed bandit, then almost blew his cover. Fashion note: gray suits are in; panic is out.`,
+        likes: 750,
         comments: [
-             { characterKey: 'lario', text: "BROTHER, IT'S ME, LARIO! WHAT ARE YOU TALKING ABOUT?!" }
+            { characterKey: 'diamond_city_investigators', text: "Alias flagged. Cross-referencing footage." },
+            { characterKey: 'waluigi', text: "WAH! Gray suit? Very respectable. Very boring." }
         ],
         eventId: 'capital_diner'
     },
     {
-        id: 'toriel_diner_followup',
-        order: 204,
+        id: 'hjumpik_dk_overheard',
+        order: 10016, // was 206
+        characterKey: 'freelancer_spy_1',
+        timestamp: '5 minutes ago',
+        content: `Intercept: Donkey Kong was overheard on a call near the Capital venue. Topic murky—trade? Market games? Inside moves? The timing is suspicious.`,
+        likes: 612,
+        comments: [
+            { characterKey: 'king_k_rool', text: "Heh! Monkey business is always about the market." }
+        ],
+        eventId: 'capital_diner'
+    },
+    {
+        id: 'fng_market_blunder',
+        order: 10015, // was 205
+        characterKey: 'wah_media_collective',
+        timestamp: '10 minutes ago',
+        content: `FNG tried to deliver 'special seeds' to a herbal toad. Iron Legion intercepted the package—too late. The toad swallowed the goods and dipped. Gross? Yes. Effective? Also yes.`,
+        likes: 973,
+        comments: [
+            { characterKey: 'regal_empire_delegate', text: "Agricultural contraband is a public safety concern." }
+        ],
+        eventId: 'capital_diner'
+    },
+    {
+        id: 'noble_ring_bounty',
+        order: 10014, // was 204
+        characterKey: 'wah_media_collective',
+        timestamp: '30 minutes ago',
+        content: `At Mighdural’s Grand Market, a Legion noble promised to 'pass any law' for a ring recovery. Horse’s owner: "Let nature take its course." Outcome: chaos.`,
+        likes: 1198,
+        comments: [
+            { characterKey: 'iron_legion_officer', text: "Officially, we do not endorse... cheese solutions." }
+        ],
+        eventId: 'capital_diner'
+    },
+
+    // ... existing Capital Dinner posts (orders bumped) ...
+    {
+        id: 'lady_toriel_diner_statement',
+        order: 10013, // was 204
         characterKey: 'lady_toriel',
-        timestamp: '3 hours ago',
+        timestamp: '5 hours ago',
         content: "My duty is to the people of Lockerwood, not to the political posturing of the Imperial Core. I will meet with anyone who can guarantee my province's prosperity and security. The Empire has failed to do so.",
         likes: 1150,
-        comments: [],
+        comments: [
+            { characterKey: 'regal_empire_delegate', text: "Lady Toriel, your choice of dinner companions is... concerning. We must discuss this at the next Diet session." }
+        ],
         eventId: 'capital_diner'
     },
     {
         id: 'generic_toad_diner_gossip',
-        order: 203,
+        order: 10012, // was 203
         characterKey: 'generic_toad',
         timestamp: '4 hours ago',
         content: "Did you see who Lady Toriel was having dinner with? It looked like Wario, but everyone's calling him 'Mr. Wario'. Is he trying to be fancy now?",
@@ -92,7 +115,7 @@ export const DINER_POSTS = [
     },
     {
         id: 'freelancer_spy_diner_intel',
-        order: 202,
+        order: 10011, // was 202
         characterKey: 'freelancer_spy_1',
         timestamp: '4 hours ago',
         content: "Intel chatter is off the charts. The dinner wasn't just a meal. Wario is consolidating his old networks under a new name. Waluigi provides the chaos as cover. Toriel gives them legitimacy. This is a coordinated power play.",
@@ -101,13 +124,42 @@ export const DINER_POSTS = [
         eventId: 'capital_diner'
     },
     {
-        id: 'steelstorm_diner_reaction',
-        order: 201,
-        characterKey: 'colonel_vera_steelstorm',
-        timestamp: '5 hours ago',
-        content: "This 'Mr. Wario' is clearly the original article. The change in moniker is a transparent attempt at rebranding. It changes nothing. He is a known criminal entity. We are monitoring.",
-        likes: 721,
-        comments: [],
+        id: 'waluigi_diner_date_1',
+        order: 190,
+        characterKey: 'waluigi',
+        timestamp: '11 hours ago',
+        content: "WAH! A magnificent dinner with my magnificent new business partner, the very serious and very not-Wario, Mr. Wario! He has style! And money! Forget the old Wario, this one is going places! The future is purple! WAH-HA-HA!",
+        image: 'diner_mess.png',
+        image_alt: "A half-eaten, very expensive-looking steak dinner with gravy spilled all over a white tablecloth.",
+        likes: 999,
+        comments: [
+            { characterKey: 'giggling_pete', text: "A feast of chaos! The Jester approves!" }
+        ],
+        eventId: 'capital_diner'
+    },
+    {
+        id: 'wario_diner_date_1',
+        order: 189,
+        characterKey: 'wario',
+        timestamp: '12 hours ago',
+        content: "A productive dinner. Let's be clear: I am Mr. Wario. The garlic-addled fool you once knew is gone. This is a new era of business. More ruthless. More profitable.",
+        likes: 342,
+        comments: [
+            { characterKey: 'lario', text: "IT'S A FAKE MUSTACHE, YOU'RE NOT FOOLING ANYONE!" },
+            { characterKey: 'detective_penny', text: "'Mr. Wario'. Right. And I'm the Queen of Sarasaland." }
+        ],
+        eventId: 'capital_diner'
+    },
+    {
+        id: 'toriel_diner_date_1',
+        order: 188,
+        characterKey: 'lady_toriel',
+        timestamp: '13 hours ago',
+        content: "A most... spirited dinner welcoming our new arrivals to the capital, the enigmatic Waluigi and a businessman who introduces himself as 'Mr. Wario'. Their table manners leave something to be desired, but we had a very productive discussion regarding mutual interests in Lockerwood. I do hope the gravy stains come out of the tablecloth.",
+        likes: 412,
+        comments: [
+            { characterKey: 'regal_empire_delegate', text: "Lady Toriel, your choice of dinner companions is... concerning. We must discuss this at the next Diet session." }
+        ],
         eventId: 'capital_diner'
     },
     {
@@ -201,56 +253,15 @@ export const DINER_POSTS = [
         eventId: 'capital_diner'
     },
     {
-        id: 'unchained_diner_reaction',
-        order: 191,
-        characterKey: 'the_unchained',
-        timestamp: '10 hours ago',
-        content: "Toriel meets with 'Mr. Wario'? The same Wario who used slave labor? All rulers are the same. They make deals with monsters for their own power. Do not trust them.",
-        likes: 754,
+        id: 'steelstorm_diner_reaction',
+        order: 10010, // was 201
+        characterKey: 'colonel_vera_steelstorm',
+        timestamp: '5 hours ago',
+        content: "This 'Mr. Wario' is clearly the original article. The change in moniker is a transparent attempt at rebranding. It changes nothing. He is a known criminal entity. We are monitoring.",
+        likes: 530,
         comments: [],
         eventId: 'capital_diner'
-    },
-    {
-        id: 'waluigi_diner_date_1',
-        order: 190,
-        characterKey: 'waluigi',
-        timestamp: '11 hours ago',
-        content: "WAH! A magnificent dinner with my magnificent new business partner, the very serious and very not-Wario, Mr. Wario! He has style! And money! Forget the old Wario, this one is going places! The future is purple! WAH-HA-HA!",
-        image: 'diner_mess.png',
-        image_alt: "A half-eaten, very expensive-looking steak dinner with gravy spilled all over a white tablecloth.",
-        likes: 999,
-        comments: [
-            { characterKey: 'giggling_pete', text: "A feast of chaos! The Jester approves!" }
-        ],
-        eventId: 'capital_diner'
-    },
-    {
-        id: 'wario_diner_date_1',
-        order: 189,
-        characterKey: 'wario',
-        timestamp: '12 hours ago',
-        content: "A productive dinner. Let's be clear: I am Mr. Wario. The garlic-addled fool you once knew is gone. This is a new era of business. More ruthless. More profitable.",
-        likes: 342,
-        comments: [
-            { characterKey: 'lario', text: "IT'S A FAKE MUSTACHE, YOU'RE NOT FOOLING ANYONE!" },
-            { characterKey: 'detective_penny', text: "'Mr. Wario'. Right. And I'm the Queen of Sarasaland." }
-        ],
-        eventId: 'capital_diner'
-    },
-    {
-        id: 'toriel_diner_date_1',
-        order: 188,
-        characterKey: 'lady_toriel',
-        timestamp: '13 hours ago',
-        content: "A most... spirited dinner welcoming our new arrivals to the capital, the enigmatic Waluigi and a businessman who introduces himself as 'Mr. Wario'. Their table manners leave something to be desired, but we had a very productive discussion regarding mutual interests in Lockerwood. I do hope the gravy stains come out of the tablecloth.",
-        likes: 412,
-        comments: [
-            { characterKey: 'regal_empire_delegate', text: "Lady Toriel, your choice of dinner companions is... concerning. We must discuss this at the next Diet session." }
-        ],
-        eventId: 'capital_diner'
-    }
-];
-
+    }];
 export const DINER_EVENT = {
     id: 'capital_diner',
     title: "The Capital Dinner",

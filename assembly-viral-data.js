@@ -1,5 +1,38 @@
-
 export const VIRAL_POSTS = [
+    // --- Move new viral posts to top via higher order ---
+    {
+        id: 'viral_angel24_service',
+        order: 10030, // top-tier priority
+        characterKey: 'wah_media_collective',
+        timestamp: 'Just Now',
+        content: `Capital bartender 'Angel 24' reportedly froze time to fulfill orders instantly. Patrons call it 'the greatest service in history.' Regulators call it 'unorthodox'.`,
+        likes: 1820,
+        comments: [
+            { characterKey: 'angel_24', text: "Standard policy when queues exceed cosmic tolerance." }
+        ]
+    },
+    {
+        id: 'viral_archiewriteman_meme',
+        order: 10029,
+        characterKey: 'cosmic_jesters',
+        timestamp: 'Just Now',
+        content: `Behold: ARCHIE WRITEMAN. Same chaos, different name! The mask is the joke; the joke is the mask. Time froze, but our laughter did not.`,
+        likes: 1412,
+        comments: [
+            { characterKey: 'waluigi', text: "WAH! Mask? It's called fashion." }
+        ]
+    },
+    {
+        id: 'viral_green_t_ring_deal',
+        order: 10028,
+        characterKey: 'the_broker',
+        timestamp: '1 minute ago',
+        content: `Market Note: Horse-Ring futures spiking. 'Crayon Ring' counterfeits collapsing. Intelligence on 'Eager Location' trading at a premium.`,
+        likes: 990,
+        comments: [
+            { characterKey: 'king_k_rool', text: "Keheheh! The market runs on cheese now!" }
+        ]
+    },
     {
         id: 'peach_copypasta_leak',
         order: 240,
@@ -199,5 +232,5 @@ I’m so sorry to say this, but it’s time for you to wake up, Mario. Wake up t
         content: `To be clear, I suspected the 'princess' was a magical construct or a powerful illusion. The 'Toadette in a dress' theory is a new, and frankly, far more humiliating development for Lord Bowser. We will be recalibrating our entire foreign policy.`,
         likes: 730,
         comments: []
-    },
+    }
 ];

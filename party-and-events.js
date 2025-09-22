@@ -1,5 +1,3 @@
-
-
 export const AUXILIARY_PARTY = {
     dan: {
         name: "Dan",
@@ -206,6 +204,37 @@ export const RUMORS = [
             liberated_toads: -5
         }
     },
+
+    // --- NEW EVENT: Capital Dinner Shadow Accord ---
+    {
+        id: 'capital_diner_shadow_accord',
+        title: "Capital Dinner: Shadow Accord",
+        time_ago: "Today",
+        description: "Mr. Wario, Waluigi, and Lady Toriel convene in the Capital. Time-freeze bartending accelerates a chase through opened doors. Green T uses a horse-ring debacle to bargain Eager's location for the real ring. Inside trading whispers and plans to influence the Regal Airship emerge.",
+        targets: ['wario', 'waluigi', 'lady_toriel', 'archie', 'markop', 'remi', 'humpik', 'green_t'],
+        effects: {
+            freelancer_underworld: 15,
+            regal_empire: -10,
+            koopa_troop: 5,
+            mushroom_regency: -5,
+            diamond_city_investigators: 10
+        }
+    },
+
+    // --- NEW EVENT: Grand Market Ring Saga ---
+    {
+        id: 'grand_market_ring',
+        title: "Grand Market: The Ring and the Horse",
+        time_ago: "Today",
+        description: "A Legion noble’s ring is swallowed by a horse. Cheese-laced laxative yields a messy retrieval attempt. Green T grabs the ring and offers intel. FNG’s seed delivery fails after a herbal toad swallows the goods.",
+        targets: ['remi', 'archie', 'green_t', 'iron_legion'],
+        effects: {
+            iron_legion: -5,
+            freelancer_underworld: 5,
+            the_unchained: 5
+        }
+    },
+
     {
         id: 'shadow_war',
         title: "Shadow War Escalation",

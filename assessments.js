@@ -1,5 +1,3 @@
-// This file contains detailed, narrative assessments of how each faction views the player characters.
-
 export const FACTION_ASSESSMENTS = {
     regal_empire: {
         archie: `The Empire views Archie as a high-priority anarchist and a significant threat. His central role in the 'Vigilance' hijacking and flagrant disregard for Imperial law mark him as a public enemy. While some internal factions see his chaos as useful data, the overwhelming official stance is one of extreme hostility.`,
@@ -16,7 +14,7 @@ export const FACTION_ASSESSMENTS = {
         remi: `Another mercenary. Insignificant until they prove otherwise on the battlefield. Their association with known hostiles makes them a target by default.`
     },
     freelancer_underworld: {
-        archie: `Archie is a chaotic force in the underworld. The established Syndicates see him as a liability who brings unwanted official attention. Conversely, independent operators and information brokers appreciate the lucrative chaos he creates, making him a notorious but divisive figure.`,
+        archie: `Archie is a chaotic force in the underworld. The established Syndicates see him as a liability who brings unwanted official attention. Conversely, independent operators and information brokers appreciate the lucrative chaos he creates, making him a notorious but divisive figure. Recent alias-play ('Archie Writeman') amuses brokers—masking notoriety without reducing risk.`,
         markop: `Markop's moral code makes him an untrustworthy and unpredictable element in the criminal underworld. Most freelancers avoid him, assuming he's either a snitch or a mark. His notoriety is low, as he's not considered a serious player.`,
         humpik: `Known only as Bowser's primary enforcer, Humpik has little personal standing here. He is seen as powerful, reliable muscle, a valuable asset for any employer, but his unwavering loyalty makes him impossible to hire away.`,
         bowser: `Bowser is too 'loud' for the subtle games of the Freelancer Underworld. He is viewed as a client or a target, not a colleague. His methods are too overt, and his goals (conquest) don't align with their pursuit of profit.`,

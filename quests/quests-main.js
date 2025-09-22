@@ -1,4 +1,3 @@
-// This file contains all main story quests for the campaign.
 export const MAIN_QUESTS = {
     'retrieve_the_staff': {
         id: 'retrieve_the_staff',
@@ -48,6 +47,7 @@ export const MAIN_QUESTS = {
             { id: 'step2', title: "Survive the Gala", status: 'completed', description: "The mission yielded a crucial lead from Chief Thornpaw about a secret hatch but ended in chaos. The Loyalist soldier Embercap was presumed dead, only to miraculously return, his ideals hardened by the experience." },
             { id: 'step3', title: "The Loyalty Test", status: 'completed', description: "Following Toadette's orders, the team joined Embercap and Mistveil on a mission into the sewers beneath the mayor's house. The chaotic mission, which involved illusory Iron Legion and Fawful Cultists, was revealed to be a test of loyalty. The team recovered a cryptic (and likely fake) note hinting at a larger conspiracy involving a 'Shadow Bloom Toad' and the 'Regal Airship'." },
             { id: 'step4', title: "The Blocked Path", status: 'active', description: "The sewer entrance has caved in, trapping the team. With Toadette and her forces gone, the team must now navigate the treacherous sewer system to find an alternate route back to the surface, or deeper towards the castle, while contending with the real dangers that lurk in the depths." },
+            { id: 'step4a', title: "Shadow Accord Intelligence", status: 'active', description: "At the Capital Dinner, Green T offered Eager’s location in exchange for a Legion noble’s real heirloom ring. Insider schemes and plans to influence the Regal Airship emerged. Follow up on Eager’s lead and assess the Regal Airship’s vulnerabilities." },
             { id: 'step5', title: "Confront the Truth", status: 'locked', description: "Once the secrets of the hatch are revealed, confront the true culprit or circumstances behind the Princess's death." }
         ]
     },

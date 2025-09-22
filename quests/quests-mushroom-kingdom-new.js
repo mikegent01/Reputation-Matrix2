@@ -18,4 +18,33 @@ export const NEW_MK_QUESTS = {
             { id: 'step4', title: "The Final Confrontation", status: 'completed', description: "Toadette revealed the entire scenario was an elaborate illusion, including the 'death' of a toad, to test their resolve. She declared them failures, believing they were not yet ready to die for the cause." }
         ]
     },
+    'grand_market_ring_retrieval': {
+        id: 'grand_market_ring_retrieval',
+        title: "Grand Market: The Ring Retrieval",
+        type: 'side',
+        category: 'Capital & Markets',
+        objective: "Recover a Legion noble’s heirloom ring, originally swallowed by a horse and later seized by Green T during a chaotic laxative-cheese incident.",
+        assignee: "FNG Remi",
+        assigneeKey: 'remi',
+        status: "active",
+        steps: [
+            { id: 'step1', title: "Track the Heirloom", status: 'active', description: "Identify Green T’s fence or drop location. Verify the ring’s authenticity (beware crayon counterfeits)." },
+            { id: 'step2', title: "Negotiate or Pursue", status: 'locked', description: "Exchange credible leverage for the ring or pursue Green T through Capital alleys. Consider Angel 24’s time services." }
+        ],
+        rewards: ["Contact in the Legion’s Diet", "Favor for a future legal exemption"]
+    },
+    'eager_rescue_lead': {
+        id: 'eager_rescue_lead',
+        title: "Lead on Eager",
+        type: 'side',
+        category: 'Liberated Toads',
+        objective: "Pursue Green T’s tip regarding Eager’s location, offered during the Capital Dinner in exchange for the real ring.",
+        assignee: "Full Party",
+        assigneeKey: 'full_party',
+        status: "available",
+        steps: [
+            { id: 'step1', title: "Verify the Lead", status: 'active', description: "Confirm Green T’s intel using underworld contacts and Rakasha scouts." },
+            { id: 'step2', title: "Approach the Site", status: 'locked', description: "Secure the perimeter and prepare for potential Loyalist or Imperial interference." }
+        ]
+    }
 };
