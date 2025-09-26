@@ -7,8 +7,59 @@
     <link rel="stylesheet" href="global.css" />
     <link rel="stylesheet" href="layout.css" />
     <link rel="stylesheet" href="components.css" />
-    <link rel="stylesheet" href="toads-event.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic layout for the mission page */
+        .metrics-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 16px 0 24px;
+        }
+        .metric { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; }
+        .metric-header { display: flex; justify-content: space-between; font-family: "Roboto Mono", monospace; font-size: 0.9rem; color: #a9ffea; }
+        .metric-bar { height: 8px; background: rgba(255,255,255,0.08); border-radius: 6px; overflow: hidden; margin-top: 8px; }
+        .metric-fill { height: 100%; width: 0%; background: linear-gradient(90deg,#2bd1ff,#4eff9e); transition: width 300ms ease; }
+
+        .dialogue-panel { background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.12); padding: 16px; border-radius: 8px; margin: 12px 0 20px; font-family: 'Shadows Into Light Two', 'Roboto Mono', monospace; font-size: 1.1rem; color: #cbe6ff; line-height: 1.7; }
+        .dialogue-line .speaker { font-family: "Orbitron", sans-serif; color: #ffd54e; font-weight: bold; }
+        
+        .decision-container { margin: 24px 0; padding: 16px; border-left: 3px solid #4eff9e; background: rgba(78, 255, 158, 0.05); border-radius: 0 8px 8px 0; }
+        .decision-title { font-family: "Orbitron", sans-serif; font-size: 1.4rem; margin-bottom: 8px; color: #4eff9e; }
+        .decision-narrative { font-family: "Roboto Mono", monospace; color: #cbe6ff; }
+        
+        .choices-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 24px; }
+        .decision-card { border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 16px; background: rgba(255,255,255,0.04); display: flex; flex-direction: column; transition: all 0.2s ease-in-out; }
+        .decision-card:hover { border-color: var(--accent-hover); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .decision-card-title { font-family: 'Orbitron', sans-serif; font-weight: 700; margin-bottom: 8px; color: #a9ffea; font-size: 1.1rem; }
+        .decision-card-desc { flex: 1; font-size: 0.95rem; color: #e8f5ff; line-height: 1.5; }
+        .decision-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+        
+        .btn { cursor: pointer; border: none; border-radius: 6px; padding: 10px 16px; font-family: "Roboto Mono", monospace; font-weight: bold; text-decoration: none; }
+        .btn-primary { background: #2bd1ff; color: #0a0f14; transition: background-color 0.2s; }
+        .btn-primary:hover { background-color: #5ce1ff; }
+        
+        /* Final Plan Styles */
+        .final-plan-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px;}
+        @media (max-width: 768px) { .final-plan-summary { grid-template-columns: 1fr; } }
+        .summary-choices ul { list-style: none; padding-left: 0; }
+        .summary-choices li { background: rgba(255,255,255,0.04); padding: 8px; border-radius: 4px; margin-bottom: 8px; font-size: 0.9rem;}
+        .summary-choices strong { color: #a9ffea; display: block; font-family: "Orbitron", sans-serif; font-size: 0.8rem; margin-bottom: 4px;}
+        #mission-brief-textarea { width: 100%; height: 200px; background: #010409; color: #4eff9e; border: 1px solid var(--border-color); font-family: "Roboto Mono", monospace; padding: 12px; border-radius: 6px; margin-top: 12px; }
+        
+        .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 1000; }
+        .modal.open { display: flex; animation: fadeIn 0.3s ease-out; }
+        .modal-content { background: #0a0f14; border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 24px; width: min(500px, 92vw); position: relative; }
+        .modal-close { position: absolute; top: 10px; right: 10px; font-size: 1.5rem; background: transparent; color: #e8f5ff; border: none; cursor: pointer; transition: transform 0.2s; }
+        .modal-close:hover { transform: scale(1.2); }
+        .modal-content h3 { font-family: 'Orbitron', sans-serif; color: var(--neutral-color); margin-bottom: 16px; }
+        .modal-content ul { list-style: none; padding-left: 0; }
+        .modal-content li { margin-bottom: 8px; font-family: 'Roboto Mono', monospace; }
+        .modal-actions { display: flex; justify-content: flex-end; margin-top: 24px; }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="tablet-frame">
@@ -17,9 +68,9 @@
             <aside id="sidebar"></aside>
             <main id="main-content">
                 <section id="mission-section">
-                    <h2 class="page-title">Special Mission: The Schism</h2>
+                    <h2 class="page-title">Special Mission: The Vigilance Gambit</h2>
                     <p class="page-subtitle">
-                        A deep ideological rift has split the Liberated Toads. Toad Lee's 'Strike Faction' demands a military seizure of a newly discovered medical cache. Roger's 'Shelter Faction' insists on using the intel to trade for food. The group is at a breaking point, and they've asked you, Archie, to lead them through the crisis. Your choices will either forge a unified future or shatter them for good.
+                        While exploring the crashed Vigilance, the toads have discovered the hidden cargo hold: over 150 trafficked toads, weak and disoriented. This discovery has caused a schism. Lee's 'Strike Faction' sees an army. Roger's 'Shelter Faction' sees mouths to feed. As their trusted leader, you must forge a plan.
                     </p>
 
                     <div id="mission-metrics" class="metrics-board">
@@ -31,13 +82,13 @@
                         </div>
                         <div class="metric">
                             <div class="metric-header">
-                                <span>Resources Gained</span><span id="m-resources-val">0</span>
+                                <span>Plan Effectiveness</span><span id="m-resources-val">0</span>
                             </div>
                             <div class="metric-bar"><div id="m-resources" class="metric-fill"></div></div>
                         </div>
                         <div class="metric">
                             <div class="metric-header">
-                                <span>Stealth Integrity</span><span id="m-stealth-val">0</span>
+                                <span>Plan Subtlety</span><span id="m-stealth-val">0</span>
                             </div>
                             <div class="metric-bar"><div id="m-stealth" class="metric-fill"></div></div>
                         </div>
@@ -50,27 +101,14 @@
                     </div>
 
                     <div id="dialogue" class="dialogue-panel">
-                        <div class="dialogue-line">
-                            <div class="speaker">Dan</div>
-                            <div class="content">They won't listen to me anymore, Archie. Lee and Roger... they're ready to tear each other apart over this. You're the only one they'll both follow, even if they don't trust you. Please... help me hold us together.</div>
-                        </div>
-                        <div class="dialogue-line" id="dynamic-dialogue">
-                            <!-- Updated via JS -->
-                        </div>
+                        Archie—I slipped this in your pocket. Please read it. We found them. Over 150 of our people, trapped in the cargo bay. But now we're falling apart. Lee wants to arm them, turn them into an army and strike out. Roger says we'll starve, that we need to find shelter first. They're going to fight. You're the only one they'll both listen to. You have to decide our path. Please.
+                        <div style="text-align: right; margin-top: 8px;">—Dan</div>
                     </div>
 
-                    <div id="stage-container">
-                        <!-- Stage title and narrative injected here -->
+                    <div id="decision-container">
+                        <!-- Decisions or final plan injected here -->
                     </div>
 
-                    <div id="choices-container" class="choices-grid">
-                        <!-- Decision cards injected here -->
-                    </div>
-
-                    <div class="mission-footer">
-                        <button id="reset-mission" class="btn btn-secondary">Reset Mission</button>
-                        <a href="directory.html" class="btn btn-link">Back to Directory</a>
-                    </div>
                 </section>
             </main>
         </div>
@@ -90,136 +128,50 @@
     <script type="module" src="common.js"></script>
     <script type="module" src="navigation.js"></script>
     <script type="module">
-        // Mission state, stages, rendering, and consequence handling
-        const STORAGE_KEY = 'vigi.liberatedToadsEvent';
+        const STORAGE_KEY = 'vigi.vigilanceGambitPlan';
 
         const defaultState = {
-          missionStage: 0, // 0..3, then 'end'
-          metrics: { morale: 60, resources: 20, stealth: 80, cohesion: 70 },
-          choices: [],
+          decisionIndex: 0,
+          metrics: { morale: 50, resources: 40, stealth: 60, cohesion: 40 },
+          choicesMade: [],
           outcome: null,
         };
 
-        const STAGES = [
+        const DECISION_POINTS = [
           {
-            id: 'briefing',
-            title: 'Stage 1: The Plan',
-            narrative: 'A major opportunity and a major crisis. Intel points to a cache of pre-war medical supplies. Toad Lee and his "Strike Faction" demand an immediate assault to seize them. Roger and the "Shelter Faction" want to use the intel as a bargaining chip to trade for desperately needed food supplies with a neutral third party.',
-            dynamicLine: 'This isn\'t just about tactics, Archie. This is political. Whichever path you choose, half our people will be furious. What do we do?',
+            id: 'objective',
+            title: 'Decision 1: The New Arrivals',
+            narrative: 'The fundamental dilemma. The 150 freed toads are a resource, but also a burden. Do you treat them as soldiers or survivors? This decision will set the tone for the entire operation.',
             choices: [
-              {
-                id: 'strike',
-                title: "Lee's Plan (Strike)",
-                desc: 'Launch a direct military assault on the cache. Seize the supplies by force. Self-reliance through strength.',
-                deltas: { morale: +15, resources: 0, stealth: -20, cohesion: -15 },
-                outlook: 'The Strike Faction is emboldened, but the Shelter Faction sees this as reckless warmongering, damaging group unity.',
-                goto: 1
-              },
-              {
-                id: 'diplomacy',
-                title: "Roger's Plan (Diplomacy)",
-                desc: 'Make contact with the neutral traders. Use the intel to secure a long-term food source. Survival through caution.',
-                deltas: { morale: -10, resources: -5, stealth: +15, cohesion: -10 },
-                outlook: 'The Shelter Faction is relieved, but the Strike Faction views this as cowardly, hurting morale.',
-                goto: 1
-              },
-              {
-                id: 'subterfuge',
-                title: "Archie's Plan (Subterfuge)",
-                desc: 'Play both sides. Send a team to steal the supplies while another team pretends to negotiate a trade, creating a diversion.',
-                deltas: { morale: +5, resources: 0, stealth: +5, cohesion: -5 },
-                outlook: 'A risky gambit that could yield great rewards, but if it fails, you risk alienating everyone.',
-                goto: 1
-              }
+              { id: 'army', title: "Lee's Plan: An Army is Born", desc: "View the new arrivals as recruits. Prioritize arming and training them immediately. Our survival depends on strength and seizing territory now.", deltas: { morale: +20, cohesion: -20, resources: +15, stealth: -10 } },
+              { id: 'survivors', title: "Roger's Plan: Protect the Flock", desc: "View the new arrivals as refugees. Prioritize their health, safety, and finding a secure shelter above all else. We cannot fight a war while our people starve.", deltas: { morale: -10, cohesion: -15, resources: -10, stealth: +15 } }
             ]
           },
           {
-            id: 'complication',
-            title: 'Stage 2: The Complication',
-            narrative: 'The plan hits a snag. The medical cache isn\'t just guarded by a few squatters—it\'s a makeshift field hospital for a platoon of well-armed Iron Fists mercenaries. The "neutral" traders are revealed to be the Tea Leaf Syndicate, led by Chai, who recognizes you. The situation is far more dangerous than anticipated.',
-            dynamicLine: 'Iron Fists and the Syndicate... this is bad, Archie. They\'ll kill us on sight. We need a new plan, fast!',
+            id: 'approach',
+            title: 'Decision 2: The Vigilance Itself',
+            narrative: 'The ship is both a prison and our greatest asset. Its resources are finite. How do we use what remains of the wreck?',
             choices: [
-              {
-                id: 'attack',
-                title: 'Full Frontal Assault',
-                desc: 'Overwhelm the mercenaries with a surprise attack. A bloody, direct solution.',
-                deltas: { morale: +10, resources: +30, stealth: -40, cohesion: +5 },
-                outlook: 'High risk of casualties, but a decisive victory could secure massive resources and unite the Toads in battle.',
-                goto: 2
-              },
-              {
-                id: 'bluff',
-                title: 'Bluff the Syndicate',
-                desc: 'Attempt to outwit Chai in a negotiation, using misdirection and threats to get what you want without a fight.',
-                deltas: { morale: +5, resources: +15, stealth: +10, cohesion: +10 },
-                outlook: 'A battle of wits. Success will preserve stealth and unity, but failure could be disastrous.',
-                goto: 2
-              },
-              {
-                id: 'withdraw',
-                title: 'Strategic Withdrawal',
-                desc: 'Abort the mission. The risk is too high, and the most important thing is getting your people out alive.',
-                deltas: { morale: -25, resources: -10, stealth: +20, cohesion: +5 },
-                outlook: 'A safe choice that preserves the crew, but a devastating blow to morale. You\'ll return empty-handed.',
-                goto: 2
-              }
+              { id: 'strip', title: "Strip the Ship for a Fortification", desc: "Tear armor plating and systems from the Vigilance to build a defensible ground-based fort. It's a permanent, safe shelter, but sacrifices the ship's potential.", deltas: { stealth: +10, resources: +20, cohesion: +10 } },
+              { id: 'repair', title: "Attempt to Make the Ship Mobile", desc: "Conserve resources to repair the Vigilance's essential systems. A mobile base is a powerful weapon, but it leaves us vulnerable in the open.", deltas: { stealth: -20, resources: -15, cohesion: -5 } }
             ]
           },
           {
-            id: 'sacrifice',
-            title: 'Stage 3: The Sacrifice',
-            narrative: 'During your escape, you stumble upon a small group of unaffiliated toad escapees, cornered and about to be captured by an enemy patrol. Saving them would mean making a huge noise and, more importantly, dropping some of your newly-acquired supplies to move faster.',
-            dynamicLine: 'We have to help them! We can\'t just leave them! ...But the supplies... Archie, what\'s the call?',
+            id: 'entry',
+            title: 'Decision 3: The Staff in the Core',
+            narrative: 'The staff is our only power source, but Dan insists it\'s a dangerous artifact. Ryan is studying the Iron Legion seal on it. What is the protocol regarding this immense power source?',
             choices: [
-              {
-                id: 'save-toads',
-                title: 'Save the Toads',
-                desc: 'Prioritize lives over loot. Create a diversion and get the new toads to safety, even if it costs you resources.',
-                deltas: { morale: +30, resources: -20, stealth: -35, cohesion: +15 },
-                outlook: 'A powerful, unifying act of compassion that will inspire everyone, but at a significant material cost.',
-                goto: 3
-              },
-              {
-                id: 'secure-supplies',
-                title: 'Secure the Supplies',
-                desc: 'The mission comes first. Getting your own people and their hard-won supplies to safety is the only priority.',
-                deltas: { morale: -30, resources: +5, stealth: +20, cohesion: -20 },
-                outlook: 'A pragmatic but brutal choice that will haunt the crew and cause a massive blow to morale and cohesion.',
-                goto: 3
-              }
+              { id: 'unseal', title: "Risk Unsealing It", desc: "Task Ryan with finding a way to break the Iron Binding. The potential power is immense, but a magical backlash could be catastrophic.", deltas: { resources: +30, morale: +10, stealth: -25, cohesion: -5 } },
+              { id: 'leave', title: "Leave it Sealed", desc: "The risk is too great. We work with the limited power we have. It's safer and keeps the ship's energy signature low.", deltas: { resources: -10, stealth: +20, cohesion: +5 } }
             ]
           },
           {
-            id: 'aftermath',
-            title: 'Stage 4: The New Path',
-            narrative: 'You\'ve returned. The consequences of your mission are clear, for better or worse. The original rift has either been healed or has fractured into a permanent schism. Dan, shaped by what he has witnessed, calls a council to define the future of the Liberated Toads.',
-            dynamicLine:
-              'You led us through this, Archie. You showed us the way. Now, help me tell them what we stand for. What is our new code?',
+            id: 'contingency',
+            title: 'Decision 4: The First Step',
+            narrative: 'Based on the previous choices, what is our immediate, actionable priority? This will be the first mission the newly-unified (or fractured) toads undertake.',
             choices: [
-              {
-                id: 'warrior-code',
-                title: 'The Warrior\'s Code',
-                desc: '"Survival through strength. We take what we need. We are a hammer, and we will crush our enemies."',
-                deltas: { morale: +10, resources: +10, stealth: -10, cohesion: -20 },
-                outlook: 'The Toads become a hardened military faction. The pacifists and diplomats are alienated, fracturing the group.',
-                goto: 'end'
-              },
-              {
-                id: 'survivor-pact',
-                title: 'The Survivor\'s Pact',
-                desc: '"Survival through caution. We build alliances, we stay hidden, we endure."',
-                deltas: { morale: +5, resources: -5, stealth: +15, cohesion: -15 },
-                outlook: 'The Toads become a reclusive, defensive community. The warriors feel their potential is being wasted.',
-                goto: 'end'
-              },
-              {
-                id: 'unchained-path',
-                title: 'The Unchained Path',
-                desc: '"We survive for each other. Strength when we must, caution when we can. Our priority is our people. We are a family."',
-                deltas: { morale: +20, resources: 0, stealth: +5, cohesion: +30 },
-                outlook: 'Dan unites the factions under a new, balanced ideology. The Toads find a common purpose, stronger than before.',
-                goto: 'end'
-              }
+              { id: 'scout', title: "Scout for a Permanent Base", desc: "Send out small, stealthy teams to find a defensible location to establish a long-term shelter, 'Toad's Landing'.", deltas: { stealth: +15, morale: -5, cohesion: +10 } },
+              { id: 'raid', title: "Raid for Weapons & Supplies", desc: "Launch an aggressive raid on a nearby Iron Legion scavenger camp to acquire weapons and resources.", deltas: { stealth: -20, morale: +15, cohesion: -5, resources: +10 } }
             ]
           }
         ];
@@ -259,130 +211,126 @@
           set('m-stealth', metrics.stealth);
           set('m-cohesion', metrics.cohesion);
         }
-
-        function renderStage(state) {
-          const container = document.getElementById('stage-container');
-          const choicesContainer = document.getElementById('choices-container');
-          const dialogueDynamic = document.getElementById('dynamic-dialogue');
-
-          container.innerHTML = '';
-          choicesContainer.innerHTML = '';
-
-          if (state.outcome) {
-            const summary = document.createElement('div');
-            summary.className = 'stage-container';
-            const title = document.createElement('div');
-            title.className = 'stage-title';
-            title.textContent = 'Mission Outcome';
-            const body = document.createElement('div');
-            body.className = 'stage-narrative';
-            body.innerHTML = outcomeText(state);
-            summary.appendChild(title);
-            summary.appendChild(body);
-            container.appendChild(summary);
-            dialogueDynamic.innerHTML = `<div class="speaker">Dan</div><div class="content">${epilogueLine(state)}</div>`;
-            const btn = document.createElement('a');
-            btn.href = 'directory.html';
-            btn.className = 'btn btn-primary';
-            btn.textContent = 'Return to Directory';
-            choicesContainer.appendChild(btn);
-            return;
-          }
-
-          const stage = STAGES[state.missionStage];
-          dialogueDynamic.innerHTML = `<div class="speaker">Dan</div><div class="content">${stage.dynamicLine}</div>`;
-
-          const title = document.createElement('div');
-          title.className = 'stage-title';
-          title.textContent = stage.title;
-          const narrative = document.createElement('div');
-          narrative.className = 'stage-narrative';
-          narrative.textContent = stage.narrative;
-          container.appendChild(title);
-          container.appendChild(narrative);
-
-          stage.choices.forEach(choice => {
-            const card = document.createElement('div');
-            card.className = 'decision-card';
-
-            const ct = document.createElement('div');
-            ct.className = 'decision-title';
-            ct.textContent = choice.title;
-
-            const cd = document.createElement('div');
-            cd.className = 'decision-desc';
-            cd.textContent = choice.desc;
-
-            const co = document.createElement('div');
-            co.className = 'decision-outlook';
-            co.textContent = `Outlook: ${choice.outlook}`;
-
-            const actions = document.createElement('div');
-            actions.className = 'decision-actions';
-            const btn = document.createElement('button');
-            btn.className = 'btn btn-primary';
-            btn.textContent = 'Choose';
-            btn.addEventListener('click', () => onChoose(state, choice));
-            actions.appendChild(btn);
-
-            card.appendChild(ct);
-            card.appendChild(cd);
-            card.appendChild(co);
-            card.appendChild(actions);
-            choicesContainer.appendChild(card);
-          });
-        }
-
+        
         function onChoose(state, choice) {
           applyDeltas(state, choice.deltas);
-          state.choices.push(choice.id);
+          
+          const currentDecision = DECISION_POINTS[state.decisionIndex];
+          state.choicesMade.push({
+              decisionTitle: currentDecision.title,
+              choiceTitle: choice.title,
+              choiceId: choice.id
+          });
 
-          state.missionStage = choice.goto === 'end' ? 'end' : choice.goto;
+          state.decisionIndex++;
 
-          if (state.missionStage === 'end') {
+          if (state.decisionIndex >= DECISION_POINTS.length) {
             state.outcome = evaluateOutcome(state);
           }
 
           saveState(state);
           renderMetrics(state);
-          showConsequences(choice.deltas, () => renderStage(state));
+          showConsequences(choice.deltas, () => renderDecisionPoint(state));
         }
-
+        
         function evaluateOutcome(state) {
           const m = state.metrics;
-          if (m.cohesion >= 90 && m.morale >= 80 && m.resources >= 25) return 'perfectUnity';
-          if (m.resources >= 40 && m.cohesion >= 50) return 'missionSuccess';
-          if (m.stealth <= 15) return 'exposedAndHunted';
-          if (m.morale <= 20) return 'brokenSpirits';
-          if (m.cohesion <= 20) return 'crewFractured';
-          return 'mixedOutcome';
+          if (m.stealth >= 75 && m.cohesion >= 60) return 'stealthSuccess';
+          if (m.morale >= 70 && m.resources >= 60) return 'aggressiveSuccess';
+          if (m.cohesion <= 30) return 'fractured';
+          if (m.stealth <= 25) return 'exposed';
+          return 'mixed';
         }
-        function outcomeText(state) {
-          switch (state.outcome) {
-            case 'perfectUnity':
-              return 'A masterful display of leadership. You navigated an impossible political crisis, secured vital supplies, and helped Dan forge a new, unified identity for the Liberated Toads. They are stronger and more hopeful than ever, a true family forged in fire.';
-            case 'missionSuccess':
-              return 'The mission was a success. You secured a good amount of supplies, and while there were some harsh disagreements, you held the crew together. A solid, if costly, victory.';
-            case 'exposedAndHunted':
-              return 'You got the supplies, but at what cost? Your actions were so loud and chaotic that you\'ve drawn the full attention of the Iron Fists and the Syndicate. The toads now have a massive target on their backs.';
-            case 'brokenSpirits':
-              return 'You made it back, but the moral compromises were too great. The toads are demoralized, questioning if survival is worth sacrificing their principles. Their fighting spirit is gone, replaced by fear and regret.';
-            case 'crewFractured':
-              return 'The mission has irrevocably shattered the Liberated Toads. The Strike and Shelter factions are now openly hostile, refusing to work together. You may have gained supplies, but you lost the community.';
-            default:
-              return 'You navigated a difficult mission. Some supplies were gained, but tensions remain high. The rift has not been healed, merely papered over. The crew survived, but their future is uncertain.';
-          }
-        }
-        function epilogueLine(state) {
-          const o = state.outcome;
-          if (o === 'perfectUnity') return 'We did it, Archie. We faced ourselves and came out... better. United. Thank you for showing me the way.';
-          if (o === 'missionSuccess') return 'We got what we came for, and we\'re still standing. That\'s a win in my book. Now, let\'s put these supplies to good use.';
-          if (o === 'exposedAndHunted') return 'We have what we need to survive, for now. But we have more enemies than ever. I hope the price was worth it.';
-          if (o === 'brokenSpirits') return 'This... this wasn\'t how it was supposed to go. We lost a part of ourselves back there. I don\'t know if we can get it back.';
-          if (o === 'crewFractured') return 'They’re tearing themselves apart. I... I tried to hold them together, but it wasn\'t enough. What do we do now?';
-          return 'It\'s over. We survived. But the arguments haven\'t stopped. We need to figure out who we are, and fast.';
+        
+        function getOutcomeText(state) {
+            switch(state.outcome) {
+                case 'stealthSuccess': return 'An excellent, well-balanced plan. It prioritizes the group\'s safety and unity while aiming for long-term survival. The odds of success are high, and the risk of immediate discovery is minimal. The team feels cautious but hopeful.';
+                case 'aggressiveSuccess': return 'A bold and aggressive strategy. This plan favors overwhelming force and decisive action to carve out a place in the world. While extremely risky, its success would bring a huge morale boost and significant resources. The team is fired up, though some worry about the potential for attracting powerful enemies.';
+                case 'fractured': return 'The planning process has exposed deep divisions within the group. While a plan has been formed, the team is not united behind it. Cohesion is critically low, and the risk of insubordination during the mission is dangerously high. The group may shatter under pressure.';
+                case 'exposed': return 'This is a loud and extremely risky plan. It sacrifices all elements of surprise for speed and immediate gains. The chances of alerting every hostile force in the area are almost certain. The potential rewards are high, but so is the likelihood of a disastrous confrontation that could wipe the toads out for good.';
+                default: return 'A workable, if uninspired, plan. It\'s a series of compromises that leaves no faction truly satisfied. The mission can likely be accomplished, but the underlying tensions within the group remain unresolved and will likely fester.';
+            }
         }
 
+        function generateMissionBrief(state) {
+            let brief = "OPERATION: VIGILANCE GAMBIT\n\n";
+            brief += "MISSION BRIEFING:\n";
+            
+            const objective = state.choicesMade[0];
+            brief += `- PRIMARY DIRECTIVE: ${objective.choiceId === 'army' ? 'Militarize the 150 freed toads for immediate action.' : 'Prioritize the shelter and well-being of the 150 freed toads.'}\n`;
+            
+            const approach = state.choicesMade[1];
+            brief += `- ASSET DOCTRINE: ${approach.choiceId === 'strip' ? 'The Vigilance will be stripped to create a static, fortified base.' : 'Resources will be focused on repairing the Vigilance for mobile operations.'}\n`;
+
+            const entry = state.choicesMade[2];
+            brief += `- POWER SOURCE PROTOCOL: ${entry.choiceId === 'unseal' ? 'Attempt to break the Iron Legion seal on the staff for maximum power.' : 'The staff will remain sealed to minimize risk and energy signature.'}\n`;
+
+            const contingency = state.choicesMade[3];
+            brief += `- IMMEDIATE OBJECTIVE: ${contingency.choiceId === 'scout' ? 'Initiate stealth reconnaissance to find a permanent base location.' : 'Launch an immediate raid on local hostiles for supplies and weapons.'}\n\n`;
+
+            brief += "This plan is now locked. Execute on my command.\n- Archie";
+            return brief;
+        }
+
+        function renderFinalPlan(state) {
+            const container = document.getElementById('decision-container');
+            const choicesListHTML = state.choicesMade.map(c => `<li><strong>${c.decisionTitle}:</strong> ${c.choiceTitle}</li>`).join('');
+            const outcomeText = getOutcomeText(state);
+            const missionBrief = generateMissionBrief(state);
+
+            container.innerHTML = `
+                <div class="decision-title">Mission Plan Finalized</div>
+                <div class="decision-narrative">${outcomeText}</div>
+                <div class="final-plan-summary">
+                    <div class="summary-choices">
+                        <h5>Choices Made:</h5>
+                        <ul>${choicesListHTML}</ul>
+                    </div>
+                    <div class="summary-brief">
+                        <h5>Generated Mission Brief:</h5>
+                        <textarea id="mission-brief-textarea" readonly>${missionBrief}</textarea>
+                    </div>
+                </div>
+                <div class="decision-actions" style="margin-top: 24px; justify-content: center;">
+                    <a href="directory.html" class="btn btn-primary">Return to Directory</a>
+                </div>
+            `;
+        }
+
+        function renderDecisionPoint(state) {
+            const container = document.getElementById('decision-container');
+            
+            if (state.decisionIndex >= DECISION_POINTS.length) {
+                renderFinalPlan(state);
+                return;
+            }
+
+            const decision = DECISION_POINTS[state.decisionIndex];
+            const choicesHTML = decision.choices.map(choice => `
+                <div class="decision-card">
+                    <div class="decision-card-title">${choice.title}</div>
+                    <p class="decision-card-desc">${choice.desc}</p>
+                    <div class="decision-actions">
+                        <button class="btn btn-primary" data-choice-id="${choice.id}">Select Plan</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            container.innerHTML = `
+                <div class="decision-title">${decision.title}</div>
+                <p class="decision-narrative">${decision.narrative}</p>
+                <div class="choices-grid">${choicesHTML}</div>
+            `;
+            
+            container.querySelectorAll('.btn-primary').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const choiceId = btn.dataset.choiceId;
+                    const selectedChoice = decision.choices.find(c => c.id === choiceId);
+                    onChoose(state, selectedChoice);
+                });
+            });
+        }
+        
         function showConsequences(deltas, onClose) {
           const modal = document.getElementById('consequence-modal');
           const title = document.getElementById('consequence-title');
@@ -390,12 +338,12 @@
           const closeBtn = modal.querySelector('.modal-close');
           const contBtn = document.getElementById('modal-continue');
 
-          title.textContent = 'Consequences';
+          title.textContent = 'Plan Projection Update';
           body.innerHTML = `
             <ul>
               <li>Toad Morale: ${fmtDelta(deltas.morale)}</li>
-              <li>Resources Gained: ${fmtDelta(deltas.resources)}</li>
-              <li>Stealth Integrity: ${fmtDelta(deltas.stealth)}</li>
+              <li>Plan Effectiveness: ${fmtDelta(deltas.resources)}</li>
+              <li>Plan Subtlety: ${fmtDelta(deltas.stealth)}</li>
               <li>Group Cohesion: ${fmtDelta(deltas.cohesion)}</li>
             </ul>
           `;
@@ -408,6 +356,7 @@
           closeBtn.onclick = close;
           contBtn.onclick = close;
         }
+
         function fmtDelta(v = 0) {
             if (v === 0) return '<span style="color: var(--text-secondary);">No change</span>';
             const sign = v > 0 ? '+' : '';
@@ -415,24 +364,12 @@
             return `<span style="color: ${color}; font-weight: bold;">${sign}${v}</span>`;
         }
 
-
-        function setupReset() {
-          const btn = document.getElementById('reset-mission');
-          btn.addEventListener('click', () => {
-            localStorage.removeItem(STORAGE_KEY);
-            const state = loadState();
-            saveState(state);
-            renderMetrics(state);
-            renderStage(state);
-          });
-        }
-
         function init() {
           const state = loadState();
           renderMetrics(state);
-          renderStage(state);
-          setupReset();
+          renderDecisionPoint(state);
         }
+
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
