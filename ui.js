@@ -1,4 +1,5 @@
 
+
 import { state } from './state.js';
 import { LORE_DATA } from './lore.js';
 import { getReputation, getNotoriety, getDetailedFactionAssessment, getGenericFactionAssessment } from './reputation.js';
@@ -73,21 +74,29 @@ function showLiberatedToadsPopup() {
     const popup = document.createElement('div');
     popup.id = popupId;
     popup.className = 'modal'; // Use existing modal styles
-    popup.style.display = 'block';
+    popup.style.display = 'flex';
 
     popup.innerHTML = `
         <div class="modal-content">
             <button class="modal-close">&times;</button>
             <h2>A Message from the Liberated Toads</h2>
-            <p>Archie, we've been watching you. We have a special task for you, one that could change the course of this war. Are you ready to help us?</p>
-            <a href="liberated-toads-event.html" class="btn">Accept the Mission</a>
+            <p>Archie, we've got a high-stakes mission lined up and Dan requested you personally. It could change the course of this war. Are you in?</p>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="liberated-toads-event.html" class="startup-btn">Accept the Mission</a>
+            </div>
         </div>
     `;
 
     document.body.appendChild(popup);
 
-    popup.querySelector('.modal-close').addEventListener('click', () => {
-        popup.remove();
+    const close = () => {
+        popup.style.opacity = '0';
+        setTimeout(() => popup.remove(), 300);
+    }
+
+    popup.querySelector('.modal-close').addEventListener('click', close);
+    popup.addEventListener('click', (e) => {
+        if(e.target === popup) close();
     });
 }
 
@@ -98,8 +107,10 @@ function renderFactionDirectory() {
     viewContainer.appendChild(grid);
 
     if (state.loggedInUser === 'archie' && !sessionStorage.getItem('liberatedToadsPopupShown')) {
-        showLiberatedToadsPopup();
-        sessionStorage.setItem('liberatedToadsPopupShown', 'true');
+        setTimeout(() => {
+            showLiberatedToadsPopup();
+            sessionStorage.setItem('liberatedToadsPopupShown', 'true');
+        }, 1500);
     }
 
     

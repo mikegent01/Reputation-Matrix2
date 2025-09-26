@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vigilance Terminal | Special Mission</title>
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="layout.css" />
+    <link rel="stylesheet" href="components.css" />
+    <link rel="stylesheet" href="toads-event.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="tablet-frame">
+        <div class="scanline-overlay"></div>
+        <div id="app">
+            <aside id="sidebar"></aside>
+            <main id="main-content">
+                <section id="mission-section">
+                    <h2 class="page-title">Special Mission: The Schism</h2>
+                    <p class="page-subtitle">
+                        A deep ideological rift has split the Liberated Toads. Toad Lee's 'Strike Faction' demands a military seizure of a newly discovered medical cache. Roger's 'Shelter Faction' insists on using the intel to trade for food. The group is at a breaking point, and they've asked you, Archie, to lead them through the crisis. Your choices will either forge a unified future or shatter them for good.
+                    </p>
+
+                    <div id="mission-metrics" class="metrics-board">
+                        <div class="metric">
+                            <div class="metric-header">
+                                <span>Toad Morale</span><span id="m-morale-val">0</span>
+                            </div>
+                            <div class="metric-bar"><div id="m-morale" class="metric-fill"></div></div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-header">
+                                <span>Resources Gained</span><span id="m-resources-val">0</span>
+                            </div>
+                            <div class="metric-bar"><div id="m-resources" class="metric-fill"></div></div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-header">
+                                <span>Stealth Integrity</span><span id="m-stealth-val">0</span>
+                            </div>
+                            <div class="metric-bar"><div id="m-stealth" class="metric-fill"></div></div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-header">
+                                <span>Group Cohesion</span><span id="m-cohesion-val">0</span>
+                            </div>
+                            <div class="metric-bar"><div id="m-cohesion" class="metric-fill"></div></div>
+                        </div>
+                    </div>
+
+                    <div id="dialogue" class="dialogue-panel">
+                        <div class="dialogue-line">
+                            <div class="speaker">Dan</div>
+                            <div class="content">They won't listen to me anymore, Archie. Lee and Roger... they're ready to tear each other apart over this. You're the only one they'll both follow, even if they don't trust you. Please... help me hold us together.</div>
+                        </div>
+                        <div class="dialogue-line" id="dynamic-dialogue">
+                            <!-- Updated via JS -->
+                        </div>
+                    </div>
+
+                    <div id="stage-container">
+                        <!-- Stage title and narrative injected here -->
+                    </div>
+
+                    <div id="choices-container" class="choices-grid">
+                        <!-- Decision cards injected here -->
+                    </div>
+
+                    <div class="mission-footer">
+                        <button id="reset-mission" class="btn btn-secondary">Reset Mission</button>
+                        <a href="directory.html" class="btn btn-link">Back to Directory</a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="consequence-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 id="consequence-title">Consequences</h3>
+            <div id="consequence-body"></div>
+            <div class="modal-actions">
+                <button id="modal-continue" class="btn btn-primary">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="common.js"></script>
+    <script type="module" src="navigation.js"></script>
+    <script type="module" src="toads_event.js"></script>
+</body>
+</html>
