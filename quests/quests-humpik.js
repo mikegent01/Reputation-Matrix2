@@ -1,3 +1,4 @@
+
 // This file contains all of Humpik's personal quests.
 export const HUMPIK_QUESTS = {
     'humpik_honor_quest': {

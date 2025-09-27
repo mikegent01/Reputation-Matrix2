@@ -1,3 +1,4 @@
+
 // This file defines the personal opinions between leaders and party members.
 export const CHARACTER_RELATIONS = {
     // --- PARTY MEMBER OPINIONS ---
@@ -103,17 +104,21 @@ export const CHARACTER_RELATIONS = {
     },
     'dan': {
         'markop': { type: 'ally', text: "Dan on Markop: He is my teacher and protector. His strength is not just in his arms, but in his heart. I trust him completely." },
-        'archie': { type: 'enemy', text: "Dan on Archie: He promised me the staff would be returned. Instead, he sealed it in the heart of the ship, choosing the Vigilance over his word. It doesn't matter that he doesn't intend to use its power; the promise was broken, and its presence remains a danger to us all. My trust is gone. I will get that staff back." },
+        'archie': { type: 'enemy', text: "Dan on Archie: He broke his promise. He chose a machine over his word, and 13 toads paid the price for his pragmatism. I... I can't trust him. Not after what happened." },
         'humpik': { type: 'ally', text: "Dan on Humpik: He's loud and a little scary, but he's very brave. He fights to protect his king, and I respect that loyalty." },
         'bowser': { type: 'enemy', text: "Dan on Bowser: I cannot trust another king who wants to conquer people. After everything we've been through, freedom is all that matters." },
-        'remi': { type: 'ally', text: "Dan on Remi: They seem quiet. I hope they're okay. This is a lot for a newcomer to handle." }
+        'remi': { type: 'ally', text: "Dan on Remi: They seem quiet. I hope they're okay. This is a lot for a newcomer to handle." },
+        'xo_staff': { type: 'enemy', text: "Dan on X.O.'s Staff: It whispered to me. It promised me the strength to protect everyone. But it lied. It's a corrupting thing, a weapon of sorrow. I never want to touch it again." }
     },
     'toad_lee': {
         'markop': { type: 'ally', text: "Toad Lee on Markop: A true commander. He is strong, and he leads from the front. I would follow him into any battle." },
         'archie': { type: 'ally', text: "Toad Lee on Archie: He is a necessary evil. A wild dog that bites our enemies. Better to have him on our leash than against us." },
         'humpik': { type: 'ally', text: "Toad Lee on Humpik: He is strong. Simple. We do not need words. We understand each other on the battlefield." },
         'bowser': { type: 'enemy', text: "Toad Lee on Bowser: Another tyrant. I have had enough of tyrants for one lifetime. He is an enemy of all free toads." },
-        'remi': { type: 'ally', text: "Toad Lee on Remi: Another mouth to feed. Another person to protect. They must prove their strength." }
+        'remi': { type: 'ally', text: "Toad Lee on Remi: Another mouth to feed. Another person to protect. They must prove their strength." },
+        'dan': { type: 'ally', text: "Toad Lee on Dan: My friend is wounded, not just in body. The staff... it twisted him. I hold it now so he doesn't have to. I will protect him until he finds his way back." },
+        'green_t': { type: 'ally', text: "Toad Lee on Green T: He's a snake. But he stood up to help Dan when no one else would. He got hurt for it. He's proven he can be trusted... a little bit." },
+        'xo_staff': { type: 'enemy', text: "Toad Lee on The Staff: It is a heavy burden. I can feel it pulling, testing. But I am stronger than it is. I have to be." }
     },
     'eager': {
         'markop': { type: 'ally', text: "Eager on Markop: He is so calm and brave. He makes me feel safe. I try to be strong like him, but all the fighting is very scary." },

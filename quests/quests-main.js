@@ -1,18 +1,21 @@
+
 export const MAIN_QUESTS = {
     'retrieve_the_staff': {
         id: 'retrieve_the_staff',
         title: "The Brandished Staff",
         type: 'main',
         category: 'Main Story',
-        objective: "During the chaos of the Imperial boarding, Iron Legion forces managed to seize X.O.'s staff. After a brief struggle involving Captain Syrup, the Legion applied a magical 'Iron Binding' seal to the artifact before it was reinstalled into the Vigilance's power core. The ship is operational but crippled, and the Legion now has a potential backdoor into its systems. The party must find a way to break the seal.",
+        objective: "The staff's chaotic power has been unleashed. Dan's attempt to reclaim it resulted in a magical outburst, killing 13 of the newly freed toads. After a violent struggle, the staff is now in the hands of Toad Lee, and a fragile vow has been sworn by the new toads to protect it. The party must now deal with the staff's corrupting influence, the political crisis with the 150 new toads, and find a way to either cleanse the staff or contain its power before it corrupts another wielder.",
         assignee: "Full Party",
         assigneeKey: 'full_party',
         status: "active",
-        motivation: "The ship is limping along on half power, and the Iron Binding is an unknown piece of magitek that could allow the Legion to control or disable the Vigilance remotely. It's a massive security risk that must be neutralized to ensure the party's autonomy and safety.",
+        motivation: "The ship is limping along on half power, and the Iron Binding is an unknown piece of magitek that could allow the Legion to control or disable the Vigilance remotely. More urgently, the staff's raw power is a corrupting influence that has already caused a tragedy and threatens to tear the crew apart.",
         steps: [
             { id: 'step1', title: "Assess the Seal", status: 'completed', description: "The staff is back in the core, but it's been tampered with. Waluigi and Markop's Rakasha stone have identified the modification as an 'Iron Binding' seal, which chokes the staff's power output to 50%." },
-            { id: 'step2', title: "Find a Counter-Measure", status: 'active', description: "The binding is a fusion of magic and technology. The party must find an expert who can break it. Potential candidates include a Mages' Guild 'Innovator', a high-level Ratchet Raider Mekboy, or a Rakasha shaman who understands this 'fancy little trick'." },
-            { id: 'step3', title: "Purge the Seal", status: 'locked', description: "Apply the counter-measure and purge the Iron Legion's seal from the staff, restoring full power and security to the Vigilance." }
+            { id: 'step1a', title: "The Vigilance Mutiny", status: 'completed', description: "Dan's desperate attempt to reclaim the staff from the power core resulted in a magical catastrophe. Overwhelmed by its power, he unleashed a fireball that killed 13 of the newly freed toads. In the ensuing chaos, the staff was secured by Toad Lee." },
+            { id: 'step2', title: "Find a Counter-Measure", status: 'active', description: "The binding is a fusion of magic and technology, and its corrupting influence is now undeniable. The party must find an expert who can break it without causing another disaster. Potential candidates include a Mages' Guild 'Innovator', a high-level Ratchet Raider Mekboy, or a Rakasha shaman who understands this 'fancy little trick'." },
+            { id: 'step2a', title: "A Fragile Vow", status: 'active', description: "The 150 newly freed toads, now calling themselves the 'First Cohort of Renewal', have sworn a vow to protect the staff. Their vengeful leader, L, must be carefully managed to maintain the uneasy peace." },
+            { id: 'step3', title: "Purge the Corruption", status: 'locked', description: "Apply the counter-measure and purge both the Iron Legion's seal and the chaotic sentience from the staff, restoring full power and security to the Vigilance." }
         ]
     },
     'artifacts_of_balance': {

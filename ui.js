@@ -67,52 +67,11 @@ export function renderEventList() {
 
 // --- VIEW-SPECIFIC RENDERERS ---
 
-function showLiberatedToadsPopup() {
-    const popupId = 'liberated-toads-popup';
-    if (document.getElementById(popupId)) return; // Popup already exists
-
-    const popup = document.createElement('div');
-    popup.id = popupId;
-    popup.className = 'modal'; // Use existing modal styles
-    popup.style.display = 'flex';
-
-    popup.innerHTML = `
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <h2>A Message from the Liberated Toads</h2>
-            <p>Archie, we've got a high-stakes mission lined up and Dan requested you personally. It could change the course of this war. Are you in?</p>
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="liberated-toads-event.html" class="startup-btn">Accept the Mission</a>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(popup);
-
-    const close = () => {
-        popup.style.opacity = '0';
-        setTimeout(() => popup.remove(), 300);
-    }
-
-    popup.querySelector('.modal-close').addEventListener('click', close);
-    popup.addEventListener('click', (e) => {
-        if(e.target === popup) close();
-    });
-}
-
 function renderFactionDirectory() {
     viewContainer.innerHTML = ''; // Clear previous view
     const grid = document.createElement('div');
     grid.className = 'faction-directory-grid';
     viewContainer.appendChild(grid);
-
-    if (state.loggedInUser === 'archie' && !sessionStorage.getItem('liberatedToadsPopupShown')) {
-        setTimeout(() => {
-            showLiberatedToadsPopup();
-            sessionStorage.setItem('liberatedToadsPopupShown', 'true');
-        }, 1500);
-    }
-
     
     const isDebug = state.debugMode;
     const knownFactions = Object.entries(LORE_DATA.factions).filter(([key]) => isDebug || getIntelForFaction(key) > 0);

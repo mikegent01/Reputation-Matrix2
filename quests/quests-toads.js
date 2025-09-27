@@ -1,3 +1,4 @@
+
 // This file contains all side quests related to the Liberated Toads.
 export const TOADS_QUESTS = {
     // --- DAN'S QUESTS ---
@@ -23,15 +24,14 @@ export const TOADS_QUESTS = {
         title: "The Staff's Burden",
         type: 'side',
         category: 'Personal - Dan',
-        objective: "Dan feels a deep connection to X.O.'s staff, the instrument of his victory. He believes its reality-bending power is too dangerous to be used as a simple battery for the Vigilance and seeks to reclaim it from Archie to protect it, or perhaps, to understand it better.",
+        objective: "Dan attempted to reclaim the staff, but its chaotic power overwhelmed him. He had a severe mental breakdown, unleashing a fireball that killed 13 of the newly freed toads. He is now incapacitated and has lost the staff.",
         assignee: "Dan",
-        assigneeKey: 'archie', // This is a direct conflict driven by Archie's actions.
-        status: "pending",
-        pending_condition: "Pending Activation: Dan must confront Archie aboard the Vigilance and convince him that the staff is too dangerous to be used as a power source, potentially by finding a suitable replacement engine component.",
+        assigneeKey: 'dan',
+        status: "failed",
         steps: [
-            { id: 'step1', title: "A Question of Power", status: 'active', description: "Confront Archie about the staff's use. With the staff now integrated into the Vigilance's core, this is a direct and dangerous conflict. Dan must argue that the risk of the staff's magic corrupting the ship outweighs the benefit, and be prepared for Archie's volatile reaction." },
-            { id: 'step2', title: "An Alternative Source", status: 'locked', description: "To convince Archie, Dan must find a viable alternative power source for the Vigilance. This might involve trading with the Ratchet Raiders for a goblin-made engine or finding a stable arcane crystal." },
-            { id: 'step3', title: "The Choice of a Hero", status: 'locked', description: "With the staff finally in his possession, Dan must decide what to do with it. Does he destroy it, hide it away, or attempt to learn to wield its power responsibly, risking the same corruption that took X.O.?" }
+            { id: 'step1', title: "A Desperate Plea", status: 'completed', description: "Dan confronted the others in the engine room, pleading for the staff's return, fearing Archie could not be trusted with its power." },
+            { id: 'step2', title: "The Meltdown", status: 'failed', description: "Before any alternative could be found, Dan's desperation led him to try and take the staff by force. He was overwhelmed by its power, resulting in a magical catastrophe and the deaths of 13 toads." },
+            { id: 'step3', title: "The Burden is Passed", status: 'failed', description: "After a struggle involving Green T, the staff was taken from the incapacitated Dan by Toad Lee. Dan failed to reclaim the staff and has been left broken by the attempt." }
         ]
     },
     'dan_sword_and_spell': {
@@ -41,7 +41,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Dan',
         objective: "Dan feels pulled between his warrior training from Markop and his magical studies. He seeks to find a way to merge the two paths by finding the lost tomb of a legendary 'Spellsword' champion.",
         assignee: "Dan",
-        assigneeKey: 'archie', // Archie encourages this to see what happens.
+        assigneeKey: 'dan',
         status: "pending",
         pending_condition: "Pending Activation: The party must first research the location of the Tomb of the Azure Knight using the ship's library or underworld contacts before they can travel there.",
         start_condition: "Dan reaches Level 3.",
@@ -58,7 +58,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Dan',
         objective: "After being bitten by a strange creature at the Orc war camp, Dan feels an unusual connection to the tribe. He must investigate the bite and the strange 'trial' the Orcs now speak of.",
         assignee: "Dan",
-        assigneeKey: 'full_party',
+        assigneeKey: 'dan',
         status: "available",
         motivation: "The bite left a strange mark, both physically and spiritually. Dan feels a pull towards the Orc camp, a need to understand what happened and why the normally hostile Orcs now watch him with a mix of suspicion and respect. Is this a curse, or an opportunity?",
         steps: [
@@ -76,7 +76,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Toad Lee',
         objective: "Feeling overshadowed by Dan's magical destiny, Toad Lee seeks to prove his own worth as a warrior by taking on a dangerous mission alone: clearing out a nest of venomous Spidersaurs threatening Toad's Landing.",
         assignee: "Toad Lee",
-        assigneeKey: 'full_party',
+        assigneeKey: 'toad_lee',
         status: "available",
         motivation: "Toad Lee's identity is that of the protector, the first one who stood up. He needs to reaffirm that role and prove that brute strength and courage are just as valuable as flashy magic.",
         steps: [
@@ -91,7 +91,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Toad Lee',
         objective: "Toad Lee's axe is big but crudely made. He learns of a master Dwarven smith in the mountains of Middle Earth and seeks him out to have his weapon reforged into a true masterpiece.",
         assignee: "Toad Lee",
-        assigneeKey: 'full_party',
+        assigneeKey: 'toad_lee',
         status: "available",
         start_condition: "Toad Lee reaches Level 4.",
         steps: [
@@ -107,7 +107,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Toad Lee',
         objective: "Toad Lee learns that the slaver who originally captured him is now a high-ranking enforcer in the Iron Fists gang. He must confront his former tormentor and decide between revenge and justice.",
         assignee: "Toad Lee",
-        assigneeKey: 'full_party',
+        assigneeKey: 'toad_lee',
         status: "available",
         motivation: "This is a deeply personal quest to close a dark chapter of his life. Toad Lee needs to face the source of his trauma to truly move forward as a free toad.",
         steps: [
@@ -124,7 +124,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Eager',
         objective: "Eager learns that a merchant caravan belonging to his family, which went missing years ago, was last seen in the treacherous Bandit's Pass. He wants to find the wreckage to recover a family heirloom and find peace.",
         assignee: "Eager",
-        assigneeKey: 'full_party',
+        assigneeKey: 'eager',
         status: "available",
         motivation: "For Eager, this is about closure. He wants to know what happened to his family and recover the last memento he has of his past life before he was enslaved.",
         steps: [
@@ -140,7 +140,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Eager',
         objective: "Believing other enslaved Toads exist, Eager wants to establish a secret 'Toadroad'—a network of hidden caches and coded messages to help others find their way to freedom at Toad's Landing.",
         assignee: "Eager",
-        assigneeKey: 'full_party',
+        assigneeKey: 'eager',
         status: "available",
         start_condition: "Toad's Landing is established and secure.",
         steps: [
@@ -156,7 +156,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Eager',
         objective: "Eager's past as a circus performer comes back to haunt him when his cruel former Ringmaster shows up in a nearby town, using enslaved creatures for his act. Eager wants to free them.",
         assignee: "Eager",
-        assigneeKey: 'full_party',
+        assigneeKey: 'eager',
         status: "available",
         motivation: "Eager cannot stand to see others suffer as he did. This quest is about confronting his past and using the skills he learned as a performer to become a liberator.",
         steps: [
@@ -173,7 +173,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Ryan',
         objective: "Ryan's study of X.O.'s staff reveals a psychic echo within. He wants to perform a ritual to safely view the memories trapped inside, hoping to understand X.O.'s motivations.",
         assignee: "Ryan",
-        assigneeKey: 'full_party',
+        assigneeKey: 'ryan',
         status: "available",
         motivation: "Ryan's scholarly curiosity drives him. He believes that understanding an enemy is the first step to ensuring they can never rise again. He wants knowledge, not power, from the staff.",
         steps: [
@@ -189,7 +189,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Ryan',
         objective: "Ryan discovers a half-finished spellbook from a long-dead Mages' Guild Innovator. He believes he can complete the final, powerful spell, but it requires rare and dangerous components.",
         assignee: "Ryan",
-        assigneeKey: 'full_party',
+        assigneeKey: 'ryan',
         status: "available",
         start_condition: "Ryan reaches Level 4.",
         steps: [
@@ -204,7 +204,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Ryan',
         objective: "Ryan wants access to the Mages' Guild library in the Midlands, a place of immense knowledge. To get a guest pass, he must complete a task for a junior librarian: recover a book of poetry that was stolen by a particularly sentimental goblin.",
         assignee: "Ryan",
-        assigneeKey: 'full_party',
+        assigneeKey: 'ryan',
         status: "available",
         motivation: "Knowledge is power, and Ryan is hungry for it. This mundane-seeming task is the key to unlocking a treasure trove of arcane lore.",
         steps: [
@@ -221,7 +221,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Roger',
         objective: "An old contact of Roger's from the Freelancer Underworld, a sly raccoon named 'Fingers', offers him a cut of a huge score: robbing a Regal Empire tax convoy. Roger is torn between his new life and the lure of a massive payday that could secure the Toads' future.",
         assignee: "Roger",
-        assigneeKey: 'full_party',
+        assigneeKey: 'roger',
         status: "available",
         motivation: "Roger is a pragmatist. He sees the Toads struggling and believes this one heist could solve all their problems. It's a dangerous risk, but to him, it's a logical one.",
         steps: [
@@ -236,7 +236,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Roger',
         objective: "Roger's firearm is functional, but he's seen what real magitek weapons can do. He wants to find a Ratchet Raider gunsmith to upgrade his weapon with some serious, if unstable, firepower.",
         assignee: "Roger",
-        assigneeKey: 'full_party',
+        assigneeKey: 'roger',
         status: "available",
         start_condition: "Roger witnesses a magitek weapon in action.",
         steps: [
@@ -252,7 +252,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Roger',
         objective: "Roger believes the Toads need a sustainable source of income. He decides to use his pragmatic mind to 'audit' a local merchant guild's finances, looking for 'inefficiencies' that can be exploited for the Toads' benefit.",
         assignee: "Roger",
-        assigneeKey: 'full_party',
+        assigneeKey: 'roger',
         status: "available",
         motivation: "Survival requires resources. Roger sees the world as a system of numbers and believes that by manipulating that system, he can provide long-term security for his people.",
         steps: [
@@ -269,7 +269,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Bones',
         objective: "Bones feels a debt of honor to the Orcs who kidnapped but ultimately spared him. He learns their clan is starving due to the war and decides to repay his debt by hijacking an Iron Legion supply convoy and delivering the food to them.",
         assignee: "Bones",
-        assigneeKey: 'full_party',
+        assigneeKey: 'bones',
         status: "available",
         motivation: "Bones lives by a harsh, cynical code, and a debt is a debt. The Orcs showed him a strange kind of mercy, and he feels compelled to repay it in the only way he knows how: with violence directed at a common enemy.",
         steps: [
@@ -285,7 +285,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Bones',
         objective: "Bones' grotesque appearance has made him an outcast his whole life. He hears a rumor of a magical spring in a fey-touched grove that is said to change a person's appearance to reflect their inner self. He seeks it out, both terrified and hopeful of what he might become.",
         assignee: "Bones",
-        assigneeKey: 'full_party',
+        assigneeKey: 'bones',
         status: "available",
         motivation: "This is a quest for self-acceptance. Bones has always been judged by his monstrous exterior. He wants to know, once and for all, if there is something different underneath, or if he truly is the monster everyone sees.",
         steps: [
@@ -301,7 +301,7 @@ export const TOADS_QUESTS = {
         category: 'Personal - Bones',
         objective: "A young, frightened toad is having nightmares after the escape. Bones, seeing a reflection of his own trauma, decides to help by finding a rare, calming herb and telling the young toad a story of survival.",
         assignee: "Bones",
-        assigneeKey: 'full_party',
+        assigneeKey: 'bones',
         status: "available",
         motivation: "Bones sees his own past pain in the young toad and feels a gruff, protective instinct. He wants to teach the lesson he learned: survival is its own kind of victory.",
         steps: [
@@ -318,7 +318,7 @@ export const TOADS_QUESTS = {
         category: 'Liberated Toads',
         objective: "Eager was captured by the Regal Empire's Crown Intelligence during the standoff at the capital. The secret service claims he is in their 'custody', but to his friends, he has been kidnapped. Find a way to free him.",
         assignee: "Liberated Toads",
-        assigneeKey: 'full_party',
+        assigneeKey: 'liberated_toads',
         status: "active",
         motivation: "Eager is one of their own. The Liberated Toads cannot abandon one of their family members to the mercy of the Empire's spies. His rescue is their top priority.",
         steps: [
@@ -334,11 +334,11 @@ export const TOADS_QUESTS = {
         category: 'Liberated Toads',
         objective: "The Liberated Toads are a nomadic group, vulnerable to attack. They need to find and secure a permanent, defensible location to build a new home, 'Toad's Landing'.",
         assignee: "Liberated Toads",
-        assigneeKey: 'full_party',
-        status: "available",
+        assigneeKey: 'liberated_toads',
+        status: "active",
         start_condition: "Talk to Dan after he has established himself as a leader ('Hold a Council' focus).",
         steps: [
-            { id: 'step1', title: "Scout Potential Locations", status: 'active', description: "Using the Vigilance for aerial reconnaissance, identify potential locations for a settlement. Eager will lead the scouting parties.", options: ["An abandoned Imperial watchtower.", "A hidden, fertile valley.", "A defensible cave system."] },
+            { id: 'step1', title: "Scout Potential Locations", status: 'active', description: "With the decision made to find a permanent home, stealth teams must be sent out on foot to scout potential locations for 'Toad's Landing'. The Vigilance is being decommissioned for fortifications and cannot be used for aerial support.", options: ["An abandoned Imperial watchtower.", "A hidden, fertile valley.", "A defensible cave system."] },
             { id: 'step2', title: "Clear the Dangers", status: 'locked', description: "The chosen location will not be uninhabited. Clear out any resident monsters, bandits, or hazards. Toad Lee will lead the assault." },
             { id: 'step3', title: "Found 'Toad's Landing'", status: 'locked', description: "With the location secured, begin construction on basic shelters, a well, and a palisade wall. Roger will oversee the logistics." }
         ]
@@ -350,7 +350,7 @@ export const TOADS_QUESTS = {
         category: 'Liberated Toads',
         objective: "The Liberated Toads need a stable food source to survive the coming season. They must find fertile ground, acquire seeds, and protect their first crops from the dangers of the world.",
         assignee: "Liberated Toads",
-        assigneeKey: 'full_party',
+        assigneeKey: 'liberated_toads',
         status: "available",
         start_condition: "This quest becomes available after founding 'Toad's Landing'.",
         steps: [
@@ -361,18 +361,19 @@ export const TOADS_QUESTS = {
     },
     'toads_unseen_cargo': {
         id: 'toads_unseen_cargo',
-        title: "The Unseen Cargo",
+        title: "The Unseen Cargo & The Vow of Fury",
         type: 'side',
         category: 'Liberated Toads',
-        objective: "The party has discovered that the Vigilance was being used to traffic over 150 toads for the Freelancer Underworld. The Liberated Toads must decide the fate of these captives.",
+        objective: "The 150 trafficked toads have been freed, but their integration has sparked a political crisis. After a violent brawl and a magical catastrophe caused by Dan, the new toads, led by the vengeful 'L', have sworn a fragile vow of loyalty in exchange for concessions. The party must now manage this volatile new alliance.",
         assignee: "Liberated Toads",
-        assigneeKey: 'full_party',
+        assigneeKey: 'liberated_toads',
         status: "active",
         start_condition: "Triggered after Black T reveals the toad trafficking operation.",
         steps: [
             { id: 'step1', title: "Find the Key", status: 'completed', description: "The trafficked toads are located in hidden, secure cargo holds on the Vigilance. The Iron Legion has revealed they are hidden in barrels, accessible via mini-mushrooms. The party must now find a way to acquire these mushrooms and open the barrels." },
-            { id: 'step2', title: "The People's Council", status: 'active', description: "Dan must hold a council with the other Liberated Toads. What should they do? Free them and take them in? Turn them over to the Regency? The decision will have major consequences for their small community." },
-            { id: 'step3', title: "A New Burden", status: 'locked', description: "Carry out the council's decision, dealing with the logistical and political fallout of suddenly having 150 new mouths to feed or a new, volatile political situation to manage." }
+            { id: 'step2', title: "Chaos and Demands", status: 'completed', description: "The 150 trafficked toads, led by the vengeful L, have been freed. However, they refuse to simply join the existing Liberated Toads. A brawl over the few available weapons erupted into chaos, which was horrifically escalated when Dan, in a desperate attempt to reclaim X.O.'s staff, unleashed a fireball that killed 13 of the new arrivals. In the aftermath, L presented a list of 13 non-negotiable demands as their condition for integration." },
+            { id: 'step3', title: "The Counter-Offer & The Vow", status: 'completed', description: "The original Liberated Toads leadership rejected the most extreme demands and presented a counter-offer. After a tense vote, the new toads accepted. L, their leader, made a powerful speech, and all representatives swore a vow on the now-sentient staff to protect it and each other, forming the 'First Cohort of Renewal'." },
+            { id: 'step4', title: "An Uneasy Alliance", status: 'active', description: "The vow has been sworn, but tensions are incredibly high. Dan is incapacitated, Toad Lee holds the volatile staff, and 13 toads are dead. The party must navigate this fragile peace and fully integrate the 'First Cohort of Renewal' into their operations." }
         ]
     }
 };
