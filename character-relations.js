@@ -1,4 +1,4 @@
-// This file defines personal opinions between leaders and party members.
+// This file defines the personal opinions between leaders and party members.
 export const CHARACTER_RELATIONS = {
     // --- PARTY MEMBER OPINIONS ---
     'archie': {
@@ -6,7 +6,7 @@ export const CHARACTER_RELATIONS = {
         'humpik': { type: 'ally', text: "Archie on Humpik: The Dwarf is simple. Predictable. Useful for hitting things. Points in the right direction and he goes." },
         'bowser': { type: 'ally', text: "Archie on Bowser: He can yell all he wants. I'm the one who gets things done, even if it's messy. He's just another would-be king, but his desire to smash the Empire is useful. A temporary, powerful convenience." },
         'remi': { type: 'ally', text: "Archie on Remi: Fresh meat. A blank slate. Could be a useful tool, or just another boring body. We'll see if they can keep up." },
-        'dan': { type: 'ally', text: "Archie on Dan: The kid's got guts, I'll give him that. But all that 'hope' stuff is gonna get him killed. Or worse, make him boring. He's Markop's project, but a little push in a more... *interesting* direction couldn't hurt. For his own good, of course." },
+        'dan': { type: 'ally', text: "Archie on Dan: The kid's upset about the staff. He'll get over it. The ship needs a power source, and his feelings don't keep the lights on. It's a pragmatic choice. If he can't see that, he's more naive than I thought." },
         'toad_lee': { type: 'ally', text: "Archie on Toad Lee: Big axe, bigger frown. He's useful for hitting things, but don't expect any sparkling conversation." },
         'eager': { type: 'ally', text: "Archie on Eager: Skittish little guy. All that jumping around with his whip is... amusing. For a minute." },
         'roger': { type: 'ally', text: "Archie on Roger: This one's got the right idea. A gun solves a lot of problems talk can't. Smart." },
@@ -103,7 +103,7 @@ export const CHARACTER_RELATIONS = {
     },
     'dan': {
         'markop': { type: 'ally', text: "Dan on Markop: He is my teacher and protector. His strength is not just in his arms, but in his heart. I trust him completely." },
-        'archie': { type: 'ally', text: "Dan on Archie: He freed us. I will never forget that. He is dangerous and unpredictable, but I believe there is good in him trying to get out." },
+        'archie': { type: 'enemy', text: "Dan on Archie: He promised me the staff would be returned. Instead, he sealed it in the heart of the ship, choosing the Vigilance over his word. It doesn't matter that he doesn't intend to use its power; the promise was broken, and its presence remains a danger to us all. My trust is gone. I will get that staff back." },
         'humpik': { type: 'ally', text: "Dan on Humpik: He's loud and a little scary, but he's very brave. He fights to protect his king, and I respect that loyalty." },
         'bowser': { type: 'enemy', text: "Dan on Bowser: I cannot trust another king who wants to conquer people. After everything we've been through, freedom is all that matters." },
         'remi': { type: 'ally', text: "Dan on Remi: They seem quiet. I hope they're okay. This is a lot for a newcomer to handle." }

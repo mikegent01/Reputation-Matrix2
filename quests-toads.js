@@ -23,13 +23,12 @@ export const TOADS_QUESTS = {
         title: "The Staff's Burden",
         type: 'side',
         category: 'Personal - Dan',
-        objective: "Dan feels a deep connection to X.O.'s staff, the instrument of his victory. He believes its reality-bending power is too dangerous to be used as a simple battery for the Vigilance and seeks to reclaim it from Archie to protect it, or perhaps, to understand it better.",
+        objective: "Archie has decided to keep X.O.'s staff integrated into the Vigilance's power core, albeit sealed, breaking his promise to Dan. Furious and feeling betrayed, Dan now seeks to reclaim the staff by any means necessary, believing Archie cannot be trusted with its power.",
         assignee: "Dan",
         assigneeKey: 'archie', // This is a direct conflict driven by Archie's actions.
-        status: "pending",
-        pending_condition: "Pending Activation: Dan must confront Archie aboard the Vigilance and convince him that the staff is too dangerous to be used as a power source, potentially by finding a suitable replacement engine component.",
+        status: "active",
         steps: [
-            { id: 'step1', title: "A Question of Power", status: 'active', description: "Confront Archie about the staff's use. With the staff now integrated into the Vigilance's core, this is a direct and dangerous conflict. Dan must argue that the risk of the staff's magic corrupting the ship outweighs the benefit, and be prepared for Archie's volatile reaction." },
+            { id: 'step1', title: "A Question of Power", status: 'active', description: "Archie has made his decision for the group, choosing to keep the staff in the power core. The confrontation is now inevitable. Dan must decide how to approach Archie and force him to relinquish the artifact." },
             { id: 'step2', title: "An Alternative Source", status: 'locked', description: "To convince Archie, Dan must find a viable alternative power source for the Vigilance. This might involve trading with the Ratchet Raiders for a goblin-made engine or finding a stable arcane crystal." },
             { id: 'step3', title: "The Choice of a Hero", status: 'locked', description: "With the staff finally in his possession, Dan must decide what to do with it. Does he destroy it, hide it away, or attempt to learn to wield its power responsibly, risking the same corruption that took X.O.?" }
         ]
@@ -335,10 +334,10 @@ export const TOADS_QUESTS = {
         objective: "The Liberated Toads are a nomadic group, vulnerable to attack. They need to find and secure a permanent, defensible location to build a new home, 'Toad's Landing'.",
         assignee: "Liberated Toads",
         assigneeKey: 'full_party',
-        status: "available",
+        status: "active",
         start_condition: "Talk to Dan after he has established himself as a leader ('Hold a Council' focus).",
         steps: [
-            { id: 'step1', title: "Scout Potential Locations", status: 'active', description: "Using the Vigilance for aerial reconnaissance, identify potential locations for a settlement. Eager will lead the scouting parties.", options: ["An abandoned Imperial watchtower.", "A hidden, fertile valley.", "A defensible cave system."] },
+            { id: 'step1', title: "Scout Potential Locations", status: 'active', description: "With the decision made to find a permanent home, stealth teams must be sent out on foot to scout potential locations for 'Toad's Landing'. The Vigilance is being decommissioned for fortifications and cannot be used for aerial support.", options: ["An abandoned Imperial watchtower.", "A hidden, fertile valley.", "A defensible cave system."] },
             { id: 'step2', title: "Clear the Dangers", status: 'locked', description: "The chosen location will not be uninhabited. Clear out any resident monsters, bandits, or hazards. Toad Lee will lead the assault." },
             { id: 'step3', title: "Found 'Toad's Landing'", status: 'locked', description: "With the location secured, begin construction on basic shelters, a well, and a palisade wall. Roger will oversee the logistics." }
         ]
